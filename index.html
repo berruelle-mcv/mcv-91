@@ -1972,55 +1972,47 @@ function closeCoupDePouce() {
 
 // ═══ ÉLÈVE FICTIF — INJECTION AU DÉMARRAGE ═══
 function injecterEleveFictif() {
-  const mail = 'lucas.martin@laboro-demo.fr';
-  const s = gS();
-  
-  // Ne pas écraser si l'élève existe déjà
-  if (s[mail] && Object.keys(s[mail].missions || {}).length > 5) return;
-  
-  s[mail] = {
-    missions: {
-      // ── C1 — Conseiller & Vendre ──
-      'M001': {id:'M001', status:'done', score:14, comp:'C1.2', note_ia:'Bonne compréhension du besoin client. Argumentation à renforcer sur le prix.'},
-      'M002': {id:'M002', status:'done', score:11, comp:'C1.2', note_ia:'Méthode CAB appliquée mais arguments peu différenciés.'},
-      'M003': {id:'M003', status:'done', score:16, comp:'C1.1', note_ia:'Excellente veille — sources variées et analyse pertinente.'},
-      'M050': {id:'M050', status:'done', score:12, comp:'C1.3', note_ia:'Vente correcte. La conclusion aurait pu être plus affirmée.'},
-      'M051': {id:'M051', status:'done', score:9,  comp:'C1.3', note_ia:'Difficultés sur le traitement des objections prix. À retravailler.', coup_de_pouce:2},
-      'M104': {id:'M104', status:'wip',  score:null, comp:'C1.3'},
-      // ── C2 — Suivi des ventes ──
-      'M004': {id:'M004', status:'done', score:15, comp:'C2.1', note_ia:'Très bon suivi de commande. Procédure bien respectée.'},
-      'M005': {id:'M005', status:'done', score:13, comp:'C2.2', note_ia:'Gestion de la réclamation correcte, ton professionnel.'},
-      'M081': {id:'M081', status:'att',  score:null, comp:'C2.3', reponses:{
-        'q_0_0': 'Le manque à gagner est estimé à 7 clients × 187 € × 3 achats = 3 927 € par an. C'est significatif pour LABORO.',
-        'q_0_1': 'Les trois causes probables sont : délais fournisseur non maîtrisés, stock insuffisant, manque de suivi des commandes en cours.',
-        'q_0_2': 'Je proposerais d'ajouter une question sur le délai ressenti et une question sur la communication pendant la livraison.',
-        'q_1_0': 'Plan d'amélioration sur 3 mois : 1) Audit des délais fournisseurs (semaine 1, Romain, 0€, indicateur : délai moyen) 2) Alerte stock automatique (semaine 2, Pascal, 50€, indicateur : taux de rupture) 3) Mail de suivi commande automatique (semaine 3, Marco, 0€, indicateur : satisfaction délais) 4) Réunion hebdo suivi livraisons (permanente, toute l'équipe, 0€, indicateur : NPS)',
-        'q_1_reflexivite': 'Si j'avais détecté ce problème 3 mois plus tôt, j'aurais pu mettre en place une alerte stock avant que les clients partent. Ça m'apprend qu'il faut surveiller les indicateurs chaque semaine, pas attendre le bilan trimestriel.'
-      }},
-      // ── C3 — Fidélisation ──
-      'M006': {id:'M006', status:'done', score:17, comp:'C3.2', note_ia:'Excellent ! Action de fidélisation très bien construite et originale.'},
-      'M106': {id:'M106', status:'done', score:12, comp:'C3.1', note_ia:'Segmentation correcte. Le mail de relance manquait de personnalisation.', coup_de_pouce:1},
-      // ── G4A — Espace commercial ──
-      'M009': {id:'M009', status:'done', score:13, comp:'G4A', note_ia:'Implantation cohérente. Justifications merchandising à approfondir.'},
-      'M075': {id:'M075', status:'done', score:10, comp:'G4A', note_ia:'Calculs de démarque justes mais analyse des causes insuffisante.', coup_de_pouce:3},
-      'M096': {id:'M096', status:'done', score:14, comp:'G4A', note_ia:'Bonne gestion du changement de saison. Plan d'action bien argumenté.'},
-      'M100': {id:'M100', status:'done', score:15, comp:'G4A', note_ia:'Tableau de démarque complet et compte-rendu professionnel.'},
-    },
-    competences: {
-      'C1.1': 2, 'C1.2': 2, 'C1.3': 1,
-      'C2.1': 2, 'C2.2': 2, 'C2.3': 1,
-      'C3.1': 2, 'C3.2': 3, 'C3.3': 1,
-      'G4A': 2, 'G4B': 0
-    },
-    obs_ens: 'Lucas est un élève sérieux et régulier. Bon niveau en G4A et C3, mais des fragilités sur la vente (C1.3) — notamment le traitement des objections prix. À encourager sur M104 qu'il a commencé. Utilise le coup de pouce ce qui est positif.'
-  };
-  
-  sS(s);
-  console.log('Élève fictif Lucas Martin injecté avec succès.');
+  try {
+    const mail = 'lucas.martin@laboro-demo.fr';
+    const s = gS();
+    if (s[mail] && Object.keys(s[mail].missions || {}).length > 5) return;
+    s[mail] = {
+      missions: {
+        'M001': {id:'M001',status:'done',score:14,comp:'C1.2',note_ia:"Bonne compréhension du besoin client. Argumentation à renforcer sur le prix."},
+        'M002': {id:'M002',status:'done',score:11,comp:'C1.2',note_ia:"Méthode CAB appliquée mais arguments peu différenciés."},
+        'M003': {id:'M003',status:'done',score:16,comp:'C1.1',note_ia:"Excellente veille — sources variées et analyse pertinente."},
+        'M050': {id:'M050',status:'done',score:12,comp:'C1.3',note_ia:"Vente correcte. La conclusion aurait pu être plus affirmée."},
+        'M051': {id:'M051',status:'done',score:9, comp:'C1.3',note_ia:"Difficultés sur le traitement des objections prix. À retravailler.",coup_de_pouce:2},
+        'M104': {id:'M104',status:'wip', score:null,comp:'C1.3'},
+        'M004': {id:'M004',status:'done',score:15,comp:'C2.1',note_ia:"Très bon suivi de commande. Procédure bien respectée."},
+        'M005': {id:'M005',status:'done',score:13,comp:'C2.2',note_ia:"Gestion de la réclamation correcte, ton professionnel."},
+        'M081': {id:'M081',status:'att', score:null,comp:'C2.3',reponses:{
+          'q_0_0':"Le manque à gagner est estimé à 7 clients × 187 € × 3 achats = 3 927 € par an. C'est significatif pour LABORO.",
+          'q_0_1':"Les trois causes probables sont : délais fournisseur non maîtrisés, stock insuffisant, manque de suivi des commandes en cours.",
+          'q_0_2':"Je proposerais d'ajouter une question sur le délai ressenti et une question sur la communication pendant la livraison.",
+          'q_1_0':"Plan d'amélioration sur 3 mois : 1) Audit délais fournisseurs (semaine 1, Romain, 0€) 2) Alerte stock automatique (semaine 2, Pascal, 50€) 3) Mail de suivi commande (semaine 3, Marco, 0€) 4) Réunion hebdo livraisons (permanente, toute l'équipe).",
+          'q_1_reflexivite':"Si j'avais détecté ce problème 3 mois plus tôt, j'aurais pu mettre en place une alerte stock avant que les clients partent. Cela m'apprend qu'il faut surveiller les indicateurs chaque semaine."
+        }},
+        'M006': {id:'M006',status:'done',score:17,comp:'C3.2',note_ia:"Excellent ! Action de fidélisation très bien construite et originale."},
+        'M106': {id:'M106',status:'done',score:12,comp:'C3.1',note_ia:"Segmentation correcte. Le mail de relance manquait de personnalisation.",coup_de_pouce:1},
+        'M009': {id:'M009',status:'done',score:13,comp:'G4A',note_ia:"Implantation cohérente. Justifications merchandising à approfondir."},
+        'M075': {id:'M075',status:'done',score:10,comp:'G4A',note_ia:"Calculs de démarque justes mais analyse des causes insuffisante.",coup_de_pouce:3},
+        'M096': {id:'M096',status:'done',score:14,comp:'G4A',note_ia:"Bonne gestion du changement de saison. Plan d'action bien argumenté."},
+        'M100': {id:'M100',status:'done',score:15,comp:'G4A',note_ia:"Tableau de démarque complet et compte-rendu professionnel."}
+      },
+      competences: {
+        'C1.1':2,'C1.2':2,'C1.3':1,
+        'C2.1':2,'C2.2':2,'C2.3':1,
+        'C3.1':2,'C3.2':3,'C3.3':1,
+        'G4A':2,'G4B':0
+      },
+      obs_ens:"Lucas est un élève sérieux et régulier. Bon niveau en G4A et C3, mais des fragilités sur la vente (C1.3) — notamment le traitement des objections prix. À encourager sur M104 qu'il a commencé. Utilise le coup de pouce ce qui est positif."
+    };
+    sS(s);
+    console.log('Élève fictif Lucas Martin injecté.');
+  } catch(e) { console.warn('Injection élève fictif échouée:', e); }
 }
-
-// Appeler l'injection au chargement
-window.addEventListener('load', injecterEleveFictif);
+// Injection élève fictif — appel manuel uniquement (ne pas appeler au load)
 
 // ═══ PORTFOLIO D'ACTIVITÉS PROFESSIONNELLES ═══
 const CCF_MAP={
