@@ -382,7 +382,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
         <option value="enseignant">Enseignant</option>
       </select>
     </div>
-    <div class="fg" id="fg-poste">
+    <div class="fg" id="fg-poste" style="display:none">
       <label>Poste chez LABORO</label>
       <select id="inp-poste">
         <option value="Conseiller de vente — Showroom &amp; E-commerce">Conseiller de vente — Showroom</option>
@@ -1073,21 +1073,21 @@ function updatePoste(){
   const hint=document.getElementById('poste-hint');
   const fg=document.getElementById('fg-poste');
   const sel=document.getElementById('inp-poste');
-  // Masquer le champ poste pour enseignant ET 2nde (poste automatique)
-  if(!cls||cls==='enseignant'||cls==='2nde'){
-    fg.style.display='none';
-    if(cls==='2nde') sel.value='Découverte de la famille des métiers MCV';
-    return;
-  }
-  fg.style.display='';
-  if(cls.includes('AGEC')){
+  // Toujours masquer le champ poste — poste automatique selon la classe
+  fg.style.display='none';
+  if(!cls) return;
+  if(cls==='enseignant'){
+    sel.value='';
+    if(hint) hint.style.display='none';
+  } else if(cls==='2nde'){
+    sel.value='Découverte de la famille des métiers MCV';
+    if(hint){hint.style.display='block';hint.textContent="Tu découvres les métiers du commerce et de la vente chez LABORO.";}
+  } else if(cls.includes('AGEC')){
     sel.value='Conseiller de vente — Showroom & E-commerce';
-    hint.style.display='block';hint.textContent="Tu travailles au showroom d'Évry et sur laboro-sport.fr.";
-  }else if(cls.includes('PVOC')){
+    if(hint){hint.style.display='block';hint.textContent="Tu travailles au showroom d'Évry et sur laboro-sport.fr.";}
+  } else if(cls.includes('PVOC')){
     sel.value='Commercial terrain — Prospection & Vente B2B';
-    hint.style.display='block';hint.textContent='Tu prospectes et développes le portefeuille clients professionnels de LABORO.';
-  }else{
-    hint.style.display='none';
+    if(hint){hint.style.display='block';hint.textContent='Tu prospectes et développes le portefeuille clients professionnels de LABORO.';}
   }
 }
 function doLogin(){
@@ -1095,8 +1095,9 @@ function doLogin(){
   const cls=document.getElementById('inp-classe').value;
   if(!mail||!cls){alert('Merci de renseigner tous les champs.');return}
   if(!mail.includes('@')){alert('Adresse mail invalide.');return}
-  const poste=cls==='enseignant'?'Enseignant — Accès direction':document.getElementById('inp-poste').value;
-  if(!poste&&cls!=='enseignant'){alert('Merci de sélectionner un poste.');return}
+  const posteMap={'enseignant':'Enseignant — Accès direction','2nde':'Découverte de la famille des métiers MCV'};
+  const poste=posteMap[cls]||(cls.includes('AGEC')?'Conseiller de vente — Showroom & E-commerce':cls.includes('PVOC')?'Commercial terrain — Prospection & Vente B2B':'');
+  if(!poste){alert('Merci de sélectionner une classe.');return}
   const nom=mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
   CU={mail,classe:cls,poste,nom};
   localStorage.setItem('laboro_u',JSON.stringify(CU));
