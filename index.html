@@ -11,23 +11,29 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .scr{display:none;min-height:100vh}.scr.on{display:flex;flex-direction:column}
 /* LOGIN */
 #login{align-items:stretch;justify-content:center;min-height:100vh;background:linear-gradient(160deg,#185FA5 0%,#0C447C 100%)}
-.lw{display:flex;width:100%;max-width:1000px;margin:auto;min-height:100vh;box-shadow:0 0 60px rgba(0,0,0,.3)}
-.ll{width:420px;min-width:420px;background:var(--wh);padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
-.lr{flex:1;position:relative;overflow:hidden;background:linear-gradient(160deg,#1E6BB8 0%,#0C447C 100%)}
-.lr img{width:100%;height:100%;object-fit:cover;opacity:.45;display:block}
-.lr-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,68,124,.75),rgba(24,95,165,.45))}
-.lr-ct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px}
-.r-tag{display:inline-block;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.15em;border:.5px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:4px;margin-bottom:16px}
-.r-t{font-size:36px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:10px}
-.r-s{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:24px}
+.scr{background:linear-gradient(135deg,#0A2540 0%,#0C3D6E 100%)}
+.lw{display:flex;width:100%;max-width:1100px;margin:auto;min-height:100vh;box-shadow:0 0 80px rgba(0,0,0,.5)}
+.ll{width:440px;min-width:440px;background:#fff;padding:52px 44px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.ll::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#185FA5,#1D9E75)}
+.lr{flex:1;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A2540 0%,#0C3D6E 60%,#185FA5 100%)}
+.lr img{width:100%;height:100%;object-fit:cover;opacity:.3;display:block}
+.lr-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,37,64,.85) 0%,rgba(12,61,110,.6) 50%,rgba(24,95,165,.4) 100%)}
+.lr-ct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:48px 44px}
+.lr-top{display:flex;align-items:center;gap:12px}
+.lr-logo-big{width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;font-family:system-ui,sans-serif;border:.5px solid rgba(255,255,255,.25)}
+.lr-brand{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.05em}
+.lr-brand-sub{font-size:10px;color:rgba(255,255,255,.5);margin-top:1px}
+.r-tag{display:inline-block;font-size:9px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.15em;border:.5px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:4px;margin-bottom:16px}
+.r-t{font-size:32px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:12px;letter-spacing:-0.5px}
+.r-s{font-size:13px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:28px;max-width:340px}
 .r-st{display:flex;gap:22px}
 .st{border-left:2px solid rgba(255,255,255,.3);padding-left:14px}
 .st-v{font-size:20px;font-weight:800;color:#fff}.st-l{font-size:10px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em}
-.lz{margin-bottom:36px}
-.lc{width:56px;height:56px;border-radius:50%;background:var(--bl);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.lz{margin-bottom:32px}
+.lc{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--bl),#0C3D6E);display:flex;align-items:center;justify-content:center;margin-bottom:10px;box-shadow:0 4px 16px rgba(24,95,165,.3)}
 .lc span{font-size:26px;font-weight:900;color:#fff;font-style:italic}
-.ln{font-size:24px;font-weight:900;color:var(--gr)}.lv{font-size:11px;color:var(--gm);margin-top:2px}
-.lt{font-size:19px;font-weight:700;margin-bottom:6px}
+.ln{font-size:26px;font-weight:900;color:var(--gr);letter-spacing:-0.5px}.lv{font-size:11px;color:var(--gm);margin-top:3px}
+.lt{font-size:18px;font-weight:700;margin-bottom:6px;color:var(--gr)}
 .ls{font-size:12px;color:var(--gm);margin-bottom:24px;line-height:1.5}
 .fg{margin-bottom:14px}
 .fg label{display:block;font-size:10px;font-weight:700;color:var(--gm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
@@ -183,6 +189,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .modal{background:var(--wh);border-radius:14px;width:100%;max-width:720px;max-height:90vh;overflow-y:auto}
 .mo-h{background:var(--bl);color:#fff;padding:15px 22px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:flex-start}
 .mo-h h2{font-size:15px;font-weight:700}.mo-h p{font-size:11px;opacity:1;color:rgba(255,255,255,.9);margin-top:2px}
+#mo-palier-desc{color:#1a1a1a!important;font-weight:500}
 .mo-cl{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0}
 .mo-tabs{display:flex;border-bottom:.5px solid var(--gb);padding:0 22px;background:var(--wh)}
 .mo-tab{padding:10px 14px;font-size:12px;font-weight:700;cursor:pointer;color:var(--gm);border-bottom:2px solid transparent}
@@ -360,6 +367,89 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .cp-modal-cl{background:none;border:none;cursor:pointer;font-size:18px;color:#8A6500;padding:4px}
 .cp-modal-body{padding:20px}
 .cp-footer{padding:12px 20px;background:#FFFBEA;border-top:1px solid #F0C040;border-radius:0 0 14px 14px;font-size:11px;color:#A07800;text-align:center}
+
+/* ANALYSE DE CLASSE */
+.ana-btn{padding:8px 16px;background:linear-gradient(135deg,#185FA5,#0C447C);color:#fff;border:none;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.ana-btn:hover{opacity:.9}
+.ana-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.ana-overlay.open{display:flex}
+.ana-modal{background:#fff;border-radius:14px;width:100%;max-width:860px;box-shadow:0 8px 40px rgba(0,0,0,.2);margin:auto}
+.ana-hd{background:linear-gradient(135deg,#185FA5,#0C447C);padding:20px 24px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center}
+.ana-hd-t{font-family:system-ui,sans-serif;font-size:17px;font-weight:800;color:#fff}
+.ana-hd-s{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px}
+.ana-cl{background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px}
+.ana-body{padding:24px}
+.ana-section{margin-bottom:24px}
+.ana-section-t{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gm);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gb)}
+.ana-table{width:100%;border-collapse:collapse;font-size:12px}
+.ana-table th{background:var(--gc);padding:8px 10px;text-align:left;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--gm)}
+.ana-table td{padding:8px 10px;border-bottom:.5px solid var(--gb);vertical-align:middle}
+.ana-table tr:last-child td{border-bottom:none}
+.ana-bar{height:6px;border-radius:3px;background:#eee;margin-top:3px}
+.ana-bar-fill{height:100%;border-radius:3px;transition:width .3s}
+.ana-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.ana-bdg-r{background:var(--rc);color:var(--rg)}
+.ana-bdg-o{background:var(--ac);color:var(--am)}
+.ana-bdg-g{background:var(--vc);color:#1D7A5A}
+.ana-rem-btn{padding:12px 20px;background:#fff;border:2px solid var(--bl);border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bl);width:100%;margin-top:8px;transition:all .15s}
+.ana-rem-btn:hover{background:var(--bl);color:#fff}
+
+/* FICHE DE POSTE & ORGANIGRAMME */
+.poste-card{background:linear-gradient(135deg,#0C3D6E,#185FA5);border-radius:12px;padding:16px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;cursor:pointer;transition:opacity .15s}
+.poste-card:hover{opacity:.92}
+.poste-card-l{}
+.poste-card-tag{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px}
+.poste-card-titre{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px}
+.poste-card-sub{font-size:11px;color:rgba(255,255,255,.7)}
+.poste-card-r{text-align:right}
+.poste-card-ico{font-size:28px;margin-bottom:4px}
+.poste-card-cta{font-size:10px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:4px}
+
+/* MODALE ORGANIGRAMME */
+.org-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;align-items:center;justify-content:center;padding:20px}
+.org-overlay.open{display:flex}
+.org-modal{background:#fff;border-radius:14px;width:100%;max-width:780px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+.org-hd{background:linear-gradient(135deg,#0C3D6E,#185FA5);padding:20px 24px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center}
+.org-hd-t{font-size:16px;font-weight:800;color:#fff}
+.org-hd-s{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+.org-cl{background:none;border:none;cursor:pointer;color:#fff;font-size:20px}
+.org-body{padding:24px}
+.org-tabs{display:flex;gap:6px;margin-bottom:20px}
+.org-tab{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:.5px solid var(--gb);color:var(--gm);background:#fff}
+.org-tab.on{background:var(--bl);color:#fff;border-color:var(--bl)}
+
+/* Organigramme */
+.org-tree{display:flex;flex-direction:column;align-items:center;gap:0}
+.org-level{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;margin-bottom:0}
+.org-connector{width:1px;height:24px;background:#D3D1C7;margin:0 auto}
+.org-h-line{height:1px;background:#D3D1C7;position:absolute;top:0}
+.org-node{background:#fff;border:.5px solid #D3D1C7;border-radius:10px;padding:10px 14px;text-align:center;min-width:130px;max-width:160px;position:relative;transition:all .2s}
+.org-node.top{border-color:var(--bl);background:var(--bc)}
+.org-node.me{border:2.5px solid var(--vt);background:#E1F5EE;box-shadow:0 0 0 4px rgba(29,158,117,.15)}
+.org-node.manager{border-color:#6B4FA0;background:#F0EAFA}
+.org-node.peer{border-color:#D3D1C7;background:#FAFAF8;opacity:.7}
+.org-node-ava{width:36px;height:36px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.org-node-nom{font-size:11px;font-weight:700;color:var(--gr);line-height:1.3}
+.org-node-role{font-size:9px;color:var(--gm);margin-top:2px;line-height:1.3}
+.org-node-badge{display:inline-block;margin-top:5px;padding:2px 8px;border-radius:8px;font-size:9px;font-weight:700;background:var(--vt);color:#fff}
+
+/* Fiche de poste */
+.fp-section{margin-bottom:18px}
+.fp-section-t{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gm);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--gb)}
+.fp-liste{list-style:none;display:flex;flex-direction:column;gap:6px}
+.fp-liste li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--gr);line-height:1.5}
+.fp-liste li::before{content:'→';color:var(--bl);font-weight:700;flex-shrink:0}
+.fp-manager{display:flex;align-items:center;gap:12px;background:var(--gc);border-radius:10px;padding:12px 16px}
+.fp-manager-ava{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
+.fp-manager-nom{font-size:13px;font-weight:700;color:var(--gr)}
+.fp-manager-role{font-size:11px;color:var(--gm)}
+
+/* MOT DE PASSE ENSEIGNANT */
+#fg-mdp{display:none;margin-top:8px}
+#fg-mdp label{font-size:11px;font-weight:700;color:var(--gm);display:block;margin-bottom:4px}
+#inp-mdp{width:100%;padding:10px 12px;border:.5px solid var(--gb);border-radius:8px;font-size:13px;background:#fff;outline:none}
+#inp-mdp:focus{border-color:var(--bl);box-shadow:0 0 0 3px var(--bc)}
+.mdp-hint{font-size:10px;color:var(--gm);margin-top:4px;text-align:center}
 </style>
 </head>
 <body>
@@ -367,7 +457,15 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 <div id="login" class="scr on">
 <div class="lw">
   <div class="ll">
-    <div class="lz"><div class="lc"><span>L</span></div><div class="ln">LABORO</div><div class="lv">Évry-Courcouronnes · Essonne (91) · Sport & Outdoor</div></div>
+    <div class="lz">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+        <div class="lc"><span>L</span></div>
+        <div>
+          <div class="ln">LABORO</div>
+          <div class="lv">Sport & Outdoor · Évry-Courcouronnes (91)</div>
+        </div>
+      </div>
+    </div>
     <div class="lt">Accès collaborateur</div>
     <div class="ls">Connecte-toi avec ton adresse mail institutionnelle pour accéder à ton espace de travail.</div>
     <div class="fg"><label>Adresse mail</label><input type="email" id="inp-mail" placeholder="prenom.nom@monlycee.net"/></div>
@@ -391,6 +489,11 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
       </select>
       <div class="ph" id="poste-hint"></div>
     </div>
+    <div id="fg-mdp">
+      <label>🔐 Code d'accès enseignant</label>
+      <input type="password" id="inp-mdp" placeholder="Code confidentiel" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <div class="mdp-hint">Code réservé aux enseignants — contacter Pascal Berruelle</div>
+    </div>
     <button class="btn-li" onclick="doLogin()">Accéder à mon espace LABORO</button>
     <p class="ln2">Tes données sont sauvegardées de façon sécurisée sur cet appareil.</p>
     <div style="margin-top:24px;padding-top:16px;border-top:.5px solid var(--gb);text-align:center">
@@ -400,16 +503,29 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
     </div>
   </div>
   <div class="lr">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&q=80" alt="" onerror="this.style.display='none'"/>
+    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=80" alt="" onerror="this.style.display='none'"/>
     <div class="lr-ov"></div>
     <div class="lr-ct">
-      <div class="r-tag">Plateforme pédagogique · Bac Pro MCV</div>
-      <div class="r-t">Bienvenue<br>chez LABORO.</div>
-      <div class="r-s">Ton espace de travail professionnel. Des missions réelles, des compétences concrètes, un parcours qui te prépare au métier.</div>
-      <div class="r-st">
-        <div class="st"><div class="st-v">2,8 M€</div><div class="st-l">CA annuel</div></div>
-        <div class="st"><div class="st-v">120</div><div class="st-l">Références</div></div>
-        <div class="st"><div class="st-v">3 200</div><div class="st-l">Clients actifs</div></div>
+      <div class="lr-top">
+        <div class="lr-logo-big">L</div>
+        <div>
+          <div class="lr-brand">LABORO Sport & Outdoor</div>
+          <div class="lr-brand-sub">Évry-Courcouronnes · Essonne (91)</div>
+        </div>
+      </div>
+      <div>
+        <div class="r-tag">Plateforme pédagogique · Bac Pro MCV · Options AGEC & PVOC</div>
+        <div class="r-t">Apprends<br>en faisant.<br>Réussis<br>en comprenant.</div>
+        <div class="r-s">Des missions professionnelles réelles, un univers sport & outdoor immersif, des compétences directement alignées sur tes épreuves. Bienvenue chez LABORO.</div>
+        <div class="r-st">
+          <div class="st"><div class="st-v">2,8 M€</div><div class="st-l">CA annuel</div></div>
+          <div class="st"><div class="st-v">125+</div><div class="st-l">Missions</div></div>
+          <div class="st"><div class="st-v">3 niveaux</div><div class="st-l">2nde → Term.</div></div>
+          <div class="st"><div class="st-v">100%</div><div class="st-l">Référentiel</div></div>
+        </div>
+        <div style="margin-top:28px;padding-top:20px;border-top:.5px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.4)">
+          Une création de <strong style="color:rgba(255,255,255,.7)">Pascal Berruelle</strong> — Enseignant PLP Bac Pro MCV · Essonne (91) · 2026
+        </div>
       </div>
     </div>
   </div>
@@ -489,6 +605,41 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
   </div>
 </div>
 
+<!-- ANALYSE DE CLASSE -->
+<div class="ana-overlay" id="ana-overlay" onclick="if(event.target===this)closeAnalyse()">
+  <div class="ana-modal">
+    <div class="ana-hd">
+      <div>
+        <div class="ana-hd-t" id="ana-titre">Analyse de classe</div>
+        <div class="ana-hd-s" id="ana-sous">—</div>
+      </div>
+      <button class="ana-cl" onclick="closeAnalyse()">✕</button>
+    </div>
+    <div class="ana-body" id="ana-body"></div>
+  </div>
+</div>
+
+<!-- ORGANIGRAMME & FICHE DE POSTE -->
+<div class="org-overlay" id="org-overlay" onclick="if(event.target===this)closeOrg()">
+  <div class="org-modal">
+    <div class="org-hd">
+      <div>
+        <div class="org-hd-t" id="org-titre">Mon poste chez LABORO</div>
+        <div class="org-hd-s" id="org-sous">—</div>
+      </div>
+      <button class="org-cl" onclick="closeOrg()">✕</button>
+    </div>
+    <div class="org-body">
+      <div class="org-tabs">
+        <div class="org-tab on" onclick="orgTab(0,this)">🏢 Organigramme</div>
+        <div class="org-tab" onclick="orgTab(1,this)">📋 Fiche de poste</div>
+      </div>
+      <div id="org-content"></div>
+      <div id="org-fp" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
 <!-- APP -->
 <div id="app" class="scr">
 <div class="sb">
@@ -517,6 +668,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
     <div id="panel-dashboard" class="panel on">
       <div class="wb"><div class="wb-l"><h2 id="wb-b">Bonjour !</h2><p id="wb-p">—</p></div><div class="wb-r"><div class="big" id="wb-s">—</div><div class="sm">Score LABORO /100</div></div></div>
       <div id="emp-wrap"></div>
+      <div id="poste-card-wrap"></div>
       <div id="mdj-wrap"></div>
       <div class="dg">
         <div>
@@ -610,6 +762,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
       <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
         <button class="btn-val-all" onclick="validerAll()" style="margin-bottom:0">Valider notes IA ≥ 12/20</button>
         <button onclick="exporterClasse()" style="padding:8px 16px;background:none;border:.5px solid var(--gb);border-radius:7px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600">📊 Exporter la liste</button>
+        <button class="ana-btn" onclick="openAnalyse()">📈 Analyse de classe</button>
       </div>
       <div class="card" style="overflow-x:auto;margin-bottom:12px">
         <div class="ct" id="cl-titre">Vue classe — cliquer sur un élève pour sa fiche</div>
@@ -646,10 +799,9 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 // ═══ DONNÉES ═══
 const COMP=[
   {code:'C1.1',label:'Veille commerciale',g:'G1'},{code:'C1.2',label:'Vente omnicanale',g:'G1'},{code:'C1.3',label:'Exécution de la vente',g:'G1'},
-  {code:'C2.1',label:'Suivi de la commande',g:'G2'},{code:'C2.1b',label:'Services associés',g:'G2'},{code:'C2.2',label:'Réclamations client',g:'G2'},{code:'C2.3',label:'Satisfaction client',g:'G2'},
+  {code:'C2.1',label:'Suivi commande & services associés',g:'G2'},{code:'C2.2',label:'Réclamations client',g:'G2'},{code:'C2.3',label:'Satisfaction client',g:'G2'},
   {code:'C3.1',label:'Info & contact client',g:'G3'},{code:'C3.2',label:'Actions de fidélisation',g:'G3'},{code:'C3.3',label:'Évaluation fidélisation',g:'G3'},
-  {code:'G4A',label:'Espace commercial (AGEC)',g:'G4A'},{code:'G4B',label:'Prospection (PVOC)',g:'G4B'},
-  {code:'B4.1',label:'Infos & qualification prospects',g:'G4B'},{code:'B4.2',label:'Conception prospection',g:'G4B'},{code:'B4.3',label:'Mise en oeuvre prospection',g:'G4B'},{code:'B4.4',label:'Suivi prospection',g:'G4B'},{code:'B4.5',label:'Valorisation offre',g:'G4B'},
+  {code:'G4A',label:'Espace commercial (AGEC)',g:'G4A'},{code:'G4B',label:'Prospection & vente B2B (PVOC)',g:'G4B'},
 ];
 const RES={
   'C1.2':{t:'La découverte des besoins et la vente',c:`<p><strong>La méthode CAB — comment construire un argument de vente ?</strong></p>
@@ -700,11 +852,73 @@ Client : "C'est un peu cher pour débuter."<br><br>
 </ul>
 <div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>On écoute AVANT de proposer. Le bénéfice se construit toujours à partir de ce que le client a dit. Le CAB se personnalise à chaque client — deux clients qui achètent la même chaussure n'entendent pas le même argument. Une vente sans produit complémentaire est une vente incomplète.</div>`},
   'C1.1':{t:'La veille commerciale',c:`<p><strong>Pourquoi faire de la veille ? — Pour les novices</strong></p><p>La veille commerciale, c'est surveiller régulièrement ce qui se passe autour de toi : tes concurrents, tes clients, les nouveaux produits, les lois. Sans veille, tu découvres les mauvaises nouvelles trop tard.</p><p><strong>4 types de veille — ce que tu dois surveiller :</strong></p><ul><li><strong>Veille concurrentielle</strong> — Qu'est-ce que font tes concurrents ? Prix, promos, nouveaux produits, ouvertures. Sources : leurs sites web, leurs réseaux sociaux, visites en magasin.</li><li><strong>Veille produits et tendances</strong> — Quoi de neuf dans le sport ? Salons ISPO, Running Attitude, Trail Magazine, comptes Instagram des marques (Salomon, Nike, Brooks).</li><li><strong>Veille clients</strong> — Que disent tes clients ? Avis Google, commentaires Instagram, réclamations reçues. Ce sont des informations précieuses.</li><li><strong>Veille réglementaire</strong> — Y a-t-il des nouvelles lois sur les produits sportifs, les droits des consommateurs, les normes de sécurité ?</li></ul><p><strong>Outils simples pour surveiller automatiquement :</strong></p><ul><li><strong>Google Alertes</strong> — Tu entres un mot-clé (ex : "SportRun Évry") et Google t'envoie un mail à chaque fois que ce mot apparaît sur le web. Gratuit, 2 minutes à configurer.</li><li><strong>Visiter le concurrent</strong> — Au moins une fois par trimestre, aller voir physiquement ce que fait SportRun Évry : leurs prix, leur mise en rayon, leurs promotions.</li><li><strong>Lire les avis Google de la concurrence</strong> — Ce que les clients reprochent à SportRun est souvent ce que tu peux faire mieux chez LABORO.</li></ul><p><strong>La note de veille LABORO — structure simple :</strong></p><ul><li><strong>Fait observé</strong> — Quoi ? Où ? Quand ? Source ?</li><li><strong>Impact pour LABORO</strong> — C'est une menace ou une opportunité ? Pourquoi ?</li><li><strong>Recommandation</strong> — Que faire concrètement ? Qui ? Dans quel délai ?</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — note de veille rédigée</div><strong>Fait :</strong> SportRun Évry propose les Salomon Speedcross 6 à 135 € jusqu'au 19 avril (vs 149 € chez LABORO). Source : visite terrain + site web le 14/04/2026.<br><strong>Impact :</strong> Risque de perte de clients B2C sensibles au prix — environ 10 à 15% de notre clientèle trail.<br><strong>Recommandation :</strong> Proposer un service exclusif (démonstration + conseils personnalisés) qui justifie nos 14 € d'écart. À mettre en avant sur Instagram cette semaine.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>La veille est un travail de tous les jours, pas une tâche ponctuelle. Une observation sans recommandation ne sert à rien. Partager ce qu'on voit avec l'équipe = tout le monde est plus fort. Tout se note dans KepkaPro.</div>`},
-  'C1.3':{t:"L'exécution de la vente — de l'accord à la fidélisation",c:`<p><strong>4 étapes après le "oui" du client :</strong></p><ul><li><strong>Encaisser</strong> — Proposer le mode de paiement adapté. CB, espèces, virement (B2B), chèque. Remettre le justificatif de paiement. Pour les B2B : bon de commande + facture pro forma.</li><li><strong>Informer sur la livraison</strong> — Délai précis, transporteur, numéro de suivi. Ne jamais promettre un délai qu'on ne peut pas tenir. Règle LABORO : mieux vaut annoncer J+3 et livrer J+2 que l'inverse.</li><li><strong>Expliquer les garanties</strong> — Garantie légale 2 ans (non négociable, code de la consommation). Garantie commerciale LABORO 30 jours (échange sans justification). Bien distinguer les deux au client.</li><li><strong>Prendre congé professionnellement</strong> — Remercier, récapituler les prochaines étapes, inviter à revenir. La dernière impression est aussi importante que la première.</li></ul><p><strong>Documents à remettre systématiquement :</strong></p><ul><li>Ticket de caisse ou facture (obligatoire dès 25 € pour les pros)</li><li>Bon de garantie ou notice si applicable</li><li>Informations livraison (numéro de suivi)</li><li>Carte fidélité LABORO PRO si client éligible</li></ul><p><strong>Calculs à maîtriser :</strong></p><ul><li>Montant TTC = montant HT × (1 + taux TVA). TVA standard : 20%</li><li>Montant HT = montant TTC ÷ 1,20</li><li>Remise = prix initial × taux de remise. Prix remisé = prix initial × (1 − taux)</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — finalisation M. Vidal</div>Salomon 149 € + tapis yoga 59 € = 208 € TTC. CB acceptée. Livraison à emporter. Documents remis : ticket CB, bon de garantie chaussures, carte LABORO PRO. Congé : "Merci M. Vidal, bonne découverte du trail ! N'hésitez pas à revenir pour vos prochains équipements."</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Chaque vente = facture + explication garantie + invitation à revenir. Un client bien pris en charge à la fin achète à nouveau. La prise de congé n'est pas une formalité — c'est le début de la fidélisation.</div>`},
+  'C1.3':{t:"L'exécution de la vente — de l'accord à la fidélisation",c:`<p><strong>4 étapes après le "oui" du client :</strong></p><ul><li><strong>Encaisser</strong> — Proposer le mode de paiement adapté. CB, espèces, virement (B2B), chèque. Remettre le justificatif de paiement. Pour les B2B : bon de commande + facture pro forma.</li><li><strong>Informer sur la livraison</strong> — Délai précis, transporteur, numéro de suivi. Ne jamais promettre un délai qu'on ne peut pas tenir. Règle LABORO : mieux vaut annoncer J+3 et livrer J+2 que l'inverse.</li><li><strong>Expliquer les garanties</strong> — Garantie légale 2 ans (non négociable, code de la consommation). Garantie commerciale LABORO 30 jours (échange sans justification). Bien distinguer les deux au client.</li><li><strong>Prendre congé professionnellement</strong> — Remercier, récapituler les prochaines étapes, inviter à revenir. La dernière impression est aussi importante que la première.</li></ul><p><strong>Documents à remettre systématiquement :</strong></p><ul><li>Ticket de caisse ou facture (obligatoire dès 25 € pour les pros)</li><li>Bon de garantie ou notice si applicable</li><li>Informations livraison (numéro de suivi)</li><li>Carte fidélité LABORO PRO si client éligible</li></ul><p><strong>Calculs à maîtriser :</strong></p><ul><li>Montant TTC = montant HT × (1 + taux TVA). TVA standard : 20%</li><li>Montant HT = montant TTC ÷ 1,20</li><li>Remise = prix initial × taux de remise. Prix remisé = prix initial × (1 − taux)</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — finalisation M. Vidal</div>Salomon 149 € + tapis yoga 59 € = 208 € TTC. CB acceptée. Livraison à emporter. Documents remis : ticket CB, bon de garantie chaussures, carte LABORO PRO. Congé : "Merci M. Vidal, bonne découverte du trail ! N'hésitez pas à revenir pour vos prochains équipements."</div><p><strong>Le devis — structure et utilisation</strong></p>
+<ul>
+<li><strong>Définition</strong> : document commercial qui chiffre une offre avant achat. Il engage commercialement mais pas légalement tant qu'il n'est pas signé.</li>
+<li><strong>Mentions obligatoires</strong> : date · numéro de devis · coordonnées LABORO · coordonnées client · désignation des produits · quantités · prix unitaires HT · remises éventuelles · total HT · TVA · total TTC · délai de validité (généralement 30 jours)</li>
+<li><strong>Suivi du devis</strong> : un devis envoyé sans relance a 3× moins de chances d'aboutir. Relancer sous 5 jours si pas de réponse.</li>
+</ul>
+<p><strong>Mail de confirmation de commande</strong></p>
+<ul>
+<li>Toujours envoyer un mail de confirmation après un achat ou une commande passée</li>
+<li><strong>Contenu obligatoire</strong> : récapitulatif des produits commandés · quantités · montant total TTC · délai de livraison confirmé · coordonnées du SAV en cas de problème</li>
+<li><strong>Ton</strong> : professionnel et chaleureux — c'est le dernier contact avant la livraison, il conditionne la satisfaction</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — mail de confirmation</div>
+Objet : "Confirmation de votre commande LABORO n°2026-0147"<br><br>
+Madame Tessier,<br>
+Nous confirmons votre commande du 28 avril 2026 :<br>
+• Salomon Speedcross 6 T42 × 1 — 172,26 € TTC<br>
+• Chaussettes Stance Trail × 2 — 28,00 € TTC<br>
+<strong>Total : 200,26 € TTC · Livraison estimée : 30 avril 2026</strong><br>
+Pour toute question : 01 XX XX XX XX ou laboro-sport.fr<br>
+Merci de votre confiance. Cordialement, Nina Chevalier — LABORO
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Chaque vente = facture + explication garantie + invitation à revenir. Un client bien pris en charge à la fin achète à nouveau. La prise de congé n'est pas une formalité — c'est le début de la fidélisation.</div>`},
   'C2.1':{t:'Le suivi de la commande client',c:`<p><strong>5 étapes du suivi de commande :</strong></p><ul><li><strong>Enregistrer</strong> — Tous les détails dans KepkaPro immédiatement : référence, produit, quantité, délai, mode de livraison, contact client.</li><li><strong>Vérifier la disponibilité</strong> — Si rupture partielle ou totale, contacter le client AVANT qu'il s'inquiète. Proposer une alternative.</li><li><strong>Suivre l'acheminement</strong> — Transmettre le numéro de suivi transporteur par SMS ou mail dès expédition. Chronopost = lien de suivi automatique.</li><li><strong>Anticiper les retards</strong> — C'est la règle d'or LABORO : contacter le client AVANT qu'il appelle. Un retard annoncé proactivement est presque toujours pardonné.</li><li><strong>Confirmer la réception</strong> — Appel ou mail de suivi J+2 = opportunité de fidélisation et de vente additionnelle.</li></ul><p><strong>Calculs utiles :</strong></p><ul><li>Délai de livraison = date de commande + délai fournisseur + délai transport</li><li>Stock d'alerte = ventes journalières × délai de réassort en jours</li><li>Taux de livraison dans les délais = (livraisons à temps ÷ total livraisons) × 100</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande Mairie d'Évry</div>Commande de 50 ballons Trigon (stock 31 unités). Rupture partielle détectée → appel immédiat à David Chemin → proposition : livraison partielle J+2 + solde J+12. Client satisfait de la transparence.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Ne jamais attendre qu'un client appelle pour signaler un problème. KepkaPro doit être mis à jour à chaque étape — pas en fin de journée. Un suivi proactif coûte 5 minutes et peut sauver un client.</div>`},
   'C2.1b':{t:'Les services associés — proposer et gérer',c:`<p><strong>5 services associés LABORO — à proposer systématiquement :</strong></p><ul><li><strong>Livraison à domicile</strong> — Standard Chronopost 48h (6,90 €) ou express 24h (12,90 €). Numéro de suivi transmis dès expédition. Assurance comprise.</li><li><strong>Click and collect</strong> — Commande en ligne, retrait showroom Évry sous 2h si en stock. Gratuit. Avantage : le client peut essayer avant de partir.</li><li><strong>Personnalisation textile (KappaFlex)</strong> — Flocage : délai 2-3 semaines. Broderie : délai 3-4 semaines. Prix inclus dans le tarif maillot. Validation BAT obligatoire avant lancement. Minimum 10 unités.</li><li><strong>Démonstration produit</strong> — Pour les produits techniques (GPS Garmin, matériel fitness connecté). Durée 10-15 min. Augmente le taux de transformation de +22%.</li><li><strong>Garantie commerciale étendue</strong> — 30 jours échange ou remboursement sans justification (au-delà de la garantie légale 2 ans).</li></ul><p><strong>Règles de gestion des services :</strong></p><ul><li>Proposer systématiquement — ne pas attendre que le client demande</li><li>Confirmer par écrit tous les engagements (délais, personnalisation, conditions)</li><li>Tracer dans KepkaPro : tout service engagé = LABORO est responsable aux yeux du client</li><li>Anticiper les problèmes : vérifier l'avancement des commandes textile avant la date de livraison promise</li></ul><p><strong>Calculs utiles — commande textile :</strong></p><ul><li>Montant HT = prix unitaire HT × quantité</li><li>Montant TTC = HT × 1,20 (TVA 20%)</li><li>Remise clubs : 8% ≥ 10u · 12% ≥ 30u · 15% ≥ 50u</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Konaté</div>Commande 15 maillots flocage (15 × 28 € = 420 € TTC). Délai annoncé : 3 semaines. Livraison Chronopost 48h (6,90 €). BAT envoyé sous 48h pour validation. Suivi saisi dans KepkaPro : "commande KappaFlex lancée — BAT en attente".</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Les services associés font la différence face à Decathlon. Ne jamais les proposer après la vente — s'intégrer naturellement à l'argumentaire. Un problème sur un service associé = LABORO est responsable, pas le prestataire, aux yeux du client.</div>`},
-  'C2.2':{t:'Gérer une réclamation client',c:`<p><strong>Les 5 étapes LABORO — méthode ERESA :</strong></p><ul><li><strong>E — Écouter</strong> — Sans interrompre, sans se justifier. Le client a besoin d'être entendu avant tout. Durée : aussi longtemps qu'il le faut.</li><li><strong>R — Reformuler</strong> — "Si je comprends bien, vous avez reçu un produit endommagé alors que vous en avez besoin pour samedi. C'est bien ça ?" Montre qu'on a écouté.</li><li><strong>E — S'excuser</strong> — Au nom de LABORO, même si c'est la faute du transporteur. "Je suis vraiment désolé(e) pour cette situation."</li><li><strong>S — Proposer une Solution</strong> — Avoir en tête les 3 niveaux de compensation LABORO : échange immédiat / remboursement / bon d'achat compensatoire.</li><li><strong>A — Agir et tracer</strong> — Conclure avec un engagement clair, une date, un suivi. Tout noter dans KepkaPro.</li></ul><p><strong>Droits du consommateur à connaître :</strong></p><ul><li>Droit de rétractation : 14 jours pour les achats en ligne (e-commerce uniquement)</li><li>Garantie légale de conformité : 2 ans sur tous les produits (Code de la consommation)</li><li>Garantie commerciale LABORO : 30 jours échange ou remboursement sans justification</li></ul><p><strong>Niveaux de geste commercial autorisés chez LABORO :</strong></p><ul><li>Conseiller de vente : bon d'achat jusqu'à 20 €</li><li>Responsable : remboursement partiel ou échange</li><li>PDG : geste exceptionnel au-delà</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 10€. Notation KepkaPro "réclamation résolue — client satisfait".</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un client dont la réclamation est bien gérée est souvent plus fidèle qu'un client qui n'a jamais eu de problème. Écouter sans interrompre est la compétence la plus difficile et la plus importante.</div>`},
-  'C2.3':{t:'Mesurer et analyser la satisfaction client',c:`<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS (Net Promoter Score)</strong> = % Promoteurs (notes 9-10) − % Détracteurs (notes 0-6). Les neutres (7-8) ne comptent pas. Un NPS > 0 est positif, > 30 est excellent.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux < 20% = résultats non représentatifs.</li></ul><p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul><p><strong>Comment analyser :</strong> Un taux de satisfaction n'a de sens qu'avec une action corrective. Identifier la cause → proposer une solution → mesurer l'amélioration.</p><div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (38% des insatisfaits) → négociation avec Chronopost.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un chiffre sans analyse ne sert à rien. Les insatisfaits sont plus précieux que les satisfaits — ils disent ce qu'il faut corriger. Comparer les résultats dans le temps est plus utile qu'un résultat isolé.</div>`},
+  'C2.2':{t:'Gérer une réclamation client',c:`<p><strong>Les 5 étapes LABORO — méthode ERESA :</strong></p><ul><li><strong>E — Écouter</strong> — Sans interrompre, sans se justifier. Le client a besoin d'être entendu avant tout. Durée : aussi longtemps qu'il le faut.</li><li><strong>R — Reformuler</strong> — "Si je comprends bien, vous avez reçu un produit endommagé alors que vous en avez besoin pour samedi. C'est bien ça ?" Montre qu'on a écouté.</li><li><strong>E — S'excuser</strong> — Au nom de LABORO, même si c'est la faute du transporteur. "Je suis vraiment désolé(e) pour cette situation."</li><li><strong>S — Proposer une Solution</strong> — Avoir en tête les 3 niveaux de compensation LABORO : échange immédiat / remboursement / bon d'achat compensatoire.</li><li><strong>A — Agir et tracer</strong> — Conclure avec un engagement clair, une date, un suivi. Tout noter dans KepkaPro.</li></ul><p><strong>Droits du consommateur à connaître :</strong></p><ul><li>Droit de rétractation : 14 jours pour les achats en ligne (e-commerce uniquement)</li><li>Garantie légale de conformité : 2 ans sur tous les produits (Code de la consommation)</li><li>Garantie commerciale LABORO : 30 jours échange ou remboursement sans justification</li></ul><p><strong>Niveaux de geste commercial autorisés chez LABORO :</strong></p><ul><li>Conseiller de vente : bon d'achat jusqu'à 20 €</li><li>Responsable : remboursement partiel ou échange</li><li>PDG : geste exceptionnel au-delà</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 10€. Notation KepkaPro "réclamation résolue — client satisfait".</div><p><strong>L'empathie dans le traitement des réclamations</strong></p>
+<p>L'empathie c'est la capacité à se mettre à la place du client et à lui montrer qu'on comprend ce qu'il ressent — sans forcément lui donner raison sur tout. C'est la compétence numéro 1 pour désamorcer une réclamation.</p>
+<ul>
+<li><strong>Phrases d'empathie efficaces</strong> :
+  <ul>
+    <li>"Je comprends tout à fait votre frustration, ce n'est pas ce qu'on vous a promis."</li>
+    <li>"Je suis sincèrement désolé(e) pour ce désagrément, vous avez eu raison de nous contacter."</li>
+    <li>"À votre place, j'aurais réagi de la même façon."</li>
+  </ul>
+</li>
+<li><strong>Ce qu'il ne faut JAMAIS dire</strong> :
+  <ul>
+    <li>"C'est pas de notre faute" → ça rejette la responsabilité</li>
+    <li>"C'est écrit dans les conditions générales" → ça met le client en tort</li>
+    <li>"Calmez-vous" → ça amplifie l'énervement</li>
+  </ul>
+</li>
+<li><strong>La règle des 3 E</strong> : Écouter sans interrompre · Exprimer l'empathie · Engager une solution concrète</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réclamation avec empathie</div>
+Client : "J'ai commandé des chaussures il y a 3 semaines, je n'ai toujours rien reçu. C'est un scandale !"<br><br>
+Mauvaise réponse : "Le délai c'est 3 semaines, c'est normal."<br><br>
+Bonne réponse avec empathie : "Je comprends votre mécontentement, attendre 3 semaines sans nouvelles c'est vraiment frustrant. Je vais vérifier immédiatement où en est votre commande et je vous rappelle dans les 30 minutes avec une réponse concrète."<br><br>
+<strong>Résultat</strong> : le client se sent entendu → la tension baisse → il reste client.
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un client dont la réclamation est bien gérée est souvent plus fidèle qu'un client qui n'a jamais eu de problème. Écouter sans interrompre est la compétence la plus difficile et la plus importante.</div>`},
+  'C2.3':{t:'Mesurer et analyser la satisfaction client',c:`<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS (Net Promoter Score)</strong> = % Promoteurs (notes 9-10) − % Détracteurs (notes 0-6). Les neutres (7-8) ne comptent pas. Un NPS > 0 est positif, > 30 est excellent.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux < 20% = résultats non représentatifs.</li></ul><p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul><p><strong>Comment analyser :</strong> Un taux de satisfaction n'a de sens qu'avec une action corrective. Identifier la cause → proposer une solution → mesurer l'amélioration.</p><div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (38% des insatisfaits) → négociation avec Chronopost.</div><p><strong>Analyser les verbatims clients</strong></p>
+<p>Un <strong>verbatim</strong> est une réponse textuelle libre d'un client dans une enquête de satisfaction ("En quelques mots, comment décririez-vous votre expérience ?"). C'est la donnée la plus riche car elle révèle les vrais motifs de satisfaction ou d'insatisfaction.</p>
+<ul>
+<li><strong>Verbatim positif</strong> → identifier ce qui crée de la valeur pour le client et amplifier</li>
+<li><strong>Verbatim négatif</strong> → identifier le problème précis, prioriser les corrections</li>
+<li><strong>Méthode d'analyse</strong> : regrouper les verbatims par thème (livraison, prix, conseil, accueil, produit) · compter les occurrences · identifier les 2-3 sujets les plus cités</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — analyse verbatims rayon running</div>
+24 avis Google analysés · Note moyenne : 3,8/5<br><br>
+<strong>Verbatims négatifs récurrents :</strong><br>
+"Pas assez de choix en tailles" (8 mentions) · "Délai de commande trop long" (5 mentions) · "Prix élevés" (4 mentions)<br><br>
+<strong>Verbatims positifs récurrents :</strong><br>
+"Conseiller très compétent" (11 mentions) · "Bonne ambiance en magasin" (7 mentions)<br><br>
+<strong>Action prioritaire</strong> : élargir les tailles disponibles → s'adresse au problème le plus cité (8/24 = 33% des avis)
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un chiffre sans analyse ne sert à rien. Les insatisfaits sont plus précieux que les satisfaits — ils disent ce qu'il faut corriger. Comparer les résultats dans le temps est plus utile qu'un résultat isolé.</div>`},
   'C3.1':{t:"Traiter l'information et le contact client",c:`<p><strong>Règle d'or LABORO : répondre en moins de 24h à tout contact, quel que soit le canal.</strong></p><p><strong>Les 4 canaux de contact LABORO et leurs règles :</strong></p><ul><li><strong>Téléphone</strong> — Décrocher avant la 3e sonnerie. Formule : "LABORO Sport, [prénom], bonjour !" Tracer dans KepkaPro immédiatement.</li><li><strong>E-mail</strong> — Réponse sous 24h. Objet clair, signature complète. Si impossible de traiter : accuser réception et donner un délai.</li><li><strong>Réseaux sociaux</strong> — Réponse publique aux avis (positifs ET négatifs). Jamais d'agressivité, toujours professionnel.</li><li><strong>Courrier</strong> — Accusé réception sous 48h. Réponse formelle sous 5 jours ouvrés.</li></ul><p><strong>Structure d'un mail professionnel :</strong></p>
 <ul>
 <li><strong>Objet</strong> — Court et précis. Doit résumer le sujet en moins de 8 mots. Ex : "Réponse à votre demande de tarifs groupe"</li>
@@ -725,16 +939,139 @@ Cordialement,<br>
 Nina Chevalier · Commerciale B2B · LABORO Sport & Outdoor · 01 XX XX XX XX
 </div>
 <p><strong>Méthode BANT pour qualifier un contact entrant :</strong></p><ul><li><strong>B</strong>udget — Le prospect a-t-il les moyens ? Quel ordre de grandeur ?</li><li><strong>A</strong>uthority — Est-il décisionnaire ? Ou faut-il passer par quelqu'un d'autre ?</li><li><strong>N</strong>eed — Quel est le besoin réel, exprimé ou latent ?</li><li><strong>T</strong>iming — Dans quel délai est-il prêt à acheter ?</li></ul><p><strong>Répondre à un avis négatif — structure en 3 temps :</strong> Remercier + Reconnaître le problème + Proposer une suite (contact privé, échange, solution).</p><div class="res-ex"><div class="res-ex-l">Exemple LABORO — avis Google 2 étoiles</div>"Livraison en retard et aucun signe de vie de LABORO."<br>Réponse : "Bonjour, merci de nous avoir contactés. Nous sommes sincèrement désolés pour ce retard. Pouvez-vous nous contacter à contact@laboro-sport.fr ? Nous ferons tout pour arranger la situation. — L'équipe LABORO"</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Chaque contact non traité = client potentiellement perdu. Répondre à un avis négatif en public montre à tous les visiteurs que LABORO prend ses responsabilités. Tracer dans KepkaPro = informer toute l'équipe.</div>`},
-  'C3.2':{t:'Les actions de fidélisation client',c:`<p><strong>2 dimensions de la fidélisation :</strong></p><ul><li><strong>Fidélisation comportementale</strong> — Le client rachète grâce à des avantages concrets : remises, carte LABORO PRO, offres réservées. Fidélisation par l'intérêt économique.</li><li><strong>Fidélisation attitudinale</strong> — Le client est attaché à LABORO pour l'expertise, la relation humaine, la confiance. Beaucoup plus solide — résiste aux offres concurrentes.</li></ul><p><strong>Les outils de fidélisation LABORO :</strong></p><ul><li><strong>Carte LABORO PRO</strong> — Accès VIP au showroom, remises exclusives, invitations événements. Réservée aux clients > 500 €/an.</li><li><strong>Newsletter personnalisée</strong> — Mensuelle. Contenu : nouveautés adaptées au profil, conseils experts, offres exclusives abonnés.</li><li><strong>Événements clients</strong> — Soirée Rentrée Sportive, journée test produit, atelier running. Crée du lien et des ventes spontanées.</li><li><strong>Vente au rebond (cross-selling)</strong> — Saisir une opportunité commerciale lors d'un contact non commercial. Client appelle pour un retard → régler son problème → l'informer naturellement d'une promotion pertinente.</li></ul><p><strong>La vente au rebond — règles d'or :</strong></p><ul><li>Résoudre d'abord le problème ou répondre à la question</li><li>Transition naturelle : "À propos, je pensais à vous pour…"</li><li>Proposition ciblée sur son historique d'achat</li><li>Jamais forcée — si le client n'est pas réceptif, ne pas insister</li></ul><p><strong>Indicateurs de fidélisation :</strong></p><ul><li>Taux de rétention = clients ayant racheté ÷ clients N-1 × 100. Objectif LABORO : > 60%</li><li>Taux d'attrition = 100 − taux de rétention. Alarme si > 20%</li><li>Fréquence d'achat = nombre d'achats ÷ nombre de clients actifs</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — vente au rebond</div>M. Bensalah appelle pour un retard de livraison. → Résolution : nouveau délai confirmé + code de suivi envoyé. → Rebond naturel : "À propos M. Bensalah, on vient de recevoir les nouvelles chaussures de trail Salomon — elles correspondraient exactement à ce que vous cherchiez pour cet été. Je vous envoie la fiche ?"</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Fidéliser coûte 5 fois moins cher que conquérir un nouveau client. La fidélisation commence dès la première vente — un client bien accueilli et bien conseillé revient naturellement. La vente au rebond doit être perçue comme un service, pas comme une tentative de vente forcée.</div>`},
+  'C3.2':{t:'Les actions de fidélisation client',c:`<p><strong>2 dimensions de la fidélisation :</strong></p><ul><li><strong>Fidélisation comportementale</strong> — Le client rachète grâce à des avantages concrets : remises, carte LABORO PRO, offres réservées. Fidélisation par l'intérêt économique.</li><li><strong>Fidélisation attitudinale</strong> — Le client est attaché à LABORO pour l'expertise, la relation humaine, la confiance. Beaucoup plus solide — résiste aux offres concurrentes.</li></ul><p><strong>Les outils de fidélisation LABORO :</strong></p><ul><li><strong>Carte LABORO PRO</strong> — Accès VIP au showroom, remises exclusives, invitations événements. Réservée aux clients > 500 €/an.</li><li><strong>Newsletter personnalisée</strong> — Mensuelle. Contenu : nouveautés adaptées au profil, conseils experts, offres exclusives abonnés.</li><li><strong>Événements clients</strong> — Soirée Rentrée Sportive, journée test produit, atelier running. Crée du lien et des ventes spontanées.</li><li><strong>Vente au rebond (cross-selling)</strong> — Saisir une opportunité commerciale lors d'un contact non commercial. Client appelle pour un retard → régler son problème → l'informer naturellement d'une promotion pertinente.</li></ul><p><strong>La vente au rebond — règles d'or :</strong></p><ul><li>Résoudre d'abord le problème ou répondre à la question</li><li>Transition naturelle : "À propos, je pensais à vous pour…"</li><li>Proposition ciblée sur son historique d'achat</li><li>Jamais forcée — si le client n'est pas réceptif, ne pas insister</li></ul><p><strong>Indicateurs de fidélisation :</strong></p><ul><li>Taux de rétention = clients ayant racheté ÷ clients N-1 × 100. Objectif LABORO : > 60%</li><li>Taux d'attrition = 100 − taux de rétention. Alarme si > 20%</li><li>Fréquence d'achat = nombre d'achats ÷ nombre de clients actifs</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — vente au rebond</div>M. Bensalah appelle pour un retard de livraison. → Résolution : nouveau délai confirmé + code de suivi envoyé. → Rebond naturel : "À propos M. Bensalah, on vient de recevoir les nouvelles chaussures de trail Salomon — elles correspondraient exactement à ce que vous cherchiez pour cet été. Je vous envoie la fiche ?"</div><p><strong>Types de programmes de fidélisation</strong></p>
+<ul>
+<li><strong>Carte de fidélité</strong> : accumulation de points à chaque achat. Avantages : simple à comprendre pour le client, génère des visites répétées. Ex LABORO : 1 point par euro d'achat → 10€ de bon d'achat tous les 200 points.</li>
+<li><strong>Programme de parrainage</strong> : le client fidèle recommande LABORO à un ami → récompense pour les deux. Très efficace en B2C sport.</li>
+<li><strong>Club VIP</strong> : accès à des ventes privées, avant-premières, tarifs préférentiels pour les clients les plus actifs. Ex LABORO : statut Gold dès 500€ d'achats/an.</li>
+<li><strong>Offres personnalisées</strong> : promotions ciblées selon l'historique d'achat. Ex : -15% sur les chaussures trail pour un client qui a acheté 3 fois dans cette catégorie.</li>
+</ul>
+<p><strong>Construire le budget d'une action de fidélisation</strong></p>
+<ul>
+<li><strong>Coûts directs</strong> : valeur des récompenses offertes, supports de communication (mails, affiches), éventuels cadeaux ou goodies</li>
+<li><strong>Coûts indirects</strong> : temps commercial consacré, coût de la plateforme CRM</li>
+<li><strong>ROI fidélisation</strong> = (CA généré par les clients fidélisés − coût de l'action) ÷ coût de l'action × 100</li>
+<li><strong>Règle de base</strong> : fidéliser un client coûte 5 à 7 fois moins cher que d'en conquérir un nouveau</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — action fidélisation clubs trail (budget 200 €)</div>
+Cible : 67 clients trail actifs · Objectif : ramener 20% en magasin avant la Semaine du Trail<br>
+Budget : mails personnalisés 0 € · affiches A3 × 20 = 40 € · bons d'achat 10 € × 15 = 150 € · total = <strong>190 €</strong><br>
+Résultat : 18 clients revenus → CA généré 2 340 € → ROI = (2 340 − 190) ÷ 190 × 100 = <strong>1 131%</strong>
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Fidéliser coûte 5 fois moins cher que conquérir un nouveau client. La fidélisation commence dès la première vente — un client bien accueilli et bien conseillé revient naturellement. La vente au rebond doit être perçue comme un service, pas comme une tentative de vente forcée.</div>`},
   'C3.3':{t:'Évaluer les actions de fidélisation',c:`<p><strong>Les 4 indicateurs clés à calculer :</strong></p><ul><li><strong>Taux de rétention</strong> = (clients ayant acheté au moins 2 fois) ÷ clients de la période précédente × 100. Objectif LABORO : > 60%.</li><li><strong>Taux d'attrition</strong> = 100 − taux de rétention. Représente le % de clients perdus. > 20% = signal d'alarme.</li><li><strong>ROI d'une action</strong> = (CA généré − coût de l'action) ÷ coût de l'action × 100. Positif = rentable. > 200% = à reconduire.</li><li><strong>Valeur vie client (CLV)</strong> = panier moyen × fréquence d'achat annuelle × durée de fidélité estimée en années.</li></ul><p><strong>Méthode d'évaluation en 4 étapes :</strong></p><ul><li>Fixer l'objectif AVANT l'action (ex : recruter 20 nouveaux clients fidèles)</li><li>Mesurer pendant l'action (taux de participation, ventes en temps réel)</li><li>Calculer les indicateurs APRÈS l'action (ROI, taux de rétention, NPS)</li><li>Comparer et décider : reconduire / adapter / abandonner</li></ul><div class="res-ex"><div class="res-ex-l">Calcul complet — Soirée Rentrée Sportive LABORO</div>Coût : 1 200 € · CA soir : 4 200 € HT · CA 30j suivants (clients présents) : 11 800 € HT<br>ROI = (4 200 + 11 800 − 1 200) ÷ 1 200 × 100 = <strong>1 233%</strong><br>CLV client B2B moyen : 19 500 € × 1 commande/an × 3 ans = <strong>58 500 €</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Sans évaluation, on dépense au hasard. Le ROI convainc la direction d'investir. La CLV rappelle qu'un client fidèle vaut bien plus qu'une vente. Comparer les actions entre elles permet d'optimiser le budget.</div>`},
   'C3.3b':{t:'La fidélisation avancée — outils et stratégie',c:`<p><strong>Pourquoi fidéliser ? — La logique économique simple</strong></p><p>Conquérir un nouveau client coûte 5 à 7 fois plus cher que de fidéliser un client existant. Un client fidèle achète plus, revient plus souvent, et recommande LABORO à son entourage.</p><p><strong>Les 4 outils de fidélisation LABORO :</strong></p><ul><li><strong>Carte LABORO PRO</strong> — Points cumulés à chaque achat, offre anniversaire, accès ventes privées. À proposer systématiquement à la caisse.</li><li><strong>Newsletter mensuelle</strong> — Nouveautés, conseils, offres exclusives. Envoi le 1er lundi du mois. Objectif taux d'ouverture : > 30%.</li><li><strong>Soirée clients annuelle</strong> — Événement showroom en novembre. Réservé aux meilleurs clients. Objectif : renforcer le sentiment d'appartenance.</li><li><strong>Programme de parrainage</strong> — Parrain : 15 € de bon d'achat. Filleul : 10 € à la 1re commande. Activation via KepkaPro.</li></ul><p><strong>Client satisfait vs client fidèle :</strong></p><ul><li><strong>Client satisfait</strong> — Content de son achat mais peut aller ailleurs si un concurrent fait une promo.</li><li><strong>Client fidèle</strong> — Revient automatiquement chez LABORO même si un concurrent est moins cher. Son CA augmente chaque année.</li></ul><p><strong>Construire un objectif SMART :</strong></p><ul><li><strong>S</strong>pécifique — "Passer de 31 à 45 participants à la soirée clients"</li><li><strong>M</strong>esurable — un chiffre précis à atteindre</li><li><strong>A</strong>tteignable — ambitieux mais réaliste avec les moyens disponibles</li><li><strong>R</strong>éaliste — en accord avec le budget et l'équipe</li><li><strong>T</strong>emporel — "Pour le 15 novembre 2026"</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — proposer la carte PRO</div>"M. Vidal, vous êtes client depuis 3 ans — avez-vous votre carte LABORO PRO ? Sur cet achat vous auriez déjà 7 points, soit 7 € à utiliser à votre prochaine visite. Je vous l'active maintenant, c'est gratuit et sans engagement."</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>La fidélisation commence à la première vente. Proposer la carte LABORO PRO à chaque passage en caisse est une règle. Un client fidèle bien traité peut représenter 5 000 à 20 000 € de CA sur 10 ans.</div>`},
-  'G4A':{t:"Gérer l'espace commercial et développer la clientèle",c:`<p><strong>1. Les règles du merchandising — disposer les produits pour vendre</strong></p><p>Le merchandising, c'est l'art de présenter les produits pour maximiser les ventes. Chez LABORO, chaque décision de placement est réfléchie.</p><ul><li><strong>Les 3 niveaux de présentation :</strong><br>· <strong>Niveau yeux</strong> (1,2–1,6m) → produits phares, marges élevées, nouveautés. C'est ici que se font 60% des ventes.<br>· <strong>Niveau mains</strong> (0,8–1,2m) → produits courants, bonne rotation.<br>· <strong>Niveau sol</strong> (< 0,8m) → produits volumineux, articles d'appel, stocks.</li><li><strong>Zones chaudes et froides :</strong><br>· Zones chaudes (entrée, allées principales, caisses) : nouveautés, promotions, best-sellers.<br>· Zones froides (fond, angles) : produits à rotation lente → à animer pour attirer le client.</li><li><strong>Facing</strong> → nombre d'unités visibles côte à côte. Minimum 2 facings pour exister visuellement. Best-sellers = 4 facings minimum.</li><li><strong>PLV</strong> (Publicité sur Lieu de Vente) → stop-rayon, affiche, présentoir. Règle : message lisible à 3 mètres.</li></ul><p><strong>2. Gestion des stocks et approvisionnement</strong></p><ul><li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours)<br>Exemple : 3 paires/jour × 5 jours délai = stock d'alerte à <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li><li><strong>Quantité à commander</strong> = objectif de ventes × colisage (arrondir à l'entier supérieur)<br>Exemple : 405 paires à commander · colisage par 6 → 405 ÷ 6 = 67,5 → <strong>68 colis</strong> à commander.</li><li><strong>DDM — Date de Durabilité Minimale</strong> → date jusqu'à laquelle le produit garde ses qualités (pour la nutrition sportive). Un produit dont la DDM est inférieure à 1 mois doit être géré en priorité (promotion ou retour fournisseur).</li><li><strong>Sélectionner un fournisseur</strong> → comparer sur : prix d'achat HT · remises · colisage · délai de livraison · frais de port · politique de reprise · origine produit (cohérence avec valeurs LABORO).</li><li><strong>Calcul du montant d'une commande :</strong><br>Montant brut = PAHT × quantité<br>Remise = montant brut × taux de remise<br>Frais de port éventuels<br>Montant net = montant brut − remise + frais de port<br>Exemple : 68 colis × 6 paires × 75 € = 30 600 € · remise 10% = −3 060 € → <strong>27 540 € net</strong></li></ul><p><strong>3. La démarque — identifier et réduire les pertes</strong></p><ul><li><strong>Démarque connue</strong> → pertes identifiées et mesurables : produits abîmés, dates dépassées, erreurs de caisse, retours fournisseur. On sait pourquoi le produit est perdu.</li><li><strong>Démarque inconnue</strong> → pertes non expliquées : vol, erreurs d'inventaire. Plus difficile à mesurer.</li><li><strong>Calcul du taux de démarque connue HT :</strong><br>Formule : (valeur démarque HT ÷ CA HT total) × 100<br>Valeur démarque HT = PAHT × quantités perdues<br>Exemple : 2 tapis abîmés · PAHT 35 € · CA HT du rayon 8 500 €<br>Taux = (2 × 35) ÷ 8 500 × 100 = 70 ÷ 8 500 × 100 = <strong>0,82%</strong><br>Objectif sectoriel : < 1,5%. Au-dessus de 3% → situation critique.</li><li><strong>Gérer les produits à DDM courte</strong> → 2 options :<br>· Opération promotionnelle (−30%, lot 3+1, etc.) pour écouler rapidement<br>· Don à une association (action anti-gaspillage → label green economy)<br>Comparer les 2 promotions sur le CA HT et la marge dégagée pour choisir la plus rentable.</li></ul><p><strong>4. Le site marchand et l'e-commerce</strong></p><ul><li><strong>Taux de conversion</strong> = (commandes passées ÷ visiteurs uniques) × 100<br>Exemple : 312 commandes · 24 680 visiteurs → 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Moyenne nationale e-commerce 2022 : 2,96%. En dessous = site à optimiser.</li><li><strong>Pourcentage des ventes en ligne</strong> = (CA site ÷ CA total) × 100<br>Exemple : 18 400 ÷ 278 000 × 100 = <strong>6,62%</strong></li><li><strong>Panier moyen en ligne</strong> = CA site ÷ nombre de commandes<br>Exemple : 18 400 ÷ 312 = <strong>58,97 €</strong></li><li><strong>Points faibles fréquents d'un site marchand</strong> → absence d'avis clients · pas de FAQ · délais de livraison non affichés · pas de pictogrammes de réassurance (paiement sécurisé, retours) · réseaux sociaux inactifs · design non responsive.</li><li><strong>Pour améliorer le taux de conversion</strong> → ajouter des avis clients · afficher clairement les délais · créer une FAQ · optimiser le paiement · réduire l'abandon de panier.</li></ul><p><strong>5. Communication digitale pour développer la clientèle</strong></p><ul><li><strong>Choisir le bon canal</strong> → Instagram : visuels, cible 18-35 ans, trail/running · Facebook : cible 35-55 ans, CE, clubs · Newsletter : clients existants · Google My Business : référencement local.</li><li><strong>Règles d'un post efficace</strong> → visuel accrocheur en premier · texte court et direct (< 150 mots) · 3 à 5 hashtags ciblés · 1 seul call-to-action (lien, inscription, achat).</li><li><strong>Indicateurs de performance digitale</strong> → taux d'engagement = (likes + commentaires + partages) ÷ abonnés × 100 · taux d'ouverture newsletter (objectif > 25%) · taux de clic (objectif > 3%).</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul commande Salomon printemps</div>Objectif : 405 paires · Fournisseur TrailPro · PAHT 75 € · colisage par 6 · remise 10% (> 60 paires) · franco de port<br>Colis : 405 ÷ 6 = 67,5 → <strong>68 colis</strong> · Quantité réelle : 68 × 6 = 408 paires<br>Montant brut : 408 × 75 = 30 600 € · Remise 10% : −3 060 €<br><strong>Montant net : 27 540 € HT</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">Exemple LABORO — taux de conversion laboro-sport.fr</div>312 commandes · 24 680 visiteurs → taux = 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Vs moyenne nationale 2,96% → LABORO est à moins de la moitié de la moyenne → priorité absolue d'amélioration.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Le niveau des yeux c'est le niveau qui vend. Taux de démarque > 3% = situation critique à traiter immédiatement. Taux de conversion < 1% = site qui n'est pas optimisé. Un post Instagram sans call-to-action ne génère pas de ventes. Tout se mesure, tout se compare à un objectif ou une moyenne nationale.</div>`},
-  'B4.1':{t:"Rechercher et qualifier les informations de prospection",c:`<p><strong>3 sources essentielles pour trouver des prospects B2B :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives (FFT, FFA, FF Football), annuaires des CE, répertoires des collectivités. Ciblées sur le sport et les achats groupés.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels. Prospects chauds à requalifier rapidement.</li></ul><p><strong>Qualifier un prospect avec la méthode BANT :</strong></p><ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ? Ordre de grandeur suffisant.</li><li><strong>A</strong>uthority — Qui decide ? Responsable CE, DRH, responsable achats, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ? Équipements récurrents ou commandes ponctuelles ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ? Projet immédiat ou besoin à moyen terme ?</li></ul><p><strong>Champs obligatoires dans KepkaPro pour chaque prospect :</strong></p><ul><li>Raison sociale, secteur, taille (effectif), contact décisionnaire, téléphone, e-mail</li><li>Source d'identification, score BANT (de 1 à 4), besoins estimés, statut (froid/tiède/chaud)</li><li>Prochaine action à mener et date de relance</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — Score BANT : 3/4 — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un fichier prospect bien qualifié vaut 10 fois plus qu'une liste non travaillée. Priorité aux prospects BANT 3 ou 4. Un prospect sans date de relance est un prospect perdu. Tout se trace dans KepkaPro dès le premier contact.</div>`},
-  'B4.2':{t:"Concevoir un plan et des supports de prospection",c:`<p><strong>1. Dimensionner une opération de prospection</strong></p><p>Avant de rédiger quoi que ce soit, il faut calculer combien de prospects contacter pour atteindre l'objectif de contrats. On remonte la <strong>chaîne de conversion</strong> :</p><ul><li><strong>Objectif</strong> : 3 contrats à signer</li><li>Taux de transformation devis-contrat moyen : 30% → il faut <strong>10 devis envoyés</strong></li><li>Taux de RDV-devis : 60% → il faut <strong>17 RDV effectués</strong></li><li>Taux de contact-RDV (phoning) : 12% → il faut <strong>142 appels passés</strong></li><li><strong>Formule générale</strong> : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3)</li></ul><p>Exemple LABORO : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60 × 0,12 × 0,30) = 3 ÷ 0,0216 = <strong>139 prospects à contacter</strong></p><p><strong>2. Choisir les techniques de prospection adaptées</strong></p><ul><li><strong>Phoning (appel à froid ou tiède)</strong> — Taux de RDV : 5 à 15%. Adapté aux CE et collectivités. Rapide mais nécessite un bon plan d'appel. Coût : faible.</li><li><strong>E-mailing</strong> — Taux d'ouverture B2B : 20-25%. Taux de clic : 2-4%. Efficace pour amorcer le contact avant un appel. Jamais suffisant seul.</li><li><strong>Visite terrain</strong> — La plus qualitative. Taux de succès > 40% si bien préparée. Coûteuse en temps. À réserver aux prospects BANT 3-4.</li><li><strong>LinkedIn</strong> — Prospection douce. Commenter/partager avant de contacter. Efficace sur les décisionnaires en entreprise (DRH, responsable CE).</li><li><strong>Salons / événements sportifs</strong> — Contacts chauds à requalifier rapidement (< 48h). Forum sport Essonne = source n°1 LABORO.</li></ul><p><strong>3. Concevoir un e-mailing de prospection efficace</strong></p><ul><li><strong>Objet</strong> : 4 à 6 mots maximum · personnalisé si possible · ne pas mettre le mot "gratuit" (filtre anti-spam) · exemples : "Équipez vos joueurs 48h" · "Votre commande textile pour [mois]"</li><li><strong>Accroche</strong> (1-2 phrases) : chiffre ou constat qui parle au prospect · son secteur · son problème probable</li><li><strong>Corps</strong> (3 arguments max) : ciblés sur ses besoins supposés · 1 argument = 1 bénéfice concret + 1 preuve (chiffre, exemple client)</li><li><strong>Call-to-action unique</strong> : une seule action demandée — RDV, devis, lien catalogue · jamais 3 options</li><li><strong>Signature</strong> : photo + prénom + titre + téléphone direct + lien LinkedIn</li><li><strong>Règle des 150 mots</strong> : au-delà, le taux de lecture chute de 60%</li></ul><p><strong>4. Établir le budget d'une opération de prospection</strong></p><ul><li>Poste déplacements : km × tarif barème URSSAF (ou véhicule LABORO)</li><li>Poste supports : impression plaquettes, catalogues, cartes de visite</li><li>Poste outils : abonnement LinkedIn Premium si utilisé, logiciel e-mailing</li><li>Poste temps commercial : coût horaire × heures dédiées (souvent le poste le plus lourd)</li><li><strong>ROI prospection</strong> = (CA généré − coût total) ÷ coût total × 100 · Objectif LABORO : ROI > 500%</li></ul><p><strong>5. Fixer les indicateurs AVANT le lancement</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100 · objectif : > 60%</li><li>Taux de RDV = RDV obtenus ÷ contacts × 100 · objectif phoning : > 10%</li><li>Taux d'ouverture e-mailing · objectif B2B : > 25%</li><li>Taux de transformation devis-contrat · objectif LABORO : > 30%</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — campagne clubs sportifs Essonne (4 semaines)</div>Objectif : 2 contrats. Budget : 350 €. Cible : 68 clubs qualifiés BANT.<br>Calcul : 2 ÷ (0,60 × 0,12 × 0,30) = 93 contacts minimum.<br>Technique : e-mailing J1 → phoning relance J3 → visite terrain pour les BANT 3+.<br>E-mailing : objet "Équipez vos joueurs — livraison 48h" · 3 arguments (flocage inclus, remise 8-15%, commercial dédié) · call-to-action : "Je demande un devis gratuit".<br><strong>Résultat : taux d'ouverture 31% · 7 RDV · 2 contrats signés · ROI 1 840%</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Calculer d'abord combien de prospects contacter, puis choisir les techniques. L'e-mailing seul ne suffit pas — le relancer par téléphone double le taux de RDV. Moins de 150 mots dans le corps du message. Un seul call-to-action. Fixer les indicateurs avant le lancement, pas après. Le ROI justifie le budget auprès de Pascal Berruelle.</div>`},
+  'G4A':{t:"Gérer l'espace commercial et développer la clientèle",c:`<p><strong>1. Les règles du merchandising — disposer les produits pour vendre</strong></p><p>Le merchandising, c'est l'art de présenter les produits pour maximiser les ventes. Chez LABORO, chaque décision de placement est réfléchie.</p><ul><li><strong>Les 3 niveaux de présentation :</strong><br>· <strong>Niveau yeux</strong> (1,2–1,6m) → produits phares, marges élevées, nouveautés. C'est ici que se font 60% des ventes.<br>· <strong>Niveau mains</strong> (0,8–1,2m) → produits courants, bonne rotation.<br>· <strong>Niveau sol</strong> (< 0,8m) → produits volumineux, articles d'appel, stocks.</li><li><strong>Zones chaudes et froides :</strong><br>· Zones chaudes (entrée, allées principales, caisses) : nouveautés, promotions, best-sellers.<br>· Zones froides (fond, angles) : produits à rotation lente → à animer pour attirer le client.</li><li><strong>Facing</strong> → nombre d'unités visibles côte à côte. Minimum 2 facings pour exister visuellement. Best-sellers = 4 facings minimum.</li><li><strong>PLV</strong> (Publicité sur Lieu de Vente) → stop-rayon, affiche, présentoir. Règle : message lisible à 3 mètres.</li></ul><p><strong>2. Gestion des stocks et approvisionnement</strong></p><ul><li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours)<br>Exemple : 3 paires/jour × 5 jours délai = stock d'alerte à <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li><li><strong>Quantité à commander</strong> = objectif de ventes × colisage (arrondir à l'entier supérieur)<br>Exemple : 405 paires à commander · colisage par 6 → 405 ÷ 6 = 67,5 → <strong>68 colis</strong> à commander.</li><li><strong>DDM — Date de Durabilité Minimale</strong> → date jusqu'à laquelle le produit garde ses qualités (pour la nutrition sportive). Un produit dont la DDM est inférieure à 1 mois doit être géré en priorité (promotion ou retour fournisseur).</li><li><strong>Sélectionner un fournisseur</strong> → comparer sur : prix d'achat HT · remises · colisage · délai de livraison · frais de port · politique de reprise · origine produit (cohérence avec valeurs LABORO).</li><li><strong>Calcul du montant d'une commande :</strong><br>Montant brut = PAHT × quantité<br>Remise = montant brut × taux de remise<br>Frais de port éventuels<br>Montant net = montant brut − remise + frais de port<br>Exemple : 68 colis × 6 paires × 75 € = 30 600 € · remise 10% = −3 060 € → <strong>27 540 € net</strong></li></ul><p><strong>3. La démarque — identifier et réduire les pertes</strong></p><ul><li><strong>Démarque connue</strong> → pertes identifiées et mesurables : produits abîmés, dates dépassées, erreurs de caisse, retours fournisseur. On sait pourquoi le produit est perdu.</li><li><strong>Démarque inconnue</strong> → pertes non expliquées : vol, erreurs d'inventaire. Plus difficile à mesurer.</li><li><strong>Calcul du taux de démarque connue HT :</strong><br>Formule : (valeur démarque HT ÷ CA HT total) × 100<br>Valeur démarque HT = PAHT × quantités perdues<br>Exemple : 2 tapis abîmés · PAHT 35 € · CA HT du rayon 8 500 €<br>Taux = (2 × 35) ÷ 8 500 × 100 = 70 ÷ 8 500 × 100 = <strong>0,82%</strong><br>Objectif sectoriel : < 1,5%. Au-dessus de 3% → situation critique.</li><li><strong>Gérer les produits à DDM courte</strong> → 2 options :<br>· Opération promotionnelle (−30%, lot 3+1, etc.) pour écouler rapidement<br>· Don à une association (action anti-gaspillage → label green economy)<br>Comparer les 2 promotions sur le CA HT et la marge dégagée pour choisir la plus rentable.</li></ul><p><strong>4. Le site marchand et l'e-commerce</strong></p><ul><li><strong>Taux de conversion</strong> = (commandes passées ÷ visiteurs uniques) × 100<br>Exemple : 312 commandes · 24 680 visiteurs → 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Moyenne nationale e-commerce 2022 : 2,96%. En dessous = site à optimiser.</li><li><strong>Pourcentage des ventes en ligne</strong> = (CA site ÷ CA total) × 100<br>Exemple : 18 400 ÷ 278 000 × 100 = <strong>6,62%</strong></li><li><strong>Panier moyen en ligne</strong> = CA site ÷ nombre de commandes<br>Exemple : 18 400 ÷ 312 = <strong>58,97 €</strong></li><li><strong>Points faibles fréquents d'un site marchand</strong> → absence d'avis clients · pas de FAQ · délais de livraison non affichés · pas de pictogrammes de réassurance (paiement sécurisé, retours) · réseaux sociaux inactifs · design non responsive.</li><li><strong>Pour améliorer le taux de conversion</strong> → ajouter des avis clients · afficher clairement les délais · créer une FAQ · optimiser le paiement · réduire l'abandon de panier.</li></ul><p><strong>5. Communication digitale pour développer la clientèle</strong></p><ul><li><strong>Choisir le bon canal</strong> → Instagram : visuels, cible 18-35 ans, trail/running · Facebook : cible 35-55 ans, CE, clubs · Newsletter : clients existants · Google My Business : référencement local.</li><li><strong>Règles d'un post efficace</strong> → visuel accrocheur en premier · texte court et direct (< 150 mots) · 3 à 5 hashtags ciblés · 1 seul call-to-action (lien, inscription, achat).</li><li><strong>Indicateurs de performance digitale</strong> → taux d'engagement = (likes + commentaires + partages) ÷ abonnés × 100 · taux d'ouverture newsletter (objectif > 25%) · taux de clic (objectif > 3%).</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul commande Salomon printemps</div>Objectif : 405 paires · Fournisseur TrailPro · PAHT 75 € · colisage par 6 · remise 10% (> 60 paires) · franco de port<br>Colis : 405 ÷ 6 = 67,5 → <strong>68 colis</strong> · Quantité réelle : 68 × 6 = 408 paires<br>Montant brut : 408 × 75 = 30 600 € · Remise 10% : −3 060 €<br><strong>Montant net : 27 540 € HT</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">Exemple LABORO — taux de conversion laboro-sport.fr</div>312 commandes · 24 680 visiteurs → taux = 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Vs moyenne nationale 2,96% → LABORO est à moins de la moitié de la moyenne → priorité absolue d'amélioration.</div><p><strong>Implantation et zones de vente</strong></p>
+<ul>
+<li><strong>Zone chaude</strong> : zones naturellement très fréquentées — entrée du magasin, allées principales, caisses. Les produits placés ici se vendent seuls. → Réserver aux nouveautés, promotions, produits à forte marge.</li>
+<li><strong>Zone froide</strong> : zones peu fréquentées spontanément — fonds de rayon, coins, étages. → Attirer le client avec de la signalétique, des têtes de gondole attractives.</li>
+<li><strong>Niveau yeux</strong> : la zone la plus vendeuse d'un linéaire (1,20m à 1,70m). → Placer les produits phares et à forte marge.</li>
+<li><strong>Niveau mains</strong> : zone intermédiaire (0,80m à 1,20m). → Produits courants.</li>
+<li><strong>Niveau sol</strong> : zone la moins performante. → Produits lourds, conditionnements en vrac.</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — erreur d'implantation</div>
+Rayon running : les Salomon Speedcross 6 (best-seller, marge 38%) sont placés au sol zone froide. Les Nike Pegasus (0 vente ce mois) sont en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €.<br>
+<strong>Correction</strong> : inverser les placements — Salomon au niveau yeux zone chaude, Nike déplacé en zone froide avec une étiquette "Nouveauté". Impact estimé : +15% de CA sur ce rayon.
+</div>
+
+<p style="margin-top:14px"><strong>Stock théorique et démarque</strong></p>
+<ul>
+<li><strong>Stock théorique</strong> = Stock initial + Livraisons reçues − Quantités vendues</li>
+<li><strong>Démarque</strong> = Stock théorique − Stock réel (si positif) → produits manquants non vendus (vol, casse, erreur)</li>
+<li><strong>Surmarque</strong> = Stock réel − Stock théorique (si positif) → produits en plus (erreur de comptage, livraison non enregistrée)</li>
+<li><strong>Taux de démarque</strong> = Démarque ÷ CA × 100 · Objectif sectoriel : < 1,5%</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul démarque</div>
+Crème Squirrel : stock initial 35 · livraison 0 · vendues 28 → stock théorique = 35 + 0 − 28 = <strong>7</strong><br>
+Stock réel au 30/04 : 10 → surmarque de 3 (stock supérieur au théorique — probablement erreur de comptage)<br>
+Stock réel au 30/04 : 3 → démarque de 4 (4 unités manquantes — vol possible ou casse non signalée)
+</div>
+
+<p style="margin-top:14px"><strong>Calcul du prix de vente — taux de marge</strong></p>
+<ul>
+<li><strong>Taux de marge</strong> = (PVHT − PAHT) ÷ PVHT × 100 · exprimé en %</li>
+<li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marge) · le prix de vente hors taxe</li>
+<li><strong>PVTTC</strong> = PVHT × (1 + taux de TVA) · le prix payé par le client</li>
+<li><strong>TVA courante sport/textile</strong> : 20% · <strong>TVA alimentation</strong> : 5,5%</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul PVTTC Salomon Speedcross 6</div>
+PAHT = 89 € · Taux de marge souhaité = 38% · TVA = 20%<br>
+PVHT = 89 ÷ (1 − 0,38) = 89 ÷ 0,62 = <strong>143,55 €</strong><br>
+PVTTC = 143,55 × 1,20 = <strong>172,26 €</strong><br><br>
+Vérification taux de marge : (143,55 − 89) ÷ 143,55 × 100 = 54,55 ÷ 143,55 = <strong>38%</strong> ✓
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Le niveau des yeux c'est le niveau qui vend. Taux de démarque > 3% = situation critique à traiter immédiatement. Taux de conversion < 1% = site qui n'est pas optimisé. Un post Instagram sans call-to-action ne génère pas de ventes. Tout se mesure, tout se compare à un objectif ou une moyenne nationale.</div>`},
+  'B4.1':{t:"Rechercher et qualifier les informations de prospection",c:`<p><strong>3 sources essentielles pour trouver des prospects B2B :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives (FFT, FFA, FF Football), annuaires des CE, répertoires des collectivités. Ciblées sur le sport et les achats groupés.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels. Prospects chauds à requalifier rapidement.</li></ul><p><strong>Qualifier un prospect avec la méthode BANT :</strong></p><ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ? Ordre de grandeur suffisant.</li><li><strong>A</strong>uthority — Qui decide ? Responsable CE, DRH, responsable achats, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ? Équipements récurrents ou commandes ponctuelles ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ? Projet immédiat ou besoin à moyen terme ?</li></ul><p><strong>Champs obligatoires dans KepkaPro pour chaque prospect :</strong></p><ul><li>Raison sociale, secteur, taille (effectif), contact décisionnaire, téléphone, e-mail</li><li>Source d'identification, score BANT (de 1 à 4), besoins estimés, statut (froid/tiède/chaud)</li><li>Prochaine action à mener et date de relance</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — Score BANT : 3/4 — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div><p><strong>Qualifier un prospect — méthode BANT approfondie</strong></p>
+<p>La <strong>qualification</strong> d'un prospect consiste à évaluer s'il a le potentiel de devenir client. Un prospect non qualifié = du temps perdu. La méthode BANT permet de noter chaque prospect sur 4 critères :</p>
+<ul>
+<li><strong>B — Budget</strong> : a-t-il les moyens d'acheter ? Quel est son budget habituel pour ce type d'achat ? Score 0-3.</li>
+<li><strong>A — Autorité</strong> : est-il décisionnaire ? Peut-il signer un bon de commande seul ? Score 0-3.</li>
+<li><strong>N — Need (Besoin)</strong> : a-t-il un besoin réel que LABORO peut satisfaire ? Score 0-3.</li>
+<li><strong>T — Timing</strong> : a-t-il besoin de la solution maintenant ou dans un futur proche ? Score 0-3.</li>
+</ul>
+<p><strong>Score de qualification</strong> : total ÷ 12 × 100</p>
+<ul>
+<li>Score ≥ 75% → prospect chaud → à contacter en priorité cette semaine</li>
+<li>Score 50-74% → prospect tiède → à contacter dans le mois</li>
+<li>Score < 50% → prospect froid → à mettre en veille</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — qualification Club Trail Sénart</div>
+Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br><br>
+<strong>B</strong> — Budget estimé 1 500 € → score 2/3<br>
+<strong>A</strong> — Président = décisionnaire → score 3/3<br>
+<strong>N</strong> — Commande maillots chaque saison → score 3/3<br>
+<strong>T</strong> — Saison reprend en septembre → score 2/3<br><br>
+<strong>Score total : 10/12 = 83% → Prospect CHAUD → contacter cette semaine</strong>
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un fichier prospect bien qualifié vaut 10 fois plus qu'une liste non travaillée. Priorité aux prospects BANT 3 ou 4. Un prospect sans date de relance est un prospect perdu. Tout se trace dans KepkaPro dès le premier contact.</div>`},
+  'B4.2':{t:"Concevoir un plan et des supports de prospection",c:`<p><strong>1. Dimensionner une opération de prospection</strong></p><p>Avant de rédiger quoi que ce soit, il faut calculer combien de prospects contacter pour atteindre l'objectif de contrats. On remonte la <strong>chaîne de conversion</strong> :</p><ul><li><strong>Objectif</strong> : 3 contrats à signer</li><li>Taux de transformation devis-contrat moyen : 30% → il faut <strong>10 devis envoyés</strong></li><li>Taux de RDV-devis : 60% → il faut <strong>17 RDV effectués</strong></li><li>Taux de contact-RDV (phoning) : 12% → il faut <strong>142 appels passés</strong></li><li><strong>Formule générale</strong> : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3)</li></ul><p>Exemple LABORO : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60 × 0,12 × 0,30) = 3 ÷ 0,0216 = <strong>139 prospects à contacter</strong></p><p><strong>2. Choisir les techniques de prospection adaptées</strong></p><ul><li><strong>Phoning (appel à froid ou tiède)</strong> — Taux de RDV : 5 à 15%. Adapté aux CE et collectivités. Rapide mais nécessite un bon plan d'appel. Coût : faible.</li><li><strong>E-mailing</strong> — Taux d'ouverture B2B : 20-25%. Taux de clic : 2-4%. Efficace pour amorcer le contact avant un appel. Jamais suffisant seul.</li><li><strong>Visite terrain</strong> — La plus qualitative. Taux de succès > 40% si bien préparée. Coûteuse en temps. À réserver aux prospects BANT 3-4.</li><li><strong>LinkedIn</strong> — Prospection douce. Commenter/partager avant de contacter. Efficace sur les décisionnaires en entreprise (DRH, responsable CE).</li><li><strong>Salons / événements sportifs</strong> — Contacts chauds à requalifier rapidement (< 48h). Forum sport Essonne = source n°1 LABORO.</li></ul><p><strong>3. Concevoir un e-mailing de prospection efficace</strong></p><ul><li><strong>Objet</strong> : 4 à 6 mots maximum · personnalisé si possible · ne pas mettre le mot "gratuit" (filtre anti-spam) · exemples : "Équipez vos joueurs 48h" · "Votre commande textile pour [mois]"</li><li><strong>Accroche</strong> (1-2 phrases) : chiffre ou constat qui parle au prospect · son secteur · son problème probable</li><li><strong>Corps</strong> (3 arguments max) : ciblés sur ses besoins supposés · 1 argument = 1 bénéfice concret + 1 preuve (chiffre, exemple client)</li><li><strong>Call-to-action unique</strong> : une seule action demandée — RDV, devis, lien catalogue · jamais 3 options</li><li><strong>Signature</strong> : photo + prénom + titre + téléphone direct + lien LinkedIn</li><li><strong>Règle des 150 mots</strong> : au-delà, le taux de lecture chute de 60%</li></ul><p><strong>4. Établir le budget d'une opération de prospection</strong></p><ul><li>Poste déplacements : km × tarif barème URSSAF (ou véhicule LABORO)</li><li>Poste supports : impression plaquettes, catalogues, cartes de visite</li><li>Poste outils : abonnement LinkedIn Premium si utilisé, logiciel e-mailing</li><li>Poste temps commercial : coût horaire × heures dédiées (souvent le poste le plus lourd)</li><li><strong>ROI prospection</strong> = (CA généré − coût total) ÷ coût total × 100 · Objectif LABORO : ROI > 500%</li></ul><p><strong>5. Fixer les indicateurs AVANT le lancement</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100 · objectif : > 60%</li><li>Taux de RDV = RDV obtenus ÷ contacts × 100 · objectif phoning : > 10%</li><li>Taux d'ouverture e-mailing · objectif B2B : > 25%</li><li>Taux de transformation devis-contrat · objectif LABORO : > 30%</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — campagne clubs sportifs Essonne (4 semaines)</div>Objectif : 2 contrats. Budget : 350 €. Cible : 68 clubs qualifiés BANT.<br>Calcul : 2 ÷ (0,60 × 0,12 × 0,30) = 93 contacts minimum.<br>Technique : e-mailing J1 → phoning relance J3 → visite terrain pour les BANT 3+.<br>E-mailing : objet "Équipez vos joueurs — livraison 48h" · 3 arguments (flocage inclus, remise 8-15%, commercial dédié) · call-to-action : "Je demande un devis gratuit".<br><strong>Résultat : taux d'ouverture 31% · 7 RDV · 2 contrats signés · ROI 1 840%</strong></div><p><strong>Structure d'un plan de prospection</strong></p>
+<p>Un plan de prospection c'est le document qui formalise TOUTE l'opération avant de commencer. Un commercial qui prospecte sans plan perd du temps et des opportunités.</p>
+<ul>
+<li><strong>1. Objectif chiffré</strong> : nombre de contrats visés · CA cible · délai</li>
+<li><strong>2. Cible qualifiée</strong> : profil du prospect idéal (secteur, taille, localisation, décisionnaire)</li>
+<li><strong>3. Calcul du nombre de prospects à contacter</strong> : remonter la chaîne de conversion depuis l'objectif</li>
+<li><strong>4. Techniques retenues</strong> : phoning, e-mailing, visite terrain, LinkedIn, salons</li>
+<li><strong>5. Planning semaine par semaine</strong> : qui fait quoi, quand, combien d'appels/mails</li>
+<li><strong>6. Budget</strong> : déplacements, supports, outils</li>
+<li><strong>7. Indicateurs de suivi</strong> : taux de contact, taux de RDV, taux de transformation</li>
+</ul>
+<p><strong>Construire le planning hebdomadaire</strong></p>
+<ul>
+<li>Répartir les actions sur les semaines disponibles en tenant compte des contraintes (stages, vacances)</li>
+<li>Augmenter progressivement le volume : semaine 1 = 20 contacts · semaine 2 = 30 · semaine 3 = 40</li>
+<li>Prévoir des semaines de relance entre les semaines d'appels</li>
+<li>Garder la dernière semaine pour les visites terrain sur les prospects chauds</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — planning prospection 6 semaines (associations sportives Essonne)</div>
+Objectif : 4 contrats · Cible : 320 associations · Budget : 300 €<br><br>
+S1 : Qualification base de données → sélectionner 100 associations BANT ≥ 50% · 0 €<br>
+S2 : E-mailing lot 1 (50 contacts) + phoning relance lot 1 → 25 appels · 0 €<br>
+S3 : E-mailing lot 2 (50 contacts) + phoning relance lot 2 → 25 appels · 0 €<br>
+S4 : Phoning prospects tièdes → 30 appels · RDV obtenus → 0 €<br>
+S5 : Visites terrain prospects chauds → 5 visites · déplacements 80 €<br>
+S6 : Relances finales + devis → signature · supports 50 €<br>
+<strong>Budget total : 130 € (bien en dessous des 300 €)</strong>
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Calculer d'abord combien de prospects contacter, puis choisir les techniques. L'e-mailing seul ne suffit pas — le relancer par téléphone double le taux de RDV. Moins de 150 mots dans le corps du message. Un seul call-to-action. Fixer les indicateurs avant le lancement, pas après. Le ROI justifie le budget auprès de Pascal Berruelle.</div>`},
   'B4.3':{t:"Mettre en oeuvre la prospection commerciale",c:`<p><strong>1. Structurer un appel de prospection — le plan en 6 étapes</strong></p><ul><li><strong>1. Présentation</strong> (15 secondes) — "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport & Outdoor à Évry-Courcouronnes."</li><li><strong>2. Accroche personnalisée</strong> (20 secondes) — "Je vous contacte car nous équipons plusieurs clubs de handball/CE/mairies de votre secteur. Nous venons notamment de livrer [exemple concret récent]."</li><li><strong>3. Permission de continuer</strong> — "Est-ce que vous avez 3 minutes ?" → jamais "J'espère que je ne vous dérange pas" (trop soumis).</li><li><strong>4. Découverte BANT</strong> — 2 à 3 questions ouvertes maximum. Écouter plus que parler.</li><li><strong>5. Proposition ciblée</strong> — 1 à 2 avantages LABORO directement liés à ce qu'il vient de dire. Jamais le catalogue en vrac.</li><li><strong>6. Prise de RDV</strong> — "Seriez-vous disponible mardi 14h ou jeudi 10h ?" Toujours proposer 2 créneaux. Confirmer par mail dans l'heure.</li></ul><p><strong>2. Gérer les objections — méthode ARA (Accepter · Reformuler · Argumenter)</strong></p><ul><li><strong>"On travaille avec Decathlon"</strong> → Accepter : "Je comprends, ils sont bien implantés." Reformuler : "Quelle est votre principale difficulté avec eux ?" Argumenter sur la faille identifiée (délai flocage, absence de commercial dédié, etc.)</li><li><strong>"On n'a pas de budget"</strong> → "Quel est votre budget habituel pour ce type d'achat ?" Requalifier plutôt qu'insister. S'il n'y a vraiment pas de budget → noter pour l'année prochaine dans KepkaPro.</li><li><strong>"Envoyez-moi une documentation"</strong> → "Bien sûr. Pour vous envoyer quelque chose d'utile, puis-je vous poser 2 questions rapides ?" Reprendre la main avant d'envoyer quoi que ce soit.</li><li><strong>"Rappelez dans 6 mois"</strong> → "D'accord. Pour être sûr de ne pas vous manquer — quelle est la meilleure date précise pour vous rappeler ?" Fixer une date réelle dans KepkaPro.</li><li><strong>"C'est trop cher"</strong> → "Par rapport à quoi ?" Identifier le point de comparaison avant de défendre le prix. Jamais baisser le prix sans contrepartie.</li></ul><p><strong>3. Mener une visite terrain efficace</strong></p><ul><li><strong>Préparation obligatoire</strong> : accroche personnalisée par prospect (leur actualité, leur résultat sportif récent, leur secteur) · objectif clair de la visite (RDV de découverte ? devis ? signature ?)</li><li><strong>Documents à emporter</strong> : catalogue LABORO + grille tarifaire clubs/CE + échantillons textile + tablette pour devis immédiat + cartes de visite</li><li><strong>Pendant la visite</strong> : prendre des notes manuscrites visibles par le prospect (montre l'attention) · reformuler avant de proposer · ne jamais sortir le catalogue avant d'avoir qualifié les besoins</li><li><strong>Après la visite</strong> : compte-rendu rédigé dans les 2 heures · devis envoyé dans les 24h · mise à jour KepkaPro immédiate</li></ul><p><strong>4. Indicateurs de performance de la mise en oeuvre</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100</li><li>Taux de RDV = RDV obtenus ÷ contacts joints × 100 · objectif LABORO phoning : > 10%</li><li>Taux de transformation RDV-devis = devis envoyés ÷ RDV effectués × 100 · objectif : > 50%</li><li>Durée moyenne d'un appel de prospection : 4 à 8 minutes pour un appel qualifié</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — objection Decathlon (Comité 91 Handball)</div>Pierre Lambert : "On commande déjà chez Decathlon, on est satisfaits."<br>Réponse : "Je comprends, ils sont bien implantés. Dites-moi — quand vous commandez des maillots flocage pour vos 42 clubs, quel est votre délai de livraison habituel avec eux ?"<br>Pierre Lambert : "Environ 5 semaines."<br>Réponse : "Chez nous c'est 3 semaines flocage inclus. Et si vous avez un souci de livraison, vous avez un commercial dédié joignable directement — pas un centre d'appels. Est-ce que ça change quelque chose pour vous ?"<br><strong>→ RDV obtenu 3 jours plus tard.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Ne jamais répondre à une objection sans l'avoir d'abord acceptée et reformulée. Les 30 premières secondes sont décisives — l'accroche se prépare par écrit. Proposer toujours 2 créneaux de RDV, jamais un seul. Un compte-rendu de visite rédigé dans les 2 heures vaut 3 relances. Jamais de catalogue sans découverte préalable.</div>`},
   'B4.4':{t:"Assurer le suivi de la prospection et des devis",c:`<p><strong>1. La règle des 24h — envoyer le devis vite</strong></p><p>Un devis envoyé dans les <strong>24h après le RDV</strong> a 3 fois plus de chances d'aboutir qu'un devis envoyé 72h après. Le prospect est encore chaud, il se souvient de la conversation. Au-delà de 48h : le taux de signature chute de 40%.</p><p><strong>Structure d'un devis LABORO efficace :</strong></p><ul><li>En-tête : logo LABORO + coordonnées + date + numéro de devis</li><li>Destinataire : nom du décisionnaire (pas juste la société)</li><li>Tableau des produits : référence · désignation · quantité · PAHT · remise · PVHT · TVA · PVTTC</li><li>Conditions : délai de livraison garanti · conditions de paiement · validité du devis (30 jours)</li><li>Bas de page : signature du commercial + formule d'engagement</li></ul><p><strong>2. Stratégie de relance selon le délai — ne jamais laisser un devis sans suivi</strong></p><ul><li><strong>J+5 (moins d'une semaine)</strong> — Relance courte par mail : "Suite à notre échange du [date], avez-vous eu l'occasion d'étudier notre proposition ? Je reste disponible si vous avez des questions." Pas de pression.</li><li><strong>J+10 (10 jours)</strong> — Apporter un élément nouveau : témoignage d'un client similaire, actualité LABORO (nouvelle référence, promotion en cours), information sectorielle. L'objectif : rouvrir la conversation sans répéter le même message.</li><li><strong>J+15 ou plus</strong> — Appel direct. Identifier le blocage réel : budget (décision interne reportée ?), concurrent plus rapide (qui ?), besoin redéfini ? Adapter la proposition en conséquence.</li><li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans KepkaPro : prospect perdu (raison), en veille (date de relance future), ou à réactiver (conditions à remplir).</li></ul><p><strong>3. Calculer et analyser les indicateurs de suivi</strong></p><ul><li><strong>Taux de relance</strong> = prospects relancés ÷ devis envoyés × 100 · objectif : 100% (tout devis doit être relancé)</li><li><strong>Taux de transformation devis-contrat</strong> = contrats signés ÷ devis envoyés × 100 · objectif LABORO : > 30%</li><li><strong>Délai moyen de signature</strong> = somme des jours entre envoi du devis et signature ÷ nombre de contrats</li><li><strong>CA en négociation</strong> = somme des devis en attente × taux de transformation estimé · indicateur de pilotage du pipeline commercial</li></ul><p><strong>4. Mettre à jour KepkaPro après chaque action</strong></p><ul><li>Champs à renseigner obligatoirement après chaque contact : date de l'action · type (appel, mail, visite) · résultat (RDV, devis, refus, en attente) · prochaine action · date de relance</li><li>Statuts possibles dans KepkaPro : Prospect froid · Prospect tiède · Prospect chaud · Devis envoyé · En négociation · Client · Perdu (raison)</li><li>Un prospect sans date de relance dans KepkaPro = prospect invisible pour toute l'équipe = prospect perdu</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — relance CE Thales J+10 (aucune réponse)</div>Objet : "Votre commande LABORO — un retour d'expérience qui pourrait vous intéresser"<br>Corps : "Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Depuis, nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte que le vôtre — leur retour est très positif sur nos délais. Je me permets de vous le partager si vous souhaitez. Seriez-vous disponible 10 min cette semaine pour que j'ajuste notre proposition ?"<br><strong>Résultat : rappel reçu le lendemain → devis accepté sous 48h.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Devis dans les 24h — pas de dérogation. 80% des ventes B2B se signent après la 5e prise de contact. Chaque relance doit apporter quelque chose de nouveau. Toujours qualifier le blocage avant de baisser le prix. KepkaPro mis à jour dans les 10 minutes suivant chaque action — sans exception.</div>`},
   'B4.5':{t:"Valoriser l'offre LABORO face à la concurrence",c:`<p><strong>1. Analyser les forces et faiblesses concurrentielles — construire le tableau comparatif</strong></p><p>Avant tout RDV stratégique, construire un tableau comparatif objectif sur les critères qui comptent pour CE prospect :</p><ul><li><strong>Critères à comparer</strong> : prix unitaire · remises · délai de livraison · délai flocage/broderie · service commercial dédié · livraison domicile · showroom physique · politique de retour · note clients</li><li><strong>Règle d'or</strong> : ne comparer que les critères sur lesquels LABORO est supérieur ou égal — ignorer ceux où l'écart est défavorable (les mentionner si le prospect les soulève)</li><li><strong>Jamais dénigrer un concurrent par son nom</strong> : comparer les offres, pas les entreprises. "Certains concurrents pratiquent un délai flocage de 5 semaines" — pas "Decathlon c'est nul".</li></ul><p><strong>Tableau type LABORO vs concurrents — secteur clubs sportifs :</strong></p><ul><li>Prix maillots flocage : LABORO 28 €/u · Decathlon Pro 24 €/u · SportRun 31 €/u → LABORO dans la moyenne</li><li>Délai flocage : LABORO 3 semaines · Decathlon Pro 5 semaines · SportRun 2 semaines → LABORO avantageux vs Decathlon</li><li>Remise clubs : LABORO 8-15% · Decathlon Pro 5-10% · SportRun 7-12% → LABORO meilleur</li><li>Commercial dédié : LABORO Oui · Decathlon Non · SportRun Partiellement → LABORO différenciateur fort</li><li>Livraison 48h domicile : LABORO Oui · Decathlon Oui 72h · SportRun Non → LABORO avantageux</li></ul><p><strong>2. Répondre à l'objection prix — méthode en 3 temps</strong></p><ul><li><strong>Temps 1 — Accepter</strong> : "Je comprends que le prix soit un critère important pour vous." Ne jamais réfuter d'emblée.</li><li><strong>Temps 2 — Quantifier la valeur</strong> : "Permettez-moi de vous montrer ce que notre offre inclut que les autres ne proposent pas." Chiffrer la valeur additionnelle : 2 semaines gagnées sur le flocage = possibilité de commander plus tard → moins de stock immobilisé · un commercial joignable = zéro perte de temps en SAV.</li><li><strong>Temps 3 — Proposer l'entrée de gamme si besoin</strong> : Si l'écart de prix reste rédhibitoire, proposer une première commande test à conditions préférentielles pour démontrer la valeur par l'expérience. "Pourquoi ne pas tester sur une commande de 20 unités pour voir ?"</li></ul><p><strong>3. Construire une proposition commerciale à plusieurs niveaux</strong></p><ul><li><strong>Offre Essentiel</strong> : produits standards · délai normal · paiement 30j · remise palier 1</li><li><strong>Offre Confort</strong> : produits premium + flocage · livraison prioritaire · suivi commercial mensuel · remise palier 2</li><li><strong>Offre Partenaire</strong> : contrat annuel · gamme complète · commercial dédié · accès showroom hors heures · conditions tarifaires préférentielles négociées</li><li>Avantage : le prospect choisit — il ne se sent pas piégé dans une seule option. Le coût d'opportunité est visible entre les niveaux.</li></ul><p><strong>4. Calculer la valeur de l'offre pour le prospect</strong></p><ul><li>Comparer le coût total LABORO vs concurrent sur la durée réelle d'utilisation, pas sur le prix unitaire seul</li><li>Exemple : LABORO 28 €/maillot · Decathlon 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines Decathlon = 14 jours gagnés. Si le tournoi est dans 3,5 semaines → Decathlon ne peut pas livrer à temps → l'écart de 80 € est nul.</li><li><strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse à l'objection prix (Marc Girault, Club Trail Sénart)</div>Marc Girault : "LABORO c'est 80 € de plus que Decathlon pour 20 maillots."<br>Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon, vous ne seriez pas livré à temps. Avec nous, vous avez les maillots 7 jours avant. Et si un problème survient à la livraison, je suis joignable directement — pas un centre d'appels. La différence de 80 €, c'est aussi cette tranquillité."<br><strong>Marc Girault signe le devis le lendemain.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>On ne gagne jamais contre Decathlon sur le prix — on gagne sur la valeur et la relation. Chaque argument doit être chiffré ou illustré. L'offre à 3 niveaux laisse le prospect décider sans se sentir forcé. Calculer la valeur sur la durée réelle, pas sur le prix unitaire isolé. L'entrée de gamme est un investissement : un client LABORO satisfait reste en moyenne 4,2 ans.</div>`},
-  'G4B':{t:'La prospection commerciale B2B',c:`<p><strong>Les 5 techniques de prospection :</strong></p><ul><li><strong>Phoning</strong> — Appel à froid ou à tiède. Efficace si bien préparé. Taux de RDV moyen : 5 à 15%.</li><li><strong>E-mailing</strong> — Masse ou personnalisé. Taux d'ouverture moyen B2B : 20-25%. Taux de clic : 3-5%.</li><li><strong>Visite terrain</strong> — La plus qualitative mais la plus coûteuse en temps. Réserver aux prospects à fort potentiel.</li><li><strong>Salons et événements</strong> — Forum sport, foires locales. Contacts chauds à requalifier rapidement après.</li><li><strong>Réseaux sociaux (LinkedIn)</strong> — Prospection douce. Commenter, partager, puis contacter.</li></ul><p><strong>Structure du plan d'appel (à mémoriser) :</strong></p><ul><li>1. Présentation : "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport à Évry."</li><li>2. Accroche : "Je vous contacte car nous équipons plusieurs clubs de votre secteur…"</li><li>3. Découverte : 2-3 questions BANT ouvertes</li><li>4. Proposition de valeur : 1-2 avantages LABORO ciblés sur ses besoins</li><li>5. Prise de RDV : "Seriez-vous disponible mardi ou jeudi pour un échange de 20 minutes ?"</li></ul><p><strong>Méthode BANT pour qualifier :</strong> Budget disponible · Authority (est-il décisionnaire ?) · Need (besoin réel identifié ?) · Timing (quand va-t-il acheter ?)</p><p><strong>Indicateurs d'une opération de prospection :</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100</li><li>Taux de RDV = RDV obtenus ÷ contacts ×100</li><li>Taux de transformation = contrats signés ÷ devis envoyés × 100</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li><li>ROI = (CA généré − coût) ÷ coût × 100</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CE Essonne</div>47 appels → 16 RDV (34%) → 11 devis → 4 contrats (36%). Budget : 780 €. CA an 1 : 31 200 € HT. ROI = (31 200 − 780) ÷ 780 × 100 = <strong>3 900%</strong>.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Prospecter au hasard c'est gaspiller du temps. La qualité de la base de prospects est plus importante que le volume d'appels. Mettre à jour KepkaPro après chaque contact = ne jamais perdre un prospect chaud.</div>`},
+  'G4B':{t:'La prospection commerciale B2B',c:`<p><strong>Les 5 techniques de prospection :</strong></p><ul><li><strong>Phoning</strong> — Appel à froid ou à tiède. Efficace si bien préparé. Taux de RDV moyen : 5 à 15%.</li><li><strong>E-mailing</strong> — Masse ou personnalisé. Taux d'ouverture moyen B2B : 20-25%. Taux de clic : 3-5%.</li><li><strong>Visite terrain</strong> — La plus qualitative mais la plus coûteuse en temps. Réserver aux prospects à fort potentiel.</li><li><strong>Salons et événements</strong> — Forum sport, foires locales. Contacts chauds à requalifier rapidement après.</li><li><strong>Réseaux sociaux (LinkedIn)</strong> — Prospection douce. Commenter, partager, puis contacter.</li></ul><p><strong>Structure du plan d'appel (à mémoriser) :</strong></p><ul><li>1. Présentation : "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport à Évry."</li><li>2. Accroche : "Je vous contacte car nous équipons plusieurs clubs de votre secteur…"</li><li>3. Découverte : 2-3 questions BANT ouvertes</li><li>4. Proposition de valeur : 1-2 avantages LABORO ciblés sur ses besoins</li><li>5. Prise de RDV : "Seriez-vous disponible mardi ou jeudi pour un échange de 20 minutes ?"</li></ul><p><strong>Méthode BANT pour qualifier :</strong> Budget disponible · Authority (est-il décisionnaire ?) · Need (besoin réel identifié ?) · Timing (quand va-t-il acheter ?)</p><p><strong>Indicateurs d'une opération de prospection :</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100</li><li>Taux de RDV = RDV obtenus ÷ contacts ×100</li><li>Taux de transformation = contrats signés ÷ devis envoyés × 100</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li><li>ROI = (CA généré − coût) ÷ coût × 100</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CE Essonne</div>47 appels → 16 RDV (34%) → 11 devis → 4 contrats (36%). Budget : 780 €. CA an 1 : 31 200 € HT. ROI = (31 200 − 780) ÷ 780 × 100 = <strong>3 900%</strong>.</div><p><strong>Le plan de prospection — vue d'ensemble</strong></p>
+<p>En PVOC, le plan de prospection est le document central qui structure toute l'activité commerciale. Il se distingue du simple "appel à froid" par sa dimension stratégique.</p>
+<ul>
+<li><strong>Prospection = processus</strong>, pas un acte isolé. Un prospect contacté une seule fois = prospect perdu dans 80% des cas.</li>
+<li><strong>La règle des 7 contacts</strong> : en B2B, il faut en moyenne 7 interactions avant une décision d'achat.</li>
+<li><strong>Mix de prospection</strong> : combiner au minimum 2 techniques (e-mail + phoning, ou LinkedIn + visite) multiplie les chances de contact par 2,5.</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — plan de prospection CE Essonne</div>
+Contexte : Nina Chevalier veut conquérir 5 CE sur le secteur Essonne en 2 mois.<br><br>
+Cible qualifiée : CE d'entreprises > 200 salariés · budget sport > 3 000 €/an · décisionnaire = responsable CE<br>
+Nombre de prospects à contacter : 5 contrats ÷ (0,60 × 0,12 × 0,30) = 232 contacts nécessaires<br>
+Techniques : LinkedIn (semaine 1-2) → e-mailing (semaine 3-4) → phoning (semaine 5-6) → visites (semaine 7-8)<br>
+Budget : 400 € · Indicateurs : taux de contact > 60%, taux de RDV > 10%, taux de transformation > 25%<br>
+<strong>Résultat : 7 contrats signés en 8 semaines (objectif dépassé)</strong>
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Prospecter au hasard c'est gaspiller du temps. La qualité de la base de prospects est plus importante que le volume d'appels. Mettre à jour KepkaPro après chaque contact = ne jamais perdre un prospect chaud.</div>`},
   'ACC':{t:"L'accueil professionnel chez LABORO",c:`<p><strong>4 étapes d'un accueil réussi :</strong></p><ul><li><strong>Détecter</strong> — Tout visiteur pris en charge sous 30 secondes. Même si on est occupé : un regard, un sourire et "Je suis à vous dans un instant" suffisent. L'attente sans reconnaissance est insupportable.</li><li><strong>Accueillir</strong> — Formule LABORO : "Bonjour, bienvenue chez LABORO, je suis [prénom], que puis-je faire pour vous ?" Debout, sourire, regard. Ne jamais rester assis.</li><li><strong>Orienter et accompagner</strong> — Jamais laisser un visiteur seul chercher. Accompagner physiquement ou confier à un collègue avec une présentation : "Je te confie M. Vidal, il cherche des chaussures trail."</li><li><strong>Prendre congé</strong> — "Au revoir M. Vidal, merci de votre visite, n'hésitez pas à revenir !" Toujours se lever, toujours sourire, toujours nommer le client.</li></ul><p><strong>L'accueil téléphonique — formule et règles :</strong></p><ul><li>Décrocher avant la 3e sonnerie</li><li>Formule : "LABORO Sport & Outdoor, [prénom], bonjour !"</li><li>Identifier l'appelant et l'objet de l'appel avant de transférer</li><li>Mettre en attente : "Je vous mets en attente un instant, ne quittez pas." Revenir toutes les 30 secondes si l'attente se prolonge.</li><li>Prendre un message complet : nom + prénom + coordonnées + objet + heure d'appel + meilleur moment pour rappeler</li></ul><p><strong>Gérer les situations difficiles — méthode des 3R :</strong></p><ul><li><strong>Reconnaître</strong> — "Je comprends que vous attendez depuis longtemps, c'est tout à fait normal de vous impatienter."</li><li><strong>Reformuler</strong> — "Si je comprends bien, vous cherchez…"</li><li><strong>Résoudre ou orienter</strong> — Apporter une solution ou rediriger vers la bonne personne avec une présentation complète.</li></ul><p><strong>Cas particuliers à maîtriser :</strong></p><ul><li>Visiteur en attente longue → reconnaître l'attente régulièrement, proposer de s'asseoir</li><li>Forte affluence → prioriser sans jamais ignorer un visiteur</li><li>Demande impossible → "Ce n'est pas possible de cette façon, mais voici ce que je peux faire pour vous…"</li><li>Situation d'urgence (malaise) → alerter immédiatement, appeler le 15 si doute, ne pas laisser la personne seule</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — journée Portes Ouvertes</div>3 visiteurs entrent en même temps. Thomas Moreau en prend un en charge. Toi : "Bonjour à tous ! Bienvenue chez LABORO. Je suis [prénom]. Je m'occupe de vous dans l'ordre, je reviens dans 2 minutes." → Sourire à chacun. Aucun ne se sent ignoré.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>30 secondes max pour prendre en charge un visiteur — c'est la règle absolue. Au téléphone, le sourire s'entend. Un visiteur mal accueilli ne reviendra jamais et en parlera à 10 personnes. L'accueil reflète l'image de LABORO.</div>`},
 };
 // Missions filtrées par classe
@@ -1042,50 +1379,80 @@ const IMPREVU={
 };
 // Messages personnalisés par poste et période
 function getMsg(classe,poste){
-  const m=new Date().getMonth();// 0-11
+  const m=new Date().getMonth(); // 0=jan, 11=dec
+  const ud=gUD();
+  const missions=Object.values(ud.missions||{});
+  const done=missions.filter(x=>x.status==='done').length;
+  const att=missions.filter(x=>x.status==='att').length;
+  const moy=done>0?Math.round(missions.filter(x=>x.status==='done'&&x.score).reduce((s,x)=>s+x.score,0)/done*10)/10:0;
+  const isTerminale=classe.includes('Term');
+  const sprintFinal=isTerminale&&m>=2; // mars à décembre en Terminale
+
+  // ── Messages dynamiques selon progression ──
+  // 1. Première connexion (aucune mission)
+  if(done===0&&att===0){
+    if(classe.includes('AGEC')) return{from:'Romain Sauzet — Resp. Commerce & Showroom',txt:"Bienvenue dans l'équipe LABORO ! Je suis Romain Sauzet, responsable du showroom d'Évry. Ta première mission t'attend — lis bien la ressource avant de te lancer. C'est comme ça qu'on progresse ici."};
+    if(classe.includes('PVOC')) return{from:"Nina Chevalier — Commerciale B2B",txt:"Bienvenue chez LABORO ! Je suis Nina Chevalier, responsable de la prospection commerciale. Ta première mission de terrain t'attend. Prends le temps de lire la ressource — sur le terrain, on n'a pas de filet !"};
+    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:"Bienvenue chez LABORO ! Je suis Pascal Berruelle, PDG de l'entreprise. Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
+  }
+
+  // 2. Missions en attente de correction — encourager la patience
+  if(att>=2){
+    if(classe.includes('AGEC')) return{from:'Romain Sauzet — Resp. Commerce & Showroom',txt:`Tu as ${att} mission(s) en attente de correction — c'est bien, tu avances ! En attendant les retours, profite pour relire tes réponses et voir ce que tu ferais différemment. C'est comme ça qu'on devient meilleur.`};
+    if(classe.includes('PVOC')) return{from:"Nina Chevalier — Commerciale B2B",txt:`${att} missions en attente de validation — tu travailles bien ! Un bon commercial ne lâche jamais entre deux rendez-vous. Prépare la prochaine mission pendant que j'examine ton travail.`};
+  }
+
+  // 3. Moyenne faible — encourager sans décourager
+  if(done>=3&&moy<10){
+    if(classe.includes('AGEC')) return{from:'Romain Sauzet — Resp. Commerce & Showroom',txt:`Ta moyenne est à ${moy}/20 pour l'instant. Ce n'est pas là où on veut être. Je te conseille de relire les ressources avant de répondre — elles contiennent tout ce qu'il faut. Tu peux le faire, j'en suis sûr(e).`};
+    if(classe.includes('PVOC')) return{from:"Nina Chevalier — Commerciale B2B",txt:`Moyenne à ${moy}/20 — on peut mieux faire. Dans le commercial, les résultats comptent. Reprends les ressources, elles sont là pour toi. Un retournement de situation, ça arrive.`};
+    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:`Ta moyenne est à ${moy}/20. Ce n'est pas une catastrophe, mais il faut se retrousser les manches. Lis bien les ressources avant chaque mission — elles contiennent les clés pour progresser.`};
+  }
+
+  // 4. Très bonne moyenne — féliciter
+  if(done>=3&&moy>=15){
+    if(classe.includes('AGEC')) return{from:'Romain Sauzet — Resp. Commerce & Showroom',txt:`Excellente moyenne à ${moy}/20 ! C'est exactement le niveau qu'on attend d'un(e) conseiller(ère) de vente chez LABORO. Continue comme ça — les meilleures opportunités vont aux meilleurs. Bravo.`};
+    if(classe.includes('PVOC')) return{from:"Nina Chevalier — Commerciale B2B",txt:`${moy}/20 de moyenne — impressionnant ! Un commercial avec ces résultats chez nous, on le garde. Tu prouves que travail et méthode paient. Continue sur cette lancée.`};
+    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:`Moyenne à ${moy}/20 — félicitations ! Tu montres déjà de vraies qualités professionnelles. Continue à t'investir comme ça.`};
+  }
+
+  // 5. Sprint final — Terminale après mars
+  if(sprintFinal){
+    if(classe.includes('AGEC')) return{from:'Romain Sauzet — Resp. Commerce & Showroom',txt:`On entre dans la dernière ligne droite ! Tes épreuves approchent. Tout ce qu'on a travaillé sur LABORO — merchandising, gestion des stocks, animation commerciale — c'est exactement ce qui sera évalué. Donne tout ce que tu as.`};
+    if(classe.includes('PVOC')) return{from:"Nina Chevalier — Commerciale B2B",txt:`La dernière ligne droite est devant toi. Tes missions de prospection, de scoring fournisseur, de suivi de devis — ce sont les situations que tu vas retrouver dans tes épreuves. Reste concentré(e) et confiant(e).`};
+  }
+
+  // 6. Messages par défaut selon période de l'année
   const msgs={
-    '2nde':{
-      from:'Pascal Berruelle — PDG de LABORO',
-      textes:[
-        {debut:0,fin:1,txt:"Bienvenue chez LABORO ! Je suis Pascal Berruelle, PDG de l'entreprise. Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."},
-        {debut:2,fin:4,txt:"Tu pars bientôt en stage pour la première fois. Sois curieux(se), pose des questions à tes collègues, observe comment l'entreprise fonctionne. Profite de cette expérience pour confirmer ton choix d'orientation."},
-        {debut:5,fin:7,txt:"Bienvenue de retour ! Ton premier stage est derrière toi. Reprends LABORO avec ce nouveau regard professionnel. Est-ce que ce que tu as vécu en stage ressemble à ce qu'on fait ici ?"},
-        {debut:8,fin:11,txt:"Belle première année professionnelle ! Tu as découvert les métiers du commerce et de la relation client. Quoi que tu choisisses l'année prochaine, tu pars avec de vraies bases. Bonnes vacances !"},
-      ]
-    },
-    'AGEC':{
-      from:'Romain Sauzet — Resp. Commerce & Showroom',
-      textes:[
-        {debut:0,fin:2,txt:"Bienvenue dans l'équipe LABORO ! Je suis Romain Sauzet, responsable du showroom d'Évry. Cette année tu vas maîtriser tous les aspects du métier de conseiller de vente. Commence par ta première mission — lis bien la ressource avant de te lancer."},
-        {debut:3,fin:5,txt:"Dans quelques jours tu pars en stage. C'est l'occasion de mettre en pratique tout ce qu'on a travaillé ensemble sur LABORO. Observe comment l'accueil et le conseil se passent dans ton entreprise d'accueil — compare avec ce qu'on fait ici."},
-        {debut:6,fin:8,txt:"Content(e) de te retrouver ! J'espère que ton stage s'est bien passé. Reprends LABORO là où tu t'étais arrêté(e). Si tu as vécu des situations intéressantes en stage, elles peuvent t'inspirer pour répondre aux missions."},
-        {debut:9,fin:11,txt:"Belle année de travail ! Tu as progressé sur des compétences essentielles du métier. Ce que tu as appris ici tu vas l'emporter avec toi l'année prochaine. Bonnes vacances et à la rentrée prochaine !"},
-      ]
-    },
-    'PVOC':{
-      from:'Nina Chevalier — Resp. Vente & Prospection',
-      textes:[
-        {debut:0,fin:2,txt:"Bienvenue dans l'équipe commerciale de LABORO ! Je suis Nina Chevalier, responsable Vente et Prospection. Ton rôle chez nous c'est d'aller chercher de nouveaux clients et de développer notre portefeuille B2B en Essonne. Lance-toi dans ta première mission."},
-        {debut:3,fin:5,txt:"Tu pars bientôt en stage — c'est le moment de voir comment la prospection se passe dans la vraie vie. Observe les techniques des commerciaux de ton entreprise d'accueil. Est-ce qu'ils utilisent un plan d'appel ? Comment gèrent-ils les objections ?"},
-        {debut:6,fin:8,txt:"De retour parmi nous ! J'espère que tu as pu prospecter en stage. Reprends LABORO et continue ton parcours commercial — les missions qui t'attendent vont encore monter en complexité."},
-        {debut:9,fin:11,txt:"Excellente année dans l'équipe commerciale ! Tu maîtrises maintenant les bases de la prospection et de la vente B2B. C'est un savoir-faire rare et très recherché par les employeurs. Bonnes vacances."},
-      ]
-    },
-    'Term':{
-      from:'Pascal Berruelle — PDG de LABORO',
-      textes:[
-        {debut:0,fin:1,txt:"Dernière ligne droite ! Cette année c'est l'année de la confirmation. Tout ce qu'on a travaillé depuis la 2nde va se concrétiser dans tes épreuves. LABORO va t'aider à te préparer de façon professionnelle. En avant !"},
-        {debut:2,fin:3,txt:"Ton stage arrive — c'est peut-être l'un des derniers avant la vie active. Mets-y toute ton énergie, observe, questionne, propose. Les employeurs remarquent les stagiaires qui s'impliquent."},
-        {debut:4,fin:5,txt:"Mi-parcours ! Les épreuves approchent — début avril c'est dans moins de 3 mois. Les missions LABORO que tu réalises maintenant sont directement liées aux compétences évaluées. Ne relâche pas l'effort."},
-        {debut:6,fin:7,txt:"Les épreuves sont dans quelques semaines. Concentre-toi en priorité sur les missions de ton option — elles ont le coefficient le plus fort à l'examen. Fais confiance à ce que tu sais faire."},
-        {debut:8,fin:11,txt:"C'est terminé — félicitations ! Trois ans de formation, des dizaines de missions, des compétences réelles acquises. Bonne chance pour la suite — tu vas assurer !"},
-      ]
-    },
-    'ens':{from:'Pascal Berruelle — PDG',textes:[{debut:0,fin:11,txt:"Bonjour M. Berruelle. Voici l'état de vos classes en temps réel. Consultez la vue classe pour valider les missions en attente, assignez la mission du jour depuis le menu dédié, et utilisez le générateur pour créer de nouvelles missions."}]}
+    '2nde':{from:'Pascal Berruelle — PDG de LABORO',textes:[
+      {debut:0,fin:1,txt:"Bienvenue chez LABORO ! Commence par explorer — lis bien la ressource avant chaque mission."},
+      {debut:2,fin:4,txt:"Tu pars bientôt en stage. Sois curieux(se), observe comment l'entreprise fonctionne. Compare avec ce qu'on fait ici."},
+      {debut:5,fin:7,txt:"Bienvenue de retour ! Reprends LABORO avec ton nouveau regard professionnel."},
+      {debut:8,fin:11,txt:"Belle première année ! Tu repars avec de vraies bases professionnelles. Bonnes vacances !"},
+    ]},
+    'AGEC':{from:'Romain Sauzet — Resp. Commerce & Showroom',textes:[
+      {debut:0,fin:2,txt:"Bonne semaine ! Chaque mission que tu fais sur LABORO te rapproche du niveau attendu en épreuve. Continue."},
+      {debut:3,fin:5,txt:"Tu pars bientôt en stage. Observe comment le conseil et la vente se passent dans ton entreprise — compare avec LABORO."},
+      {debut:6,fin:8,txt:"Content(e) de te retrouver ! Reprends LABORO là où tu t'étais arrêté(e)."},
+      {debut:9,fin:11,txt:`${done} missions validées cette année — du bon travail. Profite de l'été pour consolider.`},
+    ]},
+    'PVOC':{from:"Nina Chevalier — Commerciale B2B",textes:[
+      {debut:0,fin:2,txt:"La prospection c'est un métier qui s'apprend. Chaque mission LABORO te donne des outils concrets. Continue."},
+      {debut:3,fin:5,txt:"Bientôt le stage — mets en pratique les techniques de prospection qu'on a travaillées ensemble."},
+      {debut:6,fin:8,txt:"Bon retour de stage ! Reprends la prospection — la constance fait les grands commerciaux."},
+      {debut:9,fin:11,txt:"Fin d'année approche. Tu pars avec des méthodes solides. Continue à les appliquer."},
+    ]},
+    'Term':{from:'Romain Sauzet — Resp. Commerce & Showroom',textes:[
+      {debut:0,fin:11,txt:`${done} missions validées. Maintenant c'est la régularité qui fait la différence. Continue à avancer.`},
+    ]},
+    'ens':{from:'LABORO — Plateforme pédagogique',textes:[
+      {debut:0,fin:11,txt:"Bienvenue M. Berruelle. Consultez la vue classe pour suivre vos élèves, valider les missions en attente et générer les analyses de classe."},
+    ]},
   };
+
   let key='2nde';
   if(classe==='enseignant')key='ens';
-  else if(classe.includes('Term'))key='Term';
+  else if(classe.includes('Term'))key=classe.includes('AGEC')?'AGEC':'PVOC';
   else if(classe.includes('AGEC'))key='AGEC';
   else if(classe.includes('PVOC'))key='PVOC';
   const cfg=msgs[key];
@@ -1097,7 +1464,21 @@ function getMsg(classe,poste){
 let CU=null,CM=null,obStep=0,repBuffer={},classeFiltre='';
 const gS=()=>{try{return JSON.parse(localStorage.getItem('laboro_s')||'{}')}catch{return{}}};
 const sS=d=>localStorage.setItem('laboro_s',JSON.stringify(d));
-const gUD=()=>{const s=gS();if(!s[CU.mail])s[CU.mail]={missions:{},competences:{},notes:{}};return s[CU.mail]};
+const gUD=()=>{
+  const s=gS();
+  if(!s[CU.mail])s[CU.mail]={missions:{},competences:{},notes:{}};
+  const ud=s[CU.mail];
+  // Consolider C2.1b → C2.1 et B4.x → G4B dans la grille compétences
+  if(ud.competences){
+    if(ud.competences['C2.1b']){
+      ud.competences['C2.1']=Math.max(ud.competences['C2.1']||0,ud.competences['C2.1b']);
+    }
+    ['B4.1','B4.2','B4.3','B4.4','B4.5'].forEach(k=>{
+      if(ud.competences[k]) ud.competences['G4B']=Math.max(ud.competences['G4B']||0,ud.competences[k]);
+    });
+  }
+  return ud;
+};
 const sUD=d=>{const s=gS();s[CU.mail]=d;sS(s)};
 const allU=()=>{const s=gS();return Object.keys(s).filter(k=>k!=='ak'&&k!=='mdj').map(k=>({mail:k,...s[k]}))};
 const getMDJ=()=>{try{return JSON.parse(localStorage.getItem('laboro_mdj')||'{}')}catch{return{}}};
@@ -1140,6 +1521,9 @@ function updatePoste(){
   const sel=document.getElementById('inp-poste');
   // Toujours masquer le champ poste — poste automatique selon la classe
   fg.style.display='none';
+  // Afficher/masquer le champ MDP enseignant
+  const fgMdp=document.getElementById('fg-mdp');
+  if(fgMdp) fgMdp.style.display=(cls==='enseignant')?'block':'none';
   if(!cls) return;
   if(cls==='enseignant'){
     sel.value='';
@@ -1163,7 +1547,22 @@ function doLogin(){
   const posteMap={'enseignant':'Enseignant — Accès direction','2nde':'Découverte de la famille des métiers MCV'};
   const poste=posteMap[cls]||(cls.includes('AGEC')?'Conseiller de vente — Showroom & E-commerce':cls.includes('PVOC')?'Commercial terrain — Prospection & Vente B2B':'');
   if(!poste){alert('Merci de sélectionner une classe.');return}
-  const nom=mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+  // Vérification mot de passe enseignant
+  if(cls==='enseignant'){
+    const mdpVal=document.getElementById('inp-mdp')?.value||'';
+    if(!mdpVal){alert('Merci de saisir le code d\'accès enseignant.');return}
+    // Hash SHA256 côté client
+    const hashMdp=async(str)=>{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')};
+    hashMdp(mdpVal).then(h=>{
+      if(h!=='3e4b672e60279a8fc681052361892d4a50239106de51b8dacf93dee8e3dd644d'){alert('Code d\'accès incorrect. Contactez Pascal Berruelle.');return}
+      finishLogin(mail,cls,poste,null);
+    });
+    return;
+  }
+  finishLogin(mail,cls,poste,null);
+}
+function finishLogin(mail,cls,poste,nomParam){
+  const nom=nomParam||mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
   CU={mail,classe:cls,poste,nom};
   localStorage.setItem('laboro_u',JSON.stringify(CU));
   const s=gS();
@@ -1233,6 +1632,11 @@ function renderDashboard(){
   const ud=gUD();
   const sc=calcScore(ud);
   document.getElementById('wb-b').textContent='Bonjour '+CU.nom.split(' ')[0]+' !';
+  renderPosteCard();
+  // Rafraîchir le message du responsable selon la progression
+  const msgDyn=getMsg(CU.classe,CU.poste);
+  document.getElementById('msg-f').textContent=msgDyn.from;
+  document.getElementById('msg-t').textContent=msgDyn.txt;
   document.getElementById('wb-p').textContent=CU.poste;
   document.getElementById('wb-s').textContent=sc||'—';
   // Employé du mois
@@ -1258,7 +1662,7 @@ function renderDashboard(){
   const mdjW=document.getElementById('mdj-wrap');
   if(mdjCls){
     const m=MISSIONS.find(x=>x.id===mdjCls.id);
-    if(m){const st=ud.missions[m.id]?.status||'todo';mdjW.innerHTML=`<div class="mdj" onclick="openMission('${m.id}')"><div class="mdj-l"><span class="mdj-b">Mission du jour</span></div><div class="nm-t">${m.titre}</div><div class="nm-m"><span>${m.comp}</span><span>Palier ${m.palier}</span><span>~55 min</span></div><button class="nm-btn">${st==='done'?'Revoir':'st'==='wip'?'Reprendre':'Commencer maintenant'}</button></div>`;return;}
+    if(m){const st=ud.missions[m.id]?.status||'todo';mdjW.innerHTML=`<div class="mdj" onclick="openMission('${m.id}')"><div class="mdj-l"><span class="mdj-b">Mission du jour</span></div><div class="nm-t">${m.titre}</div><div class="nm-m"><span>${compBadge(m.comp)}</span><span>Palier ${m.palier}</span><span>~55 min</span></div><button class="nm-btn">${st==='done'?'Revoir':'st'==='wip'?'Reprendre':'Commencer maintenant'}</button></div>`;return;}
   }
   const ms=getMissions();
   const next=ms.find(m=>!ud.missions[m.id]||ud.missions[m.id].status==='wip');
@@ -1269,7 +1673,7 @@ function renderDashboard(){
   document.getElementById('dash-rec').innerHTML=rec.length?rec.map(([mid,v])=>{const m=MISSIONS.find(x=>x.id===mid);return m?`<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:.5px solid var(--gc);font-size:12px"><span>${m.titre}</span><span style="font-weight:700;color:var(--vt)">${v.score}/20</span></div>`:''}).join(''):'<p style="font-size:12px;color:var(--gm)">Aucune mission terminée pour l\'instant.</p>';
   // Progression
   const lc=['var(--gb)','#85B7EB','var(--bl)','var(--vt)','#27500A'];
-  document.getElementById('dash-prog').innerHTML=COMP.slice(0,6).map(c=>{const lv=ud.competences[c.code]||0;return`<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--gm)">${c.code}</span><span style="font-weight:700">${['—','Découverte','En cours','Acquis','Maîtrisé'][lv]}</span></div><div class="lb"><div class="lf" style="width:${lv*25}%;background:${lc[lv]}"></div></div></div>`;}).join('');
+  document.getElementById('dash-prog').innerHTML=COMP.slice(0,6).map(c=>{const lv=ud.competences[c.code]||0;return`<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>${compBadge(c.code)}</span><span style="font-weight:700">${['—','Découverte','En cours','Acquis','Maîtrisé'][lv]}</span></div><div class="lb"><div class="lf" style="width:${lv*25}%;background:${lc[lv]}"></div></div></div>`;}).join('');
 }
 
 // ═══ MISSIONS ═══
@@ -1308,7 +1712,7 @@ function renderMissions(){
     return`<div class="mc${locked?' locked':''}" onclick="${locked?'alert(\'Valide d\\\'abord le Palier '+(m.palier-1)+' de cette compétence avec une note ≥ 11/20.\')':'openMission(\''+m.id+'\')'}">
       <div class="mh"><span style="width:8px;height:8px;border-radius:50%;background:${locked?'var(--gb)':pc[m.palier]};display:inline-block;flex-shrink:0"></span><span class="mt">${m.titre}</span>
       <span class="sp ${locked?'s-lock':st==='todo'?'s-todo':st==='wip'?'s-wip':st==='att'?'s-att':'s-done'}">${locked?'🔒 Palier '+(m.palier-1)+' requis':st==='todo'?'À faire':st==='wip'?'En cours':st==='att'?'Soumise':'✓ '+sc+'/20'}</span></div>
-      <div class="mm"><span>${m.comp}</span><span>Palier ${m.palier}</span><span>${m.option==='commun'?'Commun':m.option==='2nde'?'2nde / MA':m.option}</span></div>
+      <div class="mm"><span>${compBadge(m.comp)}</span><span>Palier ${m.palier}</span><span>${m.option==='commun'?'Commun':m.option==='2nde'?'2nde / MA':m.option}</span></div>
       ${st==='wip'?'<div class="pb"><div class="pf" style="width:40%"></div></div>':''}
     </div>`;
   }).join('')||'<p style="font-size:12px;color:var(--gm);padding:8px">Aucune mission pour ces filtres.</p>';
@@ -1324,10 +1728,10 @@ function openMission(id){
   if(!ud.missions[id]){ud.missions[id]={status:'todo',id};sUD(ud);}
   document.querySelector('.mo').scrollTo(0,0);
   document.getElementById('mo-t').textContent=m.titre;
-  document.getElementById('mo-m').textContent=`LABORO · ${m.comp} · Palier ${m.palier} — ${['','Novice','Débrouillé','Averti','Expert'][m.palier]}`;
+  document.getElementById('mo-m').innerHTML=`${compBadge(m.comp)} · Palier ${m.palier} — ${['','Novice','Débrouillé','Averti','Expert'][m.palier]}`;
   const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Note ≥ 11/20 pour débloquer le Palier 2.","Palier 2 — Débrouillé · Tu connais les bases. Ici tu commences à les appliquer seul(e) dans des situations concrètes. Les questions demandent plus de justification. Note ≥ 11/20 pour débloquer le Palier 3.","Palier 3 — Averti · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Note ≥ 11/20 pour débloquer le Palier 4.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
   const pdEl=document.getElementById('mo-palier-desc');
-  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#E1F5EE','#FAEEDA','#F3E8FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';}
+  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#E1F5EE','#FAEEDA','#F3E8FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
   const resKey=m.comp.startsWith('ACC')?'ACC':m.comp.startsWith('G4A')?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
   const res=RES[resKey];
@@ -1490,7 +1894,7 @@ function renderCompetences(){
   const ll=['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
   document.getElementById('comp-grid').innerHTML=COMP.map(c=>{
     const lv=ud.competences[c.code]||0;
-    return`<div class="cc"><div class="cc-code">${c.code} · ${c.g}</div><div class="cc-n">${c.label}</div><div class="lb"><div class="lf" style="width:${lv*25}%;background:${lc[lv]}"></div></div><div class="ll">${ll[lv]}</div></div>`;
+    return`<div class="cc"><div class="cc-code">${compBadge(c.code)} <span style="font-size:9px;color:var(--gm)">· ${c.g}</span></div><div class="cc-n">${c.label}</div><div class="lb"><div class="lf" style="width:${lv*25}%;background:${lc[lv]}"></div></div><div class="ll">${ll[lv]}</div></div>`;
   }).join('');
 }
 
@@ -2081,6 +2485,480 @@ function injecterEleveFictif() {
 }
 // Injection élève fictif — appel manuel uniquement (ne pas appeler au load)
 
+
+// ═══ ANALYSE DE CLASSE ═══
+
+function openAnalyse() {
+  const cls = classeFiltre;
+  const allUsers = allU().filter(u => u.mail && !u.mail.includes('berruelle'));
+  const users = cls ? allUsers.filter(u => (u.classe||'') === cls) : allUsers;
+
+  if (users.length === 0) {
+    alert('Aucun élève dans cette sélection. Sélectionne une classe dans les onglets.');
+    return;
+  }
+
+  const label = cls || 'Toutes les classes';
+  document.getElementById('ana-titre').textContent = 'Analyse — ' + label;
+  document.getElementById('ana-sous').textContent = users.length + ' élève(s) · Données en temps réel';
+
+  // ── Calcul des données ──
+  const missionStats = {}; // mid -> {total, count, cdp}
+  const compStats = {};    // comp -> {total, count}
+
+  users.forEach(u => {
+    const s = gS();
+    const ud = s[u.mail] || {missions:{}, competences:{}};
+    Object.values(ud.missions || {}).forEach(m => {
+      if (m.status === 'done' && m.score != null) {
+        const mis = MISSIONS.find(x => x.id === m.id);
+        if (!mis) return;
+        // Stats mission
+        if (!missionStats[m.id]) missionStats[m.id] = {titre: mis.titre, comp: mis.comp, total: 0, count: 0, cdp: 0};
+        missionStats[m.id].total += m.score;
+        missionStats[m.id].count++;
+        missionStats[m.id].cdp += (m.coup_de_pouce || 0);
+        // Stats compétence
+        const ck = mis.comp;
+        if (!compStats[ck]) compStats[ck] = {total: 0, count: 0, label: COMP_LABELS[ck] || ck};
+        compStats[ck].total += m.score;
+        compStats[ck].count++;
+      }
+    });
+  });
+
+  // Trier missions par moyenne croissante (les plus faibles en premier)
+  const missionsTriees = Object.entries(missionStats)
+    .filter(([,v]) => v.count >= 1)
+    .map(([mid, v]) => ({mid, titre: v.titre, comp: v.comp, moy: Math.round(v.total / v.count * 10) / 10, count: v.count, cdp: v.cdp}))
+    .sort((a, b) => a.moy - b.moy);
+
+  // Trier compétences par moyenne croissante
+  const compsTriees = Object.entries(compStats)
+    .filter(([,v]) => v.count >= 1)
+    .map(([ck, v]) => ({ck, label: v.label, moy: Math.round(v.total / v.count * 10) / 10, count: v.count}))
+    .sort((a, b) => a.moy - b.moy);
+
+  // Missions avec le plus de coups de pouce
+  const cdpTriees = [...missionsTriees].sort((a, b) => b.cdp - a.cdp).filter(m => m.cdp > 0).slice(0, 5);
+
+  // ── Rendu HTML ──
+  const barColor = (moy) => moy < 10 ? '#A32D2D' : moy < 12 ? '#BA7517' : '#1D9E75';
+  const badge = (moy) => moy < 10
+    ? '<span class="ana-badge ana-bdg-r">⚠ Difficile</span>'
+    : moy < 12
+    ? '<span class="ana-badge ana-bdg-o">~ Fragile</span>'
+    : '<span class="ana-badge ana-bdg-g">✓ OK</span>';
+
+  let html = '';
+
+  // Section 1 — Missions les moins réussies
+  html += `<div class="ana-section">
+    <div class="ana-section-t">📉 Missions les moins réussies — Top 8</div>`;
+
+  if (missionsTriees.length === 0) {
+    html += '<p style="color:var(--gm);font-size:13px">Aucune mission validée dans cette sélection.</p>';
+  } else {
+    html += `<table class="ana-table">
+      <thead><tr><th>Mission</th><th>Compétence</th><th style="text-align:center">Moyenne</th><th style="text-align:center">Élèves</th><th>Niveau</th></tr></thead><tbody>`;
+    missionsTriees.slice(0, 8).forEach(m => {
+      html += `<tr>
+        <td style="max-width:260px"><div style="font-weight:600;color:var(--gr)">${m.titre.substring(0,50)}${m.titre.length>50?'…':''}</div>
+          <div class="ana-bar"><div class="ana-bar-fill" style="width:${m.moy*5}%;background:${barColor(m.moy)}"></div></div></td>
+        <td><span >${compBadge(m.comp)}</span></td>
+        <td style="text-align:center;font-size:16px;font-weight:800;color:${barColor(m.moy)}">${m.moy}/20</td>
+        <td style="text-align:center;color:var(--gm)">${m.count}</td>
+        <td>${badge(m.moy)}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+  }
+  html += '</div>';
+
+  // Section 2 — Compétences fragiles
+  html += `<div class="ana-section">
+    <div class="ana-section-t">🎯 Compétences à renforcer</div>
+    <table class="ana-table">
+      <thead><tr><th>Compétence</th><th style="text-align:center">Moyenne</th><th style="text-align:center">Missions</th><th>Niveau</th></tr></thead><tbody>`;
+  compsTriees.slice(0, 6).forEach(c => {
+    html += `<tr>
+      <td><div style="font-weight:600">${c.ck}</div><div style="font-size:10px;color:var(--gm)">${c.label.substring(0,50)}</div></td>
+      <td style="text-align:center;font-size:16px;font-weight:800;color:${barColor(c.moy)}">${c.moy}/20</td>
+      <td style="text-align:center;color:var(--gm)">${c.count}</td>
+      <td>${badge(c.moy)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+
+  // Section 3 — Coups de pouce
+  if (cdpTriees.length > 0) {
+    html += `<div class="ana-section">
+      <div class="ana-section-t">💡 Où les élèves bloquent (coups de pouce)</div>
+      <table class="ana-table">
+        <thead><tr><th>Mission</th><th>Compétence</th><th style="text-align:center">Coups de pouce</th></tr></thead><tbody>`;
+    cdpTriees.forEach(m => {
+      html += `<tr>
+        <td style="font-weight:600">${m.titre.substring(0,55)}${m.titre.length>55?'…':''}</td>
+        <td><span >${compBadge(m.comp)}</span></td>
+        <td style="text-align:center"><span style="font-size:15px">💡</span> <strong>${m.cdp}</strong></td>
+      </tr>`;
+    });
+    html += '</tbody></table></div>';
+  }
+
+  // Bouton fiche de remédiation
+  const pireComp = compsTriees.length > 0 ? compsTriees[0] : null;
+  if (pireComp) {
+    html += `<div class="ana-section" style="margin-bottom:0">
+      <div class="ana-section-t">🛠 Remédiation</div>
+      <p style="font-size:12px;color:var(--gm);margin-bottom:10px">La compétence la plus fragile de la classe est <strong>${pireComp.ck}</strong> (moyenne ${pireComp.moy}/20). Génère une fiche de remédiation imprimable pour préparer ton cours de soutien.</p>
+      <button class="ana-rem-btn" onclick="genererRemediation('${pireComp.ck}','${label}')">🖨 Générer la fiche de remédiation — ${pireComp.ck}</button>
+    </div>`;
+  }
+
+  document.getElementById('ana-body').innerHTML = html;
+  document.getElementById('ana-overlay').classList.add('open');
+}
+
+function closeAnalyse() {
+  document.getElementById('ana-overlay').classList.remove('open');
+}
+
+function genererRemediation(compKey, classeLabel) {
+  const allUsers = allU().filter(u => u.mail && !u.mail.includes('berruelle'));
+  const cls = classeFiltre;
+  const users = cls ? allUsers.filter(u => (u.classe||'') === cls) : allUsers;
+  const res = RES[compKey];
+  const compLabel = COMP_LABELS[compKey] || compKey;
+
+  // Collecter les missions de cette compétence et les élèves en difficulté
+  const missionData = {};
+  const elevesFragiles = [];
+
+  users.forEach(u => {
+    const s = gS();
+    const ud = s[u.mail] || {missions:{}};
+    let scoreMoy = null, count = 0, total = 0;
+    Object.values(ud.missions || {}).forEach(m => {
+      const mis = MISSIONS.find(x => x.id === m.id);
+      if (!mis || mis.comp !== compKey) return;
+      if (m.status === 'done' && m.score != null) {
+        total += m.score; count++;
+      }
+    });
+    if (count > 0) {
+      scoreMoy = Math.round(total / count * 10) / 10;
+      if (scoreMoy < 12) elevesFragiles.push({nom: u.nom || u.mail, moy: scoreMoy});
+    }
+    // Missions de cette comp
+    Object.values(ud.missions || {}).forEach(m => {
+      const mis = MISSIONS.find(x => x.id === m.id);
+      if (!mis || mis.comp !== compKey || m.status !== 'done' || m.score == null) return;
+      if (!missionData[m.id]) missionData[m.id] = {titre: mis.titre, total: 0, count: 0};
+      missionData[m.id].total += m.score;
+      missionData[m.id].count++;
+    });
+  });
+
+  elevesFragiles.sort((a, b) => a.moy - b.moy);
+  const missionsRem = Object.entries(missionData)
+    .map(([mid, v]) => ({mid, titre: v.titre, moy: Math.round(v.total/v.count*10)/10}))
+    .sort((a, b) => a.moy - b.moy);
+
+  const date = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+
+  const html = `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Fiche de remédiation — ${compKey}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;font-size:11pt;color:#1a1a1a;background:#fff}
+.page{max-width:210mm;margin:0 auto;padding:18mm}
+h1{font-size:18pt;font-weight:800;color:#185FA5;margin-bottom:4px}
+h2{font-size:12pt;font-weight:700;color:#185FA5;margin:20px 0 8px;padding-bottom:4px;border-bottom:2px solid #185FA5}
+h3{font-size:10pt;font-weight:700;margin-bottom:6px}
+.meta{font-size:9pt;color:#5F5E5A;margin-bottom:20px}
+.badge{display:inline-block;padding:2px 10px;border-radius:10px;font-size:9pt;font-weight:700;background:#E6F1FB;color:#185FA5}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:10pt}
+th{background:#185FA5;color:#fff;padding:7px 10px;text-align:left;font-size:9pt}
+td{padding:7px 10px;border-bottom:.5px solid #D3D1C7}
+.rouge{color:#A32D2D;font-weight:700}
+.orange{color:#BA7517;font-weight:700}
+.vert{color:#1D9E75;font-weight:700}
+.zone-libre{border:1.5px dashed #D3D1C7;border-radius:8px;padding:16px;min-height:80px;margin-top:8px;color:#A0A09A;font-size:9pt}
+.ressource{background:#F7F6F2;border-left:4px solid #185FA5;padding:12px 16px;border-radius:0 8px 8px 0;font-size:10pt;margin-top:8px}
+.no-print{text-align:center;padding:16px;background:#E6F1FB;margin-bottom:16px;border-radius:8px}
+.no-print button{padding:10px 24px;background:#185FA5;color:#fff;border:none;border-radius:7px;cursor:pointer;font-size:12pt;font-weight:700}
+@media print{.no-print{display:none}.page{padding:12mm}}
+</style></head><body>
+<div class="no-print"><button onclick="window.print()">🖨 Imprimer / Enregistrer en PDF</button></div>
+<div class="page">
+<div class="meta">LABORO Sport & Outdoor · Plateforme pédagogique Bac Pro MCV · ${date}</div>
+<h1>Fiche de remédiation</h1>
+<div style="margin-bottom:16px">
+  <span class="badge">${compKey}</span>&nbsp;
+  <span style="font-size:12pt;font-weight:600;color:#5F5E5A">${compLabel}</span><br>
+  <span style="font-size:10pt;color:#5F5E5A;margin-top:4px;display:block">Classe : ${classeLabel} · Généré le ${date}</span>
+</div>
+
+<h2>1. Diagnostic — résultats de la classe</h2>
+<table>
+  <thead><tr><th>Mission LABORO</th><th>Moyenne classe</th><th>Niveau</th></tr></thead>
+  <tbody>
+    ${missionsRem.map(m => `<tr>
+      <td>${m.titre.substring(0,60)}${m.titre.length>60?'…':''}</td>
+      <td class="${m.moy<10?'rouge':m.moy<12?'orange':'vert'}">${m.moy}/20</td>
+      <td>${m.moy<10?'⚠ Difficile':m.moy<12?'~ Fragile':'✓ OK'}</td>
+    </tr>`).join('')}
+    ${missionsRem.length===0?'<tr><td colspan="3" style="color:#A0A09A;text-align:center">Aucune mission validée sur cette compétence</td></tr>':''}
+  </tbody>
+</table>
+
+<h2>2. Élèves en difficulté (moyenne < 12/20)</h2>
+<table>
+  <thead><tr><th>Élève</th><th>Moyenne sur la compétence</th><th>Priorité</th></tr></thead>
+  <tbody>
+    ${elevesFragiles.map(e => `<tr>
+      <td>${e.nom}</td>
+      <td class="${e.moy<10?'rouge':'orange'}">${e.moy}/20</td>
+      <td>${e.moy<10?'🔴 Urgent':'🟡 À surveiller'}</td>
+    </tr>`).join('')}
+    ${elevesFragiles.length===0?'<tr><td colspan="3" style="color:#1D9E75;text-align:center">✓ Tous les élèves sont au-dessus de 12/20</td></tr>':''}
+  </tbody>
+</table>
+
+<h2>3. Rappel de la ressource pédagogique — ${compKey}</h2>
+<div class="ressource">
+  ${res ? res.c.replace(/<div class="res-ex[^>]*>.*?<\/div>/gs,'').substring(0,800)+'…' : 'Ressource non disponible.'}
+</div>
+
+<h2>4. Plan de remédiation — à compléter</h2>
+<h3>Objectifs du cours de remédiation :</h3>
+<div class="zone-libre">Écrire ici les objectifs spécifiques du cours...</div>
+
+<h3 style="margin-top:16px">Activités prévues :</h3>
+<div class="zone-libre">Décrire les activités de remédiation (exercices, jeux de rôle, révision LABORO...)...</div>
+
+<h3 style="margin-top:16px">Missions LABORO à refaire ou compléter :</h3>
+<div class="zone-libre">Indiquer les missions à reprendre avec les élèves en difficulté...</div>
+
+<h3 style="margin-top:16px">Indicateurs de réussite :</h3>
+<div class="zone-libre">Comment savoir si la remédiation a fonctionné ? (note cible, mission de validation...)...</div>
+
+<div style="margin-top:30px;padding-top:12px;border-top:.5px solid #D3D1C7;font-size:9pt;color:#A0A09A;text-align:center">
+  Document généré depuis la plateforme LABORO · Pascal Berruelle — PLP Bac Pro MCV, Essonne (91)
+</div>
+</div></body></html>`;
+
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+}
+
+
+
+// ═══ COULEURS PAR COMPÉTENCE ═══
+function getCompColor(comp) {
+  if (!comp) return {bg:'#E6F1FB', text:'#185FA5', dot:'#185FA5'};
+  if (comp.startsWith('C1')) return {bg:'#F0EAFA', text:'#6B4FA0', dot:'#6B4FA0'};
+  if (comp.startsWith('C2')) return {bg:'#FEF0E6', text:'#D4620A', dot:'#D4620A'};
+  if (comp.startsWith('C3')) return {bg:'#E1F5EE', text:'#1D7A5A', dot:'#1D9E75'};
+  if (comp === 'G4A' || comp.startsWith('G4A')) return {bg:'#E6F1FB', text:'#185FA5', dot:'#185FA5'};
+  if (comp === 'G4B' || comp.startsWith('G4B') || comp.startsWith('B4')) return {bg:'#E0F5FA', text:'#0891B2', dot:'#0891B2'};
+  if (comp.startsWith('ACC')) return {bg:'#FEF3C7', text:'#B45309', dot:'#B45309'};
+  return {bg:'#F1EFE8', text:'#5F5E5A', dot:'#5F5E5A'};
+}
+
+function compBadge(comp) {
+  const c = getCompColor(comp);
+  return `<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:${c.bg};color:${c.text};padding:2px 8px;border-radius:10px;font-weight:700"><span style="width:7px;height:7px;border-radius:50%;background:${c.dot};flex-shrink:0"></span>${comp}</span>`;
+}
+
+
+
+// ═══ FICHE DE POSTE & ORGANIGRAMME ═══
+
+const POSTES = {
+  'AGEC': {
+    titre: 'Conseiller(ère) de vente',
+    dept: 'Showroom & E-commerce',
+    manager: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    autre_dir: {nom:'Nina Chevalier', role:'Commerciale B2B — Prospection', couleur:'#0891B2', initiales:'NC'},
+    autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
+    pairs: ['Alex Moreau','Jade Fontaine'],
+    missions_principales: [
+      "Accueillir et conseiller les clients au showroom d'Évry",
+      "Assurer les ventes en ligne sur laboro-sport.fr",
+      "Gérer et optimiser l'espace commercial (merchandising, stocks)",
+      "Participer aux opérations commerciales et animations",
+      "Contribuer à la fidélisation de la clientèle",
+    ],
+    competences_cles: [
+      "Maîtrise des techniques de vente et de découverte des besoins",
+      "Gestion des stocks et approvisionnements",
+      "Merchandising et implantation des produits",
+      "Utilisation des outils digitaux (site e-commerce, réseaux sociaux)",
+      "Traitement des réclamations et suivi SAV",
+    ],
+    conditions: "CDI · Temps plein · Showroom Évry-Courcouronnes (91) · Rattaché(e) à Romain Sauzet"
+  },
+  'PVOC': {
+    titre: 'Commercial(e) terrain',
+    dept: 'Prospection & Vente B2B',
+    manager: {nom:'Nina Chevalier', role:'Responsable Commercial B2B', couleur:'#0891B2', initiales:'NC'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    autre_dir: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
+    autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
+    pairs: ['Théo Vasseur','Camille Dumas'],
+    missions_principales: [
+      "Prospecter et développer un portefeuille de clients professionnels (CE, clubs, mairies)",
+      "Conduire des entretiens de vente en face-à-face et par téléphone",
+      "Élaborer et suivre les devis et propositions commerciales",
+      "Fidéliser les clients existants et détecter de nouvelles opportunités",
+      "Alimenter et mettre à jour le CRM KepkaPro",
+    ],
+    competences_cles: [
+      "Techniques de prospection multicanale (phoning, e-mailing, LinkedIn)",
+      "Négociation et traitement des objections",
+      "Élaboration de propositions commerciales",
+      "Gestion du portefeuille clients et suivi des relances",
+      "Reporting et analyse des performances commerciales",
+    ],
+    conditions: "CDI · Terrain + télétravail · Secteur Essonne (91) · Véhicule fourni · Rattaché(e) à Nina Chevalier"
+  }
+};
+
+function getPosteKey() {
+  const cls = CU.classe || '';
+  if (cls.includes('AGEC')) return 'AGEC';
+  if (cls.includes('PVOC')) return 'PVOC';
+  return null;
+}
+
+function renderPosteCard() {
+  const wrap = document.getElementById('poste-card-wrap');
+  if (!wrap) return;
+  const key = getPosteKey();
+  if (!key) { wrap.innerHTML = ''; return; }
+  const p = POSTES[key];
+  const prenom = CU.nom.split(' ')[0];
+  wrap.innerHTML = `
+    <div class="poste-card" onclick="openOrg()">
+      <div class="poste-card-l">
+        <div class="poste-card-tag">Mon poste chez LABORO</div>
+        <div class="poste-card-titre">${p.titre}</div>
+        <div class="poste-card-sub">${p.dept} · Responsable : ${p.manager.nom}</div>
+      </div>
+      <div class="poste-card-r">
+        <div class="poste-card-ico">🏢</div>
+        <div class="poste-card-cta">Voir l'organigramme →</div>
+      </div>
+    </div>`;
+}
+
+function openOrg() {
+  const key = getPosteKey();
+  if (!key) return;
+  const p = POSTES[key];
+  document.getElementById('org-titre').textContent = 'Mon poste chez LABORO';
+  document.getElementById('org-sous').textContent = p.titre + ' · ' + p.dept;
+  renderOrgTree(key);
+  renderFichePoste(key);
+  document.getElementById('org-overlay').classList.add('open');
+}
+
+function closeOrg() {
+  document.getElementById('org-overlay').classList.remove('open');
+}
+
+function orgTab(idx, el) {
+  document.querySelectorAll('.org-tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('org-content').style.display = idx === 0 ? '' : 'none';
+  document.getElementById('org-fp').style.display = idx === 1 ? '' : 'none';
+}
+
+function renderOrgTree(key) {
+  const p = POSTES[key];
+  const prenom = (CU.nom || 'Vous').split(' ')[0];
+  const nom = CU.nom || 'Vous';
+
+  const node = (initiales, nomP, role, cls, couleur, badge) => `
+    <div class="org-node ${cls}">
+      <div class="org-node-ava" style="background:${couleur}">${initiales}</div>
+      <div class="org-node-nom">${nomP}</div>
+      <div class="org-node-role">${role}</div>
+      ${badge ? `<div class="org-node-badge">${badge}</div>` : ''}
+    </div>`;
+
+  const initMe = nom.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  const couleurMe = key === 'AGEC' ? '#1D9E75' : '#0891B2';
+
+  let html = `
+  <div class="org-tree">
+    <!-- Niveau 1 — PDG -->
+    <div class="org-level">
+      ${node(p.pdg.initiales, p.pdg.nom, p.pdg.role, 'top', p.pdg.couleur, '')}
+    </div>
+    <div class="org-connector"></div>
+
+    <!-- Niveau 2 — Direction -->
+    <div class="org-level" style="gap:24px;position:relative">
+      <div style="position:relative">
+        ${node(p.manager.initiales, p.manager.nom, p.manager.role, 'manager', p.manager.couleur, 'Ton responsable')}
+      </div>
+      <div style="opacity:.5">
+        ${node(p.autre_dir.initiales, p.autre_dir.nom, p.autre_dir.role, 'peer', p.autre_dir.couleur, '')}
+      </div>
+      <div style="opacity:.5">
+        ${node(p.autre_dir2.initiales, p.autre_dir2.nom, p.autre_dir2.role, 'peer', p.autre_dir2.couleur, '')}
+      </div>
+    </div>
+    <div class="org-connector"></div>
+
+    <!-- Niveau 3 — Équipe + Élève -->
+    <div class="org-level" style="gap:16px">
+      ${p.pairs.map(n => node(n.split(' ').map(w=>w[0]).join(''), n, p.titre, 'peer', '#A0A09A', '')).join('')}
+      ${node(initMe, nom, p.titre, 'me', couleurMe, '⭐ Vous')}
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:16px;padding:10px;background:var(--gc);border-radius:8px;font-size:11px;color:var(--gm)">
+    Tu fais partie de l'équipe <strong>${p.dept}</strong> de LABORO Sport & Outdoor — Évry-Courcouronnes (91)
+  </div>`;
+
+  document.getElementById('org-content').innerHTML = html;
+}
+
+function renderFichePoste(key) {
+  const p = POSTES[key];
+  const html = `
+    <div class="fp-section">
+      <div class="fp-section-t">Responsable direct</div>
+      <div class="fp-manager">
+        <div class="fp-manager-ava" style="background:${p.manager.couleur}">${p.manager.initiales}</div>
+        <div>
+          <div class="fp-manager-nom">${p.manager.nom}</div>
+          <div class="fp-manager-role">${p.manager.role}</div>
+        </div>
+      </div>
+    </div>
+    <div class="fp-section">
+      <div class="fp-section-t">Missions principales</div>
+      <ul class="fp-liste">${p.missions_principales.map(m=>`<li>${m}</li>`).join('')}</ul>
+    </div>
+    <div class="fp-section">
+      <div class="fp-section-t">Compétences clés attendues</div>
+      <ul class="fp-liste">${p.competences_cles.map(c=>`<li>${c}</li>`).join('')}</ul>
+    </div>
+    <div class="fp-section" style="margin-bottom:0">
+      <div class="fp-section-t">Conditions</div>
+      <p style="font-size:12px;color:var(--gr)">${p.conditions}</p>
+    </div>`;
+  document.getElementById('org-fp').innerHTML = html;
+}
+
+
 // ═══ PORTFOLIO D'ACTIVITÉS PROFESSIONNELLES ═══
 const CCF_MAP={
   'E31':['C1.1','C1.2','C1.3'],
@@ -2096,9 +2974,10 @@ const CCF_LABELS={
 };
 const COMP_LABELS={
   'C1.1':'C1.1 Veille commerciale','C1.2':'C1.2 Vente omnicanale','C1.3':'C1.3 Exécution de la vente',
-  'C2.1':'C2.1 Suivi de la commande','C2.1b':'C2.1b Services associés','C2.2':'C2.2 Réclamations client','C2.3':'C2.3 Satisfaction client',
+  'C2.1':'C2.1 Suivi commande & services associés','C2.1b':'C2.1 Suivi commande & services associés','C2.2':'C2.2 Réclamations client','C2.3':'C2.3 Satisfaction client',
   'C3.1':'C3.1 Info & contact client','C3.2':'C3.2 Actions de fidélisation','C3.3':'C3.3 Évaluation fidélisation',
-  'G4A':'Bloc 4 AGEC — Espace commercial','G4B':'Bloc 4 PVOC — Prospection commerciale','B4.1':'B4.1 Rechercher et qualifier les prospects','B4.2':'B4.2 Concevoir le plan de prospection','B4.3':'B4.3 Mettre en œuvre la prospection','B4.4':'B4.4 Assurer le suivi des devis','B4.5':'B4.5 Valoriser l\'offre commerciale',
+  'G4A':'G4A — Espace commercial (AGEC)','G4B':'G4B — Prospection & vente B2B (PVOC)',
+  'B4.1':'B4.1 Rechercher et qualifier les prospects','B4.2':'B4.2 Concevoir le plan de prospection','B4.3':'B4.3 Mettre en œuvre la prospection','B4.4':'B4.4 Assurer le suivi des devis','B4.5':'B4.5 Valoriser l\'offre commerciale',
 };
 const NIV_LABELS=['—','Novice','Débrouillé','Averti','Expert'];
 
@@ -2206,6 +3085,89 @@ body{font-family:'Segoe UI',system-ui,sans-serif;font-size:11pt;color:#1a1a1a;ba
 .cp-modal-cl{background:none;border:none;cursor:pointer;font-size:18px;color:#8A6500;padding:4px}
 .cp-modal-body{padding:20px}
 .cp-footer{padding:12px 20px;background:#FFFBEA;border-top:1px solid #F0C040;border-radius:0 0 14px 14px;font-size:11px;color:#A07800;text-align:center}
+
+/* ANALYSE DE CLASSE */
+.ana-btn{padding:8px 16px;background:linear-gradient(135deg,#185FA5,#0C447C);color:#fff;border:none;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.ana-btn:hover{opacity:.9}
+.ana-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.ana-overlay.open{display:flex}
+.ana-modal{background:#fff;border-radius:14px;width:100%;max-width:860px;box-shadow:0 8px 40px rgba(0,0,0,.2);margin:auto}
+.ana-hd{background:linear-gradient(135deg,#185FA5,#0C447C);padding:20px 24px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center}
+.ana-hd-t{font-family:system-ui,sans-serif;font-size:17px;font-weight:800;color:#fff}
+.ana-hd-s{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px}
+.ana-cl{background:none;border:none;cursor:pointer;color:#fff;font-size:20px;padding:4px}
+.ana-body{padding:24px}
+.ana-section{margin-bottom:24px}
+.ana-section-t{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gm);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gb)}
+.ana-table{width:100%;border-collapse:collapse;font-size:12px}
+.ana-table th{background:var(--gc);padding:8px 10px;text-align:left;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--gm)}
+.ana-table td{padding:8px 10px;border-bottom:.5px solid var(--gb);vertical-align:middle}
+.ana-table tr:last-child td{border-bottom:none}
+.ana-bar{height:6px;border-radius:3px;background:#eee;margin-top:3px}
+.ana-bar-fill{height:100%;border-radius:3px;transition:width .3s}
+.ana-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.ana-bdg-r{background:var(--rc);color:var(--rg)}
+.ana-bdg-o{background:var(--ac);color:var(--am)}
+.ana-bdg-g{background:var(--vc);color:#1D7A5A}
+.ana-rem-btn{padding:12px 20px;background:#fff;border:2px solid var(--bl);border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;color:var(--bl);width:100%;margin-top:8px;transition:all .15s}
+.ana-rem-btn:hover{background:var(--bl);color:#fff}
+
+/* FICHE DE POSTE & ORGANIGRAMME */
+.poste-card{background:linear-gradient(135deg,#0C3D6E,#185FA5);border-radius:12px;padding:16px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;cursor:pointer;transition:opacity .15s}
+.poste-card:hover{opacity:.92}
+.poste-card-l{}
+.poste-card-tag{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px}
+.poste-card-titre{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px}
+.poste-card-sub{font-size:11px;color:rgba(255,255,255,.7)}
+.poste-card-r{text-align:right}
+.poste-card-ico{font-size:28px;margin-bottom:4px}
+.poste-card-cta{font-size:10px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:4px}
+
+/* MODALE ORGANIGRAMME */
+.org-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;align-items:center;justify-content:center;padding:20px}
+.org-overlay.open{display:flex}
+.org-modal{background:#fff;border-radius:14px;width:100%;max-width:780px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+.org-hd{background:linear-gradient(135deg,#0C3D6E,#185FA5);padding:20px 24px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:center}
+.org-hd-t{font-size:16px;font-weight:800;color:#fff}
+.org-hd-s{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+.org-cl{background:none;border:none;cursor:pointer;color:#fff;font-size:20px}
+.org-body{padding:24px}
+.org-tabs{display:flex;gap:6px;margin-bottom:20px}
+.org-tab{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:.5px solid var(--gb);color:var(--gm);background:#fff}
+.org-tab.on{background:var(--bl);color:#fff;border-color:var(--bl)}
+
+/* Organigramme */
+.org-tree{display:flex;flex-direction:column;align-items:center;gap:0}
+.org-level{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;margin-bottom:0}
+.org-connector{width:1px;height:24px;background:#D3D1C7;margin:0 auto}
+.org-h-line{height:1px;background:#D3D1C7;position:absolute;top:0}
+.org-node{background:#fff;border:.5px solid #D3D1C7;border-radius:10px;padding:10px 14px;text-align:center;min-width:130px;max-width:160px;position:relative;transition:all .2s}
+.org-node.top{border-color:var(--bl);background:var(--bc)}
+.org-node.me{border:2.5px solid var(--vt);background:#E1F5EE;box-shadow:0 0 0 4px rgba(29,158,117,.15)}
+.org-node.manager{border-color:#6B4FA0;background:#F0EAFA}
+.org-node.peer{border-color:#D3D1C7;background:#FAFAF8;opacity:.7}
+.org-node-ava{width:36px;height:36px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.org-node-nom{font-size:11px;font-weight:700;color:var(--gr);line-height:1.3}
+.org-node-role{font-size:9px;color:var(--gm);margin-top:2px;line-height:1.3}
+.org-node-badge{display:inline-block;margin-top:5px;padding:2px 8px;border-radius:8px;font-size:9px;font-weight:700;background:var(--vt);color:#fff}
+
+/* Fiche de poste */
+.fp-section{margin-bottom:18px}
+.fp-section-t{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gm);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--gb)}
+.fp-liste{list-style:none;display:flex;flex-direction:column;gap:6px}
+.fp-liste li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--gr);line-height:1.5}
+.fp-liste li::before{content:'→';color:var(--bl);font-weight:700;flex-shrink:0}
+.fp-manager{display:flex;align-items:center;gap:12px;background:var(--gc);border-radius:10px;padding:12px 16px}
+.fp-manager-ava{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
+.fp-manager-nom{font-size:13px;font-weight:700;color:var(--gr)}
+.fp-manager-role{font-size:11px;color:var(--gm)}
+
+/* MOT DE PASSE ENSEIGNANT */
+#fg-mdp{display:none;margin-top:8px}
+#fg-mdp label{font-size:11px;font-weight:700;color:var(--gm);display:block;margin-bottom:4px}
+#inp-mdp{width:100%;padding:10px 12px;border:.5px solid var(--gb);border-radius:8px;font-size:13px;background:#fff;outline:none}
+#inp-mdp:focus{border-color:var(--bl);box-shadow:0 0 0 3px var(--bc)}
+.mdp-hint{font-size:10px;color:var(--gm);margin-top:4px;text-align:center}
 </style>
 </head>
 <body>
