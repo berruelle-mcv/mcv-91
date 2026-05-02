@@ -44,33 +44,36 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .btn-li:hover{background:var(--bf)}
 .ln2{font-size:10px;color:var(--gb);text-align:center;margin-top:10px}
 /* ONBOARDING */
-#onboarding{background:var(--wh);align-items:center;justify-content:center;padding:2rem}
-.ob-w{width:100%;max-width:720px}
-.ob-pg{display:flex;gap:5px;margin-bottom:2rem;justify-content:center}
-.obs{height:4px;border-radius:2px;background:var(--gb);transition:background .3s;flex:1;max-width:80px}
-.obs.done{background:var(--bl)}.obs.cur{background:var(--bm)}
-.obp{display:none}.obp.on{display:block}
-.ob-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
-.btn-on{padding:10px 24px;background:var(--bl);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
-.btn-on:hover{background:var(--bf)}
-.btn-os{font-size:12px;color:var(--gm);background:none;border:none;cursor:pointer;padding:8px}
-.lettre{background:var(--wh);border:.5px solid var(--gb);border-radius:12px;padding:2rem}
-.lh{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:.5px solid var(--gc)}
+#onboarding{background:linear-gradient(135deg,#0A2540 0%,#0C3D6E 60%,#185FA5 100%);align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden}
+#onboarding::before{content:'L';position:absolute;right:-40px;bottom:-60px;font-size:320px;font-weight:900;color:rgba(255,255,255,.04);font-family:system-ui,sans-serif;line-height:1;pointer-events:none}
+.ob-w{width:100%;max-width:720px;position:relative;z-index:1}
+.ob-pg{display:flex;gap:8px;margin-bottom:28px;justify-content:center}
+.obs{height:4px;border-radius:2px;background:rgba(255,255,255,.2);transition:all .3s;flex:1;max-width:80px}
+.obs.done{background:rgba(255,255,255,.6)}.obs.cur{background:#fff}
+.obp{display:none}.obp.on{display:block;animation:obFadeIn .4s ease}
+@keyframes obFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.ob-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.btn-on{padding:12px 28px;background:#fff;color:#0C3D6E;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;transition:all .15s;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-on:hover{background:var(--bc);transform:translateY(-1px)}
+.btn-os{font-size:11px;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;padding:8px}
+.btn-os:hover{color:rgba(255,255,255,.8)}
+.lettre{background:rgba(255,255,255,.07);border:.5px solid rgba(255,255,255,.2);border-radius:16px;padding:2rem;backdrop-filter:blur(10px)}
+.lh{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:.5px solid rgba(255,255,255,.15)}
 .av-ob{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0}
-.lb-f{font-size:14px;font-weight:700}.lb-r{font-size:12px;color:var(--gm)}
-.lb-b{font-size:14px;line-height:1.8;color:var(--gr)}.lb-b p{margin-bottom:12px}
-.lb-s{margin-top:1.5rem;font-style:italic;color:var(--gm);font-size:13px}
-.ob-h1{font-size:22px;font-weight:800;margin-bottom:6px}
-.ob-sub{font-size:14px;color:var(--gm);margin-bottom:1.5rem;line-height:1.6}
+.lb-f{font-size:14px;font-weight:700;color:#fff}.lb-r{font-size:12px;color:rgba(255,255,255,.6)}
+.lb-b{font-size:14px;line-height:1.8;color:rgba(255,255,255,.85)}.lb-b p{margin-bottom:12px}
+.lb-s{margin-top:1.5rem;font-style:italic;color:rgba(255,255,255,.5);font-size:13px}
+.ob-h1{font-size:28px;font-weight:900;margin-bottom:8px;color:#fff;letter-spacing:-0.5px}
+.ob-sub{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:1.5rem;line-height:1.6}
 .kpi-r{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
 .km{background:var(--bc);border-radius:8px;padding:10px;text-align:center}
-.km-v{font-size:19px;font-weight:800;color:var(--bf)}.km-l{font-size:10px;color:var(--bf);text-transform:uppercase;letter-spacing:.06em}
+.km-v{font-size:30px;font-weight:900;color:#fff;letter-spacing:-1px}.km-l{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em}
 .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tc{background:var(--gc);border-radius:10px;padding:14px;text-align:center}
-.tav{width:46px;height:46px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff}
-.tn{font-size:13px;font-weight:700;margin-bottom:2px}.tr2{font-size:11px;color:var(--gm);line-height:1.4}
+.tc{background:rgba(255,255,255,.08);border-radius:12px;padding:14px;text-align:center;border:.5px solid rgba(255,255,255,.12)}
+.tav{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff}
+.tn{font-size:13px;font-weight:700;margin-bottom:2px;color:#fff}.tr2{font-size:11px;color:rgba(255,255,255,.5);line-height:1.4}
 .cg2{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.cac{border-radius:10px;overflow:hidden;border:.5px solid var(--gb);background:var(--wh)}
+.cac{border-radius:12px;overflow:hidden;border:.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08) var(--wh)}
 .cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
 .cat-tab{padding:6px 14px;border-radius:20px;border:.5px solid var(--gb);background:var(--wh);cursor:pointer;font-size:12px;font-weight:600;color:var(--gm);transition:all .15s}
 .cat-tab.on{background:var(--bl);color:#fff;border-color:var(--bl)}
@@ -85,12 +88,12 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .pprix{font-size:14px;font-weight:800;color:var(--bl)}
 .pmarge{font-size:10px;color:var(--gm);margin-top:3px}
 .cai{width:100%;height:110px;object-fit:cover;background:var(--gc)}
-.cain{padding:10px}.cain-n{font-size:12px;font-weight:700;margin-bottom:2px}
-.cain-p{font-size:13px;font-weight:800;color:var(--bf)}.cain-t{font-size:10px;color:var(--gm)}
-.fm{background:var(--bc);border-radius:12px;padding:18px 20px;border-left:4px solid var(--bl)}
-.fm-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--bl);margin-bottom:5px}
-.fm-t{font-size:16px;font-weight:700;margin-bottom:4px}
-.fm-m{font-size:12px;color:var(--gm);margin-bottom:10px}
+.cain{padding:10px}.cain-n{font-size:12px;font-weight:700;margin-bottom:2px;color:#fff}
+.cain-p{font-size:13px;font-weight:800;color:#4CD897}.cain-t{font-size:10px;color:rgba(255,255,255,.5)}
+.fm{background:rgba(255,255,255,.1);border-radius:12px;padding:18px 20px;border-left:4px solid var(--bl)}
+.fm-l{font-size:10px;font-weight:700;text-transform:uppercase;color:#4CD897;letter-spacing:.08em;color:var(--bl);margin-bottom:5px}
+.fm-t{font-size:16px;font-weight:700;margin-bottom:4px;color:#fff}
+.fm-m{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px}
 /* APP */
 #app{flex-direction:row}
 .sb{width:230px;min-width:230px;background:var(--wh);border-right:.5px solid var(--gb);display:flex;flex-direction:column;min-height:100vh}
@@ -459,6 +462,31 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .cl-stat-chip{flex:1;background:var(--gc);border-radius:7px;padding:7px 10px;text-align:center}
 .cl-stat-chip .sv{font-size:14px;font-weight:800;color:var(--gr)}
 .cl-stat-chip .sl{font-size:9px;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-top:1px}
+
+/* ONBOARDING ENSEIGNANT */
+#ob-ens{background:linear-gradient(135deg,#0A2540,#0C3D6E);align-items:center;justify-content:center;padding:2rem}
+.ob-ens-w{width:100%;max-width:760px}
+.ob-ens-pg{display:flex;gap:8px;justify-content:center;margin-bottom:32px}
+.ob-ens-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s;cursor:pointer}
+.ob-ens-dot.cur{background:#fff;width:28px;border-radius:5px}
+.ob-ens-p{display:none;animation:fadeInUp .35s ease}
+.ob-ens-p.on{display:block}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ob-ens-card{background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.15);border-radius:16px;padding:32px;margin-bottom:20px}
+.ob-ens-tag{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.ob-ens-titre{font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.ob-ens-sub{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:20px}
+.ob-ens-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px}
+.ob-ens-feat{background:rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;border-left:3px solid var(--vt)}
+.ob-ens-feat-ico{font-size:20px;margin-bottom:6px}
+.ob-ens-feat-t{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px}
+.ob-ens-feat-d{font-size:11px;color:rgba(255,255,255,.6);line-height:1.4}
+.ob-ens-nav{display:flex;justify-content:space-between;align-items:center}
+.ob-ens-skip{font-size:11px;color:rgba(255,255,255,.4);cursor:pointer;padding:8px;background:none;border:none}
+.ob-ens-skip:hover{color:rgba(255,255,255,.7)}
+.ob-ens-next{padding:12px 28px;background:#fff;color:#0C3D6E;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s}
+.ob-ens-next:hover{background:var(--bc)}
+.ob-ens-mdp{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 16px;font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;margin-bottom:12px}
 </style>
 </head>
 <body>
@@ -576,21 +604,70 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
     </div>
   </div>
   <div class="obp" id="ob2">
-    <div class="ob-h1">Nos produits</div>
-    <div class="ob-sub">Tu vas conseiller et vendre ces produits. Explore le catalogue pour voir toutes les références.</div>
-    <div class="cg2">
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Running & Trail</div><div class="cain-p">à partir de 69 €</div><div class="cain-t">Chaussures, vêtements, montres, nutrition</div></div></div>
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Randonnée</div><div class="cain-p">à partir de 49 €</div><div class="cain-t">Chaussures, sacs, bâtons, vêtements</div></div></div>
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Fitness & Bien-être</div><div class="cain-p">à partir de 19 €</div><div class="cain-t">Yoga, kettlebells, élastiques, accessoires</div></div></div>
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Sports collectifs</div><div class="cain-p">à partir de 29 €</div><div class="cain-t">Ballons, filets, équipements clubs</div></div></div>
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Outdoor & Camping</div><div class="cain-p">à partir de 39 €</div><div class="cain-t">Tentes, sacs de couchage, réchauds</div></div></div>
-      <div class="cac"><img class="cai" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&q=80" alt="" onerror="this.style.display='none'"/><div class="cain"><div class="cain-n">Textile personnalisé</div><div class="cain-p">à partir de 22 €/u</div><div class="cain-t">Clubs, CE, mairies — sur mesure</div></div></div>
+    <div class="ob-h1">Ton badge LABORO</div>
+    <div class="ob-sub">Tu fais officiellement partie de l'équipe. Voici ton accréditation — elle te donne accès à toutes les missions et ressources de l'entreprise.</div>
+    <div style="display:flex;justify-content:center;margin:20px 0">
+      <div id="ob-badge" style="background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.06));border:1.5px solid rgba(255,255,255,.25);border-radius:20px;padding:28px 36px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.3);position:relative;overflow:hidden">
+        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(29,158,117,.15)"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:.5px solid rgba(255,255,255,.15)">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#185FA5,#0C3D6E);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff">L</div>
+          <div>
+            <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:.05em">LABORO Sport & Outdoor</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5)">Évry-Courcouronnes · Essonne (91)</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">Collaborateur(trice)</div>
+          <div id="ob-badge-nom" style="font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.5px">—</div>
+          <div id="ob-badge-poste" style="font-size:13px;color:#4CD897;font-weight:600;margin-top:4px">—</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end">
+          <div>
+            <div style="font-size:9px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em">Niveau d'accès</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);font-weight:600;margin-top:2px">Collaborateur actif</div>
+          </div>
+          <div style="width:44px;height:28px;border-radius:4px;background:linear-gradient(135deg,#1D9E75,#0C7A58);display:flex;align-items:center;justify-content:center">
+            <div style="font-size:9px;font-weight:800;color:#fff;letter-spacing:.08em">ACTIF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:#fff">45</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:2px">Références catalogue</div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:#fff">50</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:2px">Clients à gérer</div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:#fff">125+</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:2px">Missions disponibles</div>
+      </div>
     </div>
   </div>
   <div class="obp" id="ob3">
-    <div class="ob-h1">Tu es prêt(e) !</div>
-    <div class="ob-sub">Chaque mission commence par une ressource pour apprendre la notion clé, puis un travail pratique dans l'univers LABORO. Tu progresseras à ton rythme, compétence par compétence.</div>
-    <div class="fm"><div class="fm-l">Ta première mission</div><div class="fm-t" id="ob-fm-t">Accueillir un client et découvrir ses besoins</div><div class="fm-m">Compétence C1.2 · Palier 1 — Découverte · 55 minutes</div><div style="font-size:13px;color:var(--gr);line-height:1.6">Un client entre dans le showroom d'Évry. Il cherche des chaussures pour débuter le trail. Romain Sauzet te demande de le prendre en charge.</div></div>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(29,158,117,.2);border:.5px solid rgba(29,158,117,.4);border-radius:20px;padding:6px 16px;margin-bottom:16px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#4CD897;animation:pulse 1.5s infinite"></div>
+        <span style="font-size:11px;font-weight:700;color:#4CD897;letter-spacing:.08em;text-transform:uppercase">Mission disponible</span>
+      </div>
+      <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}</style>
+      <div class="ob-h1" style="text-align:center">Ta première mission t'attend.</div>
+      <div class="ob-sub" style="text-align:center;max-width:460px;margin:8px auto 0">Lis d'abord la ressource pédagogique — elle contient tout ce qu'il faut savoir. Ensuite tu mets en pratique. C'est comme ça qu'on progresse chez LABORO.</div>
+    </div>
+    <div class="fm">
+      <div class="fm-l">🎯 Ta première mission</div>
+      <div class="fm-t" id="ob-fm-t">Accueillir un client et découvrir ses besoins</div>
+      <div class="fm-m">Compétence C1.2 · Palier 1 — Découverte · ~55 minutes</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.7;margin-top:8px">Un client entre dans le showroom d'Évry. Il cherche des chaussures pour débuter le trail. Romain Sauzet te demande de le prendre en charge.</div>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:5px 10px;font-size:10px;color:rgba(255,255,255,.6)">📚 Ressource incluse</div>
+        <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:5px 10px;font-size:10px;color:rgba(255,255,255,.6)">⏱ ~55 min</div>
+        <div style="background:rgba(29,158,117,.2);border-radius:6px;padding:5px 10px;font-size:10px;color:#4CD897;font-weight:700">Palier 1 — Découverte</div>
+      </div>
+    </div>
   </div>
   <div class="ob-nav">
     <button class="btn-os" onclick="skipOb()" id="ob-skip">Passer l'introduction</button>
@@ -649,6 +726,100 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
   </div>
 </div>
 
+<!-- ONBOARDING ENSEIGNANT -->
+<div id="ob-ens" class="scr" style="display:none">
+  <div class="ob-ens-w">
+    <div class="ob-ens-pg">
+      <div class="ob-ens-dot cur" id="obed0"></div>
+      <div class="ob-ens-dot" id="obed1"></div>
+      <div class="ob-ens-dot" id="obed2"></div>
+      <div class="ob-ens-dot" id="obed3"></div>
+    </div>
+
+    <!-- Étape 1 — Bienvenue -->
+    <div class="ob-ens-p on" id="obe0">
+      <div class="ob-ens-card">
+        <div class="ob-ens-tag">Première connexion</div>
+        <div class="ob-ens-titre">Bienvenue sur LABORO,<br><span id="ob-ens-prenom" style="color:var(--vt)">Enseignant</span>.</div>
+        <div class="ob-ens-sub">LABORO est votre plateforme pédagogique immersive pour le Bac Pro MCV. Vos élèves y travaillent comme de vrais collaborateurs d'une entreprise sport & outdoor. Vous, vous pilotez, observez et remédiez.</div>
+        <div class="ob-ens-grid">
+          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">🎯</div><div class="ob-ens-feat-t">125+ missions</div><div class="ob-ens-feat-d">Alignées sur le référentiel MCV — 2nde à Terminale, AGEC et PVOC</div></div>
+          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">📊</div><div class="ob-ens-feat-t">Suivi en temps réel</div><div class="ob-ens-feat-d">Notes, progression, coups de pouce — tout visible depuis votre espace</div></div>
+          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">🛠</div><div class="ob-ens-feat-t">Analyse & remédiation</div><div class="ob-ens-feat-d">Identifiez les points faibles de la classe en un clic</div></div>
+          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">📄</div><div class="ob-ens-feat-t">Portfolio automatique</div><div class="ob-ens-feat-d">Document d'aide au positionnement généré en 2 clics</div></div>
+        </div>
+      </div>
+      <div class="ob-ens-nav">
+        <button class="ob-ens-skip" onclick="skipObEns()">Passer l'introduction →</button>
+        <button class="ob-ens-next" onclick="nextObEns(1)">Suivant →</button>
+      </div>
+    </div>
+
+    <!-- Étape 2 — Vue classe -->
+    <div class="ob-ens-p" id="obe1">
+      <div class="ob-ens-card">
+        <div class="ob-ens-tag">Fonctionnalité clé · 1/3</div>
+        <div class="ob-ens-titre">👥 Suivre vos élèves<br>en temps réel</div>
+        <div class="ob-ens-sub">La vue classe vous donne une vision instantanée de chaque élève : missions validées, moyenne, coups de pouce utilisés, missions en attente de correction.</div>
+        <div class="ob-ens-feat" style="margin-bottom:12px">
+          <div class="ob-ens-feat-t">Comment y accéder ?</div>
+          <div class="ob-ens-feat-d" style="margin-top:4px">Menu gauche → <strong style="color:#fff">Vue classe</strong> · Filtrez par classe avec les onglets colorés · Cliquez sur un élève pour sa fiche détaillée</div>
+        </div>
+        <div class="ob-ens-feat">
+          <div class="ob-ens-feat-t">💡 Le coup de pouce</div>
+          <div class="ob-ens-feat-d" style="margin-top:4px">Quand un élève de 1ère ou Terminale utilise l'aide intégrée, vous le voyez dans sa fiche — sans qu'il ait à lever la main. Indicateur précieux pour repérer les difficultés silencieuses.</div>
+        </div>
+      </div>
+      <div class="ob-ens-nav">
+        <button class="ob-ens-skip" onclick="prevObEns(0)">← Retour</button>
+        <button class="ob-ens-next" onclick="nextObEns(2)">Suivant →</button>
+      </div>
+    </div>
+
+    <!-- Étape 3 — Analyse & remédiation -->
+    <div class="ob-ens-p" id="obe2">
+      <div class="ob-ens-card">
+        <div class="ob-ens-tag">Fonctionnalité clé · 2/3</div>
+        <div class="ob-ens-titre">📈 Analyser et<br>préparer la remédiation</div>
+        <div class="ob-ens-sub">Le bouton "Analyse de classe" calcule automatiquement les missions les moins réussies, les compétences fragiles et les points de blocage de votre classe.</div>
+        <div class="ob-ens-feat" style="margin-bottom:12px">
+          <div class="ob-ens-feat-t">La fiche de remédiation</div>
+          <div class="ob-ens-feat-d" style="margin-top:4px">En un clic, générez un document imprimable avec : élèves en difficulté · ressource pédagogique · zones à remplir pour votre cours de soutien. Prête en 2 secondes.</div>
+        </div>
+        <div class="ob-ens-feat">
+          <div class="ob-ens-feat-t">📄 Le portfolio</div>
+          <div class="ob-ens-feat-d" style="margin-top:4px">Générez le Portfolio d'activités professionnelles de chaque élève depuis sa fiche. Structuré par épreuve E31/E32/E33/E2 — document d'aide au positionnement pour les jurys CCF.</div>
+        </div>
+      </div>
+      <div class="ob-ens-nav">
+        <button class="ob-ens-skip" onclick="prevObEns(1)">← Retour</button>
+        <button class="ob-ens-next" onclick="nextObEns(3)">Suivant →</button>
+      </div>
+    </div>
+
+    <!-- Étape 4 — Prêt -->
+    <div class="ob-ens-p" id="obe3">
+      <div class="ob-ens-card" style="text-align:center;padding:40px 32px">
+        <div style="font-size:48px;margin-bottom:16px">🎓</div>
+        <div class="ob-ens-titre" style="text-align:center">Vous êtes prêt(e) !</div>
+        <div class="ob-ens-sub" style="text-align:center;max-width:440px;margin:0 auto 20px">Votre espace enseignant est configuré. Vos élèves peuvent se connecter avec leur adresse mail institutionnelle et sélectionner leur classe.</div>
+        <div class="ob-ens-mdp">
+          <span>🔐</span>
+          <span>Mot de passe enseignant : <strong style="color:#fff">LABORO2026</strong> — à ne pas partager avec les élèves</span>
+        </div>
+        <div class="ob-ens-mdp">
+          <span>💡</span>
+          <span>Besoin d'aide ? Contactez <strong style="color:#fff">Pascal Berruelle</strong> — créateur de la plateforme</span>
+        </div>
+      </div>
+      <div class="ob-ens-nav" style="justify-content:center">
+        <button class="ob-ens-next" style="padding:14px 40px;font-size:14px" onclick="skipObEns()">Accéder à mon espace LABORO →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- APP -->
 <div id="app" class="scr">
 <div class="sb">
@@ -668,7 +839,10 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
     <div class="ni" id="ni-cl" style="display:none" onclick="goP('classe',this)"><div class="nd" style="background:#D4537E"></div>Vue classe</div>
     <div class="ni" id="ni-gn" style="display:none" onclick="goP('generation',this)"><div class="nd" style="background:var(--rg)"></div>Générer mission</div>
   </div>
-  <div class="sb-bt"><button class="btn-out" onclick="doLogout()">Se déconnecter</button></div>
+  <div class="sb-bt">
+    <button class="btn-guide" id="btn-guide-ens" style="display:none;width:100%;padding:8px 12px;background:rgba(255,255,255,.08);border:.5px solid rgba(255,255,255,.2);border-radius:8px;color:rgba(255,255,255,.8);font-size:11px;font-weight:600;cursor:pointer;margin-bottom:8px;text-align:left" onclick="revoirObEns()">📖 Guide de démarrage</button>
+    <button class="btn-out" onclick="doLogout()">Se déconnecter</button>
+  </div>
 </div>
 <div class="main">
   <div class="topbar"><div class="tb-t" id="tb-t">Tableau de bord</div><div class="tb-r"><span class="badge" id="tb-lvl" style="font-size:10px;padding:3px 9px;border-radius:10px;font-weight:700;margin-right:4px">—</span><span class="badge bb" id="tb-c">—</span><span style="font-size:11px;color:var(--gm)" id="tb-d"></span></div></div>
@@ -1314,28 +1488,66 @@ const MISSIONS=[
 
 ];
 const PRODUITS=[
-  {id:'RUN-001',cat:'Running / Trail',nom:'Salomon Speedcross 6',ref:'RUN-001',pu:89,pv:149,tva:20,marge:40,stock:14,fourn:'Salomon France',desc:'Chaussure trail polyvalente, semelle Contagrip®, tige Sensifit™, drop 11mm. Idéale débutants et confirmés sur terrains mixtes.',arg:'Chaussure n°1 des traileurs débutants. Grip exceptionnel, maintien parfait, confort immédiat.',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'},
-  {id:'RUN-002',cat:'Running / Trail',nom:'Nike React Pegasus Trail 4',ref:'RUN-002',pu:75,pv:129,tva:20,marge:42,stock:9,fourn:'Nike Distribution',desc:'Légèreté du running sur les sentiers. Amorti React, semelle multi-directionnelle.',arg:'La légèreté du running sur les sentiers. Polyvalente route/trail.',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'},
-  {id:'RUN-003',cat:'Running / Trail',nom:'Garmin Forerunner 55',ref:'RUN-003',pu:149,pv:229,tva:20,marge:35,stock:6,fourn:'Garmin Europe',desc:'GPS entrée de gamme, suivi fréquence cardiaque, plans d\'entraînement, autonomie 20h.',arg:'Le GPS accessible. Toutes les fonctions essentielles, interface simple.',img:'https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=500&q=80'},
-  {id:'RAN-001',cat:'Randonnée',nom:'Salomon X Ultra 4 GTX',ref:'RAN-001',pu:105,pv:175,tva:20,marge:40,stock:11,fourn:'Salomon France',desc:'Chaussure randonnée Gore-Tex, Contagrip, SensiFit. Imperméable et respirante.',arg:'La référence randonnée. Imperméable Gore-Tex, stabilité totale, légèreté surprenante.',img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=80'},
-  {id:'RAN-002',cat:'Randonnée',nom:'Osprey Talon 22L',ref:'RAN-002',pu:79,pv:139,tva:20,marge:43,stock:8,fourn:'Osprey Europe',desc:'Sac trail/rando 22L, dos AirSpeed™, compatible hydratation. Poids : 680g.',arg:'Le sac rando idéal pour une journée. Ventilation révolutionnaire.',img:'https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=500&q=80'},
-  {id:'FIT-001',cat:'Fitness',nom:'Tapis yoga Odlo Pro 6mm',ref:'FIT-001',pu:29,pv:59,tva:20,marge:51,stock:23,fourn:'Odlo International',desc:'Antidérapant, matière TPE écologique, 6mm, 183×61cm. Livré avec sangle.',arg:'Confort optimal, grip parfait, matière respectueuse de l\'environnement.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'},
-  {id:'FIT-002',cat:'Fitness',nom:'Kettlebell fonte 12 kg',ref:'FIT-002',pu:22,pv:45,tva:20,marge:51,stock:18,fourn:'ProSport Distribution',desc:'Kettlebell fonte peinte, revêtement antirouille, poignée ergonomique. De 4 à 32 kg.',arg:'Outil polyvalent pour musculation fonctionnelle.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'},
-  {id:'COL-001',cat:'Sports collectifs',nom:'Ballon Trigon Match Pro',ref:'COL-001',pu:22,pv:49,tva:20,marge:55,stock:31,fourn:'Trigon Sport',desc:'Ballon football taille 5, couverture PU thermocollée, homologué matchs.',arg:'Le choix des clubs et lycées. Résistant, bonne tenue, prix compétitif.',img:'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80'},
-  {id:'OUT-001',cat:'Outdoor & Camping',nom:'Tente Quechua 2 Secondes 3P',ref:'OUT-001',pu:89,pv:169,tva:20,marge:47,stock:7,fourn:'Decathlon Pro',desc:'Tente 3 places autoportante, montage 2 secondes, double toit. Poids : 3,9kg.',arg:'La tente à monter en 2 secondes. Parfaite pour sorties nature et camps sportifs.',img:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80'},
-  {id:'TEX-001',cat:'Textile personnalisé',nom:'Maillot floqué KappaFlex',ref:'TEX-001',pu:13,pv:28,tva:20,marge:54,stock:0,fourn:'KappaFlex Textile',desc:'Polyester 100%, séchage rapide. Flocage ou broderie inclus. Min. 10 unités. Délai : 3 semaines.',arg:'La solution clubs et CE. Personnalisation totale, prix dégressif, qualité pro.',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&q=80'},
-  {id:'RUN-004',cat:'Running / Trail',nom:'Salomon Sense Ride 5',ref:'RUN-004',pu:78,pv:139,tva:20,marge:44,stock:8,fourn:'Salomon France',desc:'Chaussure trail rapide, 280g, semelle Wet Traction Contagrip. Idéale trails techniques et compétition.',arg:'Pour les traileurs qui veulent aller vite. Légère, réactive, grip parfait.',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'},
-  {id:'RUN-005',cat:'Running / Trail',nom:'Brooks Ghost 15',ref:'RUN-005',pu:69,pv:119,tva:20,marge:42,stock:12,fourn:'Brooks Running',desc:'Chaussure running route, amorti DNA LOFT, drop 12mm. La référence polyvalente pour commencer à courir.',arg:'La chaussure pour commencer à courir. Confort exceptionnel, durabilité prouvée.',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'},
-  {id:'RUN-006',cat:'Running / Trail',nom:'Garmin Forerunner 265',ref:'RUN-006',pu:279,pv:449,tva:20,marge:38,stock:4,fourn:'Garmin Europe',desc:'GPS avancé, écran AMOLED, carte topographique, HRV, autonomie 15 jours.',arg:'La montre des coureurs sérieux. Fonctions pro, écran magnifique, autonomie exceptionnelle.',img:'https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=500&q=80'},
-  {id:'RUN-007',cat:'Running / Trail',nom:'Ceinture hydratation Nathan Trail Mix',ref:'RUN-007',pu:28,pv:55,tva:20,marge:49,stock:15,fourn:'Nathan Sports',desc:'Ceinture 600ml, poche rangement, réglable, ultra légère, compatible gels.',arg:'Courir sans soif. Parfaite pour sorties supérieures à 1h, légère et discrète.',img:'https://images.unsplash.com/photo-1486218119243-13301543a823?w=500&q=80'},
-  {id:'RAN-003',cat:'Randonnée',nom:'Bâtons Black Diamond Trail',ref:'RAN-003',pu:45,pv:89,tva:20,marge:49,stock:10,fourn:'Black Diamond',desc:'Bâtons alu, poignée liège naturelle, rondelles trail et neige incluses. Poids : 440g la paire.',arg:'Stabilité en descente, propulsion en montée. Essentiels pour les longues randonnées.',img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=80'},
-  {id:'FIT-003',cat:'Fitness',nom:'Bandes élastiques Bodytone x5',ref:'FIT-003',pu:18,pv:39,tva:20,marge:54,stock:28,fourn:'ProSport Distribution',desc:'Set 5 élastiques de résistance croissante (10 à 50kg), latex naturel, livret exercices inclus.',arg:'Musculation partout, sans matériel lourd. Idéal débutants et confirmés.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'},
-  {id:'FIT-004',cat:'Fitness',nom:'Corde à sauter Crossfit RPM',ref:'FIT-004',pu:32,pv:65,tva:20,marge:51,stock:14,fourn:'RPM Speed Rope',desc:'Corde acier gainée, roulements à billes, poignées aluminium. Pro et durable.',arg:'Le cardio le plus rentable. Compact, efficace, utilisé en crossfit et boxe.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'},
-  {id:'COL-002',cat:'Sports collectifs',nom:'Maillot basketball réversible',ref:'COL-002',pu:18,pv:38,tva:20,marge:53,stock:0,fourn:'KappaFlex Textile',desc:'Maillot 2 en 1, polyester léger, personnalisable numéro et nom. Min 10 unités. Délai 2 semaines.',arg:'Deux couleurs pour le prix d\'un. Personnalisable, idéal clubs et lycées.',img:'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80'},
-  {id:'COL-003',cat:'Sports collectifs',nom:'Filet de but football 7.32m',ref:'COL-003',pu:45,pv:89,tva:20,marge:49,stock:6,fourn:'Trigon Sport',desc:'Filet PP 4mm, maille 120mm, dimensions officielles. Livré avec tendeurs.',arg:'Le filet pro à prix accessible. Résistant aux UV, facile à installer.',img:'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80'},
-  {id:'OUT-002',cat:'Outdoor & Camping',nom:'Lampe frontale Petzl Actik Core',ref:'OUT-002',pu:32,pv:59,tva:20,marge:46,stock:16,fourn:'Petzl Distribution',desc:'450 lumens, rechargeable USB, 3 modes, faisceau large et spot. Autonomie 6 heures.',arg:'La frontale de référence. Puissante, rechargeable, légère. Indispensable.',img:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80'},
-  {id:'TEX-002',cat:'Textile personnalisé',nom:'Polo KappaFlex coton piqué',ref:'TEX-002',pu:16,pv:34,tva:20,marge:53,stock:0,fourn:'KappaFlex Textile',desc:'Polo 100% coton piqué, broderie poitrine incluse. Déclinable en 15 coloris. Min 10 unités.',arg:'La tenue pro des commerciaux et accueil. Qualité coton, finitions soignées.',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&q=80'},
-  {id:'TEX-003',cat:'Textile personnalisé',nom:'Veste softshell KappaFlex',ref:'TEX-003',pu:42,pv:79,tva:20,marge:47,stock:0,fourn:'KappaFlex Textile',desc:'Softshell coupe-vent, broderie dos ou poitrine incluse. Tailles XS à 4XL. Min 5 unités.',arg:'La veste événementielle. Impact visuel fort, confort toute l\'année.',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&q=80'},
+
+  // ═══ RUNNING / TRAIL ═══
+  {id:'RUN-001',cat:'Running / Trail',nom:'Salomon Speedcross 6',ref:'SAL-SC6-42',pu:89,pv:149,tva:20,mar:40,stock:24,seuil:5,desc:'Chaussure trail emblématique — semelle Contagrip, drop 10mm, crampon agressif. Idéale terrain meuble.',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80'},
+  {id:'RUN-002',cat:'Running / Trail',nom:'Brooks Ghost 15',ref:'BRK-GH15-41',pu:69,pv:119,tva:20,mar:42,stock:18,seuil:4,desc:'Chaussure route polyvalente — amorti DNA LOFT, neutre, idéale débutant et coureur régulier.',img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80'},
+  {id:'RUN-003',cat:'Running / Trail',nom:'HOKA Speedgoat 5',ref:'HOK-SG5-43',pu:98,pv:169,tva:20,mar:42,stock:12,seuil:3,desc:'Trail maximaliste — amorti extrême, semelle Vibram Megagrip, pour trails longues distances.',img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80'},
+  {id:'RUN-004',cat:'Running / Trail',nom:'Salomon Sense Ride 5',ref:'SAL-SR5-42',pu:78,pv:139,tva:20,mar:44,stock:15,seuil:4,desc:'Trail polyvalent — légèreté et amorti équilibrés. Parfait pour les terrains mixtes.',img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80'},
+  {id:'RUN-005',cat:'Running / Trail',nom:'Nike React Pegasus Trail 4',ref:'NIK-RPT4-44',pu:75,pv:129,tva:20,mar:42,stock:20,seuil:5,desc:'Trail accessible — semelle React, bonne accroche, confort route et sentier.',img:'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&q=80'},
+  {id:'RUN-006',cat:'Running / Trail',nom:'Garmin Forerunner 55',ref:'GAR-FR55',pu:149,pv:229,tva:20,mar:35,stock:8,seuil:2,desc:'Montre GPS running — suivi fréquence cardiaque, plans entraînement, autonomie 2 semaines.',img:'https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=500&q=80'},
+  {id:'RUN-007',cat:'Running / Trail',nom:'Garmin Forerunner 265',ref:'GAR-FR265',pu:279,pv:449,tva:20,mar:38,stock:5,seuil:2,desc:'Montre GPS premium — AMOLED, récupération HRV, cartographie, autonomie 13h GPS.',img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80'},
+  {id:'RUN-008',cat:'Running / Trail',nom:'Ceinture hydratation Nathan Trail Mix',ref:'NAT-TM-S',pu:28,pv:55,tva:20,mar:49,stock:22,seuil:5,desc:'Ceinture trail 1,5L — poche principale + 2 poches avant, compatible flasques souples.',img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=80'},
+  {id:'RUN-009',cat:'Running / Trail',nom:'Chaussettes Stance Trail Crew',ref:'STA-TC-M',pu:8,pv:18,tva:20,mar:56,stock:48,seuil:10,desc:'Chaussettes trail mérinos — anti-ampoules, rembourrage ciblé, régulation thermique.',img:'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500&q=80'},
+  {id:'RUN-010',cat:'Running / Trail',nom:"Crème anti-frottement Squirrel's Nut Butter",ref:'SNB-60G',pu:9,pv:19,tva:20,mar:53,stock:35,seuil:8,desc:'Crème anti-frottement naturelle — sans paraben, protection longue durée, format 60g.',img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80'},
+
+  // ═══ RANDONNÉE / OUTDOOR ═══
+  {id:'RAN-001',cat:'Randonnée / Outdoor',nom:'Salomon X Ultra 4 GTX',ref:'SAL-XU4-42',pu:105,pv:175,tva:20,mar:40,stock:14,seuil:3,desc:'Chaussure randonnée — membrane Gore-Tex, semelle Contagrip, protection orteil.',img:'https://images.unsplash.com/photo-1520316587275-5e4f06f355e3?w=500&q=80'},
+  {id:'RAN-002',cat:'Randonnée / Outdoor',nom:'Osprey Talon 22L',ref:'OSP-T22',pu:79,pv:139,tva:20,mar:43,stock:10,seuil:3,desc:'Sac à dos trail 22L — harnais AirSpeed, poche hydratation 3L compatible, 680g.',img:'https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=500&q=80'},
+  {id:'RAN-003',cat:'Randonnée / Outdoor',nom:'Bâtons Black Diamond Trail Ergo Cork',ref:'BD-TEC',pu:45,pv:89,tva:20,mar:49,stock:16,seuil:4,desc:'Bâtons randonnée — poignée liège, réglable 62-125cm, embouts interchangeables.',img:'https://images.unsplash.com/photo-1551632811-561732d1e306?w=500&q=80'},
+  {id:'RAN-004',cat:'Randonnée / Outdoor',nom:'Tente Quechua 2 Secondes 3P',ref:'QUE-2S3P',pu:89,pv:169,tva:20,mar:47,stock:6,seuil:2,desc:'Tente 3 places — montage 2 secondes, waterproof 2000mm, double toit.',img:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80'},
+  {id:'RAN-005',cat:'Randonnée / Outdoor',nom:'Lampe frontale Petzl Actik Core 450lm',ref:'PET-AC',pu:32,pv:59,tva:20,mar:46,stock:20,seuil:5,desc:'Frontale polyvalente — 450 lumens, rechargeable USB, modes rouge et blanc.',img:'https://images.unsplash.com/photo-1519817650390-64a93db51149?w=500&q=80'},
+  {id:'RAN-006',cat:'Randonnée / Outdoor',nom:'Gourde Salomon Soft Flask 500ml',ref:'SAL-SF500',pu:14,pv:28,tva:20,mar:50,stock:30,seuil:6,desc:'Flasque souple 500ml — sans BPA, compatible ceinture trail, bouchon bite valve.',img:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&q=80'},
+  {id:'RAN-007',cat:'Randonnée / Outdoor',nom:'Couverture de survie Millet',ref:'MIL-CSV',pu:4,pv:9,tva:20,mar:56,stock:50,seuil:10,desc:'Couverture survie dorée/argentée — 160×210cm, 42g, protection hypothermie.',img:'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&q=80'},
+  {id:'RAN-008',cat:'Randonnée / Outdoor',nom:'Lunettes de soleil Julbo Aerospeed',ref:'JUL-AS',pu:89,pv:159,tva:20,mar:44,stock:8,seuil:2,desc:'Lunettes sport — verres Reactiv photochromiques, monture incassable, protection UV400.',img:'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&q=80'},
+
+  // ═══ NUTRITION / ÉNERGIE ═══
+  {id:'NUT-001',cat:'Nutrition / Énergie',nom:'Gel énergétique Overstims Antro x10',ref:'OVS-GEL10',pu:14,pv:28,tva:5.5,mar:50,stock:60,seuil:12,desc:'Gels énergie x10 — glucides complexes + simples, saveurs variées, consistance fluide.',img:'https://images.unsplash.com/photo-1612532275214-e4ca76d0e4d1?w=500&q=80'},
+  {id:'NUT-002',cat:'Nutrition / Énergie',nom:'Barres Mulebar Énergie x12',ref:'MUL-BAR12',pu:14,pv:26,tva:5.5,mar:46,stock:45,seuil:10,desc:'Barres énergie x12 — céréales naturelles, sans gluten, 170kcal/barre.',img:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80'},
+  {id:'NUT-003',cat:'Nutrition / Énergie',nom:'Poudre de récupération SIS Rego x15',ref:'SIS-REG15',pu:28,pv:52,tva:5.5,mar:46,stock:25,seuil:5,desc:'Poudre récupération x15 doses — protéines + glucides, saveur chocolat/vanille.',img:'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&q=80'},
+  {id:'NUT-004',cat:'Nutrition / Énergie',nom:'Pastilles électrolytes Precision Hydration x100',ref:'PH-ELE100',pu:12,pv:22,tva:5.5,mar:45,stock:40,seuil:8,desc:'Pastilles hydratation x100 — sodium 500mg, sans sucre, pour boisson isotonique.',img:'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=500&q=80'},
+  {id:'NUT-005',cat:'Nutrition / Énergie',nom:"Sachet blanc d'œuf déshydraté Prozis 500g",ref:'PRZ-ALB500',pu:18,pv:34,tva:5.5,mar:47,stock:22,seuil:4,desc:"Protéines blanc d'œuf — 81g protéines/100g, zero sucre, dissolubilité rapide.",img:'https://images.unsplash.com/photo-1560787313-5dff3307e257?w=500&q=80'},
+  {id:'NUT-006',cat:'Nutrition / Énergie',nom:'Boisson isotonique Aptonia Orange x8',ref:'APT-ISO8',pu:8,pv:16,tva:5.5,mar:50,stock:55,seuil:12,desc:'Boisson isotonique x8 sachets — 47g glucides, vitamines C et B6, saveur orange.',img:'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&q=80'},
+
+  // ═══ VÊTEMENTS TECHNIQUES ═══
+  {id:'VET-001',cat:'Vêtements techniques',nom:'Veste imperméable Salomon Bonatti',ref:'SAL-BON-M',pu:129,pv:229,tva:20,mar:44,stock:10,seuil:3,desc:'Veste trail imperméable — membrane C-KNIT 2.5L, légère 250g, poches zippées.',img:'https://images.unsplash.com/photo-1544966503-7cc5f8f5f8e8?w=500&q=80'},
+  {id:'VET-002',cat:'Vêtements techniques',nom:'Short trail Kalenji 2en1 Homme',ref:'KAL-S2-M',pu:19,pv:39,tva:20,mar:51,stock:28,seuil:6,desc:'Short 2en1 trail — sous-short intégré, poche zippée dos, tissu séchage rapide.',img:'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500&q=80'},
+  {id:'VET-003',cat:'Vêtements techniques',nom:'Collant compression Skins A400',ref:'SKI-A400-S',pu:55,pv:99,tva:20,mar:44,stock:12,seuil:3,desc:'Collant compression — dégradé de pression 70D, récupération musculaire, anti-odeurs.',img:'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&q=80'},
+  {id:'VET-004',cat:'Vêtements techniques',nom:'T-shirt technique Odlo Active Spine',ref:'ODL-AS-M',pu:24,pv:49,tva:20,mar:51,stock:30,seuil:6,desc:'T-shirt running — tissu Ceramicool, évacuation perspiration, UPF 50+.',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80'},
+  {id:'VET-005',cat:'Vêtements techniques',nom:'Doudoune sans manches Millet Trilogy',ref:'MIL-TRI-M',pu:89,pv:159,tva:20,mar:44,stock:8,seuil:2,desc:'Doudoune sans manches — duvet 700cuin, poids 180g, compressible en sac paume.',img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80'},
+  {id:'VET-006',cat:'Vêtements techniques',nom:'Brassière sport Nike Indy',ref:'NIK-IND-S',pu:28,pv:55,tva:20,mar:49,stock:18,seuil:4,desc:'Brassière running — maintien léger à moyen, bretelles réglables, tissu Dri-FIT.',img:'https://images.unsplash.com/photo-1518310383802-640c2de311b6?w=500&q=80'},
+  {id:'VET-007',cat:'Vêtements techniques',nom:'Bonnet laine mérinos Buff',ref:'BUF-MER',pu:18,pv:36,tva:20,mar:50,stock:25,seuil:5,desc:'Bonnet mérinos — thermorégulation naturelle, anti-odeurs, taille unique.',img:'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=500&q=80'},
+  {id:'VET-008',cat:'Vêtements techniques',nom:'Guêtres trail Raidlight',ref:'RAI-GUE-M',pu:22,pv:44,tva:20,mar:50,stock:16,seuil:4,desc:'Guêtres trail — protection cailloux et boue, fixation lacet + scratch, ultra-légères.',img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'},
+
+  // ═══ FITNESS ═══
+  {id:'FIT-001',cat:'Fitness',nom:'Tapis yoga Odlo Pro 6mm',ref:'ODL-TY6',pu:29,pv:59,tva:20,mar:51,stock:15,seuil:3,desc:'Tapis yoga 6mm — antidérapant double face, alignement central, sangle transport.',img:'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=500&q=80'},
+  {id:'FIT-002',cat:'Fitness',nom:'Kettlebell fonte 12kg',ref:'KET-12',pu:22,pv:45,tva:20,mar:51,stock:10,seuil:2,desc:'Kettlebell fonte gris anthracite — poignée vinylisée, base plate antidérapante.',img:'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=500&q=80'},
+  {id:'FIT-003',cat:'Fitness',nom:'Bandes élastiques Bodytone x5',ref:'BOD-EL5',pu:18,pv:39,tva:20,mar:54,stock:22,seuil:5,desc:'Set 5 bandes résistance — de très légère à très forte, en latex naturel, sac fourni.',img:'https://images.unsplash.com/photo-1598289431512-b97b0917afbe?w=500&q=80'},
+  {id:'FIT-004',cat:'Fitness',nom:'Corde à sauter Crossfit RPM Speed',ref:'RPM-SPD',pu:32,pv:65,tva:20,mar:51,stock:12,seuil:3,desc:'Corde à sauter compétition — câble acier 3mm, roulements à billes, poignées ergonomiques.',img:'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=500&q=80'},
+  {id:'FIT-005',cat:'Fitness',nom:'Foam roller Blackroll Standard 45cm',ref:'BLK-S45',pu:24,pv:49,tva:20,mar:51,stock:14,seuil:3,desc:'Foam roller massage — densité standard, surface texturée, diamètre 15cm.',img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80'},
+  {id:'FIT-006',cat:'Fitness',nom:'Tapis sol fitness 15mm Domyos',ref:'DOM-TF15',pu:28,pv:55,tva:20,mar:49,stock:10,seuil:2,desc:'Tapis fitness 15mm — mousse haute densité, 180×60cm, sangles transport incluses.',img:'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=500&q=80'},
+
+  // ═══ SPORTS COLLECTIFS ═══
+  {id:'COL-001',cat:'Sports collectifs',nom:'Ballon football Trigon Match Pro',ref:'TRI-FMP5',pu:22,pv:49,tva:20,mar:55,stock:18,seuil:4,desc:'Ballon football T5 — homologué FIFA Quality Pro, 32 panneaux cousus main.',img:'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&q=80'},
+  {id:'COL-002',cat:'Sports collectifs',nom:'Maillot basketball réversible x1',ref:'BAS-REV-M',pu:18,pv:38,tva:20,mar:53,stock:25,seuil:5,desc:'Maillot réversible basket — polyester séchage rapide, col V, personnalisable.',img:'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&q=80'},
+  {id:'COL-003',cat:'Sports collectifs',nom:'Dossard floqué x10',ref:'DOS-FLO10',pu:18,pv:38,tva:20,mar:53,stock:40,seuil:8,desc:'Pack 10 dossards floqués — polypropylène léger, numéros 1-10, lavable machine.',img:'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=500&q=80'},
+  {id:'COL-004',cat:'Sports collectifs',nom:'Filet de but football 7.32m',ref:'FIL-FUT',pu:45,pv:89,tva:20,mar:49,stock:8,seuil:2,desc:'Filet but foot 7.32×2.44m — maille PP 3mm, profondeur 150cm, crochets inclus.',img:'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=500&q=80'},
+
+  // ═══ TEXTILE PERSONNALISÉ ═══
+  {id:'TEX-001',cat:'Textile personnalisé',nom:'Maillot floqué KappaFlex x1',ref:'KAP-MAI',pu:13,pv:28,tva:20,mar:54,stock:100,seuil:20,desc:'Maillot polyester 150g — flocage nom + numéro inclus, séchage rapide, col V ou rond.',img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&q=80'},
+  {id:'TEX-002',cat:'Textile personnalisé',nom:'Polo KappaFlex coton piqué x1',ref:'KAP-POL',pu:16,pv:34,tva:20,mar:53,stock:80,seuil:15,desc:'Polo coton piqué 200g — broderie logo entreprise, 3 boutons, col côtelé.',img:'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&q=80'},
+  {id:'TEX-003',cat:'Textile personnalisé',nom:'Veste softshell KappaFlex x1',ref:'KAP-SOF',pu:42,pv:79,tva:20,mar:47,stock:50,seuil:10,desc:'Veste softshell — sérigraphie ou broderie logo, déperlant, 3 poches zippées.',img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&q=80'},
+
 ];
 const CLIENTS=[
   // ═══ B2B — Comités d'entreprise ═══
@@ -1614,11 +1826,23 @@ function finishLogin(mail,cls,poste,nomParam){
   const s=gS();
   const isNew=!s[mail];
   document.getElementById('login').classList.remove('on');
-  if(isNew&&cls!=='enseignant')startOb();else showApp();
+  if(isNew&&cls!=='enseignant'){startOb();}
+  else if(cls==='enseignant'){
+    // Onboarding enseignant si première connexion
+    const s=gS();
+    if(!s['__ens_ob_done']){startObEns();}
+    else{showApp();}
+  }
+  else{showApp();}
 }
 function startOb(){
   document.getElementById('onboarding').classList.add('on');
   document.getElementById('ob-prenom').textContent=CU.nom.split(' ')[0];
+  // Peupler le badge employé
+  const badgeNom=document.getElementById('ob-badge-nom');
+  const badgePoste=document.getElementById('ob-badge-poste');
+  if(badgeNom) badgeNom.textContent=CU.nom||'—';
+  if(badgePoste) badgePoste.textContent=CU.poste||'Collaborateur(trice)';
   obStep=0;updateOb();
 }
 function obNext(){obStep++;if(obStep>=4){skipOb();return}updateOb()}
@@ -1641,6 +1865,7 @@ function showApp(){
   const ens=CU.classe==='enseignant';
   document.body.classList.toggle('ens-mode',ens);
   ['ns-ens','ni-mdj','ni-cl','ni-gn'].forEach(id=>document.getElementById(id).style.display=ens?'':'none');
+  const btnGuide=document.getElementById('btn-guide-ens');if(btnGuide)btnGuide.style.display=ens?'block':'none';
   const ak=localStorage.getItem('laboro_ak')||'';
   if(document.getElementById('api-inp'))document.getElementById('api-inp').value=ak;
   // Message personnalisé
@@ -3013,6 +3238,58 @@ function renderFichePoste(key) {
 }
 
 
+
+// ═══ ONBOARDING ENSEIGNANT ═══
+let obEnsStep = 0;
+
+function revoirObEns(){
+  // Réinitialiser le flag pour que l'onboarding se redéclenche
+  const s=gS();
+  delete s['__ens_ob_done'];
+  sS(s);
+  startObEns();
+}
+
+function startObEns() {
+  obEnsStep = 0;
+  const prenom = CU.nom.split(' ')[0];
+  const el = document.getElementById('ob-ens-prenom');
+  if (el) el.textContent = prenom;
+  document.getElementById('ob-ens').style.display = 'flex';
+  showObEnsStep(0);
+}
+
+function showObEnsStep(step) {
+  // Masquer toutes les étapes
+  [0,1,2,3].forEach(i => {
+    const p = document.getElementById('obe'+i);
+    const d = document.getElementById('obed'+i);
+    if (p) p.classList.remove('on');
+    if (d) { d.classList.remove('cur'); d.style.width = '10px'; }
+  });
+  // Afficher l'étape courante
+  const cur = document.getElementById('obe'+step);
+  const dot = document.getElementById('obed'+step);
+  if (cur) cur.classList.add('on');
+  if (dot) { dot.classList.add('cur'); dot.style.width = '28px'; }
+  obEnsStep = step;
+}
+
+function nextObEns(step) { showObEnsStep(step); }
+function prevObEns(step) { showObEnsStep(step); }
+
+function skipObEns() {
+  document.getElementById('ob-ens').style.display = 'none';
+  // Marquer comme vu dans localStorage
+  const s = gS();
+  if (!s['__ens_ob_done']) {
+    s['__ens_ob_done'] = true;
+    sS(s);
+  }
+  showApp();
+}
+
+
 // ═══ PORTFOLIO D'ACTIVITÉS PROFESSIONNELLES ═══
 const CCF_MAP={
   'E31':['C1.1','C1.2','C1.3'],
@@ -3231,6 +3508,31 @@ body{font-family:'Segoe UI',system-ui,sans-serif;font-size:11pt;color:#1a1a1a;ba
 .cl-stat-chip{flex:1;background:var(--gc);border-radius:7px;padding:7px 10px;text-align:center}
 .cl-stat-chip .sv{font-size:14px;font-weight:800;color:var(--gr)}
 .cl-stat-chip .sl{font-size:9px;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-top:1px}
+
+/* ONBOARDING ENSEIGNANT */
+#ob-ens{background:linear-gradient(135deg,#0A2540,#0C3D6E);align-items:center;justify-content:center;padding:2rem}
+.ob-ens-w{width:100%;max-width:760px}
+.ob-ens-pg{display:flex;gap:8px;justify-content:center;margin-bottom:32px}
+.ob-ens-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s;cursor:pointer}
+.ob-ens-dot.cur{background:#fff;width:28px;border-radius:5px}
+.ob-ens-p{display:none;animation:fadeInUp .35s ease}
+.ob-ens-p.on{display:block}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ob-ens-card{background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.15);border-radius:16px;padding:32px;margin-bottom:20px}
+.ob-ens-tag{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.ob-ens-titre{font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.ob-ens-sub{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:20px}
+.ob-ens-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px}
+.ob-ens-feat{background:rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;border-left:3px solid var(--vt)}
+.ob-ens-feat-ico{font-size:20px;margin-bottom:6px}
+.ob-ens-feat-t{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px}
+.ob-ens-feat-d{font-size:11px;color:rgba(255,255,255,.6);line-height:1.4}
+.ob-ens-nav{display:flex;justify-content:space-between;align-items:center}
+.ob-ens-skip{font-size:11px;color:rgba(255,255,255,.4);cursor:pointer;padding:8px;background:none;border:none}
+.ob-ens-skip:hover{color:rgba(255,255,255,.7)}
+.ob-ens-next{padding:12px 28px;background:#fff;color:#0C3D6E;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s}
+.ob-ens-next:hover{background:var(--bc)}
+.ob-ens-mdp{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 16px;font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;margin-bottom:12px}
 </style>
 </head>
 <body>
