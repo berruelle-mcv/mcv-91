@@ -5,6 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plateforme interne — Espace collaborateur</title>
 <link rel="stylesheet" href="style.css">
+<script>
+// ================================================
+//   LABORO — Chargement configuration filière
+//   Le moteur lit config.json avant tout démarrage
+// ================================================
+var LABORO_CONFIG = null;
+
+async function loadConfig() {
+  try {
+    const response = await fetch('config.json');
+    LABORO_CONFIG = await response.json();
+    console.log('[LABORO] Config chargée :', LABORO_CONFIG.filiere, 'v' + LABORO_CONFIG.version);
+    // Appliquer le nom de la plateforme
+    document.title = LABORO_CONFIG.nom_plateforme || 'LABORO';
+    // Appliquer les couleurs primaires
+    if (LABORO_CONFIG.couleurs) {
+      document.documentElement.style.setProperty('--laboro-primary', LABORO_CONFIG.couleurs.primaire);
+      document.documentElement.style.setProperty('--laboro-secondary', LABORO_CONFIG.couleurs.secondaire);
+    }
+  } catch(e) {
+    console.warn('[LABORO] config.json non trouvé — valeurs par défaut utilisées');
+    LABORO_CONFIG = {
+      filiere: 'mcv',
+      version: '1.0.0',
+      nom_plateforme: 'LABORO',
+      entreprise: { nom: 'LABORO Sport & Outdoor', ville: 'Évry-Courcouronnes' },
+      couleurs: { primaire: '#1A2E4A', secondaire: '#0F5B8A' }
+    };
+  }
+}
+
+// Charger la config dès que le DOM est prêt
+document.addEventListener('DOMContentLoaded', loadConfig);
+</script>
 <script src="data/competences.js"></script>
 <script src="data/missions.js"></script>
 <script src="data/catalogue.js"></script>
