@@ -189,13 +189,15 @@ function showApp(){
   const niE2 = document.getElementById('ni-e2agec');
   const nsPrepa = document.querySelector('.ns-prepa');
   const niE2Pvoc = document.getElementById('ni-e2pvoc');
+  // E2 AGEC : visible uniquement pour les Term. AGEC
   if(niE2){
-    const isAgec = !ens && (CU.classe.includes('AGEC') || CU.classe.includes('2nde') || CU.classe==='eleve');
-    niE2.style.display = isAgec ? 'block' : 'none';
+    const isTermAgec = !ens && CU.classe === 'Term-AGEC';
+    niE2.style.display = isTermAgec ? 'block' : 'none';
   }
+  // E2 PVOC : visible uniquement pour les Term. PVOC
   if(niE2Pvoc){
-    const isPvoc = !ens && (CU.classe.includes('PVOC') || CU.classe.includes('2nde') || CU.classe==='eleve');
-    niE2Pvoc.style.display = isPvoc ? 'block' : 'none';
+    const isTermPvoc = !ens && CU.classe === 'Term-PVOC';
+    niE2Pvoc.style.display = isTermPvoc ? 'block' : 'none';
   }
   // Visibilité nav enseignant
   const niMdj = document.getElementById('ni-mdj');
