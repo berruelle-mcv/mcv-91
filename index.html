@@ -19,6 +19,9 @@ async function loadConfig() {
     console.log('[LABORO] Config chargée :', LABORO_CONFIG.filiere, 'v' + LABORO_CONFIG.version);
     // Appliquer le nom de la plateforme
     document.title = LABORO_CONFIG.nom_plateforme || 'LABORO';
+    // Afficher la version dans l'interface
+    const vEls = document.querySelectorAll('#app-version, #tb-version');
+    vEls.forEach(el => { if(el) el.textContent = 'v' + LABORO_CONFIG.version; });
     // Appliquer les couleurs primaires
     if (LABORO_CONFIG.couleurs) {
       document.documentElement.style.setProperty('--laboro-primary', LABORO_CONFIG.couleurs.primaire);
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
           <div class="st"><div class="st-v">100%</div><div class="st-l">Référentiel</div></div>
         </div>
         <div style="margin-top:28px;padding-top:20px;border-top:.5px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.4)">
-          Une création de <strong style="color:rgba(255,255,255,.7)">Pascal Berruelle</strong> — Enseignant PLP Bac Pro MCV · Essonne (91) · 2026
+          Une création de <strong style="color:rgba(255,255,255,.7)">Pascal Berruelle</strong> — Enseignant PLP Bac Pro MCV · Essonne (91) · 2026 · <span id="app-version" style="color:rgba(255,255,255,.5)">v1.0.0</span>
           <div style="margin-top:16px">
             <button onclick="showVitrine()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);padding:8px 18px;border-radius:8px;font-size:11px;cursor:pointer;font-weight:600;letter-spacing:.03em">
               ✦ Découvrir LABORO — Espace prescripteurs
