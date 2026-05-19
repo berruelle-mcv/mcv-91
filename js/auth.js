@@ -187,7 +187,6 @@ function showApp(){
   if(ens)populateMDJSelect();
   // Visibilité nav E2 AGEC -- visible pour élèves AGEC et 2nde (tous sauf PVOC pur)
   const niE2 = document.getElementById('ni-e2agec');
-  const nsPrepa = document.querySelector('.ns-prepa');
   const niE2Pvoc = document.getElementById('ni-e2pvoc');
   // E2 AGEC : visible uniquement pour les Term. AGEC
   const isTermAgec = !ens && CU.classe.toUpperCase() === 'TERM-AGEC';
