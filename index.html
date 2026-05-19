@@ -3672,7 +3672,14 @@ function openMission(id){
     html+=`<div class="imprevu"><div class="imprevu-l"><div class="imprevu-dot"></div>Situation imprévue — niveau Professionnel compétent/Professionnel performant requis</div><div class="imprevu-txt"><strong>${imprev.titre} :</strong> ${imprev.txt}</div><div class="qi"><span class="qn">⚡</span>${imprev.q}<textarea class="zone-rep${siSaved?' saved':''}" id="${siqid}" placeholder="Gère cette situation imprévue…" oninput="autoSaveRep('${id}','${siqid}',this)">${siSaved}</textarea></div></div>`;
   }
   document.getElementById('mo-mission').innerHTML=html;
-  showCoupDePouce(m);
+  // Afficher le bouton coup de pouce si une ressource existe
+  const cpBtn = document.getElementById('cp-btn');
+  if(cpBtn){
+    const resKeyCp = m.comp.startsWith('ACC')?'ACC':m.comp.startsWith('G4A')?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
+    const resCp = RES[resKeyCp];
+    if(resCp){ cpBtn.classList.add('visible'); cpBtn.dataset.missionId = m.id; }
+    else { cpBtn.classList.remove('visible'); }
+  }
   // Feedback existant
   const fb=ud.missions[id]?.feedback;
   const tabFb=document.getElementById('tab-fb');
@@ -3721,6 +3728,23 @@ function sauvegarderEtFermer(){
 function renderFb(fb){
   const nc=fb.note>=17?'ni-h':fb.note>=11?'ni-m':'ni-l';
   return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ${nc}">${fb.note}/20</span></div>${fb.texte}</div>`;
+}
+function openCoupDePouce(){
+  const overlay = document.getElementById('cp-overlay');
+  if(!overlay) return;
+  const cpBtn = document.getElementById('cp-btn');
+  const mId = cpBtn ? cpBtn.dataset.missionId : null;
+  if(mId && CM){
+    const resKey = CM.comp.startsWith('ACC')?'ACC':CM.comp.startsWith('G4A')?'G4A':CM.comp.startsWith('G4B')?'G4B':CM.comp.startsWith('B4.1')?'B4.1':CM.comp.startsWith('B4.2')?'B4.2':CM.comp.startsWith('B4.3')?'B4.3':CM.comp.startsWith('B4.4')?'B4.4':CM.comp.startsWith('B4.5')?'B4.5':CM.comp;
+    const res = RES[resKey];
+    const cpContent = document.getElementById('cp-content');
+    if(cpContent && res){ cpContent.innerHTML = '<div class="res-t" style="font-size:13px;font-weight:700;margin-bottom:10px">'+res.t+'</div><div class="res-b">'+res.c+'</div>'; }
+  }
+  overlay.classList.add('open');
+}
+function closeCoupDePouce(){
+  const overlay = document.getElementById('cp-overlay');
+  if(overlay) overlay.classList.remove('open');
 }
 function closeMo(){document.getElementById('mo').classList.remove('open');document.getElementById('mo').classList.remove('on');moIsMinimized=false;moIsFullscreen=false;const tb=document.getElementById('mo-taskbar');if(tb)tb.style.display='none';const modal=document.querySelector('.modal');if(modal){modal.style.display='none';modal.style.borderRadius='14px';modal.style.resize='both';}}
 function moTab(i,el){
