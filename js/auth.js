@@ -190,21 +190,13 @@ function showApp(){
   const nsPrepa = document.querySelector('.ns-prepa');
   const niE2Pvoc = document.getElementById('ni-e2pvoc');
   // E2 AGEC : visible uniquement pour les Term. AGEC
+  const isTermAgec = !ens && CU.classe.toUpperCase() === 'TERM-AGEC';
+  const isTermPvoc = !ens && CU.classe.toUpperCase() === 'TERM-PVOC';
+  if(niE2) niE2.style.display = isTermAgec ? 'block' : 'none';
+  if(niE2Pvoc) niE2Pvoc.style.display = isTermPvoc ? 'block' : 'none';
+  // Titre "Préparation examen" visible pour toutes les Terminales
   const nsPrepa = document.getElementById('ns-prepa');
-  if(niE2){
-    const isTermAgec = !ens && CU.classe.toUpperCase() === 'TERM-AGEC';
-    niE2.style.display = isTermAgec ? 'block' : 'none';
-  }
-  // E2 PVOC : visible uniquement pour les Term. PVOC
-  if(niE2Pvoc){
-    const isTermPvoc = !ens && CU.classe.toUpperCase() === 'TERM-PVOC';
-    niE2Pvoc.style.display = isTermPvoc ? 'block' : 'none';
-  }
-  // Titre "Préparation examen" visible seulement si au moins un E2 est visible
-  if(nsPrepa){
-    const isTerm = !ens && (CU.classe.toUpperCase() === 'TERM-AGEC' || CU.classe.toUpperCase() === 'TERM-PVOC');
-    nsPrepa.style.display = isTerm ? 'block' : 'none';
-  }
+  if(nsPrepa) nsPrepa.style.display = (isTermAgec || isTermPvoc) ? 'block' : 'none';
   // Visibilité nav enseignant
   const niMdj = document.getElementById('ni-mdj');
   const niCl = document.getElementById('ni-cl');
