@@ -1,0 +1,83 @@
+{
+  "filiere": "mcv",
+  "version": "1.0.0",
+  "nom_plateforme": "LABORO",
+  "slogan": "Votre espace professionnel immersif",
+
+  "entreprise": {
+    "nom": "LABORO Sport & Outdoor",
+    "ville": "Évry-Courcouronnes",
+    "departement": "91",
+    "secteur": "Sport & Outdoor",
+    "description": "Enseigne spécialisée dans la vente d'équipements sportifs"
+  },
+
+  "personnages": {
+    "responsable": {
+      "prenom": "Romain",
+      "nom": "Sauzet",
+      "poste": "Responsable commercial",
+      "avatar": "RS"
+    },
+    "tutrice": {
+      "prenom": "Nina",
+      "nom": "Chevalier",
+      "poste": "Responsable prospection",
+      "avatar": "NC"
+    },
+    "createur": {
+      "prenom": "Pascal",
+      "nom": "Berruelle",
+      "poste": "Formateur LABORO"
+    }
+  },
+
+  "niveaux": [
+    { "id": "2nde",      "label": "2nde",        "couleur": "#2E7D32", "ordre": 1 },
+    { "id": "1ere-AGEC", "label": "1ère AGEC",   "couleur": "#1565C0", "ordre": 2 },
+    { "id": "1ere-PVOC", "label": "1ère PVOC",   "couleur": "#1565C0", "ordre": 3 },
+    { "id": "Term-AGEC", "label": "Term. AGEC",  "couleur": "#6A1B4D", "ordre": 4 },
+    { "id": "Term-PVOC", "label": "Term. PVOC",  "couleur": "#6A1B4D", "ordre": 5 }
+  ],
+
+  "options": [
+    { "id": "AGEC", "label": "Animation et Gestion de l'Espace Commercial" },
+    { "id": "PVOC", "label": "Prospection et Valorisation de l'Offre Commerciale" }
+  ],
+
+  "examens": [
+    { "id": "E31", "label": "E31 — Vente et suivi de clientèle", "niveaux": ["1ere-AGEC", "1ere-PVOC", "Term-AGEC", "Term-PVOC"] },
+    { "id": "E32", "label": "E32 — Animation et dynamisation de l'offre", "niveaux": ["1ere-AGEC", "Term-AGEC"] },
+    { "id": "E33", "label": "E33 — Prospection et valorisation", "niveaux": ["1ere-PVOC", "Term-PVOC"] },
+    { "id": "E2",  "label": "E2 — Analyse et résolution de situations professionnelles", "niveaux": ["Term-AGEC", "Term-PVOC"] }
+  ],
+
+  "couleurs": {
+    "primaire": "#1A2E4A",
+    "secondaire": "#0F5B8A",
+    "accent_2nde": "#2E7D32",
+    "accent_1ere": "#1565C0",
+    "accent_term": "#6A1B4D"
+  },
+
+  "score": {
+    "poids_missions": 60,
+    "poids_competences": 20,
+    "poids_reflexivite": 20,
+    "paliers": [
+      { "min": 0,   "max": 24,  "label": "Stagiaire",          "emoji": "🌱" },
+      { "min": 25,  "max": 49,  "label": "Assistant commercial","emoji": "📋" },
+      { "min": 50,  "max": 74,  "label": "Conseiller de vente", "emoji": "💼" },
+      { "min": 75,  "max": 89,  "label": "Commercial confirmé", "emoji": "🏆" },
+      { "min": 90,  "max": 100, "label": "Expert LABORO",       "emoji": "⭐" }
+    ]
+  },
+
+  "fichiers_data": {
+    "missions": "data/missions.js",
+    "competences": "data/competences.js",
+    "catalogue": "data/catalogue.js",
+    "e2_agec": "data/e2-agec.js",
+    "e2_pvoc": "data/e2-pvoc.js"
+  }
+}
