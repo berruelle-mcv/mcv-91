@@ -1,3 +1,5 @@
+function addClient(){ ouvrirFormulaireProspect(null); }
+
 // ================================================
 //   LABORO Sport & Outdoor — Clients & Prospects
 //   Gestion fichier clients, prospects, charte LABORO
@@ -185,17 +187,7 @@ function renderClients(){
     </div></div>`;
   }).join('')}</div>`;
   document.getElementById('fiche-client').classList.remove('on');
-  // Bouton ajout prospect
-  const addBtn = document.getElementById('btn-add-prospect');
-  if(!addBtn){
-    const btn = document.createElement('button');
-    btn.id = 'btn-add-prospect';
-    btn.innerHTML = '+ Ajouter un prospect';
-    btn.style.cssText = 'margin:12px 0;padding:10px 20px;background:var(--bl);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;width:100%';
-    btn.onclick = function(){ ouvrirFormulaireProspect(null); };
-    const cl = document.getElementById('client-list');
-    if(cl) cl.parentNode.insertBefore(btn, cl);
-  }
+  // Le bouton + Ajouter un prospect est déjà dans le HTML (panel-clients)
 }
 
 function ouvrirFormulaireProspect(prospect){
