@@ -1,0 +1,77 @@
+{
+  "filiere": "mco",
+  "version": "1.0.0",
+  "nom_plateforme": "LABORO MCO",
+  "slogan": "Votre espace professionnel immersif — BTS MCO",
+
+  "entreprise": {
+    "nom": "OPTIMA Distribution",
+    "ville": "Lyon",
+    "departement": "69",
+    "secteur": "Grande distribution & commerce organisé",
+    "description": "Enseigne de distribution multicanale spécialisée dans l'équipement de la maison"
+  },
+
+  "personnages": {
+    "responsable": {
+      "prenom": "Marc",
+      "nom": "Fontaine",
+      "poste": "Directeur commercial",
+      "avatar": "MF"
+    },
+    "tutrice": {
+      "prenom": "Sophie",
+      "nom": "Laroche",
+      "poste": "Responsable unité commerciale",
+      "avatar": "SL"
+    },
+    "createur": {
+      "prenom": "Pascal",
+      "nom": "Berruelle",
+      "poste": "Formateur LABORO"
+    }
+  },
+
+  "niveaux": [
+    { "id": "BTS1", "label": "BTS 1ère année", "couleur": "#0F5B8A", "ordre": 1 },
+    { "id": "BTS2", "label": "BTS 2ème année", "couleur": "#6A1B4D", "ordre": 2 }
+  ],
+
+  "options": [
+    { "id": "MCO", "label": "Management Commercial Opérationnel" }
+  ],
+
+  "examens": [
+    { "id": "E4", "label": "E4 — Management et gestion d'une unité commerciale", "niveaux": ["BTS1", "BTS2"] },
+    { "id": "E5", "label": "E5 — Développement de clientèle", "niveaux": ["BTS1", "BTS2"] },
+    { "id": "E6", "label": "E6 — Analyse et conduite de la relation commerciale", "niveaux": ["BTS2"] }
+  ],
+
+  "couleurs": {
+    "primaire": "#0F3D5C",
+    "secondaire": "#1A6B96",
+    "accent_bts1": "#0F5B8A",
+    "accent_bts2": "#6A1B4D"
+  },
+
+  "score": {
+    "poids_missions": 60,
+    "poids_competences": 20,
+    "poids_reflexivite": 20,
+    "paliers": [
+      { "min": 0,   "max": 24,  "label": "Stagiaire",              "emoji": "🌱" },
+      { "min": 25,  "max": 49,  "label": "Assistant manager",       "emoji": "📋" },
+      { "min": 50,  "max": 74,  "label": "Chargé de clientèle",     "emoji": "💼" },
+      { "min": 75,  "max": 89,  "label": "Manager confirmé",        "emoji": "🏆" },
+      { "min": 90,  "max": 100, "label": "Expert LABORO MCO",       "emoji": "⭐" }
+    ]
+  },
+
+  "fichiers_data": {
+    "missions": "data/missions-mco.js",
+    "competences": "data/competences-mco.js",
+    "catalogue": "data/catalogue-mco.js"
+  },
+
+  "_note": "Contenu pédagogique (missions, compétences) à développer — moteur prêt"
+}
