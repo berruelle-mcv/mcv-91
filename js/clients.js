@@ -185,11 +185,122 @@ function renderClients(){
     </div></div>`;
   }).join('')}</div>`;
   document.getElementById('fiche-client').classList.remove('on');
+  // Bouton ajout prospect
+  const addBtn = document.getElementById('btn-add-prospect');
+  if(!addBtn){
+    const btn = document.createElement('button');
+    btn.id = 'btn-add-prospect';
+    btn.innerHTML = '+ Ajouter un prospect';
+    btn.style.cssText = 'margin:12px 0;padding:10px 20px;background:var(--bl);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;width:100%';
+    btn.onclick = function(){ ouvrirFormulaireProspect(null); };
+    const cl = document.getElementById('client-list');
+    if(cl) cl.parentNode.insertBefore(btn, cl);
+  }
+}
+
+function ouvrirFormulaireProspect(prospect){
+  const isEdit = prospect !== null;
+  const overlay = document.createElement('div');
+  overlay.id = 'prospect-form-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9995;display:flex;align-items:center;justify-content:center';
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:16px;max-width:480px;width:90%;padding:28px;position:relative;border-top:4px solid var(--bl);max-height:85vh;overflow-y:auto">
+      <button onclick="document.getElementById('prospect-form-overlay').remove()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;cursor:pointer;color:#6B7280">✕</button>
+      <div style="font-size:16px;font-weight:800;color:#1A2E4A;margin-bottom:20px">${isEdit ? '✏️ Modifier le prospect' : '➕ Nouveau prospect'}</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div>
+          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Nom / Entreprise *</label>
+          <input id="pf-nom" type="text" value="${isEdit ? prospect.nom : ''}" placeholder="Ex: Mairie d'Évry, M. Dupont..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Type</label>
+            <select id="pf-type" style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px">
+              <option value="B2C" ${!isEdit||prospect.type==='B2C'?'selected':''}>B2C</option>
+              <option value="B2B" ${isEdit&&prospect.type==='B2B'?'selected':''}>B2B</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Secteur</label>
+            <input id="pf-sect" type="text" value="${isEdit ? (prospect.sect||'') : ''}" placeholder="Ex: Sport, Collectivité..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Contact</label>
+          <input id="pf-contact" type="text" value="${isEdit ? (prospect.contact||'') : ''}" placeholder="Prénom Nom du décideur" style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Téléphone</label>
+            <input id="pf-tel" type="text" value="${isEdit ? (prospect.tel||'') : ''}" placeholder="06 XX XX XX XX" style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Email</label>
+            <input id="pf-email" type="email" value="${isEdit ? (prospect.email||'') : ''}" placeholder="contact@exemple.fr" style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Note / Prochaine action</label>
+          <textarea id="pf-note" rows="2" placeholder="Ex: Rappeler en septembre — potentiel élevé..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box;resize:vertical">${isEdit ? (prospect.prochaine||'') : ''}</textarea>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          ${isEdit ? `<button onclick="supprimerProspect('${prospect.id}')" style="padding:10px 16px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">🗑 Supprimer</button>` : ''}
+          <button onclick="sauvegarderProspect(${isEdit ? `'${prospect.id}'` : 'null'})" style="flex:1;padding:12px;background:var(--bl);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700">${isEdit ? 'Enregistrer les modifications' : 'Ajouter le prospect'}</button>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function sauvegarderProspect(existingId){
+  const nom = document.getElementById('pf-nom').value.trim();
+  if(!nom){ alert('Le nom est obligatoire.'); return; }
+  const ud = gUD();
+  if(!ud.prospectAjoutes) ud.prospectAjoutes = [];
+  const newProspect = {
+    id: existingId || 'P' + Date.now(),
+    nom: nom,
+    type: document.getElementById('pf-type').value,
+    sect: document.getElementById('pf-sect').value.trim(),
+    contact: document.getElementById('pf-contact').value.trim(),
+    tel: document.getElementById('pf-tel').value.trim(),
+    email: document.getElementById('pf-email').value.trim(),
+    prochaine: document.getElementById('pf-note').value.trim(),
+    ini: nom.substring(0,2).toUpperCase(),
+    col: '#8E44AD',
+    fidelite: 'Prospect',
+    ca: 0,
+    dernier: new Date().toLocaleDateString('fr-FR'),
+    ajouteParEleve: true
+  };
+  if(existingId){
+    const idx = ud.prospectAjoutes.findIndex(function(p){ return p.id === existingId; });
+    if(idx >= 0) ud.prospectAjoutes[idx] = newProspect;
+    else ud.prospectAjoutes.push(newProspect);
+  } else {
+    ud.prospectAjoutes.push(newProspect);
+  }
+  sUD(ud);
+  document.getElementById('prospect-form-overlay').remove();
+  renderClients();
+}
+
+function supprimerProspect(id){
+  if(!confirm('Supprimer ce prospect ?')) return;
+  const ud = gUD();
+  ud.prospectAjoutes = (ud.prospectAjoutes||[]).filter(function(p){ return p.id !== id; });
+  sUD(ud);
+  const overlay = document.getElementById('prospect-form-overlay');
+  if(overlay) overlay.remove();
+  renderClients();
 }
 
 function ouvrirFicheClient(id){
-  const c=CLIENTS.find(function(x){ return x.id===id; });
+  const ud = gUD();
+  const pros = ud.prospectAjoutes || [];
+  const c = CLIENTS.find(function(x){ return x.id===id; }) || pros.find(function(x){ return x.id===id; });
   if(!c) return;
+  const isProspectEleve = c.ajouteParEleve === true;
   const statC={'Strategique':'#1A2E4A','Fidele':'#276749','Actif':'#2D5282','Prospect':'#D97706','Nouveau':'#7B2FBE'};
   const col=statC[c.statut]||'#4A6FA5';
   
