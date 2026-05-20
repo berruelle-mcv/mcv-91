@@ -367,6 +367,14 @@ function ouvrirFicheClient(id){
     box.appendChild(pc);
   }
   
+  // Bouton modifier si prospect ajouté par l'élève
+  if(isProspectEleve){
+    const editBtn = document.createElement('button');
+    editBtn.textContent = '✏️ Modifier ce prospect';
+    editBtn.style.cssText = 'width:100%;margin-top:12px;padding:10px;background:#EBF4FF;color:var(--bl);border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
+    editBtn.onclick = function(){ modal.remove(); ouvrirFormulaireProspect(c); };
+    box.appendChild(editBtn);
+  }
   modal.appendChild(box);
   document.body.appendChild(modal);
   modal.onclick=function(e){ if(e.target===modal) modal.remove(); };
