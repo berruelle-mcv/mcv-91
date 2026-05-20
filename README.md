@@ -1,81 +1,105 @@
 LABORO — Plateforme pédagogique immersive
-Baccalauréat Professionnel Métiers du Commerce et de la Vente
-> **LABORO** simule une entreprise fictive dans laquelle les élèves de Bac Pro MCV accomplissent des missions professionnelles réelles, alignées sur le référentiel officiel et les épreuves CCF/E2.
+Moteur pédagogique multi-filières · Bac Pro & BTS tertiaires
+> **LABORO** est un moteur pédagogique configurable qui simule une entreprise fictive dans laquelle les élèves accomplissent des missions professionnelles réelles, alignées sur les référentiels officiels.
 Démo en ligne → berruelle-mcv.github.io/mcv-91
 ---
 🎯 Concept
-L'élève n'est pas en train de faire des exercices — il travaille dans une entreprise. Il répond à des clients, prépare des argumentaires, analyse des indicateurs, gère un fichier prospects, prépare ses épreuves CCF et E2. Tout est contextualisé dans l'univers professionnel réel du Bac Pro MCV.
+L'élève ne fait pas des exercices — il travaille dans une entreprise. Il répond à des clients, prépare des argumentaires, analyse des indicateurs, prépare ses épreuves CCF et E2. Tout est contextualisé dans l'univers professionnel réel de sa filière.
 ---
-✅ Fonctionnalités
+🗂️ Filières disponibles
+Config	Plateforme	Filière	Statut
+`config.json`	LABORO MCV	Bac Pro MCV (AGEC + PVOC)	✅ Complet
+`config-mcv.json`	LABORO MCV	Bac Pro MCV (nomenclature v2)	✅ Prêt
+`config-mco.json`	LABORO MCO	BTS MCO	🔄 Structure prête — contenu à développer
+Filières en projet : LABORO NDRC · LABORO IMMO · LABORO BANQUE · LABORO ASSURANCE
+---
+✅ Fonctionnalités (LABORO MCV)
 Fonctionnalité	Description
-51 missions	Couvrant 2nde, 1ère AGEC, 1ère PVOC, Term. AGEC, Term. PVOC
-Compétences	Référentiel complet C1.1 → G4B + ACC avec ressources intégrées
-Préparation E2	Sujets fictifs AGEC et PVOC au format officiel, avec corrigés
-Portfolio CCF	Auto-généré et imprimable, structuré par épreuve (E31/E32/E33/E2)
-Dashboard élève	Score, paliers, progression, indicateurs commerciaux
-Gestion prospects	CRUD complet — créer, éditer, convertir, historique
-Vue enseignant	Suivi classe, mission du jour assignable, analytics
-Génération IA	Missions contextualisées générées via Claude API
-Onboarding	Parcours immersif au premier lancement
-Vitrine démo	Mode démonstration sans login
+51 missions	2nde, 1ère AGEC/PVOC, Term. AGEC/PVOC
+Compétences	Référentiel C1.1 → G4B + ACC avec ressources
+Préparation E2	Sujets fictifs AGEC et PVOC + corrigés
+Portfolio CCF	Auto-généré et imprimable par épreuve
+Dashboard élève	Score, paliers, progression, KPI
+Gestion prospects	CRUD complet
+Vue enseignant	Suivi classe, mission du jour, analytics
+Génération IA	Missions via Claude API
+Config multi-filières	Moteur piloté par config.json
+Gestion d'erreurs	Bandeau rouge si fichier non chargé
+Versioning	v1.0.0 affiché depuis config.json
 ---
 🏗️ Architecture
 ```
 mcv-91/
-├── index.html              # Coquille HTML — structure et navigation
-├── style.css               # Interface complète
+├── config.json             # Config active — LABORO MCV
+├── config-mcv.json         # Config MCV (nomenclature v2)
+├── config-mco.json         # Config BTS MCO (structure prête)
+├── index.html              # HTML pur — 66 Ko
+├── style.css               # Interface + classes utilitaires
+├── README.md
 ├── data/
-│   ├── missions.js         # 51 missions MCV (AGEC + PVOC)
-│   ├── competences.js      # Référentiel compétences + ressources
-│   ├── catalogue.js        # Produits LABORO + clients + imprévus
-│   ├── e2-agec.js          # Sujet E2 AGEC fictif + corrigés + rendus
-│   └── e2-pvoc.js          # Sujet E2 PVOC fictif + corrigés + rendus
+│   ├── missions.js         # 51 missions MCV
+│   ├── competences.js      # Référentiel + ressources
+│   ├── catalogue.js        # Produits + clients + imprévus
+│   ├── e2-agec.js          # Sujet E2 AGEC + corrigés
+│   └── e2-pvoc.js          # Sujet E2 PVOC + corrigés
 └── js/
-    ├── app.js              # État global, score, classement, localStorage
+    ├── app.js              # État global, score, getCfg()
     ├── auth.js             # Login, logout, onboarding
-    ├── dashboard.js        # Dashboard élève/enseignant, actualités, KPI
-    ├── missions.js         # Modal mission, paliers, coup de pouce
-    ├── catalogue.js        # Rendu catalogue produits
-    ├── clients.js          # Gestion clients et prospects
-    ├── teacher.js          # Vue classe, indicateurs pédagogiques
-    └── utils.js            # Fonctions utilitaires
+    ├── dashboard.js        # Dashboard, actus, KPI
+    ├── missions.js         # Modal mission, paliers
+    ├── catalogue.js        # Rendu catalogue
+    ├── clients.js          # Clients et prospects
+    ├── teacher.js          # Vue classe, enseignant
+    └── utils.js            # Utilitaires
 ```
 Stack : Vanilla JS · HTML5 · CSS3 · GitHub Pages (statique, sans build)
 ---
+⚙️ Système de configuration filière
+Le moteur lit `config.json` au démarrage et adapte automatiquement :
+Nom de la plateforme (`LABORO MCV`, `LABORO MCO`...)
+Nom et ville de l'entreprise fictive
+Personnages (responsable, tutrice)
+Niveaux et options disponibles
+Couleurs et identité visuelle
+Fichiers de données à charger
+Créer une nouvelle filière : dupliquer un `config-[filiere].json` + créer les fichiers `data/` correspondants.
+---
 🚀 Déploiement
-Le projet est hébergé sur GitHub Pages — aucun serveur requis.
 ```
 Branche active   : main
 Branche stable   : stable-v1 (sauvegarde avant migration mai 2026)
 URL production   : berruelle-mcv.github.io/mcv-91
+Version          : v1.0.0
 ```
-Pour modifier et déployer : éditer les fichiers → commit sur `main` → GitHub Pages met à jour automatiquement (1–2 min).
 ---
 🗺️ Roadmap
 Étape	Statut
-Prototype fonctionnel	✅ Terminé
-Migration architecture modulaire	✅ Terminé (mai 2026)
-Test terrain avec élèves	🔄 Prévu rentrée 2026
-`config.json` multi-filières	📋 En cours
-Migration React + Supabase	📋 À venir (avec développeur)
-Extension CAP EPC, BTS MCO, BTS NDRC...	📋 Vision long terme
+Prototype fonctionnel	✅
+Migration architecture modulaire	✅ Mai 2026
+Système config.json multi-filières	✅ Mai 2026
+Classes CSS utilitaires	✅ Mai 2026
+Gestion d'erreurs	✅ Mai 2026
+Test terrain avec élèves	🔄 Rentrée 2026
+Réparation bugs mineurs	🔄 En cours
+Migration React + Supabase	📋 Avec développeur
+LABORO MCO (contenu)	📋 À développer
+Multi-filières complet	📋 Vision long terme
 ---
-⚠️ Dette technique connue
-Styles inline dans les rendus JS (à migrer vers classes CSS)
-Pas de gestion d'erreurs si un fichier `data/` ne charge pas
-`clients.js` encore dense (39 Ko) — à découper à terme
-Pas de tests automatisés
+⚠️ Bugs connus
+Priorité	Description
+Moyen	Espace prescripteur non fonctionnel
+Moyen	Création/modification contacts élèves disparue
+Faible	Modal mission — redimensionnement cosmétique
+Faible	Corrigé E2 visible sans validation préalable
 ---
-🔮 Stack cible (industrialisation)
+🔮 Stack cible
 Couche	Actuel	Cible
 Frontend	Vanilla JS	React + TypeScript
-Styles	CSS custom	Tailwind CSS
-Backend	Aucun	Supabase (PostgreSQL + Auth)
+Styles	CSS custom + utilitaires	Tailwind CSS
+Backend	Aucun	Supabase
 Déploiement	GitHub Pages	Vercel
 ---
 👤 Auteur
-Pascal Berruelle — Enseignant PLP Métiers du Commerce et de la Vente  
-Académie de Versailles — Essonne (91)  
-Développé en collaboration avec Claude AI (Anthropic)
----
-Version 1.0 — Mai 2026 — Document confidentiel
+Pascal Berruelle — Enseignant PLP MCV · Académie de Versailles · Essonne (91)  
+Développé avec Claude AI (Anthropic)
+Version 1.0.0 — Mai 2026
