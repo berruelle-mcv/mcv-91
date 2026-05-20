@@ -372,8 +372,7 @@ function ouvrirFicheClient(id){
     addSicBtn.textContent = c.commentaire ? '✏️ Modifier le commentaire SIC' : '📝 Ajouter un commentaire SIC';
     addSicBtn.style.cssText='width:100%;margin-bottom:8px;padding:8px;background:#F0FDF4;color:#166534;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700';
     addSicBtn.onclick=function(){
-      const txt=prompt('Commentaire SIC — Enrichissement de la fiche prospect :
-(Informations collectées lors de vos échanges)', c.commentaire||'');
+      const txt=prompt('Commentaire SIC - Enrichissement de la fiche prospect. Informations collectées lors de vos échanges :', c.commentaire||'');
       if(txt!==null){
         const ud=gUD();
         const idx=(ud.prospectAjoutes||[]).findIndex(function(p){ return p.id===c.id; });
