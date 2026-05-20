@@ -68,7 +68,7 @@ window.addEventListener('error', function(e) {
       const banner = document.createElement('div');
       banner.id = 'laboro-error-banner';
       banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#DC2626;color:#fff;padding:12px 20px;font-family:Arial,sans-serif;font-size:13px;font-weight:600;display:flex;align-items:center;gap:12px;';
-      banner.innerHTML = '⚠️ Erreur de chargement — Le fichier <strong>' + fichier + '</strong> n'a pas pu être chargé. Vérifiez votre connexion et rechargez la page. &nbsp;<button onclick="location.reload()" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px">Recharger</button>';
+      banner.innerHTML = "⚠️ Erreur de chargement — Le fichier <strong>" + fichier + "</strong> n'a pas pu être chargé. Vérifiez votre connexion et rechargez la page. &nbsp;<button onclick='location.reload()' style='background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px'>Recharger</button>";
       document.body.appendChild(banner);
     }
   }
