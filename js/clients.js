@@ -171,13 +171,13 @@ function renderClients(){
     const lbl=c.fidelite||c.statut||'Client';
     return`<div class="cl-card" onclick="ouvrirFicheClient('${c.id}')"><div class="cl-h">
       <div class="cl-av" style="background:${c.col||'var(--bl)'}">${c.ini}</div>
-      <div style="flex:1;min-width:0">
-        <div style="display:flex;align-items:center;gap:6px"><div class="cl-nom">${c.nom}</div><span class="${c.type==='B2C'?'tb2c':c.fidelite==='Prospect'?'tpros':'tb2b'}">${c.type||'B2C'}</span></div>
+      <div class="u-flex-1">
+        <div class="u-flex-gap"><div class="cl-nom">${c.nom}</div><span class="${c.type==='B2C'?'tb2c':c.fidelite==='Prospect'?'tpros':'tb2b'}">${c.type||'B2C'}</span></div>
         ${c.ca&&c.potentiel?`<div class="cl-pot-bar"><div class="cl-pot-fill" style="width:${Math.min(100,Math.round(c.ca/c.potentiel*100))}%"></div></div>`:''}
         <div class="cl-meta">
           <span class="${c.type==='B2C'?'tb2c':lbl==='Prospect'?'tpros':'tb2b'}">${c.type}</span>
           <span style="color:${fc};font-weight:600;font-size:10px">${lbl}</span>
-          ${c.ca?`<span style="font-weight:700;color:var(--bf)">${c.ca.toLocaleString('fr-FR')} €</span>`:'<span style="color:var(--gm)">Prospect</span>'}
+          ${c.ca?`<span style="font-weight:700;color:var(--bf)">${c.ca.toLocaleString('fr-FR')} €</span>`:'<span class="u-muted">Prospect</span>'}
         </div>
         ${c.prochaine?`<div style="font-size:10px;color:var(--am);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">⚡ ${c.prochaine}</div>`:''}
       </div>
