@@ -20,7 +20,7 @@ function openMission(id){
   // Ressource
   const resKey=m.comp.startsWith('ACC')?'ACC':m.comp.startsWith('G4A')?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
   const res=RES[resKey];
-  document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p style="color:var(--gm)">Ressource en préparation.</p>';
+  document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
   // Mission
   const savedReps=ud.missions[id]?.reponses||{};
   let html='';
@@ -307,7 +307,7 @@ function renderCompetences(){
 
       // En-tête
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
-      + '<div style="display:flex;align-items:center;gap:6px">'
+      + '<div class="u-flex-gap">'
       + compBadge(c.code)
       + '<span style="font-size:9px;color:#6B7280;font-weight:600">'+c.g+'</span>'
       + '</div>'
