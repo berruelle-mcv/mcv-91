@@ -1,0 +1,79 @@
+{
+  "filiere": "ndrc",
+  "version": "1.0.0",
+  "nom_plateforme": "LABORO NDRC",
+  "slogan": "Votre espace professionnel immersif — BTS NDRC",
+
+  "entreprise": {
+    "nom": "NEXIA Solutions",
+    "ville": "Paris",
+    "departement": "75",
+    "secteur": "Solutions digitales B2B",
+    "description": "Société de conseil et de solutions numériques pour les entreprises — vente omnicanale, CRM, relation client digitale"
+  },
+
+  "personnages": {
+    "responsable": {
+      "prenom": "Alexandre",
+      "nom": "Dupuis",
+      "poste": "Directeur commercial",
+      "avatar": "AD"
+    },
+    "tutrice": {
+      "prenom": "Camille",
+      "nom": "Renard",
+      "poste": "Responsable relation client digitale",
+      "avatar": "CR"
+    },
+    "createur": {
+      "prenom": "Pascal",
+      "nom": "Berruelle",
+      "poste": "Formateur LABORO"
+    }
+  },
+
+  "niveaux": [
+    { "id": "BTS1", "label": "BTS 1ère année", "couleur": "#0F5B8A", "ordre": 1 },
+    { "id": "BTS2", "label": "BTS 2ème année", "couleur": "#6A1B4D", "ordre": 2 }
+  ],
+
+  "options": [
+    { "id": "NDRC", "label": "Négociation et Digitalisation de la Relation Client" }
+  ],
+
+  "examens": [
+    { "id": "E4", "label": "E4 — Relation client et négociation-vente", "niveaux": ["BTS1", "BTS2"] },
+    { "id": "E5", "label": "E5 — Relation client à distance et digitalisation", "niveaux": ["BTS1", "BTS2"] },
+    { "id": "E6", "label": "E6 — Animation et dynamisation du réseau", "niveaux": ["BTS2"] }
+  ],
+
+  "couleurs": {
+    "primaire": "#0C2D48",
+    "secondaire": "#1A5276",
+    "accent_bts1": "#0F5B8A",
+    "accent_bts2": "#6A1B4D"
+  },
+
+  "score": {
+    "poids_missions": 60,
+    "poids_competences": 20,
+    "poids_reflexivite": 20,
+    "paliers": [
+      { "min": 0,   "max": 24,  "label": "Stagiaire",                    "emoji": "🌱" },
+      { "min": 25,  "max": 49,  "label": "Chargé de clientèle",          "emoji": "📱" },
+      { "min": 50,  "max": 74,  "label": "Négociateur confirmé",         "emoji": "💼" },
+      { "min": 75,  "max": 89,  "label": "Responsable compte clé",       "emoji": "🏆" },
+      { "min": 90,  "max": 100, "label": "Expert LABORO NDRC",           "emoji": "⭐" }
+    ]
+  },
+
+  "fichiers_data": {
+    "missions": "data/missions-ndrc.js",
+    "competences": "data/competences-ndrc.js",
+    "catalogue": "data/catalogue-ndrc.js",
+    "crm": "data/crm-ndrc.js"
+  },
+
+  "_note": "Contenu pédagogique à développer — moteur prêt. NDRC = priorité SaaS : CRM, prospection digitale, omnicanal, IA.",
+  "_potentiel": "Fort potentiel IA : génération scripts d'appel, analyse portefeuille, simulation négociation, scoring prospects."
+}
