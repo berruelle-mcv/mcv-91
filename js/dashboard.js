@@ -85,10 +85,10 @@ function renderCCFDashboard(){
   el.innerHTML = '<div style="display:flex;gap:12px;flex-wrap:wrap">'
     + '<div style="background:var(--vc,#D1FAE5);border-radius:8px;padding:10px 14px;text-align:center">'
     + '<div style="font-size:20px;font-weight:800;color:var(--vt,#065F46)">' + done.length + '</div>'
-    + '<div style="font-size:10px;color:var(--gm)">Missions validées</div></div>'
+    + '<div class="u-label-sm">Missions validées</div></div>'
     + '<div style="background:var(--bc,#EBF4FF);border-radius:8px;padding:10px 14px;text-align:center">'
     + '<div style="font-size:20px;font-weight:800;color:var(--bl)">' + comps.length + '</div>'
-    + '<div style="font-size:10px;color:var(--gm)">Compétences acquises</div></div>'
+    + '<div class="u-label-sm">Compétences acquises</div></div>'
     + '</div>';
 }
 
@@ -172,7 +172,7 @@ function renderDashboard(){
   const niveauCols2=['var(--gb)','#63B3ED','#4A6FA5','#38A169','#276749'];
   document.getElementById('dash-prog').innerHTML=COMP.slice(0,6).map(function(c){
     const lv=calcNiveauComp(c.code,ud);
-    return '<div style="margin-bottom:8px">'
+    return '<div class="u-mb8">'
       +'<div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">'
       +'<span>'+compBadge(c.code)+'</span>'
       +'<span style="font-weight:700;color:'+niveauCols2[lv]+'">'+niveauLabels2[lv]+'</span>'
@@ -200,7 +200,7 @@ function renderDashboard(){
             const pCol = palierColors[m.palier] || '#4A6FA5';
             const scoreColor = v.score>=14 ? '#276749' : v.score>=11 ? '#D97706' : '#C53030';
             return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:#F8FAFF;border-radius:10px;border-left:3px solid '+pCol+'">'
-              + '<div style="flex:1;min-width:0">'
+              + '<div class="u-flex-1">'
               + '<div style="font-size:12px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.titre+'</div>'
               + '<div style="font-size:10px;color:#6B7280;margin-top:2px">'+compBadge(m.comp)+'</div>'
               + '</div>'
@@ -293,7 +293,7 @@ function renderIndicateurs(){
     {label:'Moyenne generale', value:avg+'', total:null, unit:'/20', icon:'📊', color:'#D97706', bg:'#FEF3C7'},
     {label:'Competences acquises', value:compsAcquis, total:COMP.length, icon:'⭐', color:'#7B2FBE', bg:'#EDE9FE'},
   ];
-  el.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+  el.innerHTML = '<div class="u-grid-2">'
     + kpis.map(function(k){
         const displayVal = k.total !== null ? k.value+'/'+k.total : k.value+(k.unit||'');
         const pct = k.total ? Math.round((k.value/k.total)*100) : null;
@@ -372,7 +372,7 @@ function renderMissions(){
   const statsBar = '<div style="background:#fff;border-radius:12px;padding:12px 16px;border:1px solid var(--gb);margin-bottom:14px;display:flex;align-items:center;gap:16px">'
     + '<div style="flex:1">'
     + '<div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px">'
-    + '<span style="font-weight:700;color:#1A2E4A">Progression</span>'
+    + '<span class="u-subtitle">Progression</span>'
     + '<span style="font-weight:800;color:var(--bl)">'+done+'/'+ms.length+' missions ('+pct+'%)</span>'
     + '</div>'
     + '<div style="background:#E2E8F0;border-radius:6px;height:8px;overflow:hidden">'
@@ -380,7 +380,7 @@ function renderMissions(){
     + '</div>'
     + '</div>'
     + '<div style="display:flex;gap:12px;font-size:11px;flex-shrink:0">'
-    + '<span style="color:#276749;font-weight:700">✅ '+done+'</span>'
+    + '<span class="u-success">✅ '+done+'</span>'
     + '<span style="color:var(--bl);font-weight:700">🔷 '+wip+'</span>'
     + '<span style="color:var(--gm);font-weight:600">○ '+todo+'</span>'
     + '</div>'
