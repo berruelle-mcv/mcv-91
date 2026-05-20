@@ -211,13 +211,13 @@ function ouvrirFicheClient(id){
   h.style.marginBottom='16px';
   const typeEl=document.createElement('div');
   typeEl.style.cssText='font-size:10px;font-weight:700;color:var(--gm);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px';
-  typeEl.textContent=c.type+' · '+c.statut;
+  typeEl.textContent=(c.type||'B2B')+' · '+(c.fidelite||c.sect||'');
   const nomEl=document.createElement('div');
   nomEl.style.cssText='font-size:20px;font-weight:900;color:var(--t1);margin-bottom:4px';
   nomEl.textContent=c.nom;
   const contactEl=document.createElement('div');
   contactEl.style.cssText='font-size:12px;color:var(--gm)';
-  contactEl.textContent=c.contact+' — '+c.poste;
+  contactEl.textContent=(c.contact||'')+(c.sect?' — '+c.sect:'');
   h.appendChild(typeEl); h.appendChild(nomEl); h.appendChild(contactEl);
   box.appendChild(h);
   
