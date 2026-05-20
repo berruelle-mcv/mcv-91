@@ -238,7 +238,7 @@ function ouvrirFormulaireProspect(prospect){
         <div>
           <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Commentaire SIC — Enrichissement de la fiche</label>
           <textarea id="pf-commentaire" rows="3" placeholder="Ex: Client intéressé par la gamme running. Sensible à l'argument prix. A demandé un devis pour 15 maillots. À relancer après le CA..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box;resize:vertical">${isEdit ? (prospect.commentaire||'') : ''}</textarea>
-          <div style="font-size:10px;color:#6B7280;margin-top:4px">💡 Enrichissez cette fiche avec les informations collectées lors de vos échanges (SIC — compétence E33)</div>
+          <div style="font-size:10px;color:#6B7280;margin-top:4px">💡 Enrichissez cette fiche avec les informations collectées lors de vos échanges — notes, besoins, objections, prochaine action...</div>
         </div>
         <div style="display:flex;gap:8px;margin-top:8px">
           ${isEdit ? `<button onclick="supprimerProspect('${prospect.id}')" style="padding:10px 16px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">🗑 Supprimer</button>` : ''}
