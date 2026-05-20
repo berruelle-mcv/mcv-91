@@ -222,7 +222,7 @@ function renderCompetencesEnseignant(){
   const c=cfg[p.cat]||{col:'#4A6FA5',bg:'#F0F4FF',emoji:'📦'};
   const pvHT=(p.pv/1.2).toFixed(2);
   const margeE=((p.pv/1.2)-p.pu).toFixed(2);
-  const stockHtml=p.stock===0?'<span style="color:#7B2FBE;font-weight:700">Sur commande</span>':p.stock<=p.seuil?'<span style="color:#D97706;font-weight:700">⚠ Stock faible — '+p.stock+' u.</span>':'<span style="color:#276749;font-weight:700">✓ '+p.stock+' en stock</span>';
+  const stockHtml=p.stock===0?'<span style="color:#7B2FBE;font-weight:700">Sur commande</span>':p.stock<=p.seuil?'<span style="color:#D97706;font-weight:700">⚠ Stock faible — '+p.stock+' u.</span>':'<span class="u-success">✓ '+p.stock+' en stock</span>';
   const nBg={'Débutant':'#D1FAE5','Intermédiaire':'#EBF4FF','Confirmé':'#FEF3C7','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6'};
   const nCo={'Débutant':'#276749','Intermédiaire':'#2D5282','Confirmé':'#D97706','Compétition':'#C53030','Tous niveaux':'#6B7280'};
   const specsHtml=(p.specs||[]).map(function(s){return '<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F3F4F6"><span style="font-size:11px;color:#6B7280;font-weight:600">'+s[0]+'</span><span style="font-size:11px;color:#1A2E4A;font-weight:700">'+s[1]+'</span></div>';}).join('');
@@ -232,7 +232,7 @@ function renderCompetencesEnseignant(){
     const cpC=cfg[cp.cat]||{col:'#4A6FA5',bg:'#F0F4FF',emoji:'📦'};
     return '<div onclick="openProduit(\''+cp.id+'\')" style="display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #E5E7EB;border-radius:10px;cursor:pointer;background:#fff" onmouseover="this.style.borderColor=\''+c.col+'\'" onmouseout="this.style.borderColor=\'#E5E7EB\'">'
       +'<div style="width:44px;height:36px;background:'+cpC.bg+';border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">'+cpC.emoji+'</div>'
-      +'<div style="flex:1;min-width:0"><div style="font-size:10px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
+      +'<div class="u-flex-1"><div style="font-size:10px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
       +'<div style="font-size:10px;color:'+cpC.col+';font-weight:700">'+cp.pv+'€</div></div></div>';
   }).join('');
   const fiche=document.getElementById('fiche-produit');
@@ -253,21 +253,21 @@ function renderCompetencesEnseignant(){
     +'</div>'
     +'</div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
-    +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div style="font-size:18px;font-weight:900;color:#1A2E4A">'+p.pu+'€</div></div>'
-    +'<div style="background:#F0FFF4;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Vente TTC</div><div style="font-size:18px;font-weight:900;color:#1A2E4A">'+p.pv+'€</div><div style="font-size:9px;color:#6B7280">'+pvHT+'€ HT</div></div>'
-    +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:#276749">'+p.mar+'%</div><div style="font-size:9px;color:#6B7280">'+margeE+'€/u</div></div>'
+    +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div class="u-title">'+p.pu+'€</div></div>'
+    +'<div style="background:#F0FFF4;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Vente TTC</div><div class="u-title">'+p.pv+'€</div><div class="u-label">'+pvHT+'€ HT</div></div>'
+    +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:#276749">'+p.mar+'%</div><div class="u-label">'+margeE+'€/u</div></div>'
     +'</div></div></div>'
     +'<div style="height:1px;background:#F3F4F6"></div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">'
     +'<div style="padding:16px 18px;border-right:1px solid #F3F4F6">'
     +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Caractéristiques</div>'
-    +(specsHtml||'<div style="font-size:11px;color:#9CA3AF">—</div>')
+    +(specsHtml||'<div class="u-label-muted">—</div>')
     +'<div style="margin-top:8px;font-size:11px">Stock : '+stockHtml+'</div>'
     +(p.seuil>0?'<div style="font-size:10px;color:#9CA3AF;margin-top:2px">Seuil : '+p.seuil+' u. · TVA '+p.tva+'%</div>':'')
     +'</div>'
     +'<div style="padding:16px 18px">'
     +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔗 Produits complémentaires</div>'
-    +(compsHtml?'<div style="display:flex;flex-direction:column;gap:8px">'+compsHtml+'</div>':'<div style="font-size:11px;color:#9CA3AF">Aucun produit associé.</div>')
+    +(compsHtml?'<div class="u-flex-col">'+compsHtml+'</div>':'<div class="u-label-muted">Aucun produit associé.</div>')
     +'</div></div>'
     +'<div style="padding:12px 18px;background:#F8FAFF;display:flex;gap:10px;border-top:1px solid #F3F4F6">'
     +'<button onclick="document.getElementById(\'fiche-produit\').classList.remove(\'on\')" style="background:none;border:1px solid #E5E7EB;padding:8px 14px;border-radius:8px;font-size:12px;cursor:pointer;color:#374151;font-weight:600">← Retour</button>'
@@ -446,13 +446,13 @@ function renderClients(){
     const lbl=c.fidelite||c.statut||'Client';
     return`<div class="cl-card" onclick="ouvrirFicheClient('${c.id}')"><div class="cl-h">
       <div class="cl-av" style="background:${c.col||'var(--bl)'}">${c.ini}</div>
-      <div style="flex:1;min-width:0">
-        <div style="display:flex;align-items:center;gap:6px"><div class="cl-nom">${c.nom}</div><span class="${c.type==='B2C'?'tb2c':c.fidelite==='Prospect'?'tpros':'tb2b'}">${c.type||'B2C'}</span></div>
+      <div class="u-flex-1">
+        <div class="u-flex-gap"><div class="cl-nom">${c.nom}</div><span class="${c.type==='B2C'?'tb2c':c.fidelite==='Prospect'?'tpros':'tb2b'}">${c.type||'B2C'}</span></div>
         ${c.ca&&c.potentiel?`<div class="cl-pot-bar"><div class="cl-pot-fill" style="width:${Math.min(100,Math.round(c.ca/c.potentiel*100))}%"></div></div>`:''}
         <div class="cl-meta">
           <span class="${c.type==='B2C'?'tb2c':lbl==='Prospect'?'tpros':'tb2b'}">${c.type}</span>
           <span style="color:${fc};font-weight:600;font-size:10px">${lbl}</span>
-          ${c.ca?`<span style="font-weight:700;color:var(--bf)">${c.ca.toLocaleString('fr-FR')} €</span>`:'<span style="color:var(--gm)">Prospect</span>'}
+          ${c.ca?`<span style="font-weight:700;color:var(--bf)">${c.ca.toLocaleString('fr-FR')} €</span>`:'<span class="u-muted">Prospect</span>'}
         </div>
         ${c.prochaine?`<div style="font-size:10px;color:var(--am);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">⚡ ${c.prochaine}</div>`:''}
       </div>
@@ -996,10 +996,10 @@ function renderClasse(){
     const avgGlobal=allScores.length?(allScores.reduce((a,b)=>a+b,0)/allScores.length).toFixed(1):'—';
     const avgScore=users.length?(users.reduce((a,u)=>a+calcScore(u),0)/users.length).toFixed(0):'—';
     statsEl.innerHTML=`
-      <div style="background:var(--bc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--bl)">${users.length}</div><div style="font-size:10px;color:var(--gm);text-transform:uppercase">Élèves</div></div>
-      <div style="background:var(--vc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--vt)">${totalDone}</div><div style="font-size:10px;color:var(--gm);text-transform:uppercase">Missions validées</div></div>
-      <div style="background:var(--ac);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--am)">${totalAtt}</div><div style="font-size:10px;color:var(--gm);text-transform:uppercase">En attente</div></div>
-      <div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">${avgGlobal}/20</div><div style="font-size:10px;color:var(--gm);text-transform:uppercase">Moyenne classe</div></div>`;
+      <div style="background:var(--bc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--bl)">${users.length}</div><div class="u-label-up">Élèves</div></div>
+      <div style="background:var(--vc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--vt)">${totalDone}</div><div class="u-label-up">Missions validées</div></div>
+      <div style="background:var(--ac);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--am)">${totalAtt}</div><div class="u-label-up">En attente</div></div>
+      <div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">${avgGlobal}/20</div><div class="u-label-up">Moyenne classe</div></div>`;
   } else if(statsEl){
     statsEl.innerHTML='';
   }
@@ -1028,7 +1028,7 @@ function renderClasse(){
     const c4=Math.max(...COMP.filter(c=>c.g==='G4A'||c.g==='G4B').map(c=>u.competences?.[c.code]||0),0);
     return`<tr data-mail="${u.mail}" onclick="selectEleve('${u.mail}');showFicheEleve('${u.mail}')" style="cursor:pointer;${att>0?'background:var(--ac)':''}">
       <td style="font-weight:700">${u.nom||u.mail}</td>
-      <td style="font-size:10px;color:var(--gm)">${cls}</td>
+      <td class="u-label-sm">${cls}</td>
       <td><span class="dl" style="background:${lc[c1]}"></span></td>
       <td><span class="dl" style="background:${lc[c2]}"></span></td>
       <td><span class="dl" style="background:${lc[c3]}"></span></td>
@@ -1064,7 +1064,7 @@ function showFicheEleve(mail){
     <div class="fe-sec"><div class="fe-st">Progression par compétence</div>${COMP.map(c=>{const lv=u.competences[c.code]||0;return`<div class="cr"><span class="cr-code">${c.code}</span><span class="cr-label">${c.label}</span><div class="cr-bar"><div class="cr-fill" style="width:${lv*25}%;background:${lc[lv]}"></div></div><span class="cr-txt" style="color:${lc[lv]}">${ll[lv]}</span></div>`;}).join('')}</div>
     <div class="fe-sec"><div class="fe-st">Missions</div>
       <div class="mr hdr"><span>Mission</span><span>Comp.</span><span>Tent.</span><span>Note</span><span>Statut</span></div>
-      ${Object.entries(u.missions).map(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(!m)return'';const nc=mv.score>=17?'nb-h':mv.score>=11?'nb-m':'nb-l';return`<div class="mr"><span style="font-size:11px">${m.titre}</span><span style="font-size:10px;color:var(--gm)">${m.comp} P${m.palier}</span><span style="text-align:center">${mv.tentatives||1}/2</span><span><div class="nb2 ${mv.score?nc:''}">${mv.score?mv.score+'/20':mv.note_ia?'IA:'+mv.note_ia:'-'}</div></span><span>${mv.status==='done'?'<span style="color:var(--vt);font-size:11px;font-weight:700">✓ Validée</span>':mv.status==='att'?`<button onclick="validerMission('${mail}','${mid}')" style="padding:3px 8px;background:var(--bl);color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:11px">Valider ${mv.note_ia}/20</button>`:'-'}</span></div>`;}).join('')}
+      ${Object.entries(u.missions).map(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(!m)return'';const nc=mv.score>=17?'nb-h':mv.score>=11?'nb-m':'nb-l';return`<div class="mr"><span style="font-size:11px">${m.titre}</span><span class="u-label-sm">${m.comp} P${m.palier}</span><span style="text-align:center">${mv.tentatives||1}/2</span><span><div class="nb2 ${mv.score?nc:''}">${mv.score?mv.score+'/20':mv.note_ia?'IA:'+mv.note_ia:'-'}</div></span><span>${mv.status==='done'?'<span style="color:var(--vt);font-size:11px;font-weight:700">✓ Validée</span>':mv.status==='att'?`<button onclick="validerMission('${mail}','${mid}')" style="padding:3px 8px;background:var(--bl);color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:11px">Valider ${mv.note_ia}/20</button>`:'-'}</span></div>`;}).join('')}
     </div>
     <div class="fe-sec"><div class="fe-st">Observations enseignant</div><textarea class="obs-area" id="obs-${mail}" placeholder="Observations, points forts, axes de progression…">${savedObs}</textarea><button class="btn-obs-s" onclick="saveObs('${mail}')">Enregistrer</button></div>
   </div>`;
@@ -1120,7 +1120,7 @@ function renderIndicateursPedago(){
     // Graphique répartition par palier
     + '<div class="card">'
     + '<div class="ct">📊 Mes missions par palier</div>'
-    + '<div style="display:flex;flex-direction:column;gap:8px">'
+    + '<div class="u-flex-col">'
     + [1,2,3,4].map(function(p){
         const count = byPalier[p];
         const pct = Math.round(count/maxByPalier*100);
@@ -1140,30 +1140,30 @@ function renderIndicateursPedago(){
     // Stats de performance
     + '<div class="card">'
     + '<div class="ct">🎯 Ma performance</div>'
-    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+    + '<div class="u-grid-2">'
 
     + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center">'
     + '<div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div>'
     + '<div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#276749':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div>'
-    + '<div style="font-size:9px;color:#6B7280">note ≥ 11/20</div>'
+    + '<div class="u-label">note ≥ 11/20</div>'
     + '</div>'
 
     + '<div style="background:#EBF4FF;border-radius:10px;padding:12px;text-align:center">'
     + '<div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div>'
     + '<div style="font-size:24px;font-weight:900;color:#2D5282">'+( bestScore>0 ? bestScore+'/20' : '—')+'</div>'
-    + '<div style="font-size:9px;color:#6B7280">sur toutes les missions</div>'
+    + '<div class="u-label">sur toutes les missions</div>'
     + '</div>'
 
     + '<div style="background:#FFF7ED;border-radius:10px;padding:12px;text-align:center">'
     + '<div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Missions terminées</div>'
     + '<div style="font-size:24px;font-weight:900;color:#D97706">'+done.length+'/'+allMissions.length+'</div>'
-    + '<div style="font-size:9px;color:#6B7280">'+Math.round(done.length/allMissions.length*100)+'% complété</div>'
+    + '<div class="u-label">'+Math.round(done.length/allMissions.length*100)+'% complété</div>'
     + '</div>'
 
     + '<div style="background:#FAF5FF;border-radius:10px;padding:12px;text-align:center">'
     + '<div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Moyenne générale</div>'
     + '<div style="font-size:24px;font-weight:900;color:#7B2FBE">'+(avg>0?avg.toFixed(1)+'/20':'—')+'</div>'
-    + '<div style="font-size:9px;color:#6B7280">sur missions notées</div>'
+    + '<div class="u-label">sur missions notées</div>'
     + '</div>'
 
     + '</div>'
@@ -1179,8 +1179,8 @@ function renderIndicateursPedago(){
         const pctToNext = Math.round((pct/(nextMilestone))*100);
         return '<div style="margin-bottom:10px">'
           + '<div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px">'
-          + '<span style="font-weight:700;color:#1A2E4A">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span>'
-          + '<span style="color:var(--gm)">Prochain palier : '+nextMilestone+'%</span>'
+          + '<span class="u-subtitle">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span>'
+          + '<span class="u-muted">Prochain palier : '+nextMilestone+'%</span>'
           + '</div>'
           + '<div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden">'
           + '<div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#4A6FA5,#276749);border-radius:10px;transition:width .6s"></div>'
