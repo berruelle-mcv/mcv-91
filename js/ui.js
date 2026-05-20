@@ -1211,9 +1211,7 @@ function voirMissionsLiees(cat){
   setTimeout(function(){ renderMissions(); }, 100);
 }
 
-function addClient(){
-  showNotifEleve('Fonctionnalité disponible dans les missions de prospection (B4.1 à B4.5).', 'info');
-}
+// addClient() définie dans clients.js
 
 function populateMDJSelect(){
   const sel = document.getElementById('mdj-select');
