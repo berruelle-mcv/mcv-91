@@ -39,6 +39,9 @@ async function loadConfig() {
     setTxt('cfg-entreprise-sub', secteur + ' · ' + villeEnt + ' (91)');
     setTxt('msg-f', nomResp + ' — ' + posteResp);
     setTxt('mo-m', nomEnt);
+    // Mettre à jour le nom de la plateforme partout
+    const nomPlateforme = LABORO_CONFIG.nom_plateforme || 'LABORO';
+    ['cfg-nom-plateforme','cfg-nom-plateforme-2','cfg-nom-plateforme-3','cfg-nom-plateforme-4'].forEach(id => setTxt(id, nomPlateforme));
     // Appliquer les couleurs primaires
     if (LABORO_CONFIG.couleurs) {
       document.documentElement.style.setProperty('--laboro-primary', LABORO_CONFIG.couleurs.primaire);
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
         <div class="lc"><span>L</span></div>
         <div>
-          <div class="ln">LABORO</div>
+          <div class="ln" id="cfg-nom-plateforme">LABORO</div>
           <div class="lv" id="cfg-lv">Sport & Outdoor · Évry-Courcouronnes (91)</div>
         </div>
       </div>
@@ -177,7 +180,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:44px;height:44px;background:linear-gradient(135deg,#2D5282,#4A6FA5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff">L</div>
         <div>
-          <div style="font-size:20px;font-weight:900;color:#1F2937;letter-spacing:-.5px">LABORO</div>
+          <div style="font-size:20px;font-weight:900;color:#1F2937;letter-spacing:-.5px" id="cfg-nom-plateforme-2">LABORO</div>
           <div style="font-size:11px;color:#6B7280">Sport &amp; Outdoor · Plateforme pédagogique Bac Pro MCV</div>
         </div>
       </div>
@@ -323,7 +326,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <!-- En-tête LABORO -->
       <div class="lb-entete">
         <div>
-          <div class="lb-entete-logo">LABORO</div>
+          <div class="lb-entete-logo" id="cfg-nom-plateforme-3">LABORO</div>
           <div class="lb-entete-sub" id="cfg-entreprise-sub">Sport &amp; Outdoor · Évry-Courcouronnes (91)</div>
         </div>
         <div class="lb-entete-date">Évry-Courcouronnes, le 6 mai 2026<br><span style="font-size:10px;color:#BFDBFE;margin-top:2px;display:block">Lettre de bienvenue — Confidentiel</span></div>
@@ -581,7 +584,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <!-- APP -->
 <div id="app" class="scr">
 <div class="sb">
-  <div class="sb-lo"><div class="sb-li">L</div><div class="sb-lt"><div class="n">LABORO</div><div class="t">SPORT & OUTDOOR</div></div></div>
+  <div class="sb-lo"><div class="sb-li">L</div><div class="sb-lt"><div class="n" id="cfg-nom-plateforme-4">LABORO</div><div class="t">SPORT & OUTDOOR</div></div></div>
   <div class="sb-u"><div class="avu" id="av-i">AL</div><div><div class="sb-un" id="sb-n">—</div><div class="sb-ur" id="sb-r">—</div></div></div>
   <div class="sb-nv">
     <div class="ns">Mon espace</div>
