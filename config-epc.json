@@ -1,0 +1,77 @@
+{
+  "filiere": "epc",
+  "version": "1.0.0",
+  "nom_plateforme": "LABORO EPC",
+  "slogan": "Votre espace professionnel immersif — CAP Équipier Polyvalent du Commerce",
+
+  "entreprise": {
+    "nom": "MARCHÉ PLUS",
+    "ville": "Évry-Courcouronnes",
+    "departement": "91",
+    "secteur": "Grande distribution alimentaire",
+    "description": "Supermarché de proximité spécialisé dans les produits frais et l'épicerie"
+  },
+
+  "personnages": {
+    "responsable": {
+      "prenom": "Karim",
+      "nom": "Benali",
+      "poste": "Responsable de rayon",
+      "avatar": "KB"
+    },
+    "tutrice": {
+      "prenom": "Lucie",
+      "nom": "Morvan",
+      "poste": "Responsable accueil caisse",
+      "avatar": "LM"
+    },
+    "createur": {
+      "prenom": "Pascal",
+      "nom": "Berruelle",
+      "poste": "Formateur LABORO"
+    }
+  },
+
+  "niveaux": [
+    { "id": "CAP1", "label": "CAP 1ère année", "couleur": "#2E7D32", "ordre": 1 },
+    { "id": "CAP2", "label": "CAP 2ème année", "couleur": "#1565C0", "ordre": 2 }
+  ],
+
+  "options": [
+    { "id": "EPC", "label": "Équipier Polyvalent du Commerce" }
+  ],
+
+  "examens": [
+    { "id": "EP1", "label": "EP1 — Réception et suivi des commandes", "niveaux": ["CAP1", "CAP2"] },
+    { "id": "EP2", "label": "EP2 — Mise en valeur et approvisionnement", "niveaux": ["CAP1", "CAP2"] },
+    { "id": "EP3", "label": "EP3 — Conseil et accompagnement client", "niveaux": ["CAP2"] }
+  ],
+
+  "couleurs": {
+    "primaire": "#1B5E20",
+    "secondaire": "#2E7D32",
+    "accent_cap1": "#2E7D32",
+    "accent_cap2": "#1565C0"
+  },
+
+  "score": {
+    "poids_missions": 60,
+    "poids_competences": 20,
+    "poids_reflexivite": 20,
+    "paliers": [
+      { "min": 0,   "max": 24,  "label": "Stagiaire",          "emoji": "🌱" },
+      { "min": 25,  "max": 49,  "label": "Équipier débutant",  "emoji": "📦" },
+      { "min": 50,  "max": 74,  "label": "Équipier confirmé",  "emoji": "🛒" },
+      { "min": 75,  "max": 89,  "label": "Chef de rayon",      "emoji": "🏆" },
+      { "min": 90,  "max": 100, "label": "Expert LABORO EPC",  "emoji": "⭐" }
+    ]
+  },
+
+  "fichiers_data": {
+    "missions": "data/missions-epc.js",
+    "competences": "data/competences-epc.js",
+    "catalogue": "data/catalogue-epc.js"
+  },
+
+  "_note": "Contenu pédagogique à développer — moteur prêt. Forte synergie avec LABORO MCV."
+}
