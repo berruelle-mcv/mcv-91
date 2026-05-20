@@ -232,8 +232,13 @@ function ouvrirFormulaireProspect(prospect){
           </div>
         </div>
         <div>
-          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Note / Prochaine action</label>
-          <textarea id="pf-note" rows="2" placeholder="Ex: Rappeler en septembre — potentiel élevé..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box;resize:vertical">${isEdit ? (prospect.prochaine||'') : ''}</textarea>
+          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Prochaine action</label>
+          <input id="pf-note" type="text" value="${isEdit ? (prospect.prochaine||'') : ''}" placeholder="Ex: Rappeler en septembre, envoyer devis..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;display:block;margin-bottom:4px">Commentaire SIC — Enrichissement de la fiche</label>
+          <textarea id="pf-commentaire" rows="3" placeholder="Ex: Client intéressé par la gamme running. Sensible à l'argument prix. A demandé un devis pour 15 maillots. À relancer après le CA..." style="width:100%;padding:10px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:13px;box-sizing:border-box;resize:vertical">${isEdit ? (prospect.commentaire||'') : ''}</textarea>
+          <div style="font-size:10px;color:#6B7280;margin-top:4px">💡 Enrichissez cette fiche avec les informations collectées lors de vos échanges (SIC — compétence E33)</div>
         </div>
         <div style="display:flex;gap:8px;margin-top:8px">
           ${isEdit ? `<button onclick="supprimerProspect('${prospect.id}')" style="padding:10px 16px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">🗑 Supprimer</button>` : ''}
@@ -258,6 +263,7 @@ function sauvegarderProspect(existingId){
     tel: document.getElementById('pf-tel').value.trim(),
     email: document.getElementById('pf-email').value.trim(),
     prochaine: document.getElementById('pf-note').value.trim(),
+    commentaire: document.getElementById('pf-commentaire').value.trim(),
     ini: nom.substring(0,2).toUpperCase(),
     col: '#8E44AD',
     fidelite: 'Prospect',
@@ -324,47 +330,100 @@ function ouvrirFicheClient(id){
   h.appendChild(typeEl); h.appendChild(nomEl); h.appendChild(contactEl);
   box.appendChild(h);
   
-  // Grille infos
+  // Grille infos — adaptée selon type (client ou prospect élève)
   const grid=document.createElement('div');
   grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px';
-  [[c.tel,'Telephone'],[c.email,'Email'],[c.sport,'Sport'],[(c.ca||0).toLocaleString('fr-FR')+'€','CA total']].forEach(function(item){
-    const cell=document.createElement('div');
-    cell.style.cssText='background:var(--gc);border-radius:8px;padding:10px';
-    const lbl=document.createElement('div');
-    lbl.style.cssText='font-size:9px;color:var(--gm);text-transform:uppercase;font-weight:700;margin-bottom:2px';
-    lbl.textContent=item[1];
-    const val=document.createElement('div');
-    val.style.cssText='font-size:12px;font-weight:700'+(item[1]==='CA total'?';color:'+col:'');
-    val.textContent=item[0];
-    cell.appendChild(lbl); cell.appendChild(val);
-    grid.appendChild(cell);
-  });
-  box.appendChild(grid);
-  
-  // Historique
-  const histoTitle=document.createElement('div');
-  histoTitle.style.cssText='font-size:11px;font-weight:800;color:var(--t1);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px';
-  histoTitle.textContent='Historique des achats';
-  box.appendChild(histoTitle);
-  
-  (c.historique||[]).forEach(function(h){
-    const line=document.createElement('div');
-    line.style.cssText='padding:6px 0;border-bottom:1px solid var(--gb);font-size:11px;color:var(--t2)';
-    line.textContent='• '+h;
-    box.appendChild(line);
-  });
-  
-  if(c.note){
-    const note=document.createElement('div');
-    note.style.cssText='margin-top:12px;padding:12px;background:var(--gc);border-radius:8px;font-size:11px;color:var(--t2)';
-    note.innerHTML='<strong>Note :</strong> '+c.note;
-    box.appendChild(note);
-  }
-  if(c.prochainContact){
-    const pc=document.createElement('div');
-    pc.style.cssText='margin-top:8px;font-size:11px;color:var(--gm)';
-    pc.innerHTML='Prochain contact : <strong>'+c.prochainContact+'</strong>';
-    box.appendChild(pc);
+
+  if(isProspectEleve){
+    // Fiche PROSPECT — champs simples, pas de CA ni historique
+    [[c.tel||'—','Téléphone'],[c.email||'—','Email'],[c.sect||'—','Secteur'],[c.type||'B2C','Type']].forEach(function(item){
+      const cell=document.createElement('div');
+      cell.style.cssText='background:var(--gc);border-radius:8px;padding:10px';
+      const lbl=document.createElement('div');
+      lbl.style.cssText='font-size:9px;color:var(--gm);text-transform:uppercase;font-weight:700;margin-bottom:2px';
+      lbl.textContent=item[1];
+      const val=document.createElement('div');
+      val.style.cssText='font-size:12px;font-weight:700;color:var(--t1)';
+      val.textContent=item[0];
+      cell.appendChild(lbl); cell.appendChild(val);
+      grid.appendChild(cell);
+    });
+    box.appendChild(grid);
+    // Note / Prochaine action
+    if(c.prochaine){
+      const noteEl=document.createElement('div');
+      noteEl.style.cssText='margin-bottom:12px;padding:12px;background:#FEF9C3;border-radius:8px;border-left:3px solid #F59E0B;font-size:12px;color:#92400E';
+      noteEl.innerHTML='<strong>⚡ Prochaine action :</strong> '+c.prochaine;
+      box.appendChild(noteEl);
+    }
+    // Commentaire SIC
+    if(c.commentaire){
+      const sicTitle=document.createElement('div');
+      sicTitle.style.cssText='font-size:11px;font-weight:800;color:var(--t1);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px';
+      sicTitle.textContent='📝 Commentaire SIC';
+      box.appendChild(sicTitle);
+      const sicEl=document.createElement('div');
+      sicEl.style.cssText='padding:12px;background:#F0FDF4;border-radius:8px;border-left:3px solid var(--vt);font-size:12px;color:var(--t2);line-height:1.6;margin-bottom:12px;white-space:pre-wrap';
+      sicEl.textContent=c.commentaire;
+      box.appendChild(sicEl);
+    }
+    // Bouton ajouter/modifier commentaire SIC
+    const addSicBtn=document.createElement('button');
+    addSicBtn.textContent = c.commentaire ? '✏️ Modifier le commentaire SIC' : '📝 Ajouter un commentaire SIC';
+    addSicBtn.style.cssText='width:100%;margin-bottom:8px;padding:8px;background:#F0FDF4;color:#166534;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700';
+    addSicBtn.onclick=function(){
+      const txt=prompt('Commentaire SIC — Enrichissement de la fiche prospect :
+(Informations collectées lors de vos échanges)', c.commentaire||'');
+      if(txt!==null){
+        const ud=gUD();
+        const idx=(ud.prospectAjoutes||[]).findIndex(function(p){ return p.id===c.id; });
+        if(idx>=0){ ud.prospectAjoutes[idx].commentaire=txt; sUD(ud); c.commentaire=txt; modal.remove(); ouvrirFicheClient(c.id); }
+      }
+    };
+    box.appendChild(addSicBtn);
+    // Statut prospect
+    const statutEl=document.createElement('div');
+    statutEl.style.cssText='padding:10px 14px;background:#F5F3FF;border-radius:8px;font-size:11px;color:#6D28D9;font-weight:700;text-align:center;margin-bottom:8px';
+    statutEl.textContent='🟣 Prospect — en cours de qualification';
+    box.appendChild(statutEl);
+  } else {
+    // Fiche CLIENT complète
+    [[c.tel,'Telephone'],[c.email,'Email'],[c.sport,'Sport'],[(c.ca||0).toLocaleString('fr-FR')+'€','CA total']].forEach(function(item){
+      const cell=document.createElement('div');
+      cell.style.cssText='background:var(--gc);border-radius:8px;padding:10px';
+      const lbl=document.createElement('div');
+      lbl.style.cssText='font-size:9px;color:var(--gm);text-transform:uppercase;font-weight:700;margin-bottom:2px';
+      lbl.textContent=item[1];
+      const val=document.createElement('div');
+      val.style.cssText='font-size:12px;font-weight:700'+(item[1]==='CA total'?';color:'+col:'');
+      val.textContent=item[0];
+      cell.appendChild(lbl); cell.appendChild(val);
+      grid.appendChild(cell);
+    });
+    box.appendChild(grid);
+    // Historique achats
+    const histoTitle=document.createElement('div');
+    histoTitle.style.cssText='font-size:11px;font-weight:800;color:var(--t1);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px';
+    histoTitle.textContent='Historique des achats';
+    box.appendChild(histoTitle);
+    (c.historique||[]).forEach(function(h){
+      const line=document.createElement('div');
+      line.style.cssText='padding:6px 0;border-bottom:1px solid var(--gb);font-size:11px;color:var(--t2)';
+      line.textContent='• '+h;
+      box.appendChild(line);
+    });
+    if(c.note){
+      const note=document.createElement('div');
+      note.style.cssText='margin-top:12px;padding:12px;background:var(--gc);border-radius:8px;font-size:11px;color:var(--t2)';
+      note.innerHTML='<strong>Note :</strong> '+c.note;
+      box.appendChild(note);
+    }
+    if(c.prochainContact){
+      const pc=document.createElement('div');
+      pc.style.cssText='margin-top:8px;font-size:11px;color:var(--gm)';
+      pc.innerHTML='Prochain contact : <strong>'+c.prochainContact+'</strong>';
+      box.appendChild(pc);
+    }
   }
   
   // Bouton modifier si prospect ajouté par l'élève
