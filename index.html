@@ -39,9 +39,24 @@ async function loadConfig() {
     setTxt('cfg-entreprise-sub', secteur + ' · ' + villeEnt + ' (91)');
     setTxt('msg-f', nomResp + ' — ' + posteResp);
     setTxt('mo-m', nomEnt);
-    // Mettre à jour le nom de la plateforme partout
+    // Mettre à jour le nom de la plateforme partout — après chargement complet du DOM
     const nomPlateforme = LABORO_CONFIG.nom_plateforme || 'LABORO';
-    ['cfg-nom-plateforme','cfg-nom-plateforme-2','cfg-nom-plateforme-3','cfg-nom-plateforme-4'].forEach(id => setTxt(id, nomPlateforme));
+    window.applyNomPlateforme = function() {
+      ['cfg-nom-plateforme','cfg-nom-plateforme-2','cfg-nom-plateforme-3','cfg-nom-plateforme-4'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = nomPlateforme;
+      });
+      // Aussi le bouton login et les textes fixes
+      document.querySelectorAll('.btn-li').forEach(el => {
+        if(el.textContent.includes('LABORO')) el.textContent = 'Accéder à mon espace ' + nomPlateforme;
+      });
+    };
+    // Appliquer immédiatement si DOM prêt, sinon attendre
+    if(document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(window.applyNomPlateforme, 100);
+    } else {
+      window.addEventListener('load', window.applyNomPlateforme);
+    }
     // Appliquer les couleurs primaires
     if (LABORO_CONFIG.couleurs) {
       document.documentElement.style.setProperty('--laboro-primary', LABORO_CONFIG.couleurs.primaire);
