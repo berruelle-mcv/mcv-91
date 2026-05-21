@@ -177,7 +177,7 @@ function renderClients(){
   const fidelCols={'Stratégique':'#27500A','Fidèle':'var(--vt)','Régulier':'var(--bl)','Nouveau':'var(--am)','Prospect':'#8E44AD','Dormant':'var(--gm)','Perdu':'var(--rg)'};
   document.getElementById('client-list').innerHTML=`<div class="cl-list">${all.map(c=>{
     const fc=fidelCols[c.fidelite||c.statut]||'var(--gm)';
-    const lbl=c.fidelite||c.statut||'Client';
+    const lbl=c.convertiFin?'Client actif':(c.fidelite||c.statut||'Client');
     return`<div class="cl-card" onclick="ouvrirFicheClient('${c.id}')"><div class="cl-h">
       <div class="cl-av" style="background:${c.col||'var(--bl)'}">${c.ini}</div>
       <div class="u-flex-1">
@@ -340,7 +340,8 @@ function convertirProspect(id, modal){
 function ouvrirFicheClient(id){
   const ud = gUD();
   const pros = ud.prospectAjoutes || [];
-  const c = CLIENTS.find(function(x){ return x.id===id; }) || pros.find(function(x){ return x.id===id; });
+  const clientsConverts = ud.clientsAjoutes || [];
+  const c = CLIENTS.find(function(x){ return x.id===id; }) || clientsConverts.find(function(x){ return x.id===id; }) || pros.find(function(x){ return x.id===id; });
   if(!c) return;
   const isProspectEleve = c.ajouteParEleve === true;
   const statC={'Strategique':'#1A2E4A','Fidele':'#276749','Actif':'#2D5282','Prospect':'#D97706','Nouveau':'#7B2FBE'};
