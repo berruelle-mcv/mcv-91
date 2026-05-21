@@ -187,7 +187,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .fr select{padding:6px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:12px;background:var(--wh);color:var(--gr)}
 /* MODAL MISSION */
 .mo{display:none;position:fixed;top:0;left:0;width:0;height:0;z-index:1000;pointer-events:none}
-.mo.open{display:flex;width:100%;height:100%;pointer-events:all}
+.mo.open{display:flex;width:100%;height:100%;pointer-events:none}
 .modal{background:var(--wh);border-radius:14px;width:740px;min-width:380px;min-height:300px;height:88vh;overflow:hidden;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1001;box-shadow:0 20px 60px rgba(0,0,0,.25),0 4px 16px rgba(0,0,0,.15);display:none;flex-direction:column;pointer-events:all;resize:both}
 .mo.on .modal{display:flex}.mo-h{background:var(--bl);color:#fff;padding:15px 22px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:flex-start}
 .mo-h h2{font-size:15px;font-weight:700}.mo-h p{font-size:11px;opacity:1;color:rgba(255,255,255,.9);margin-top:2px}
