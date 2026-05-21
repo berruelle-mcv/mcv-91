@@ -248,7 +248,7 @@ function ouvrirFormulaireProspect(prospect){
           <div style="font-size:10px;color:#6B7280;margin-top:4px">💡 Enrichissez cette fiche avec les informations collectées lors de vos échanges — notes, besoins, objections, prochaine action...</div>
         </div>
         <div style="display:flex;gap:8px;margin-top:8px">
-          ${isEdit ? `<button onclick="supprimerProspect('${prospect.id}')" style="padding:10px 16px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">🗑 Supprimer</button>` : ''}
+          ${isEdit ? `<button onclick="if(this.dataset.confirming==='1'){supprimerProspect('${prospect.id}')}else{this.dataset.confirming='1';this.textContent='Confirmer ?';this.style.background='#DC2626';this.style.color='#fff';setTimeout(()=>{if(this.dataset.confirming){this.dataset.confirming='';this.textContent='🗑 Supprimer';this.style.background='#FEE2E2';this.style.color='#DC2626'}},3000)}" style="padding:10px 16px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">🗑 Supprimer</button>` : ''}
           <button onclick="sauvegarderProspect(${isEdit ? `'${prospect.id}'` : 'null'})" style="flex:1;padding:12px;background:var(--bl);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700">${isEdit ? 'Enregistrer les modifications' : 'Ajouter le prospect'}</button>
         </div>
       </div>
@@ -291,12 +291,12 @@ function sauvegarderProspect(existingId){
 }
 
 function supprimerProspect(id){
-  if(!confirm('Supprimer ce prospect ?')) return;
   const ud = gUD();
   ud.prospectAjoutes = (ud.prospectAjoutes||[]).filter(function(p){ return p.id !== id; });
   sUD(ud);
   const overlay = document.getElementById('prospect-form-overlay');
   if(overlay) overlay.remove();
+  showNotifEleve('Prospect supprimé.', 'info');
   renderClients();
 }
 
