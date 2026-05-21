@@ -172,7 +172,8 @@ function renderClients(){
   if(!CU)return;
   const ud=gUD();
   const pros=(ud.prospectAjoutes||[]);
-  const all=[...CLIENTS,...pros];
+  const clientsConverts=(ud.clientsAjoutes||[]);
+  const all=[...CLIENTS,...clientsConverts,...pros];
   const fidelCols={'Stratégique':'#27500A','Fidèle':'var(--vt)','Régulier':'var(--bl)','Nouveau':'var(--am)','Prospect':'#8E44AD','Dormant':'var(--gm)','Perdu':'var(--rg)'};
   document.getElementById('client-list').innerHTML=`<div class="cl-list">${all.map(c=>{
     const fc=fidelCols[c.fidelite||c.statut]||'var(--gm)';
@@ -296,6 +297,43 @@ function supprimerProspect(id){
   sUD(ud);
   const overlay = document.getElementById('prospect-form-overlay');
   if(overlay) overlay.remove();
+  renderClients();
+}
+
+function convertirProspect(id, modal){
+  if(!confirm('Convertir ce prospect en client actif ?\nSes informations seront conservées et il apparaîtra dans votre fichier clients.')) return;
+  const ud = gUD();
+  const pros = ud.prospectAjoutes || [];
+  const idx = pros.findIndex(function(p){ return p.id === id; });
+  if(idx < 0) return;
+  const p = pros[idx];
+  // Créer le client converti
+  const newClient = {
+    id: 'CC' + Date.now(),
+    nom: p.nom,
+    type: p.type || 'B2C',
+    ini: p.ini || p.nom.substring(0,2).toUpperCase(),
+    col: '#276749',
+    sect: p.sect || '',
+    contact: p.contact || '',
+    tel: p.tel || '',
+    email: p.email || '',
+    ca: 0,
+    fidelite: 'Nouveau',
+    dernier: new Date().toLocaleDateString('fr-FR'),
+    prochaine: p.prochaine || '',
+    note: (p.commentaire ? 'SIC : ' + p.commentaire : '') + '\nConverti depuis prospect le ' + new Date().toLocaleDateString('fr-FR'),
+    historique: ['Conversion prospect → client le ' + new Date().toLocaleDateString('fr-FR')],
+    ajouteParEleve: true,
+    convertiFin: true
+  };
+  // Supprimer le prospect et ajouter le client
+  ud.prospectAjoutes.splice(idx, 1);
+  if(!ud.clientsAjoutes) ud.clientsAjoutes = [];
+  ud.clientsAjoutes.push(newClient);
+  sUD(ud);
+  if(modal) modal.remove();
+  showNotifEleve('✅ ' + p.nom + ' converti(e) en client actif !', 'success');
   renderClients();
 }
 
@@ -431,11 +469,18 @@ function ouvrirFicheClient(id){
     }
   }
   
-  // Bouton modifier si prospect ajouté par l'élève
+  // Boutons action si prospect ajouté par l'élève
   if(isProspectEleve){
+    // Bouton convertir en client
+    const convertBtn = document.createElement('button');
+    convertBtn.textContent = '🔄 Convertir en client';
+    convertBtn.style.cssText = 'width:100%;margin-top:12px;padding:10px;background:#D1FAE5;color:#065F46;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
+    convertBtn.onclick = function(){ convertirProspect(c.id, modal); };
+    box.appendChild(convertBtn);
+    // Bouton modifier
     const editBtn = document.createElement('button');
     editBtn.textContent = '✏️ Modifier ce prospect';
-    editBtn.style.cssText = 'width:100%;margin-top:12px;padding:10px;background:#EBF4FF;color:var(--bl);border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
+    editBtn.style.cssText = 'width:100%;margin-top:8px;padding:10px;background:#EBF4FF;color:var(--bl);border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
     editBtn.onclick = function(){ modal.remove(); ouvrirFormulaireProspect(c); };
     box.appendChild(editBtn);
   }
