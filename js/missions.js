@@ -130,13 +130,16 @@ function closeCoupDePouce(){
   const overlay = document.getElementById('cp-overlay');
   if(overlay) overlay.classList.remove('open');
 }
+// ══ GESTION FENÊTRE MISSION ══
+
 function closeMo(){
-  document.getElementById('mo').classList.remove('open');
-  document.getElementById('mo').classList.remove('on');
+  const mo=document.getElementById('mo');
   const modal=document.querySelector('.modal');
-  if(modal){ modal.style.display='none'; }
   const tb=document.getElementById('mo-taskbar');
+  if(mo){ mo.classList.remove('open'); mo.classList.remove('on'); }
+  if(modal){ modal.style.display='none'; modal.style.width=''; modal.style.height=''; modal.style.left=''; modal.style.top=''; modal.style.transform='translate(-50%,-50%)'; }
   if(tb){ tb.classList.remove('visible'); }
+  moIsFullscreen=false;
 }
 
 function moMinimize(){
@@ -145,10 +148,9 @@ function moMinimize(){
   const tb=document.getElementById('mo-taskbar');
   const title=document.getElementById('mo-t');
   if(!modal||!mo||!tb) return;
-  // Masquer la modal ET l'overlay pour libérer la navigation
   modal.style.display='none';
   mo.classList.remove('on');
-  mo.classList.remove('open'); // libère le pointer-events et la surface
+  mo.classList.remove('open');
   const tbTitle=document.getElementById('mo-taskbar-title');
   if(tbTitle&&title) tbTitle.textContent=title.textContent||'Mission en cours';
   tb.classList.add('visible');
@@ -159,17 +161,85 @@ function moRestore(){
   const mo=document.getElementById('mo');
   const tb=document.getElementById('mo-taskbar');
   if(!modal||!mo||!tb) return;
-  // Remettre l'overlay ET la modal
   mo.classList.add('open');
   mo.classList.add('on');
   modal.style.display='flex';
   tb.classList.remove('visible');
+  // Réinitialiser position si hors écran
+  const rect=modal.getBoundingClientRect();
+  if(rect.left<0||rect.top<0){
+    modal.style.left='50%';
+    modal.style.top='50%';
+    modal.style.transform='translate(-50%,-50%)';
+  }
 }
 
+var moIsFullscreen=false;
 function moFullscreen(){
-  // Remplacé par minimize — on ignore
-  moMinimize();
+  const modal=document.querySelector('.modal');
+  const btn=document.getElementById('mo-fs-btn');
+  if(!modal) return;
+  if(!moIsFullscreen){
+    modal.dataset.prevW=modal.style.width;
+    modal.dataset.prevH=modal.style.height;
+    modal.dataset.prevL=modal.style.left;
+    modal.dataset.prevT=modal.style.top;
+    modal.dataset.prevTr=modal.style.transform;
+    modal.style.width='100vw';
+    modal.style.height='100vh';
+    modal.style.left='0';
+    modal.style.top='0';
+    modal.style.transform='none';
+    modal.style.borderRadius='0';
+    if(btn) btn.textContent='⊡';
+    moIsFullscreen=true;
+  } else {
+    modal.style.width=modal.dataset.prevW||'740px';
+    modal.style.height=modal.dataset.prevH||'88vh';
+    modal.style.left=modal.dataset.prevL||'50%';
+    modal.style.top=modal.dataset.prevT||'50%';
+    modal.style.transform=modal.dataset.prevTr||'translate(-50%,-50%)';
+    modal.style.borderRadius='14px';
+    if(btn) btn.textContent='⛶';
+    moIsFullscreen=false;
+  }
 }
+
+// ══ DRAG — déplacement de la fenêtre par le header ══
+function initModalDrag(){
+  const modal=document.querySelector('.modal');
+  const header=document.querySelector('.mo-h');
+  if(!modal||!header) return;
+  let isDragging=false, startX=0, startY=0, startL=0, startT=0;
+  header.style.cursor='grab';
+  header.addEventListener('mousedown',function(e){
+    if(e.target.tagName==='BUTTON') return;
+    isDragging=true;
+    header.style.cursor='grabbing';
+    // Fixer la position absolue au moment du drag
+    const rect=modal.getBoundingClientRect();
+    modal.style.left=rect.left+'px';
+    modal.style.top=rect.top+'px';
+    modal.style.transform='none';
+    startX=e.clientX; startY=e.clientY;
+    startL=rect.left; startT=rect.top;
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!isDragging) return;
+    const dx=e.clientX-startX, dy=e.clientY-startY;
+    const newL=Math.max(0,Math.min(window.innerWidth-100, startL+dx));
+    const newT=Math.max(0,Math.min(window.innerHeight-50, startT+dy));
+    modal.style.left=newL+'px';
+    modal.style.top=newT+'px';
+  });
+  document.addEventListener('mouseup',function(){
+    if(isDragging){ isDragging=false; header.style.cursor='grab'; }
+  });
+}
+
+// Initialiser le drag quand la modal s'ouvre
+const _origOpenMission=typeof openMission==='function'?openMission:null;
 function moTab(i,el){
   document.querySelectorAll('.mo-tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.mo-tp').forEach(t=>t.classList.remove('on'));
