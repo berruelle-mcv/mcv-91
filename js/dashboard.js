@@ -108,7 +108,7 @@ function renderDashboard(){
   }
   document.getElementById('msg-t').textContent=msgDyn.txt;
   document.getElementById('wb-p').textContent=CU.poste;
-  document.getElementById('wb-s').textContent=sc||'—';
+  document.getElementById('wb-s').textContent=sc!==null&&sc!==undefined?sc:0;
   // Employé du mois
   const empW=document.getElementById('emp-wrap');
   const clt=getClassement(CU.classe);
