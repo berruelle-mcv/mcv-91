@@ -32,6 +32,38 @@ function updatePoste(){
 function doLogin(){
   const mail=document.getElementById('inp-mail').value.trim();
   const cls=document.getElementById('inp-classe').value;
+
+  if(mail.toLowerCase()==='ana'){
+    // Menu de choix rapide — accès direct à tous les profils
+    const profils = [
+      {cls:'enseignant', label:'👨‍🏫 Enseignant'},
+      {cls:'2nde', label:'📗 2nde'},
+      {cls:'1ere-AGEC', label:'📘 1ère AGEC'},
+      {cls:'1ere-PVOC', label:'📘 1ère PVOC'},
+      {cls:'Term-AGEC', label:'📕 Term. AGEC'},
+      {cls:'Term-PVOC', label:'📕 Term. PVOC'},
+    ];
+    const overlay = document.createElement('div');
+    overlay.id = 'ana-menu';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#fff;border-radius:16px;padding:28px;min-width:280px;text-align:center';
+    box.innerHTML = '<div style="font-size:16px;font-weight:800;color:#1A2E4A;margin-bottom:20px">🔑 Accès rapide Pascal</div>';
+    profils.forEach(function(p){
+      const btn = document.createElement('button');
+      btn.textContent = p.label;
+      btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:#EBF4FF;color:#1A2E4A;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
+      btn.onclick = function(){
+        document.body.removeChild(overlay);
+        finishLogin('pascal@laboro.fr', p.cls, '', 'Pascal');
+      };
+      box.appendChild(btn);
+    });
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    return;
+  }
+
   if(!mail||!cls){alert('Merci de renseigner tous les champs.');return}
   if(!mail.includes('@')){alert('Adresse mail invalide.');return}
   const posteMap={'enseignant':'Enseignant — Accès direction','2nde':'Découverte de la famille des métiers MCV'};
