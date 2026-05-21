@@ -26,7 +26,7 @@ function getMsg(classe,poste){
   if(done===0&&att===0){
     if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue dans l'équipe LABORO ! Je suis "+getResp().nom+", "+getResp().poste+". Ta première mission t'attend — lis bien la ressource avant de te lancer. C'est comme ça qu'on progresse ici."};
     if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:"Bienvenue chez LABORO ! Je suis "+getTutrice().nom+", "+getTutrice().poste+". Ta première mission de terrain t'attend. Prends le temps de lire la ressource — sur le terrain, on n'a pas de filet !"};
-    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue chez LABORO ! Je suis Pascal Berruelle, PDG de l'entreprise. Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
+    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue chez LABORO ! Je suis "+getResp().nom+", "+getResp().poste+". Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
   }
 
   // 2. Missions en attente de correction — encourager la patience
