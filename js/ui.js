@@ -284,26 +284,7 @@ function renderCompetencesEnseignant(){
 
 
 
-function checkCharte(){
-  if(CU.classe==='enseignant') return;
-  // Affichée une seule fois par SESSION (pas par connexion lifetime)
-  // sessionStorage = effacé à la fermeture de l'onglet
-  const key = 'laboro_charte_'+CU.mail;
-  if(!sessionStorage.getItem(key)){
-    document.getElementById('charte-laboro').style.display = 'block';
-  }
-}
-
-function accepterCharte(){
-  const ud = gUD();
-  ud.charte_signee = true;
-  ud.charte_date = new Date().toLocaleDateString('fr-FR');
-  sUD(ud);
-  // Marquer dans la session pour éviter le double affichage
-  sessionStorage.setItem('laboro_charte_'+CU.mail, '1');
-  document.getElementById('charte-laboro').style.display = 'none';
-  showNotifEleve("Bienvenue dans l'equipe LABORO ! Bonne premiere mission !", 'success');
-}
+// checkCharte() et accepterCharte() définies dans clients.js
 
 
 
