@@ -788,6 +788,13 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <!-- MODAL MISSION -->
     <div id="mo" class="mo">
       <div class="modal">
+        <!-- Taskbar mission minimisée -->
+        <div class="mo-taskbar" id="mo-taskbar" onclick="moRestore()">
+          <span style="font-size:16px">📋</span>
+          <span class="mo-taskbar-title" id="mo-taskbar-title">Mission en cours</span>
+          <button class="mo-taskbar-btn" onclick="event.stopPropagation();moRestore()">↑ Ouvrir</button>
+          <button class="mo-taskbar-btn" onclick="event.stopPropagation();closeMo()" style="background:rgba(255,100,100,.3)">✕</button>
+        </div>
         <div class="mo-h"><div style="flex:1;min-width:0"><h2 id="mo-t" style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</h2><p id="mo-m" style="font-size:11px;opacity:.75;margin-top:2px">LABORO Sport & Outdoor</p><div id="mo-palier-desc" style="display:none;margin-top:6px;padding:6px 12px;border-radius:6px;font-size:11.5px;line-height:1.5;border-left:3px solid var(--ac1)"></div></div><div class="mo-controls"><button class="mo-ctrl-btn" onclick="moMinimize()" title="Minimiser">─</button><button class="mo-ctrl-btn" onclick="moFullscreen()" id="mo-fs-btn" title="Plein écran">⛶</button><button class="mo-ctrl-btn mo-ctrl-close" onclick="closeMo()" title="Fermer">✕</button></div></div>
         <div class="mo-tabs"><div class="mo-tab on" onclick="moTab(0,this)">Apprendre d'abord</div><div class="mo-tab" onclick="moTab(1,this)">La mission</div><div class="mo-tab" id="tab-fb" style="display:none" onclick="moTab(2,this)">Feedback IA</div></div>
         <div class="mo-body"><div class="mo-tp on" id="mo-learn"></div><div class="mo-tp" id="mo-mission"></div><div class="mo-tp" id="mo-fb"></div></div>
