@@ -135,6 +135,38 @@ function closeMo(){
   document.getElementById('mo').classList.remove('on');
   const modal=document.querySelector('.modal');
   if(modal){ modal.style.display='none'; }
+  const tb=document.getElementById('mo-taskbar');
+  if(tb){ tb.classList.remove('visible'); }
+}
+
+function moMinimize(){
+  // Réduire la modal en taskbar
+  const modal=document.querySelector('.modal');
+  const mo=document.getElementById('mo');
+  const tb=document.getElementById('mo-taskbar');
+  const title=document.getElementById('mo-t');
+  if(!modal||!mo||!tb) return;
+  modal.style.display='none';
+  mo.classList.remove('on');
+  const tbTitle=document.getElementById('mo-taskbar-title');
+  if(tbTitle&&title) tbTitle.textContent=title.textContent||'Mission en cours';
+  tb.classList.add('visible');
+}
+
+function moRestore(){
+  // Rouvrir la modal depuis le taskbar
+  const modal=document.querySelector('.modal');
+  const mo=document.getElementById('mo');
+  const tb=document.getElementById('mo-taskbar');
+  if(!modal||!mo||!tb) return;
+  modal.style.display='flex';
+  mo.classList.add('on');
+  tb.classList.remove('visible');
+}
+
+function moFullscreen(){
+  // Remplacé par minimize — on ignore
+  moMinimize();
 }
 function moTab(i,el){
   document.querySelectorAll('.mo-tab').forEach(t=>t.classList.remove('on'));
