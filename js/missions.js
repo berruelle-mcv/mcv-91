@@ -130,7 +130,12 @@ function closeCoupDePouce(){
   const overlay = document.getElementById('cp-overlay');
   if(overlay) overlay.classList.remove('open');
 }
-function closeMo(){document.getElementById('mo').classList.remove('open');document.getElementById('mo').classList.remove('on');moIsMinimized=false;moIsFullscreen=false;const tb=document.getElementById('mo-taskbar');if(tb)tb.style.display='none';const modal=document.querySelector('.modal');if(modal){modal.style.display='none';modal.style.borderRadius='14px';modal.style.resize='both';}}
+function closeMo(){
+  document.getElementById('mo').classList.remove('open');
+  document.getElementById('mo').classList.remove('on');
+  const modal=document.querySelector('.modal');
+  if(modal){ modal.style.display='none'; }
+}
 function moTab(i,el){
   document.querySelectorAll('.mo-tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.mo-tp').forEach(t=>t.classList.remove('on'));
