@@ -728,7 +728,8 @@ function renderE2Mission(el, s, ud, view){
                 + '</div>'
                 + '</div>'
                 + '<div style="padding:8px 14px;background:#fff;text-align:right;border-top:1px solid #F3F4F6">'
-                + '<button onclick="setE2View(\'corrige-'+c.num+'\')" style="background:'+mColor+';color:#fff;border:none;padding:6px 14px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer">Voir le corrigé →</button>'
+                + '<button onclick="this.style.display=\'none\';this.nextElementSibling.style.display=\'inline-block\'" style="background:#F0FDF4;color:#166534;border:1.5px solid #A7F3D0;padding:6px 14px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer">✅ J\'ai répondu</button>'
+                + '<button onclick="setE2View(\'corrige-'+c.num+'\')" style="display:none;background:'+mColor+';color:#fff;border:none;padding:6px 14px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer">Voir le corrigé →</button>'
                 + '</div>'
                 + '</div>';
             }).join('')
