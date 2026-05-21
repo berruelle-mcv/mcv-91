@@ -26,7 +26,7 @@ function getMsg(classe,poste){
   if(done===0&&att===0){
     if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue dans l'équipe LABORO ! Je suis "+getResp().nom+", "+getResp().poste+". Ta première mission t'attend — lis bien la ressource avant de te lancer. C'est comme ça qu'on progresse ici."};
     if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:"Bienvenue chez LABORO ! Je suis "+getTutrice().nom+", "+getTutrice().poste+". Ta première mission de terrain t'attend. Prends le temps de lire la ressource — sur le terrain, on n'a pas de filet !"};
-    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:"Bienvenue chez LABORO ! Je suis Pascal Berruelle, PDG de l'entreprise. Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
+    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue chez LABORO ! Je suis Pascal Berruelle, PDG de l'entreprise. Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
   }
 
   // 2. Missions en attente de correction — encourager la patience
@@ -39,14 +39,14 @@ function getMsg(classe,poste){
   if(done>=3&&moy<10){
     if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:`Ta moyenne est à ${moy}/20 pour l'instant. Ce n'est pas là où on veut être. Je te conseille de relire les ressources avant de répondre — elles contiennent tout ce qu'il faut. Tu peux le faire, j'en suis sûr(e).`};
     if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:`Moyenne à ${moy}/20 — on peut mieux faire. Dans le commercial, les résultats comptent. Reprends les ressources, elles sont là pour toi. Un retournement de situation, ça arrive.`};
-    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:`Ta moyenne est à ${moy}/20. Ce n'est pas une catastrophe, mais il faut se retrousser les manches. Lis bien les ressources avant chaque mission — elles contiennent les clés pour progresser.`};
+    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:`Ta moyenne est à ${moy}/20. Ce n'est pas une catastrophe, mais il faut se retrousser les manches. Lis bien les ressources avant chaque mission — elles contiennent les clés pour progresser.`};
   }
 
   // 4. Très bonne moyenne — féliciter
   if(done>=3&&moy>=15){
     if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:`Excellente moyenne à ${moy}/20 ! C'est exactement le niveau qu'on attend d'un(e) conseiller(ère) de vente chez LABORO. Continue comme ça — les meilleures opportunités vont aux meilleurs. Bravo.`};
     if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:`${moy}/20 de moyenne — impressionnant ! Un commercial avec ces résultats chez nous, on le garde. Tu prouves que travail et méthode paient. Continue sur cette lancée.`};
-    if(classe==='2nde') return{from:'Pascal Berruelle — PDG de LABORO',txt:`Moyenne à ${moy}/20 — félicitations ! Tu montres déjà de vraies qualités professionnelles. Continue à t'investir comme ça.`};
+    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:`Moyenne à ${moy}/20 — félicitations ! Tu montres déjà de vraies qualités professionnelles. Continue à t'investir comme ça.`};
   }
 
   // 5. Sprint final — Terminale après mars
@@ -57,7 +57,7 @@ function getMsg(classe,poste){
 
   // 6. Messages par défaut selon période de l'année
   const msgs={
-    '2nde':{from:'Pascal Berruelle — PDG de LABORO',textes:[
+    '2nde':{from:getResp().nom+' — '+getResp().poste,textes:[
       {debut:0,fin:1,txt:"Bienvenue chez LABORO ! Commence par explorer — lis bien la ressource avant chaque mission."},
       {debut:2,fin:4,txt:"Tu pars bientôt en stage. Sois curieux(se), observe comment l'entreprise fonctionne. Compare avec ce qu'on fait ici."},
       {debut:5,fin:7,txt:"Bienvenue de retour ! Reprends LABORO avec ton nouveau regard professionnel."},
@@ -126,7 +126,7 @@ const gUD=()=>{
   return ud;
 };
 const sUD=d=>{const s=gS();s[CU.mail]=d;sS(s)};
-const allU=()=>{const s=gS();const SYS=['ak','mdj','__ens_ob_done','demo@laboro-demo.fr'];return Object.keys(s).filter(k=>!SYS.includes(k)&&k.includes('@')&&!k.startsWith('_')).map(k=>({mail:k,...s[k]}))};
+const allU=()=>{const s=gS();const SYS=['ak','mdj','__ens_ob_done','demo@laboro-demo.fr'];const EXCL=['demo@laboro-demo.fr','test@laboro-test.fr','ana@laboro-test.fr','pascal@laboro.fr','eleve.test@laboro-demo.fr'];return Object.keys(s).filter(k=>!SYS.includes(k)&&!EXCL.includes(k)&&k.includes('@')&&!k.startsWith('_')).map(k=>({mail:k,...s[k]}))};
 const getMDJ=()=>{try{return JSON.parse(localStorage.getItem('laboro_mdj')||'{}')}catch{return{}}};
 const setMDJ=d=>localStorage.setItem('laboro_mdj',JSON.stringify(d));
 
