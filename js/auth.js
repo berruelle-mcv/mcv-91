@@ -63,8 +63,27 @@ function finishLogin(mail,cls,poste,nomParam){
     if(!s2['__ens_ob_done']){startObEns();}
     else{showApp();}
   }
-  else if(isNew){startOb();}
-  else{showApp();}
+  else if(isNew){
+    // Charte d'abord, puis onboarding
+    setTimeout(function(){
+      if(typeof checkCharte === 'function') checkCharte();
+      // Démarrer l'onboarding après acceptation de la charte
+      const charteEl = document.getElementById('charte-laboro');
+      if(charteEl && charteEl.style.display !== 'none'){
+        // La charte est visible — on attend qu'elle soit acceptée
+        // accepterCharte() appellera startOb() ensuite
+        window.__pendingOnboarding = true;
+      } else {
+        startOb();
+      }
+    }, 100);
+  }
+  else{
+    setTimeout(function(){
+      if(typeof checkCharte === 'function') checkCharte();
+      showApp();
+    }, 100);
+  }
 }
 function startOb(){
   document.getElementById('onboarding').classList.add('on');
