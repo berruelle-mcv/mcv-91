@@ -51,12 +51,19 @@ function hideVitrine(){
 
 function startDemo(){
   hideVitrine();
-  // Connexion en mode démo
+  // Connexion directe en mode démo — bypass onboarding
   const mail=document.getElementById('inp-mail');
   const mdp=document.getElementById('inp-mdp');
   const cls=document.getElementById('inp-classe');
   if(mail) mail.value='demo@laboro-demo.fr';
   if(mdp) mdp.value='demo';
   if(cls) cls.value='Term-AGEC';
+  // Marquer l'onboarding comme déjà fait pour le compte démo
+  try {
+    const s = JSON.parse(localStorage.getItem('laboro_s')||'{}');
+    if(!s['demo@laboro-demo.fr']) s['demo@laboro-demo.fr']={missions:{},competences:{},notes:{}};
+    s['demo@laboro-demo.fr'].__ob_done = true;
+    localStorage.setItem('laboro_s', JSON.stringify(s));
+  } catch(e){}
   doLogin();
 }
