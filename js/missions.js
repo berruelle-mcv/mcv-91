@@ -140,27 +140,29 @@ function closeMo(){
 }
 
 function moMinimize(){
-  // Réduire la modal en taskbar
   const modal=document.querySelector('.modal');
   const mo=document.getElementById('mo');
   const tb=document.getElementById('mo-taskbar');
   const title=document.getElementById('mo-t');
   if(!modal||!mo||!tb) return;
+  // Masquer la modal ET l'overlay pour libérer la navigation
   modal.style.display='none';
   mo.classList.remove('on');
+  mo.classList.remove('open'); // libère le pointer-events et la surface
   const tbTitle=document.getElementById('mo-taskbar-title');
   if(tbTitle&&title) tbTitle.textContent=title.textContent||'Mission en cours';
   tb.classList.add('visible');
 }
 
 function moRestore(){
-  // Rouvrir la modal depuis le taskbar
   const modal=document.querySelector('.modal');
   const mo=document.getElementById('mo');
   const tb=document.getElementById('mo-taskbar');
   if(!modal||!mo||!tb) return;
-  modal.style.display='flex';
+  // Remettre l'overlay ET la modal
+  mo.classList.add('open');
   mo.classList.add('on');
+  modal.style.display='flex';
   tb.classList.remove('visible');
 }
 
