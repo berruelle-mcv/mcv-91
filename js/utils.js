@@ -35,3 +35,28 @@ function populateMDJSelect(){
 // Données et rendus E2 chargés depuis les fichiers externes :
 // - data/e2-agec.js  (sujet + corrigés + fonctions AGEC)
 // - data/e2-pvoc.js  (sujet + corrigés + fonctions PVOC)
+
+// ═══ VITRINE PRESCRIPTEUR ═══
+function showVitrine(){
+  document.getElementById('login').style.display='none';
+  const v=document.getElementById('vitrine');
+  if(v){ v.style.display='block'; window.scrollTo(0,0); }
+}
+
+function hideVitrine(){
+  const v=document.getElementById('vitrine');
+  if(v) v.style.display='none';
+  document.getElementById('login').style.display='flex';
+}
+
+function startDemo(){
+  hideVitrine();
+  // Connexion en mode démo
+  const mail=document.getElementById('inp-mail');
+  const mdp=document.getElementById('inp-mdp');
+  const cls=document.getElementById('inp-classe');
+  if(mail) mail.value='demo@laboro-demo.fr';
+  if(mdp) mdp.value='demo';
+  if(cls) cls.value='Term-AGEC';
+  doLogin();
+}
