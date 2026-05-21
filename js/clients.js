@@ -26,10 +26,16 @@ function accepterCharte(){
   ud.charte_signee = true;
   ud.charte_date = new Date().toLocaleDateString('fr-FR');
   sUD(ud);
-  // Marquer dans la session pour éviter le double affichage
   sessionStorage.setItem('laboro_charte_'+CU.mail, '1');
   document.getElementById('charte-laboro').style.display = 'none';
-  showNotifEleve("Bienvenue dans l'equipe LABORO ! Bonne premiere mission !", 'success');
+  // Si onboarding en attente (nouvel élève) → démarrer l'onboarding
+  // Sinon → aller au dashboard
+  if(window.__pendingOnboarding){
+    window.__pendingOnboarding = false;
+    if(typeof startOb === 'function') startOb();
+  } else {
+    showNotifEleve("Bienvenue dans l'équipe LABORO !", 'success');
+  }
 }
 
 
