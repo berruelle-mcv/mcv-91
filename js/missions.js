@@ -445,3 +445,6 @@ function renderCompetences(){
   }).join('');
 }
 
+
+// Initialiser le drag de la modal au chargement
+document.addEventListener('DOMContentLoaded', function(){ setTimeout(initModalDrag, 500); });
