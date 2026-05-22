@@ -113,13 +113,30 @@ function renderDashboard(){
   // Afficher le palier
   const palierEl=document.getElementById('wb-palier');
   if(palierEl){
-    const paliers=getCfg().score&&getCfg().score.paliers||[
-      {min:0,max:24,label:'Stagiaire',emoji:'🌱'},
-      {min:25,max:49,label:'Assistant commercial',emoji:'📋'},
-      {min:50,max:74,label:'Conseiller de vente',emoji:'💼'},
-      {min:75,max:89,label:'Commercial confirmé',emoji:'🏆'},
-      {min:90,max:100,label:'Expert LABORO',emoji:'⭐'}
+    const isAgec = CU.classe && CU.classe.toUpperCase().includes('AGEC');
+    const isPvoc = CU.classe && CU.classe.toUpperCase().includes('PVOC');
+    const paliersAgec = [
+      {min:0,  max:24,  label:'Nouveau collaborateur', emoji:'🌱'},
+      {min:25, max:49,  label:'Équipier commercial',   emoji:'📋'},
+      {min:50, max:74,  label:'Conseiller de vente',   emoji:'💼'},
+      {min:75, max:89,  label:'Animateur commercial',  emoji:'🏆'},
+      {min:90, max:100, label:'Expert LABORO',         emoji:'⭐'}
     ];
+    const paliersPvoc = [
+      {min:0,  max:24,  label:'Nouveau collaborateur', emoji:'🌱'},
+      {min:25, max:49,  label:'Chargé de prospection', emoji:'📋'},
+      {min:50, max:74,  label:'Commercial terrain',    emoji:'💼'},
+      {min:75, max:89,  label:'Négociateur confirmé',  emoji:'🏆'},
+      {min:90, max:100, label:'Expert LABORO',         emoji:'⭐'}
+    ];
+    const paliersNeutres = [
+      {min:0,  max:24,  label:'Nouveau collaborateur', emoji:'🌱'},
+      {min:25, max:49,  label:'Équipier commercial',   emoji:'📋'},
+      {min:50, max:74,  label:'Conseiller de vente',   emoji:'💼'},
+      {min:75, max:89,  label:'Commercial confirmé',   emoji:'🏆'},
+      {min:90, max:100, label:'Expert LABORO',         emoji:'⭐'}
+    ];
+    const paliers = isPvoc ? paliersPvoc : isAgec ? paliersAgec : paliersNeutres;
     const score=sc||0;
     const palier=paliers.find(function(p){ return score>=p.min&&score<=p.max; })||paliers[0];
     palierEl.textContent=palier.emoji+' '+palier.label;
