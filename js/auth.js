@@ -200,7 +200,7 @@ function startOb(){
           <div style="font-size:12px;color:#6B7280;line-height:1.5">Des situations réelles chez LABORO — tu observes, tu identifies, tu complètes. C'est guidé.</div></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid #DBEAFE">
-          <div style="width:34px;height:34px;background:#276749;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">3</div>
+          <div style="width:34px;height:34px;background:#185FA5;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">3</div>
           <div><div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:3px">⭐ Tu progresses</div>
           <div style="font-size:12px;color:#6B7280;line-height:1.5">Ton enseignant valide tes réponses. Tu montes en compétences et tu débloques de nouvelles missions.</div></div>
         </div>
