@@ -172,15 +172,15 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .emp-n{font-size:17px;font-weight:800;color:#fff;margin-top:2px}
 .emp-s{font-size:11px;color:var(--gm);margin-top:1px}
 /* MISSIONS */
-.mc{background:#fff;border:1.5px solid var(--gb);border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all .2s;position:relative}.mc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
-.mc:hover{border-color:var(--bl);transform:translateY(-1px)}
+.mc{background:#fff;border:1px solid #E8EDF5;border-radius:12px;padding:16px 18px;margin-bottom:10px;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.mc:hover{border-color:#185FA5;transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,37,64,.1)}
 .mc.locked{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
 .mc.locked:hover{transform:none;border-color:var(--gb)}
 .mh{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.mt{font-size:13px;font-weight:800;color:#1A2E4A;flex:1;line-height:1.3}
+.mt{font-size:14px;font-weight:800;color:#0A2540;flex:1;line-height:1.4;letter-spacing:-.1px}
 .sp{font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;flex-shrink:0}
-.s-todo{background:var(--gc);color:var(--gm)}.s-wip{background:var(--ac);color:var(--am)}
-.s-done{background:var(--vc);color:var(--vt)}.s-att{background:var(--bc);color:var(--bl)}
+.s-todo{background:#F1F5F9;color:#64748B;font-weight:600}.s-wip{background:#FEF3C7;color:#B45309;font-weight:600}
+.s-done{background:#EBF4FF;color:#185FA5;font-weight:600}.s-att{background:#EBF4FF;color:#185FA5;font-weight:600}
 .s-lock{background:#EEEEEE;color:#999}
 .mm{font-size:10px;color:var(--gm);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .pb{height:5px;background:#E2E8F0;border-radius:4px;margin-top:8px;overflow:hidden}
