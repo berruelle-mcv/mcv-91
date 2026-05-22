@@ -457,23 +457,22 @@ function renderMissions(){
     const clickAction = "handleMission('" + m.id + "')";
 
     
-    return '<div class="mc'+(locked?' locked':'')+'" onclick="'+clickAction+'" style="border-left:4px solid '+(locked?'var(--gb)':pCol)+'">'
+    return '<div class="mc'+(locked?' locked':'')+'" onclick="'+clickAction+'" style="border-left:5px solid '+(locked?'#CBD5E0':pCol)+'">'
 
       // En-tête : titre + badge statut
       + '<div class="mh">'
-      + '<div style="width:8px;height:8px;border-radius:50%;background:'+(locked?'#CBD5E0':pCol)+';flex-shrink:0"></div>'
       + '<span class="mt">'+m.titre+'</span>'
       + stBadge
       + '</div>'
 
       // Meta : compétence + palier + option + durée
-      + '<div class="mm" style="margin-top:6px">'
+      + '<div class="mm" style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
       + compBadge(m.comp)
-      + '<span style="background:'+pBg+';color:'+pCol+';font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px">'+pLbl+'</span>'
-      + '<span style="font-size:9px;color:var(--gm)">'+
+      + '<span style="background:'+pBg+';color:'+pCol+';font-size:9px;font-weight:700;padding:3px 9px;border-radius:10px">'+pLbl+'</span>'
+      + '<span style="font-size:9px;color:#94A3B8;background:#F8FAFC;padding:3px 8px;border-radius:6px">'+
         (m.option==='commun'?'Commun':m.option==='2nde'?'2nde':m.option)+
         '</span>'
-      + '<span style="font-size:9px;color:var(--gm)">⏱ ~55 min</span>'
+      + '<span style="font-size:9px;color:#94A3B8">⏱ ~55 min</span>'
       + '</div>'
 
       + progressBar
