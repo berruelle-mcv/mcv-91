@@ -71,7 +71,7 @@ function renderProdCard(p){
     + '<div style="font-size:10px;color:var(--gm);margin:2px 0">Réf. '+p.ref+'</div>'
     + '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">'
     + '<div style="font-size:16px;font-weight:900;color:'+c.col+'">'+p.pv+'€</div>'
-    + '<div style="font-size:10px;color:#276749;font-weight:700;background:#D1FAE5;padding:2px 7px;border-radius:8px">+'+p.mar+'%</div>'
+    + '<div style="font-size:10px;color:#185FA5;font-weight:700;background:#EBF4FF;padding:2px 7px;border-radius:8px">+'+p.mar+'%</div>'
     + '</div>'+stockBadge+'</div></div>';
 }
 
