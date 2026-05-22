@@ -64,7 +64,7 @@ function setAccentColor(classe){
   r.style.setProperty('--bm',  c.cm);
   const badge = document.getElementById('tb-lvl');
   const labels = {'2nde':'2nde Pro','1ere-AGEC':'1ère AGEC','1ere-PVOC':'1ère PVOC','Term-AGEC':'Term. AGEC','Term-PVOC':'Term. PVOC','enseignant':'Enseignant'};
-  if(badge){ badge.textContent = labels[classe]||classe; badge.style.background = c.c1; }
+  if(badge){ badge.textContent = labels[classe]||classe; badge.style.background = c.c1; badge.style.color = '#fff'; badge.style.fontWeight = '700'; badge.style.letterSpacing = '.03em'; }
 }
 
 
