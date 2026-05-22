@@ -71,7 +71,7 @@ function calcPosturePro(ud){
 }
 
 function getPostureLabel(score){
-  if(score >= 90) return {label:'Excellent', color:'#276749', bg:'#D1FAE5'};
+  if(score >= 90) return {label:'Excellent', color:'#185FA5', bg:'#EBF4FF'};
   if(score >= 75) return {label:'Bien', color:'#2D5282', bg:'#EBF4FF'};
   if(score >= 60) return {label:'A ameliorer', color:'#D97706', bg:'#FEF3C7'};
   return {label:'Insuffisant', color:'#C53030', bg:'#FEE2E2'};
@@ -159,7 +159,7 @@ function envoyerRappel(mail){
   document.getElementById('rappel-modal').style.display = 'none';
   selectedRappelId = null;
   const notifEns = document.createElement('div');
-  notifEns.style.cssText = 'position:fixed;top:20px;right:20px;background:#0F4C2A;color:#fff;padding:12px 20px;border-radius:10px;font-size:12px;font-weight:600;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2)';
+  notifEns.style.cssText = 'position:fixed;top:20px;right:20px;background:#0A2540;color:#fff;padding:12px 20px;border-radius:10px;font-size:12px;font-weight:600;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2)';
   notifEns.textContent = '✓ Rappel envoye — visible au prochain chargement';
   document.body.appendChild(notifEns);
   setTimeout(function(){ notifEns.remove(); }, 4000);
@@ -313,7 +313,7 @@ function convertirProspect(id, modal){
     nom: p.nom,
     type: p.type || 'B2C',
     ini: p.ini || p.nom.substring(0,2).toUpperCase(),
-    col: '#276749',
+    col: '#185FA5',
     sect: p.sect || '',
     contact: p.contact || '',
     tel: p.tel || '',
@@ -344,7 +344,7 @@ function ouvrirFicheClient(id){
   const c = CLIENTS.find(function(x){ return x.id===id; }) || clientsConverts.find(function(x){ return x.id===id; }) || pros.find(function(x){ return x.id===id; });
   if(!c) return;
   const isProspectEleve = c.ajouteParEleve === true;
-  const statC={'Strategique':'#1A2E4A','Fidele':'#276749','Actif':'#2D5282','Prospect':'#D97706','Nouveau':'#7B2FBE'};
+  const statC={'Strategique':'#1A2E4A','Fidele':'#185FA5','Actif':'#2D5282','Prospect':'#D97706','Nouveau':'#7B2FBE'};
   const col=statC[c.statut]||'#4A6FA5';
   
   const modal=document.createElement('div');
@@ -415,7 +415,7 @@ function ouvrirFicheClient(id){
     // Bouton ajouter/modifier commentaire SIC
     const addSicBtn=document.createElement('button');
     addSicBtn.textContent = c.commentaire ? '✏️ Modifier le commentaire SIC' : '📝 Ajouter un commentaire SIC';
-    addSicBtn.style.cssText='width:100%;margin-bottom:8px;padding:8px;background:#F0FDF4;color:#166534;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700';
+    addSicBtn.style.cssText='width:100%;margin-bottom:8px;padding:8px;background:#F0FDF4;color:#0A2540;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700';
     addSicBtn.onclick=function(){
       const txt=prompt('Commentaire SIC - Enrichissement de la fiche prospect. Informations collectées lors de vos échanges :', c.commentaire||'');
       if(txt!==null){
@@ -475,7 +475,7 @@ function ouvrirFicheClient(id){
     // Bouton convertir en client
     const convertBtn = document.createElement('button');
     convertBtn.textContent = '🔄 Convertir en client';
-    convertBtn.style.cssText = 'width:100%;margin-top:12px;padding:10px;background:#D1FAE5;color:#065F46;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
+    convertBtn.style.cssText = 'width:100%;margin-top:12px;padding:10px;background:#EBF4FF;color:#065F46;border:1.5px solid #A7F3D0;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700';
     convertBtn.onclick = function(){ convertirProspect(c.id, modal); };
     box.appendChild(convertBtn);
     // Bouton modifier
@@ -837,14 +837,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;font-size:11pt;color:#1a1a1a;ba
 .pi{width:100%;height:130px;object-fit:cover;display:block}
 .prod-marque{position:absolute;top:8px;left:8px;font-size:9px;font-weight:800;color:#fff;padding:2px 8px;border-radius:12px;letter-spacing:.5px}
 .prod-badge{display:inline-block;font-size:9px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:6px}
-.prod-badge-ok{background:#D1FAE5;color:#065F46}
+.prod-badge-ok{background:#EBF4FF;color:#065F46}
 .prod-badge-low{background:#FEF3C7;color:#92400E}
 .prod-badge-cmd{background:#EDE9FE;color:#5B21B6}
 .pin{padding:10px 12px}
 .pnom{font-size:12px;font-weight:700;color:var(--t1);line-height:1.3;margin-bottom:2px}
 .pref{font-size:10px;color:var(--gm)}
 .pprix{font-size:15px;font-weight:800;color:var(--bl)}
-.pmarge{font-size:10px;color:#276749;font-weight:600}
+.pmarge{font-size:10px;color:#185FA5;font-weight:600}
 #fiche-produit{display:none;margin-bottom:20px}
 #fiche-produit.on{display:block}
 </style>
