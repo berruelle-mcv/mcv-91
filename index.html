@@ -636,8 +636,19 @@ document.addEventListener('DOMContentLoaded', loadConfig);
   <div class="content">
 
     <div id="panel-dashboard" class="panel on">
-      <div class="wb"><div class="wb-l"><h2 id="wb-b">Bonjour !</h2><p id="wb-p">—</p>
-        <div id="posture-score" style="margin-top:4px"></div></div><div class="wb-r"><div class="big" id="wb-s">—</div><div class="sm">Score LABORO /100</div></div></div>
+      <div class="wb">
+        <div class="wb-l">
+          <h2 id="wb-b">Bonjour !</h2>
+          <p id="wb-p" style="margin-bottom:8px">—</p>
+          <div id="wb-palier" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.9);font-weight:700"></div>
+          <div id="posture-score" style="margin-top:8px"></div>
+        </div>
+        <div class="wb-r">
+          <div class="big" id="wb-s">0</div>
+          <div class="sm">Score LABORO /100</div>
+          <div id="wb-rank" style="margin-top:6px;font-size:10px;color:rgba(255,255,255,.6)"></div>
+        </div>
+      </div>
       <div id="emp-wrap"></div>
       <div id="poste-card-wrap"></div>
       <div id="mdj-wrap"></div>
