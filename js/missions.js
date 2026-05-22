@@ -4,6 +4,63 @@
 // ================================================
 
 // ═══ MODAL MISSION ═══
+// ═══ TIMER MISSION ═══
+var moTimerInterval = null;
+var moTimerSeconds = 0;
+var moTimerDuration = 55 * 60; // 55 minutes par défaut
+
+function startMoTimer(dureeMin){
+  stopMoTimer();
+  moTimerDuration = (dureeMin || 55) * 60;
+  moTimerSeconds = 0;
+  const timerEl = document.getElementById('mo-timer');
+  const timerVal = document.getElementById('mo-timer-val');
+  if(!timerEl || !timerVal) return;
+  timerEl.style.display = 'flex';
+  timerEl.style.background = 'rgba(255,255,255,.12)';
+  timerEl.style.borderColor = 'rgba(255,255,255,.2)';
+  updateTimerDisplay(timerVal);
+  moTimerInterval = setInterval(function(){
+    moTimerSeconds++;
+    updateTimerDisplay(timerVal);
+    // Alerte à 5 min avant la fin
+    if(moTimerSeconds === moTimerDuration - 300){
+      timerEl.style.background = 'rgba(255,180,0,.25)';
+      timerEl.style.borderColor = 'rgba(255,180,0,.5)';
+      showNotifEleve('⏱ Il te reste 5 minutes — pense à finaliser ta réponse !', 'warning');
+    }
+    // Temps écoulé
+    if(moTimerSeconds === moTimerDuration){
+      timerEl.style.background = 'rgba(220,38,38,.25)';
+      timerEl.style.borderColor = 'rgba(220,38,38,.5)';
+      showNotifEleve('⏱ Temps recommandé dépassé — tu peux terminer ta réponse !', 'info');
+    }
+  }, 1000);
+}
+
+function stopMoTimer(){
+  if(moTimerInterval){ clearInterval(moTimerInterval); moTimerInterval = null; }
+  const timerEl = document.getElementById('mo-timer');
+  if(timerEl) timerEl.style.display = 'none';
+  moTimerSeconds = 0;
+}
+
+function updateTimerDisplay(el){
+  const elapsed = moTimerSeconds;
+  const remaining = moTimerDuration - elapsed;
+  if(remaining > 0){
+    const m = Math.floor(remaining/60);
+    const s = remaining % 60;
+    el.textContent = m+':'+(s<10?'0':'')+s;
+  } else {
+    const over = elapsed - moTimerDuration;
+    const m = Math.floor(over/60);
+    const s = over % 60;
+    el.textContent = '+'+m+':'+(s<10?'0':'')+s;
+  }
+}
+
+
 function openMission(id){
   const m=MISSIONS.find(x=>x.id===id);if(!m)return;
   const ud=gUD();
@@ -13,6 +70,8 @@ function openMission(id){
   if(!ud.missions[id]){ud.missions[id]={status:'todo',id};sUD(ud);}
   document.querySelector('.mo').scrollTo(0,0);
   document.getElementById('mo-t').textContent=m.titre;
+  // Démarrer le timer
+  startMoTimer(55);
   document.getElementById('mo-m').innerHTML=`${compBadge(m.comp)} · Palier ${m.palier} — ${['','Débutant','Apprenti','Professionnel compétent','Professionnel performant'][m.palier]}`;
   const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Note ≥ 11/20 pour débloquer le Palier 2.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Note ≥ 11/20 pour débloquer le Palier 3.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Note ≥ 11/20 pour débloquer le Palier 4.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
   const pdEl=document.getElementById('mo-palier-desc');
@@ -133,6 +192,7 @@ function closeCoupDePouce(){
 // ══ GESTION FENÊTRE MISSION ══
 
 function closeMo(){
+  stopMoTimer();
   const mo=document.getElementById('mo');
   const modal=document.querySelector('.modal');
   const tb=document.getElementById('mo-taskbar');
