@@ -100,8 +100,8 @@ function showNotifEleve(message, type){
     document.body.appendChild(notif);
   }
   const icons = {info:'📋', success:'✅', warning:'⚠️', rappel:'🔔'};
-  const bgs = {info:'#1A2E4A', success:'#0F4C2A', warning:'#7B3F00', rappel:'#7B2D2D'};
-  const borders = {info:'#4A6FA5', success:'#2D8A4E', warning:'#D97706', rappel:'#C53030'};
+  const bgs = {info:'#0A2540', success:'#0A2540', warning:'#7B3F00', rappel:'#1A2E4A'};
+  const borders = {info:'#185FA5', success:'#4A9EE8', warning:'#D97706', rappel:'#4A6FA5'};
   const ic = icons[type]||'📋';
   const bg = bgs[type]||'#1A2E4A';
   const bd = borders[type]||'#4A6FA5';
