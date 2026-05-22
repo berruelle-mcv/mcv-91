@@ -46,7 +46,7 @@ function openMission(id){
     const rq=reflexQ[m.reflexivite]||reflexQ[3];
     html+=`<div class="reflexiv"><div class="reflexiv-l">Question de réflexivité</div><div class="reflexiv-desc">${rq}</div><textarea class="zone-rep${rfSaved?' saved':''}" id="${rfQid}" placeholder="Explique ta démarche…" oninput="autoSaveRep('${id}','${rfQid}',this)">${rfSaved}</textarea></div>`;
   }
-  html+=`<div class="livrable"><div class="livrable-l">Livrable attendu</div><strong>${m.livrable}</strong></div>`;
+  if(m.livrable) html+=`<div class="livrable"><div class="livrable-l">Livrable attendu</div><strong>${m.livrable}</strong></div>`;
   // Situation imprévue si moy >= 15
   const moy=Object.values(ud.missions).filter(x=>x.comp===m.comp&&x.score).map(x=>x.score);
   const moyComp=moy.length>=2?moy.reduce((a,b)=>a+b,0)/moy.length:0;
