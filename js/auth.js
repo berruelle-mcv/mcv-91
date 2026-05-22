@@ -55,7 +55,16 @@ function doLogin(){
       btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:#EBF4FF;color:#1A2E4A;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
       btn.onclick = function(){
         document.body.removeChild(overlay);
-        finishLogin('pascal@laboro.fr', p.cls, '', 'Pascal');
+        const posteMap={
+          'enseignant':'Enseignant — Accès direction',
+          '2nde':'Découverte des métiers MCV',
+          '1ere-AGEC':'Conseiller de vente — Showroom',
+          '1ere-PVOC':'Commercial terrain — Prospection',
+          'Term-AGEC':'Conseiller de vente — Showroom & E-commerce',
+          'Term-PVOC':'Commercial terrain — Prospection & Vente B2B'
+        };
+        const poste = posteMap[p.cls] || 'Collaborateur LABORO';
+        finishLogin('pascal@laboro.fr', p.cls, poste, 'Pascal');
       };
       box.appendChild(btn);
     });
