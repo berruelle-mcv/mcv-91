@@ -110,7 +110,7 @@ function renderDashboard(){
   // Titre section message adapté
   const msgTitle = document.querySelector('.card-title, [data-msg-title]');
   const msgSection = document.getElementById('msg-section-title');
-  if(msgSection) msgSection.textContent = CU.classe==='enseignant' ? 'TABLEAU DE BORD ENSEIGNANT' : 'MESSAGE DE TON RESPONSABLE';
+  if(msgSection) msgSection.textContent = CU.classe==='enseignant' ? 'ESPACE ENSEIGNANT' : 'MESSAGE DE TON RESPONSABLE';
   const wbp = document.getElementById('wb-p');
   if(wbp) wbp.textContent = CU.poste || '';
   // Score et palier — masqués pour l'enseignant
