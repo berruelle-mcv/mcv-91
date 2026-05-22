@@ -107,7 +107,8 @@ function renderDashboard(){
       +'<span>'+msgDyn.from+'</span>';
   }
   document.getElementById('msg-t').textContent=msgDyn.txt;
-  document.getElementById('wb-p').textContent=CU.poste;
+  const wbp = document.getElementById('wb-p');
+  if(wbp) wbp.textContent = CU.poste || '';
   document.getElementById('wb-s').textContent=sc!==null&&sc!==undefined?sc:0;
   // Afficher le palier
   const palierEl=document.getElementById('wb-palier');
