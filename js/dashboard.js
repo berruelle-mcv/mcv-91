@@ -107,9 +107,21 @@ function renderDashboard(){
       +'<span>'+msgDyn.from+'</span>';
   }
   document.getElementById('msg-t').textContent=msgDyn.txt;
+  // Titre section message adapté
+  const msgTitle = document.querySelector('.card-title, [data-msg-title]');
+  const msgSection = document.getElementById('msg-section-title');
+  if(msgSection) msgSection.textContent = CU.classe==='enseignant' ? 'TABLEAU DE BORD ENSEIGNANT' : 'MESSAGE DE TON RESPONSABLE';
   const wbp = document.getElementById('wb-p');
   if(wbp) wbp.textContent = CU.poste || '';
-  document.getElementById('wb-s').textContent=sc!==null&&sc!==undefined?sc:0;
+  // Score et palier — masqués pour l'enseignant
+  const wbs = document.getElementById('wb-s');
+  const wbr = document.querySelector('.wb-r');
+  if(CU.classe === 'enseignant'){
+    if(wbr) wbr.style.display = 'none';
+  } else {
+    if(wbr) wbr.style.display = '';
+    if(wbs) wbs.textContent = sc!==null&&sc!==undefined?sc:0;
+  }
   // Afficher le palier
   const palierEl=document.getElementById('wb-palier');
   if(palierEl){
@@ -139,7 +151,8 @@ function renderDashboard(){
     const paliers = isPvoc ? paliersPvoc : isAgec ? paliersAgec : paliersNeutres;
     const score=sc||0;
     const palier=paliers.find(function(p){ return score>=p.min&&score<=p.max; })||paliers[0];
-    palierEl.textContent=palier.emoji+' '+palier.label;
+    if(CU.classe !== 'enseignant') palierEl.textContent=palier.emoji+' '+palier.label;
+    else palierEl.style.display='none';
   }
   // Afficher le rang dans la classe
   const rankEl=document.getElementById('wb-rank');
