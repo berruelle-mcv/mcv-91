@@ -350,8 +350,8 @@ function renderCompetences(){
     {label:'Non démarré',    col:'#A0AEC0', bg:'#F7FAFC', icon:'○'},
     {label:'Découverte',     col:'#63B3ED', bg:'#EBF8FF', icon:'◔'},
     {label:'En progression', col:'#4A6FA5', bg:'#EBF4FF', icon:'◑'},
-    {label:'Acquis',         col:'#38A169', bg:'#F0FFF4', icon:'◕'},
-    {label:'Maîtrisé',      col:'#276749', bg:'#C6F6D5', icon:'●'}
+    {label:'Acquis',         col:'#185FA5', bg:'#F0FFF4', icon:'◕'},
+    {label:'Maîtrisé',      col:'#185FA5', bg:'#EBF4FF', icon:'●'}
   ];
 
   // Calcul automatique pour tous les comps
