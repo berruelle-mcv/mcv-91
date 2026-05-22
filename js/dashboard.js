@@ -109,6 +109,29 @@ function renderDashboard(){
   document.getElementById('msg-t').textContent=msgDyn.txt;
   document.getElementById('wb-p').textContent=CU.poste;
   document.getElementById('wb-s').textContent=sc!==null&&sc!==undefined?sc:0;
+  // Afficher le palier
+  const palierEl=document.getElementById('wb-palier');
+  if(palierEl){
+    const paliers=getCfg().score&&getCfg().score.paliers||[
+      {min:0,max:24,label:'Stagiaire',emoji:'🌱'},
+      {min:25,max:49,label:'Assistant commercial',emoji:'📋'},
+      {min:50,max:74,label:'Conseiller de vente',emoji:'💼'},
+      {min:75,max:89,label:'Commercial confirmé',emoji:'🏆'},
+      {min:90,max:100,label:'Expert LABORO',emoji:'⭐'}
+    ];
+    const score=sc||0;
+    const palier=paliers.find(function(p){ return score>=p.min&&score<=p.max; })||paliers[0];
+    palierEl.textContent=palier.emoji+' '+palier.label;
+  }
+  // Afficher le rang dans la classe
+  const rankEl=document.getElementById('wb-rank');
+  if(rankEl){
+    const cltRank=getClassement(CU.classe);
+    const myIdx=cltRank.findIndex(function(u){ return u.mail===CU.mail; });
+    if(myIdx>=0&&cltRank.length>1){
+      rankEl.textContent='#'+(myIdx+1)+' sur '+cltRank.length+' dans ta classe';
+    }
+  }
   // Employé du mois
   const empW=document.getElementById('emp-wrap');
   const clt=getClassement(CU.classe);
