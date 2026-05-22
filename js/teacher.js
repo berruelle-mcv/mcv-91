@@ -41,8 +41,8 @@ function renderCompetencesEnseignant(){
       {label:'Non démarré', col:'#A0AEC0'},
       {label:'Découverte',  col:'#63B3ED'},
       {label:'En progression', col:'#4A6FA5'},
-      {label:'Acquis',     col:'#38A169'},
-      {label:'Maîtrisé',  col:'#276749'}
+      {label:'Acquis',     col:'#185FA5'},
+      {label:'Maîtrisé',  col:'#0A2540'}
     ];
 
     // Barre empilée
@@ -51,7 +51,7 @@ function renderCompetencesEnseignant(){
       return pct > 0 ? '<div style="height:100%;width:'+pct+'%;background:'+n.col+';flex-shrink:0" title="'+n.label+' : '+counts[i]+'"></div>' : '';
     }).join('') : '<div style="height:100%;width:100%;background:#E2E8F0"></div>';
 
-    const statusColor = pctAcquis >= 75 ? '#276749' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
+    const statusColor = pctAcquis >= 75 ? '#185FA5' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
 
     return '<div class="cc" style="border-left:4px solid '+statusColor+'">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
@@ -86,8 +86,8 @@ function renderCompetencesEnseignant(){
   const pvHT=(p.pv/1.2).toFixed(2);
   const margeE=((p.pv/1.2)-p.pu).toFixed(2);
   const stockHtml=p.stock===0?'<span style="color:#7B2FBE;font-weight:700">Sur commande</span>':p.stock<=p.seuil?'<span style="color:#D97706;font-weight:700">⚠ Stock faible — '+p.stock+' u.</span>':'<span class="u-success">✓ '+p.stock+' en stock</span>';
-  const nBg={'Débutant':'#D1FAE5','Intermédiaire':'#EBF4FF','Confirmé':'#FEF3C7','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6'};
-  const nCo={'Débutant':'#276749','Intermédiaire':'#2D5282','Confirmé':'#D97706','Compétition':'#C53030','Tous niveaux':'#6B7280'};
+  const nBg={'Débutant':'#EBF4FF','Intermédiaire':'#EBF4FF','Confirmé':'#FEF3C7','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6'};
+  const nCo={'Débutant':'#185FA5','Intermédiaire':'#2D5282','Confirmé':'#D97706','Compétition':'#C53030','Tous niveaux':'#6B7280'};
   const specsHtml=(p.specs||[]).map(function(s){return '<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F3F4F6"><span style="font-size:11px;color:#6B7280;font-weight:600">'+s[0]+'</span><span style="font-size:11px;color:#1A2E4A;font-weight:700">'+s[1]+'</span></div>';}).join('');
   const compsHtml=(p.comp_ids||[]).slice(0,3).map(function(cid){
     const cp=PRODUITS.find(function(x){return x.id===cid;});
@@ -118,7 +118,7 @@ function renderCompetencesEnseignant(){
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
     +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div class="u-title">'+p.pu+'€</div></div>'
     +'<div style="background:#F0FFF4;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Vente TTC</div><div class="u-title">'+p.pv+'€</div><div class="u-label">'+pvHT+'€ HT</div></div>'
-    +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:#276749">'+p.mar+'%</div><div class="u-label">'+margeE+'€/u</div></div>'
+    +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:#185FA5">'+p.mar+'%</div><div class="u-label">'+margeE+'€/u</div></div>'
     +'</div></div></div>'
     +'<div style="height:1px;background:#F3F4F6"></div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">'
@@ -157,7 +157,7 @@ function renderClasse(){
         const n=allUsers.filter(u=>(u.classe||'Inconnue')===cls).length;
         const att=allUsers.filter(u=>(u.classe||'Inconnue')===cls&&Object.values(u.missions||{}).some(m=>m.status==='att')).length;
         const clsColor=cls.includes('2nde')?'#2E7D5E':cls.includes('Term')?'#7B2D42':'#185FA5';
-        const clsBg=cls.includes('2nde')?'#E1F5EE':cls.includes('Term')?'#F9E8EE':'#E6F1FB';
+        const clsBg=cls.includes('2nde')?'#EBF4FF':cls.includes('Term')?'#F9E8EE':'#E6F1FB';
         const activeStyle=classeFiltre===cls?`background:${clsColor};color:#fff;border-color:${clsColor}`:`border-color:${clsColor};color:${clsColor}`;
         return`<div class="cls-tab${classeFiltre===cls?' on':''}" onclick="filtrerClasse('${cls}',this)" style="${activeStyle}">${cls} <span style="font-size:9px;background:${classeFiltre===cls?'rgba(255,255,255,.25)':clsBg};color:${classeFiltre===cls?'#fff':clsColor};padding:1px 5px;border-radius:8px">${n}</span>${att>0?` <span style="font-size:9px;background:var(--am);color:#fff;padding:1px 5px;border-radius:8px">${att}⚡</span>`:''}</div>`;
       }).join('')}`;
@@ -289,7 +289,7 @@ function renderIndicateursPedago(){
   // Meilleur score
   const bestScore = scores.length ? Math.max.apply(null, scores) : 0;
 
-  const palierColors = ['','#4A6FA5','#2D5282','#276749','#7B2FBE'];
+  const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
   const palierLabels = ['','Débutant','Apprenti','Pro compétent','Pro performant'];
   const maxByPalier = Math.max.apply(null, byPalier.slice(1)) || 1;
 
@@ -323,7 +323,7 @@ function renderIndicateursPedago(){
 
     + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center">'
     + '<div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div>'
-    + '<div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#276749':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div>'
+    + '<div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#185FA5':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div>'
     + '<div class="u-label">note ≥ 11/20</div>'
     + '</div>'
 
@@ -362,7 +362,7 @@ function renderIndicateursPedago(){
           + '<span class="u-muted">Prochain palier : '+nextMilestone+'%</span>'
           + '</div>'
           + '<div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden">'
-          + '<div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#4A6FA5,#276749);border-radius:10px;transition:width .6s"></div>'
+          + '<div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#185FA5,#0A2540);border-radius:10px;transition:width .6s"></div>'
           + [25,50,75].map(function(mark){
               return '<div style="position:absolute;top:0;left:'+mark+'%;width:2px;height:100%;background:#fff;opacity:.6"></div>';
             }).join('')
