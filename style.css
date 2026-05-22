@@ -216,8 +216,8 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .res-t{font-size:14px;font-weight:700;color:#0A2540;margin-bottom:8px}
 .res-b{font-size:13px;line-height:1.7;color:var(--gr)}
 .res-b ul{margin:8px 0 8px 18px}.res-b li{margin-bottom:4px}
-.res-ex{background:var(--wh);border-radius:7px;padding:10px 12px;margin-top:8px;font-size:12px;line-height:1.6;border-left:3px solid var(--bl)}
-.res-ex-l{font-size:10px;font-weight:700;color:var(--bl);text-transform:uppercase;margin-bottom:4px}
+.res-ex{background:#F0F7FF;border-radius:8px;padding:12px 14px;margin-top:10px;font-size:12px;line-height:1.6;border-left:3px solid #185FA5}
+.res-ex-l{font-size:10px;font-weight:700;color:#185FA5;text-transform:uppercase;margin-bottom:6px;letter-spacing:.05em}
 .doc-block{background:var(--gc);border-radius:8px;padding:12px 14px;margin:10px 0;border-left:3px solid var(--am)}
 .doc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--am);margin-bottom:6px}
 .doc-t{width:100%;border-collapse:collapse;font-size:11px;margin-top:4px}
@@ -549,3 +549,9 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .r-st-item:last-child{border-right:none}
 .r-st-n{font-size:30px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px}
 .r-st-l{font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.12em;margin-top:5px;font-weight:600}
+
+/* Blocs ressource pédagogique */
+.res-retenir{background:#F0F7FF;border-radius:8px;padding:12px 14px;margin-top:10px;font-size:12px;line-height:1.6;border-left:3px solid #185FA5}
+.res-retenir-l{font-size:10px;font-weight:700;color:#185FA5;text-transform:uppercase;margin-bottom:6px;letter-spacing:.05em}
+.res-section{margin-bottom:12px}
+.res-section-label{font-size:11px;font-weight:700;color:#185FA5;margin-bottom:8px}
