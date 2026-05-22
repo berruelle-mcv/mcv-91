@@ -11,6 +11,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 /* LOGIN */
 #login{align-items:stretch;justify-content:center;min-height:100vh;background:linear-gradient(160deg,#185FA5 0%,#0C447C 100%)}
 .scr{background:linear-gradient(135deg,#0A2540 0%,#0C3D6E 100%)}
+#app{background:#F0F4F8}
 .lw{display:flex;width:100%;max-width:1140px;margin:auto;min-height:100vh;box-shadow:0 25px 80px rgba(0,0,0,.5);border-radius:0}
 .ll{width:460px;min-width:460px;background:linear-gradient(160deg,#F8FAFF 0%,#EEF4FF 100%);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;position:relative}
 .ll::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#0A2540 0%,#185FA5 50%,#4A9EE8 100%)}
@@ -124,7 +125,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .tb-r{display:flex;align-items:center;gap:8px}
 .badge{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600}
 .bb{background:var(--bc);color:var(--bl)}
-.content{padding:20px;flex:1;overflow-y:auto;position:relative}
+.content{padding:20px;flex:1;overflow-y:auto;position:relative;background:#F0F4F8}
 .panel{display:none}.panel.on{display:block}
 /* DASHBOARD */
 .wb{background:linear-gradient(135deg,#0A2540 0%,#1A4A7A 50%,#185FA5 100%);border-radius:14px;padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(10,37,64,.3)}
@@ -190,7 +191,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .mo{display:none}
 .mo.open{display:block}
 .modal{background:var(--wh);border-radius:14px;width:740px;min-width:380px;min-height:300px;height:88vh;overflow:hidden;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1001;box-shadow:0 20px 60px rgba(0,0,0,.25),0 4px 16px rgba(0,0,0,.15);display:none;flex-direction:column;pointer-events:all;resize:both}
-.mo.on .modal{display:flex}.mo-h{background:var(--bl);color:#fff;padding:15px 22px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:flex-start}
+.mo.on .modal{display:flex}.mo-h{background:linear-gradient(135deg,#0A2540 0%,#185FA5 100%);color:#fff;padding:15px 22px;border-radius:14px 14px 0 0;display:flex;justify-content:space-between;align-items:flex-start}
 .mo-h h2{font-size:15px;font-weight:700}.mo-h p{font-size:11px;opacity:1;color:rgba(255,255,255,.9);margin-top:2px}
 #mo-palier-desc{color:#1a1a1a!important;font-weight:500}
 .mo-cl{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0}
