@@ -26,7 +26,7 @@ function renderCatalogue(catFiltre){
   const makeBanner=function(cat,filtered){
     const cc=cfg[cat]||{col:'#4A6FA5',bg:'#F0F4FF',emoji:'📦',desc:''};
     return '<div style="background:#F0F4FF;border:1px solid #D0DCF0;border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px">'
-      +'<div style="font-size:40px;line-height:1">'+cc.emoji+'</div>'
+      +'<div style="width:10px;height:10px;border-radius:50%;background:'+cc.col+';flex-shrink:0"></div>'
       +'<div><div style="font-size:15px;font-weight:900;color:#0A2540">'+cat+'</div>'
       +'<div style="font-size:11px;color:#6B7280;margin-top:2px">'+cc.desc+'</div></div>'
       +'<div style="margin-left:auto;font-size:11px;font-weight:700;color:#185FA5;background:#D6E8FF;padding:4px 12px;border-radius:20px">'+filtered.length+' produits</div>'
@@ -111,7 +111,7 @@ function renderProdCard(p){
   return '<div class="pc" onclick="openProduit(\''+p.id+'\')">'
     // Zone image
     + '<div style="position:relative;height:120px;overflow:hidden;background:#F8FAFC;border-radius:10px 10px 0 0">'
-    + '<img src="'+img+'" alt="'+p.nom+'" loading="lazy" width="400" height="120" style="width:100%;height:100%;object-fit:cover;transition:transform .3s" '
+    + '<img src="'+img+'" alt="'+p.nom+'" loading="lazy" width="400" height="120" style="width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .3s" '
     + 'onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
     + '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;background:#F1F5F9">🏷️</div>'
     // Badge marque
