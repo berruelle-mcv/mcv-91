@@ -24,12 +24,12 @@ function renderCatalogue(catFiltre){
     }).join('')+'</div>';
   let gridHtml='';
   const makeBanner=function(cat,filtered){
-    const cc=cfg[cat]||{col:'#4A6FA5',bg:'#F8FAFF',emoji:'📦',desc:''};
-    return '<div style="background:linear-gradient(135deg,'+cc.col+'22,'+cc.col+'08);border:1px solid '+cc.col+'33;border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px">'
+    const cc=cfg[cat]||{col:'#4A6FA5',bg:'#F0F4FF',emoji:'📦',desc:''};
+    return '<div style="background:#F0F4FF;border:1px solid #D0DCF0;border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px">'
       +'<div style="font-size:40px;line-height:1">'+cc.emoji+'</div>'
-      +'<div><div style="font-size:15px;font-weight:900;color:'+cc.col+'">'+cat+'</div>'
+      +'<div><div style="font-size:15px;font-weight:900;color:#0A2540">'+cat+'</div>'
       +'<div style="font-size:11px;color:#6B7280;margin-top:2px">'+cc.desc+'</div></div>'
-      +'<div style="margin-left:auto;font-size:11px;font-weight:700;color:'+cc.col+';background:'+cc.col+'18;padding:4px 12px;border-radius:20px">'+filtered.length+' produits</div>'
+      +'<div style="margin-left:auto;font-size:11px;font-weight:700;color:#185FA5;background:#D6E8FF;padding:4px 12px;border-radius:20px">'+filtered.length+' produits</div>'
       +'</div>';
   };
   if(!catFiltre){
@@ -179,7 +179,7 @@ const RAPPELS_TYPES = [
   {id:'tenue', label:'Tenue vestimentaire', icon:'👔',
    msg:'Rappel professionnel : la tenue vestimentaire chez LABORO doit etre soignee et adaptee au poste. Merci de vous y conformer.'},
   {id:'telephone', label:'Telephone portable', icon:'📱',
-   msg:'Votre responsable vous demande de ranger votre telephone personnel. Pendant les heures de travail, seul KepkaPro est autorise.'},
+   msg:'Votre responsable vous demande de ranger votre telephone personnel. Pendant les heures de travail, seul LABORO Connect est autorise.'},
   {id:'materiel', label:'Materiel de travail', icon:'🖊️',
    msg:'Un collaborateur LABORO arrive toujours equipe : stylo, carnet, materiel necessaire. Pensez-y pour votre prochaine session.'},
   {id:'posture', label:'Posture et attitude', icon:'💺',
@@ -194,5 +194,3 @@ const RAPPELS_TYPES = [
 ];
 
 let selectedRappelId = null;
-
-
