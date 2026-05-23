@@ -45,34 +45,93 @@ function renderCatalogue(catFiltre){
   document.getElementById('fiche-produit').classList.remove('on');
 }
 
+// ═══ Images Unsplash par gamme et type de produit ═══
+const PROD_IMAGES = {
+  // Football
+  'FOO-001': 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=400&q=75',
+  'FOO-002': 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=400&q=75',
+  'FOO-003': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'FOO-004': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'FOO-005': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'FOO-006': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'FOO-007': 'https://images.unsplash.com/photo-1517747614396-d21a78b850e8?w=400&q=75',
+  'FOO-008': 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=400&q=75',
+  // Basketball
+  'BAS-001': 'https://images.unsplash.com/photo-1546519638405-a9a5ccdbcc2a?w=400&q=75',
+  'BAS-002': 'https://images.unsplash.com/photo-1546519638405-a9a5ccdbcc2a?w=400&q=75',
+  'BAS-003': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'BAS-004': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'BAS-005': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'BAS-006': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'BAS-007': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=75',
+  'BAS-008': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  // Running
+  'RUN-001': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'RUN-002': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'RUN-003': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=75',
+  'RUN-004': 'https://images.unsplash.com/photo-1523475496153-3e8c2c10e3b8?w=400&q=75',
+  'RUN-005': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'RUN-006': 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=75',
+  'RUN-007': 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=400&q=75',
+  'RUN-008': 'https://images.unsplash.com/photo-1559767949-0faa5c7e9992?w=400&q=75',
+  // Fitness
+  'FIT-001': 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=75',
+  'FIT-002': 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=75',
+  'FIT-003': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=75',
+  'FIT-004': 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=400&q=75',
+  'FIT-005': 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=75',
+  'FIT-006': 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=400&q=75',
+  'FIT-007': 'https://images.unsplash.com/photo-1559767949-0faa5c7e9992?w=400&q=75',
+  'FIT-008': 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&q=75',
+  // LABORO Pro Line
+  'LAB-001': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'LAB-002': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'LAB-003': 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=75',
+  'LAB-004': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'LAB-005': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=75',
+  'LAB-006': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75',
+  'LAB-007': 'https://images.unsplash.com/photo-1517747614396-d21a78b850e8?w=400&q=75',
+  'LAB-008': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=75',
+};
+
+// Couleurs accent par gamme
+const CAT_CFG = {
+  'Football':       {col:'#E63B2E', light:'#FFF0EF'},
+  'Basketball':     {col:'#E87722', light:'#FFF5ED'},
+  'Running':        {col:'#0096C7', light:'#EFF9FF'},
+  'Fitness':        {col:'#7B2FBE', light:'#F8F0FF'},
+  'LABORO Pro Line':{col:'#185FA5', light:'#EBF4FF'}
+};
+
 function renderProdCard(p){
-  const cfg = {
-    'Football':      {col:'#E63B2E',bg:'#FFF5F5',emoji:'⚽'},
-    'Basketball':    {col:'#E87722',bg:'#FFF8F0',emoji:'🏀'},
-    'Running':       {col:'#0096C7',bg:'#F0FBFF',emoji:'👟'},
-    'Fitness':       {col:'#7B2FBE',bg:'#FAF5FF',emoji:'💪'},
-    'LABORO Pro Line':{col:'#4A6FA5',bg:'#F0F4FF',emoji:'🏷️'}
-  };
-  const c = cfg[p.cat]||{col:'#4A6FA5',bg:'#F0F4FF',emoji:'📦'};
+  const c = CAT_CFG[p.cat]||{col:'#185FA5', light:'#EBF4FF'};
+  const img = PROD_IMAGES[p.id] || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=75';
+  
   const stockBadge = p.stock===0
-    ? '<span class="prod-badge prod-badge-cmd">Sur commande</span>'
+    ? '<span style="display:inline-block;font-size:9px;font-weight:700;color:#6B7280;background:#F3F4F6;padding:3px 8px;border-radius:6px;margin-top:6px">Sur commande</span>'
     : p.stock<=p.seuil
-    ? '<span class="prod-badge prod-badge-low">⚠ Stock faible</span>'
-    : '<span class="prod-badge prod-badge-ok">✓ En stock</span>';
-  const niveauEmoji = {'Débutant':'🟢','Intermédiaire':'🔵','Confirmé':'🟡','Compétition':'🔴','Tous niveaux':'⚪'};
-  return '<div class="pc" onclick="openProduit(\''+p.id+'\')" style="border-top:3px solid '+c.col+'">'
-    + '<div class="pi-wrap" style="background:'+c.bg+';position:relative;height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden">'
-    + '<div style="font-size:64px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.15))">'+c.emoji+'</div>'
-    + '<div style="position:absolute;top:8px;left:8px;background:'+c.col+';color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:12px;letter-spacing:.5px">'+p.marque+'</div>'
-    + '<div style="position:absolute;top:8px;right:8px;font-size:13px">'+(niveauEmoji[p.niveau]||'⚪')+'</div>'
+    ? '<span style="display:inline-block;font-size:9px;font-weight:700;color:#B45309;background:#FEF3C7;padding:3px 8px;border-radius:6px;margin-top:6px">⚠ Stock faible</span>'
+    : '<span style="display:inline-block;font-size:9px;font-weight:700;color:#185FA5;background:#EBF4FF;padding:3px 8px;border-radius:6px;margin-top:6px">✓ En stock</span>';
+
+  return '<div class="pc" onclick="openProduit(\''+p.id+'\')">'
+    // Zone image
+    + '<div style="position:relative;height:148px;overflow:hidden;background:#F8FAFC;border-radius:10px 10px 0 0">'
+    + '<img src="'+img+'" alt="'+p.nom+'" style="width:100%;height:100%;object-fit:cover;transition:transform .3s" '
+    + 'onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+    + '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;background:#F1F5F9">🏷️</div>'
+    // Badge marque
+    + '<div style="position:absolute;bottom:8px;left:8px;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);border:1px solid rgba(0,0,0,.08);color:#374151;font-size:9px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.4px">'+p.marque+'</div>'
     + '</div>'
-    + '<div class="pin">'
-    + '<div class="pnom">'+p.nom+'</div>'
-    + '<div style="font-size:10px;color:var(--gm);margin:2px 0">Réf. '+p.ref+'</div>'
-    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">'
-    + '<div style="font-size:16px;font-weight:900;color:'+c.col+'">'+p.pv+'€</div>'
-    + '<div style="font-size:10px;color:#185FA5;font-weight:700;background:#EBF4FF;padding:2px 7px;border-radius:8px">+'+p.mar+'%</div>'
-    + '</div>'+stockBadge+'</div></div>';
+    // Infos
+    + '<div style="padding:12px 14px 14px">'
+    + '<div style="font-size:13px;font-weight:800;color:#0A2540;line-height:1.35;margin-bottom:3px">'+p.nom+'</div>'
+    + '<div style="font-size:10px;color:#94A3B8;margin-bottom:10px">Réf. '+p.ref+'</div>'
+    + '<div style="display:flex;align-items:center;justify-content:space-between">'
+    + '<div style="font-size:18px;font-weight:900;color:'+c.col+';letter-spacing:-.5px">'+p.pv+' €</div>'
+    + '<div style="font-size:10px;color:'+c.col+';font-weight:700;background:'+c.light+';padding:3px 8px;border-radius:8px">+'+p.mar+'%</div>'
+    + '</div>'
+    + stockBadge
+    + '</div></div>';
 }
 
 function selectRappel(id){
