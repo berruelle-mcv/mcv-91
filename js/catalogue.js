@@ -111,7 +111,7 @@ function renderProdCard(p){
   return '<div class="pc" onclick="openProduit(\''+p.id+'\')">'
     // Zone image
     + '<div style="position:relative;height:148px;overflow:hidden;background:#F8FAFC;border-radius:10px 10px 0 0">'
-    + '<img src="'+img+'" alt="'+p.nom+'" style="width:100%;height:100%;object-fit:cover;transition:transform .3s" '
+    + '<img src="'+img+'" alt="'+p.nom+'" loading="lazy" width="400" height="148" style="width:100%;height:100%;object-fit:cover;transition:transform .3s" '
     + 'onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
     + '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;background:#F1F5F9">🏷️</div>'
     // Badge marque
