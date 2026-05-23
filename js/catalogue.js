@@ -47,14 +47,14 @@ function renderCatalogue(catFiltre){
 
 // ═══ Images par produit ═══
 const PROD_IMAGES = {
-  'FOO-001': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-pro-match-t5.png.png',
-  'FOO-002': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-training-t4.png.png',
-  'FOO-003': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chaussures-terrain-souple-fg.png.png',
-  'FOO-004': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chaussure-futsal-ic.png.png',
-  'FOO-005': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/maillot-club-personnalisable.png.png',
-  'FOO-006': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/short-match-assorti.png.png',
-  'FOO-007': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chasuble-training-x10.png.png',
-  'FOO-008': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-gardien-gk.png.png',
+  'FOO-001': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-pro-match-t5.png',
+  'FOO-002': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-training-t4.png',
+  'FOO-003': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chaussures-terrain-souple-fg.png',
+  'FOO-004': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chaussure-futsal-ic.png',
+  'FOO-005': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/maillot-club-personnalisable.png',
+  'FOO-006': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/short-match-assorti.png',
+  'FOO-007': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/chasuble-training-x10.png',
+  'FOO-008': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/football/ballon-gardien-gk.png',
   'BAS-001': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/basketball/ballon-officiel-t7.png',
   'BAS-002': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/basketball/ballon-outdoor-t7.png',
   'BAS-003': 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/basketball/sneakers-low-top.png',
