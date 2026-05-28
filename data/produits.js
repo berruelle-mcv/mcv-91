@@ -228,3 +228,36 @@ const PRODUITS = [
   { id:'LAB-RHV-016', ref:'LAB-RHV-016', cat:'Rugby / Handball / Volley', marque:'LABORO', nom:'Maillot handball réversible', pv:32, pa:13, mar:55, tva:20, stock:0, seuil:5, coloris:['#0096C7','#E63B2E','#1A1A2E','#FFFFFF'], tailles:['S','M','L','XL','XXL'], niveau:'Tous niveaux', desc:'Maillot réversible 2 coloris, mesh 150g polyester, personnalisable numéro.' },
 
 ];
+
+// ═══ SITUATIONS IMPRÉVUES (bonus missions P3/P4) ═══
+const IMPREVU = {
+  'C1.1': {titre:'Veille urgente',txt:'Un concurrent vient d\'annoncer une promotion -25% sur les chaussures trail.',q:'Comment LABORO doit-il réagir immédiatement ? Propose une contre-mesure concrète.'},
+  'C1.2': {titre:'Client VIP inattendu',txt:'Le directeur sportif du PSG entre dans le showroom sans rendez-vous.',q:'Comment adaptes-tu ton approche pour ce client exceptionnel ?'},
+  'C1.3': {titre:'Panne du terminal CB',txt:'Le terminal de paiement tombe en panne au moment d\'encaisser une commande de 850 €.',q:'Quelles solutions proposes-tu au client pour finaliser la vente ?'},
+  'C2.1': {titre:'Rupture de stock critique',txt:'Le fournisseur annule une livraison de 30 ballons attendue pour demain.',q:'Comment informes-tu les clients concernés et quelle solution proposes-tu ?'},
+  'C2.2': {titre:'Réclamation virale',txt:'Un client mécontent poste un avis négatif sur Google avec photo.',q:'Quelle est ta réponse publique et ta démarche en coulisses ?'},
+  'C2.3': {titre:'Sondage en temps réel',txt:'Pascal Berruelle demande un bilan satisfaction express en 1 heure.',q:'Quels indicateurs utilises-tu et comment présentes-tu les résultats ?'},
+  'C3.1': {titre:'Afflux de contacts',txt:'Suite à un article de presse, 40 demandes arrivent en 2 heures.',q:'Comment priorises-tu et organises-tu le traitement de ces contacts ?'},
+  'C3.2': {titre:'Client fidèle mécontent',txt:'Un client LABORO PRO depuis 5 ans menace de partir chez un concurrent.',q:'Quelle stratégie de rétention mets-tu en place immédiatement ?'},
+  'C3.3': {titre:'Résultats décevants',txt:'Le taux de fidélisation chute de 74% à 61% en un mois.',q:'Quelle analyse fais-tu et quel plan d\'action proposes-tu à Pascal Berruelle ?'},
+  'G4A': {titre:'Incident en rayon',txt:'Un client fait tomber un présentoir entier de chaussures pendant l\'heure de pointe.',q:'Comment gères-tu l\'incident tout en maintenant l\'accueil des autres clients ?'},
+  'G4B': {titre:'Concurrence agressive',txt:'Decathlon Pro propose exactement le même produit 18% moins cher à ton prospect.',q:'Comment défends-tu l\'offre LABORO sans brader le prix ?'},
+  'B4.1': {titre:'Doublon dans le fichier',txt:'Tu découvres que 12 prospects de ta liste sont déjà clients de LABORO.',q:'Comment corriges-tu la situation et améliores-tu le processus pour l\'avenir ?'},
+  'B4.2': {titre:'Budget coupé',txt:'Nina Chevalier t\'annonce que le budget prospection est réduit de 40%.',q:'Comment adaptes-tu ton plan de prospection sans sacrifier les objectifs ?'},
+  'B4.3': {titre:'RDV annulé au dernier moment',txt:'Ton prospect le plus prometteur annule le RDV 30 minutes avant.',q:'Quelle est ta réaction immédiate et ta stratégie de récupération ?'},
+  'B4.4': {titre:'Devis accepté puis annulé',txt:'Un client signe le devis puis l\'annule par mail le lendemain matin.',q:'Comment réagis-tu pour tenter de récupérer la vente ?'},
+  'B4.5': {titre:'Appel d\'offres surprise',txt:'Un CE de 1200 salariés te contacte pour un appel d\'offres à remettre dans 48h.',q:'Comment organises-tu la préparation de cette proposition en urgence ?'},
+  'ACC': {titre:'Affluence imprévue',txt:'200 personnes se présentent à l\'événement prévu pour 80.',q:'Comment réorganises-tu l\'accueil en temps réel ?'},
+};
+
+// ═══ CLIENTS LABORO (fichier prospects) ═══
+const CLIENTS_INIT = [
+  {id:'CLI-001',nom:'CE PSA Stellantis',contact:'Isabelle Faure',type:'B2B',secteur:'Industrie automobile',ville:'Vélizy-Villacoublay',tel:'01 30 70 XX XX',mail:'i.faure@psa-stellantis.fr',ca:22400,statut:'Client actif',notes:'Commandes régulières maillots flocage. Événement sportif annuel en juin.'},
+  {id:'CLI-002',nom:'Mairie d\'Évry-Courcouronnes',contact:'David Chemin',type:'B2B',secteur:'Collectivité',ville:'Évry-Courcouronnes',tel:'01 60 91 XX XX',mail:'d.chemin@evry-courcouronnes.fr',ca:14800,statut:'Client actif',notes:'Achats groupés ballons et filets. Forum sportif municipal annuel.'},
+  {id:'CLI-003',nom:'Club Sportif Forêt de Sénart',contact:'Marc Girault',type:'B2B',secteur:'Association sportive',ville:'Sénart',tel:'06 12 34 XX XX',mail:'m.girault@cs-senart.fr',ca:4800,statut:'Client récent',notes:'Premier contrat chaussures sport. Potentiel maillots flocage.'},
+  {id:'CLI-004',nom:'Lycée Blaise Pascal Orsay',contact:'Mme Roussel',type:'B2B',secteur:'Établissement scolaire',ville:'Orsay',tel:'01 69 XX XX XX',mail:'roussel@lycee-pascal-orsay.fr',ca:3200,statut:'Client actif',notes:'Achats réguliers ballons et équipements EPS.'},
+  {id:'CLI-005',nom:'M. Thomas Vidal',contact:'Thomas Vidal',type:'B2C',secteur:'Particulier',ville:'Évry-Courcouronnes',tel:'06 XX XX XX XX',mail:'thomas.vidal@gmail.com',ca:420,statut:'Client fidèle',notes:'Client depuis 3 ans. Carte LABORO PRO non activée.'},
+  {id:'CLI-006',nom:'Mme Isabelle Konaté',contact:'Isabelle Konaté',type:'B2C',secteur:'Particulier',ville:'Corbeil-Essonnes',tel:'06 XX XX XX XX',mail:'i.konate@gmail.com',ca:280,statut:'Client actif',notes:'Achats pour son fils footballeur. Sensible aux promotions clubs.'},
+  {id:'CLI-007',nom:'ArianeGroup Massy',contact:'Sébastien Foulon',type:'B2B',secteur:'Industrie aérospatiale',ville:'Massy',tel:'01 60 XX XX XX',mail:'s.foulon@ariane.group',ca:0,statut:'Prospect chaud',notes:'2800 salariés. Budget CE sport estimé 28000€/an. En cours de négociation.'},
+  {id:'CLI-008',nom:'Comité Dép. 91 Handball',contact:'Pierre Lambert',type:'B2B',secteur:'Fédération sportive',ville:'Évry-Courcouronnes',tel:'01 60 XX XX XX',mail:'p.lambert@handball91.fr',ca:0,statut:'Prospect tiède',notes:'42 clubs affiliés. Budget estimé 5000-10000€/an.'},
+];
