@@ -261,3 +261,6 @@ const CLIENTS_INIT = [
   {id:'CLI-007',nom:'ArianeGroup Massy',contact:'Sébastien Foulon',type:'B2B',secteur:'Industrie aérospatiale',ville:'Massy',tel:'01 60 XX XX XX',mail:'s.foulon@ariane.group',ca:0,statut:'Prospect chaud',notes:'2800 salariés. Budget CE sport estimé 28000€/an. En cours de négociation.'},
   {id:'CLI-008',nom:'Comité Dép. 91 Handball',contact:'Pierre Lambert',type:'B2B',secteur:'Fédération sportive',ville:'Évry-Courcouronnes',tel:'01 60 XX XX XX',mail:'p.lambert@handball91.fr',ca:0,statut:'Prospect tiède',notes:'42 clubs affiliés. Budget estimé 5000-10000€/an.'},
 ];
+
+// Alias pour compatibilité avec js/clients.js
+const CLIENTS = CLIENTS_INIT;
