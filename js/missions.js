@@ -77,7 +77,7 @@ function openMission(id){
   const pdEl=document.getElementById('mo-palier-desc');
   if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
-  const resKey=m.comp.startsWith('ACC')?'ACC':m.comp.startsWith('G4A')?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
+  const resKey=m.comp.startsWith('ACC')?'ACC':(m.comp.startsWith('G4A')||m.comp.startsWith('C4A'))?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
   const res=RES[resKey];
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
   // Mission
@@ -118,7 +118,7 @@ function openMission(id){
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
   if(cpBtn){
-    const resKeyCp = m.comp.startsWith('ACC')?'ACC':m.comp.startsWith('G4A')?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
+    const resKeyCp = m.comp.startsWith('ACC')?'ACC':(m.comp.startsWith('G4A')||m.comp.startsWith('C4A'))?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
     const resCp = RES[resKeyCp];
     if(resCp){ cpBtn.classList.add('visible'); cpBtn.dataset.missionId = m.id; }
     else { cpBtn.classList.remove('visible'); }
@@ -178,7 +178,7 @@ function openCoupDePouce(){
   const cpBtn = document.getElementById('cp-btn');
   const mId = cpBtn ? cpBtn.dataset.missionId : null;
   if(mId && CM){
-    const resKey = CM.comp.startsWith('ACC')?'ACC':CM.comp.startsWith('G4A')?'G4A':CM.comp.startsWith('G4B')?'G4B':CM.comp.startsWith('B4.1')?'B4.1':CM.comp.startsWith('B4.2')?'B4.2':CM.comp.startsWith('B4.3')?'B4.3':CM.comp.startsWith('B4.4')?'B4.4':CM.comp.startsWith('B4.5')?'B4.5':CM.comp;
+    const resKey = CM.comp.startsWith('ACC')?'ACC':(CM.comp.startsWith('G4A')||CM.comp.startsWith('C4A'))?'G4A':CM.comp.startsWith('G4B')?'G4B':CM.comp.startsWith('B4.1')?'B4.1':CM.comp.startsWith('B4.2')?'B4.2':CM.comp.startsWith('B4.3')?'B4.3':CM.comp.startsWith('B4.4')?'B4.4':CM.comp.startsWith('B4.5')?'B4.5':CM.comp;
     const res = RES[resKey];
     const cpContent = document.getElementById('cp-content');
     if(cpContent && res){ cpContent.innerHTML = '<div class="res-t" style="font-size:13px;font-weight:700;margin-bottom:10px">'+res.t+'</div><div class="res-b">'+res.c+'</div>'; }
