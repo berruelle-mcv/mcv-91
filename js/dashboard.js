@@ -397,6 +397,7 @@ function compBadge(code){
 }
 
 function renderMissions(){
+  updateFiltreComp();
   const ud = gUD();
   const fp = document.getElementById('f-pal')?.value;
   const fc = document.getElementById('f-comp')?.value;
