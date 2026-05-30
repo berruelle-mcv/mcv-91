@@ -122,6 +122,10 @@ const gUD=()=>{
     ['B4.1','B4.2','B4.3','B4.4','B4.5'].forEach(k=>{
       if(ud.competences[k]) ud.competences['G4B']=Math.max(ud.competences['G4B']||0,ud.competences[k]);
     });
+    // Consolider C4A.1/C4A.2/C4A.3 → G4A dans la grille compétences (miroir de B4.x → G4B)
+    ['C4A.1','C4A.2','C4A.3'].forEach(k=>{
+      if(ud.competences[k]) ud.competences['G4A']=Math.max(ud.competences['G4A']||0,ud.competences[k]);
+    });
   }
   return ud;
 };
