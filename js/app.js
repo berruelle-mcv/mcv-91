@@ -163,3 +163,42 @@ function getClassement(classe){
   return users.map(u=>({nom:u.nom||u.mail,mail:u.mail,score:calcScore(u)})).sort((a,b)=>b.score-a.score);
 }
 
+// ═══ FILTRE COMPÉTENCES — adapté à la classe de l'élève ═══
+// Appelée à chaque renderMissions() pour adapter le menu aux compétences accessibles.
+// Règles :
+//   - 2nde          : C1, C2, C3, ACC uniquement (pas de bloc 4)
+//   - 1ère/Term AGEC : C1, C2, C3, C4A (Espace commercial), ACC
+//   - 1ère/Term PVOC : C1, C2, C3, B4/G4B (Prospection B2B), ACC
+//   - Enseignant     : tout afficher
+function updateFiltreComp() {
+  const sel = document.getElementById('f-comp');
+  if (!sel || !CU) return;
+  const cls = CU.classe || '';
+  const isAGEC = cls.includes('AGEC');
+  const isPVOC = cls.includes('PVOC');
+  const is2nde = cls === '2nde';
+  const isEns  = cls === 'enseignant';
+
+  // Définition des options selon le profil
+  const optionsCommunes = [
+    { v: '',    l: 'Toutes compétences' },
+    { v: 'C1',  l: 'C1 — Conseiller & vendre' },
+    { v: 'C2',  l: 'C2 — Suivre la commande' },
+    { v: 'C3',  l: 'C3 — Fidéliser' },
+  ];
+  const optionAGEC  = { v: 'C4A', l: 'C4A — Espace commercial (AGEC)' };
+  const optionPVOC  = { v: 'B4',  l: 'B4 — Prospection B2B (PVOC)' };
+  const optionACC   = { v: 'ACC', l: 'Accueil — Seconde' };
+
+  let options = [...optionsCommunes];
+  if (is2nde)         { options.push(optionACC); }
+  if (isAGEC)         { options.push(optionAGEC); }
+  if (isPVOC)         { options.push(optionPVOC); }
+  if (isEns)          { options.push(optionAGEC, optionPVOC, optionACC); }
+
+  // Mémoriser la valeur courante avant de reconstruire
+  const current = sel.value;
+  sel.innerHTML = options
+    .map(o => `<option value="${o.v}"${o.v === current ? ' selected' : ''}>${o.l}</option>`)
+    .join('');
+}
