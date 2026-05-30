@@ -7,7 +7,7 @@
 
 // ═══ ACTUALITÉS LABORO ═══
 const ACTUS_LABORO=[
-  {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons T5 et 30 chasubles x10 reçus en entrepôt. Mise en rayon prévue demain.'},
+  {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons Nike Strike T5 et 30 chasubles x10 reçus en entrepôt. Mise en rayon prévue demain.'},
   {date:'Lun',icon:'📞',titre:'Prospect à rappeler',txt:'M. Dubois (CE Renault Évry) a demandé un devis pour 20 maillots personnalisés. Romain Sauzet prend en charge.'},
   {date:'Mar',icon:'🎯',titre:'Objectif semaine',txt:'Objectif : 8 500 € de CA cette semaine. À J+1 : 3 240 € réalisés. Bonne dynamique sur le rayon chaussures.'},
   {date:'Mar',icon:'⚠️',titre:'Stock critique',txt:'Sneakers Nike Air Max SC taille 42 : 2 unités restantes. Commande fournisseur en cours — délai 5 jours.'},
