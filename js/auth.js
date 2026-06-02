@@ -1,3 +1,20 @@
+// ── Affichage erreur inline (remplace les alert() natifs) ──
+function showLoginError(msg){
+  let el = document.getElementById('login-error');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'login-error';
+    el.style.cssText = 'margin-top:10px;padding:10px 14px;background:#FEE2E2;border:1px solid #FCA5A5;border-radius:8px;font-size:12px;color:#B91C1C;font-weight:600;display:flex;align-items:center;gap:8px;animation:fadeIn .2s ease';
+    el.innerHTML = '<span style="flex-shrink:0">⚠️</span><span id="login-error-txt"></span>';
+    const btn = document.getElementById('btn-li') || document.querySelector('.btn-li');
+    if(btn && btn.parentNode) btn.parentNode.insertBefore(el, btn.nextSibling);
+  }
+  document.getElementById('login-error-txt').textContent = msg;
+  el.style.display = 'flex';
+  clearTimeout(el._t);
+  el._t = setTimeout(function(){ el.style.display='none'; }, 5000);
+}
+
 // ================================================
 //   LABORO Sport & Outdoor — Authentification, login, logout, onboarding
 //   Version 1.0 — Architecture modulaire
@@ -73,19 +90,19 @@ function doLogin(){
     return;
   }
 
-  if(!mail||!cls){alert('Merci de renseigner tous les champs.');return}
-  if(!mail.includes('@')){alert('Adresse mail invalide.');return}
+  if(!mail||!cls){showLoginError('Merci de renseigner tous les champs.');return}
+  if(!mail.includes('@')){showLoginError('Adresse mail invalide — vérifie le format prenom.nom@monlycee.net.');return}
   const posteMap={'enseignant':'Enseignant — Accès direction','2nde':'Découverte de la famille des métiers MCV'};
   const poste=posteMap[cls]||(cls.includes('AGEC')?'Conseiller de vente — Showroom & E-commerce':cls.includes('PVOC')?'Commercial terrain — Prospection & Vente B2B':'');
-  if(!poste){alert('Merci de sélectionner une classe.');return}
+  if(!poste){showLoginError('Merci de sélectionner ta classe.');return}
   // Vérification mot de passe enseignant
   if(cls==='enseignant'){
     const mdpVal=document.getElementById('inp-mdp')?.value||'';
-    if(!mdpVal){alert('Merci de saisir le code d\'accès enseignant.');return}
+    if(!mdpVal){showLoginError('Merci de saisir le code d\'accès enseignant.');return}
     // Hash SHA256 côté client
     const hashMdp=async(str)=>{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')};
     hashMdp(mdpVal).then(h=>{
-      if(h!=='3e4b672e60279a8fc681052361892d4a50239106de51b8dacf93dee8e3dd644d'){alert('Code d\'accès incorrect. Contactez Pascal Berruelle.');return}
+      if(h!=='3e4b672e60279a8fc681052361892d4a50239106de51b8dacf93dee8e3dd644d'){showLoginError('Code d\'accès incorrect. Contactez Pascal Berruelle.');return}
       finishLogin(mail,cls,poste,null);
     });
     return;
@@ -265,6 +282,18 @@ function showApp(){
   if(niCl) niCl.style.display = ens ? 'block' : 'none';
   if(niGn) niGn.style.display = ens ? 'block' : 'none';
   if(nsEns) nsEns.style.display = ens ? 'block' : 'none';
+  // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
+  const sbBt = document.querySelector('.sb-bt');
+  if(sbBt && !document.getElementById('btn-export') && !ens){
+    const exportWrap = document.createElement('div');
+    exportWrap.style.cssText = 'display:flex;gap:6px;margin-bottom:8px';
+    exportWrap.innerHTML =
+      '<button id="btn-export" onclick="exporterDonnees()" title="Sauvegarder ta progression en fichier" '
+      + 'style="flex:1;padding:6px 8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:11px;color:var(--gm);font-weight:600">💾 Sauvegarder</button>'
+      + '<button id="btn-import" onclick="importerDonnees()" title="Restaurer une sauvegarde" '
+      + 'style="flex:1;padding:6px 8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:11px;color:var(--gm);font-weight:600">📂 Restaurer</button>';
+    sbBt.insertBefore(exportWrap, sbBt.firstChild);
+  }
   renderAll();
   // Charte et rappels
   setTimeout(function(){
@@ -310,3 +339,64 @@ function renderAll(){
   if(CU && CU.classe==='enseignant') safe(renderClasse, 'renderClasse');
 }
 
+
+// ════════════════════════════════════════════
+// EXPORT / IMPORT des données élève
+// Solution de secours en attendant un backend —
+// permet à l'élève de sauvegarder et restaurer
+// sa progression entre différents postes.
+// ════════════════════════════════════════════
+function exporterDonnees(){
+  if(!CU){ showLoginError('Connecte-toi d\'abord.'); return; }
+  const s = gS();
+  const ud = s[CU.mail] || {};
+  const exportData = {
+    version: '1.0',
+    date: new Date().toISOString(),
+    mail: CU.mail,
+    classe: CU.classe,
+    nom: CU.nom,
+    poste: CU.poste,
+    donnees: ud
+  };
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'laboro_sauvegarde_' + CU.nom.replace(/ /g,'_') + '_' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importerDonnees(){
+  if(!CU){ showLoginError('Connecte-toi d\'abord.'); return; }
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      try {
+        const data = JSON.parse(ev.target.result);
+        if(!data.donnees || !data.mail){
+          alert('Fichier invalide — ce n\'est pas une sauvegarde LABORO.');
+          return;
+        }
+        if(data.mail !== CU.mail){
+          if(!confirm('Ce fichier appartient à ' + data.mail + '. Importer quand même sur ton compte ?')) return;
+        }
+        const s = gS();
+        s[CU.mail] = data.donnees;
+        sS(s);
+        alert('✅ Données restaurées ! La page va se recharger.');
+        location.reload();
+      } catch(err){
+        alert('Erreur de lecture du fichier. Vérifie qu\'il s\'agit bien d\'une sauvegarde LABORO.');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
