@@ -4,7 +4,7 @@
    Version 1.0 — Migration architecture modulaire
 ================================================ */
 
-:root{--bl:#4A6FA5;--bf:#2D5282;--bc:#EBF4FF;--bm:#BEE3F8;--ac1:#4A6FA5;--ac1f:#2D5282;--ac1m:#BEE3F8;--gr:#1F2937;--gm:#6B7280;--gc:#F3F4F6;--gb:#E5E7EB;--vt:#3B82F6;--vc:#EFF6FF;--am:#D97706;--ac:#FEF3C7;--rg:#DC2626;--rc:#FEE2E2;--wh:#fff;--sidebar-bg:#fff;--card-bg:#fff;--body-bg:#F3F4F6;--border:#E5E7EB}
+:root{--bl:#4A6FA5;--bf:#2D5282;--bc:#EBF4FF;--bm:#BEE3F8;--ac1:#4A6FA5;--ac1f:#2D5282;--ac1m:#BEE3F8;--gr:#1F2937;--gm:#6B7280;--gc:#F3F4F6;--gb:#E5E7EB;--vt:#1D9E75;--vc:#E1F5EE;--am:#D97706;--ac:#FEF3C7;--rg:#DC2626;--rc:#FEE2E2;--wh:#fff;--sidebar-bg:#fff;--card-bg:#fff;--body-bg:#F3F4F6;--border:#E5E7EB}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--gr);background:#F3F4F6;min-height:100vh}
 .scr{display:none;min-height:100vh}.scr.on{display:flex;flex-direction:column}
@@ -284,9 +284,7 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .cl-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff}
 .cl-nom{font-size:13px;font-weight:700}
 .cl-meta{font-size:11px;color:var(--gm);display:flex;gap:10px}
-.tb2c{background:var(--bc);color:var(--bl);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700}
-.tb2b{background:var(--ac);color:var(--am);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700}
-.tpros{background:var(--rc);color:var(--rg);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700}
+/* tb2b, tb2c, tpros — définis en bas du fichier (section clients) */
 .fc{background:var(--wh);border:.5px solid var(--gb);border-radius:10px;padding:16px;display:none}
 .fc.on{display:block}
 .fc-h{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:.5px solid var(--gc)}
