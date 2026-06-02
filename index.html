@@ -42,7 +42,7 @@ async function loadConfig() {
         if(el) el.textContent = nomPlateforme;
       });
       document.querySelectorAll('.btn-li').forEach(el => {
-        if(el.textContent.includes('LABORO')) el.textContent = 'Accéder à mon espace ' + nomPlateforme;
+        if(el.textContent.includes('LABORO') || el.textContent.includes('Se connecter')) el.textContent = 'Se connecter à ' + nomPlateforme + ' →';
       });
     };
     if(document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div class="ls">Connecte-toi avec ton adresse mail institutionnelle pour accéder à ton espace de travail.</div>
     <div class="fg"><label>Adresse mail</label><input type="email" id="inp-mail" placeholder="prenom.nom@monlycee.net"/></div>
     <div class="fg"><label>Classe</label>
-      <select id="inp-classe" onchange="updatePoste()">
+      <select id="inp-classe" onchange="updatePoste()" style="margin-bottom:4px">
         <option value="">— Sélectionner —</option>
         <option value="2nde">2nde professionnelle</option>
         <option value="1ere-AGEC">1ère Bac Pro AGEC</option>
@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <option value="Term-PVOC">Terminale Bac Pro PVOC</option>
         <option value="enseignant">Enseignant</option>
       </select>
+      <div style="font-size:11px;color:#6B7280;margin-top:4px;margin-bottom:8px">Choisis ta classe pour accéder à tes missions adaptées</div>
     </div>
     <div class="fg" id="fg-poste" style="display:none">
       <label>Poste chez LABORO</label>
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <input type="password" id="inp-mdp" placeholder="Code confidentiel" onkeydown="if(event.key==='Enter')doLogin()"/>
       <div class="mdp-hint">Code réservé aux enseignants — contacter Pascal Berruelle</div>
     </div>
-    <button class="btn-li" onclick="doLogin()">Accéder à mon espace LABORO</button>
+    <button class="btn-li" onclick="doLogin()">Se connecter à LABORO →</button>
     <p class="ln2">Tes données sont sauvegardées de façon sécurisée sur cet appareil.</p>
     <div style="margin-top:24px;padding-top:16px;border-top:1px solid #E2E8F0;text-align:center">
       <div style="font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Plateforme conçue par</div>
@@ -157,8 +158,8 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <div class="r-s">Des missions professionnelles réelles, un univers sport & outdoor immersif, des compétences directement alignées sur tes épreuves. Bienvenue chez LABORO.</div>
         <div class="r-st">
           <div class="r-st-item"><div class="r-st-n">50+</div><div class="r-st-l">Clients actifs</div></div>
-          <div class="r-st-item"><div class="r-st-n">125+</div><div class="r-st-l">Missions</div></div>
-          <div class="r-st-item"><div class="r-st-n">3</div><div class="r-st-l">Niveaux</div></div>
+          <div class="r-st-item"><div class="r-st-n">130+</div><div class="r-st-l">Missions</div></div>
+          <div class="r-st-item"><div class="r-st-n">FMRC</div><div class="r-st-l">Filière</div></div>
           <div class="r-st-item"><div class="r-st-n">100%</div><div class="r-st-l">Référentiel</div></div>
         </div>
         <div style="margin-top:28px;padding-top:20px;border-top:.5px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.4)">
@@ -191,14 +192,22 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <button onclick="hideVitrine()" style="background:#fff;color:#4B5563;border:1px solid #E5E7EB;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer">← Connexion</button>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 60%,#4A6FA5 100%);border-radius:20px;padding:48px 40px;margin-bottom:32px;color:#fff;position:relative;overflow:hidden">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;padding:12px 16px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+      <span style="font-size:11px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.08em;margin-right:4px;line-height:32px">Aller à :</span>
+      <a href="#vitrine-concept" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:background .2s" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">🎯 Le concept</a>
+      <a href="#vitrine-parcours" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">📚 Parcours élève</a>
+      <a href="#vitrine-ccf" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">📋 Alignement CCF</a>
+      <a href="#vitrine-revolution" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">⚡ La révolution</a>
+      <a href="#vitrine-demo" style="padding:6px 14px;background:#2D5282;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none" onmouseover="this.style.background='#1A3A6E'" onmouseout="this.style.background='#2D5282'">▶ Mode démo</a>
+    </div>
+    <div id="vitrine-concept" style="background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 60%,#4A6FA5 100%);border-radius:20px;padding:48px 40px;margin-bottom:32px;color:#fff;position:relative;overflow:hidden">
       <div style="position:absolute;right:-30px;bottom:-50px;font-size:200px;font-weight:900;color:rgba(255,255,255,.04);line-height:1">L</div>
       <div style="position:relative;z-index:1">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);margin-bottom:12px">Plateforme pédagogique immersive</div>
         <div style="font-size:32px;font-weight:900;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px">L'entreprise simulation<br>pour le Bac Pro MCV</div>
         <div style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;max-width:560px;margin-bottom:28px">LABORO plonge les élèves dans une entreprise fictive crédible — LABORO Sport &amp; Outdoor, basée à Évry-Courcouronnes. Chaque mission correspond à une situation professionnelle réelle, alignée sur le référentiel MCV et les grilles CCF officielles.</div>
         <div style="display:flex;gap:24px;flex-wrap:wrap">
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">125+</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Missions</div></div>
+          <div style="text-align:center"><div style="font-size:28px;font-weight:900">130+</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Missions</div></div>
           <div style="text-align:center"><div style="font-size:28px;font-weight:900">3</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Niveaux</div></div>
           <div style="text-align:center"><div style="font-size:28px;font-weight:900">2</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Options</div></div>
           <div style="text-align:center"><div style="font-size:28px;font-weight:900">100%</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Référentiel</div></div>
@@ -220,10 +229,10 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div style="background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
         <div style="font-size:24px;margin-bottom:12px">📊</div>
         <div style="font-size:15px;font-weight:700;color:#1F2937;margin-bottom:8px">Pilotage enseignant</div>
-        <div style="font-size:13px;color:#6B7280;line-height:1.6">Vue classe en temps réel, validation des missions, observations personnalisées, analyse de remédiation, portfolio CCF en 1 clic.</div>
+        <div style="font-size:13px;color:#6B7280;line-height:1.6">Vue classe en temps réel, validation des missions, génération du portfolio CCF en 1 clic, analyse de remédiation automatique et fiche de positionnement élève.</div>
       </div>
     </div>
-    <div style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px">
+    <div id="vitrine-parcours" style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px">
       <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4A6FA5;margin-bottom:16px">Parcours élève — de la 2nde à la Terminale</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
         <div style="border-left:3px solid #4A6FA5;padding-left:14px">
@@ -240,7 +249,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         </div>
       </div>
     </div>
-    <div style="background:#EBF4FF;border-radius:14px;padding:28px;margin-bottom:32px">
+    <div id="vitrine-ccf" style="background:#EBF4FF;border-radius:14px;padding:28px;margin-bottom:32px">
       <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2D5282;margin-bottom:16px">Alignement sur les grilles CCF officielles</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
         <div style="background:#fff;border-radius:10px;padding:16px">
@@ -261,7 +270,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       </div>
       <div style="margin-top:12px;font-size:11px;color:#4A6FA5;font-style:italic">Le portfolio généré par LABORO reprend mot pour mot les critères et indicateurs des grilles officielles d'évaluation E31 et E32.</div>
     </div>
-    <div style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px;border-left:4px solid #D97706">
+    <div id="vitrine-revolution" style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px;border-left:4px solid #D97706">
       <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#D97706;margin-bottom:14px">⚡ La révolution CCF — ce que LABORO change concrètement</div>
       <p style="font-size:13px;color:#374151;line-height:1.8;margin-bottom:16px">Aujourd'hui, les enseignants remplissent les grilles CCF en fin de Terminale — souvent de mémoire, parfois arbitrairement, faute de traces fiables. Les portfolios élèves sont vides car les élèves ne jouent pas le jeu. Le positionnement repose sur peu de choses concrètes.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
@@ -292,7 +301,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.9);font-style:italic;margin-bottom:16px">"LABORO n'est pas un outil numérique de plus. C'est une salle de classe augmentée où l'élève est acteur d'une entreprise réelle — et où l'enseignant pilote la progression compétence par compétence, en lien direct avec les exigences des CCF."</div>
       <div style="font-size:12px;color:rgba(255,255,255,.6)">Pascal Berruelle — Enseignant PLP Bac Pro MCV, Essonne (91)</div>
     </div>
-    <div style="text-align:center;padding:32px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+    <div id="vitrine-demo" style="text-align:center;padding:32px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
       <div style="font-size:20px;font-weight:700;color:#1F2937;margin-bottom:8px">Prêt à explorer LABORO ?</div>
       <div style="font-size:13px;color:#6B7280;margin-bottom:24px">Lancez le mode démo pour voir la plateforme en action — aucune installation, aucun compte requis.</div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
@@ -486,7 +495,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <div class="ob-ens-titre">Bienvenue sur LABORO,<br><span id="ob-ens-prenom" style="color:var(--vt)">Enseignant</span>.</div>
         <div class="ob-ens-sub">LABORO est votre plateforme pédagogique immersive pour le Bac Pro MCV. Vos élèves y travaillent comme de vrais collaborateurs d'une entreprise sport & outdoor. Vous, vous pilotez, observez et remédiez.</div>
         <div class="ob-ens-grid">
-          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">🎯</div><div class="ob-ens-feat-t">125+ missions</div><div class="ob-ens-feat-d">Alignées sur le référentiel MCV — 2nde à Terminale, AGEC et PVOC</div></div>
+          <div class="ob-ens-feat"><div class="ob-ens-feat-ico">🎯</div><div class="ob-ens-feat-t">130+ missions</div><div class="ob-ens-feat-d">Alignées sur le référentiel MCV — 2nde à Terminale, AGEC et PVOC</div></div>
           <div class="ob-ens-feat"><div class="ob-ens-feat-ico">📊</div><div class="ob-ens-feat-t">Suivi en temps réel</div><div class="ob-ens-feat-d">Notes, progression, coups de pouce — tout visible depuis votre espace</div></div>
           <div class="ob-ens-feat"><div class="ob-ens-feat-ico">🛠</div><div class="ob-ens-feat-t">Analyse & remédiation</div><div class="ob-ens-feat-d">Identifiez les points faibles de la classe en un clic</div></div>
           <div class="ob-ens-feat"><div class="ob-ens-feat-ico">📄</div><div class="ob-ens-feat-t">Portfolio automatique</div><div class="ob-ens-feat-d">Document d'aide au positionnement généré en 2 clics</div></div>
