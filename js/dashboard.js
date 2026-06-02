@@ -119,8 +119,20 @@ function renderDashboard(){
   if(CU.classe === 'enseignant'){
     if(wbr) wbr.style.display = 'none';
   } else {
+    const msDone = Object.values(gUD().missions||{}).filter(function(m){ return m.status==='done'; }).length;
     if(wbr) wbr.style.display = '';
-    if(wbs) wbs.textContent = sc!==null&&sc!==undefined?sc:0;
+    if(wbs){
+      if(msDone === 0){
+        // Aucune mission complétée — masquer le chiffre, afficher une invitation
+        wbs.textContent = '—';
+        const smEl = wbr ? wbr.querySelector('.sm') : null;
+        if(smEl) smEl.textContent = 'Lance ta première mission !';
+      } else {
+        wbs.textContent = sc!==null&&sc!==undefined?sc:0;
+        const smEl = wbr ? wbr.querySelector('.sm') : null;
+        if(smEl) smEl.textContent = 'Score LABORO /100';
+      }
+    }
   }
   // Afficher le palier
   const palierEl=document.getElementById('wb-palier');
@@ -218,7 +230,12 @@ function renderDashboard(){
     }
     cltDash.innerHTML=podHtml+listHtml;
   } else if(cltDash){
-    cltDash.innerHTML='<p style="font-size:12px;color:var(--gm);padding:8px">Aucun classement disponible pour le moment.</p>';
+    cltDash.innerHTML='<div style="text-align:center;padding:20px 12px">'
+      +'<div style="font-size:24px;margin-bottom:8px">🏆</div>'
+      +'<div style="font-size:12px;font-weight:700;color:var(--gr);margin-bottom:4px">Le classement se construit au fil des missions</div>'
+      +'<div style="font-size:11px;color:var(--gm);margin-bottom:12px">Complète ta première mission pour apparaître ici.</div>'
+      +'<button onclick="goP('missions',document.querySelector('.ni[onclick*=missions]'))" style="padding:8px 18px;background:linear-gradient(135deg,#0A2540,#185FA5);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Voir mes missions →</button>'
+      +'</div>';
   }
   // Progression
   const lc=['var(--gb)','#85B7EB','var(--bl)','var(--vt)','#27500A'];
@@ -263,10 +280,11 @@ function renderDashboard(){
           }).join('')
         + '</div>';
     } else {
-      recEl.innerHTML = '<div style="text-align:center;padding:16px;color:var(--gm)">'
-        + '<div style="font-size:24px;margin-bottom:6px">🚀</div>'
-        + '<div style="font-size:12px;font-weight:600">Aucune mission terminée</div>'
-        + '<div style="font-size:11px;margin-top:4px">Lance ta premiere mission !</div>'
+      recEl.innerHTML = '<div style="text-align:center;padding:20px 12px">'
+        + '<div style="font-size:24px;margin-bottom:8px">🚀</div>'
+        + '<div style="font-size:12px;font-weight:700;color:var(--gr);margin-bottom:4px">Prêt(e) pour ta première mission ?</div>'
+        + '<div style="font-size:11px;color:var(--gm);margin-bottom:12px">Lis la ressource, réponds aux questions, progresse.</div>'
+        + '<button onclick="goP('missions',document.querySelector('.ni[onclick*=missions]'))" style="padding:8px 18px;background:linear-gradient(135deg,#0A2540,#185FA5);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Lancer ma première mission →</button>'
         + '</div>';
     }
   }
@@ -283,7 +301,7 @@ function renderActus(){
   const month = now.getMonth();
 
   // Actualités du jour selon le jour de la semaine
-  const dayNames = ['Sam','Dim','Lun','Mar','Mer','Jeu','Ven'];
+  const dayNames = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']; // getDay() retourne 0=Dim, 1=Lun... 6=Sam
   const todayName = dayNames[day] || 'Lun';
   const todayActus = ACTUS_LABORO.filter(function(a){ return a.date === todayName; });
   const displayActus = todayActus.length > 0 ? todayActus : ACTUS_LABORO.slice(0,2);
