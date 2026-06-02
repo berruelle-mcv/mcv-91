@@ -86,6 +86,14 @@ function openMission(id){
   if(m.dossier){html+=`<div class="doc-block"><div class="doc-lbl">Dossier documentaire — ${m.dossier.l}</div><table class="doc-t"><tbody>${m.dossier.rows.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</tbody></table></div>`;}
   const isPVOC = CU.classe && CU.classe.includes('PVOC');
   const contexteAffiche = (isPVOC && m.contexte_pvoc) ? m.contexte_pvoc : m.contexte;
+  // ── Objectif de la mission (Axe 1 — compétence explicite) ──
+  if(m.objectif){
+    html+=`<div style="background:#EBF4FF;border:.5px solid #B5D4F4;border-left:3px solid #185FA5;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px">
+      <div style="font-size:10px;font-weight:700;color:#185FA5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">🎯 Objectif de cette mission</div>
+      <div style="font-size:12px;color:#1A2E4A;line-height:1.6">${m.objectif}</div>
+      <div style="font-size:11px;color:#4A6FA5;margin-top:4px">Compétence travaillée : <strong>${m.comp}</strong> — ${m.comp_libelle}</div>
+    </div>`;
+  }
   html+=`<div class="ph1"><div class="ph-l" style="color:var(--bl)">Mise en situation</div><div class="ph-c">${contexteAffiche}</div></div>`;
   m.activites.forEach((a,i)=>{
     html+=`<div class="ph2"><div class="ph-l" style="color:var(--vt)">Activité ${i+1} — ${a.t}</div>`;
@@ -101,9 +109,28 @@ function openMission(id){
   const rfSaved=savedReps[rfQid]||'';
   const is2nde=CU.classe==='2nde';
   if(!is2nde&&m.reflexivite>0){
+    // ── Axe 2 : question de réflexivité précise ou générique selon la mission ──
     const reflexQ={3:"Si tu devais expliquer à un jury professionnel comment tu as traité cette situation, que dirais-tu ? Qu'aurais-tu pu faire différemment ?",4:"En prenant du recul sur cette mission : comment ta pratique a-t-elle évolué ? En quoi cette compétence est-elle transférable à d'autres situations professionnelles ?"};
-    const rq=reflexQ[m.reflexivite]||reflexQ[3];
+    const rq=m.reflexivite_q||reflexQ[m.reflexivite]||reflexQ[3];
     html+=`<div class="reflexiv"><div class="reflexiv-l">Question de réflexivité</div><div class="reflexiv-desc">${rq}</div><textarea class="zone-rep${rfSaved?' saved':''}" id="${rfQid}" placeholder="Explique ta démarche…" oninput="autoSaveRep('${id}','${rfQid}',this)">${rfSaved}</textarea></div>`;
+  }
+  // ── Axe 3 : Grille de critères visible par l'élève AVANT soumission ──
+  if(m.criteres && m.criteres.length > 0){
+    const niveaux = ['Non acquis','En cours d\'acquisition','Acquis','Maîtrisé'];
+    const couleurs = ['#DC2626','#D97706','#1D9E75','#185FA5'];
+    html+=`<div style="background:#FFFBEA;border:.5px solid #F0C040;border-left:3px solid #D97706;border-radius:0 8px 8px 0;padding:12px 14px;margin-top:14px">
+      <div style="font-size:10px;font-weight:700;color:#8A6500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">📋 Ce qu'on attend de toi — critères d'évaluation</div>
+      <div style="font-size:11px;color:#92400E;margin-bottom:10px;line-height:1.5">Avant de soumettre, vérifie que ta réponse répond à chacun de ces critères.</div>
+      ${m.criteres.map((cr,ci) => `
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:.5px solid #FDE68A${ci===m.criteres.length-1?';border-bottom:none':''}">
+          <div style="width:20px;height:20px;border-radius:50%;background:#FEF3C7;border:1.5px solid #F0C040;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#B45309;flex-shrink:0;margin-top:1px">${ci+1}</div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:700;color:#1A2E4A;margin-bottom:2px">${cr.c}</div>
+            <div style="font-size:11px;color:#6B7280;line-height:1.4">${cr.i}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
   }
   if(m.livrable) html+=`<div class="livrable"><div class="livrable-l">Livrable attendu</div><strong>${m.livrable}</strong></div>`;
   // Situation imprévue si moy >= 15
