@@ -1490,6 +1490,95 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
 <div class="res-section">
 <div class="res-section-label">🔵 Pour aller plus loin — Gérer les situations difficiles</div>
 <p><strong>4 étapes d'un accueil réussi :</strong></p><ul><li><strong>Détecter</strong> — Tout visiteur pris en charge sous 30 secondes. Même si on est occupé : un regard, un sourire et "Je suis à vous dans un instant" suffisent. L'attente sans reconnaissance est insupportable.</li><li><strong>Accueillir</strong> — Formule LABORO : "Bonjour, bienvenue chez LABORO, je suis [prénom], que puis-je faire pour vous ?" Debout, sourire, regard. Ne jamais rester assis.</li><li><strong>Orienter et accompagner</strong> — Jamais laisser un visiteur seul chercher. Accompagner physiquement ou confier à un collègue avec une présentation : "Je te confie M. Vidal, il cherche des chaussures trail."</li><li><strong>Prendre congé</strong> — "Au revoir M. Vidal, merci de votre visite, n'hésitez pas à revenir !" Toujours se lever, toujours sourire, toujours nommer le client.</li></ul><p><strong>L'accueil téléphonique — formule et règles :</strong></p><ul><li>Décrocher avant la 3e sonnerie</li><li>Formule : "LABORO Sport & Outdoor, [prénom], bonjour !"</li><li>Identifier l'appelant et l'objet de l'appel avant de transférer</li><li>Mettre en attente : "Je vous mets en attente un instant, ne quittez pas." Revenir toutes les 30 secondes si l'attente se prolonge.</li><li>Prendre un message complet : nom + prénom + coordonnées + objet + heure d'appel + meilleur moment pour rappeler</li></ul><p><strong>Gérer les situations difficiles — méthode des 3R :</strong></p><ul><li><strong>Reconnaître</strong> — "Je comprends que vous attendez depuis longtemps, c'est tout à fait normal de vous impatienter."</li><li><strong>Reformuler</strong> — "Si je comprends bien, vous cherchez…"</li><li><strong>Résoudre ou orienter</strong> — Apporter une solution ou rediriger vers la bonne personne avec une présentation complète.</li></ul><p><strong>Cas particuliers à maîtriser :</strong></p><ul><li>Visiteur en attente longue → reconnaître l'attente régulièrement, proposer de s'asseoir</li><li>Forte affluence → prioriser sans jamais ignorer un visiteur</li><li>Demande impossible → "Ce n'est pas possible de cette façon, mais voici ce que je peux faire pour vous…"</li><li>Situation d'urgence (malaise) → alerter immédiatement, appeler le 15 si doute, ne pas laisser la personne seule</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — journée Portes Ouvertes</div>3 visiteurs entrent en même temps. Thomas Moreau en prend un en charge. Toi : "Bonjour à tous ! Bienvenue chez LABORO. Je suis [prénom]. Je m'occupe de vous dans l'ordre, je reviens dans 2 minutes." → Sourire à chacun. Aucun ne se sent ignoré.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>30 secondes max pour prendre en charge un visiteur — c'est la règle absolue. Au téléphone, le sourire s'entend. Un visiteur mal accueilli ne reviendra jamais et en parlera à 10 personnes. L'accueil reflète l'image de LABORO.</div>
-</div>`},
+</div>
+<div class="res-section">
+<div class="res-section-label">🟢 Accueil d'un visiteur professionnel</div>
+<p><strong>Un visiteur professionnel, c'est l'image de LABORO qui est en jeu.</strong> Fournisseur, partenaire, inspecteur, technicien — chaque visiteur professionnel suit un protocole spécifique.</p>
+<p><strong>Les 5 étapes de l'accueil professionnel :</strong></p>
+<ul>
+<li><strong>Accueillir</strong> — Formule professionnelle, se lever, sourire</li>
+<li><strong>Vérifier</strong> — Identité, objet de la visite, rendez-vous</li>
+<li><strong>Prévenir</strong> — Contacter l'interlocuteur interne avant de faire patienter</li>
+<li><strong>Remettre un badge</strong> — Tout visiteur externe reçoit un badge visiteur</li>
+<li><strong>Accompagner ou orienter</strong> — Ne jamais laisser un visiteur seul chercher son chemin</li>
+</ul>
+<p><strong>Le registre des visites :</strong> noter l'heure d'arrivée et de départ de chaque visiteur. C'est une obligation de sécurité (évacuation, assurance) et une trace professionnelle.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — visiteur sans rendez-vous</div>
+Un technicien arrive sans rendez-vous. ✅ Correct : "Bonjour, je suis [prénom]. Puis-je vous demander l'objet de votre visite et le nom de votre interlocuteur chez LABORO ?" → Vous vérifiez, vous prévenez, vous accompagnez. ❌ À éviter : le laisser entrer seul ou le renvoyer sans solution.
+</div>
+</div>
+
+<div class="res-section">
+<div class="res-section-label">🟢 Gérer la communication écrite — mails professionnels</div>
+<p><strong>La boîte mail d'accueil est souvent le premier contact d'un client ou d'un partenaire avec LABORO.</strong> Trier, prioriser et répondre sont des compétences clés.</p>
+<p><strong>Trier et prioriser :</strong></p>
+<ul>
+<li><strong>Urgent et important</strong> — Réclamation client, demande de rendez-vous imminent → traiter en priorité</li>
+<li><strong>Important, non urgent</strong> — Demande de renseignement, demande de partenariat → transmettre au bon interlocuteur</li>
+<li><strong>Non important</strong> — Spam, publicité, mail hors sujet → supprimer sans répondre</li>
+</ul>
+<p><strong>Les 5 règles d'un mail professionnel :</strong></p>
+<ul>
+<li>Objet clair et précis dès la première lecture</li>
+<li>Formule d'introduction professionnelle ("Bonjour Madame, Monsieur,")</li>
+<li>Message concis — aller à l'essentiel en 3-5 phrases</li>
+<li>Formule de politesse finale ("Cordialement," ou "Bien cordialement,")</li>
+<li>Signature complète — prénom, nom, poste, coordonnées LABORO</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — réponse professionnelle à un client</div>
+"Bonjour Madame Lambert, je prends bonne note de votre demande concernant votre commande n°2847. Je transmets immédiatement votre message à notre service e-commerce qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
+</div>
+</div>
+
+<div class="res-section">
+<div class="res-section-label">🟡 Accueil de groupe et coordination</div>
+<p><strong>Accueillir un groupe demande une préparation en amont.</strong> Classe en visite, délégation, groupe de clients — la logistique conditionne la qualité de l'accueil.</p>
+<p><strong>Préparer l'accueil d'un groupe :</strong></p>
+<ul>
+<li>Confirmer le nombre de personnes et les besoins spécifiques (accessibilité, durée, intervenants)</li>
+<li>Préparer le matériel : badges, supports de présentation, salle configurée</li>
+<li>Briefer l'équipe : qui fait quoi, à quelle heure</li>
+<li>Prévoir les imprévus : intervenant absent, retard, groupe plus important que prévu</li>
+</ul>
+<p><strong>Le discours d'accueil groupe :</strong> bienvenue + présentation de l'entreprise (30 sec) + programme de la visite + consignes de sécurité. Court, clair, professionnel.</p>
+<p><strong>Gérer les imprévus :</strong> toujours avoir un plan B. Un intervenant absent ? On réorganise le programme sans que le groupe le perçoive comme un problème.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — discours d'accueil groupe</div>
+"Bonjour à tous et bienvenue chez LABORO Sport & Outdoor. Je m'appelle [prénom] et je vais vous accompagner ce matin. LABORO, c'est [2 phrases courtes sur l'entreprise]. Au programme ce matin : [3 étapes]. Quelques consignes : [sécurité, règles de visite]. Des questions avant de commencer ?"
+</div>
+</div>
+
+<div class="res-section">
+<div class="res-section-label">🟡 Adapter son accueil à des publics spécifiques</div>
+<p><strong>Un bon accueil, c'est le même niveau de service pour tous — mais adapté à chaque personne.</strong></p>
+<p><strong>Client anglophone :</strong></p>
+<ul>
+<li>Pas besoin de parler couramment anglais — quelques formules suffisent</li>
+<li>"Welcome to LABORO, how can I help you?" · "Do you speak French?" · "Let me find someone who can help you."</li>
+<li>Si la barrière est trop importante : trouver un collègue, utiliser un traducteur en ligne, montrer plutôt qu'expliquer</li>
+</ul>
+<p><strong>Client malentendant :</strong></p>
+<ul>
+<li>Se placer face à la personne, à hauteur des yeux</li>
+<li>Parler distinctement, à rythme normal — ne pas exagérer l'articulation</li>
+<li>Proposer d'écrire si la communication est difficile</li>
+<li>Ne jamais parler à la place du client, ni montrer d'impatience</li>
+</ul>
+<p><strong>Client en fauteuil roulant :</strong></p>
+<ul>
+<li>Se mettre à la même hauteur pour converser (s'accroupir ou s'asseoir)</li>
+<li>Vérifier l'accessibilité du parcours avant de l'accompagner</li>
+<li>Proposer de l'aide sans l'imposer : "Puis-je vous aider ?" — respecter la réponse</li>
+</ul>
+<p><strong>Client âgé :</strong></p>
+<ul>
+<li>Parler clairement, à rythme adapté, sans condescendance</li>
+<li>Éviter le jargon technique et les abréviations</li>
+<li>Proposer de l'aide pour les démarches numériques (borne, site) avec patience</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Règle d'or</div>
+Adapter sa communication, ce n'est pas faire moins bien — c'est faire autrement pour atteindre le même résultat professionnel. Chaque client mérite la même qualité d'accueil, quelle que soit sa situation.
+</div>
+</div>
+`},
 };
 // Missions filtrées par classe
