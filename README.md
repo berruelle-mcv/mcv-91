@@ -134,3 +134,8 @@ Déploiement	GitHub Pages	Vercel
 Pascal Berruelle — Enseignant PLP MCV · Académie de Versailles · Essonne (91)  
 Développé avec Claude AI (Anthropic)
 Version 1.0.0 — Juin 2026
+---
+📄 Droits & utilisation
+© Pascal Berruelle 2026 — Tous droits réservés.
+Ce projet est partagé à titre pédagogique. Toute réutilisation, adaptation ou diffusion sans autorisation explicite de l'auteur est interdite.
+Pour toute demande : pascal.berruelle@ac-versailles.fr
