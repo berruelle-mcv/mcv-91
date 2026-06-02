@@ -7,10 +7,10 @@
 
 // ═══ ACTUALITÉS LABORO ═══
 const ACTUS_LABORO=[
-  {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons Nike Strike T5 et 30 chasubles x10 reçus en entrepôt. Mise en rayon prévue demain.'},
+  {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons de football LABORO T5 et 30 chasubles LABORO Pro reçus en entrepôt. Mise en rayon prévue demain.'},
   {date:'Lun',icon:'📞',titre:'Prospect à rappeler',txt:'M. Dubois (CE Renault Évry) a demandé un devis pour 20 maillots personnalisés. Romain Sauzet prend en charge.'},
   {date:'Mar',icon:'🎯',titre:'Objectif semaine',txt:'Objectif : 8 500 € de CA cette semaine. À J+1 : 3 240 € réalisés. Bonne dynamique sur le rayon chaussures.'},
-  {date:'Mar',icon:'⚠️',titre:'Stock critique',txt:'Sneakers Nike Air Max SC taille 42 : 2 unités restantes. Commande fournisseur en cours — délai 5 jours.'},
+  {date:'Mar',icon:'⚠️',titre:'Stock critique',txt:'Chaussures running LABORO EasyRun taille 42 : 2 unités restantes. Commande fournisseur en cours — délai 5 jours.'},
   {date:'Mer',icon:'🤝',titre:'Visite client B2B',txt:'Isabelle Faure (CE PSA Stellantis) visite le showroom à 14h. Préparer la salle de réunion et le catalogue B2B.'},
   {date:'Mer',icon:'📊',titre:'Bilan mi-semaine',txt:'4 réclamations traitées, taux de satisfaction 94%. Bravo a tous !'},
   {date:'Jeu',icon:'🚀',titre:'Nouvelle collection',txt:'Arrivée de la collection été : shorts 2en1, t-shirts techniques et coupe-vents légers. Étiquetage en cours.'},
@@ -36,8 +36,8 @@ function getIndicateursLive(ud){
   const score=calcScore(ud);
   // Stock critique simulé selon le jour
   const stocks=[
-    {ref:'Nike Air Max SC T42',qty:2},
-    {ref:'Ballon foot Nike T5',qty:5},
+    {ref:'EasyRun LABORO T42',qty:2},
+    {ref:'Ballon football LABORO T5',qty:5},
     {ref:'Tapis yoga 6mm',qty:3},
   ];
   const stockCritique=stocks[new Date().getDay()%stocks.length];
@@ -291,7 +291,7 @@ function renderDashboard(){
 }
 
 function renderActus(){
-  const el = document.getElementById('actu-wrap');
+  const el = document.getElementById('dash-actus');
   if(!el) return;
   const ud = gUD();
   const done = Object.values(ud.missions||{}).filter(function(m){ return m.status==='done'; });
@@ -310,10 +310,10 @@ function renderActus(){
   const persoMsg = score >= 80
     ? {icon:'🏆', titre:'Excellent travail !', texte:'Ton score LABORO est dans le top 10%. Romain Sauzet a note ta progression — continue ainsi !', color:'#EBF4FF', border:'#185FA5'}
     : done.length === 0
-    ? {icon:'🚀', titre:'Bienvenue chez LABORO !', texte:'Ta premiere mission t attend. Lis bien la ressource avant de repondre — elle contient tout ce qu il faut savoir.', color:'#FEF3C7', border:'#D97706'}
+    ? {icon:'🚀', titre:'Bienvenue chez LABORO !', texte:'Ta première mission t\'attend. Lis bien la ressource avant de répondre — elle contient tout ce qu\'il faut savoir.', color:'#FEF3C7', border:'#D97706'}
     : done.length < 5
-    ? {icon:'💪', titre:'Bonne lancee !', texte:'Tu as complete '+done.length+' mission(s). Chaque mission validee fait progresser tes competences CCF.', color:'#EBF4FF', border:'#4A6FA5'}
-    : {icon:'⭐', titre:'Progression solide', texte:done.length+' missions completees. Ton dossier CCF se construit automatiquement. Vise le niveau Professionnel competent !', color:'#EDE9FE', border:'#7B2FBE'};
+    ? {icon:'💪', titre:'Bonne lancee !', texte:'Tu as complété '+done.length+' mission(s). Chaque mission validée fait progresser tes compétences CCF.', color:'#EBF4FF', border:'#4A6FA5'}
+    : {icon:'⭐', titre:'Progression solide', texte:done.length+' missions complétées. Ton dossier CCF se construit automatiquement. Vise le niveau Professionnel compétent !', color:'#EDE9FE', border:'#7B2FBE'};
 
   // Agenda mensuel
   const agendas = [
@@ -349,7 +349,7 @@ function renderActus(){
 }
 
 function renderIndicateurs(){
-  const el = document.getElementById('indic-wrap');
+  const el = document.getElementById('dash-indic');
   if(!el) return;
   const ud = gUD();
   const missions = Object.entries(ud.missions||{});
@@ -360,10 +360,10 @@ function renderIndicateurs(){
   const totalMissions = getMissions().length;
   const compsAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code, ud) >= 3; }).length;
   const kpis = [
-    {label:'Missions completees', value:done.length, total:totalMissions, icon:'✅', color:'#185FA5', bg:'#EBF4FF'},
+    {label:'Missions complétées', value:done.length, total:totalMissions, icon:'✅', color:'#185FA5', bg:'#EBF4FF'},
     {label:'En cours', value:wip.length, total:null, icon:'🔷', color:'#2D5282', bg:'#EBF4FF'},
-    {label:'Moyenne generale', value:avg+'', total:null, unit:'/20', icon:'📊', color:'#D97706', bg:'#FEF3C7'},
-    {label:'Competences acquises', value:compsAcquis, total:COMP.length, icon:'⭐', color:'#7B2FBE', bg:'#EDE9FE'},
+    {label:'Moyenne générale', value:avg+'', total:null, unit:'/20', icon:'📊', color:'#D97706', bg:'#FEF3C7'},
+    {label:'Compétences acquises', value:compsAcquis, total:COMP.length, icon:'⭐', color:'#7B2FBE', bg:'#EDE9FE'},
   ];
   el.innerHTML = '<div class="u-grid-2">'
     + kpis.map(function(k){
@@ -405,7 +405,7 @@ function compBadge(code){
     'C1.1':'#4A6FA5','C1.2':'#4A6FA5','C1.3':'#4A6FA5',
     'C2.1':'#E87722','C2.1b':'#E87722','C2.2':'#E87722','C2.3':'#E87722',
     'C3.1':'#0096C7','C3.2':'#0096C7','C3.3':'#0096C7','C3.3b':'#0096C7',
-    'G4A':'#2D5282','G4B':'#7B2FBE',
+    'G4A':'#2D5282','C4A.1':'#2D5282','C4A.2':'#2D5282','C4A.3':'#2D5282','G4B':'#7B2FBE',
     'B4.1':'#7B2FBE','B4.2':'#7B2FBE','B4.3':'#7B2FBE','B4.4':'#7B2FBE','B4.5':'#7B2FBE',
     'SA1':'#D97706','SA2':'#D97706','SA3':'#D97706',
     'ACC':'#E63B2E','ACC1':'#E63B2E','ACC2':'#E63B2E','ACC3':'#E63B2E','ACC4':'#E63B2E'
