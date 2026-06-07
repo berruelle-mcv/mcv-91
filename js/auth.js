@@ -400,3 +400,142 @@ function importerDonnees(){
   };
   input.click();
 }
+// ════════════════════════════════════════════════
+// LOGIN SERVEUR (nouvelle version — branchée sur le backend)
+// Coexiste avec doLogin() classique. Ne le remplace pas.
+// ════════════════════════════════════════════════
+const LABORO_API = 'https://mcv.laboro-edu.fr';
+
+async function doLoginServeur(){
+  const mail = document.getElementById('inp-mail').value.trim();
+  const mdp  = document.getElementById('inp-mdp').value;
+
+  if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
+
+  try{
+    const reponse = await fetch(LABORO_API + '/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: mail, motDePasse: mdp })
+    });
+    const data = await reponse.json();
+
+    if(!data.ok){
+      showLoginError(data.erreur || 'Identifiants incorrects.');
+      return;
+    }
+
+    localStorage.setItem('laboro_token', data.token);
+    const u = data.utilisateur;
+
+    const cls = u.classe || '';
+    let poste;
+    if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
+    else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
+    else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
+    else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
+    else poste = 'Collaborateur LABORO';
+
+    const nomComplet = (u.prenom || u.nom)
+      ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
+      : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    finishLogin(mail, cls, poste, nomComplet);
+
+  }catch(err){
+    showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
+    console.error('Erreur login serveur:', err);
+  }
+  // ════════════════════════════════════════════════
+// LOGIN SERVEUR (nouvelle version — branchée sur le backend)
+// Coexiste avec doLogin() classique. Ne le remplace pas.
+// ════════════════════════════════════════════════
+const LABORO_API = 'https://mcv.laboro-edu.fr';
+
+async function doLoginServeur(){
+  const mail = document.getElementById('inp-mail').value.trim();
+  const mdp  = document.getElementById('inp-mdp').value;
+
+  if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
+
+  try{
+    const reponse = await fetch(LABORO_API + '/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: mail, motDePasse: mdp })
+    });
+    const data = await reponse.json();
+
+    if(!data.ok){
+      showLoginError(data.erreur || 'Identifiants incorrects.');
+      return;
+    }
+
+    localStorage.setItem('laboro_token', data.token);
+    const u = data.utilisateur;
+
+    const cls = u.classe || '';
+    let poste;
+    if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
+    else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
+    else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
+    else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
+    else poste = 'Collaborateur LABORO';
+
+    const nomComplet = (u.prenom || u.nom)
+      ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
+      : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    finishLogin(mail, cls, poste, nomComplet);
+
+  }catch(err){
+    showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
+    console.error('Erreur login serveur:', err);
+  }
+// ════════════════════════════════════════════════
+// LOGIN SERVEUR (nouvelle version — branchée sur le backend)
+// Coexiste avec doLogin() classique. Ne le remplace pas.
+// ════════════════════════════════════════════════
+const LABORO_API = 'https://mcv.laboro-edu.fr';
+
+async function doLoginServeur(){
+  const mail = document.getElementById('inp-mail').value.trim();
+  const mdp  = document.getElementById('inp-mdp').value;
+
+  if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
+
+  try{
+    const reponse = await fetch(LABORO_API + '/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: mail, motDePasse: mdp })
+    });
+    const data = await reponse.json();
+
+    if(!data.ok){
+      showLoginError(data.erreur || 'Identifiants incorrects.');
+      return;
+    }
+
+    localStorage.setItem('laboro_token', data.token);
+    const u = data.utilisateur;
+
+    const cls = u.classe || '';
+    let poste;
+    if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
+    else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
+    else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
+    else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
+    else poste = 'Collaborateur LABORO';
+
+    const nomComplet = (u.prenom || u.nom)
+      ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
+      : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    finishLogin(mail, cls, poste, nomComplet);
+
+  }catch(err){
+    showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
+    console.error('Erreur login serveur:', err);
+  }
+
