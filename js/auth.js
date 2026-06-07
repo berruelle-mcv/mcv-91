@@ -538,4 +538,5 @@ async function doLoginServeur(){
     showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
     console.error('Erreur login serveur:', err);
   }
+  }
 
