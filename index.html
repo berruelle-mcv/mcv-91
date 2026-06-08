@@ -107,18 +107,9 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div class="lt">Accès collaborateur</div>
     <div class="ls">Connecte-toi avec ton adresse mail institutionnelle pour accéder à ton espace de travail.</div>
     <div class="fg"><label>Adresse mail</label><input type="email" id="inp-mail" placeholder="prenom.nom@monlycee.net"/></div>
-    <div class="fg"><label>Classe</label>
-      <select id="inp-classe" onchange="updatePoste()" style="margin-bottom:4px">
-        <option value="">— Sélectionner —</option>
-        <option value="2nde">2nde professionnelle</option>
-        <option value="1ere-AGEC">1ère Bac Pro AGEC</option>
-        <option value="1ere-PVOC">1ère Bac Pro PVOC</option>
-        <option value="Term-AGEC">Terminale Bac Pro AGEC</option>
-        <option value="Term-PVOC">Terminale Bac Pro PVOC</option>
-        <option value="enseignant">Enseignant</option>
-      </select>
-      <div style="font-size:11px;color:#6B7280;margin-top:4px;margin-bottom:8px">Ta classe est gérée automatiquement par le serveur (ce choix est optionnel)</div>
-    </div>
+    <!-- Liste classe retirée : la classe est désormais fournie par le serveur au login.
+         Champ caché conservé pour compatibilité avec d'anciennes fonctions (doLogin/ana de test). -->
+    <input type="hidden" id="inp-classe" value="">
     <div class="fg" id="fg-poste" style="display:none">
       <label>Poste chez LABORO</label>
       <select id="inp-poste">
