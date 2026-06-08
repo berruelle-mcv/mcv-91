@@ -30,7 +30,7 @@ function updatePoste(){
   fg.style.display='none';
   // Afficher/masquer le champ MDP enseignant
   const fgMdp=document.getElementById('fg-mdp');
-  if(fgMdp) fgMdp.style.display=(cls==='enseignant')?'block':'none';
+  if(fgMdp) fgMdp.style.display='block'; // mot de passe toujours visible (login serveur)
   if(!cls) return;
   if(cls==='enseignant'){
     sel.value='';
