@@ -441,6 +441,35 @@ async function doLoginServeur(){
       ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
       : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
 
+    // ── Recharger les progressions depuis le serveur (multi-postes) ──
+    // On récupère le travail déjà sauvegardé en base et on le place dans
+    // le localStorage AVANT de lancer l'app, pour que l'élève retrouve son travail.
+    if(u.role === 'eleve'){
+      try{
+        const rp = await fetch(LABORO_API + '/api/progressions', {
+          headers: { 'Authorization': 'Bearer ' + data.token }
+        });
+        const dp = await rp.json();
+        if(dp.ok && Array.isArray(dp.progressions)){
+          const s = (function(){ try{ return JSON.parse(localStorage.getItem('laboro_s')||'{}'); }catch{ return {}; } })();
+          if(!s[mail]) s[mail] = { missions:{}, competences:{}, notes:{} };
+          const mapStatut = st => (st === 'valide') ? 'done' : (st === 'a_examiner' || st === 'soumis') ? 'att' : 'todo';
+          dp.progressions.forEach(p => {
+            const note = (p.note_finale != null) ? p.note_finale : (p.note_ia != null ? p.note_ia : 0);
+            s[mail].missions[p.mission_id] = Object.assign({}, s[mail].missions[p.mission_id], {
+              id: p.mission_id,
+              status: mapStatut(p.statut),
+              note_ia: note,
+              score: note
+            });
+          });
+          localStorage.setItem('laboro_s', JSON.stringify(s));
+        }
+      }catch(e){
+        console.warn('Rechargement progressions ignoré:', e);
+      }
+    }
+
     finishLogin(mail, cls, poste, nomComplet);
 
   }catch(err){
