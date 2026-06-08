@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <option value="Term-PVOC">Terminale Bac Pro PVOC</option>
         <option value="enseignant">Enseignant</option>
       </select>
-      <div style="font-size:11px;color:#6B7280;margin-top:4px;margin-bottom:8px">Choisis ta classe pour accéder à tes missions adaptées</div>
+      <div style="font-size:11px;color:#6B7280;margin-top:4px;margin-bottom:8px">Ta classe est gérée automatiquement par le serveur (ce choix est optionnel)</div>
     </div>
     <div class="fg" id="fg-poste" style="display:none">
       <label>Poste chez LABORO</label>
@@ -129,12 +129,12 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div class="ph" id="poste-hint"></div>
     </div>
     <div id="fg-mdp">
-      <label>🔐 Code d'accès enseignant</label>
-      <input type="password" id="inp-mdp" placeholder="Code confidentiel" onkeydown="if(event.key==='Enter')doLogin()"/>
-      <div class="mdp-hint">Code réservé aux enseignants — contacter Pascal Berruelle</div>
+      <label>🔐 Mot de passe</label>
+      <input type="password" id="inp-mdp" placeholder="Ton mot de passe" onkeydown="if(event.key==='Enter')doLoginServeur()"/>
+      <div class="mdp-hint">Saisis ton mot de passe LABORO</div>
     </div>
-    <button class="btn-li" onclick="doLogin()">Se connecter à LABORO →</button>
-    <p class="ln2">Tes données sont sauvegardées de façon sécurisée sur cet appareil.</p>
+    <button class="btn-li" onclick="doLoginServeur()">Se connecter à LABORO →</button>
+    <p class="ln2">Tes données sont sauvegardées de façon sécurisée sur le serveur LABORO.</p>
     <div style="margin-top:24px;padding-top:16px;border-top:1px solid #E2E8F0;text-align:center">
       <div style="font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Plateforme conçue par</div>
       <div style="font-size:12px;font-weight:700;color:#374151">Pascal Berruelle</div>
