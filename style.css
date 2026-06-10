@@ -576,6 +576,10 @@ img { max-width: 100%; height: auto; }
   /* L'écran de connexion : passe en pleine largeur, vertical */
   .lw { flex-direction: column; min-height: auto; }
   .ll { width: 100%; min-width: 0; padding: 32px 22px; }
+  /* Panneau décoratif de droite (« Bienvenue chez LABORO ») masqué sur mobile :
+     on ne garde que le formulaire pour un écran de connexion épuré. */
+  .lr { display: none; }
+  #login { min-height: auto; align-items: center; }
 
   /* Les fenêtres (missions, modales) : pleine largeur de l'écran */
   .modal { width: 96vw; min-width: 0; height: auto; max-height: 92vh; }
