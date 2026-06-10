@@ -554,3 +554,34 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .res-retenir-l{font-size:10px;font-weight:700;color:#185FA5;text-transform:uppercase;margin-bottom:6px;letter-spacing:.05em}
 .res-section{margin-bottom:12px}
 .res-section-label{font-size:11px;font-weight:700;color:#185FA5;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Étape 1 : anti-débordement + adaptation mobile
+   Ajouté pour un affichage correct sur tablette et smartphone
+   (usage prescripteur ; les élèves restent sur PC).
+   ═══════════════════════════════════════════════════════════ */
+
+/* Garde-fou global : empêcher tout défilement horizontal */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* ── Tablette et en dessous (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .lw { max-width: 100%; box-shadow: none; }
+}
+
+/* ── Mobile / petit écran (≤ 680px) ── */
+@media (max-width: 680px) {
+  /* L'écran de connexion : passe en pleine largeur, vertical */
+  .lw { flex-direction: column; min-height: auto; }
+  .ll { width: 100%; min-width: 0; padding: 32px 22px; }
+
+  /* Les fenêtres (missions, modales) : pleine largeur de l'écran */
+  .modal { width: 96vw; min-width: 0; height: auto; max-height: 92vh; }
+  .cp-modal, .ana-modal, .org-modal { width: 94vw; min-width: 0; }
+  .ob-w, .ob-ens-w { max-width: 100%; }
+
+  /* Texte un peu réduit pour les écrans étroits */
+  body { font-size: 14px; }
+}
