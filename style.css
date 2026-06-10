@@ -586,6 +586,16 @@ img { max-width: 100%; height: auto; }
   .cp-modal, .ana-modal, .org-modal { width: 94vw; min-width: 0; }
   .ob-w, .ob-ens-w { max-width: 100%; }
 
+  /* ── Overlays plein écran défilables sur mobile ──
+     Sans ça, le contenu plus haut que l'écran est coupé et les boutons
+     du bas (ex. « Je m'engage » de la charte, « Soumettre ») sont inaccessibles. */
+  #charte-laboro { overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+  .cp-overlay, .ana-overlay, .org-overlay { overflow-y: auto; -webkit-overflow-scrolling: touch; align-items: flex-start; }
+  /* Fenêtre de mission : le conteneur .mo devient un overlay défilable,
+     et .modal repasse en flux normal (plus de centrage fixe qui coupe le bas). */
+  .mo.open { overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 12px 0; }
+  .modal { position: relative; top: auto; left: auto; transform: none; margin: 0 auto; max-height: none; height: auto; overflow: visible; }
+
   /* ── App connectée : libérer la hauteur pour défiler toute la page ── */
   /* Sur PC c'est une appli à hauteur fixe (sidebar + contenu qui scrolle) ;
      sur mobile on déverrouille tout pour un défilement vertical naturel. */
