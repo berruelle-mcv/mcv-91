@@ -582,6 +582,16 @@ img { max-width: 100%; height: auto; }
   .cp-modal, .ana-modal, .org-modal { width: 94vw; min-width: 0; }
   .ob-w, .ob-ens-w { max-width: 100%; }
 
+  /* ── App connectée : libérer la hauteur pour défiler toute la page ── */
+  /* Sur PC c'est une appli à hauteur fixe (sidebar + contenu qui scrolle) ;
+     sur mobile on déverrouille tout pour un défilement vertical naturel. */
+  #app.on { height: auto; min-height: 100vh; overflow: visible; flex-direction: column; }
+  .sb { width: 100%; min-width: 0; min-height: auto; flex-direction: row; flex-wrap: wrap;
+        border-right: none; border-bottom: 1px solid #E5E7EB; }
+  .sb-nv { display: flex; flex-direction: row; flex-wrap: wrap; }
+  .main { overflow: visible; }
+  .content { overflow-y: visible; height: auto; }
+
   /* Texte un peu réduit pour les écrans étroits */
   body { font-size: 14px; }
 }
