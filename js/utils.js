@@ -90,4 +90,9 @@ function startDemo(){
   document.getElementById('login').classList.remove('on');
   const v=document.getElementById('vitrine'); if(v) v.style.display='none';
   if(typeof showApp === 'function') showApp();
+  // Remonter en haut de la page : sinon on reste positionné sur la vitrine
+  // et il faut scroller pour voir le tableau de bord.
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
