@@ -78,9 +78,13 @@ function startDemo(){
 
   try {
     const s = JSON.parse(localStorage.getItem('laboro_s')||'{}');
-    s[MAIL_DEMO] = { missions: missionsDemo, competences: compDemo, notes:{}, __ob_done:true };
+    s[MAIL_DEMO] = { missions: missionsDemo, competences: compDemo, notes:{}, classe:'Term-AGEC', nom:'Léa Martin', __ob_done:true };
+    // Camarades fictifs de Term AGEC (pour un classement de classe crédible en démo)
+    s['camille.demo@laboro-demo.fr'] = { classe:'Term-AGEC', nom:'Camille Bernard', competences:{}, notes:{}, __ob_done:true,
+      missions:{ 'M023':{id:'M023',status:'done',score:18,comp:'C1.1',progression:2}, 'M024':{id:'M024',status:'done',score:17,comp:'C1.2',progression:1}, 'M026':{id:'M026',status:'done',score:16,comp:'C1.3',progression:1}, 'M029':{id:'M029',status:'done',score:15,comp:'C3.2',progression:0}, 'M032':{id:'M032',status:'done',score:17,comp:'C4A.3',progression:2} } };
+    s['hugo.demo@laboro-demo.fr'] = { classe:'Term-AGEC', nom:'Hugo Lefèvre', competences:{}, notes:{}, __ob_done:true,
+      missions:{ 'M023':{id:'M023',status:'done',score:12,comp:'C1.1',progression:0}, 'M024':{id:'M024',status:'done',score:13,comp:'C1.2',progression:1}, 'M025':{id:'M025',status:'done',score:11,comp:'C2.2',progression:0} } };
     localStorage.setItem('laboro_s', JSON.stringify(s));
-    // Marquer la charte comme déjà acceptée pour ce compte démo (clé éventuelle)
     localStorage.setItem('laboro_charte_'+MAIL_DEMO, '1');
   } catch(e){ console.warn('Démo: init données', e); }
 
