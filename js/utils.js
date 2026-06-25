@@ -50,11 +50,11 @@ function hideVitrine(){
 }
 
 function startDemo(){
-  hideVitrine();
   // ── MODE DÉMO ──
   // Démo 100% locale (sans serveur) : un faux élève de Terminale AGEC déjà bien avancé,
   // pour montrer la plateforme « vivante » à un prescripteur. Entre directement dans
   // l'app, SANS charte ni onboarding.
+  // NB : on n'appelle PAS hideVitrine() car il réaffiche l'écran de login en inline.
   const MAIL_DEMO = 'demo@laboro-demo.fr';
 
   // Progression de démo crédible : missions Term AGEC validées avec de bonnes notes.
@@ -91,11 +91,17 @@ function startDemo(){
   // Connexion directe en local (sans serveur, sans charte, sans onboarding)
   CU = { mail:MAIL_DEMO, classe:'Term-AGEC', poste:'Conseiller de vente — Showroom & E-commerce', nom:'Léa Martin' };
   localStorage.setItem('laboro_u', JSON.stringify(CU));
-  document.getElementById('login').classList.remove('on');
-  const v=document.getElementById('vitrine'); if(v) v.style.display='none';
+
+  // Masquer les écrans d'accueil pour ne laisser que l'app.
+  ['login','onboarding','ob-ens'].forEach(function(id){
+    const el = document.getElementById(id);
+    if(el){ el.classList.remove('on'); el.style.display = 'none'; }
+  });
+  const vit = document.getElementById('vitrine');
+  if(vit){ vit.classList.remove('on'); vit.style.display = 'none'; }
+
   if(typeof showApp === 'function') showApp();
-  // Remonter en haut de la page : sinon on reste positionné sur la vitrine
-  // et il faut scroller pour voir le tableau de bord.
+  // Remonter en haut de la page
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
