@@ -133,6 +133,21 @@ const gUD=()=>{
   return ud;
 };
 const sUD=d=>{const s=gS();s[CU.mail]=d;sS(s)};
+const allU=()=>{
+  const s=gS();
+  const enDemo = CU && CU.mail && CU.mail.indexOf('@laboro-demo.fr')>=0;
+  const SYS=['ak','mdj','__ens_ob_done'];
+  // Comptes techniques toujours exclus du classement
+  const EXCL=['test@laboro-test.fr','ana@laboro-test.fr','pascal@laboro.fr','eleve.test@laboro-demo.fr'];
+  return Object.keys(s)
+    .filter(k=>!SYS.includes(k) && !EXCL.includes(k) && k.includes('@') && !k.startsWith('_'))
+    .filter(k=>{
+      const estDemo = k.indexOf('@laboro-demo.fr')>=0;
+      // En mode démo : ne garder QUE les comptes démo. Hors démo : exclure les comptes démo.
+      return enDemo ? estDemo : !estDemo;
+    })
+    .map(k=>({mail:k,...s[k]}));
+};
 
 const getMDJ=()=>{try{return JSON.parse(localStorage.getItem('laboro_mdj')||'{}')}catch{return{}}};
 const setMDJ=d=>localStorage.setItem('laboro_mdj',JSON.stringify(d));
