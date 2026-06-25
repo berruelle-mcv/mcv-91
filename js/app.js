@@ -114,6 +114,9 @@ const gUD=()=>{
   const s=gS();
   if(!s[CU.mail])s[CU.mail]={missions:{},competences:{},notes:{}};
   const ud=s[CU.mail];
+  // Mémoriser la classe de l'utilisateur courant dans ses données
+  // (nécessaire pour filtrer le classement par classe).
+  if(CU.classe && ud.classe !== CU.classe){ ud.classe = CU.classe; }
   // Consolider C2.1b → C2.1 et B4.x → G4B dans la grille compétences
   if(ud.competences){
     if(ud.competences['C2.1b']){
@@ -130,7 +133,7 @@ const gUD=()=>{
   return ud;
 };
 const sUD=d=>{const s=gS();s[CU.mail]=d;sS(s)};
-const allU=()=>{const s=gS();const SYS=['ak','mdj','__ens_ob_done','demo@laboro-demo.fr'];const EXCL=['demo@laboro-demo.fr','test@laboro-test.fr','ana@laboro-test.fr','pascal@laboro.fr','eleve.test@laboro-demo.fr'];return Object.keys(s).filter(k=>!SYS.includes(k)&&!EXCL.includes(k)&&k.includes('@')&&!k.startsWith('_')).map(k=>({mail:k,...s[k]}))};
+
 const getMDJ=()=>{try{return JSON.parse(localStorage.getItem('laboro_mdj')||'{}')}catch{return{}}};
 const setMDJ=d=>localStorage.setItem('laboro_mdj',JSON.stringify(d));
 
@@ -158,9 +161,20 @@ function calcScore(ud){
 }
 
 // ═══ CLASSEMENT ═══
+// Classement filtré PAR CLASSE : un élève ne voit que les élèves de sa propre classe.
+// La classe de chaque user est lue depuis ses données stockées (u.classe).
+// L'utilisateur courant (CU) est toujours rattaché à CU.classe.
 function getClassement(classe){
-  const users=allU().filter(u=>u.mail&&!u.mail.includes('berruelle'));
-  return users.map(u=>({nom:u.nom||u.mail,mail:u.mail,score:calcScore(u)})).sort((a,b)=>b.score-a.score);
+  const users = allU().filter(u => u.mail && !u.mail.includes('berruelle'));
+  return users
+    .map(u => {
+      // Classe de cet utilisateur : stockée dans ses données, ou CU.classe si c'est l'utilisateur courant
+      const uClasse = u.classe || (CU && u.mail === CU.mail ? CU.classe : null);
+      return { nom: u.nom || u.mail, mail: u.mail, score: calcScore(u), classe: uClasse };
+    })
+    // Ne garder que les élèves de la même classe (si une classe est demandée)
+    .filter(u => !classe || u.classe === classe)
+    .sort((a, b) => b.score - a.score);
 }
 
 // ═══ FILTRE COMPÉTENCES — adapté à la classe de l'élève ═══
