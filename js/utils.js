@@ -58,16 +58,17 @@ function startDemo(){
   const MAIL_DEMO = 'demo@laboro-demo.fr';
 
   // Progression de démo crédible : missions Term AGEC validées avec de bonnes notes.
+  // Dates réparties sur l'année scolaire pour illustrer la traçabilité.
   const missionsDemo = {
-    'M023': { id:'M023', status:'done', score:16, comp:'C1.1', progression:2 },
-    'M024': { id:'M024', status:'done', score:15, comp:'C1.2', progression:1 },
-    'M025': { id:'M025', status:'done', score:14, comp:'C2.2', progression:0 },
-    'M026': { id:'M026', status:'done', score:17, comp:'C1.3', progression:2 },
-    'M028': { id:'M028', status:'done', score:13, comp:'C2.3', progression:0 },
-    'M029': { id:'M029', status:'done', score:16, comp:'C3.2', progression:1 },
-    'M030': { id:'M030', status:'done', score:15, comp:'C3.3', progression:0 },
-    'M031': { id:'M031', status:'done', score:14, comp:'C3.1', progression:1 },
-    'M032': { id:'M032', status:'done', score:18, comp:'C4A.3', progression:2 },
+    'M023': { id:'M023', status:'done', score:16, comp:'C1.1', progression:2, date_validation:'2025-09-18T10:00:00.000Z' },
+    'M024': { id:'M024', status:'done', score:15, comp:'C1.2', progression:1, date_validation:'2025-10-07T10:00:00.000Z' },
+    'M025': { id:'M025', status:'done', score:14, comp:'C2.2', progression:0, date_validation:'2025-10-21T10:00:00.000Z' },
+    'M026': { id:'M026', status:'done', score:17, comp:'C1.3', progression:2, date_validation:'2025-11-12T10:00:00.000Z' },
+    'M028': { id:'M028', status:'done', score:13, comp:'C2.3', progression:0, date_validation:'2025-12-03T10:00:00.000Z' },
+    'M029': { id:'M029', status:'done', score:16, comp:'C3.2', progression:1, date_validation:'2026-01-15T10:00:00.000Z' },
+    'M030': { id:'M030', status:'done', score:15, comp:'C3.3', progression:0, date_validation:'2026-02-05T10:00:00.000Z' },
+    'M031': { id:'M031', status:'done', score:14, comp:'C3.1', progression:1, date_validation:'2026-03-12T10:00:00.000Z' },
+    'M032': { id:'M032', status:'done', score:18, comp:'C4A.3', progression:2, date_validation:'2026-04-02T10:00:00.000Z' },
     'M027': { id:'M027', status:'att',  score:0,  comp:'C2.2', progression:0 }, // une en attente de correction
   };
   // Niveaux de compétences cohérents (0 à 4)
