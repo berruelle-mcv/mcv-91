@@ -34,8 +34,13 @@ function genererPortfolioEleve(mail){
                   : 'Professionnel débutant';
 
   // Niveau de chaque compétence (via calcNiveauComp si dispo, sinon données brutes)
+  // Cas spéciaux : G4A regroupe les missions C4A.x · G4B regroupe les missions B4.x
+  // (décalage de nomenclature entre la grille compétences et les missions).
   function niveauDe(code){
-    if(typeof calcNiveauComp==='function') return calcNiveauComp(code, ud);
+    let codeRecherche = code;
+    if(code === 'G4A') codeRecherche = 'C4A';
+    else if(code === 'G4B') codeRecherche = 'B4';
+    if(typeof calcNiveauComp==='function') return calcNiveauComp(codeRecherche, ud);
     return ud.competences[code] || 0;
   }
 
@@ -52,11 +57,20 @@ function genererPortfolioEleve(mail){
   const moyenne = nbValidees ? (missionsValidees.reduce(function(a,m){return a+m.score;},0)/nbValidees).toFixed(1) : '—';
 
   // Regrouper les compétences par épreuve CCF (G1→E31, G2→E32, G3→E33, G4A/G4B→E2)
+  // Bloc E2 adapté à l'option de l'élève : AGEC → G4A (espace commercial),
+  // PVOC → G4B (prospection B2B). Si indéterminé (ex. enseignant), afficher les deux.
+  const estAGEC = (classe || '').toUpperCase().includes('AGEC');
+  const estPVOC = (classe || '').toUpperCase().includes('PVOC');
+  const groupesE2 = estAGEC ? ['G4A'] : estPVOC ? ['G4B'] : ['G4A','G4B'];
+  const titreE2 = estAGEC ? 'Gérer l\'espace commercial'
+                : estPVOC ? 'Prospecter et vendre (B2B)'
+                : 'Gérer l\'espace / Prospecter';
+
   const epreuves = [
     { code:'E31', titre:'Conseiller et vendre',           coef:'Coef. 3', groupes:['G1'] },
     { code:'E32', titre:'Suivre les ventes',              coef:'Coef. 2', groupes:['G2'] },
     { code:'E33', titre:'Développer la relation client',  coef:'Coef. 3', groupes:['G3'] },
-    { code:'E2',  titre:'Gérer l\'espace / Prospecter',   coef:'Bloc 4',  groupes:['G4A','G4B'] },
+    { code:'E2',  titre:titreE2,                          coef:'Bloc 4',  groupes:groupesE2 },
   ];
 
   // Construire les cartes de compétences par épreuve
