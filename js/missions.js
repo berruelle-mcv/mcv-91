@@ -335,12 +335,10 @@ function moTab(i,el){
 }
 async function soumettreReponses(){
   if(!CM)return;
-  // Le token serveur est obtenu au login (doLoginServeur). Plus de clé API dans le navigateur.
-  const token=localStorage.getItem('laboro_token');
-  if(!token){alert('Session expirée ou non connectée au serveur. Reconnecte-toi pour soumettre une mission.');return;}
+  const ak=localStorage.getItem('laboro_ak');
+  if(!ak){alert('Clé API non configurée. Demandez à M. Berruelle d\'entrer la clé API dans le panneau Génération.');return;}
   const ud=gUD();
   const tent=(ud.missions[CM.id]?.tentatives||0)+1;
-  // ── Collecte des réponses (inchangé) ──
   const reps=[];
   CM.activites.forEach((a,i)=>{
     a.q.forEach(q=>{
@@ -354,28 +352,32 @@ async function soumettreReponses(){
   if(!reps.length){alert('Rédige au moins une réponse avant de soumettre.');return;}
   const btnS=document.getElementById('btn-submit');
   btnS.textContent='Correction en cours…';btnS.disabled=true;
+  const prompt=`Tu es un enseignant expert en Bac Pro MCV. Voici une mission LABORO Sport & Outdoor (entreprise fictive, Évry-Courcouronnes 91).
+
+Mission : ${CM.titre}
+Compétence : ${CM.comp} — Palier ${CM.palier} (${['','Débutant — guidé pas à pas','Apprenti — guidage partiel','Professionnel compétent — autonome et efficace','Professionnel performant — réflexivité et force de proposition'][CM.palier]})
+Contexte : ${(CU.classe&&CU.classe.includes('PVOC')&&CM.contexte_pvoc)?CM.contexte_pvoc:CM.contexte}
+
+Réponses de l'élève :
+${reps.join('\n\n')}
+
+Évalue de façon bienveillante et constructive. Réponds en français avec :
+NOTE: [entier de 0 à 20, seuil de validation = 11]
+NIVEAU: [1=Débutant, 2=Apprenti, 3=Professionnel compétent, 4=Professionnel performant]
+FEEDBACK:
+[Feedback structuré question par question — ce qui est bien, ce qui manque, conseils concrets pour progresser. Terminer par un conseil global.]`;
   try{
-    // ── Appel au serveur LABORO (qui appelle l'IA avec sa clé sécurisée) ──
-    const r=await fetch(LABORO_API+'/api/corriger',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body:JSON.stringify({mission_id:CM.id,reponses:reps})
-    });
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ak,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
     const d=await r.json();
-    if(!d.ok){
-      alert(d.erreur||'Erreur lors de la correction. Réessaie dans un instant.');
-      btnS.textContent='Soumettre mes réponses';btnS.disabled=false;
-      return;
-    }
-    const note=d.note;
-    const niveau=d.niveau;
-    const feedback=d.feedback;
-    // Statut renvoyé par le serveur : 'valide' -> done, sinon -> att (en attente de révision)
-    const statutFront=(d.statut==='valide')?'done':'att';
-    // Calculer progression (amélioration par rapport à la tentative précédente)
+    const txt=d.content?.map(b=>b.text||'').join('')||'';
+    const noteM=txt.match(/NOTE:\s*(\d+)/);const niveauM=txt.match(/NIVEAU:\s*(\d)/);const fbM=txt.match(/FEEDBACK:\s*([\s\S]+)/);
+    const note=noteM?Math.min(20,parseInt(noteM[1])):10;
+    const niveau=niveauM?parseInt(niveauM[1]):1;
+    const feedback=fbM?fbM[1].trim():txt;
+    // Calculer progression
     const prevNote=ud.missions[CM.id]?.note_ia||0;
     const progression=Math.max(0,note-prevNote);
-    ud.missions[CM.id]={...ud.missions[CM.id],status:statutFront,tentatives:tent,note_ia:note,niveau_ia:niveau,comp:CM.comp,id:CM.id,progression,score:note,feedback:{note,texte:feedback}};
+    ud.missions[CM.id]={...ud.missions[CM.id],status:'att',tentatives:tent,note_ia:note,niveau_ia:niveau,comp:CM.comp,id:CM.id,progression,date_validation:new Date().toISOString(),feedback:{note,texte:feedback}};
     sUD(ud);
     const tabFb=document.getElementById('tab-fb');
     tabFb.style.display='';
@@ -384,9 +386,8 @@ async function soumettreReponses(){
     btnS.style.display='none';
     renderDashboard();renderMissions();
   }catch(e){
-    alert('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet et réessaie.');
+    alert('Erreur de connexion à l\'API. Vérifiez la clé API.');
     btnS.textContent='Soumettre mes réponses';btnS.disabled=false;
-    console.error('Erreur soumission:',e);
   }
 }
 
