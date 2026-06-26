@@ -44,7 +44,7 @@ function genererPortfolioEleve(mail){
     .filter(function(e){ return e[1] && e[1].status==='done'; })
     .map(function(e){
       const m = (typeof MISSIONS!=='undefined') ? MISSIONS.find(function(x){return x.id===e[0];}) : null;
-      return { id:e[0], titre: m?m.titre:e[0], comp: m?m.comp:(e[1].comp||''), palier: m?m.palier:'', score: e[1].score||0 };
+      return { id:e[0], titre: m?m.titre:e[0], comp: m?m.comp:(e[1].comp||''), palier: m?m.palier:'', score: e[1].score||0, date: e[1].date_validation||null };
     })
     .sort(function(a,b){ return b.score - a.score; });
 
@@ -88,9 +88,11 @@ function genererPortfolioEleve(mail){
   const missionsHtml = nbValidees
     ? missionsValidees.slice(0,8).map(function(m){
         const col = m.score>=14 ? '#185FA5' : m.score>=11 ? '#D97706' : '#C53030';
+        const dateTxt = m.date ? new Date(m.date).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
         return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:11px">'
-          + '<span style="color:#374151">'+m.titre+'</span>'
-          + '<span style="font-weight:800;color:'+col+';white-space:nowrap;margin-left:10px">'+m.score+'/20</span>'
+          + '<span style="color:#374151;flex:1">'+m.titre+'</span>'
+          + '<span style="color:#9CA3AF;font-size:10px;white-space:nowrap;margin:0 12px">'+dateTxt+'</span>'
+          + '<span style="font-weight:800;color:'+col+';white-space:nowrap">'+m.score+'/20</span>'
           + '</div>';
       }).join('')
     : '<div style="font-size:11px;color:#9CA3AF;font-style:italic">Aucune mission validée pour le moment.</div>';
