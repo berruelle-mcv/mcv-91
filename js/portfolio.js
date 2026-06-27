@@ -7,6 +7,13 @@
 // Portfolio de l'ÉLÈVE COURANT (bouton "Générer mon portfolio" côté élève)
 function genererPortfolio(){
   if(!CU || !CU.mail){ if(typeof showLoginError==='function') showLoginError('Connecte-toi d\'abord.'); return; }
+  // Côté élève, le portfolio CCF n'est pas proposé en 2nde (année transversale
+  // de découverte : AGEC + PVOC + Accueil, sans logique d'épreuve CCF).
+  // L'enseignant, lui, garde l'accès via la fiche élève (genererPortfolioEleve).
+  if(CU.classe && CU.classe.toUpperCase()==='2NDE' && CU.classe!=='enseignant'){
+    alert('Le portfolio CCF sera disponible à partir de la 1ère. En 2nde, tu découvres les trois univers (accueil, vente, prospection) : ta progression est enregistrée et nourrira ton portfolio plus tard.');
+    return;
+  }
   genererPortfolioEleve(CU.mail);
 }
 
