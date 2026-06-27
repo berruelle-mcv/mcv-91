@@ -30,7 +30,7 @@ function updatePoste(){
   fg.style.display='none';
   // Afficher/masquer le champ MDP enseignant
   const fgMdp=document.getElementById('fg-mdp');
-  if(fgMdp) fgMdp.style.display='block'; // mot de passe toujours visible (login serveur)
+  if(fgMdp) fgMdp.style.display=(cls==='enseignant')?'block':'none';
   if(!cls) return;
   if(cls==='enseignant'){
     sel.value='';
@@ -273,6 +273,11 @@ function showApp(){
   // Titre "Préparation examen" visible pour toutes les Terminales
   const nsPrepa = document.getElementById('ns-prepa');
   if(nsPrepa) nsPrepa.style.display = (isTermAgec || isTermPvoc) ? 'block' : 'none';
+  // Bouton "Générer mon portfolio" : masqué pour les élèves de 2nde
+  // (la 2nde est transversale AGEC/PVOC/Accueil — pas de logique CCF).
+  // Le portfolio reste disponible côté enseignant (fiche élève).
+  const btnPortfolio = document.getElementById('btn-portfolio-eleve');
+  if(btnPortfolio) btnPortfolio.style.display = (!ens && CU.classe.toUpperCase()==='2NDE') ? 'none' : '';
   // Visibilité nav enseignant
   const niMdj = document.getElementById('ni-mdj');
   const niCl = document.getElementById('ni-cl');
@@ -399,81 +404,4 @@ function importerDonnees(){
     reader.readAsText(file);
   };
   input.click();
-}
-
-// ════════════════════════════════════════════════
-// LOGIN SERVEUR (nouvelle version — branchée sur le backend)
-// Coexiste avec doLogin() classique. Ne le remplace pas.
-// ════════════════════════════════════════════════
-const LABORO_API = 'https://mcv.laboro-edu.fr';
-
-async function doLoginServeur(){
-  const mail = document.getElementById('inp-mail').value.trim();
-  const mdp  = document.getElementById('inp-mdp').value;
-
-  if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
-
-  try{
-    const reponse = await fetch(LABORO_API + '/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: mail, motDePasse: mdp })
-    });
-    const data = await reponse.json();
-
-    if(!data.ok){
-      showLoginError(data.erreur || 'Identifiants incorrects.');
-      return;
-    }
-
-    localStorage.setItem('laboro_token', data.token);
-    const u = data.utilisateur;
-
-    const cls = u.classe || '';
-    let poste;
-    if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
-    else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
-    else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
-    else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
-    else poste = 'Collaborateur LABORO';
-
-    const nomComplet = (u.prenom || u.nom)
-      ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
-      : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
-
-    // ── Recharger les progressions depuis le serveur (multi-postes) ──
-    // On récupère le travail déjà sauvegardé en base et on le place dans
-    // le localStorage AVANT de lancer l'app, pour que l'élève retrouve son travail.
-    if(u.role === 'eleve'){
-      try{
-        const rp = await fetch(LABORO_API + '/api/progressions', {
-          headers: { 'Authorization': 'Bearer ' + data.token }
-        });
-        const dp = await rp.json();
-        if(dp.ok && Array.isArray(dp.progressions)){
-          const s = (function(){ try{ return JSON.parse(localStorage.getItem('laboro_s')||'{}'); }catch{ return {}; } })();
-          if(!s[mail]) s[mail] = { missions:{}, competences:{}, notes:{} };
-          const mapStatut = st => (st === 'valide') ? 'done' : (st === 'a_examiner' || st === 'soumis') ? 'att' : 'todo';
-          dp.progressions.forEach(p => {
-            const note = (p.note_finale != null) ? p.note_finale : (p.note_ia != null ? p.note_ia : 0);
-            s[mail].missions[p.mission_id] = Object.assign({}, s[mail].missions[p.mission_id], {
-              id: p.mission_id,
-              status: mapStatut(p.statut),
-              note_ia: note,
-              score: note
-            });
-          });
-          localStorage.setItem('laboro_s', JSON.stringify(s));
-        }
-      }catch(e){
-        console.warn('Rechargement progressions ignoré:', e);
-      }
-    }
-
-    finishLogin(mail, cls, poste, nomComplet);
-
-  }catch(err){
-    showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
-    console.error('Erreur login serveur:', err);
-  }
 }
