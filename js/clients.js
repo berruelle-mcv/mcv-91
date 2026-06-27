@@ -519,16 +519,21 @@ function ouvrirFicheClient(id){
 
 function validerMission(mail,mid){
   const s=gS();if(!s[mail])return;
-  const note=s[mail].missions[mid]?.note_ia||10;
+  const mv=s[mail].missions[mid];if(!mv)return;
+  const note=mv.note_ia||10;
   const noteFinale=prompt(`Valider la mission pour ${s[mail].nom||mail}.\nNote IA : ${note}/20. Note finale :`,note);
   if(noteFinale===null)return;
   const nf=Math.min(20,Math.max(0,parseFloat(noteFinale)||note));
-  s[mail].missions[mid].status='done';s[mail].missions[mid].score=nf;
+  mv.status='done';mv.score=nf;
+  // Datation : on n'écrase PAS la date de soumission si elle existe (c'est la date où
+  // l'élève a produit le travail, plus juste pédagogiquement). On comble seulement le
+  // trou pour les missions anciennes / cas limites validées manuellement par l'enseignant.
+  if(!mv.date_validation){ mv.date_validation=new Date().toISOString(); }
   if(nf>=11){
     const m=MISSIONS.find(x=>x.id===mid);
     if(m){
       const compKey=m.comp.startsWith('A4')?'G4A':m.comp.startsWith('B4')?'G4B':m.comp.startsWith('ACC')?'ACC':m.comp;
-      const niveauIA=s[mail].missions[mid]?.niveau_ia||1;
+      const niveauIA=mv.niveau_ia||1;
       if(!s[mail].competences)s[mail].competences={};
       s[mail].competences[compKey]=Math.max(s[mail].competences[compKey]||0,Math.min(niveauIA,m.palier));
     }
