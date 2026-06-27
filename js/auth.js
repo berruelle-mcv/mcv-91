@@ -46,47 +46,53 @@ function updatePoste(){
     if(hint){hint.style.display='block';hint.textContent='Tu prospectes et développes le portefeuille clients professionnels de LABORO.';}
   }
 }
+// Outil de test (Pascal) : menu d'accès rapide à tous les profils.
+// Déclenché en tapant "ana" dans le champ mail (sur doLogin ET doLoginServeur).
+// ⚠️ À RETIRER avant le déploiement réel.
+function ouvrirAccesRapide(){
+  const profils = [
+    {cls:'enseignant', label:'👨‍🏫 Enseignant'},
+    {cls:'2nde', label:'📗 2nde'},
+    {cls:'1ere-AGEC', label:'📘 1ère AGEC'},
+    {cls:'1ere-PVOC', label:'📘 1ère PVOC'},
+    {cls:'Term-AGEC', label:'📕 Term. AGEC'},
+    {cls:'Term-PVOC', label:'📕 Term. PVOC'},
+  ];
+  const overlay = document.createElement('div');
+  overlay.id = 'ana-menu';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
+  const box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:16px;padding:28px;min-width:280px;text-align:center';
+  box.innerHTML = '<div style="font-size:16px;font-weight:800;color:#1A2E4A;margin-bottom:20px">🔑 Accès rapide Pascal</div>';
+  profils.forEach(function(p){
+    const btn = document.createElement('button');
+    btn.textContent = p.label;
+    btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:#EBF4FF;color:#1A2E4A;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
+    btn.onclick = function(){
+      document.body.removeChild(overlay);
+      const posteMap={
+        'enseignant':'Enseignant — Accès direction',
+        '2nde':'Découverte des métiers MCV',
+        '1ere-AGEC':'Conseiller de vente — Showroom',
+        '1ere-PVOC':'Commercial terrain — Prospection',
+        'Term-AGEC':'Conseiller de vente — Showroom & E-commerce',
+        'Term-PVOC':'Commercial terrain — Prospection & Vente B2B'
+      };
+      const poste = posteMap[p.cls] || 'Collaborateur LABORO';
+      finishLogin('pascal@laboro.fr', p.cls, poste, 'Pascal');
+    };
+    box.appendChild(btn);
+  });
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+}
+
 function doLogin(){
   const mail=document.getElementById('inp-mail').value.trim();
   const cls=document.getElementById('inp-classe').value;
 
   if(mail.toLowerCase()==='ana'){
-    // Menu de choix rapide — accès direct à tous les profils
-    const profils = [
-      {cls:'enseignant', label:'👨‍🏫 Enseignant'},
-      {cls:'2nde', label:'📗 2nde'},
-      {cls:'1ere-AGEC', label:'📘 1ère AGEC'},
-      {cls:'1ere-PVOC', label:'📘 1ère PVOC'},
-      {cls:'Term-AGEC', label:'📕 Term. AGEC'},
-      {cls:'Term-PVOC', label:'📕 Term. PVOC'},
-    ];
-    const overlay = document.createElement('div');
-    overlay.id = 'ana-menu';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
-    const box = document.createElement('div');
-    box.style.cssText = 'background:#fff;border-radius:16px;padding:28px;min-width:280px;text-align:center';
-    box.innerHTML = '<div style="font-size:16px;font-weight:800;color:#1A2E4A;margin-bottom:20px">🔑 Accès rapide Pascal</div>';
-    profils.forEach(function(p){
-      const btn = document.createElement('button');
-      btn.textContent = p.label;
-      btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:#EBF4FF;color:#1A2E4A;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
-      btn.onclick = function(){
-        document.body.removeChild(overlay);
-        const posteMap={
-          'enseignant':'Enseignant — Accès direction',
-          '2nde':'Découverte des métiers MCV',
-          '1ere-AGEC':'Conseiller de vente — Showroom',
-          '1ere-PVOC':'Commercial terrain — Prospection',
-          'Term-AGEC':'Conseiller de vente — Showroom & E-commerce',
-          'Term-PVOC':'Commercial terrain — Prospection & Vente B2B'
-        };
-        const poste = posteMap[p.cls] || 'Collaborateur LABORO';
-        finishLogin('pascal@laboro.fr', p.cls, poste, 'Pascal');
-      };
-      box.appendChild(btn);
-    });
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
+    ouvrirAccesRapide();
     return;
   }
 
@@ -464,6 +470,12 @@ const LABORO_API = 'https://mcv.laboro-edu.fr';
 async function doLoginServeur(){
   const mail = document.getElementById('inp-mail').value.trim();
   const mdp  = document.getElementById('inp-mdp').value;
+
+  // Outil de test : "ana" ouvre le menu d'accès rapide (avant toute vérification).
+  if(mail.toLowerCase()==='ana'){
+    ouvrirAccesRapide();
+    return;
+  }
 
   if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
 
