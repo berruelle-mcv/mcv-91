@@ -241,6 +241,55 @@ function updateOb(){
   document.querySelectorAll('.ob-btn-next').forEach(b=>{b.textContent=isLast?'Commencer mes missions →':'Suivant →';});
 }
 function skipOb(){document.getElementById('onboarding').classList.remove('on');showApp()}
+
+// ════════════════════════════════════════════════
+// ONBOARDING ENSEIGNANT (écran #ob-ens, pages obe0..obe3)
+// Recréé : pilote l'intro enseignant en 4 pages.
+// Navigation par index explicite (les boutons passent la page cible).
+// ════════════════════════════════════════════════
+let obEnsStep = 0;
+
+function startObEns(){
+  const scr = document.getElementById('ob-ens');
+  if(!scr){ showApp(); return; } // sécurité : si l'écran n'existe pas, on entre dans l'app
+  // Insère le prénom de l'enseignant
+  const spanPrenom = document.getElementById('ob-ens-prenom');
+  if(spanPrenom && CU && CU.nom){ spanPrenom.textContent = CU.nom.split(' ')[0]; }
+  // Affiche l'écran d'onboarding (neutralise le display:none inline + classe .on du CSS)
+  scr.style.display = '';
+  scr.classList.add('on');
+  goObEns(0);
+}
+
+function goObEns(n){
+  obEnsStep = n;
+  // Pages : seule obe{n} a la classe 'on'
+  for(let i=0; i<4; i++){
+    const page = document.getElementById('obe'+i);
+    if(page) page.classList.toggle('on', i===n);
+    const dot = document.getElementById('obed'+i);
+    if(dot) dot.classList.toggle('cur', i===n);
+  }
+}
+
+function nextObEns(n){ goObEns(n); }
+function prevObEns(n){ goObEns(n); }
+
+function skipObEns(){
+  // Marque l'onboarding enseignant comme vu (ne se relancera plus à la connexion)
+  const s = gS();
+  s['__ens_ob_done'] = true;
+  sS(s);
+  const scr = document.getElementById('ob-ens');
+  if(scr){ scr.classList.remove('on'); scr.style.display = 'none'; }
+  showApp();
+}
+
+function revoirObEns(){
+  // Rejoue l'intro depuis l'espace enseignant (bouton "Guide de démarrage")
+  startObEns();
+}
+
 function showApp(){
   document.getElementById('app').classList.add('on');
   setAccentColor(CU.classe);
