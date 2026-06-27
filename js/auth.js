@@ -173,15 +173,15 @@ function startOb(){
       msg=`<div class="ob-h1">Prêt(e) pour les CCF ?</div>
       <div class="ob-sub">Cette année, tu passes tes épreuves de certification. LABORO t'y prépare directement.</div>
       <div class="ob-steps">
-        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282">E31</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282;color:#fff">E31</div><div>
           <div class="ob-step-t">Sous-épreuve E31 — Conseiller et vendre <span style="font-size:10px;opacity:.7">coef. 3</span></div>
           <div class="ob-step-d">Veille commerciale · Réalisation de la vente · Exécution de la vente · Communication</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5">E32</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5;color:#fff">E32</div><div>
           <div class="ob-step-t">Sous-épreuve E32 — Suivre les ventes <span style="font-size:10px;opacity:.7">coef. 2</span></div>
           <div class="ob-step-d">Suivi commande · Services associés · Réclamations · Satisfaction client</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A">E33</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A;color:#fff">E33</div><div>
           <div class="ob-step-t">Sous-épreuve E33 — Développer la relation client <span style="font-size:10px;opacity:.7">coef. 3</span></div>
           <div class="ob-step-d">Information client · Actions de fidélisation · Évaluation</div>
         </div></div>
@@ -193,15 +193,15 @@ function startOb(){
       msg=`<div class="ob-h1">Comment ça fonctionne ?</div>
       <div class="ob-sub">Tu connais déjà les bases. Cette année on va plus loin — missions plus complexes, contextes B2B, gestion de la relation client.</div>
       <div class="ob-steps">
-        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282">1</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282;color:#fff">1</div><div>
           <div class="ob-step-t">📚 Lis la ressource</div>
           <div class="ob-step-d">Chaque mission inclut la méthode. Lis-la avant d'agir — même si tu penses connaître.</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5">2</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5;color:#fff">2</div><div>
           <div class="ob-step-t">✍️ Produis en autonomie</div>
           <div class="ob-step-d">Les questions de 1ère demandent de vrais arguments, des calculs, des analyses. Pas de QCM.</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A">3</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A;color:#fff">3</div><div>
           <div class="ob-step-t">⭐ Progresse et monte en compétences</div>
           <div class="ob-step-d">Ton score et ton niveau de maîtrise sont suivis par ton enseignant. Vise le niveau Professionnel compétent ou Professionnel performant.</div>
         </div></div>
