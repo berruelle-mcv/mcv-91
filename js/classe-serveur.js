@@ -1,8 +1,6 @@
 // ================================================
-//   LABORO — Vue classe (lecture serveur)
+//   LABORO — Vue classe (lecture serveur) + actions élève
 //   Chargé APRÈS teacher.js dans index.html.
-//   Redéfinit renderClasse() et filtrerClasse() pour lire
-//   les élèves depuis le serveur (GET /api/eleves).
 // ================================================
 
 let ELEVES_SERVEUR = [];
@@ -89,12 +87,15 @@ function afficherClasse(){
   tb.innerHTML = liste.map(function(e){
     const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
     const cls = e.classe || '—';
+    const btnReset = '<button onclick="resetMdpEleve(\'' + e.id + '\',\'' + (nomAff.replace(/'/g,"")) + '\')" '
+      + 'title="Réinitialiser le mot de passe" '
+      + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">🔑</button>';
     return '<tr>'
       + '<td style="font-weight:700">' + nomAff + '</td>'
       + '<td class="u-label-sm">' + cls + '</td>'
-      + '<td colspan="6" style="font-size:11px;color:var(--gm)">' + e.email + '</td>'
+      + '<td colspan="5" style="font-size:11px;color:var(--gm)">' + e.email + '</td>'
       + '<td style="font-size:10px;color:var(--vt);font-weight:700">' + (e.statut || 'actif') + '</td>'
-      + '<td style="color:var(--gm)">—</td>'
+      + '<td style="text-align:center">' + btnReset + '</td>'
       + '</tr>';
   }).join('');
 
@@ -104,4 +105,23 @@ function afficherClasse(){
 function filtrerClasse(cls){
   classeFiltre = cls || '';
   afficherClasse();
+}
+
+async function resetMdpEleve(eleveId, nomAff){
+  if(!confirm('Réinitialiser le mot de passe de ' + nomAff + ' ?\n\nSon mot de passe redeviendra "Laboro2025" et il devra en choisir un nouveau à sa prochaine connexion.')) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  try{
+    const rep = await fetch(LABORO_API + '/api/eleves/reset-mdp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ eleve_id: eleveId })
+    });
+    const d = await rep.json();
+    if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+    alert('✅ Mot de passe réinitialisé pour ' + d.prenom + ' ' + d.nom + '.\n\nNouveau mot de passe : ' + d.motDePasse + '\n(il devra le changer à sa prochaine connexion)');
+  }catch(e){
+    alert('Impossible de joindre le serveur LABORO.');
+    console.error('resetMdpEleve :', e);
+  }
 }
