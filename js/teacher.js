@@ -264,6 +264,22 @@ function renderClasse(){
   renderMDJListe();
 }
 
+// ═══════════════════════════════════════════════════════════
+//   Affichage des missions du jour assignées (vue enseignant)
+//   État actuel : le backend "missions du jour" n'est pas encore
+//   construit. Affiche proprement l'état vide et reste le point
+//   d'entrée pour brancher l'appel serveur plus tard.
+// ═══════════════════════════════════════════════════════════
+function renderMDJListe(){
+  const el = document.getElementById('mdj-liste');
+  if(!el) return;
+  el.innerHTML =
+    '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+    + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">'
+    + 'Aucune mission du jour assignée pour le moment.'
+    + '</div>';
+}
+
 function showFicheEleve(mail){
   const s=gS();const u={mail,...(s[mail]||{missions:{},competences:{}})};
   const nom=u.nom||mail;
