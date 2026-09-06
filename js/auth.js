@@ -514,3 +514,64 @@ async function doLoginServeur(){
     console.error('Erreur login serveur:', err);
   }
 }
+
+// ═══════════════════════════════════════════════════════════
+//   Ajout d'un élève depuis l'espace enseignant
+// ═══════════════════════════════════════════════════════════
+async function ajouterEleve(){
+  const nomEl  = document.getElementById('add-nom');
+  const mailEl = document.getElementById('add-mail');
+  const clsEl  = document.getElementById('add-cls');
+  const msgEl  = document.getElementById('add-msg');
+
+  const nomComplet = (nomEl?.value || '').trim();
+  const email      = (mailEl?.value || '').trim();
+  const classeCode = (clsEl?.value || '').trim();
+
+  const showMsg = (txt, couleur) => {
+    if(msgEl){ msgEl.textContent = txt; msgEl.style.color = couleur; }
+  };
+
+  if(!nomComplet || !email || !classeCode){
+    showMsg("Merci de remplir le nom, l'email et la classe.", '#C53030');
+    return;
+  }
+  if(!email.includes('@')){
+    showMsg("L'adresse email semble incomplète.", '#C53030');
+    return;
+  }
+
+  const token = localStorage.getItem('laboro_token');
+  if(!token){
+    showMsg("Session expirée — reconnecte-toi en tant qu'enseignant.", '#C53030');
+    return;
+  }
+
+  showMsg('Création en cours…', '#6B7280');
+
+  try{
+    const reponse = await fetch(LABORO_API + '/api/eleves', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({ nomComplet, email, classeCode })
+    });
+    const data = await reponse.json();
+
+    if(!data.ok){
+      showMsg('⚠️ ' + (data.erreur || 'Création impossible.'), '#C53030');
+      return;
+    }
+
+    showMsg('✅ ' + data.prenom + ' ' + data.nom + ' ajouté(e) — mot de passe : ' + data.motDePasseInitial, '#2E7D5E');
+    if(nomEl) nomEl.value = '';
+    if(mailEl) mailEl.value = '';
+    if(typeof renderClasse === 'function') renderClasse();
+
+  }catch(err){
+    showMsg('Impossible de joindre le serveur LABORO.', '#C53030');
+    console.error('Erreur ajouterEleve:', err);
+  }
+}
