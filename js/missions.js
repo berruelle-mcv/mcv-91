@@ -4,6 +4,24 @@
 // ================================================
 
 // ═══ MODAL MISSION ═══
+
+// ═══ CLÉ DE RESSOURCE PÉDAGOGIQUE ═══
+// Détermine quelle ressource "Apprendre avant de faire" afficher pour une
+// compétence donnée. Centralisé ici (au lieu d'être dupliqué à 3 endroits)
+// pour n'avoir qu'un seul endroit à faire évoluer.
+function getResKey(comp){
+  if(!comp) return comp;
+  if(comp.startsWith('ACC')) return 'ACC';
+  if(comp.startsWith('G4A')||comp.startsWith('C4A')) return 'G4A';
+  if(comp.startsWith('G4B')) return 'G4B';
+  if(comp.startsWith('B4.1')) return 'B4.1';
+  if(comp.startsWith('B4.2')) return 'B4.2';
+  if(comp.startsWith('B4.3')) return 'B4.3';
+  if(comp.startsWith('B4.4')) return 'B4.4';
+  if(comp.startsWith('B4.5')) return 'B4.5';
+  return comp;
+}
+
 // ═══ TIMER MISSION ═══
 var moTimerInterval = null;
 var moTimerSeconds = 0;
@@ -77,7 +95,7 @@ function openMission(id){
   const pdEl=document.getElementById('mo-palier-desc');
   if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
-  const resKey=m.comp.startsWith('ACC')?'ACC':(m.comp.startsWith('G4A')||m.comp.startsWith('C4A'))?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
+  const resKey=getResKey(m.comp);
   const res=RES[resKey];
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
   // Mission
@@ -145,7 +163,7 @@ function openMission(id){
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
   if(cpBtn){
-    const resKeyCp = m.comp.startsWith('ACC')?'ACC':(m.comp.startsWith('G4A')||m.comp.startsWith('C4A'))?'G4A':m.comp.startsWith('G4B')?'G4B':m.comp.startsWith('B4.1')?'B4.1':m.comp.startsWith('B4.2')?'B4.2':m.comp.startsWith('B4.3')?'B4.3':m.comp.startsWith('B4.4')?'B4.4':m.comp.startsWith('B4.5')?'B4.5':m.comp;
+    const resKeyCp = getResKey(m.comp);
     const resCp = RES[resKeyCp];
     if(resCp){ cpBtn.classList.add('visible'); cpBtn.dataset.missionId = m.id; }
     else { cpBtn.classList.remove('visible'); }
@@ -205,7 +223,7 @@ function openCoupDePouce(){
   const cpBtn = document.getElementById('cp-btn');
   const mId = cpBtn ? cpBtn.dataset.missionId : null;
   if(mId && CM){
-    const resKey = CM.comp.startsWith('ACC')?'ACC':(CM.comp.startsWith('G4A')||CM.comp.startsWith('C4A'))?'G4A':CM.comp.startsWith('G4B')?'G4B':CM.comp.startsWith('B4.1')?'B4.1':CM.comp.startsWith('B4.2')?'B4.2':CM.comp.startsWith('B4.3')?'B4.3':CM.comp.startsWith('B4.4')?'B4.4':CM.comp.startsWith('B4.5')?'B4.5':CM.comp;
+    const resKey = getResKey(CM.comp);
     const res = RES[resKey];
     const cpContent = document.getElementById('cp-content');
     if(cpContent && res){ cpContent.innerHTML = '<div class="res-t" style="font-size:13px;font-weight:700;margin-bottom:10px">'+res.t+'</div><div class="res-b">'+res.c+'</div>'; }
@@ -333,63 +351,11 @@ function moTab(i,el){
   if(el)el.classList.add('on');
   document.querySelectorAll('.mo-tp')[i]?.classList.add('on');
 }
-async function soumettreReponses(){
-  if(!CM)return;
-  const ak=localStorage.getItem('laboro_ak');
-  if(!ak){alert('Clé API non configurée. Demandez à M. Berruelle d\'entrer la clé API dans le panneau Génération.');return;}
-  const ud=gUD();
-  const tent=(ud.missions[CM.id]?.tentatives||0)+1;
-  const reps=[];
-  CM.activites.forEach((a,i)=>{
-    a.q.forEach(q=>{
-      const qid=`q_${CM.id}_${i}_${q.substring(0,8).replace(/\s/g,'_')}`;
-      const el=document.getElementById(qid);
-      if(el&&el.value.trim())reps.push(`${q}\nRéponse : ${el.value.trim()}`);
-    });
-  });
-  const rfEl=document.getElementById(`q_${CM.id}_reflexivite`);
-  if(rfEl&&rfEl.value.trim())reps.push(`Question de réflexivité :\nRéponse : ${rfEl.value.trim()}`);
-  if(!reps.length){alert('Rédige au moins une réponse avant de soumettre.');return;}
-  const btnS=document.getElementById('btn-submit');
-  btnS.textContent='Correction en cours…';btnS.disabled=true;
-  const prompt=`Tu es un enseignant expert en Bac Pro MCV. Voici une mission LABORO Sport & Outdoor (entreprise fictive, Évry-Courcouronnes 91).
-
-Mission : ${CM.titre}
-Compétence : ${CM.comp} — Palier ${CM.palier} (${['','Débutant — guidé pas à pas','Apprenti — guidage partiel','Professionnel compétent — autonome et efficace','Professionnel performant — réflexivité et force de proposition'][CM.palier]})
-Contexte : ${(CU.classe&&CU.classe.includes('PVOC')&&CM.contexte_pvoc)?CM.contexte_pvoc:CM.contexte}
-
-Réponses de l'élève :
-${reps.join('\n\n')}
-
-Évalue de façon bienveillante et constructive. Réponds en français avec :
-NOTE: [entier de 0 à 20, seuil de validation = 11]
-NIVEAU: [1=Débutant, 2=Apprenti, 3=Professionnel compétent, 4=Professionnel performant]
-FEEDBACK:
-[Feedback structuré question par question — ce qui est bien, ce qui manque, conseils concrets pour progresser. Terminer par un conseil global.]`;
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ak,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
-    const d=await r.json();
-    const txt=d.content?.map(b=>b.text||'').join('')||'';
-    const noteM=txt.match(/NOTE:\s*(\d+)/);const niveauM=txt.match(/NIVEAU:\s*(\d)/);const fbM=txt.match(/FEEDBACK:\s*([\s\S]+)/);
-    const note=noteM?Math.min(20,parseInt(noteM[1])):10;
-    const niveau=niveauM?parseInt(niveauM[1]):1;
-    const feedback=fbM?fbM[1].trim():txt;
-    // Calculer progression
-    const prevNote=ud.missions[CM.id]?.note_ia||0;
-    const progression=Math.max(0,note-prevNote);
-    ud.missions[CM.id]={...ud.missions[CM.id],status:'att',tentatives:tent,note_ia:note,niveau_ia:niveau,comp:CM.comp,id:CM.id,progression,date_validation:new Date().toISOString(),feedback:{note,texte:feedback}};
-    sUD(ud);
-    const tabFb=document.getElementById('tab-fb');
-    tabFb.style.display='';
-    document.getElementById('mo-fb').innerHTML=renderFb({note,texte:feedback});
-    moTab(2,tabFb);
-    btnS.style.display='none';
-    renderDashboard();renderMissions();
-  }catch(e){
-    alert('Erreur de connexion à l\'API. Vérifiez la clé API.');
-    btnS.textContent='Soumettre mes réponses';btnS.disabled=false;
-  }
-}
+// La correction des missions passe désormais exclusivement par le serveur
+// (voir js/correction-serveur.js, qui définit soumettreReponses() et est
+// chargé après ce fichier dans index.html). L'ancienne version avec appel
+// direct à l'API Anthropic depuis le navigateur a été retirée (code mort,
+// jamais exécutée, et clé API exposée côté client).
 
 // ═══ COMPÉTENCES ═══
 
