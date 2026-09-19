@@ -659,7 +659,6 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div class="ns" id="ns-ens" style="display:none">Enseignant</div>
     <div class="ni" id="ni-mdj" style="display:none" onclick="goP('missiondujour',this)"><div class="nd" style="background:var(--bl)"></div>Mission du jour</div>
     <div class="ni" id="ni-cl" style="display:none" onclick="goP('classe',this)"><div class="nd" style="background:#D4537E"></div>Vue classe</div>
-    <div class="ni" id="ni-gn" style="display:none" onclick="goP('generation',this)"><div class="nd" style="background:var(--rg)"></div>Générer mission</div>
   </div>
   <div class="sb-bt">
     <button class="btn-guide" id="btn-guide-ens" style="display:none;width:100%;padding:8px 12px;background:rgba(255,255,255,.08);border:.5px solid rgba(255,255,255,.2);border-radius:8px;color:rgba(255,255,255,.8);font-size:11px;font-weight:600;cursor:pointer;margin-bottom:8px;text-align:left" onclick="revoirObEns()">📖 Guide de démarrage</button>
@@ -802,12 +801,6 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <table class="ctl"><thead><tr><th>Élève</th><th>Classe</th><th>C1</th><th>C2</th><th>C3</th><th>G4</th><th>Score</th><th>Posture</th><th>Missions</th><th>Moy.</th></tr></thead><tbody id="cl-tbody"></tbody></table>
       </div>
       <div id="fe-wrap"></div>
-    </div>
-
-    <div id="panel-generation" class="panel">
-      <div class="card"><div class="ct">Clé API Claude</div>
-      <div class="api-row"><input type="password" id="api-inp" placeholder="sk-ant-api03-..."/><button class="btn-sm" onclick="saveKey()">Enregistrer</button></div><div style="font-size:11px;color:var(--gm)">console.anthropic.com · Stockée localement · ~0,002 € par correction et génération</div></div>
-      <div class="card"><div class="ct">Générer une nouvelle mission</div><div class="gen-grid"><select id="g-opt"><option value="AGEC">AGEC</option><option value="PVOC">PVOC</option></select><select id="g-pal"><option value="1">Palier 1 — Débutant</option><option value="2">Palier 2 — Apprenti</option><option value="3">Palier 3 — Professionnel compétent</option><option value="4">Palier 4 — Expert</option></select><select id="g-comp"><option value="C1.1">C1.1 Veille commerciale</option><option value="C1.2">C1.2 Vente omnicanale</option><option value="C1.3">C1.3 Exécution vente</option><option value="C2.1">C2.1 Suivi commande</option><option value="C2.1b">C2.1b Services associés</option><option value="C2.2">C2.2 Réclamations</option><option value="C2.3">C2.3 Satisfaction client</option><option value="C3.1">C3.1 Contact client</option><option value="C3.2">C3.2 Fidélisation</option><option value="C3.3">C3.3 Évaluation FDRC</option><option value="A4.1">A4.1 Opérations préalables</option><option value="A4.2">A4.2 Attractivité UC</option><option value="A4.3">A4.3 Développement clientèle</option><option value="B4.1">B4.1 Infos prospection</option><option value="B4.2">B4.2 Conception prospection</option><option value="B4.3">B4.3 Mise en oeuvre</option><option value="B4.4">B4.4 Suivi prospection</option><option value="B4.5">B4.5 Valorisation offre</option></select><select id="g-cli"><option value="B2C particulier">B2C — Particulier</option><option value="B2B club sportif">B2B — Club sportif</option><option value="B2B CE">B2B — CE</option><option value="B2B collectivité">B2B — Collectivité</option><option value="B2B lycée">B2B — Lycée</option></select></div><button class="btn-gen" onclick="genMission()">Générer la mission →</button><div class="gen-res" id="gen-res" style="color:var(--gm);font-style:italic">La mission générée apparaîtra ici…</div></div>
     </div>
 
     <div id="mo" class="mo">
