@@ -355,7 +355,7 @@ function renderIndicateurs(){
   const missions = Object.entries(ud.missions||{});
   const done = missions.filter(function(m){ return m[1].status==='done'; });
   const wip  = missions.filter(function(m){ return m[1].status==='wip'; });
-  const scores = done.filter(function(m){ return m[1].score; }).map(function(m){ return m[1].score; });
+  const scores = done.filter(function(m){ return m[1].score != null; }).map(function(m){ return m[1].score; });
   const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1) : '—';
   const totalMissions = getMissions().length;
   const compsAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code, ud) >= 3; }).length;

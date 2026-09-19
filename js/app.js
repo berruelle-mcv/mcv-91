@@ -17,7 +17,7 @@ function getMsg(classe,poste){
   const missions=Object.values(ud.missions||{});
   const done=missions.filter(x=>x.status==='done').length;
   const att=missions.filter(x=>x.status==='att').length;
-  const moy=done>0?Math.round(missions.filter(x=>x.status==='done'&&x.score).reduce((s,x)=>s+x.score,0)/done*10)/10:0;
+  const moy=done>0?Math.round(missions.filter(x=>x.status==='done'&&x.score!=null).reduce((s,x)=>s+x.score,0)/done*10)/10:0;
   const isTerminale=classe.includes('Term');
   const sprintFinal=isTerminale&&m>=2; // mars à décembre en Terminale
 
@@ -155,7 +155,7 @@ const setMDJ=d=>localStorage.setItem('laboro_mdj',JSON.stringify(d));
 // ═══ SCORE LABORO (60/20/20) ═══
 function calcScore(ud){
   const ms=Object.values(ud.missions||{});
-  const done=ms.filter(m=>m.status==='done'&&m.score);
+  const done=ms.filter(m=>m.status==='done'&&m.score!=null);
   if(!done.length)return 0;
   // Composante 1 — moyenne pondérée 60%
   const coefs={'C1':3,'C2':2,'C3':3,'G4':4,'ACC':1};

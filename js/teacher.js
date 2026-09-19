@@ -224,7 +224,7 @@ function showFicheEleve(mail){
   const nom=u.nom||mail;
   const done=Object.values(u.missions).filter(m=>m.status==='done').length;
   const att=Object.entries(u.missions).filter(([,m])=>m.status==='att');
-  const sc2=Object.values(u.missions).filter(m=>m.score).map(m=>m.score);
+  const sc2=Object.values(u.missions).filter(m=>m.score!=null).map(m=>m.score);
   const avg=sc2.length?(sc2.reduce((a,b)=>a+b,0)/sc2.length).toFixed(1):'—';
   const sc=calcScore(u);
   const lc=['var(--gb)','#85B7EB','var(--bl)','var(--vt)','#27500A'];
@@ -242,7 +242,7 @@ function showFicheEleve(mail){
     <div class="fe-sec"><div class="fe-st">Progression par compétence</div>${COMP.map(c=>{const lv=u.competences[c.code]||0;return`<div class="cr"><span class="cr-code">${c.code}</span><span class="cr-label">${c.label}</span><div class="cr-bar"><div class="cr-fill" style="width:${lv*25}%;background:${lc[lv]}"></div></div><span class="cr-txt" style="color:${lc[lv]}">${ll[lv]}</span></div>`;}).join('')}</div>
     <div class="fe-sec"><div class="fe-st">Missions</div>
       <div class="mr hdr"><span>Mission</span><span>Comp.</span><span>Tent.</span><span>Note</span><span>Statut</span></div>
-      ${Object.entries(u.missions).map(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(!m)return'';const nc=mv.score>=17?'nb-h':mv.score>=11?'nb-m':'nb-l';return`<div class="mr"><span style="font-size:11px">${m.titre}</span><span class="u-label-sm">${m.comp} P${m.palier}</span><span style="text-align:center">${mv.tentatives||1}/2</span><span><div class="nb2 ${mv.score?nc:''}">${mv.score?mv.score+'/20':mv.note_ia?'IA:'+mv.note_ia:'-'}</div></span><span>${mv.status==='done'?'<span style="color:var(--vt);font-size:11px;font-weight:700">✓ Validée</span>':mv.status==='att'?`<button onclick="validerMission('${mail}','${mid}')" style="padding:3px 8px;background:var(--bl);color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:11px">Valider ${mv.note_ia}/20</button>`:'-'}</span></div>`;}).join('')}
+      ${Object.entries(u.missions).map(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(!m)return'';const nc=mv.score>=17?'nb-h':mv.score>=11?'nb-m':'nb-l';return`<div class="mr"><span style="font-size:11px">${m.titre}</span><span class="u-label-sm">${m.comp} P${m.palier}</span><span style="text-align:center">${mv.tentatives||1}/2</span><span><div class="nb2 ${mv.score!=null?nc:''}">${mv.score!=null?mv.score+'/20':mv.note_ia?'IA:'+mv.note_ia:'-'}</div></span><span>${mv.status==='done'?'<span style="color:var(--vt);font-size:11px;font-weight:700">✓ Validée</span>':mv.status==='att'?`<button onclick="validerMission('${mail}','${mid}')" style="padding:3px 8px;background:var(--bl);color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:11px">Valider ${mv.note_ia}/20</button>`:'-'}</span></div>`;}).join('')}
     </div>
     <div class="fe-sec"><div class="fe-st">Observations enseignant</div><textarea class="obs-area" id="obs-${mail}" placeholder="Observations, points forts, axes de progression…">${savedObs}</textarea><button class="btn-obs-s" onclick="saveObs('${mail}')">Enregistrer</button></div>
   </div>`;
@@ -268,7 +268,7 @@ function renderIndicateursPedago(){
   const ud = gUD();
   const allMissions = getMissions();
   const done = allMissions.filter(function(m){ return ud.missions[m.id]?.status==='done'; });
-  const scores = done.filter(function(m){ return ud.missions[m.id]?.score; }).map(function(m){ return ud.missions[m.id].score; });
+  const scores = done.filter(function(m){ return ud.missions[m.id]?.score != null; }).map(function(m){ return ud.missions[m.id].score; });
   const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
   const byPalier = [0,0,0,0,0];
   done.forEach(function(m){ byPalier[m.palier]++; });

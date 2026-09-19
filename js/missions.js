@@ -152,7 +152,7 @@ function openMission(id){
   }
   if(m.livrable) html+=`<div class="livrable"><div class="livrable-l">Livrable attendu</div><strong>${m.livrable}</strong></div>`;
   // Situation imprévue si moy >= 15
-  const moy=Object.values(ud.missions).filter(x=>x.comp===m.comp&&x.score).map(x=>x.score);
+  const moy=Object.values(ud.missions).filter(x=>x.comp===m.comp&&x.score!=null).map(x=>x.score);
   const moyComp=moy.length>=2?moy.reduce((a,b)=>a+b,0)/moy.length:0;
   const imprev=IMPREVU[resKey]||IMPREVU[m.comp];
   if(moyComp>=15&&imprev){
@@ -458,7 +458,7 @@ function renderCompetences(){
 
     const mComp = MISSIONS.filter(function(m){ return m.comp===c.code || m.comp.startsWith(c.code+'.'); });
     const mDone = mComp.filter(function(m){ return ud.missions[m.id] && ud.missions[m.id].status==='done'; });
-    const scores = mDone.filter(function(m){ return ud.missions[m.id].score; }).map(function(m){ return ud.missions[m.id].score; });
+    const scores = mDone.filter(function(m){ return ud.missions[m.id].score != null; }).map(function(m){ return ud.missions[m.id].score; });
     const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1) : null;
 
     // Prochaine étape

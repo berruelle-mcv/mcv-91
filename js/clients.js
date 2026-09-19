@@ -50,7 +50,7 @@ function calcPosturePro(ud){
   score -= Math.min(rappels * 8, 40);
   if(done.length >= 5) score += 5;
   if(done.length >= 10) score += 5;
-  const scores = done.filter(function(m){ return m.score; }).map(function(m){ return m.score; });
+  const scores = done.filter(function(m){ return m.score != null; }).map(function(m){ return m.score; });
   const avg = scores.length ? scores.reduce(function(a,b){ return a+b; },0)/scores.length : 0;
   if(avg >= 14) score += 10;
   else if(avg >= 11) score += 5;
