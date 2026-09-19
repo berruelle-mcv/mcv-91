@@ -307,10 +307,8 @@ function showApp(){
   document.getElementById('tb-d').textContent=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
   const ens=CU.classe==='enseignant';
   document.body.classList.toggle('ens-mode',ens);
-  ['ns-ens','ni-mdj','ni-cl','ni-gn'].forEach(id=>document.getElementById(id).style.display=ens?'':'none');
+  ['ns-ens','ni-mdj','ni-cl'].forEach(id=>document.getElementById(id).style.display=ens?'':'none');
   const btnGuide=document.getElementById('btn-guide-ens');if(btnGuide)btnGuide.style.display=ens?'block':'none';
-  const ak=localStorage.getItem('laboro_ak')||'';
-  if(document.getElementById('api-inp'))document.getElementById('api-inp').value=ak;
   // Message personnalisé
   const msgKey=CU.classe.includes('AGEC')?'AGEC':CU.classe.includes('PVOC')?'PVOC':CU.classe.includes('Term')?'Term':CU.classe==='enseignant'?'ens':'2nde';
   const msgCfg=getMsg(CU.classe,CU.poste);
@@ -336,11 +334,9 @@ function showApp(){
   // Visibilité nav enseignant
   const niMdj = document.getElementById('ni-mdj');
   const niCl = document.getElementById('ni-cl');
-  const niGn = document.getElementById('ni-gn');
   const nsEns = document.getElementById('ns-ens');
   if(niMdj) niMdj.style.display = ens ? 'block' : 'none';
   if(niCl) niCl.style.display = ens ? 'block' : 'none';
-  if(niGn) niGn.style.display = ens ? 'block' : 'none';
   if(nsEns) nsEns.style.display = ens ? 'block' : 'none';
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
