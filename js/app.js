@@ -5,6 +5,38 @@
 
 
 
+// ═══ APPEL SERVEUR AVEC GESTION D'ERREUR FINE ═══
+// Distingue proprement 3 cas d'échec, chacun avec un message utilisateur
+// adapté, au lieu d'un unique catch générique :
+//   - panne réseau (serveur injoignable, pas de connexion)
+//   - erreur HTTP (le serveur a répondu mais avec un statut d'erreur)
+//   - JSON invalide (le serveur a répondu 200 mais le corps n'est pas
+//     du JSON exploitable — cas rare mais qui existait sans diagnostic clair)
+// Utilisation : const {ok, data, erreur} = await fetchJSON(url, options);
+// - ok===true  → data contient la réponse JSON du serveur
+// - ok===false → erreur contient un message prêt à afficher à l'utilisateur
+async function fetchJSON(url, options){
+  let reponse;
+  try{
+    reponse = await fetch(url, options);
+  }catch(e){
+    console.error('fetchJSON — panne réseau :', url, e);
+    return { ok:false, type:'reseau', erreur:'Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.' };
+  }
+  let data;
+  try{
+    data = await reponse.json();
+  }catch(e){
+    console.error('fetchJSON — JSON invalide :', url, reponse.status, e);
+    return { ok:false, type:'json', erreur:'Réponse inattendue du serveur LABORO (données invalides). Réessaie dans un instant.', status:reponse.status };
+  }
+  if(!reponse.ok){
+    console.error('fetchJSON — erreur HTTP :', url, reponse.status, data);
+    return { ok:false, type:'http', erreur:(data && data.erreur) || ('Erreur serveur (code '+reponse.status+').'), status:reponse.status, data };
+  }
+  return { ok:true, data, status:reponse.status };
+}
+
 // ═══ DONNÉES ═══
 // Données chargées depuis les fichiers externes :
 // - data/competences.js  (COMP, RES)

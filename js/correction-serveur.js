@@ -37,58 +37,57 @@ async function soumettreReponses(){
   btnS.textContent = 'Correction en cours…';
   btnS.disabled = true;
 
-  try{
-    const r = await fetch(LABORO_API + '/api/corriger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify({ mission_id: CM.id, reponses })
-    });
-    const d = await r.json();
+  const r = await fetchJSON(LABORO_API + '/api/corriger', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ mission_id: CM.id, reponses })
+  });
 
-    if(!d.ok){
-      alert('Correction impossible : ' + (d.erreur || 'erreur inconnue') + '. Réessaie dans un instant.');
-      btnS.textContent = 'Soumettre mes réponses';
-      btnS.disabled = false;
-      return;
-    }
-
-    const note = d.note;
-    const niveau = d.niveau;
-    const feedback = d.feedback;
-
-    const prevNote = ud.missions[CM.id]?.note_ia || 0;
-    const progression = Math.max(0, note - prevNote);
-    ud.missions[CM.id] = {
-      ...ud.missions[CM.id],
-      status: (d.statut === 'valide') ? 'done' : 'att',
-      tentatives: tent,
-      note_ia: note,
-      niveau_ia: niveau,
-      score: (d.statut === 'valide') ? note : ud.missions[CM.id]?.score,
-      comp: CM.comp,
-      id: CM.id,
-      progression,
-      date_validation: new Date().toISOString(),
-      feedback: { note, texte: feedback }
-    };
-    sUD(ud);
-
-    const tabFb = document.getElementById('tab-fb');
-    tabFb.style.display = '';
-    document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
-    moTab(2, tabFb);
-    btnS.style.display = 'none';
-
-    if(typeof renderDashboard === 'function') renderDashboard();
-    if(typeof renderMissions === 'function') renderMissions();
-
-  }catch(e){
-    alert('Impossible de joindre le serveur LABORO pour la correction. Vérifie ta connexion.');
-    console.error('soumettreReponses (serveur) :', e);
+  if(!r.ok){
+    alert(r.erreur);
     btnS.textContent = 'Soumettre mes réponses';
     btnS.disabled = false;
+    return;
   }
+  const d = r.data;
+
+  if(!d.ok){
+    alert('Correction impossible : ' + (d.erreur || 'erreur inconnue') + '. Réessaie dans un instant.');
+    btnS.textContent = 'Soumettre mes réponses';
+    btnS.disabled = false;
+    return;
+  }
+
+  const note = d.note;
+  const niveau = d.niveau;
+  const feedback = d.feedback;
+
+  const prevNote = ud.missions[CM.id]?.note_ia || 0;
+  const progression = Math.max(0, note - prevNote);
+  ud.missions[CM.id] = {
+    ...ud.missions[CM.id],
+    status: (d.statut === 'valide') ? 'done' : 'att',
+    tentatives: tent,
+    note_ia: note,
+    niveau_ia: niveau,
+    score: (d.statut === 'valide') ? note : ud.missions[CM.id]?.score,
+    comp: CM.comp,
+    id: CM.id,
+    progression,
+    date_validation: new Date().toISOString(),
+    feedback: { note, texte: feedback }
+  };
+  sUD(ud);
+
+  const tabFb = document.getElementById('tab-fb');
+  tabFb.style.display = '';
+  document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
+  moTab(2, tabFb);
+  btnS.style.display = 'none';
+
+  if(typeof renderDashboard === 'function') renderDashboard();
+  if(typeof renderMissions === 'function') renderMissions();
 }

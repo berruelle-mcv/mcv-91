@@ -475,40 +475,39 @@ async function doLoginServeur(){
 
   if(!mail || !mdp){ showLoginError('Merci de saisir ton adresse mail et ton mot de passe.'); return; }
 
-  try{
-    const reponse = await fetch(LABORO_API + '/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: mail, motDePasse: mdp })
-    });
-    const data = await reponse.json();
+  const r = await fetchJSON(LABORO_API + '/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: mail, motDePasse: mdp })
+  });
 
-    if(!data.ok){
-      showLoginError(data.erreur || 'Identifiants incorrects.');
-      return;
-    }
-
-    localStorage.setItem('laboro_token', data.token);
-    const u = data.utilisateur;
-
-    const cls = u.classe || '';
-    let poste;
-    if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
-    else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
-    else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
-    else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
-    else poste = 'Collaborateur LABORO';
-
-    const nomComplet = (u.prenom || u.nom)
-      ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
-      : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
-
-    finishLogin(mail, cls, poste, nomComplet);
-
-  }catch(err){
-    showLoginError('Impossible de joindre le serveur LABORO. Vérifie ta connexion internet.');
-    console.error('Erreur login serveur:', err);
+  if(!r.ok){
+    showLoginError(r.erreur);
+    return;
   }
+  const data = r.data;
+
+  if(!data.ok){
+    showLoginError(data.erreur || 'Identifiants incorrects.');
+    return;
+  }
+
+  localStorage.setItem('laboro_token', data.token);
+  const u = data.utilisateur;
+
+  const cls = u.classe || '';
+  let poste;
+  if(cls === 'enseignant') poste = 'Enseignant — Accès direction';
+  else if(cls === '2nde') poste = 'Découverte de la famille des métiers MCV';
+  else if(cls.includes('AGEC')) poste = 'Conseiller de vente — Showroom & E-commerce';
+  else if(cls.includes('PVOC')) poste = 'Commercial terrain — Prospection & Vente B2B';
+  else poste = 'Collaborateur LABORO';
+
+  const nomComplet = (u.prenom || u.nom)
+    ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
+    : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+
+  finishLogin(mail, cls, poste, nomComplet);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -545,29 +544,28 @@ async function ajouterEleve(){
 
   showMsg('Création en cours…', '#6B7280');
 
-  try{
-    const reponse = await fetch(LABORO_API + '/api/eleves', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify({ nomComplet, email, classeCode })
-    });
-    const data = await reponse.json();
+  const r = await fetchJSON(LABORO_API + '/api/eleves', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ nomComplet, email, classeCode })
+  });
 
-    if(!data.ok){
-      showMsg('⚠️ ' + (data.erreur || 'Création impossible.'), '#C53030');
-      return;
-    }
-
-    showMsg('✅ ' + data.prenom + ' ' + data.nom + ' ajouté(e) — mot de passe : ' + data.motDePasseInitial, '#2E7D5E');
-    if(nomEl) nomEl.value = '';
-    if(mailEl) mailEl.value = '';
-    if(typeof renderClasse === 'function') renderClasse();
-
-  }catch(err){
-    showMsg('Impossible de joindre le serveur LABORO.', '#C53030');
-    console.error('Erreur ajouterEleve:', err);
+  if(!r.ok){
+    showMsg('⚠️ ' + r.erreur, '#C53030');
+    return;
   }
+  const data = r.data;
+
+  if(!data.ok){
+    showMsg('⚠️ ' + (data.erreur || 'Création impossible.'), '#C53030');
+    return;
+  }
+
+  showMsg('✅ ' + data.prenom + ' ' + data.nom + ' ajouté(e) — mot de passe : ' + data.motDePasseInitial, '#2E7D5E');
+  if(nomEl) nomEl.value = '';
+  if(mailEl) mailEl.value = '';
+  if(typeof renderClasse === 'function') renderClasse();
 }
