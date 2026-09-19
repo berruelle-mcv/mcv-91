@@ -22,6 +22,22 @@ function getResKey(comp){
   return comp;
 }
 
+// Récupère la fiche "Apprendre avant de faire" pour une compétence ET un
+// palier donnés. Compatible avec les deux formats de RES (data/competences.js) :
+//   - ancien format, une seule fiche pour tous les paliers : {t:..., c:...}
+//   - nouveau format différencié par palier : {1:{t,c}, 2:{t,c}, 3:{t,c}, 4:{t,c}}
+// Au fur et à mesure qu'une compétence est réécrite en contenu différencié,
+// elle passe au nouveau format — aucun autre changement de code nécessaire.
+function getRes(comp, palier){
+  const key = getResKey(comp);
+  const entry = RES[key];
+  if(!entry) return null;
+  if(entry[1] || entry[2] || entry[3] || entry[4]){
+    return entry[palier] || entry[4] || entry[3] || entry[2] || entry[1];
+  }
+  return entry;
+}
+
 // ═══ TIMER MISSION ═══
 var moTimerInterval = null;
 var moTimerSeconds = 0;
@@ -95,8 +111,7 @@ function openMission(id){
   const pdEl=document.getElementById('mo-palier-desc');
   if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
-  const resKey=getResKey(m.comp);
-  const res=RES[resKey];
+  const res=getRes(m.comp, m.palier);
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
   // Mission
   const savedReps=ud.missions[id]?.reponses||{};
@@ -154,7 +169,7 @@ function openMission(id){
   // Situation imprévue si moy >= 15
   const moy=Object.values(ud.missions).filter(x=>x.comp===m.comp&&x.score!=null).map(x=>x.score);
   const moyComp=moy.length>=2?moy.reduce((a,b)=>a+b,0)/moy.length:0;
-  const imprev=IMPREVU[resKey]||IMPREVU[m.comp];
+  const imprev=IMPREVU[getResKey(m.comp)]||IMPREVU[m.comp];
   if(moyComp>=15&&imprev){
     const siqid=`q_${id}_imprevu`;const siSaved=savedReps[siqid]||'';
     html+=`<div class="imprevu"><div class="imprevu-l"><div class="imprevu-dot"></div>Situation imprévue — niveau Professionnel compétent/Professionnel performant requis</div><div class="imprevu-txt"><strong>${imprev.titre} :</strong> ${imprev.txt}</div><div class="qi"><span class="qn">⚡</span>${imprev.q}<textarea class="zone-rep${siSaved?' saved':''}" id="${siqid}" placeholder="Gère cette situation imprévue…" oninput="autoSaveRep('${id}','${siqid}',this)">${siSaved}</textarea></div></div>`;
@@ -163,8 +178,7 @@ function openMission(id){
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
   if(cpBtn){
-    const resKeyCp = getResKey(m.comp);
-    const resCp = RES[resKeyCp];
+    const resCp = getRes(m.comp, m.palier);
     if(resCp){ cpBtn.classList.add('visible'); cpBtn.dataset.missionId = m.id; }
     else { cpBtn.classList.remove('visible'); }
   }
@@ -223,8 +237,7 @@ function openCoupDePouce(){
   const cpBtn = document.getElementById('cp-btn');
   const mId = cpBtn ? cpBtn.dataset.missionId : null;
   if(mId && CM){
-    const resKey = getResKey(CM.comp);
-    const res = RES[resKey];
+    const res = getRes(CM.comp, CM.palier);
     const cpContent = document.getElementById('cp-content');
     if(cpContent && res){ cpContent.innerHTML = '<div class="res-t" style="font-size:13px;font-weight:700;margin-bottom:10px">'+res.t+'</div><div class="res-b">'+res.c+'</div>'; }
   }
