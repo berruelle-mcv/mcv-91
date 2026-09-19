@@ -11,8 +11,9 @@ const COMP=[
   {code:'G4A',label:'Espace commercial (AGEC)',g:'G4A'},{code:'G4B',label:'Prospection & vente B2B (PVOC)',g:'G4B'},
 ];
 const RES={
-  'C1.2':{t:'La découverte des besoins et la vente',c:`<div class="res-section res-debutant">
-<div class="res-section-label">🔵 Pour commencer — Les bases de l'accueil</div>
+  'C1.2':{
+1:{t:'La découverte des besoins et la vente — Les bases',c:`<div class="res-section res-debutant">
+<div class="res-section-label">🔵 Les fondamentaux — accueil et découverte des besoins</div>
 <p><strong>L'accueil professionnel, c'est quoi ?</strong></p>
 <p>Quand un client entre chez LABORO, tu es le premier contact de l'entreprise. La façon dont tu l'accueilles crée immédiatement une impression — bonne ou mauvaise.</p>
 <p><strong>La formule d'accueil en 3 temps :</strong></p>
@@ -39,82 +40,165 @@ Un client entre dans le showroom. Tu es en train de ranger des articles.<br><br>
 • "Quel est votre niveau — débutant, intermédiaire ?"<br>
 • "Qu'est-ce qui est important pour vous dans ce type de produit ?"
 </div>
-
-<div class="res-visual" style="margin:18px 0">
-<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
-  <!-- Fond -->
-  <rect width="680" height="200" rx="12" fill="#F8FAFF"/>
-  
-  <!-- Titre -->
-  <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">MÉTHODE CAB — Argumenter une vente chez LABORO</text>
-  
-  <!-- Flèches de connexion -->
-  <path d="M 188 100 L 228 100" stroke="#4A6FA5" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
-  <path d="M 408 100 L 448 100" stroke="#4A6FA5" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
-  
-  <!-- Marqueur flèche -->
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#4A6FA5"/>
-    </marker>
-  </defs>
-  
-  <!-- Bloc C — Caractéristique -->
-  <rect x="20" y="60" width="168" height="90" rx="10" fill="#1A2E4A"/>
-  <text x="104" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#4A9EE8">C</text>
-  <text x="104" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CARACTÉRISTIQUE</text>
-  <text x="104" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que le produit est</text>
-  <text x="104" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"Semelle Contagrip..."</text>
-  
-  <!-- Bloc A — Avantage -->
-  <rect x="240" y="60" width="168" height="90" rx="10" fill="#2D5282"/>
-  <text x="324" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#63B3ED">A</text>
-  <text x="324" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">AVANTAGE</text>
-  <text x="324" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que ça apporte</text>
-  <text x="324" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"...donc meilleure adhérence"</text>
-  
-  <!-- Bloc B — Bénéfice -->
-  <rect x="460" y="60" width="200" height="90" rx="10" fill="#185FA5"/>
-  <text x="560" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#90CDF4">B</text>
-  <text x="560" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BÉNÉFICE CLIENT</text>
-  <text x="560" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que le client ressent</text>
-  <text x="560" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"...vous ne glisserez plus"</text>
-  
-  <!-- Exemple terrain -->
-  <rect x="20" y="162" width="640" height="28" rx="6" fill="#EBF4FF"/>
-  <text x="340" y="180" text-anchor="middle" font-size="9.5" fill="#1A2E4A">
-    <tspan font-weight="700">Exemple LABORO : </tspan>
-    <tspan>"Ces chaussures ont une semelle Contagrip (C) — donc une excellente adhérence sur terrain humide (A) — vous pourrez courir sereinement même sous la pluie (B)."</tspan>
-  </text>
-</svg>
-</div></div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — La méthode CAB</div>
-<p><strong>La méthode CAB — comment construire un argument de vente ?</strong></p>
-<p>Une fois que tu connais les besoins du client, tu peux lui proposer le bon produit. La méthode CAB te permet de construire un argument convaincant en 3 parties :</p>
-<ul>
-<li><strong>C — Caractéristique</strong> : une donnée objective du produit (matière, poids, technologie, prix…)</li>
-<li><strong>A — Avantage</strong> : ce que cette caractéristique permet de faire en général</li>
-<li><strong>B — Bénéfice</strong> : ce que ça apporte SPÉCIFIQUEMENT à CE client — c'est la partie la plus importante</li>
-</ul>
-<p><strong>La formule :</strong> "Ce produit a [C], ce qui permet [A], et donc pour vous qui [besoin], [B]."</p>
-<div class="res-ex"><div class="res-ex-l">Exemple CAB — LABORO</div>
-M. Vidal cherche des chaussures de sport pour débuter, budget 70 €.<br><br>
-<strong>C</strong> : "Le Nike Downshifter a une semelle Phylon très souple."<br>
-<strong>A</strong> : "Ce qui lui donne un excellent amorti pour protéger les articulations."<br>
-<strong>B</strong> : "Et donc pour vous qui débutez et voulez éviter les douleurs, c'est le choix idéal pour commencer en douceur."
 </div>
+<div class="res-section">
+<div class="res-section-label">🔵 Une première fiche CAB — toute simple</div>
+<p>Une fois que tu as bien écouté le client, tu dois lui présenter LE produit qui correspond à son besoin. Pour bien présenter un produit, LABORO utilise la méthode <strong>CAB</strong> : Caractéristique → Avantage → Bénéfice.</p>
+<ul>
+<li><strong>C</strong>aractéristique — ce que le produit EST (une donnée technique, un chiffre du catalogue)</li>
+<li><strong>A</strong>vantage — ce que cette caractéristique APPORTE</li>
+<li><strong>B</strong>énéfice — ce que le client EN RESSENT, pour lui, concrètement</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple tout fait — chaussures EasyRun</div>
+<strong>C</strong>aractéristique : "Cette chaussure a une semelle Contagrip avec des crampons profonds."<br>
+<strong>A</strong>vantage : "...donc elle accroche très bien même sur terrain humide."<br>
+<strong>B</strong>énéfice : "...vous ne glisserez pas, même sous la pluie."
+</div>
+<p>Pour t'entraîner sur un autre produit : pars toujours d'une caractéristique du catalogue, puis demande-toi "et donc ?" pour trouver l'avantage, puis "et pour le client, ça veut dire quoi ?" pour trouver le bénéfice.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Accueil = sourire + salutation + disponibilité</li>
 <li>Question ouverte = commence par Qui/Quoi/Comment/Pourquoi/Quand/Où/Quel</li>
-<li>Découvrir les besoins AVANT de proposer un produit</li>
-<li>CAB = Caractéristique → Avantage → Bénéfice (toujours lié au besoin du client)</li>
+<li>Toujours découvrir les besoins AVANT de proposer un produit</li>
+<li>CAB = Caractéristique (ce que c'est) → Avantage (ce que ça apporte) → Bénéfice (ce que le client en ressent)</li>
 </ul>
 </div>`},
+2:{t:'La découverte des besoins et la vente — Construire un argument',c:`<div class="res-section">
+<div class="res-section-label">🟢 Construire un argumentaire de vente convaincant</div>
+<p>Le client ne formule pas toujours son besoin clairement : il te donne plusieurs informations, parfois un peu dispersées. C'est à toi de le <strong>faire émerger</strong> et de choisir la question qui t'apportera le plus d'information utile pour orienter ton conseil.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — sélectionner la bonne question</div>
+Une cliente dit : "Je cherche une veste, pas trop chère, pour l'automne." Deux questions possibles :<br><br>
+① "Vous avez un budget précis ?"<br>
+② "Vous comptez l'utiliser pour quel type de sortie — randonnée, ville, les deux ?"<br><br>
+La question ② est plus utile ici : elle t'aidera à orienter vers une gamme technique ou plus urbaine, alors que la question ① n'apporte qu'une contrainte sans t'aider à choisir le bon produit.
+</div>
+<div class="res-visual" style="margin:18px 0">
+<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
+  <rect width="680" height="200" rx="12" fill="#F8FAFF"/>
+  <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">MÉTHODE CAB — Argumenter une vente chez LABORO</text>
+  <path d="M 188 100 L 228 100" stroke="#4A6FA5" stroke-width="2" marker-end="url(#arrow2)" fill="none"/>
+  <path d="M 408 100 L 448 100" stroke="#4A6FA5" stroke-width="2" marker-end="url(#arrow2)" fill="none"/>
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4A6FA5"/>
+    </marker>
+  </defs>
+  <rect x="20" y="60" width="168" height="90" rx="10" fill="#1A2E4A"/>
+  <text x="104" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#4A9EE8">C</text>
+  <text x="104" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CARACTÉRISTIQUE</text>
+  <text x="104" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que le produit est</text>
+  <text x="104" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"Semelle Contagrip..."</text>
+  <rect x="240" y="60" width="168" height="90" rx="10" fill="#2D5282"/>
+  <text x="324" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#63B3ED">A</text>
+  <text x="324" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">AVANTAGE</text>
+  <text x="324" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que ça apporte</text>
+  <text x="324" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"...donc meilleure adhérence"</text>
+  <rect x="460" y="60" width="200" height="90" rx="10" fill="#185FA5"/>
+  <text x="560" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#90CDF4">B</text>
+  <text x="560" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BÉNÉFICE CLIENT</text>
+  <text x="560" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que le client ressent</text>
+  <text x="560" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"...vous ne glisserez plus"</text>
+  <rect x="20" y="162" width="640" height="28" rx="6" fill="#EBF4FF"/>
+  <text x="340" y="180" text-anchor="middle" font-size="9.5" fill="#1A2E4A">
+    <tspan font-weight="700">Exemple LABORO : </tspan>
+    <tspan>"Ces chaussures ont une semelle Contagrip (C) — donc une excellente adhérence sur terrain humide (A) — vous pourrez courir sereinement même sous la pluie (B)."</tspan>
+  </text>
+</svg>
+</div>
+<p><strong>La méthode CAB — comment construire un argument de vente ?</strong></p>
+<ul>
+<li><strong>C — Caractéristique</strong> : une donnée objective du produit (matière, poids, technologie, prix…)</li>
+<li><strong>A — Avantage</strong> : ce que cette caractéristique permet de faire en général</li>
+<li><strong>B — Bénéfice</strong> : ce que ça apporte SPÉCIFIQUEMENT à CE client — c'est la partie la plus importante</li>
+</ul>
+<p><strong>La formule :</strong> "Ce produit a [C], ce qui permet [A], et donc pour vous qui [besoin], [B]."</p>
+<p>C'est à toi d'identifier, parmi les caractéristiques du produit fourni dans le dossier, laquelle est vraiment pertinente pour CE client — ne recopie pas toutes les caractéristiques, choisis celle qui répond à son besoin.</p>
+</div>
+<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
+<div class="res-section">
+<div class="res-section-label">🟢 La méthode SONCASE — comprendre les motivations d'achat</div>
+<p>Pour choisir le bon argument, il faut d'abord comprendre <strong>ce qui motive vraiment ce client à acheter</strong>. La méthode SONCASE liste 7 mobiles d'achat possibles :</p>
+<ul>
+<li><strong>S — Sécurité</strong> : le client veut être rassuré, éviter le risque ("solide", "garantie", "fiable")</li>
+<li><strong>O — Orgueil</strong> : il veut se distinguer, être valorisé ("édition limitée", "haut de gamme")</li>
+<li><strong>N — Nouveauté</strong> : il aime la dernière technologie, l'innovation ("nouvelle collection")</li>
+<li><strong>C — Confort</strong> : il recherche la simplicité, le bien-être ("facile à utiliser", "léger")</li>
+<li><strong>A — Argent</strong> : le prix, le rapport qualité/prix, l'économie réalisée</li>
+<li><strong>S — Sympathie</strong> : il achète parce qu'il apprécie le vendeur ou la marque</li>
+<li><strong>E — Environnement</strong> : il est sensible à l'écologie, au local, au durable ("matériaux recyclés")</li>
+</ul>
+<p>Chaque client a en général 1 ou 2 mobiles dominants — à toi de les repérer dans ce qu'il dit, pour orienter ton argument CAB sur le bon levier plutôt que d'argumenter au hasard.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — repérer le mobile SONCASE</div>
+Une cliente dit : "Je ne veux pas d'un article qui va s'user en 6 mois, j'ai déjà été déçue une fois." → mobile dominant : <strong>Sécurité</strong>. Ton argument doit insister sur la solidité et la garantie du produit, pas sur son prix ou sa nouveauté.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Une question ouverte n'a de valeur que si elle t'aide vraiment à orienter ton conseil</li>
+<li>CAB = Caractéristique → Avantage → Bénéfice, toujours relié au besoin exprimé</li>
+<li>Sélectionne LA caractéristique pertinente, n'énumère pas tout le catalogue</li>
+<li>SONCASE = Sécurité · Orgueil · Nouveauté · Confort · Argent · Sympathie · Environnement — identifie le mobile dominant du client</li>
+</ul>
+</div>`},
+3:{t:'La découverte des besoins et la vente — Situations complexes',c:`<div class="res-section">
+<div class="res-section-label">🟠 Gérer les situations de vente complexes</div>
+<p>Ici, le client n'a pas un besoin simple et unique. Il exprime souvent <strong>plusieurs critères qui se contredisent en partie</strong> (budget serré mais exigence de qualité, envie d'un produit technique mais méconnaissance du sport, avis contradictoires entre deux personnes qui achètent ensemble…). Ton rôle est d'identifier la priorité réelle du client, pas seulement d'additionner ses demandes.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — besoins contradictoires</div>
+Un couple : lui veut "le meilleur modèle, peu importe le prix", elle rappelle "on avait dit budget 150 € max". Tu dois reformuler pour faire émerger la vraie contrainte du foyer, sans braquer l'un ou l'autre : "Je comprends que la performance compte beaucoup — je vais vous montrer ce qui existe autour de 150 €, et si besoin l'option juste au-dessus pour comparer."
+</div>
+<p><strong>Gérer une objection avec CAB :</strong> quand le client hésite ou objecte ("c'est cher", "je ne suis pas sûr d'en avoir besoin"), reprends ton argument B (bénéfice) en le reformulant à partir de l'objection précise, plutôt que de répéter le même argumentaire.</p>
+<p><strong>SONCASE face à des mobiles multiples :</strong> à ce niveau, le client exprime souvent plusieurs mobiles à la fois, parfois contradictoires (ex. Sécurité ET Argent). Il faut alors choisir sur quel mobile appuyer ton argument principal — celui qui semble le plus déterminant dans sa décision — sans ignorer les autres.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — arbitrer entre deux mobiles SONCASE</div>
+Un client dit : "Je veux du solide, mais je ne peux pas mettre plus de 100 €." Mobiles présents : Sécurité ET Argent. Tu arbitres : "Ce modèle à 95 € a une garantie 3 ans (Sécurité) — c'est le meilleur compromis solidité/prix de la gamme (Argent)." Tu relies les deux mobiles dans un seul argument plutôt que de choisir l'un contre l'autre.
+</div>
+<div class="res-ex"><div class="res-ex-l">Exemple — traiter une objection</div>
+Client : "70 € pour des chaussures de running, c'est cher pour débuter."<br><br>
+Réponse : "Je comprends — c'est justement parce que vous débutez que l'amorti est important : sans un bon amorti, le risque de douleurs aux tendons est réel et ça peut vous décourager. Ce modèle vous permet de démarrer sereinement et de tenir dans la durée."
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta propre pratique — par exemple : qu'aurais-tu pu faire différemment si le client était resté sur son objection ? Cette question n'est pas un résumé de la mission, c'est un vrai retour critique sur ton choix.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à des besoins contradictoires, cherche la vraie priorité du client — ne les additionne pas</li>
+<li>Une objection se traite en reformulant le bénéfice, pas en répétant l'argument</li>
+<li>Face à plusieurs mobiles SONCASE, relie-les dans un seul argument plutôt que de choisir</li>
+<li>La réflexivité = un vrai retour critique sur ta pratique, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'La découverte des besoins et la vente — Niveau expert',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — vendeur confirmé</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve ou face à un client exigeant, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>Découverte</strong> : questions ouvertes → reformulation → besoin validé par le client lui-même ("si je comprends bien, ce qui compte pour vous c'est…")</li>
+<li><strong>Argumentation</strong> : CAB centré sur LE bénéfice décisif, pas un catalogue d'arguments</li>
+<li><strong>Objection</strong> : traiter sans se justifier ni céder — reformuler le bénéfice à la lumière de l'objection</li>
+<li><strong>Omnicanal</strong> : le parcours client ne s'arrête pas au magasin — un besoin identifié en showroom peut se conclure via le site ou l'appli LABORO (stock, click & collect, service après-vente) ; pense à orienter le client vers le bon canal si le produit n'est pas disponible sur place</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Client pressé, besoin mal défini au départ, produit demandé indisponible en magasin, budget non précisé spontanément. Tu dois, en autonomie complète : cadrer le besoin en 2-3 questions maximum, argumenter sur un produit de substitution disponible ou orienter vers le canal digital, et anticiper une objection probable (délai, prix) avant même qu'elle soit formulée.
+</div>
+<p><strong>Passer de la vente à la stratégie — l'outil SWOT :</strong> quand la mission te demande de concevoir ou défendre une stratégie commerciale (pas juste une vente), tu dois analyser la situation de LABORO avec l'outil SWOT :</p>
+<ul>
+<li><strong>S — Forces (Strengths)</strong> : atouts internes de LABORO (ex. commercial dédié, flocage rapide)</li>
+<li><strong>W — Faiblesses (Weaknesses)</strong> : points faibles internes (ex. prix parfois plus élevé que Decathlon)</li>
+<li><strong>O — Opportunités (Opportunities)</strong> : éléments externes favorables (ex. essor du trail, demande locale en hausse)</li>
+<li><strong>T — Menaces (Threats)</strong> : éléments externes défavorables (ex. nouveau concurrent, hausse des coûts transporteur)</li>
+</ul>
+<p>Une stratégie solide s'appuie sur les forces pour saisir les opportunités, tout en anticipant comment limiter l'effet des faiblesses et des menaces — ce n'est pas une simple liste, c'est un raisonnement croisé.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale sur la méthode — aucune fiche de secours en conditions réelles</li>
+<li>Un bénéfice décisif bien choisi vaut mieux que trois arguments dilués</li>
+<li>Pense toujours coordination omnicanale : magasin, site, appli</li>
+</ul>
+</div>`}
+},
   'C1.1':{t:'La veille commerciale',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Comprendre la veille commerciale</div>
 <p><strong>La veille commerciale, c'est quoi ?</strong></p>
@@ -288,8 +372,8 @@ Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi 
   <rect x="15" y="38" width="205" height="108" rx="10" fill="#1A2E4A"/>
   <text x="117" y="66" text-anchor="middle" font-size="22">📦</text>
   <text x="117" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">LIVRAISON DOMICILE</text>
-  <text x="117" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Standard 48h — 6,90€</text>
-  <text x="117" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Express 24h — 12,90€</text>
+  <text x="117" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Standard 3-5j — 4,90€ (offert dès 60€)</text>
+  <text x="117" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Express 24-48h — 9,90€</text>
   <text x="117" y="128" text-anchor="middle" font-size="8" fill="#63B3ED">Chronopost · Numéro de suivi</text>
   <!-- Click and collect -->
   <rect x="228" y="38" width="223" height="108" rx="10" fill="#2D5282"/>
@@ -388,12 +472,36 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
 <li>Remise clubs : 8% (≥10u) · 12% (≥30u) · 15% (≥50u)</li>
 </ul>
 </div>
+<div class="res-section">
+<div class="res-section-label">🔵 Pour aller plus loin — Chiffrer l'impact d'un dysfonctionnement et construire un tableau de bord</div>
+<p><strong>Estimer le coût d'un dysfonctionnement (retard, erreur, service mal exécuté) :</strong></p>
+<ul>
+<li><strong>Coût du temps perdu</strong> = temps passé à gérer le problème (appels, mails, recherche de solution) × coût horaire moyen d'un collaborateur</li>
+<li><strong>+ Coût du geste commercial</strong> = bon d'achat, remise, remboursement partiel accordé au client pour compenser</li>
+<li><strong>+ Risque de perte du client</strong> = probabilité que le client ne recommande pas × valeur de son panier annuel moyen (à estimer, ex. panier annuel du client × 30% de risque)</li>
+<li><strong>Coût total estimé</strong> = temps perdu + geste commercial + risque de perte du client</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — retard flocage</div>
+1h de gestion (appels + mails) à 18 €/h = 18 € · Bon d'achat accordé au club = 30 € · Panier annuel du club estimé à 900 € avec 30% de risque de perte = 270 €.<br>Coût total estimé du dysfonctionnement : 18 + 30 + 270 = 318 €.
+</div>
+<p><strong>Construire un tableau de bord de suivi des services associés à 5 indicateurs :</strong></p>
+<p>Pour chaque indicateur, préciser : son nom, sa formule de calcul, sa fréquence de mesure, son objectif cible et son seuil d'alerte.</p>
+<ul>
+<li><strong>Taux de retard livraison</strong> — (livraisons en retard / livraisons totales) × 100 — hebdomadaire — objectif &lt; 8% — seuil d'alerte &gt; 12%</li>
+<li><strong>Taux d'erreur personnalisation</strong> — (commandes textile avec erreur / commandes textile totales) × 100 — mensuelle — objectif &lt; 5% — seuil d'alerte &gt; 10%</li>
+<li><strong>Délai moyen de résolution</strong> — somme des délais de résolution / nombre d'incidents — mensuelle — objectif &lt; 3 jours — seuil d'alerte &gt; 5 jours</li>
+<li><strong>Coût moyen des erreurs</strong> — somme des gestes commerciaux accordés / nombre d'erreurs — mensuelle — objectif &lt; 20 €/erreur — seuil d'alerte &gt; 40 €/erreur</li>
+<li><strong>Taux de satisfaction services associés</strong> — note moyenne des retours clients sur les services (/5) — trimestrielle — objectif ≥ 4/5 — seuil d'alerte &lt; 3,5/5</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>5 services : livraison · click and collect · personnalisation · démo · garantie</li>
 <li>Proposer pendant la vente, pas après</li>
 <li>Tout service engagé = LABORO responsable</li>
+<li>Coût d'un dysfonctionnement = temps perdu + geste commercial + risque de perte du client</li>
+<li>Un tableau de bord se construit avec 5 éléments par indicateur : nom, formule, fréquence, objectif, seuil d'alerte</li>
 </ul>
 </div>`},
   'C2.2':{t:'Gérer une réclamation client',c:`<div class="res-section res-debutant">
@@ -404,9 +512,9 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
 <ul>
 <li><strong>E — Écouter</strong> : laisser le client parler sans interrompre</li>
 <li><strong>R — Reformuler</strong> : "Si je comprends bien, votre commande..."</li>
-<li><strong>E — Empathie</strong> : "Je comprends votre frustration..."</li>
+<li><strong>E — S'excuser</strong> : "Je suis désolé(e) pour cette situation..."</li>
 <li><strong>S — Solution</strong> : proposer une solution concrète</li>
-<li><strong>A — Accord</strong> : valider avec le client</li>
+<li><strong>A — Agir et tracer</strong> : appliquer la solution et noter l'incident dans LABORO Connect</li>
 </ul>
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
@@ -447,14 +555,14 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
   <!-- Flèche 2 -->
   <path d="M 263 105 L 278 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
   
-  <!-- Étape E2 — Empathie -->
+  <!-- Étape E2 — S'excuser -->
   <rect x="280" y="45" width="116" height="120" rx="10" fill="#B45454"/>
   <text x="338" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FCA5A5">E</text>
-  <text x="338" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">EMPATHIE</text>
-  <text x="338" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">"Je comprends</text>
-  <text x="338" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">votre frustration"</text>
-  <text x="338" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Se mettre à sa place</text>
-  <text x="338" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Jamais se justifier</text>
+  <text x="338" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">S'EXCUSER</text>
+  <text x="338" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">"Je suis désolé(e)</text>
+  <text x="338" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">pour la situation"</text>
+  <text x="338" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Au nom de LABORO</text>
+  <text x="338" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Même sans faute directe</text>
   
   <!-- Flèche 3 -->
   <path d="M 398 105 L 413 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
@@ -474,11 +582,11 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
   <!-- Étape A — Accord -->
   <rect x="550" y="45" width="120" height="120" rx="10" fill="#D97B7B"/>
   <text x="610" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FFF1F1">A</text>
-  <text x="610" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">ACCORD</text>
-  <text x="610" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">"Cette solution</text>
-  <text x="610" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">vous convient ?"</text>
-  <text x="610" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Valider avec le client</text>
-  <text x="610" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Remercier + suivre</text>
+  <text x="610" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">AGIR ET TRACER</text>
+  <text x="610" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Appliquer la solution</text>
+  <text x="610" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">et suivre</text>
+  <text x="610" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Noter dans LABORO Connect</text>
+  <text x="610" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Engagement + date</text>
   
   <!-- Barre résultat -->
   <rect x="10" y="178" width="660" height="40" rx="8" fill="#FEE2E2" stroke="#FECACA" stroke-width="1"/>
@@ -680,6 +788,21 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 <li>Client absent lors d'une livraison : laisser un message clair, rappeler dans la journée</li>
 <li>Demande hors compétence : orienter vers le bon interlocuteur, ne jamais laisser sans réponse</li>
 </ul>
+<p><strong>Construire un tableau de bord de suivi des contacts :</strong></p>
+<ul>
+<li>Choisir des indicateurs simples : nom de l'indicateur · formule de calcul · objectif cible · fréquence de mise à jour</li>
+<li>Exemples d'indicateurs utiles : délai moyen de réponse par canal · taux de contacts non traités · volume de contacts/semaine · taux de satisfaction</li>
+<li>Un bon tableau de bord se lit en moins de 30 secondes : peu d'indicateurs, mais bien choisis et à jour</li>
+</ul>
+<p><strong>Segmenter la base de contacts pour prioriser les actions :</strong> tous les clients ne demandent pas le même traitement. On peut les classer en 3 catégories :</p>
+<ul>
+<li><strong>À relancer en priorité</strong> — client à fort potentiel ou contact resté sans réponse : agir vite (mail personnalisé, appel).</li>
+<li><strong>À entretenir</strong> — client actif et satisfait : maintenir le lien (newsletter, remerciement, invitation).</li>
+<li><strong>À réactiver</strong> — client dormant ou perdu (pas d'achat depuis plusieurs mois) : proposer une offre ou un prétexte concret pour le faire revenir.</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — segmenter un fichier clients LABORO</div>
+Isabelle Morin (8 mois sans achat, abonnée newsletter) → à réactiver, par mail avec une offre trail. Thomas Renard (achat il y a 3 semaines) → à entretenir, pas d'action urgente. Sophie Aubert (14 mois sans achat, non abonnée) → à réactiver en priorité, par téléphone puisque le mail ne suffira pas.
+</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -688,6 +811,7 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 <li>Email : objet clair · 3-4 lignes · signature complète</li>
 <li>Téléphone : décrocher avant la 3e sonnerie · se présenter</li>
 <li>Personnaliser avec le nom du client à chaque échange</li>
+<li>Segmenter : à relancer en priorité · à entretenir · à réactiver</li>
 </ul>
 </div>`},
   'C3.2':{t:'Les actions de fidélisation client',c:`<div class="res-section res-debutant">
@@ -774,6 +898,10 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <li><strong>Fréquence d'achat</strong> = nombre d'achats moyen par client sur 12 mois</li>
 </ul>
 <p><strong>Segmentation clients :</strong> clients actifs (achat <6 mois) · clients dormants (6-18 mois) · clients perdus (>18 mois). Actions différentes selon segment.</p>
+<p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact. Le client montre un intérêt spontané : il faut savoir rebondir tout de suite, sans forcer, avec une proposition adaptée.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
+Pendant la soirée Rentrée Sportive, le directeur du Club Sportif Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Ce n'est pas le sujet du jour, mais Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?" Elle a transformé une remarque informelle en opportunité de vente.
+</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -782,6 +910,7 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <li>Proposer la carte PRO dès le 1er achat — systématiquement</li>
 <li>Fidéliser coûte 5 à 7× moins cher que conquérir</li>
 <li>Taux de rétention cible : >60% · NPS cible : >+20</li>
+<li>Vente au rebond : saisir une opportunité imprévue et rebondir tout de suite</li>
 </ul>
 </div>`},
   'C3.3':{t:'Évaluer les actions de fidélisation',c:`<div class="res-section res-debutant">
@@ -934,7 +1063,7 @@ Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayo
 <hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
 <div class="res-section">
 <div class="res-section-label">🔵 Pour aller plus loin — Gestion et pilotage du rayon</div>
-<p><strong>1. Les règles du merchandising — disposer les produits pour vendre</strong></p><p>Le merchandising, c'est l'art de présenter les produits pour maximiser les ventes. Chez LABORO, chaque décision de placement est réfléchie.</p><ul><li><strong>Les 3 niveaux de présentation :</strong><br>· <strong>Niveau yeux</strong> (1,2–1,6m) → produits phares, marges élevées, nouveautés. C'est ici que se font 60% des ventes.<br>· <strong>Niveau mains</strong> (0,8–1,2m) → produits courants, bonne rotation.<br>· <strong>Niveau sol</strong> (< 0,8m) → produits volumineux, articles d'appel, stocks.</li><li><strong>Zones chaudes et froides :</strong><br>· Zones chaudes (entrée, allées principales, caisses) : nouveautés, promotions, best-sellers.<br>· Zones froides (fond, angles) : produits à rotation lente → à animer pour attirer le client.</li><li><strong>Facing</strong> → nombre d'unités visibles côte à côte. Minimum 2 facings pour exister visuellement. Best-sellers = 4 facings minimum.</li><li><strong>PLV</strong> (Publicité sur Lieu de Vente) → stop-rayon, affiche, présentoir. Règle : message lisible à 3 mètres.</li></ul><p><strong>2. Gestion des stocks et approvisionnement</strong></p><ul><li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours)<br>Exemple : 3 paires/jour × 5 jours délai = stock d'alerte à <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li><li><strong>Quantité à commander</strong> = objectif de ventes × colisage (arrondir à l'entier supérieur)<br>Exemple : 405 paires à commander · colisage par 6 → 405 ÷ 6 = 67,5 → <strong>68 colis</strong> à commander.</li><li><strong>DDM — Date de Durabilité Minimale</strong> → date jusqu'à laquelle le produit garde ses qualités (pour la nutrition sportive). Un produit dont la DDM est inférieure à 1 mois doit être géré en priorité (promotion ou retour fournisseur).</li><li><strong>Sélectionner un fournisseur</strong> → comparer sur : prix d'achat HT · remises · colisage · délai de livraison · frais de port · politique de reprise · origine produit (cohérence avec valeurs LABORO).</li><li><strong>Calcul du montant d'une commande :</strong><br>Montant brut = PAHT × quantité<br>Remise = montant brut × taux de remise<br>Frais de port éventuels<br>Montant net = montant brut − remise + frais de port<br>Exemple : 68 colis × 6 paires × 75 € = 30 600 € · remise 10% = −3 060 € → <strong>27 540 € net</strong></li></ul><p><strong>3. La démarque — identifier et réduire les pertes</strong></p><ul><li><strong>Démarque connue</strong> → pertes identifiées et mesurables : produits abîmés, dates dépassées, erreurs de caisse, retours fournisseur. On sait pourquoi le produit est perdu.</li><li><strong>Démarque inconnue</strong> → pertes non expliquées : vol, erreurs d'inventaire. Plus difficile à mesurer.</li><li><strong>Calcul du taux de démarque connue HT :</strong><br>Formule : (valeur démarque HT ÷ CA HT total) × 100<br>Valeur démarque HT = PAHT × quantités perdues<br>Exemple : 2 tapis abîmés · PAHT 35 € · CA HT du rayon 8 500 €<br>Taux = (2 × 35) ÷ 8 500 × 100 = 70 ÷ 8 500 × 100 = <strong>0,82%</strong><br>Objectif sectoriel : < 1,5%. Au-dessus de 3% → situation critique.</li><li><strong>Gérer les produits à DDM courte</strong> → 2 options :<br>· Opération promotionnelle (−30%, lot 3+1, etc.) pour écouler rapidement<br>· Don à une association (action anti-gaspillage → label green economy)<br>Comparer les 2 promotions sur le CA HT et la marge dégagée pour choisir la plus rentable.</li></ul><p><strong>4. Le site marchand et l'e-commerce</strong></p><ul><li><strong>Taux de conversion</strong> = (commandes passées ÷ visiteurs uniques) × 100<br>Exemple : 312 commandes · 24 680 visiteurs → 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Moyenne nationale e-commerce 2022 : 2,96%. En dessous = site à optimiser.</li><li><strong>Pourcentage des ventes en ligne</strong> = (CA site ÷ CA total) × 100<br>Exemple : 18 400 ÷ 278 000 × 100 = <strong>6,62%</strong></li><li><strong>Panier moyen en ligne</strong> = CA site ÷ nombre de commandes<br>Exemple : 18 400 ÷ 312 = <strong>58,97 €</strong></li><li><strong>Points faibles fréquents d'un site marchand</strong> → absence d'avis clients · pas de FAQ · délais de livraison non affichés · pas de pictogrammes de réassurance (paiement sécurisé, retours) · réseaux sociaux inactifs · design non responsive.</li><li><strong>Pour améliorer le taux de conversion</strong> → ajouter des avis clients · afficher clairement les délais · créer une FAQ · optimiser le paiement · réduire l'abandon de panier.</li></ul><p><strong>5. Communication digitale pour développer la clientèle</strong></p><ul><li><strong>Choisir le bon canal</strong> → Instagram : visuels, cible 18-35 ans, trail/running · Facebook : cible 35-55 ans, CE, clubs · Newsletter : clients existants · Google My Business : référencement local.</li><li><strong>Règles d'un post efficace</strong> → visuel accrocheur en premier · texte court et direct (< 150 mots) · 3 à 5 hashtags ciblés · 1 seul call-to-action (lien, inscription, achat).</li><li><strong>Indicateurs de performance digitale</strong> → taux d'engagement = (likes + commentaires + partages) ÷ abonnés × 100 · taux d'ouverture newsletter (objectif > 25%) · taux de clic (objectif > 3%).</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul commande Salomon printemps</div>Objectif : 405 paires · Fournisseur TrailPro · PAHT 75 € · colisage par 6 · remise 10% (> 60 paires) · franco de port<br>Colis : 405 ÷ 6 = 67,5 → <strong>68 colis</strong> · Quantité réelle : 68 × 6 = 408 paires<br>Montant brut : 408 × 75 = 30 600 € · Remise 10% : −3 060 €<br><strong>Montant net : 27 540 € HT</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">Exemple LABORO — taux de conversion laboro-sport.fr</div>312 commandes · 24 680 visiteurs → taux = 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Vs moyenne nationale 2,96% → LABORO est à moins de la moitié de la moyenne → priorité absolue d'amélioration.</div><p><strong>Implantation et zones de vente</strong></p>
+<p><strong>1. Les règles du merchandising — disposer les produits pour vendre</strong></p><p>Le merchandising, c'est l'art de présenter les produits pour maximiser les ventes. Chez LABORO, chaque décision de placement est réfléchie.</p><ul><li><strong>Les 3 niveaux de présentation :</strong><br>· <strong>Niveau yeux</strong> (1,2–1,6m) → produits phares, marges élevées, nouveautés. C'est ici que se font 60% des ventes.<br>· <strong>Niveau mains</strong> (0,8–1,2m) → produits courants, bonne rotation.<br>· <strong>Niveau sol</strong> (< 0,8m) → produits volumineux, articles d'appel, stocks.</li><li><strong>Zones chaudes et froides :</strong><br>· Zones chaudes (entrée, allées principales, caisses) : nouveautés, promotions, best-sellers.<br>· Zones froides (fond, angles) : produits à rotation lente → à animer pour attirer le client.</li><li><strong>Facing</strong> → nombre d'unités visibles côte à côte. Minimum 2 facings pour exister visuellement. Best-sellers = 4 facings minimum.</li><li><strong>PLV</strong> (Publicité sur Lieu de Vente) → stop-rayon, affiche, présentoir. Règle : message lisible à 3 mètres.</li></ul><p><strong>2. Gestion des stocks et approvisionnement</strong></p><ul><li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours)<br>Exemple : 3 paires/jour × 5 jours délai = stock d'alerte à <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li><li><strong>Quantité à commander</strong> = objectif de ventes × colisage (arrondir à l'entier supérieur)<br>Exemple : 405 paires à commander · colisage par 6 → 405 ÷ 6 = 67,5 → <strong>68 colis</strong> à commander.</li><li><strong>DDM — Date de Durabilité Minimale</strong> → date jusqu'à laquelle le produit garde ses qualités (pour la nutrition sportive). Un produit dont la DDM est inférieure à 1 mois doit être géré en priorité (promotion ou retour fournisseur).</li><li><strong>Sélectionner un fournisseur</strong> → comparer sur : prix d'achat HT · remises · colisage · délai de livraison · frais de port · politique de reprise · origine produit (cohérence avec valeurs LABORO).</li><li><strong>Comparer des fournisseurs par scoring pondéré</strong> → tous les critères ne se valent pas : plutôt que de donner 1 point par critère, on leur attribue un poids selon leur importance pour LABORO (ex. Prix 40% · Délai de livraison 30% · Qualité/note clients 20% · Service (paiement, SAV) 10% — total 100%). Pour chaque fournisseur, on note chaque critère sur 5, on multiplie par le poids, puis on additionne les points pondérés obtenus. Le fournisseur avec le total pondéré le plus élevé est le mieux adapté.<br>Exemple : Fournisseur A note Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5×0,30)+(4×0,20)+(3×0,10) = 1,6+1,5+0,8+0,3 = <strong>4,2/5</strong>.</li><li><strong>La quantité économique de commande (QEC)</strong> → c'est la quantité à commander qui minimise le coût total de gestion du stock, en équilibrant deux coûts opposés : le <strong>coût de passation</strong> (plus on commande souvent, plus il grimpe — frais administratifs, transport) et le <strong>coût de stockage</strong> (plus on commande de grandes quantités d'un coup, plus il grimpe — espace, immobilisation financière). Version simplifiée utilisable en Bac Pro : on compare plusieurs scénarios de quantité par commande et on retient celui qui donne le meilleur équilibre entre nombre de commandes sur la période et niveau de stock moyen, sans jamais tomber en rupture. En pratique : commander plus souvent de petites quantités réduit le stock immobilisé mais augmente les frais de commande ; commander rarement de grandes quantités fait l'inverse — la bonne quantité est celle qui évite les deux excès.</li><li><strong>Calcul du montant d'une commande :</strong><br>Montant brut = PAHT × quantité<br>Remise = montant brut × taux de remise<br>Frais de port éventuels<br>Montant net = montant brut − remise + frais de port<br>Exemple : 68 colis × 6 paires × 75 € = 30 600 € · remise 10% = −3 060 € → <strong>27 540 € net</strong></li></ul><p><strong>3. La démarque — identifier et réduire les pertes</strong></p><ul><li><strong>Démarque connue</strong> → pertes identifiées et mesurables : produits abîmés, dates dépassées, erreurs de caisse, retours fournisseur. On sait pourquoi le produit est perdu.</li><li><strong>Démarque inconnue</strong> → pertes non expliquées : vol, erreurs d'inventaire. Plus difficile à mesurer.</li><li><strong>Calcul du taux de démarque connue HT :</strong><br>Formule : (valeur démarque HT ÷ CA HT total) × 100<br>Valeur démarque HT = PAHT × quantités perdues<br>Exemple : 2 tapis abîmés · PAHT 35 € · CA HT du rayon 8 500 €<br>Taux = (2 × 35) ÷ 8 500 × 100 = 70 ÷ 8 500 × 100 = <strong>0,82%</strong><br>Objectif sectoriel : < 1,5%. Au-dessus de 3% → situation critique.</li><li><strong>Gérer les produits à DDM courte</strong> → 2 options :<br>· Opération promotionnelle (−30%, lot 3+1, etc.) pour écouler rapidement<br>· Don à une association (action anti-gaspillage → label green economy)<br>Comparer les 2 promotions sur le CA HT et la marge dégagée pour choisir la plus rentable.</li></ul><p><strong>4. Le site marchand et l'e-commerce</strong></p><ul><li><strong>Taux de conversion</strong> = (commandes passées ÷ visiteurs uniques) × 100<br>Exemple : 312 commandes · 24 680 visiteurs → 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Moyenne nationale e-commerce 2022 : 2,96%. En dessous = site à optimiser.</li><li><strong>Pourcentage des ventes en ligne</strong> = (CA site ÷ CA total) × 100<br>Exemple : 18 400 ÷ 278 000 × 100 = <strong>6,62%</strong></li><li><strong>Panier moyen en ligne</strong> = CA site ÷ nombre de commandes<br>Exemple : 18 400 ÷ 312 = <strong>58,97 €</strong></li><li><strong>Points faibles fréquents d'un site marchand</strong> → absence d'avis clients · pas de FAQ · délais de livraison non affichés · pas de pictogrammes de réassurance (paiement sécurisé, retours) · réseaux sociaux inactifs · design non responsive.</li><li><strong>Pour améliorer le taux de conversion</strong> → ajouter des avis clients · afficher clairement les délais · créer une FAQ · optimiser le paiement · réduire l'abandon de panier.</li></ul><p><strong>5. Communication digitale pour développer la clientèle</strong></p><ul><li><strong>Choisir le bon canal</strong> → Instagram : visuels, cible 18-35 ans, trail/running · Facebook : cible 35-55 ans, CE, clubs · Newsletter : clients existants · Google My Business : référencement local.</li><li><strong>Règles d'un post efficace</strong> → visuel accrocheur en premier · texte court et direct (< 150 mots) · 3 à 5 hashtags ciblés · 1 seul call-to-action (lien, inscription, achat).</li><li><strong>Indicateurs de performance digitale</strong> → taux d'engagement = (likes + commentaires + partages) ÷ abonnés × 100 · taux d'ouverture newsletter (objectif > 25%) · taux de clic (objectif > 3%).</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul commande Salomon printemps</div>Objectif : 405 paires · Fournisseur TrailPro · PAHT 75 € · colisage par 6 · remise 10% (> 60 paires) · franco de port<br>Colis : 405 ÷ 6 = 67,5 → <strong>68 colis</strong> · Quantité réelle : 68 × 6 = 408 paires<br>Montant brut : 408 × 75 = 30 600 € · Remise 10% : −3 060 €<br><strong>Montant net : 27 540 € HT</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">Exemple LABORO — taux de conversion laboro-sport.fr</div>312 commandes · 24 680 visiteurs → taux = 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Vs moyenne nationale 2,96% → LABORO est à moins de la moitié de la moyenne → priorité absolue d'amélioration.</div><p><strong>Implantation et zones de vente</strong></p>
 <ul>
 <li><strong>Zone chaude</strong> : zones naturellement très fréquentées — entrée du magasin, allées principales, caisses. Les produits placés ici se vendent seuls. → Réserver aux nouveautés, promotions, produits à forte marge.</li>
 <li><strong>Zone froide</strong> : zones peu fréquentées spontanément — fonds de rayon, coins, étages. → Attirer le client avec de la signalétique, des têtes de gondole attractives.</li>
@@ -973,7 +1102,35 @@ PVHT = 89 ÷ (1 − 0,38) = 89 ÷ 0,62 = <strong>143,55 €</strong><br>
 PVTTC = 143,55 × 1,20 = <strong>172,26 €</strong><br><br>
 Vérification taux de marge : (143,55 − 89) ÷ 143,55 × 100 = 54,55 ÷ 143,55 = <strong>38%</strong> ✓
 </div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Le niveau des yeux c'est le niveau qui vend. Taux de démarque > 3% = situation critique à traiter immédiatement. Taux de conversion < 1% = site qui n'est pas optimisé. Un post Instagram sans call-to-action ne génère pas de ventes. Tout se mesure, tout se compare à un objectif ou une moyenne nationale.</div>
+<p><strong>Piloter la performance globale avec le SWOT :</strong> quand la mission te demande une vision d'ensemble de l'espace commercial (pas juste un indicateur isolé), l'outil SWOT permet de structurer le diagnostic :</p>
+<ul>
+<li><strong>S — Forces (Strengths)</strong> : ce qui fonctionne bien dans l'espace commercial (ex. taux de conversion trail au-dessus de la moyenne)</li>
+<li><strong>W — Faiblesses (Weaknesses)</strong> : ce qui freine la performance (ex. démarque élevée sur un rayon, zone peu fréquentée)</li>
+<li><strong>O — Opportunités (Opportunities)</strong> : évolutions externes à saisir (ex. nouvelle zone commerciale, tendance sport en hausse)</li>
+<li><strong>T — Menaces (Threats)</strong> : risques externes (ex. ouverture d'un concurrent à proximité)</li>
+</ul>
+<p>Le SWOT sert ensuite de base pour prioriser tes recommandations : on agit d'abord sur les faiblesses qui limitent une force, ou sur les opportunités les plus faciles à saisir.</p>
+<p style="margin-top:14px"><strong>Le seuil de rentabilité</strong></p>
+<ul>
+<li><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). C'est le nombre de ventes (ou de participants) à atteindre pour que l'activité ne fasse ni gain ni perte.</li>
+<li>En dessous du seuil → l'activité est déficitaire. Au-dessus → chaque vente supplémentaire dégage du bénéfice.</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — atelier "Entretien & Prolongation équipement"</div>
+Charges fixes de l'atelier (intervenant, matériel, communication) : 600 € · Prix d'inscription : 35 € · Coût variable par participant (consommables) : 12 €<br>
+Seuil de rentabilité = 600 ÷ (35 − 12) = 600 ÷ 23 = <strong>26,1 → 27 participants</strong> à inscrire pour que l'atelier soit rentable.
+</div>
+<p style="margin-top:14px"><strong>Construire une offre commerciale B2B</strong></p>
+<p>Une offre B2B (clubs, CE, collectivités) ne se construit pas comme une offre B2C : les volumes sont plus importants, la relation est suivie dans la durée, et le client attend des conditions adaptées à son statut professionnel.</p>
+<ul>
+<li><strong>Tarification dégressive par volume</strong> → un barème de remise qui augmente avec la quantité commandée (ex. −5% dès 20 pièces, −10% dès 50, −15% dès 100).</li>
+<li><strong>Conditions de paiement différées</strong> → paiement à 30 ou 60 jours fin de mois (au lieu du comptant en B2C), pour s'adapter aux cycles budgétaires des CE et collectivités.</li>
+<li><strong>Service dédié</strong> → un interlocuteur unique chez LABORO, un devis personnalisé, un SAV prioritaire.</li>
+<li><strong>Contrat annuel</strong> → engagement sur l'année avec des tarifs figés et une visibilité pour les deux parties (au lieu d'achats ponctuels).</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — offre B2B pour un CE</div>
+Pour le CE Thales Group Massy (850 salariés) : tarif dégressif sur les maillots floqués (−10% dès 50 pièces, −15% dès 100), paiement à 30 jours fin de mois, interlocuteur dédié (Nina Chevalier), contrat annuel renouvelable avec un budget cadré à 12 000 €/an. Différent d'un client B2C qui paie comptant, sans remise de volume ni interlocuteur attitré.
+</div>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Le niveau des yeux c'est le niveau qui vend. Taux de démarque > 3% = situation critique à traiter immédiatement. Taux de conversion < 1% = site qui n'est pas optimisé. Un post Instagram sans call-to-action ne génère pas de ventes. Tout se mesure, tout se compare à un objectif ou une moyenne nationale. Le SWOT structure une vision d'ensemble avant de prioriser les actions. Le seuil de rentabilité indique le volume minimal à atteindre. Une offre B2B se différencie du B2C par le volume, le paiement différé et le service dédié.</div>
 </div>`},
   'B4.1':{t:"Rechercher et qualifier les informations de prospection",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
@@ -1044,7 +1201,16 @@ Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br><br>
 <strong>T</strong> — Saison reprend en septembre → score 2/3<br><br>
 <strong>Score total : 10/12 = 83% → Prospect CHAUD → contacter cette semaine</strong>
 </div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un fichier prospect bien qualifié vaut 10 fois plus qu'une liste non travaillée. Priorité aux prospects BANT 3 ou 4. Un prospect sans date de relance est un prospect perdu. Tout se trace dans LABORO Connect dès le premier contact.</div>
+<p><strong>Aller plus loin — mettre en place une veille automatisée :</strong></p>
+<p>Au-delà de la recherche manuelle, une veille <strong>automatisée</strong> permet d'être alerté en continu, sans avoir à relancer soi-même chaque recherche. 5 sources/outils utiles pour LABORO :</p>
+<ul>
+<li><strong>Alertes Google (Google Alerts)</strong> — mots-clés "recrutement club sport Essonne", "nouvelle association sportive 91"... Fréquence : quotidienne ou hebdomadaire selon le volume.</li>
+<li><strong>Veille des avis en ligne</strong> — suivi des avis Google/Facebook des clubs et CE (mentions d'un nouvel équipement, d'une insatisfaction envers un concurrent). Fréquence : hebdomadaire.</li>
+<li><strong>Suivi automatisé des prix concurrents</strong> — comparateur ou tableau de suivi des tarifs Decathlon Pro / SportRun sur les références phares. Fréquence : mensuelle, pour ajuster l'argumentaire prix.</li>
+<li><strong>Newsletters sectorielles</strong> — lettres d'information des fédérations sportives, de la CCI Essonne, des associations d'employeurs (infos sur les CE qui recrutent, les budgets votés). Fréquence : à la réception (souvent mensuelle).</li>
+<li><strong>Flux LinkedIn suivis</strong> — abonnement aux pages des grandes entreprises et fédérations cibles, avec notification sur les publications liées au sport en entreprise. Fréquence : quotidienne (vérification rapide).</li>
+</ul>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un fichier prospect bien qualifié vaut 10 fois plus qu'une liste non travaillée. Priorité aux prospects BANT 3 ou 4. Un prospect sans date de relance est un prospect perdu. Tout se trace dans LABORO Connect dès le premier contact. La veille automatisée ne remplace pas la qualification BANT : elle alimente le fichier en continu, mais chaque prospect détecté doit ensuite être qualifié avant d'être contacté.</div>
 </div>`},
   'B4.2':{t:"Concevoir un plan et des supports de prospection",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
@@ -1119,7 +1285,16 @@ S5 : Visites terrain prospects chauds → 5 visites · déplacements 80 €<br>
 S6 : Relances finales + devis → signature · supports 50 €<br>
 <strong>Budget total : 130 € (bien en dessous des 300 €)</strong>
 </div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Calculer d'abord combien de prospects contacter, puis choisir les techniques. L'e-mailing seul ne suffit pas — le relancer par téléphone double le taux de RDV. Moins de 150 mots dans le corps du message. Un seul call-to-action. Fixer les indicateurs avant le lancement, pas après. Le ROI justifie le budget auprès de Pascal Berruelle.</div>
+<p><strong>6. Utiliser l'outil SWOT pour choisir sa stratégie de prospection</strong></p>
+<p>Avant de choisir QUI cibler et COMMENT, un commercial confirmé analyse la situation avec l'outil SWOT :</p>
+<ul>
+<li><strong>S — Forces (Strengths)</strong> : atouts internes de LABORO sur ce marché (ex. flocage rapide, commercial dédié)</li>
+<li><strong>W — Faiblesses (Weaknesses)</strong> : limites internes (ex. équipe commerciale réduite, pas de présence nationale)</li>
+<li><strong>O — Opportunités (Opportunities)</strong> : tendances externes favorables (ex. essor du sport en entreprise, nouveaux clubs créés localement)</li>
+<li><strong>T — Menaces (Threats)</strong> : risques externes (ex. concurrent low-cost, budget CE en baisse)</li>
+</ul>
+<p>Une bonne stratégie de prospection s'appuie sur les forces LABORO pour capter les opportunités identifiées, tout en évitant les segments où les faiblesses ou les menaces sont trop fortes.</p>
+<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Calculer d'abord combien de prospects contacter, puis choisir les techniques. L'e-mailing seul ne suffit pas — le relancer par téléphone double le taux de RDV. Moins de 150 mots dans le corps du message. Un seul call-to-action. Fixer les indicateurs avant le lancement, pas après. Le SWOT aide à choisir les bons segments avant de prospecter. Le ROI justifie le budget auprès de Pascal Berruelle.</div>
 </div>`},
   'B4.3':{t:"Mettre en oeuvre la prospection commerciale",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
@@ -1255,44 +1430,45 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 <hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
 <div class="res-section">
 <div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>1. La règle des 24h — envoyer le devis vite</strong></p><p>Un devis envoyé dans les <strong>24h après le RDV</strong> a 3 fois plus de chances d'aboutir qu'un devis envoyé 72h après. Le prospect est encore chaud, il se souvient de la conversation. Au-delà de 48h : le taux de signature chute de 40%.</p><p><strong>Structure d'un devis LABORO efficace :</strong></p><ul><li>En-tête : logo LABORO + coordonnées + date + numéro de devis</li><li>Destinataire : nom du décisionnaire (pas juste la société)</li><li>Tableau des produits : référence · désignation · quantité · PAHT · remise · PVHT · TVA · PVTTC</li><li>Conditions : délai de livraison garanti · conditions de paiement · validité du devis (30 jours)</li><li>Bas de page : signature du commercial + formule d'engagement</li></ul><p><strong>2. Stratégie de relance selon le délai — ne jamais laisser un devis sans suivi</strong></p><ul><li><strong>J+5 (moins d'une semaine)</strong> — Relance courte par mail : "Suite à notre échange du [date], avez-vous eu l'occasion d'étudier notre proposition ? Je reste disponible si vous avez des questions." Pas de pression.</li><li><strong>J+10 (10 jours)</strong> — Apporter un élément nouveau : témoignage d'un client similaire, actualité LABORO (nouvelle référence, promotion en cours), information sectorielle. L'objectif : rouvrir la conversation sans répéter le même message.</li><li><strong>J+15 ou plus</strong> — Appel direct. Identifier le blocage réel : budget (décision interne reportée ?), concurrent plus rapide (qui ?), besoin redéfini ? Adapter la proposition en conséquence.</li><li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans LABORO Connect : prospect perdu (raison), en veille (date de relance future), ou à réactiver (conditions à remplir).</li></ul><p><strong>3. Calculer et analyser les indicateurs de suivi</strong></p><ul><li><strong>Taux de relance</strong> = prospects relancés ÷ devis envoyés × 100 · objectif : 100% (tout devis doit être relancé)</li><li><strong>Taux de transformation devis-contrat</strong> = contrats signés ÷ devis envoyés × 100 · objectif LABORO : > 30%</li><li><strong>Délai moyen de signature</strong> = somme des jours entre envoi du devis et signature ÷ nombre de contrats</li><li><strong>CA en négociation</strong> = somme des devis en attente × taux de transformation estimé · indicateur de pilotage du pipeline commercial</li></ul><p><strong>4. Mettre à jour LABORO Connect après chaque action</strong></p><ul><li>Champs à renseigner obligatoirement après chaque contact : date de l'action · type (appel, mail, visite) · résultat (RDV, devis, refus, en attente) · prochaine action · date de relance</li><li>Statuts possibles dans LABORO Connect : Prospect froid · Prospect tiède · Prospect chaud · Devis envoyé · En négociation · Client · Perdu (raison)</li><li>Un prospect sans date de relance dans LABORO Connect = prospect invisible pour toute l'équipe = prospect perdu</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — relance CE Thales J+10 (aucune réponse)</div>Objet : "Votre commande LABORO — un retour d'expérience qui pourrait vous intéresser"<br>Corps : "Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Depuis, nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte que le vôtre — leur retour est très positif sur nos délais. Je me permets de vous le partager si vous souhaitez. Seriez-vous disponible 10 min cette semaine pour que j'ajuste notre proposition ?"<br><strong>Résultat : rappel reçu le lendemain → devis accepté sous 48h.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Devis dans les 24h — pas de dérogation. 80% des ventes B2B se signent après la 5e prise de contact. Chaque relance doit apporter quelque chose de nouveau. Toujours qualifier le blocage avant de baisser le prix. LABORO Connect mis à jour dans les 10 minutes suivant chaque action — sans exception.</div>
+<p><strong>1. La règle des 24h — envoyer le devis vite</strong></p><p>Un devis envoyé dans les <strong>24h après le RDV</strong> a 3 fois plus de chances d'aboutir qu'un devis envoyé 72h après. Le prospect est encore chaud, il se souvient de la conversation. Au-delà de 48h : le taux de signature chute de 40%.</p><p><strong>Structure d'un devis LABORO efficace :</strong></p><ul><li>En-tête : logo LABORO + coordonnées + date + numéro de devis</li><li>Destinataire : nom du décisionnaire (pas juste la société)</li><li>Tableau des produits : référence · désignation · quantité · PAHT · remise · PVHT · TVA · PVTTC</li><li>Conditions : délai de livraison garanti · conditions de paiement · validité du devis (30 jours)</li><li>Bas de page : signature du commercial + formule d'engagement</li></ul><p><strong>2. Stratégie de relance selon le délai — ne jamais laisser un devis sans suivi</strong></p><ul><li><strong>J+5 (moins d'une semaine)</strong> — Relance courte par mail : "Suite à notre échange du [date], avez-vous eu l'occasion d'étudier notre proposition ? Je reste disponible si vous avez des questions." Pas de pression.</li><li><strong>J+10 (10 jours)</strong> — Apporter un élément nouveau : témoignage d'un client similaire, actualité LABORO (nouvelle référence, promotion en cours), information sectorielle. L'objectif : rouvrir la conversation sans répéter le même message.</li><li><strong>J+15 ou plus</strong> — Appel direct. Identifier le blocage réel : budget (décision interne reportée ?), concurrent plus rapide (qui ?), besoin redéfini ? Adapter la proposition en conséquence.</li><li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans LABORO Connect : prospect perdu (raison), en veille (date de relance future), ou à réactiver (conditions à remplir).</li></ul><p><strong>3. Calculer et analyser les indicateurs de suivi</strong></p><ul><li><strong>Taux de relance</strong> = prospects relancés ÷ devis envoyés × 100 · objectif : 100% (tout devis doit être relancé)</li><li><strong>Taux de transformation devis-contrat</strong> = contrats signés ÷ devis envoyés × 100 · objectif LABORO : > 30%</li><li><strong>Délai moyen de signature</strong> = somme des jours entre envoi du devis et signature ÷ nombre de contrats</li><li><strong>CA en négociation</strong> = somme des devis en attente × taux de transformation estimé · indicateur de pilotage du pipeline commercial</li></ul><p><strong>4. Mettre à jour LABORO Connect après chaque action</strong></p><ul><li>Champs à renseigner obligatoirement après chaque contact : date de l'action · type (appel, mail, visite) · résultat (RDV, devis, refus, en attente) · prochaine action · date de relance</li><li>Statuts possibles dans LABORO Connect : Prospect froid · Prospect tiède · Prospect chaud · Devis envoyé · En négociation · Client · Perdu (raison)</li><li>Un prospect sans date de relance dans LABORO Connect = prospect invisible pour toute l'équipe = prospect perdu</li></ul><p><strong>5. Calculer le ROI d'une action commerciale</strong></p><p>Le <strong>ROI (retour sur investissement)</strong> permet de savoir si une action commerciale (opération de prospection, relance, formation, outil) a rapporté plus qu'elle n'a coûté. C'est l'indicateur qui transforme un simple bilan d'activité en preuve de rentabilité.</p><ul><li><strong>Formule</strong> : ROI (%) = (Gain généré par l'action − Coût de l'action) ÷ Coût de l'action × 100</li><li><strong>Gain généré</strong> : le CA (ou la marge, selon ce qui est demandé) directement attribuable à l'action évaluée</li><li><strong>Coût de l'action</strong> : tout ce qui a été dépensé pour la mener (budget, outils, temps valorisé si demandé)</li><li>Un ROI positif signifie que l'action a rapporté plus qu'elle n'a coûté ; plus il est élevé, plus l'action est rentable</li></ul><div class="res-ex"><div class="res-ex-l">Exemple — calcul de ROI</div>LABORO a investi 780 € dans une opération de prospection. Elle a généré 31 200 € de CA sur l'année.<br>ROI = (31 200 − 780) ÷ 780 × 100 ≈ <strong>3900%</strong>. Chaque euro investi en a rapporté environ 39. L'opération est donc très rentable, même si l'objectif initial de contrats signés n'est pas atteint à 100%.</div><p><strong>6. Appliquer la loi de Pareto (règle des 80/20) à un portefeuille clients</strong></p><p>La <strong>loi de Pareto</strong> observe que, dans beaucoup de situations commerciales, <strong>environ 80% du chiffre d'affaires provient de 20% des clients</strong>. Elle sert à prioriser : plutôt que de traiter tous les comptes de la même façon, on concentre l'attention sur ceux qui pèsent le plus.</p><ul><li><strong>Étape 1</strong> : classer les clients du CA le plus élevé au plus faible</li><li><strong>Étape 2</strong> : calculer le CA cumulé et repérer les clients qui représentent à eux seuls environ 80% du CA total — ce sont les 20% de comptes prioritaires</li><li><strong>Étape 3</strong> : adapter le suivi — les comptes du "top 20%" méritent un suivi rapproché et personnalisé (le prioriser en cas de temps limité), les autres un suivi plus standardisé</li><li>Attention : "80/20" est un ordre de grandeur, pas une règle mathématique exacte — l'important est la logique de priorisation, pas le chiffre au pourcentage près</li></ul><div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. Ce sont ces deux comptes qu'il faut prioriser en cas de charge de travail élevée — sans pour autant abandonner les comptes plus petits comme Club Sportif Sénart.</div><div class="res-ex"><div class="res-ex-l">Exemple LABORO — relance CE Thales J+10 (aucune réponse)</div>Objet : "Votre commande LABORO — un retour d'expérience qui pourrait vous intéresser"<br>Corps : "Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Depuis, nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte que le vôtre — leur retour est très positif sur nos délais. Je me permets de vous le partager si vous souhaitez. Seriez-vous disponible 10 min cette semaine pour que j'ajuste notre proposition ?"<br><strong>Résultat : rappel reçu le lendemain → devis accepté sous 48h.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Devis dans les 24h — pas de dérogation. 80% des ventes B2B se signent après la 5e prise de contact. Chaque relance doit apporter quelque chose de nouveau. Toujours qualifier le blocage avant de baisser le prix. LABORO Connect mis à jour dans les 10 minutes suivant chaque action — sans exception.</div>
 </div>`},
   'B4.5':{t:"Valoriser l'offre LABORO face à la concurrence",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.5 — Analyser les résultats et ajuster.</strong> Après une opération de prospection, il faut mesurer pour s'améliorer.</p>
-<p><strong>Les 3 indicateurs clés :</strong></p>
+<p><strong>B4.5 — Valoriser l'offre LABORO face à la concurrence.</strong> Face à un concurrent moins cher, le rôle du commercial n'est pas de baisser le prix mais de démontrer la valeur réelle de l'offre LABORO.</p>
+<p><strong>La méthode en 3 temps face à l'objection prix :</strong></p>
 <ul>
-<li><strong>Taux de contact</strong> = appels aboutis ÷ appels passés × 100. Objectif : >60%</li>
-<li><strong>Taux de RDV</strong> = RDV obtenus ÷ contacts aboutis × 100. Objectif : >15%</li>
-<li><strong>Taux de transformation</strong> = ventes ÷ RDV × 100. Objectif : >25%</li>
+<li><strong>Accepter</strong> — "Je comprends que le prix soit un critère important pour vous." Ne jamais réfuter d'emblée.</li>
+<li><strong>Quantifier la valeur</strong> — chiffrer ou illustrer ce que LABORO apporte en plus (délais plus courts, commercial dédié, SAV, garanties...)</li>
+<li><strong>Proposer une alternative</strong> — une offre d'entrée de gamme ou une commande test si l'écart de prix reste trop important</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — bilan opération</div>
-50 appels · 32 contacts (64%) · 6 RDV (19%) · 2 ventes (33%). CA généré : 1 840€. Coût opération : 0€. ROI excellent. Point faible : peu d'appels convertis en RDV — améliorer l'accroche téléphonique.
+<p><strong>Construire une offre à plusieurs niveaux</strong> (Essentiel · Confort · Partenaire) permet au client de choisir selon son budget, sans se sentir piégé dans une seule option.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — répondre à l'objection prix</div>
+Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
 </div>
 </div>
 
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.5 — ANALYSER LES RÉSULTATS DE PROSPECTION</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.5 — UNE OFFRE À PLUSIEURS NIVEAUX POUR VALORISER LABORO</text>
   <rect x="10" y="36" width="202" height="100" rx="10" fill="#1A2E4A"/>
-  <text x="111" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX DE CONTACT</text>
-  <text x="111" y="78" text-anchor="middle" font-size="22" font-weight="900" fill="#63B3ED">&gt;60%</text>
-  <text x="111" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Appels aboutis</text>
-  <text x="111" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">÷ appels passés × 100</text>
-  <text x="111" y="124" text-anchor="middle" font-size="7.5" fill="#63B3ED">Si &lt;40% → changer horaires</text>
+  <text x="111" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">OFFRE ESSENTIEL</text>
+  <text x="111" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#63B3ED">Produits standards</text>
+  <text x="111" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Délai normal</text>
+  <text x="111" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Paiement 30j</text>
+  <text x="111" y="124" text-anchor="middle" font-size="7.5" fill="#63B3ED">Entrée de gamme</text>
   <rect x="220" y="36" width="238" height="100" rx="10" fill="#2D5282"/>
-  <text x="339" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX DE RDV</text>
-  <text x="339" y="78" text-anchor="middle" font-size="22" font-weight="900" fill="#90CDF4">&gt;15%</text>
-  <text x="339" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">RDV obtenus</text>
-  <text x="339" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">÷ contacts aboutis × 100</text>
-  <text x="339" y="124" text-anchor="middle" font-size="7.5" fill="#90CDF4">Si &lt;10% → revoir l'accroche</text>
+  <text x="339" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">OFFRE CONFORT</text>
+  <text x="339" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#90CDF4">Produits premium</text>
+  <text x="339" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Livraison prioritaire</text>
+  <text x="339" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Suivi commercial mensuel</text>
+  <text x="339" y="124" text-anchor="middle" font-size="7.5" fill="#90CDF4">Le choix le plus fréquent</text>
   <rect x="466" y="36" width="204" height="100" rx="10" fill="#4A6FA5"/>
-  <text x="568" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX DE TRANSFORMATION</text>
-  <text x="568" y="78" text-anchor="middle" font-size="22" font-weight="900" fill="#BEE3F8">&gt;25%</text>
-  <text x="568" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Ventes</text>
-  <text x="568" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">÷ RDV × 100</text>
-  <text x="568" y="124" text-anchor="middle" font-size="7.5" fill="#BEE3F8">Si &lt;15% → revoir argumentaire</text>
+  <text x="568" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">OFFRE PARTENAIRE</text>
+  <text x="568" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#BEE3F8">Contrat annuel</text>
+  <text x="568" y="96" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Commercial dédié</text>
+  <text x="568" y="108" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Conditions négociées</text>
+  <text x="568" y="124" text-anchor="middle" font-size="7.5" fill="#BEE3F8">Fidélisation maximale</text>
 </svg>
 </div>
 <hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
