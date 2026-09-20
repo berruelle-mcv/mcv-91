@@ -239,6 +239,7 @@ async function refreshClassementServeur(classe){
     Object.entries(e.missions || {}).forEach(function(entry){
       const mid = entry[0], p = entry[1];
       missions[mid] = {
+        id: mid, // requis par calcScore() pour retrouver la mission (comp, coefficient) dans MISSIONS
         status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
         score: p.score
       };
