@@ -780,6 +780,17 @@ document.addEventListener('DOMContentLoaded', loadConfig);
             <div id="eleve-selectionne-nom" style="font-size:12px;font-weight:700;color:var(--bf);margin-bottom:8px;min-height:18px"></div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <button onclick="changerClasseEleve()" style="padding:8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600;text-align:left">✏️ Changer de classe</button>
+              <div id="chcl-panel" style="display:none;gap:6px;align-items:center;padding:6px;background:var(--gc);border-radius:6px">
+                <select id="chcl-select" style="flex:1;padding:6px 8px;border:.5px solid var(--gb);border-radius:6px;font-size:12px">
+                  <option value="2nde">2nde professionnelle</option>
+                  <option value="1ere-AGEC">1ère AGEC</option>
+                  <option value="1ere-PVOC">1ère PVOC</option>
+                  <option value="Term-AGEC">Terminale AGEC</option>
+                  <option value="Term-PVOC">Terminale PVOC</option>
+                </select>
+                <button onclick="validerChangementClasse()" style="padding:6px 10px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">OK</button>
+                <button onclick="document.getElementById('chcl-panel').style.display='none'" style="padding:6px 8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:12px">✕</button>
+              </div>
               <button onclick="reinitialiserEleve()" style="padding:8px;background:none;border:.5px solid var(--am);border-radius:6px;cursor:pointer;font-size:12px;color:var(--am);font-weight:600;text-align:left">🔄 Réinitialiser les missions</button>
               <button onclick="supprimerEleve()" style="padding:8px;background:none;border:.5px solid var(--rg);border-radius:6px;cursor:pointer;font-size:12px;color:var(--rg);font-weight:600;text-align:left">🗑 Supprimer cet élève</button>
             </div>
