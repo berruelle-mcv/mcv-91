@@ -315,7 +315,10 @@ function ouvrirFicheClient(id){
   const clientsConverts = ud.clientsAjoutes || [];
   const c = CLIENTS.find(function(x){ return x.id===id; }) || clientsConverts.find(function(x){ return x.id===id; }) || pros.find(function(x){ return x.id===id; });
   if(!c) return;
-  const isProspectEleve = c.ajouteParEleve === true;
+  // Un prospect = ajouté par l'élève en cours d'année, OU une fiche préchargée
+  // marquée 'Prospect' dans data/produits.js (ex: C011, C013, C046) — dans les
+  // deux cas, on affiche la fiche simplifiée sans CA/historique d'achat, non pertinents.
+  const isProspectEleve = c.ajouteParEleve === true || c.fidelite === 'Prospect';
 
   // Couleur selon fidélité
   const fidelCols={'Stratégique':'#27500A','Fidèle':'#185FA5','Régulier':'#2D5282','Nouveau':'#D97706','Prospect':'#8E44AD','Dormant':'#6B7280','Perdu':'#C53030'};
