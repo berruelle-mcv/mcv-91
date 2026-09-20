@@ -4,6 +4,7 @@
 // ================================================
 
 let ELEVES_SERVEUR = [];
+let SELECTED_ELEVE = null;
 
 async function renderClasse(){
   const token = localStorage.getItem('laboro_token');
@@ -37,7 +38,7 @@ async function renderClasse(){
 }
 
 function afficherClasse(){
-  const eleves = ELEVES_SERVEUR;
+  const eleves = ELEVES_SERVEUR.filter(e => e.statut !== 'archive');
 
   const classes = [...new Set(eleves.map(e => e.classe || 'Sans classe'))].sort();
   const tabsEl = document.getElementById('classe-tabs');
@@ -86,13 +87,14 @@ function afficherClasse(){
     const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
     const cls = e.classe || '—';
     const nomAffPropre = nomAff.replace(/'/g,"");
-    const btnReset = '<button onclick="resetMdpEleve(\'' + e.id + '\',\'' + nomAffPropre + '\')" '
+    const btnReset = '<button onclick="event.stopPropagation();resetMdpEleve(\'' + e.id + '\',\'' + nomAffPropre + '\')" '
       + 'title="Réinitialiser le mot de passe" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">🔑</button>';
-    const btnPortfolio = '<button onclick="genererPortfolioEleveServeur(\'' + e.id + '\',\'' + nomAffPropre + '\',\'' + (cls==='—'?'':cls) + '\')" '
+    const btnPortfolio = '<button onclick="event.stopPropagation();genererPortfolioEleveServeur(\'' + e.id + '\',\'' + nomAffPropre + '\',\'' + (cls==='—'?'':cls) + '\')" '
       + 'title="Générer le portfolio" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">📄</button>';
-    return '<tr>'
+    const estSelectionne = SELECTED_ELEVE && SELECTED_ELEVE.id === e.id;
+    return '<tr onclick="selectionnerEleve(\'' + e.id + '\')" style="cursor:pointer' + (estSelectionne ? ';background:var(--bc)' : '') + '">'
       + '<td style="font-weight:700">' + nomAff + '</td>'
       + '<td class="u-label-sm">' + cls + '</td>'
       + '<td colspan="5" style="font-size:11px;color:var(--gm)">' + e.email + '</td>'
@@ -122,4 +124,102 @@ async function resetMdpEleve(eleveId, nomAff){
   const d = r.data;
   if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
   alert('✅ Mot de passe réinitialisé pour ' + d.prenom + ' ' + d.nom + '.\n\nNouveau mot de passe : ' + d.motDePasse + '\n(il devra le changer à sa prochaine connexion)');
+}
+
+// ================================================
+//   Sélection d'un élève dans le tableau + actions
+// ================================================
+
+function selectionnerEleve(eleveId){
+  const e = ELEVES_SERVEUR.find(function(x){ return String(x.id) === String(eleveId); });
+  if(!e) return;
+  SELECTED_ELEVE = e;
+  const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
+  const nomEl = document.getElementById('eleve-selectionne-nom');
+  if(nomEl) nomEl.textContent = '✅ Sélectionné : ' + nomAff + (e.classe ? ' (' + e.classe + ')' : '');
+  const chcl = document.getElementById('chcl-panel');
+  if(chcl) chcl.style.display = 'none';
+  afficherClasse();
+}
+
+function verifierEleveSelectionne(){
+  if(!SELECTED_ELEVE){
+    alert('Sélectionne d\'abord un élève en cliquant sur sa ligne dans le tableau.');
+    return false;
+  }
+  return true;
+}
+
+function changerClasseEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const chcl = document.getElementById('chcl-panel');
+  const sel = document.getElementById('chcl-select');
+  if(sel && SELECTED_ELEVE.classe) sel.value = SELECTED_ELEVE.classe;
+  if(chcl){ chcl.style.display = chcl.style.display === 'none' ? 'flex' : 'none'; }
+}
+
+async function validerChangementClasse(){
+  if(!verifierEleveSelectionne()) return;
+  const nouvelleClasse = document.getElementById('chcl-select').value;
+  const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
+  if(!confirm('Confirmer le changement de classe de ' + nomAff + ' vers "' + nouvelleClasse + '" ?')) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/' + SELECTED_ELEVE.id + '/classe', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ classeCode: nouvelleClasse })
+  });
+  if(!r.ok){ alert(r.erreur); return; }
+  const d = r.data;
+  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+  document.getElementById('chcl-panel').style.display = 'none';
+  SELECTED_ELEVE = null;
+  document.getElementById('eleve-selectionne-nom').textContent = '';
+  alert('✅ Classe mise à jour pour ' + nomAff + '.');
+  renderClasse();
+}
+
+async function reinitialiserEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
+  if(!confirm('⚠️ Réinitialiser TOUTES les missions de ' + nomAff + ' ?\n\nToute sa progression (missions faites, notes, validations) sera définitivement effacée. Cette action est irréversible.')) return;
+  if(!confirm('Dernière confirmation : vraiment tout effacer pour ' + nomAff + ' ?')) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/' + SELECTED_ELEVE.id + '/reinitialiser-missions', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok){ alert(r.erreur); return; }
+  const d = r.data;
+  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+  alert('✅ Missions réinitialisées pour ' + nomAff + ' (' + d.supprimees + ' progression(s) effacée(s)).');
+}
+
+async function supprimerEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
+  const estTest = (SELECTED_ELEVE.email || '').toLowerCase().includes('test');
+  let permanent;
+  if(estTest){
+    permanent = confirm('"' + nomAff + '" semble être un compte de test (email contenant "test").\n\nSupprimer DÉFINITIVEMENT ce compte ?\n\n(Annuler = archiver seulement, sans supprimer)');
+  } else {
+    if(!confirm('Archiver ' + nomAff + ' ?\n\nL\'élève disparaîtra de la vue classe mais ses données sont conservées (réversible par un administrateur de la base).')) return;
+    permanent = false;
+  }
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const url = LABORO_API + '/api/eleves/' + SELECTED_ELEVE.id + '?permanent=' + (permanent ? '1' : '0');
+  const r = await fetchJSON(url, {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok){ alert(r.erreur); return; }
+  const d = r.data;
+  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+  SELECTED_ELEVE = null;
+  document.getElementById('eleve-selectionne-nom').textContent = '';
+  alert(d.mode === 'supprime_definitivement' ? ('🗑 ' + nomAff + ' a été supprimé définitivement.') : ('📦 ' + nomAff + ' a été archivé(e).'));
+  renderClasse();
 }
