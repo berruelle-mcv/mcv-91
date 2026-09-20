@@ -18,6 +18,8 @@ async function renderClasse(){
     return;
   }
 
+  if(typeof populateClasseSelects === 'function') populateClasseSelects();
+
   const r = await fetchJSON(LABORO_API + '/api/eleves', {
     headers: { 'Authorization': 'Bearer ' + token }
   });
@@ -40,7 +42,10 @@ async function renderClasse(){
 function afficherClasse(){
   const eleves = ELEVES_SERVEUR.filter(e => e.statut !== 'archive');
 
-  const classes = [...new Set(eleves.map(e => e.classe || 'Sans classe'))].sort();
+  // On regroupe/affiche par classe_libelle (nom réel de la classe, ex: "2nde FMRC1")
+  // plutôt que par le code générique niveau-option, pour bien distinguer 2 classes
+  // de même niveau/option (ex: 2 groupes de 2nde attribués à 2 enseignants différents).
+  const classes = [...new Set(eleves.map(e => e.classe_libelle || 'Sans classe'))].sort();
   const tabsEl = document.getElementById('classe-tabs');
   if(tabsEl){
     tabsEl.innerHTML =
@@ -48,7 +53,7 @@ function afficherClasse(){
       + '<div class="cls-tab' + (classeFiltre===''?' on':'') + '" onclick="filtrerClasse(\'\')">Toutes '
       + '<span class="cls-count">' + eleves.length + '</span></div>'
       + classes.map(function(cls){
-          const n = eleves.filter(e => (e.classe||'Sans classe')===cls).length;
+          const n = eleves.filter(e => (e.classe_libelle||'Sans classe')===cls).length;
           const clsColor = cls.indexOf('2nde')>=0 ? '#2E7D5E' : cls.indexOf('Term')>=0 ? '#7B2D42' : '#185FA5';
           const activeStyle = classeFiltre===cls ? ('background:'+clsColor+';color:#fff;border-color:'+clsColor) : ('border-color:'+clsColor+';color:'+clsColor);
           return '<div class="cls-tab' + (classeFiltre===cls?' on':'') + '" onclick="filtrerClasse(\'' + cls + '\')" style="' + activeStyle + '">'
@@ -56,7 +61,7 @@ function afficherClasse(){
         }).join('');
   }
 
-  const liste = classeFiltre ? eleves.filter(e => (e.classe||'Sans classe')===classeFiltre) : eleves;
+  const liste = classeFiltre ? eleves.filter(e => (e.classe_libelle||'Sans classe')===classeFiltre) : eleves;
 
   const statsEl = document.getElementById('classe-stats');
   if(statsEl){
@@ -85,12 +90,13 @@ function afficherClasse(){
 
   tb.innerHTML = liste.map(function(e){
     const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
-    const cls = e.classe || '—';
+    const cls = e.classe_libelle || '—';
+    const classeCodePortfolio = e.classe || '';
     const nomAffPropre = nomAff.replace(/'/g,"");
     const btnReset = '<button onclick="event.stopPropagation();resetMdpEleve(\'' + e.id + '\',\'' + nomAffPropre + '\')" '
       + 'title="Réinitialiser le mot de passe" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">🔑</button>';
-    const btnPortfolio = '<button onclick="event.stopPropagation();genererPortfolioEleveServeur(\'' + e.id + '\',\'' + nomAffPropre + '\',\'' + (cls==='—'?'':cls) + '\')" '
+    const btnPortfolio = '<button onclick="event.stopPropagation();genererPortfolioEleveServeur(\'' + e.id + '\',\'' + nomAffPropre + '\',\'' + classeCodePortfolio + '\')" '
       + 'title="Générer le portfolio" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">📄</button>';
     const estSelectionne = SELECTED_ELEVE && SELECTED_ELEVE.id === e.id;
@@ -136,7 +142,7 @@ function selectionnerEleve(eleveId){
   SELECTED_ELEVE = e;
   const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
   const nomEl = document.getElementById('eleve-selectionne-nom');
-  if(nomEl) nomEl.textContent = '✅ Sélectionné : ' + nomAff + (e.classe ? ' (' + e.classe + ')' : '');
+  if(nomEl) nomEl.textContent = '✅ Sélectionné : ' + nomAff + (e.classe_libelle ? ' (' + e.classe_libelle + ')' : '');
   const chcl = document.getElementById('chcl-panel');
   if(chcl) chcl.style.display = 'none';
   afficherClasse();
@@ -154,15 +160,18 @@ function changerClasseEleve(){
   if(!verifierEleveSelectionne()) return;
   const chcl = document.getElementById('chcl-panel');
   const sel = document.getElementById('chcl-select');
-  if(sel && SELECTED_ELEVE.classe) sel.value = SELECTED_ELEVE.classe;
+  if(sel && SELECTED_ELEVE.classe_id) sel.value = SELECTED_ELEVE.classe_id;
   if(chcl){ chcl.style.display = chcl.style.display === 'none' ? 'flex' : 'none'; }
 }
 
 async function validerChangementClasse(){
   if(!verifierEleveSelectionne()) return;
-  const nouvelleClasse = document.getElementById('chcl-select').value;
+  const selEl = document.getElementById('chcl-select');
+  const nouvelleClasse = selEl.value;
+  const nouvelleClasseLabel = selEl.options[selEl.selectedIndex] ? selEl.options[selEl.selectedIndex].textContent : nouvelleClasse;
   const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
-  if(!confirm('Confirmer le changement de classe de ' + nomAff + ' vers "' + nouvelleClasse + '" ?')) return;
+  if(!nouvelleClasse){ alert('Choisis une classe dans la liste.'); return; }
+  if(!confirm('Confirmer le changement de classe de ' + nomAff + ' vers "' + nouvelleClasseLabel + '" ?')) return;
   const token = localStorage.getItem('laboro_token');
   if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
   const r = await fetchJSON(LABORO_API + '/api/eleves/' + SELECTED_ELEVE.id + '/classe', {
