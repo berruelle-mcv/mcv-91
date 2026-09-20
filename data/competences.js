@@ -207,7 +207,7 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 <p><strong>Les 4 types de veille chez LABORO :</strong></p>
 <ul>
 <li><strong>Veille concurrentielle</strong> — Surveiller SportRun Évry, Decathlon, Go Sport. Leurs prix, leurs promos, leurs nouveautés.</li>
-<li><strong>Veille produit</strong> — Suivre les nouvelles sorties marques (Nike, Salomon, Asics). Catalogues fournisseurs, salons pro.</li>
+<li><strong>Veille produit</strong> — Suivre les nouvelles sorties des grandes marques du secteur. Catalogues fournisseurs, salons pro.</li>
 <li><strong>Veille client</strong> — Écouter les avis Google, les retours en magasin, les questions posées. Comprendre ce qui manque.</li>
 <li><strong>Veille réglementaire</strong> — Suivre les changements de loi (garanties, étiquetage, RGPD).</li>
 </ul>
@@ -229,7 +229,7 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <rect x="178" y="38" width="155" height="118" rx="10" fill="#2D5282"/>
   <text x="255" y="64" text-anchor="middle" font-size="22">📦</text>
   <text x="255" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">PRODUIT</text>
-  <text x="255" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Nike, Salomon, Asics</text>
+  <text x="255" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Grandes marques du secteur</text>
   <text x="255" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Nouveaux catalogues</text>
   <text x="255" y="126" text-anchor="middle" font-size="8" fill="#90CDF4">Salons pro · Newsletters</text>
   <text x="255" y="140" text-anchor="middle" font-size="8" fill="#90CDF4">Fournisseurs</text>
@@ -342,7 +342,7 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 <li><strong>4. Prendre congé</strong> — Remercier, souhaiter bonne utilisation, inviter à revenir. La dernière impression compte autant que la première.</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — vente de chaussures trail</div>
-M. Kowalski achète des chaussures Salomon à 149€. Avant l'encaissement : "Je vous propose aussi notre garantie étendue 30 jours — c'est gratuit." Pendant : paiement CB, ticket remis, bon de garantie expliqué. Après : "Bonne sortie trail ! N'hésitez pas si vous avez la moindre question."
+M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant l'encaissement : "Je vous propose aussi notre garantie étendue 30 jours — c'est gratuit." Pendant : paiement CB, ticket remis, bon de garantie expliqué. Après : "Bonne sortie trail ! N'hésitez pas si vous avez la moindre question."
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -393,7 +393,7 @@ M. Kowalski achète des chaussures Salomon à 149€. Avant l'encaissement : "Je
 <p>À ce niveau, tu ne te contentes plus d'appliquer les 4 étapes dans l'ordre : tu choisis la bonne formulation pour que le client se sente accompagné jusqu'au bout, jamais pressé.</p>
 <p><strong>Techniques de conclusion :</strong></p>
 <ul>
-<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les Salomon X Ultra pour leur amorti et leur légèreté — excellent choix pour le trail humide."</li>
+<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les chaussures trail Grip X pour leur amorti et leur légèreté — excellent choix pour le trail humide."</li>
 <li><strong>Alternative positive</strong> — "Vous préférez payer en CB ou en espèces ?" (jamais "Vous voulez payer ?" qui laisse la porte ouverte au renoncement)</li>
 <li><strong>Urgence factuelle</strong> — "C'est le dernier en taille 43 en stock." (vrai fait, jamais inventé pour forcer la vente)</li>
 </ul>
@@ -1150,7 +1150,7 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <p><strong>Segmentation clients :</strong> clients actifs (achat &lt;6 mois) · clients dormants (6-18 mois) · clients perdus (&gt;18 mois). Actions différentes selon segment.</p>
 <p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
-Pendant la soirée Rentrée Sportive, le directeur du Club Sportif Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?"
+Pendant la soirée Rentrée Sportive, le directeur du Club Trail Forêt de Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?"
 </div>
 </div>
 <div class="res-retenir">
@@ -1409,7 +1409,7 @@ Deux objectifs de fidélisation légitimes, un budget ou un temps insuffisant po
 </ul>
 <p><strong>Chez LABORO :</strong> le showroom est organisé par univers (trail, fitness, team sport). Chaque univers a sa tête de gondole avec les nouveautés et les promos.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — rayon trail LABORO</div>
-Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayon. Les chaussettes techniques sont juste à côté (vente complémentaire). Les bâtons de trail sont en haut. Les semelles en bas. Résultat : le panier moyen trail = 167€ (vs 89€ moyenne magasin).
+Les chaussures trail Grip X sont placées à hauteur des yeux au centre du rayon. Les chaussettes techniques sont juste à côté (vente complémentaire). Les bâtons de trail sont en haut. Les semelles en bas. Résultat : le panier moyen trail = 167€ (vs 89€ moyenne magasin).
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -1466,7 +1466,7 @@ Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayo
 <li><strong>Niveau sol</strong> (&lt;0,80m) : produits lourds, conditionnements en vrac.</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — erreur d'implantation</div>
-Rayon running : les Salomon Speedcross 6 (best-seller, marge 38%) sont placés au sol zone froide. Les Nike Pegasus (0 vente ce mois) sont en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €. <strong>Correction</strong> : inverser les placements. Impact estimé : +15% de CA sur ce rayon.
+Rayon running : le modèle Velocity (best-seller, marge 38%) est placé au sol zone froide. Le modèle EasyRun (0 vente ce mois) est en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €. <strong>Correction</strong> : inverser les placements. Impact estimé : +15% de CA sur ce rayon.
 </div>
 <p><strong>Gestion des stocks — les calculs de base :</strong></p>
 <ul>
@@ -1480,7 +1480,7 @@ Rayon running : les Salomon Speedcross 6 (best-seller, marge 38%) sont placés a
 <li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marge)</li>
 <li><strong>PVTTC</strong> = PVHT × (1 + taux de TVA) — TVA sport/textile 20%, alimentation 5,5%</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — calcul PVTTC Salomon Speedcross 6</div>
+<div class="res-ex"><div class="res-ex-l">Exemple — calcul PVTTC d'un modèle de chaussures LABORO</div>
 PAHT = 89€ · marge souhaitée 38% · TVA 20%<br>
 PVHT = 89 ÷ (1−0,38) = 89 ÷ 0,62 = <strong>143,55€</strong> · PVTTC = 143,55 × 1,20 = <strong>172,26€</strong>
 </div>
@@ -1617,7 +1617,7 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <li>Score 50-74% → prospect tiède → à contacter dans le mois</li>
 <li>Score &lt; 50% → prospect froid → à mettre en veille</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — qualification Club Trail Sénart</div>
+<div class="res-ex"><div class="res-ex-l">Exemple — qualification Club Trail Forêt de Sénart</div>
 Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br>
 B — Budget estimé 1 500€ → 2/3 · A — Président décisionnaire → 3/3 · N — Commande chaque saison → 3/3 · T — Saison reprend en septembre → 2/3<br>
 <strong>Score total : 10/12 = 83% → CHAUD → contacter cette semaine</strong>
@@ -1993,7 +1993,7 @@ ROI = (31 200 − 780) ÷ 780 × 100 ≈ <strong>3900%</strong>. Chaque euro inv
 </div>
 <p><strong>Appliquer la loi de Pareto (règle des 80/20)</strong> à un portefeuille : environ 80% du CA provient souvent de 20% des clients. Étapes : classer les clients du CA le plus élevé au plus faible → repérer ceux qui représentent ~80% du CA cumulé → adapter le suivi (les comptes prioritaires méritent un suivi rapproché en cas de temps limité, sans pour autant abandonner les autres).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>
-Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Sportif Sénart.
+Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage de priorisation — par exemple : qu'aurais-tu risqué si tu avais traité tous les comptes à égalité de temps, sans tenir compte du poids de chacun dans le CA ? Ce n'est pas un résumé du calcul de ROI ou du classement Pareto, c'est un vrai retour critique sur ta méthode de priorisation.</p>
 </div>
@@ -2075,7 +2075,7 @@ Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." R�
 <div class="res-ex"><div class="res-ex-l">Exemple — tableau comparatif clubs sportifs</div>
 Prix maillots flocage : LABORO 28 €/u · Decathlon Pro 24 €/u · SportRun 31 €/u.<br>
 Délai flocage : LABORO 3 semaines · Decathlon Pro 5 semaines · SportRun 2 semaines.<br>
-Commercial dédié : LABORO Oui · Decathlon Non · SportRun Partiellement → différenciateur fort pour LABORO.
+Commercial dédié : LABORO Oui · Decathlon Pro Non · SportRun Partiellement → différenciateur fort pour LABORO.
 </div>
 <p><strong>Construire une offre à plusieurs niveaux :</strong></p>
 <ul>
@@ -2096,12 +2096,12 @@ Commercial dédié : LABORO Oui · Decathlon Non · SportRun Partiellement → d
 <div class="res-section-label">🟠 Calculer la valeur perçue et arbitrer un argumentaire concurrentiel</div>
 <p><strong>Calculer la valeur de l'offre pour le prospect</strong> — comparer le coût total sur la durée réelle d'utilisation, pas sur le prix unitaire seul. <strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — l'écart de prix qui devient nul</div>
-LABORO 28 €/maillot · Decathlon 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon = 14 jours gagnés. Si le tournoi du client est dans 3,5 semaines, Decathlon ne peut pas livrer à temps — l'écart de 80 € devient sans objet face au risque de ne pas être livré.
+LABORO 28 €/maillot · Decathlon Pro 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon Pro = 14 jours gagnés. Si le tournoi du client est dans 3,5 semaines, Decathlon Pro ne peut pas livrer à temps — l'écart de 80 € devient sans objet face au risque de ne pas être livré.
 </div>
 <p>Quand plusieurs arguments sont disponibles (prix, délai, service, garanties), il faut choisir lesquels mettre en avant selon ce qui compte réellement pour CE prospect précis — un argument fort pour un client (délai serré) peut être sans intérêt pour un autre (stock déjà constitué).</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse construite (Marc Girault, Club Trail Sénart)</div>
-Marc Girault : "LABORO c'est 80 € de plus que Decathlon pour 20 maillots."<br>
-Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon, vous ne seriez pas livré à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Marc Girault signe le devis le lendemain.</strong>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse construite (Marc Girault, Club Trail Forêt de Sénart)</div>
+Marc Girault : "LABORO c'est 80 € de plus que Decathlon Pro pour 20 maillots."<br>
+Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon Pro, vous ne seriez pas livré à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Marc Girault signe le devis le lendemain.</strong>
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix d'arguments — par exemple : pourquoi as-tu mis en avant le délai plutôt que le service commercial dédié dans ce cas précis, et qu'est-ce qui aurait changé avec un autre prospect ? Ce n'est pas un résumé de l'argumentaire, c'est un vrai retour critique sur ta sélection d'arguments.</p>
 </div>
