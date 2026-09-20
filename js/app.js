@@ -225,7 +225,10 @@ async function refreshClassementServeur(classe){
   if(meta.fetching) return;
   if(Date.now() - meta.lastFetch < 15000) return; // évite de spammer le serveur
   meta.fetching = true;
-  const r = await fetchJSON(LABORO_API + '/api/classement/' + classe, {
+  // Le serveur détermine la classe réelle de l'élève connecté à partir de son jeton
+  // (et non du code générique niveau-option) : évite toute ambiguïté si 2 classes
+  // partagent le même niveau/option (ex: 2 groupes de 2nde attribués à 2 enseignants).
+  const r = await fetchJSON(LABORO_API + '/api/classement/moi', {
     headers: { 'Authorization': 'Bearer ' + token }
   });
   meta.fetching = false;
