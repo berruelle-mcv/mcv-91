@@ -1,60 +1,86 @@
 // ================================================
-//   LABORO Auto — Vue enseignant
+//   LABORO Sport & Outdoor — Vue enseignant
 //   Vue compétences, vue classe, indicateurs pédagogiques
 //   Version 2.0 — Catalogue 176 produits
 // ================================================
 
-// ═══ VUE COMPÉTENCES ENSEIGNANT (données serveur réelles) ═══
+// ═══ VUE COMPÉTENCES ENSEIGNANT ═══
+// Lit la progression réelle depuis le serveur (mêmes données que la Vue classe :
+// ELEVES_SERVEUR / PROGRESSIONS_CLASSE, js/classe-serveur.js), et non plus le
+// localStorage du navigateur enseignant — vide en conditions réelles puisque
+// les élèves travaillent depuis leurs propres appareils.
 async function renderCompetencesEnseignant(){
   const legend = document.getElementById('comp-legend');
   const grid = document.getElementById('comp-grid');
+
   const token = localStorage.getItem('laboro_token');
-
-  if(grid) grid.innerHTML = '<div style="padding:24px;color:#9CA3AF;font-size:13px">Chargement…</div>';
-
-  let d;
-  try{
-    d = await fetchJSON(LABORO_API + '/api/analyse-classe', {
-      headers: { 'Authorization': 'Bearer ' + token }
-    });
-  }catch(e){
-    if(grid) grid.innerHTML = '<div style="padding:24px;color:#B91C1C;font-size:13px">' + e.message + '</div>';
-    return;
-  }
-  if(!d.ok){
-    if(grid) grid.innerHTML = '<div style="padding:24px;color:#B91C1C;font-size:13px">Erreur : ' + (d.erreur || 'chargement impossible') + '</div>';
+  if(!token){
+    if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+      + '<div style="font-size:12px;color:var(--gm)">Connecte-toi via le serveur (adresse mail + mot de passe) pour afficher la progression réelle des élèves.</div></div>';
+    if(grid) grid.innerHTML = '';
     return;
   }
 
-  const total = d.nbEleves;
+  if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+    + '<div style="font-size:12px;color:var(--gm)">Chargement de la progression des élèves…</div></div>';
+  if(grid) grid.innerHTML = '';
+
+  if(!ELEVES_SERVEUR.length){
+    const r = await fetchJSON(LABORO_API + '/api/eleves', { headers: { 'Authorization': 'Bearer ' + token } });
+    if(!r.ok || !r.data.ok){
+      if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+        + '<div style="font-size:12px;color:var(--rg)">Impossible de charger les élèves.</div></div>';
+      return;
+    }
+    ELEVES_SERVEUR = r.data.eleves || [];
+  }
+  const actifs = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const manquants = actifs.filter(function(e){ return !PROGRESSIONS_CLASSE[e.id]; });
+  if(manquants.length) await chargerProgressionsClasse(manquants);
+
+  const eleves = actifs.map(function(e){ return { e: e, ud: PROGRESSIONS_CLASSE[e.id] || {missions:{}} }; });
+
+  // G4A/G4B ne concernent que les élèves AGEC/PVOC respectivement (2nde n'a pas de bloc 4) ;
+  // les missions portent comp:'C4A.x'/'B4.x', pas 'G4A.x'/'G4B.x' — d'où le calcNiveauComp
+  // sur les deux clés (miroir de niveauG4PourEleve dans classe-serveur.js).
+  function eleveConcerne(e, c){
+    if(c.code !== 'G4A' && c.code !== 'G4B') return true;
+    const cl = (e.classe_libelle || '').toUpperCase();
+    return c.code === 'G4A' ? cl.includes('AGEC') : cl.includes('PVOC');
+  }
+  function niveauPourCompetence(c, ud){
+    if(c.code === 'G4A') return Math.max(calcNiveauComp('C4A', ud), calcNiveauComp('G4A', ud));
+    if(c.code === 'G4B') return Math.max(calcNiveauComp('B4', ud), calcNiveauComp('G4B', ud));
+    return calcNiveauComp(c.code, ud);
+  }
 
   if(legend){
+    const total = eleves.length;
     legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb);margin-bottom:4px">'
-      + '<div style="font-size:13px;font-weight:800;color:#2B2B2E;margin-bottom:4px">Vue référentiel — Progression de la classe</div>'
-      + '<div style="font-size:11px;color:#6B7280">'+(total>0?total+' élève(s) dans la classe':'Aucun élève pour le moment.')+'</div>'
+      + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:4px">Vue référentiel — Progression de la classe</div>'
+      + '<div style="font-size:11px;color:#6B7280">'+(total>0?total+' élève(s)':'Aucun élève pour le moment.')+'</div>'
       + '</div>';
   }
 
   if(!grid) return;
 
-  // L'API renvoie les compétences triées "du plus fragile au plus solide" (utile pour
-  // l'analyse de classe) ; ici on réaffiche dans l'ordre du référentiel (G1 → G4).
-  const parCode = {};
-  d.competences.forEach(function(c){ parCode[c.code] = c; });
-
   grid.innerHTML = COMP.map(function(c){
-    const dc = parCode[c.code];
-    const counts = dc ? dc.niveauCounts : [0,0,0,0,0];
+    const concernes = eleves.filter(function(x){ return eleveConcerne(x.e, c); });
+    const levels = concernes.map(function(x){ return niveauPourCompetence(c, x.ud); });
+
+    const counts = [0,0,0,0,0];
+    levels.forEach(function(l){ counts[l]++; });
+    const total = concernes.length;
     const acquis = counts[3] + counts[4];
     const enCours = counts[1] + counts[2];
     const pctAcquis = total > 0 ? Math.round(acquis/total*100) : 0;
 
     const niveaux = [
       {label:'Non démarré', col:'#A0AEC0'},
-      {label:'Découverte',  col:'#E0A868'},
-      {label:'En progression', col:'#B5651D'},
-      {label:'Acquis',     col:'#B5651D'},
-      {label:'Maîtrisé',  col:'#2B2B2E'}
+      {label:'Découverte',  col:'#63B3ED'},
+      {label:'En progression', col:'#4A6FA5'},
+      {label:'Acquis',     col:'#185FA5'},
+      {label:'Maîtrisé',  col:'#0A2540'}
     ];
 
     const barSegments = total > 0 ? niveaux.map(function(n,i){
@@ -62,14 +88,14 @@ async function renderCompetencesEnseignant(){
       return pct > 0 ? '<div style="height:100%;width:'+pct+'%;background:'+n.col+';flex-shrink:0" title="'+n.label+' : '+counts[i]+'"></div>' : '';
     }).join('') : '<div style="height:100%;width:100%;background:#E2E8F0"></div>';
 
-    const statusColor = pctAcquis >= 75 ? '#B5651D' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
+    const statusColor = pctAcquis >= 75 ? '#185FA5' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
 
     return '<div class="cc" style="border-left:4px solid '+statusColor+'">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
       + compBadge(c.code)
       + '<span style="font-size:11px;font-weight:800;color:'+statusColor+'">'+(total>0?pctAcquis+'% acquis':'—')+'</span>'
       + '</div>'
-      + '<div style="font-size:13px;font-weight:800;color:#2B2B2E;margin-bottom:10px">'+c.label+'</div>'
+      + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:10px">'+c.label+'</div>'
       + (total > 0
         ? '<div style="display:flex;height:10px;border-radius:8px;overflow:hidden;margin-bottom:8px">'+barSegments+'</div>'
           + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">'
@@ -80,7 +106,7 @@ async function renderCompetencesEnseignant(){
             }).join('')
           + '</div>'
         : '<div style="height:10px;background:#E2E8F0;border-radius:8px;margin-bottom:8px"></div>'
-          + '<div style="font-size:11px;color:#9CA3AF;margin-bottom:8px">Aucun élève dans la classe</div>')
+          + '<div style="font-size:11px;color:#9CA3AF;margin-bottom:8px">Aucun élève connecté</div>')
       + '<div style="font-size:10px;color:#9CA3AF;border-top:1px solid #F3F4F6;padding-top:6px">'
       + (total > 0 ? acquis+'/'+total+' élèves ont acquis · '+enCours+' en cours' : 'En attente de données')
       + '</div>'
@@ -93,8 +119,8 @@ function openProduit(id){
   const p = PRODUITS.find(function(x){ return x.id===id; });
   if(!p) return;
 
-  const c = CAT_CFG[p.cat] || {col:'#B5651D', light:'#F5E6D8'};
-  const pImg = PROD_IMAGES[p.id] || (typeof carPlaceholder==='function' ? carPlaceholder(p.segment) : '');
+  const c = CAT_CFG[p.cat] || {col:'#4A6FA5', light:'#EBF4FF'};
+  const pImg = PROD_IMAGES[p.id] || '';
   const pvHT = (p.pv/1.2).toFixed(2);
   const margeE = ((p.pv/1.2) - p.pa).toFixed(2);
 
@@ -104,8 +130,8 @@ function openProduit(id){
     ? '<span style="color:#D97706;font-weight:700">⚠ Stock faible — '+p.stock+' u.</span>'
     : '<span class="u-success">✓ '+p.stock+' en stock</span>';
 
-  const nBg = {'Débutant':'#F5E6D8','Intermédiaire':'#F5E6D8','Expert':'#FEE2E2','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6','Pro':'#F5E6D8','Entraînement':'#F0FFF4','Loisir':'#FFF7ED','Spécialisé':'#FAF5FF'};
-  const nCo = {'Débutant':'#B5651D','Intermédiaire':'#7A4614','Expert':'#C53030','Compétition':'#C53030','Tous niveaux':'#6B7280','Pro':'#B5651D','Entraînement':'#27AE60','Loisir':'#D97706','Spécialisé':'#7B2FBE'};
+  const nBg = {'Débutant':'#EBF4FF','Intermédiaire':'#EBF4FF','Expert':'#FEE2E2','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6','Pro':'#EBF4FF','Entraînement':'#F0FFF4','Loisir':'#FFF7ED','Spécialisé':'#FAF5FF'};
+  const nCo = {'Débutant':'#185FA5','Intermédiaire':'#2D5282','Expert':'#C53030','Compétition':'#C53030','Tous niveaux':'#6B7280','Pro':'#185FA5','Entraînement':'#27AE60','Loisir':'#D97706','Spécialisé':'#7B2FBE'};
 
   // Pastilles coloris
   const colorisHtml = p.coloris && p.coloris.length
@@ -127,23 +153,28 @@ function openProduit(id){
       + '</div>'
     : '';
 
-  // Équipements de série (faits bruts, pas d'argumentaire pré-rédigé)
-  const equipHtml = (p.equipements && p.equipements.length)
-    ? '<div style="margin-bottom:10px">' + p.equipements.map(function(e){
-        return '<div style="font-size:11px;color:#374151;padding:4px 0;border-bottom:1px solid #F3F4F6">✓ '+e+'</div>';
-      }).join('') + '</div>'
-    : '<div style="font-size:11px;color:#9CA3AF">Aucun équipement renseigné.</div>';
+  // Argumentaire 3 points
+  const args = [
+    '✓ ' + p.desc.split(',')[0],
+    '✓ Marque LABORO — 100% Sport & Outdoor',
+    '✓ Disponible' + (p.stock > 0 ? ' en stock immédiat' : ' sur commande')
+  ];
+  const argsHtml = '<div style="margin-bottom:10px">'
+    + args.map(function(a){
+        return '<div style="font-size:11px;color:#374151;padding:4px 0;border-bottom:1px solid #F3F4F6">'+a+'</div>';
+      }).join('')
+    + '</div>';
 
   // Produits complémentaires — même catégorie, différent produit
   const comps = PRODUITS.filter(function(x){ return x.cat===p.cat && x.id!==p.id; }).slice(0,3);
   const compsHtml = comps.map(function(cp){
-    const cpImg = PROD_IMAGES[cp.id] || (typeof carPlaceholder==='function' ? carPlaceholder(cp.segment) : '');
-    const cpC = CAT_CFG[cp.cat] || {col:'#B5651D'};
+    const cpImg = PROD_IMAGES[cp.id] || '';
+    const cpC = CAT_CFG[cp.cat] || {col:'#4A6FA5'};
     return '<div onclick="openProduit(\''+cp.id+'\')" style="display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #E5E7EB;border-radius:10px;cursor:pointer;background:#fff" onmouseover="this.style.borderColor=\''+cpC.col+'\'" onmouseout="this.style.borderColor=\'#E5E7EB\'">'
       +'<div style="width:44px;height:36px;background:#F8FAFC;border-radius:6px;overflow:hidden;flex-shrink:0">'
       +(cpImg ? '<img src="'+cpImg+'" style="width:100%;height:100%;object-fit:contain;padding:2px">' : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#94A3B8">IMG</div>')
       +'</div>'
-      +'<div style="flex:1;min-width:0"><div style="font-size:10px;font-weight:700;color:#2B2B2E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
+      +'<div style="flex:1;min-width:0"><div style="font-size:10px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
       +'<div style="font-size:10px;color:'+cpC.col+';font-weight:700">'+cp.pv+' €</div></div></div>';
   }).join('');
 
@@ -162,7 +193,7 @@ function openProduit(id){
     +'<div style="flex:1;padding:20px;display:flex;flex-direction:column;justify-content:space-between">'
     +'<div>'
     +'<div style="font-size:10px;color:var(--gm);margin-bottom:4px">'+p.cat+' · Réf. '+p.ref+'</div>'
-    +'<div style="font-size:19px;font-weight:900;color:#2B2B2E;line-height:1.2;margin-bottom:6px">'+p.nom+'</div>'
+    +'<div style="font-size:19px;font-weight:900;color:#1A2E4A;line-height:1.2;margin-bottom:6px">'+p.nom+'</div>'
     +'<div style="font-size:12px;color:#4B5563;line-height:1.6;margin-bottom:8px">'+p.desc+'</div>'
     +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">'
     +(p.niveau?'<span style="background:'+(nBg[p.niveau]||'#F3F4F6')+';color:'+(nCo[p.niveau]||'#6B7280')+';font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px">'+p.niveau+'</span>':'')
@@ -171,7 +202,7 @@ function openProduit(id){
     +taillesHtml
     +'</div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
-    +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div style="font-size:18px;font-weight:900;color:#2B2B2E">'+p.pa+' €</div></div>'
+    +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div style="font-size:18px;font-weight:900;color:#1A2E4A">'+p.pa+' €</div></div>'
     +'<div style="background:#F0FFF4;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Vente TTC</div><div style="font-size:18px;font-weight:900;color:#27AE60">'+p.pv+' €</div><div style="font-size:10px;color:#6B7280">'+pvHT+' € HT</div></div>'
     +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:'+c.col+'">'+p.mar+' %</div><div style="font-size:10px;color:#6B7280">'+margeE+' €/u</div></div>'
     +'</div></div></div>'
@@ -180,30 +211,17 @@ function openProduit(id){
     // Caractéristiques + Argumentaire + Produits complémentaires
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">'
     +'<div style="padding:16px 18px;border-right:1px solid #F3F4F6">'
-    +'<div style="font-size:11px;font-weight:800;color:#2B2B2E;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Caractéristiques</div>'
+    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Caractéristiques</div>'
     +'<div style="font-size:11px">Stock : '+stockHtml+'</div>'
-    +(p.puissance?'<div style="font-size:11px;color:#374151;margin-top:6px">⚙️ Puissance : <strong>'+p.puissance+' ch</strong></div>':'')
-    +(p.zero_100?'<div style="font-size:11px;color:#374151;margin-top:3px">🚀 0 à 100 km/h : <strong>'+p.zero_100+'</strong></div>':'')
-    +(p.vitesse_max?'<div style="font-size:11px;color:#374151;margin-top:3px">🏁 Vitesse max : <strong>'+p.vitesse_max+'</strong></div>':'')
-    +(p.boite?'<div style="font-size:11px;color:#374151;margin-top:3px">⚙️ Boîte : <strong>'+p.boite+'</strong></div>':'')
-    +(p.consommation_urbaine?'<div style="font-size:11px;color:#374151;margin-top:6px">⛽ Conso. urbaine : <strong>'+p.consommation_urbaine+'</strong></div>':(p.consommation?'<div style="font-size:11px;color:#374151;margin-top:6px">⛽ Consommation : <strong>'+p.consommation+'</strong></div>':''))
-    +(p.consommation_mixte?'<div style="font-size:11px;color:#374151;margin-top:3px">⛽ Conso. mixte : <strong>'+p.consommation_mixte+'</strong></div>':'')
-    +(p.reservoir?'<div style="font-size:11px;color:#374151;margin-top:3px">⛽ Réservoir : <strong>'+p.reservoir+'</strong></div>':'')
-    +(p.co2?'<div style="font-size:11px;color:#374151;margin-top:3px">🌱 Émissions CO2 : <strong>'+p.co2+'</strong></div>':'')
-    +(p.dimensions?'<div style="font-size:11px;color:#374151;margin-top:6px">📐 Dimensions : <strong>'+p.dimensions+'</strong></div>':'')
-    +(p.places?'<div style="font-size:11px;color:#374151;margin-top:3px">💺 Places : <strong>'+p.places+'</strong></div>':'')
-    +(p.coffre?'<div style="font-size:11px;color:#374151;margin-top:3px">🧳 Coffre : <strong>'+p.coffre+'</strong></div>':'')
-    +(p.garantie?'<div style="font-size:11px;color:#374151;margin-top:3px">🛡️ Garantie : <strong>'+p.garantie+'</strong></div>':'')
-    +(p.historique?'<div style="font-size:11px;color:#374151;margin-top:6px">📖 Historique : <strong>'+p.historique+'</strong></div>':'')
-    +(p.controle_technique?'<div style="font-size:11px;color:#374151;margin-top:3px">🔍 Contrôle technique : <strong>'+p.controle_technique+'</strong></div>':'')
-    +(p.garantie_occasion?'<div style="font-size:11px;color:#374151;margin-top:3px">🛡️ Garantie occasion : <strong>'+p.garantie_occasion+'</strong></div>':'')
+    +(p.seuil>0?'<div style="font-size:10px;color:#9CA3AF;margin-top:2px">Seuil : '+p.seuil+' u. · TVA '+p.tva+'%</div>':'')
+    +(p.tailles&&p.tailles.length?'<div style="font-size:10px;color:#6B7280;margin-top:6px">Tailles : '+p.tailles.join(', ')+'</div>':'')
     +'</div>'
     +'<div style="padding:16px 18px;border-right:1px solid #F3F4F6">'
-    +'<div style="font-size:11px;font-weight:800;color:#2B2B2E;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔧 Équipements</div>'
-    +equipHtml
+    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">💬 Argumentaire vendeur</div>'
+    +argsHtml
     +'</div>'
     +'<div style="padding:16px 18px">'
-    +'<div style="font-size:11px;font-weight:800;color:#2B2B2E;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔗 Produits complémentaires</div>'
+    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔗 Produits complémentaires</div>'
     +(compsHtml?'<div style="display:flex;flex-direction:column;gap:6px">'+compsHtml+'</div>':'<div style="font-size:11px;color:#9CA3AF">Aucun produit associé.</div>')
     +'</div></div>'
     // Actions
@@ -216,39 +234,123 @@ function openProduit(id){
   fiche.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-// renderClasse() et renderMDJListe() : gérées par js/classe-serveur.js
-// (chargé après ce fichier, données serveur — voir renderClasse()/renderMDJListe() dans classe-serveur.js)
+// La vue classe (liste des élèves) passe désormais exclusivement par le
+// serveur : voir renderClasse() et afficherClasse() dans js/classe-serveur.js
+// (chargé après ce fichier). L'ancienne version ci-dessus, basée sur le
+// localStorage du navigateur, a été retirée (code mort, jamais exécutée).
+// NB : elle calculait des statistiques (missions validées, moyenne, niveaux
+// de compétence) que la vue serveur n'affiche pas encore — utile comme base
+// de départ le jour où la route d'agrégation par classe sera construite
+// (historique disponible dans Git si besoin de la retrouver).
 
+// ═══════════════════════════════════════════════════════════
+//   Mission du jour — assignation (classe entière ou élève précis)
+//   et affichage des assignations du jour (vue enseignant)
+// ═══════════════════════════════════════════════════════════
 
-function showFicheEleve(mail){
-  const s=gS();const u={mail,...(s[mail]||{missions:{},competences:{}})};
-  const nom=u.nom||mail;
-  const done=Object.values(u.missions).filter(m=>m.status==='done').length;
-  const att=Object.entries(u.missions).filter(([,m])=>m.status==='att');
-  const sc2=Object.values(u.missions).filter(m=>m.score!=null).map(m=>m.score);
-  const avg=sc2.length?(sc2.reduce((a,b)=>a+b,0)/sc2.length).toFixed(1):'—';
-  const sc=calcScore(u);
-  const lc=['var(--gb)','#DCAE78','var(--bl)','var(--vt)','#27500A'];
-  const ll=['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
-  const ini=nom.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-  const savedObs=s[mail]?.obs_ens||'';
-  const totalCDP=Object.values(u.missions).reduce((s,m)=>s+(m.coup_de_pouce||0),0);
-  const alerts=[];
-  COMP.forEach(c=>{const lv=u.competences[c.code]||0;if(lv===0&&(c.g==='G1'||c.g==='G4A'||c.g==='G4B'))alerts.push({type:'warn',txt:`${c.code} — ${c.label} : non démarrée`});if(lv>=3)alerts.push({type:'ok',txt:`${c.code} — Point fort : ${ll[lv]}`});});
-  att.forEach(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(m)alerts.push({type:'warn',txt:`${m.titre} — soumise, note IA ${mv.note_ia}/20 — en attente de validation`});});
-  document.getElementById('fe-wrap').innerHTML=`<div class="fe">
-    <div class="fe-hd"><div style="display:flex;align-items:center;gap:12px"><div class="avu" style="width:44px;height:44px;font-size:16px">${ini}</div><div><div style="font-size:16px;font-weight:700">${nom}</div><div style="font-size:11px;opacity:.8;margin-top:2px">${mail}</div></div></div><div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px"><div style="font-size:28px;font-weight:900">${sc}</div><div style="font-size:10px;opacity:.8">Score LABORO /100</div><button onclick="genererPortfolioEleve('${mail}')" style="padding:6px 12px;background:rgba(255,255,255,.2);color:#fff;border:.5px solid rgba(255,255,255,.4);border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">📄 Portfolio</button></div></div>
-    <div class="fe-kpis" style="${totalCDP>0?'grid-template-columns:repeat(5,1fr)':'grid-template-columns:repeat(4,1fr)'}"><div class="fe-kpi"><div class="fe-kv">${done}</div><div class="fe-kl">Validées</div></div><div class="fe-kpi"><div class="fe-kv">${avg}</div><div class="fe-kl">Moyenne /20</div></div><div class="fe-kpi"><div class="fe-kv">${Object.values(u.competences).filter(v=>v>0).length}/12</div><div class="fe-kl">Compétences</div></div><div class="fe-kpi"><div class="fe-kv">${att.length}</div><div class="fe-kl">À valider</div></div>${totalCDP>0?'<div class="fe-kpi" style="background:#FFFBEA"><div class="fe-kv" style="color:#8A6500">'+totalCDP+'</div><div class="fe-kl" style="color:#A07800">💡 Coups de pouce</div></div>':''}</div>
-    ${alerts.length?`<div class="fe-sec"><div class="fe-st">Points d'attention</div>${alerts.slice(0,4).map(a=>`<div class="al-row al-${a.type}"><div class="al-dot" style="background:${a.type==='warn'?'var(--am)':'var(--vt)'}"></div>${a.txt}</div>`).join('')}</div>`:''}
-    <div class="fe-sec"><div class="fe-st">Progression par compétence</div>${COMP.map(c=>{const lv=u.competences[c.code]||0;return`<div class="cr"><span class="cr-code">${c.code}</span><span class="cr-label">${c.label}</span><div class="cr-bar"><div class="cr-fill" style="width:${lv*25}%;background:${lc[lv]}"></div></div><span class="cr-txt" style="color:${lc[lv]}">${ll[lv]}</span></div>`;}).join('')}</div>
-    <div class="fe-sec"><div class="fe-st">Missions</div>
-      <div class="mr hdr"><span>Mission</span><span>Comp.</span><span>Tent.</span><span>Note</span><span>Statut</span></div>
-      ${Object.entries(u.missions).map(([mid,mv])=>{const m=MISSIONS.find(x=>x.id===mid);if(!m)return'';const nc=mv.score>=17?'nb-h':mv.score>=11?'nb-m':'nb-l';return`<div class="mr"><span style="font-size:11px">${m.titre}</span><span class="u-label-sm">${m.comp} P${m.palier}</span><span style="text-align:center">${mv.tentatives||1}/2</span><span><div class="nb2 ${mv.score?nc:''}">${mv.score?mv.score+'/20':mv.note_ia?'IA:'+mv.note_ia:'-'}</div></span><span>${mv.status==='done'?'<span style="color:var(--vt);font-size:11px;font-weight:700">✓ Validée</span>':mv.status==='att'?`<button onclick="validerMission('${mail}','${mid}')" style="padding:3px 8px;background:var(--bl);color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:11px">Valider ${mv.note_ia}/20</button>`:'-'}</span></div>`;}).join('')}
-    </div>
-    <div class="fe-sec"><div class="fe-st">Observations enseignant</div><textarea class="obs-area" id="obs-${mail}" placeholder="Observations, points forts, axes de progression…">${savedObs}</textarea><button class="btn-obs-s" onclick="saveObs('${mail}')">Enregistrer</button></div>
-  </div>`;
-  document.getElementById('fe-wrap').scrollIntoView({behavior:'smooth'});
+// --- Appelé à l'ouverture du panneau "Mission du jour" ---
+function renderMDJPanel(){
+  if(typeof populateMDJSelect === 'function') populateMDJSelect();
+  if(typeof populateMDJEleveSelect === 'function') populateMDJEleveSelect();
+  if(typeof populateClasseSelects === 'function') populateClasseSelects();
+  toggleMDJCible();
+  renderMDJListe();
 }
+
+// --- Bascule l'affichage entre sélection "classe" et "élève" ---
+function toggleMDJCible(){
+  const cible = document.getElementById('mdj-cible');
+  const selCl = document.getElementById('mdj-cl');
+  const selEl = document.getElementById('mdj-el');
+  if(!cible || !selCl || !selEl) return;
+  const isEleve = cible.value === 'eleve';
+  selCl.style.display = isEleve ? 'none' : '';
+  selEl.style.display = isEleve ? '' : 'none';
+}
+
+// --- Assigner la mission du jour (classe ou élève selon le mode choisi) ---
+async function assignerMDJ(){
+  const st = document.getElementById('mdj-st');
+  const cible = document.getElementById('mdj-cible');
+  const mid = document.getElementById('mdj-ms').value;
+  if(!mid){ if(st) st.textContent = 'Choisis une mission.'; return; }
+
+  const isEleve = cible && cible.value === 'eleve';
+  const body = { mission_id: mid };
+  if(isEleve){
+    const elId = document.getElementById('mdj-el').value;
+    if(!elId){ if(st) st.textContent = 'Choisis un élève.'; return; }
+    body.eleve_id = elId;
+  } else {
+    const clCode = document.getElementById('mdj-cl').value;
+    if(!clCode){ if(st) st.textContent = 'Choisis une classe.'; return; }
+    body.classeCode = clCode;
+  }
+
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ if(st) st.textContent = 'Connecte-toi via le serveur (enseignant) pour assigner une mission.'; return; }
+
+  if(st) st.textContent = 'Assignation en cours…';
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify(body)
+  });
+  if(!r.ok){ if(st) st.textContent = r.erreur; return; }
+  const d = r.data;
+  if(!d.ok){ if(st) st.textContent = 'Échec : ' + (d.erreur || 'erreur inconnue'); return; }
+
+  if(st){
+    st.textContent = d.cible === 'eleve'
+      ? '✅ Mission "'+d.titre+'" assignée à '+d.prenom+' '+d.nom+'.'
+      : '✅ Mission "'+d.titre+'" assignée à la classe.';
+  }
+  renderMDJListe();
+}
+
+// --- Liste des missions du jour assignées aujourd'hui (classes + élèves) ---
+async function renderMDJListe(){
+  const el = document.getElementById('mdj-liste');
+  if(!el) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">'
+      + 'Connecte-toi via le serveur (enseignant) pour voir les missions du jour assignées.</div>';
+    return;
+  }
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/toutes', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--rg,#C53030);text-align:center">Impossible de charger les missions du jour.</div>';
+    return;
+  }
+  const { parClasse, parEleve } = r.data;
+  if((!parClasse || !parClasse.length) && (!parEleve || !parEleve.length)){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">Aucune mission du jour assignée pour le moment.</div>';
+    return;
+  }
+  let html = '';
+  (parClasse||[]).forEach(function(a){
+    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
+      + '<span style="font-size:12px"><strong>'+(a.classe_libelle||a.classe_id)+'</strong> — '+a.titre+'</span>'
+      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
+  });
+  (parEleve||[]).forEach(function(a){
+    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
+      + '<span style="font-size:12px"><strong>'+a.nom+' '+a.prenom+'</strong> — '+a.titre+'</span>'
+      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
+  });
+  el.innerHTML = html;
+}
+
+// (ancienne fiche élève détaillée showFicheEleve(), supprimée le 20/09/2026 —
+// code mort : plus aucun bouton de l'interface actuelle ne l'appelait depuis le
+// passage de la Vue classe au serveur. La sélection d'un élève dans la Vue
+// classe passe désormais par selectionnerEleve(), classe-serveur.js.)
 
 function handleMission(id){
   const ud = gUD();
@@ -269,14 +371,14 @@ function renderIndicateursPedago(){
   const ud = gUD();
   const allMissions = getMissions();
   const done = allMissions.filter(function(m){ return ud.missions[m.id]?.status==='done'; });
-  const scores = done.filter(function(m){ return ud.missions[m.id]?.score; }).map(function(m){ return ud.missions[m.id].score; });
+  const scores = done.filter(function(m){ return ud.missions[m.id]?.score != null; }).map(function(m){ return ud.missions[m.id].score; });
   const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
   const byPalier = [0,0,0,0,0];
   done.forEach(function(m){ byPalier[m.palier]++; });
   const reussi = scores.filter(function(s){ return s>=11; }).length;
   const tauxReussite = scores.length ? Math.round(reussi/scores.length*100) : 0;
   const bestScore = scores.length ? Math.max.apply(null, scores) : 0;
-  const palierColors = ['','#B5651D','#7A4614','#B5651D','#7B2FBE'];
+  const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
   const palierLabels = ['','Débutant','Apprenti','Pro compétent','Pro performant'];
   const maxByPalier = Math.max.apply(null, byPalier.slice(1)) || 1;
 
@@ -286,12 +388,12 @@ function renderIndicateursPedago(){
     + [1,2,3,4].map(function(p){
         const count = byPalier[p];
         const pct = Math.round(count/maxByPalier*100);
-        return '<div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11px;font-weight:700;color:'+palierColors[p]+'">'+palierLabels[p]+'</span><span style="font-size:11px;font-weight:800;color:#2B2B2E">'+count+' mission'+(count>1?'s':'')+'</span></div><div style="background:#E2E8F0;border-radius:6px;height:10px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+palierColors[p]+';border-radius:6px;transition:width .5s"></div></div></div>';
+        return '<div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11px;font-weight:700;color:'+palierColors[p]+'">'+palierLabels[p]+'</span><span style="font-size:11px;font-weight:800;color:#1A2E4A">'+count+' mission'+(count>1?'s':'')+'</span></div><div style="background:#E2E8F0;border-radius:6px;height:10px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+palierColors[p]+';border-radius:6px;transition:width .5s"></div></div></div>';
       }).join('')
     + '</div></div>'
     + '<div class="card"><div class="ct">🎯 Ma performance</div><div class="u-grid-2">'
-    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#B5651D':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 11/20</div></div>'
-    + '<div style="background:#F5E6D8;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div><div style="font-size:24px;font-weight:900;color:#7A4614">'+(bestScore>0?bestScore+'/20':'—')+'</div><div class="u-label">sur toutes les missions</div></div>'
+    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#185FA5':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 11/20</div></div>'
+    + '<div style="background:#EBF4FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div><div style="font-size:24px;font-weight:900;color:#2D5282">'+(bestScore>0?bestScore+'/20':'—')+'</div><div class="u-label">sur toutes les missions</div></div>'
     + '<div style="background:#FFF7ED;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Missions terminées</div><div style="font-size:24px;font-weight:900;color:#D97706">'+done.length+'/'+allMissions.length+'</div><div class="u-label">'+Math.round(done.length/allMissions.length*100)+'% complété</div></div>'
     + '<div style="background:#FAF5FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Moyenne générale</div><div style="font-size:24px;font-weight:900;color:#7B2FBE">'+(avg>0?avg.toFixed(1)+'/20':'—')+'</div><div class="u-label">sur missions notées</div></div>'
     + '</div></div>'
@@ -300,7 +402,7 @@ function renderIndicateursPedago(){
         const compAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code,ud)>=3; }).length;
         const pct = Math.round(compAcquis/COMP.length*100);
         const nextMilestone = pct<25?25:pct<50?50:pct<75?75:100;
-        return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px"><span class="u-subtitle">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span><span class="u-muted">Prochain palier : '+nextMilestone+'%</span></div><div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#B5651D,#2B2B2E);border-radius:10px;transition:width .6s"></div>'
+        return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px"><span class="u-subtitle">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span><span class="u-muted">Prochain palier : '+nextMilestone+'%</span></div><div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#185FA5,#0A2540);border-radius:10px;transition:width .6s"></div>'
           +[25,50,75].map(function(mark){ return '<div style="position:absolute;top:0;left:'+mark+'%;width:2px;height:100%;background:#fff;opacity:.6"></div>'; }).join('')
           +'</div><div style="display:flex;justify-content:space-between;font-size:9px;color:#9CA3AF;margin-top:3px"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>';
       })()
