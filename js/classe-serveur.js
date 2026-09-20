@@ -85,15 +85,19 @@ function afficherClasse(){
   tb.innerHTML = liste.map(function(e){
     const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
     const cls = e.classe || '—';
-    const btnReset = '<button onclick="resetMdpEleve(\'' + e.id + '\',\'' + (nomAff.replace(/'/g,"")) + '\')" '
+    const nomAffPropre = nomAff.replace(/'/g,"");
+    const btnReset = '<button onclick="resetMdpEleve(\'' + e.id + '\',\'' + nomAffPropre + '\')" '
       + 'title="Réinitialiser le mot de passe" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">🔑</button>';
+    const btnPortfolio = '<button onclick="genererPortfolioEleveServeur(\'' + e.id + '\',\'' + nomAffPropre + '\',\'' + (cls==='—'?'':cls) + '\')" '
+      + 'title="Générer le portfolio" '
+      + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">📄</button>';
     return '<tr>'
       + '<td style="font-weight:700">' + nomAff + '</td>'
       + '<td class="u-label-sm">' + cls + '</td>'
       + '<td colspan="5" style="font-size:11px;color:var(--gm)">' + e.email + '</td>'
       + '<td style="font-size:10px;color:var(--vt);font-weight:700">' + (e.statut || 'actif') + '</td>'
-      + '<td style="text-align:center">' + btnReset + '</td>'
+      + '<td style="text-align:center;display:flex;gap:4px;justify-content:center">' + btnPortfolio + btnReset + '</td>'
       + '</tr>';
   }).join('');
 
