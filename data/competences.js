@@ -199,10 +199,11 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 </ul>
 </div>`}
 },
-  'C1.1':{t:'La veille commerciale',c:`<div class="res-section res-debutant">
+  'C1.1':{
+1:{t:'La veille commerciale — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Comprendre la veille commerciale</div>
 <p><strong>La veille commerciale, c'est quoi ?</strong></p>
-<p>C'est surveiller régulièrement ce qui se passe autour de toi : tes concurrents, les nouveaux produits, les attentes clients, les tendances du marché. Sans veille, tu découvres les mauvaises nouvelles trop tard.</p>
+<p>C'est surveiller régulièrement ce qui se passe autour de toi : tes concurrents, les nouveaux produits, les attentes clients, les tendances du marché. Sans veille, tu découvres les mauvaises nouvelles trop tard — un concurrent a baissé ses prix depuis un mois et tu ne le savais pas.</p>
 <p><strong>Les 4 types de veille chez LABORO :</strong></p>
 <ul>
 <li><strong>Veille concurrentielle</strong> — Surveiller SportRun Évry, Decathlon, Go Sport. Leurs prix, leurs promos, leurs nouveautés.</li>
@@ -214,12 +215,10 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les nouveautés et les prix. Cette semaine : Decathlon lance un trail shoe à 59€ — LABORO a un équivalent à 79€. Elle prépare 3 arguments pour justifier l'écart de prix auprès des clients.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="170" rx="12" fill="#F8FAFF"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">LES 4 TYPES DE VEILLE — LABORO Sport &amp; Outdoor</text>
-  <!-- Concurrentielle -->
   <rect x="15" y="38" width="155" height="118" rx="10" fill="#1A2E4A"/>
   <text x="92" y="64" text-anchor="middle" font-size="22">🏁</text>
   <text x="92" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CONCURRENTIELLE</text>
@@ -227,7 +226,6 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <text x="92" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Go Sport, Intersport</text>
   <text x="92" y="126" text-anchor="middle" font-size="8" fill="#63B3ED">Prix · Promos · Nouveautés</text>
   <text x="92" y="140" text-anchor="middle" font-size="8" fill="#63B3ED">Chaque lundi matin</text>
-  <!-- Produit -->
   <rect x="178" y="38" width="155" height="118" rx="10" fill="#2D5282"/>
   <text x="255" y="64" text-anchor="middle" font-size="22">📦</text>
   <text x="255" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">PRODUIT</text>
@@ -235,7 +233,6 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <text x="255" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Nouveaux catalogues</text>
   <text x="255" y="126" text-anchor="middle" font-size="8" fill="#90CDF4">Salons pro · Newsletters</text>
   <text x="255" y="140" text-anchor="middle" font-size="8" fill="#90CDF4">Fournisseurs</text>
-  <!-- Client -->
   <rect x="341" y="38" width="155" height="118" rx="10" fill="#4A6FA5"/>
   <text x="418" y="64" text-anchor="middle" font-size="22">👥</text>
   <text x="418" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CLIENT</text>
@@ -243,7 +240,6 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <text x="418" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Questions en magasin</text>
   <text x="418" y="126" text-anchor="middle" font-size="8" fill="#BEE3F8">NPS · Réclamations</text>
   <text x="418" y="140" text-anchor="middle" font-size="8" fill="#BEE3F8">Tendances besoins</text>
-  <!-- Réglementaire -->
   <rect x="504" y="38" width="161" height="118" rx="10" fill="#185FA5"/>
   <text x="584" y="64" text-anchor="middle" font-size="22">⚖️</text>
   <text x="584" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">RÉGLEMENTAIRE</text>
@@ -253,29 +249,88 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <text x="584" y="140" text-anchor="middle" font-size="8" fill="#EBF8FF">Fédérations sportives</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Mettre en place un dispositif de veille</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>4 types de veille : concurrentielle · produit · client · réglementaire</li>
+<li>Chaque type a ses propres sources — ne confonds pas surveiller un concurrent et écouter un client</li>
+<li>La veille sert à agir, pas juste à savoir : chaque info doit déboucher sur quelque chose (un argument, une alerte, un ajustement)</li>
+</ul>
+</div>`},
+2:{t:'La veille commerciale — Organiser sa veille et en tirer un argument',c:`<div class="res-section">
+<div class="res-section-label">🟢 Mettre en place un vrai dispositif de veille</div>
+<p>À ce niveau, tu ne te contentes plus de repérer une info isolée : tu organises ta veille pour qu'elle soit régulière et exploitable par toute l'équipe.</p>
 <p><strong>Sources à utiliser :</strong></p>
 <ul>
-<li>Sites concurrents + Google Alertes (mot-clé + marque)</li>
+<li>Sites concurrents + Google Alertes (mot-clé + nom de marque)</li>
 <li>Réseaux sociaux des marques (Instagram, LinkedIn fournisseurs)</li>
 <li>Newsletters professionnelles (LSA, Sport Stratégies)</li>
-<li>Clients eux-mêmes — écoute active en magasin</li>
+<li>Clients eux-mêmes — écoute active en magasin, avis en ligne</li>
 </ul>
-<p><strong>Fréquence recommandée LABORO :</strong> veille hebdomadaire (30 min/semaine) + compte-rendu mensuel à Romain Sauzet.</p>
-<p><strong>Indicateurs à suivre :</strong> évolution des prix concurrents, nouveaux produits marchés, NPS Google, tendances recherches clients.</p>
+<p><strong>Fréquence recommandée LABORO :</strong> veille hebdomadaire (30 min/semaine) + compte-rendu mensuel à Romain Sauzet. Une veille qu'on ne partage pas ne sert à personne d'autre que soi.</p>
+<p><strong>Indicateurs à suivre :</strong> évolution des prix concurrents, nouveaux produits marché, note Google, tendances des recherches clients.</p>
+</div>
+<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
+<div class="res-section">
+<div class="res-section-label">🟢 Transformer une information de veille en argument de vente</div>
+<p>Une veille qui reste dans un tableau ne sert à rien : elle doit se transformer en argument concret face au client. La méthode : identifier l'écart avec le concurrent, puis construire une réponse qui ne dénigre jamais le concurrent par son nom.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — de la veille à l'argument</div>
+Nina a repéré que Decathlon vend un trail shoe équivalent 20€ moins cher. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle Contagrip et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Decathlon par son nom devant le client, elle compare les offres.
+</div>
+<p><strong>Construire un tableau de veille simple :</strong> pour chaque concurrent suivi, note la date, le prix observé, l'info clé, et l'action à en tirer (rien / en parler à l'équipe / préparer un argument). Un tableau de veille sans colonne "action" n'est qu'une liste de curiosités.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>4 types : concurrentielle · produit · client · réglementaire</li>
-<li>Veille hebdomadaire minimum — noter et partager en équipe</li>
-<li>Sources clés : sites concurrents, Google Alertes, réseaux sociaux, clients</li>
-<li>Sans veille = mauvaises surprises trop tard</li>
+<li>Une veille organisée = régulière (hebdo), tracée (tableau), partagée (compte-rendu)</li>
+<li>Chaque ligne de veille doit avoir une action associée, sinon elle ne sert à rien</li>
+<li>Une veille se transforme en argument sans jamais dénigrer un concurrent par son nom devant le client</li>
 </ul>
 </div>`},
-  'C1.3':{t:"L'exécution de la vente — de l'accord à la fidélisation",c:`<div class="res-section res-debutant">
+3:{t:'La veille commerciale — Arbitrer des signaux contradictoires',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand la veille donne plusieurs signaux en même temps</div>
+<p>À ce niveau, tu ne reçois plus une seule information claire : plusieurs signaux arrivent en même temps, parfois contradictoires ou de priorité différente. Ton rôle est de décider lequel traiter en premier, pas de tout traiter à la fois de la même façon.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — deux signaux le même jour</div>
+Le même lundi : (1) un client se plaint sur Google que le délai de livraison s'allonge, et (2) Decathlon lance une promo agressive sur les vestes trail, en pleine saison. Tu ne peux pas traiter les deux de la même urgence. Le signal client touche la réputation immédiate de LABORO (à remonter tout de suite au service concerné) ; la promo concurrente touche les ventes à venir (à préparer pour la semaine, pas dans l'heure).
+</div>
+<p><strong>Prioriser avec deux questions :</strong> "Est-ce que ça touche un client maintenant ?" (urgent) et "Est-ce que ça touche mes ventes des prochaines semaines ?" (important mais pas urgent). Un signal peut être les deux à la fois — c'est celui-là qu'il faut traiter en premier.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — signal à la fois urgent et important</div>
+Plusieurs avis Google mentionnent la même rupture de stock sur un article très demandé, ET un concurrent communique justement sur la disponibilité de cet article. Ce signal est prioritaire sur tous les autres : il touche des clients maintenant ET les ventes des prochaines semaines.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : si tu avais traité les deux signaux dans l'autre ordre, qu'est-ce que ça aurait changé concrètement ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision d'arbitrage.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à plusieurs signaux, distingue ce qui est urgent (touche un client maintenant) de ce qui est important (touche les ventes à venir)</li>
+<li>Un signal à la fois urgent ET important passe toujours en premier</li>
+<li>La réflexivité = un vrai retour critique sur ton arbitrage, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'La veille commerciale — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — veille stratégique</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, et relier ta veille à une décision stratégique plus large.</p>
+<ul>
+<li><strong>4 types de veille</strong> : concurrentielle · produit · client · réglementaire — chacune a ses sources propres</li>
+<li><strong>Chaque info de veille</strong> doit déboucher sur une action (argument client, alerte équipe, ajustement)</li>
+<li><strong>Priorisation</strong> : urgent (touche un client maintenant) vs important (touche les ventes à venir) — traiter en premier ce qui est les deux à la fois</li>
+<li><strong>Ne jamais dénigrer un concurrent par son nom</strong> devant un client : comparer les offres, pas les entreprises</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Trois informations de veille arrivent le même jour : une baisse de prix concurrente, un avis client négatif répété, et un nouveau produit fournisseur. En autonomie complète, tu dois hiérarchiser les trois, décider laquelle remonter en urgence, et convertir au moins une des trois en argument de vente exploitable immédiatement.
+</div>
+<p><strong>Relier la veille à la stratégie — nourrir le SWOT :</strong> ta veille alimente directement les colonnes Opportunités et Menaces d'une analyse SWOT (voir C1.2 palier 4) — un concurrent qui baisse ses prix est une menace ; un besoin client mal couvert par le marché est une opportunité. Une veille bien menée transforme une observation en levier stratégique, pas en simple constat.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : repérer, prioriser et exploiter un signal de veille sans guidage</li>
+<li>Une veille sans action est une veille inutile</li>
+<li>La veille nourrit le SWOT : elle transforme une observation en donnée stratégique (Opportunité ou Menace)</li>
+</ul>
+</div>`},
+},
+'C1.3':{t:"L'exécution de la vente — de l'accord à la fidélisation",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les étapes finales d'une vente</div>
 <p><strong>La vente ne s'arrête pas au "oui" du client.</strong></p>
 <p>Après l'accord, il reste 4 étapes importantes pour finaliser correctement.</p>
