@@ -1397,7 +1397,8 @@ Deux objectifs de fidélisation légitimes, un budget ou un temps insuffisant po
 </ul>
 </div>`},
 },
-'G4A':{t:"Gérer l'espace commercial et développer la clientèle",c:`<div class="res-section res-debutant">
+'G4A':{
+1:{t:"Gérer l'espace commercial — Les bases du merchandising",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Le merchandising chez LABORO</div>
 <p><strong>Le merchandising c'est l'art de présenter les produits pour donner envie d'acheter.</strong></p>
 <p><strong>Les 3 règles de base :</strong></p>
@@ -1411,7 +1412,6 @@ Deux objectifs de fidélisation légitimes, un budget ou un temps insuffisant po
 Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayon. Les chaussettes techniques sont juste à côté (vente complémentaire). Les bâtons de trail sont en haut. Les semelles en bas. Résultat : le panier moyen trail = 167€ (vs 89€ moyenne magasin).
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="155" rx="12" fill="#F8FAFF"/>
@@ -1422,28 +1422,24 @@ Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayo
   <text x="72" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">PRODUIT</text>
   <text x="72" y="107" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Référence adaptée</text>
   <text x="72" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">à la saison</text>
-  
   <rect x="142" y="36" width="124" height="105" rx="10" fill="#2D5282"/>
   <text x="204" y="60" text-anchor="middle" font-size="20">📍</text>
   <text x="204" y="76" text-anchor="middle" font-size="14" font-weight="900" fill="#90CDF4">BON</text>
   <text x="204" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">ENDROIT</text>
   <text x="204" y="107" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Niveau des yeux</text>
   <text x="204" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">1,20m à 1,70m</text>
-  
   <rect x="274" y="36" width="124" height="105" rx="10" fill="#4A6FA5"/>
   <text x="336" y="60" text-anchor="middle" font-size="20">📅</text>
   <text x="336" y="76" text-anchor="middle" font-size="14" font-weight="900" fill="#BEE3F8">BON</text>
   <text x="336" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">MOMENT</text>
   <text x="336" y="107" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Saisonnier</text>
   <text x="336" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Rentrée · Fêtes</text>
-  
   <rect x="406" y="36" width="124" height="105" rx="10" fill="#185FA5"/>
   <text x="468" y="60" text-anchor="middle" font-size="20">📊</text>
   <text x="468" y="76" text-anchor="middle" font-size="14" font-weight="900" fill="#EBF8FF">BONNE</text>
   <text x="468" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">QUANTITÉ</text>
   <text x="468" y="107" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Min. 2-3 facings</text>
   <text x="468" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Rupture = vente perdue</text>
-  
   <rect x="538" y="36" width="132" height="105" rx="10" fill="#0C3D6E"/>
   <text x="604" y="60" text-anchor="middle" font-size="20">💶</text>
   <text x="604" y="76" text-anchor="middle" font-size="14" font-weight="900" fill="#93C5FD">BON</text>
@@ -1452,79 +1448,101 @@ Les chaussures trail Salomon sont placées à hauteur des yeux au centre du rayo
   <text x="604" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Cohérent concurrence</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Gestion et pilotage du rayon</div>
-<p><strong>1. Les règles du merchandising — disposer les produits pour vendre</strong></p><p>Le merchandising, c'est l'art de présenter les produits pour maximiser les ventes. Chez LABORO, chaque décision de placement est réfléchie.</p><ul><li><strong>Les 3 niveaux de présentation :</strong><br>· <strong>Niveau yeux</strong> (1,2–1,6m) → produits phares, marges élevées, nouveautés. C'est ici que se font 60% des ventes.<br>· <strong>Niveau mains</strong> (0,8–1,2m) → produits courants, bonne rotation.<br>· <strong>Niveau sol</strong> (< 0,8m) → produits volumineux, articles d'appel, stocks.</li><li><strong>Zones chaudes et froides :</strong><br>· Zones chaudes (entrée, allées principales, caisses) : nouveautés, promotions, best-sellers.<br>· Zones froides (fond, angles) : produits à rotation lente → à animer pour attirer le client.</li><li><strong>Facing</strong> → nombre d'unités visibles côte à côte. Minimum 2 facings pour exister visuellement. Best-sellers = 4 facings minimum.</li><li><strong>PLV</strong> (Publicité sur Lieu de Vente) → stop-rayon, affiche, présentoir. Règle : message lisible à 3 mètres.</li></ul><p><strong>2. Gestion des stocks et approvisionnement</strong></p><ul><li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours)<br>Exemple : 3 paires/jour × 5 jours délai = stock d'alerte à <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li><li><strong>Quantité à commander</strong> = objectif de ventes × colisage (arrondir à l'entier supérieur)<br>Exemple : 405 paires à commander · colisage par 6 → 405 ÷ 6 = 67,5 → <strong>68 colis</strong> à commander.</li><li><strong>DDM — Date de Durabilité Minimale</strong> → date jusqu'à laquelle le produit garde ses qualités (pour la nutrition sportive). Un produit dont la DDM est inférieure à 1 mois doit être géré en priorité (promotion ou retour fournisseur).</li><li><strong>Sélectionner un fournisseur</strong> → comparer sur : prix d'achat HT · remises · colisage · délai de livraison · frais de port · politique de reprise · origine produit (cohérence avec valeurs LABORO).</li><li><strong>Comparer des fournisseurs par scoring pondéré</strong> → tous les critères ne se valent pas : plutôt que de donner 1 point par critère, on leur attribue un poids selon leur importance pour LABORO (ex. Prix 40% · Délai de livraison 30% · Qualité/note clients 20% · Service (paiement, SAV) 10% — total 100%). Pour chaque fournisseur, on note chaque critère sur 5, on multiplie par le poids, puis on additionne les points pondérés obtenus. Le fournisseur avec le total pondéré le plus élevé est le mieux adapté.<br>Exemple : Fournisseur A note Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5×0,30)+(4×0,20)+(3×0,10) = 1,6+1,5+0,8+0,3 = <strong>4,2/5</strong>.</li><li><strong>La quantité économique de commande (QEC)</strong> → c'est la quantité à commander qui minimise le coût total de gestion du stock, en équilibrant deux coûts opposés : le <strong>coût de passation</strong> (plus on commande souvent, plus il grimpe — frais administratifs, transport) et le <strong>coût de stockage</strong> (plus on commande de grandes quantités d'un coup, plus il grimpe — espace, immobilisation financière). Version simplifiée utilisable en Bac Pro : on compare plusieurs scénarios de quantité par commande et on retient celui qui donne le meilleur équilibre entre nombre de commandes sur la période et niveau de stock moyen, sans jamais tomber en rupture. En pratique : commander plus souvent de petites quantités réduit le stock immobilisé mais augmente les frais de commande ; commander rarement de grandes quantités fait l'inverse — la bonne quantité est celle qui évite les deux excès.</li><li><strong>Calcul du montant d'une commande :</strong><br>Montant brut = PAHT × quantité<br>Remise = montant brut × taux de remise<br>Frais de port éventuels<br>Montant net = montant brut − remise + frais de port<br>Exemple : 68 colis × 6 paires × 75 € = 30 600 € · remise 10% = −3 060 € → <strong>27 540 € net</strong></li></ul><p><strong>3. La démarque — identifier et réduire les pertes</strong></p><ul><li><strong>Démarque connue</strong> → pertes identifiées et mesurables : produits abîmés, dates dépassées, erreurs de caisse, retours fournisseur. On sait pourquoi le produit est perdu.</li><li><strong>Démarque inconnue</strong> → pertes non expliquées : vol, erreurs d'inventaire. Plus difficile à mesurer.</li><li><strong>Calcul du taux de démarque connue HT :</strong><br>Formule : (valeur démarque HT ÷ CA HT total) × 100<br>Valeur démarque HT = PAHT × quantités perdues<br>Exemple : 2 tapis abîmés · PAHT 35 € · CA HT du rayon 8 500 €<br>Taux = (2 × 35) ÷ 8 500 × 100 = 70 ÷ 8 500 × 100 = <strong>0,82%</strong><br>Objectif sectoriel : < 1,5%. Au-dessus de 3% → situation critique.</li><li><strong>Gérer les produits à DDM courte</strong> → 2 options :<br>· Opération promotionnelle (−30%, lot 3+1, etc.) pour écouler rapidement<br>· Don à une association (action anti-gaspillage → label green economy)<br>Comparer les 2 promotions sur le CA HT et la marge dégagée pour choisir la plus rentable.</li></ul><p><strong>4. Le site marchand et l'e-commerce</strong></p><ul><li><strong>Taux de conversion</strong> = (commandes passées ÷ visiteurs uniques) × 100<br>Exemple : 312 commandes · 24 680 visiteurs → 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Moyenne nationale e-commerce 2022 : 2,96%. En dessous = site à optimiser.</li><li><strong>Pourcentage des ventes en ligne</strong> = (CA site ÷ CA total) × 100<br>Exemple : 18 400 ÷ 278 000 × 100 = <strong>6,62%</strong></li><li><strong>Panier moyen en ligne</strong> = CA site ÷ nombre de commandes<br>Exemple : 18 400 ÷ 312 = <strong>58,97 €</strong></li><li><strong>Points faibles fréquents d'un site marchand</strong> → absence d'avis clients · pas de FAQ · délais de livraison non affichés · pas de pictogrammes de réassurance (paiement sécurisé, retours) · réseaux sociaux inactifs · design non responsive.</li><li><strong>Pour améliorer le taux de conversion</strong> → ajouter des avis clients · afficher clairement les délais · créer une FAQ · optimiser le paiement · réduire l'abandon de panier.</li></ul><p><strong>5. Communication digitale pour développer la clientèle</strong></p><ul><li><strong>Choisir le bon canal</strong> → Instagram : visuels, cible 18-35 ans, trail/running · Facebook : cible 35-55 ans, CE, clubs · Newsletter : clients existants · Google My Business : référencement local.</li><li><strong>Règles d'un post efficace</strong> → visuel accrocheur en premier · texte court et direct (< 150 mots) · 3 à 5 hashtags ciblés · 1 seul call-to-action (lien, inscription, achat).</li><li><strong>Indicateurs de performance digitale</strong> → taux d'engagement = (likes + commentaires + partages) ÷ abonnés × 100 · taux d'ouverture newsletter (objectif > 25%) · taux de clic (objectif > 3%).</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul commande Salomon printemps</div>Objectif : 405 paires · Fournisseur TrailPro · PAHT 75 € · colisage par 6 · remise 10% (> 60 paires) · franco de port<br>Colis : 405 ÷ 6 = 67,5 → <strong>68 colis</strong> · Quantité réelle : 68 × 6 = 408 paires<br>Montant brut : 408 × 75 = 30 600 € · Remise 10% : −3 060 €<br><strong>Montant net : 27 540 € HT</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">Exemple LABORO — taux de conversion laboro-sport.fr</div>312 commandes · 24 680 visiteurs → taux = 312 ÷ 24 680 × 100 = <strong>1,26%</strong><br>Vs moyenne nationale 2,96% → LABORO est à moins de la moitié de la moyenne → priorité absolue d'amélioration.</div><p><strong>Implantation et zones de vente</strong></p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Zone chaude</strong> : zones naturellement très fréquentées — entrée du magasin, allées principales, caisses. Les produits placés ici se vendent seuls. → Réserver aux nouveautés, promotions, produits à forte marge.</li>
-<li><strong>Zone froide</strong> : zones peu fréquentées spontanément — fonds de rayon, coins, étages. → Attirer le client avec de la signalétique, des têtes de gondole attractives.</li>
-<li><strong>Niveau yeux</strong> : la zone la plus vendeuse d'un linéaire (1,20m à 1,70m). → Placer les produits phares et à forte marge.</li>
-<li><strong>Niveau mains</strong> : zone intermédiaire (0,80m à 1,20m). → Produits courants.</li>
-<li><strong>Niveau sol</strong> : zone la moins performante. → Produits lourds, conditionnements en vrac.</li>
+<li>5B : Bon produit · Bon endroit · Bon moment · Bonne quantité · Bon prix</li>
+<li>Le niveau des yeux (1,20m-1,70m) est le niveau qui vend le plus</li>
+<li>Minimum 2-3 facings par référence pour être visible</li>
+</ul>
+</div>`},
+2:{t:"Gérer l'espace commercial — Implantation, stocks et prix",c:`<div class="res-section">
+<div class="res-section-label">🟢 Implantation et zones de vente</div>
+<ul>
+<li><strong>Zone chaude</strong> : entrée, allées principales, caisses — les produits s'y vendent seuls. → Réserver aux nouveautés, promotions, forte marge.</li>
+<li><strong>Zone froide</strong> : fonds de rayon, coins, étages, peu fréquentés spontanément. → Attirer avec de la signalétique, des têtes de gondole attractives.</li>
+<li><strong>Niveau yeux</strong> (1,20-1,70m) : zone la plus vendeuse → produits phares et à forte marge.</li>
+<li><strong>Niveau mains</strong> (0,80-1,20m) : produits courants.</li>
+<li><strong>Niveau sol</strong> (&lt;0,80m) : produits lourds, conditionnements en vrac.</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — erreur d'implantation</div>
-Rayon running : les Salomon Speedcross 6 (best-seller, marge 38%) sont placés au sol zone froide. Les Nike Pegasus (0 vente ce mois) sont en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €.<br>
-<strong>Correction</strong> : inverser les placements — Salomon au niveau yeux zone chaude, Nike déplacé en zone froide avec une étiquette "Nouveauté". Impact estimé : +15% de CA sur ce rayon.
+Rayon running : les Salomon Speedcross 6 (best-seller, marge 38%) sont placés au sol zone froide. Les Nike Pegasus (0 vente ce mois) sont en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €. <strong>Correction</strong> : inverser les placements. Impact estimé : +15% de CA sur ce rayon.
 </div>
-
-<p style="margin-top:14px"><strong>Stock théorique et démarque</strong></p>
+<p><strong>Gestion des stocks — les calculs de base :</strong></p>
 <ul>
-<li><strong>Stock théorique</strong> = Stock initial + Livraisons reçues − Quantités vendues</li>
-<li><strong>Démarque</strong> = Stock théorique − Stock réel (si positif) → produits manquants non vendus (vol, casse, erreur)</li>
-<li><strong>Surmarque</strong> = Stock réel − Stock théorique (si positif) → produits en plus (erreur de comptage, livraison non enregistrée)</li>
-<li><strong>Taux de démarque</strong> = Démarque ÷ CA × 100 · Objectif sectoriel : < 1,5%</li>
+<li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours). Ex : 3 paires/jour × 5 jours = <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li>
+<li><strong>Quantité à commander</strong> = objectif de ventes ÷ colisage (arrondir au supérieur). Ex : 405 paires, colisage 6 → 405÷6 = 67,5 → <strong>68 colis</strong>.</li>
+<li><strong>Montant net de commande</strong> = montant brut − remise + frais de port. Ex : 68×6×75€ = 30 600€ · remise 10% = −3 060€ → <strong>27 540€ net</strong>.</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul démarque</div>
-Crème Squirrel : stock initial 35 · livraison 0 · vendues 28 → stock théorique = 35 + 0 − 28 = <strong>7</strong><br>
-Stock réel au 30/04 : 10 → surmarque de 3 (stock supérieur au théorique — probablement erreur de comptage)<br>
-Stock réel au 30/04 : 3 → démarque de 4 (4 unités manquantes — vol possible ou casse non signalée)
+<p><strong>Calcul du prix de vente — taux de marge :</strong></p>
+<ul>
+<li><strong>Taux de marge</strong> = (PVHT − PAHT) ÷ PVHT × 100</li>
+<li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marge)</li>
+<li><strong>PVTTC</strong> = PVHT × (1 + taux de TVA) — TVA sport/textile 20%, alimentation 5,5%</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — calcul PVTTC Salomon Speedcross 6</div>
+PAHT = 89€ · marge souhaitée 38% · TVA 20%<br>
+PVHT = 89 ÷ (1−0,38) = 89 ÷ 0,62 = <strong>143,55€</strong> · PVTTC = 143,55 × 1,20 = <strong>172,26€</strong>
 </div>
-
-<p style="margin-top:14px"><strong>Calcul du prix de vente — taux de marge</strong></p>
-<ul>
-<li><strong>Taux de marge</strong> = (PVHT − PAHT) ÷ PVHT × 100 · exprimé en %</li>
-<li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marge) · le prix de vente hors taxe</li>
-<li><strong>PVTTC</strong> = PVHT × (1 + taux de TVA) · le prix payé par le client</li>
-<li><strong>TVA courante sport/textile</strong> : 20% · <strong>TVA alimentation</strong> : 5,5%</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — calcul PVTTC Salomon Speedcross 6</div>
-PAHT = 89 € · Taux de marge souhaité = 38% · TVA = 20%<br>
-PVHT = 89 ÷ (1 − 0,38) = 89 ÷ 0,62 = <strong>143,55 €</strong><br>
-PVTTC = 143,55 × 1,20 = <strong>172,26 €</strong><br><br>
-Vérification taux de marge : (143,55 − 89) ÷ 143,55 × 100 = 54,55 ÷ 143,55 = <strong>38%</strong> ✓
 </div>
-<p><strong>Piloter la performance globale avec le SWOT :</strong> quand la mission te demande une vision d'ensemble de l'espace commercial (pas juste un indicateur isolé), l'outil SWOT permet de structurer le diagnostic :</p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>S — Forces (Strengths)</strong> : ce qui fonctionne bien dans l'espace commercial (ex. taux de conversion trail au-dessus de la moyenne)</li>
-<li><strong>W — Faiblesses (Weaknesses)</strong> : ce qui freine la performance (ex. démarque élevée sur un rayon, zone peu fréquentée)</li>
-<li><strong>O — Opportunités (Opportunities)</strong> : évolutions externes à saisir (ex. nouvelle zone commerciale, tendance sport en hausse)</li>
-<li><strong>T — Menaces (Threats)</strong> : risques externes (ex. ouverture d'un concurrent à proximité)</li>
+<li>Zone chaude = nouveautés/promos ; zone froide = à animer avec signalétique</li>
+<li>Stock d'alerte = ventes/jour × délai réassort ; commander avant d'atteindre la rupture</li>
+<li>PVHT se calcule à partir du taux de marge souhaité, jamais l'inverse</li>
 </ul>
-<p>Le SWOT sert ensuite de base pour prioriser tes recommandations : on agit d'abord sur les faiblesses qui limitent une force, ou sur les opportunités les plus faciles à saisir.</p>
-<p style="margin-top:14px"><strong>Le seuil de rentabilité</strong></p>
-<ul>
-<li><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). C'est le nombre de ventes (ou de participants) à atteindre pour que l'activité ne fasse ni gain ni perte.</li>
-<li>En dessous du seuil → l'activité est déficitaire. Au-dessus → chaque vente supplémentaire dégage du bénéfice.</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — atelier "Entretien & Prolongation équipement"</div>
-Charges fixes de l'atelier (intervenant, matériel, communication) : 600 € · Prix d'inscription : 35 € · Coût variable par participant (consommables) : 12 €<br>
-Seuil de rentabilité = 600 ÷ (35 − 12) = 600 ÷ 23 = <strong>26,1 → 27 participants</strong> à inscrire pour que l'atelier soit rentable.
-</div>
-<p style="margin-top:14px"><strong>Construire une offre commerciale B2B</strong></p>
-<p>Une offre B2B (clubs, CE, collectivités) ne se construit pas comme une offre B2C : les volumes sont plus importants, la relation est suivie dans la durée, et le client attend des conditions adaptées à son statut professionnel.</p>
-<ul>
-<li><strong>Tarification dégressive par volume</strong> → un barème de remise qui augmente avec la quantité commandée (ex. −5% dès 20 pièces, −10% dès 50, −15% dès 100).</li>
-<li><strong>Conditions de paiement différées</strong> → paiement à 30 ou 60 jours fin de mois (au lieu du comptant en B2C), pour s'adapter aux cycles budgétaires des CE et collectivités.</li>
-<li><strong>Service dédié</strong> → un interlocuteur unique chez LABORO, un devis personnalisé, un SAV prioritaire.</li>
-<li><strong>Contrat annuel</strong> → engagement sur l'année avec des tarifs figés et une visibilité pour les deux parties (au lieu d'achats ponctuels).</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — offre B2B pour un CE</div>
-Pour le CE Thales Group Massy (850 salariés) : tarif dégressif sur les maillots floqués (−10% dès 50 pièces, −15% dès 100), paiement à 30 jours fin de mois, interlocuteur dédié (Nina Chevalier), contrat annuel renouvelable avec un budget cadré à 12 000 €/an. Différent d'un client B2C qui paie comptant, sans remise de volume ni interlocuteur attitré.
-</div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Le niveau des yeux c'est le niveau qui vend. Taux de démarque > 3% = situation critique à traiter immédiatement. Taux de conversion < 1% = site qui n'est pas optimisé. Un post Instagram sans call-to-action ne génère pas de ventes. Tout se mesure, tout se compare à un objectif ou une moyenne nationale. Le SWOT structure une vision d'ensemble avant de prioriser les actions. Le seuil de rentabilité indique le volume minimal à atteindre. Une offre B2B se différencie du B2C par le volume, le paiement différé et le service dédié.</div>
 </div>`},
-  'B4.1':{t:"Rechercher et qualifier les informations de prospection",c:`<div class="res-section res-debutant">
+3:{t:"Gérer l'espace commercial — Arbitrer stocks, fournisseurs et démarque",c:`<div class="res-section">
+<div class="res-section-label">🟠 Comparer, arbitrer, diagnostiquer une perte</div>
+<p><strong>Comparer des fournisseurs par scoring pondéré :</strong> tous les critères ne se valent pas — on leur attribue un poids selon leur importance pour LABORO (ex. Prix 40% · Délai 30% · Qualité 20% · Service 10%). Pour chaque fournisseur, noter chaque critère sur 5, multiplier par le poids, additionner.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — scoring fournisseur</div>
+Fournisseur A : Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5×0,30)+(4×0,20)+(3×0,10) = 1,6+1,5+0,8+0,3 = <strong>4,2/5</strong>.
+</div>
+<p><strong>La quantité économique de commande (QEC) :</strong> c'est la quantité qui minimise le coût total, en équilibrant le <strong>coût de passation</strong> (commander souvent = frais qui grimpent) et le <strong>coût de stockage</strong> (commander de grandes quantités = espace et argent immobilisés). La bonne quantité évite les deux excès — ni rupture, ni surstock.</p>
+<p><strong>Diagnostiquer une démarque :</strong></p>
+<ul>
+<li><strong>Stock théorique</strong> = Stock initial + Livraisons − Quantités vendues</li>
+<li><strong>Démarque</strong> = Stock théorique − Stock réel (si positif) → produits manquants (vol, casse, erreur)</li>
+<li><strong>Taux de démarque</strong> = Démarque ÷ CA × 100 · objectif sectoriel &lt; 1,5%</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — calcul démarque</div>
+Crème Squirrel : stock initial 35, livraison 0, vendues 28 → stock théorique = 7. Stock réel : 3 → démarque de 4 unités (vol possible ou casse non signalée).
+</div>
+<p><strong>Gérer un produit à DDM courte :</strong> deux options s'opposent — promotion (−30%, lot 3+1) pour écouler vite, ou don à une association (anti-gaspillage). Il faut comparer les deux sur le CA et la marge dégagée avant de choisir, pas prendre l'option la plus rapide par réflexe.</p>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'est-ce qui a fait pencher la balance entre les deux options (fournisseur, quantité, ou gestion de la démarque), et un autre critère aurait-il changé ta décision ? Ce n'est pas un résumé des calculs, c'est un vrai retour critique sur ta méthode de décision.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un scoring pondéré évite de choisir un fournisseur sur un seul critère (souvent le prix)</li>
+<li>La QEC arbitre entre coût de passation et coût de stockage — jamais l'un sans l'autre</li>
+<li>Taux de démarque &gt; 3% = situation critique à traiter immédiatement</li>
+</ul>
+</div>`},
+4:{t:"Gérer l'espace commercial — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter la performance globale</div>
+<p>Cette fiche est volontairement dense : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, en croisant plusieurs leviers.</p>
+<p><strong>E-commerce — indicateurs clés :</strong> taux de conversion = commandes ÷ visiteurs × 100 (moyenne nationale 2,96%) · % ventes en ligne = CA site ÷ CA total × 100 · panier moyen en ligne = CA site ÷ nb commandes.</p>
+<p><strong>Communication digitale :</strong> Instagram (18-35 ans, visuel) · Facebook (35-55 ans, CE/clubs) · Newsletter (clients existants) · Google My Business (référencement local). Un post efficace : visuel d'abord, texte &lt;150 mots, 3-5 hashtags, 1 seul call-to-action.</p>
+<p><strong>Piloter avec le SWOT :</strong> Forces (ce qui marche) · Faiblesses (ce qui freine) · Opportunités (à saisir) · Menaces (risques externes). Prioriser les actions sur les faiblesses qui limitent une force, ou les opportunités les plus faciles à saisir.</p>
+<p><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). En dessous = déficitaire, au-dessus = chaque vente dégage du bénéfice.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — atelier "Entretien & Prolongation équipement"</div>
+Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/participant. Seuil = 600 ÷ (35−12) = 600÷23 = <strong>27 participants</strong> pour être rentable.
+</div>
+<p><strong>Construire une offre B2B</strong> (clubs, CE, collectivités) : tarification dégressive par volume, paiement différé (30-60 jours), interlocuteur dédié, contrat annuel — à la différence du B2C (comptant, sans volume, sans interlocuteur attitré).</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : croiser merchandising, stocks, digital et rentabilité dans une seule analyse</li>
+<li>Le SWOT structure une vision d'ensemble avant de prioriser des actions concrètes</li>
+<li>Une offre B2B se différencie du B2C par le volume, le paiement différé et le service dédié</li>
+</ul>
+</div>`},
+},
+'B4.1':{
+1:{t:'Rechercher des prospects — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
 <p><strong>B4.1 — Rechercher des prospects.</strong> Un prospect c'est un client potentiel qu'on n'a pas encore. Le but : constituer une liste de contacts à démarcher.</p>
 <p><strong>3 sources principales chez LABORO :</strong></p>
@@ -1543,7 +1561,6 @@ Pour le CE Thales Group Massy (850 salariés) : tarif dégressif sur les maillot
 Nina cherche des associations de foot en Essonne. Elle consulte le site de la FFF, section clubs affiliés 91. Elle trouve 47 clubs. Elle filtre : clubs de plus de 30 licenciés = 18 prospects qualifiés. Elle les saisit dans LABORO Connect avec téléphone et nom du président.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
@@ -1568,43 +1585,82 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
   <text x="569" y="123" text-anchor="middle" font-size="7.5" fill="#BEE3F8">La recommandation = or</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>3 sources essentielles pour trouver des prospects B2B :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives (FFT, FFA, FF Football), annuaires des CE, répertoires des collectivités. Ciblées sur le sport et les achats groupés.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels. Prospects chauds à requalifier rapidement.</li></ul><p><strong>Qualifier un prospect avec la méthode BANT :</strong></p><ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ? Ordre de grandeur suffisant.</li><li><strong>A</strong>uthority — Qui decide ? Responsable CE, DRH, responsable achats, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ? Équipements récurrents ou commandes ponctuelles ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ? Projet immédiat ou besoin à moyen terme ?</li></ul><p><strong>Champs obligatoires dans LABORO Connect pour chaque prospect :</strong></p><ul><li>Raison sociale, secteur, taille (effectif), contact décisionnaire, téléphone, e-mail</li><li>Source d'identification, score BANT (de 1 à 4), besoins estimés, statut (froid/tiède/chaud)</li><li>Prochaine action à mener et date de relance</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — Score BANT : 3/4 — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div><p><strong>Qualifier un prospect — méthode BANT approfondie</strong></p>
-<p>La <strong>qualification</strong> d'un prospect consiste à évaluer s'il a le potentiel de devenir client. Un prospect non qualifié = du temps perdu. La méthode BANT permet de noter chaque prospect sur 4 critères :</p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>B — Budget</strong> : a-t-il les moyens d'acheter ? Quel est son budget habituel pour ce type d'achat ? Score 0-3.</li>
-<li><strong>A — Autorité</strong> : est-il décisionnaire ? Peut-il signer un bon de commande seul ? Score 0-3.</li>
-<li><strong>N — Need (Besoin)</strong> : a-t-il un besoin réel que LABORO peut satisfaire ? Score 0-3.</li>
-<li><strong>T — Timing</strong> : a-t-il besoin de la solution maintenant ou dans un futur proche ? Score 0-3.</li>
+<li>3 sources : fichiers existants · réseaux sociaux · terrain</li>
+<li>Un prospect qualifié a un effectif, une pratique régulière et un budget estimé</li>
+<li>Tout prospect trouvé se saisit dans LABORO Connect avec ses coordonnées</li>
 </ul>
-<p><strong>Score de qualification</strong> : total ÷ 12 × 100</p>
+</div>`},
+2:{t:'Rechercher des prospects — Qualifier avec BANT',c:`<div class="res-section">
+<div class="res-section-label">🟢 Sources approfondies et méthode BANT</div>
+<p><strong>3 sources essentielles :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives, annuaires des CE, répertoires des collectivités.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels.</li></ul>
+<p><strong>Qualifier un prospect avec la méthode BANT :</strong></p>
+<ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
+<p><strong>Champs obligatoires dans LABORO Connect :</strong> raison sociale, secteur, taille, contact décisionnaire, source d'identification, score BANT, besoins estimés, statut (froid/tiède/chaud), prochaine action et date de relance.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — Score BANT : 3/4 — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>BANT : Budget · Authority · Need · Timing</li>
+<li>Un prospect sans date de relance est un prospect perdu</li>
+<li>Tout se trace dans LABORO Connect dès le premier contact</li>
+</ul>
+</div>`},
+3:{t:'Rechercher des prospects — Scorer et arbitrer',c:`<div class="res-section">
+<div class="res-section-label">🟠 Calculer un score BANT précis et choisir qui contacter en premier</div>
+<p><strong>Score de qualification BANT (chaque critère noté 0-3, total ÷ 12 × 100) :</strong></p>
 <ul>
 <li>Score ≥ 75% → prospect chaud → à contacter en priorité cette semaine</li>
 <li>Score 50-74% → prospect tiède → à contacter dans le mois</li>
-<li>Score < 50% → prospect froid → à mettre en veille</li>
+<li>Score &lt; 50% → prospect froid → à mettre en veille</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — qualification Club Trail Sénart</div>
-Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br><br>
-<strong>B</strong> — Budget estimé 1 500 € → score 2/3<br>
-<strong>A</strong> — Président = décisionnaire → score 3/3<br>
-<strong>N</strong> — Commande maillots chaque saison → score 3/3<br>
-<strong>T</strong> — Saison reprend en septembre → score 2/3<br><br>
-<strong>Score total : 10/12 = 83% → Prospect CHAUD → contacter cette semaine</strong>
+<div class="res-ex"><div class="res-ex-l">Exemple — qualification Club Trail Sénart</div>
+Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br>
+B — Budget estimé 1 500€ → 2/3 · A — Président décisionnaire → 3/3 · N — Commande chaque saison → 3/3 · T — Saison reprend en septembre → 2/3<br>
+<strong>Score total : 10/12 = 83% → CHAUD → contacter cette semaine</strong>
 </div>
-<p><strong>Aller plus loin — mettre en place une veille automatisée :</strong></p>
-<p>Au-delà de la recherche manuelle, une veille <strong>automatisée</strong> permet d'être alerté en continu, sans avoir à relancer soi-même chaque recherche. 5 sources/outils utiles pour LABORO :</p>
+<p><strong>Quand deux prospects sont à égalité de score :</strong> le score seul ne suffit pas toujours à décider qui contacter en premier. Il faut regarder aussi la capacité réelle à agir vite (un prospect chaud dont la saison démarre dans 2 semaines est plus urgent qu'un prospect chaud dont le budget ne sera voté que dans 6 mois), même à score BANT identique.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — deux prospects chauds, une seule priorité</div>
+Club A : score 83%, saison qui démarre dans 2 semaines. Club B : score 83%, mais budget voté seulement en assemblée générale dans 4 mois. Malgré le même score, Club A doit être contacté en premier — sa fenêtre d'achat est immédiate, celle de Club B ne l'est pas encore.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : le score BANT seul t'aurait-il conduit à la bonne décision, et qu'est-ce qui a fait la différence ? Ce n'est pas un résumé du calcul, c'est un vrai retour critique sur ta méthode de priorisation.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Alertes Google (Google Alerts)</strong> — mots-clés "recrutement club sport Essonne", "nouvelle association sportive 91"... Fréquence : quotidienne ou hebdomadaire selon le volume.</li>
-<li><strong>Veille des avis en ligne</strong> — suivi des avis Google/Facebook des clubs et CE (mentions d'un nouvel équipement, d'une insatisfaction envers un concurrent). Fréquence : hebdomadaire.</li>
-<li><strong>Suivi automatisé des prix concurrents</strong> — comparateur ou tableau de suivi des tarifs Decathlon Pro / SportRun sur les références phares. Fréquence : mensuelle, pour ajuster l'argumentaire prix.</li>
-<li><strong>Newsletters sectorielles</strong> — lettres d'information des fédérations sportives, de la CCI Essonne, des associations d'employeurs (infos sur les CE qui recrutent, les budgets votés). Fréquence : à la réception (souvent mensuelle).</li>
-<li><strong>Flux LinkedIn suivis</strong> — abonnement aux pages des grandes entreprises et fédérations cibles, avec notification sur les publications liées au sport en entreprise. Fréquence : quotidienne (vérification rapide).</li>
+<li>Score BANT = total ÷ 12 × 100 — seuils 75%/50% pour chaud/tiède/froid</li>
+<li>À score égal, la fenêtre d'achat réelle (timing) départage les priorités</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode, pas un résumé du calcul</li>
 </ul>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un fichier prospect bien qualifié vaut 10 fois plus qu'une liste non travaillée. Priorité aux prospects BANT 3 ou 4. Un prospect sans date de relance est un prospect perdu. Tout se trace dans LABORO Connect dès le premier contact. La veille automatisée ne remplace pas la qualification BANT : elle alimente le fichier en continu, mais chaque prospect détecté doit ensuite être qualifié avant d'être contacté.</div>
 </div>`},
-  'B4.2':{t:"Concevoir un plan et des supports de prospection",c:`<div class="res-section res-debutant">
+4:{t:'Rechercher des prospects — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — organiser une veille de prospection continue</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Mettre en place une veille automatisée</strong> — être alerté en continu sans relancer chaque recherche soi-même :</p>
+<ul>
+<li><strong>Alertes Google</strong> — mots-clés ciblés, fréquence quotidienne/hebdomadaire</li>
+<li><strong>Veille des avis en ligne</strong> — clubs et CE, hebdomadaire</li>
+<li><strong>Suivi des prix concurrents</strong> — Decathlon Pro/SportRun, mensuel</li>
+<li><strong>Newsletters sectorielles</strong> — fédérations, CCI, à réception</li>
+<li><strong>Flux LinkedIn suivis</strong> — pages cibles, quotidien</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un lot de nouveaux prospects arrive via plusieurs canaux de veille en même temps. En autonomie complète, tu dois les qualifier avec BANT, calculer leur score, et établir l'ordre de contact en croisant score et fenêtre d'achat réelle.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : organiser une veille continue et qualifier chaque prospect détecté avant de le contacter</li>
+<li>La veille automatisée ne remplace pas la qualification BANT — elle alimente le fichier en continu</li>
+</ul>
+</div>`},
+},
+'B4.2':{
+1:{t:'Préparer une opération de prospection — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
 <p><strong>B4.2 — Préparer et conduire une opération de prospection.</strong></p>
 <p><strong>Avant l'opération — les 3 étapes :</strong></p>
@@ -1618,7 +1674,6 @@ Contact : Marc Girault, Président · 42 licenciés · achat maillots/an<br><br>
 Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines · objectif 8 RDV · budget 0€ (phoning + emailing). Semaine 1 : appels de présentation. Semaine 2 : relances email. Semaines 3-4 : RDV et propositions.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
@@ -1646,49 +1701,79 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
   <text x="574" y="120" text-anchor="middle" font-size="7.5" fill="#BEE3F8">SMART + mesurables</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>1. Dimensionner une opération de prospection</strong></p><p>Avant de rédiger quoi que ce soit, il faut calculer combien de prospects contacter pour atteindre l'objectif de contrats. On remonte la <strong>chaîne de conversion</strong> :</p><ul><li><strong>Objectif</strong> : 3 contrats à signer</li><li>Taux de transformation devis-contrat moyen : 30% → il faut <strong>10 devis envoyés</strong></li><li>Taux de RDV-devis : 60% → il faut <strong>17 RDV effectués</strong></li><li>Taux de contact-RDV (phoning) : 12% → il faut <strong>142 appels passés</strong></li><li><strong>Formule générale</strong> : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3)</li></ul><p>Exemple LABORO : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60 × 0,12 × 0,30) = 3 ÷ 0,0216 = <strong>139 prospects à contacter</strong></p><p><strong>2. Choisir les techniques de prospection adaptées</strong></p><ul><li><strong>Phoning (appel à froid ou tiède)</strong> — Taux de RDV : 5 à 15%. Adapté aux CE et collectivités. Rapide mais nécessite un bon plan d'appel. Coût : faible.</li><li><strong>E-mailing</strong> — Taux d'ouverture B2B : 20-25%. Taux de clic : 2-4%. Efficace pour amorcer le contact avant un appel. Jamais suffisant seul.</li><li><strong>Visite terrain</strong> — La plus qualitative. Taux de succès > 40% si bien préparée. Coûteuse en temps. À réserver aux prospects BANT 3-4.</li><li><strong>LinkedIn</strong> — Prospection douce. Commenter/partager avant de contacter. Efficace sur les décisionnaires en entreprise (DRH, responsable CE).</li><li><strong>Salons / événements sportifs</strong> — Contacts chauds à requalifier rapidement (< 48h). Forum sport Essonne = source n°1 LABORO.</li></ul><p><strong>3. Concevoir un e-mailing de prospection efficace</strong></p><ul><li><strong>Objet</strong> : 4 à 6 mots maximum · personnalisé si possible · ne pas mettre le mot "gratuit" (filtre anti-spam) · exemples : "Équipez vos joueurs 48h" · "Votre commande textile pour [mois]"</li><li><strong>Accroche</strong> (1-2 phrases) : chiffre ou constat qui parle au prospect · son secteur · son problème probable</li><li><strong>Corps</strong> (3 arguments max) : ciblés sur ses besoins supposés · 1 argument = 1 bénéfice concret + 1 preuve (chiffre, exemple client)</li><li><strong>Call-to-action unique</strong> : une seule action demandée — RDV, devis, lien catalogue · jamais 3 options</li><li><strong>Signature</strong> : photo + prénom + titre + téléphone direct + lien LinkedIn</li><li><strong>Règle des 150 mots</strong> : au-delà, le taux de lecture chute de 60%</li></ul><p><strong>4. Établir le budget d'une opération de prospection</strong></p><ul><li>Poste déplacements : km × tarif barème URSSAF (ou véhicule LABORO)</li><li>Poste supports : impression plaquettes, catalogues, cartes de visite</li><li>Poste outils : abonnement LinkedIn Premium si utilisé, logiciel e-mailing</li><li>Poste temps commercial : coût horaire × heures dédiées (souvent le poste le plus lourd)</li><li><strong>ROI prospection</strong> = (CA généré − coût total) ÷ coût total × 100 · Objectif LABORO : ROI > 500%</li></ul><p><strong>5. Fixer les indicateurs AVANT le lancement</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100 · objectif : > 60%</li><li>Taux de RDV = RDV obtenus ÷ contacts × 100 · objectif phoning : > 10%</li><li>Taux d'ouverture e-mailing · objectif B2B : > 25%</li><li>Taux de transformation devis-contrat · objectif LABORO : > 30%</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — campagne clubs sportifs Essonne (4 semaines)</div>Objectif : 2 contrats. Budget : 350 €. Cible : 68 clubs qualifiés BANT.<br>Calcul : 2 ÷ (0,60 × 0,12 × 0,30) = 93 contacts minimum.<br>Technique : e-mailing J1 → phoning relance J3 → visite terrain pour les BANT 3+.<br>E-mailing : objet "Équipez vos joueurs — livraison 48h" · 3 arguments (flocage inclus, remise 8-15%, commercial dédié) · call-to-action : "Je demande un devis gratuit".<br><strong>Résultat : taux d'ouverture 31% · 7 RDV · 2 contrats signés · ROI 1 840%</strong></div><p><strong>Structure d'un plan de prospection</strong></p>
-<p>Un plan de prospection c'est le document qui formalise TOUTE l'opération avant de commencer. Un commercial qui prospecte sans plan perd du temps et des opportunités.</p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>1. Objectif chiffré</strong> : nombre de contrats visés · CA cible · délai</li>
-<li><strong>2. Cible qualifiée</strong> : profil du prospect idéal (secteur, taille, localisation, décisionnaire)</li>
-<li><strong>3. Calcul du nombre de prospects à contacter</strong> : remonter la chaîne de conversion depuis l'objectif</li>
-<li><strong>4. Techniques retenues</strong> : phoning, e-mailing, visite terrain, LinkedIn, salons</li>
-<li><strong>5. Planning semaine par semaine</strong> : qui fait quoi, quand, combien d'appels/mails</li>
-<li><strong>6. Budget</strong> : déplacements, supports, outils</li>
-<li><strong>7. Indicateurs de suivi</strong> : taux de contact, taux de RDV, taux de transformation</li>
+<li>3 étapes avant : cibler · préparer les outils · fixer des objectifs chiffrés</li>
+<li>Règle des 3 contacts : au-delà, passer au prospect suivant</li>
 </ul>
-<p><strong>Construire le planning hebdomadaire</strong></p>
-<ul>
-<li>Répartir les actions sur les semaines disponibles en tenant compte des contraintes (stages, vacances)</li>
-<li>Augmenter progressivement le volume : semaine 1 = 20 contacts · semaine 2 = 30 · semaine 3 = 40</li>
-<li>Prévoir des semaines de relance entre les semaines d'appels</li>
-<li>Garder la dernière semaine pour les visites terrain sur les prospects chauds</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — planning prospection 6 semaines (associations sportives Essonne)</div>
-Objectif : 4 contrats · Cible : 320 associations · Budget : 300 €<br><br>
-S1 : Qualification base de données → sélectionner 100 associations BANT ≥ 50% · 0 €<br>
-S2 : E-mailing lot 1 (50 contacts) + phoning relance lot 1 → 25 appels · 0 €<br>
-S3 : E-mailing lot 2 (50 contacts) + phoning relance lot 2 → 25 appels · 0 €<br>
-S4 : Phoning prospects tièdes → 30 appels · RDV obtenus → 0 €<br>
-S5 : Visites terrain prospects chauds → 5 visites · déplacements 80 €<br>
-S6 : Relances finales + devis → signature · supports 50 €<br>
-<strong>Budget total : 130 € (bien en dessous des 300 €)</strong>
-</div>
-<p><strong>6. Utiliser l'outil SWOT pour choisir sa stratégie de prospection</strong></p>
-<p>Avant de choisir QUI cibler et COMMENT, un commercial confirmé analyse la situation avec l'outil SWOT :</p>
-<ul>
-<li><strong>S — Forces (Strengths)</strong> : atouts internes de LABORO sur ce marché (ex. flocage rapide, commercial dédié)</li>
-<li><strong>W — Faiblesses (Weaknesses)</strong> : limites internes (ex. équipe commerciale réduite, pas de présence nationale)</li>
-<li><strong>O — Opportunités (Opportunities)</strong> : tendances externes favorables (ex. essor du sport en entreprise, nouveaux clubs créés localement)</li>
-<li><strong>T — Menaces (Threats)</strong> : risques externes (ex. concurrent low-cost, budget CE en baisse)</li>
-</ul>
-<p>Une bonne stratégie de prospection s'appuie sur les forces LABORO pour capter les opportunités identifiées, tout en évitant les segments où les faiblesses ou les menaces sont trop fortes.</p>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Calculer d'abord combien de prospects contacter, puis choisir les techniques. L'e-mailing seul ne suffit pas — le relancer par téléphone double le taux de RDV. Moins de 150 mots dans le corps du message. Un seul call-to-action. Fixer les indicateurs avant le lancement, pas après. Le SWOT aide à choisir les bons segments avant de prospecter. Le ROI justifie le budget auprès de Pascal Berruelle.</div>
 </div>`},
-  'B4.3':{t:"Mettre en oeuvre la prospection commerciale",c:`<div class="res-section res-debutant">
+2:{t:'Préparer une opération de prospection — Dimensionner et rédiger',c:`<div class="res-section">
+<div class="res-section-label">🟢 Dimensionner l'opération et choisir les techniques</div>
+<p><strong>Remonter la chaîne de conversion</strong> pour savoir combien de prospects contacter : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3).</p>
+<p>Exemple : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60×0,12×0,30) = <strong>139 prospects à contacter</strong>.</p>
+<p><strong>Techniques de prospection :</strong></p>
+<ul>
+<li><strong>Phoning</strong> — Taux de RDV 5-15%. Rapide, coût faible.</li>
+<li><strong>E-mailing</strong> — Taux d'ouverture B2B 20-25%. À combiner avec un appel, jamais suffisant seul.</li>
+<li><strong>Visite terrain</strong> — Taux de succès &gt;40% si bien préparée. Coûteuse en temps, réservée aux BANT 3-4.</li>
+<li><strong>LinkedIn</strong> — Prospection douce, efficace sur les décisionnaires.</li>
+<li><strong>Salons/événements</strong> — Contacts chauds à requalifier sous 48h.</li>
+</ul>
+<p><strong>Structurer un e-mailing de prospection :</strong> objet 4-6 mots (jamais "gratuit") · accroche avec chiffre/constat · 3 arguments max avec preuve · un seul call-to-action · signature complète · corps &lt;150 mots (au-delà, taux de lecture −60%).</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — e-mailing clubs sportifs</div>
+Objet : "Équipez vos joueurs — livraison 48h". 3 arguments : flocage inclus, remise 8-15%, commercial dédié. Call-to-action unique : "Je demande un devis gratuit". Résultat : taux d'ouverture 31%.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Toujours calculer le volume de prospects nécessaire avant de choisir une technique</li>
+<li>Un e-mailing seul ne suffit jamais — le relancer par téléphone double le taux de RDV</li>
+<li>Un seul call-to-action par e-mail, jamais trois options</li>
+</ul>
+</div>`},
+3:{t:"Préparer une opération de prospection — Arbitrer sous contrainte de budget",c:`<div class="res-section">
+<div class="res-section-label">🟠 Choisir un mix de techniques avec un budget limité</div>
+<p>À ce niveau, tu ne choisis plus une seule technique idéale : le budget et le temps disponibles obligent à arbitrer entre plusieurs options, sachant que chacune a un rendement et un coût différents.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — arbitrage budget limité</div>
+Budget disponible : 300€. Objectif : 2 contrats. La visite terrain (taux de succès le plus élevé) coûterait environ 80€/visite en déplacement — viable seulement pour un petit nombre de prospects déjà qualifiés BANT 3-4. Le phoning et l'e-mailing (quasi gratuits) doivent donc qualifier et filtrer en amont, pour réserver les visites terrain (le budget) aux prospects les plus prometteurs identifiés au fil de l'opération.
+</div>
+<p><strong>Établir le budget d'une opération :</strong> déplacements (km × barème), supports (impression), outils (abonnements), temps commercial (souvent le poste le plus lourd). ROI prospection = (CA généré − coût total) ÷ coût total × 100 — objectif LABORO &gt; 500%.</p>
+<p><strong>Fixer les indicateurs de suivi AVANT le lancement</strong> (pas après) : taux de contact (&gt;60%), taux de RDV (&gt;10%), taux d'ouverture e-mailing (&gt;25%), taux de transformation devis-contrat (&gt;30%), coût d'acquisition = budget ÷ nouveaux clients.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — planning 6 semaines, budget serré</div>
+S1-S3 : qualification + e-mailing/phoning (0€, filtre les prospects). S4 : phoning tièdes. S5 : visites terrain sur les seuls prospects chauds identifiés (80€). S6 : relances et devis (50€). <strong>Budget total : 130€</strong>, bien en dessous des 300€ disponibles, en réservant le poste le plus cher aux prospects les plus qualifiés.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'aurais-tu risqué si tu avais dépensé le budget de visite terrain trop tôt, avant d'avoir qualifié les prospects ? Ce n'est pas un résumé du planning, c'est un vrai retour critique sur ta gestion du budget.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Utilise les techniques gratuites pour qualifier et filtrer, réserve les techniques coûteuses aux prospects les plus prometteurs</li>
+<li>Les indicateurs de suivi se fixent avant le lancement de l'opération, jamais après</li>
+<li>La réflexivité = un vrai retour critique sur ta gestion du budget, pas un résumé du planning</li>
+</ul>
+</div>`},
+4:{t:'Préparer une opération de prospection — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — construire un plan de prospection complet</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Structure d'un plan de prospection (7 points) :</strong> objectif chiffré · cible qualifiée · calcul du nombre de prospects · techniques retenues · planning semaine par semaine · budget · indicateurs de suivi.</p>
+<p><strong>Construire le planning :</strong> augmenter progressivement le volume (S1 20 contacts, S2 30, S3 40…), prévoir des semaines de relance, garder la dernière semaine pour les visites terrain sur les prospects chauds.</p>
+<p><strong>Utiliser le SWOT pour choisir sa stratégie</strong> avant de décider qui cibler et comment : Forces (atouts LABORO sur ce marché), Faiblesses (limites internes), Opportunités (tendances externes favorables), Menaces (risques externes). Une bonne stratégie s'appuie sur les forces pour capter les opportunités, en évitant les segments où les faiblesses ou menaces sont trop fortes.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un objectif de contrats à atteindre, un budget limité, un délai court. En autonomie complète, tu dois construire le plan complet (7 points), dimensionner le volume de prospects, et justifier le choix de techniques avec un raisonnement SWOT.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : construire un plan de prospection complet et argumenté, pas juste une liste d'actions</li>
+<li>Le SWOT structure le choix des segments avant même de calculer les volumes</li>
+</ul>
+</div>`},
+},
+'B4.3':{
+1:{t:"Conduire un entretien de prospection — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
 <p><strong>B4.3 — Conduire un entretien de prospection.</strong> L'entretien suit un plan en 6 étapes.</p>
 <p><strong>Le plan d'appel LABORO :</strong></p>
@@ -1704,13 +1789,11 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
 "Bonjour M. Ferreira, je suis Sophie de LABORO Sport à Évry. Nous équipons 12 clubs de foot en Essonne. Je vous contacte car votre club commence sa préparation d'hiver — est-ce que vous avez prévu votre équipement ?"
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="155" rx="12" fill="#F0FFF4"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.3 — PLAN D'APPEL EN 6 ÉTAPES — LABORO</text>
   <defs><marker id="arr7" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#276749"/></marker></defs>
-  <!-- 6 étapes horizontales -->
   <rect x="5" y="40" width="102" height="100" rx="8" fill="#276749"/>
   <text x="56" y="65" text-anchor="middle" font-size="16">👋</text>
   <text x="56" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">ACCROCHE</text>
@@ -1718,7 +1801,6 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="56" y="106" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">je suis [prénom]</text>
   <text x="56" y="118" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">de LABORO..."</text>
   <path d="M 109 90 L 118 90" stroke="#276749" stroke-width="1.5" marker-end="url(#arr7)" fill="none"/>
-  
   <rect x="120" y="40" width="102" height="100" rx="8" fill="#2F855A"/>
   <text x="171" y="65" text-anchor="middle" font-size="16">📋</text>
   <text x="171" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">OBJET</text>
@@ -1726,7 +1808,6 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="171" y="106" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">car nous équipons</text>
   <text x="171" y="118" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">des clubs comme..."</text>
   <path d="M 224 90 L 233 90" stroke="#276749" stroke-width="1.5" marker-end="url(#arr7)" fill="none"/>
-  
   <rect x="235" y="40" width="102" height="100" rx="8" fill="#38A169"/>
   <text x="286" y="65" text-anchor="middle" font-size="16">🔍</text>
   <text x="286" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">DÉCOUVERTE</text>
@@ -1734,7 +1815,6 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="286" y="106" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">licenciés ? Quelle</text>
   <text x="286" y="118" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">saison ?"</text>
   <path d="M 339 90 L 348 90" stroke="#276749" stroke-width="1.5" marker-end="url(#arr7)" fill="none"/>
-  
   <rect x="350" y="40" width="102" height="100" rx="8" fill="#48BB78"/>
   <text x="401" y="65" text-anchor="middle" font-size="16">💬</text>
   <text x="401" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">ARGUMENTATION</text>
@@ -1742,7 +1822,6 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="401" y="106" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">profil du prospect</text>
   <text x="401" y="118" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.8)">Bénéfice client</text>
   <path d="M 454 90 L 463 90" stroke="#276749" stroke-width="1.5" marker-end="url(#arr7)" fill="none"/>
-  
   <rect x="465" y="40" width="102" height="100" rx="8" fill="#68D391"/>
   <text x="516" y="65" text-anchor="middle" font-size="16">🛡️</text>
   <text x="516" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#1A2E4A">OBJECTIONS</text>
@@ -1750,7 +1829,6 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="516" y="106" text-anchor="middle" font-size="7.5" fill="rgba(0,0,0,.7)">et justement c'est</text>
   <text x="516" y="118" text-anchor="middle" font-size="7.5" fill="rgba(0,0,0,.7)">pourquoi..."</text>
   <path d="M 569 90 L 578 90" stroke="#276749" stroke-width="1.5" marker-end="url(#arr7)" fill="none"/>
-  
   <rect x="580" y="40" width="95" height="100" rx="8" fill="#9AE6B4"/>
   <text x="627" y="65" text-anchor="middle" font-size="16">✅</text>
   <text x="627" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#1A2E4A">CONCLUSION</text>
@@ -1759,12 +1837,69 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
   <text x="627" y="118" text-anchor="middle" font-size="7.5" fill="rgba(0,0,0,.7)">Alternative positive</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>1. Structurer un appel de prospection — le plan en 6 étapes</strong></p><ul><li><strong>1. Présentation</strong> (15 secondes) — "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport & Outdoor à Évry-Courcouronnes."</li><li><strong>2. Accroche personnalisée</strong> (20 secondes) — "Je vous contacte car nous équipons plusieurs clubs de handball/CE/mairies de votre secteur. Nous venons notamment de livrer [exemple concret récent]."</li><li><strong>3. Permission de continuer</strong> — "Est-ce que vous avez 3 minutes ?" → jamais "J'espère que je ne vous dérange pas" (trop soumis).</li><li><strong>4. Découverte BANT</strong> — 2 à 3 questions ouvertes maximum. Écouter plus que parler.</li><li><strong>5. Proposition ciblée</strong> — 1 à 2 avantages LABORO directement liés à ce qu'il vient de dire. Jamais le catalogue en vrac.</li><li><strong>6. Prise de RDV</strong> — "Seriez-vous disponible mardi 14h ou jeudi 10h ?" Toujours proposer 2 créneaux. Confirmer par mail dans l'heure.</li></ul><p><strong>2. Gérer les objections — méthode ARA (Accepter · Reformuler · Argumenter)</strong></p><ul><li><strong>"On travaille avec Decathlon"</strong> → Accepter : "Je comprends, ils sont bien implantés." Reformuler : "Quelle est votre principale difficulté avec eux ?" Argumenter sur la faille identifiée (délai flocage, absence de commercial dédié, etc.)</li><li><strong>"On n'a pas de budget"</strong> → "Quel est votre budget habituel pour ce type d'achat ?" Requalifier plutôt qu'insister. S'il n'y a vraiment pas de budget → noter pour l'année prochaine dans LABORO Connect.</li><li><strong>"Envoyez-moi une documentation"</strong> → "Bien sûr. Pour vous envoyer quelque chose d'utile, puis-je vous poser 2 questions rapides ?" Reprendre la main avant d'envoyer quoi que ce soit.</li><li><strong>"Rappelez dans 6 mois"</strong> → "D'accord. Pour être sûr de ne pas vous manquer — quelle est la meilleure date précise pour vous rappeler ?" Fixer une date réelle dans LABORO Connect.</li><li><strong>"C'est trop cher"</strong> → "Par rapport à quoi ?" Identifier le point de comparaison avant de défendre le prix. Jamais baisser le prix sans contrepartie.</li></ul><p><strong>3. Mener une visite terrain efficace</strong></p><ul><li><strong>Préparation obligatoire</strong> : accroche personnalisée par prospect (leur actualité, leur résultat sportif récent, leur secteur) · objectif clair de la visite (RDV de découverte ? devis ? signature ?)</li><li><strong>Documents à emporter</strong> : catalogue LABORO + grille tarifaire clubs/CE + échantillons textile + tablette pour devis immédiat + cartes de visite</li><li><strong>Pendant la visite</strong> : prendre des notes manuscrites visibles par le prospect (montre l'attention) · reformuler avant de proposer · ne jamais sortir le catalogue avant d'avoir qualifié les besoins</li><li><strong>Après la visite</strong> : compte-rendu rédigé dans les 2 heures · devis envoyé dans les 24h · mise à jour LABORO Connect immédiate</li></ul><p><strong>4. Indicateurs de performance de la mise en oeuvre</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100</li><li>Taux de RDV = RDV obtenus ÷ contacts joints × 100 · objectif LABORO phoning : > 10%</li><li>Taux de transformation RDV-devis = devis envoyés ÷ RDV effectués × 100 · objectif : > 50%</li><li>Durée moyenne d'un appel de prospection : 4 à 8 minutes pour un appel qualifié</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — objection Decathlon (Comité 91 Handball)</div>Pierre Lambert : "On commande déjà chez Decathlon, on est satisfaits."<br>Réponse : "Je comprends, ils sont bien implantés. Dites-moi — quand vous commandez des maillots flocage pour vos 42 clubs, quel est votre délai de livraison habituel avec eux ?"<br>Pierre Lambert : "Environ 5 semaines."<br>Réponse : "Chez nous c'est 3 semaines flocage inclus. Et si vous avez un souci de livraison, vous avez un commercial dédié joignable directement — pas un centre d'appels. Est-ce que ça change quelque chose pour vous ?"<br><strong>→ RDV obtenu 3 jours plus tard.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Ne jamais répondre à une objection sans l'avoir d'abord acceptée et reformulée. Les 30 premières secondes sont décisives — l'accroche se prépare par écrit. Proposer toujours 2 créneaux de RDV, jamais un seul. Un compte-rendu de visite rédigé dans les 2 heures vaut 3 relances. Jamais de catalogue sans découverte préalable.</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>6 étapes : accroche · objet · découverte · argumentation · objections · conclusion</li>
+<li>Toujours proposer un créneau de RDV précis, jamais une question ouverte sur la disponibilité</li>
+</ul>
 </div>`},
-  'B4.4':{t:"Assurer le suivi de la prospection et des devis",c:`<div class="res-section res-debutant">
+2:{t:"Conduire un entretien de prospection — Détailler le plan et traiter les objections",c:`<div class="res-section">
+<div class="res-section-label">🟢 Le plan d'appel détaillé et la méthode ARA</div>
+<ul><li><strong>1. Présentation</strong> (15s) — "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport & Outdoor à Évry."</li><li><strong>2. Accroche personnalisée</strong> (20s) — un exemple concret récent lié à son secteur.</li><li><strong>3. Permission de continuer</strong> — "Est-ce que vous avez 3 minutes ?" (jamais "j'espère ne pas déranger", trop soumis).</li><li><strong>4. Découverte BANT</strong> — 2-3 questions ouvertes maximum, écouter plus que parler.</li><li><strong>5. Proposition ciblée</strong> — 1-2 avantages liés directement à ce qu'il vient de dire, jamais le catalogue en vrac.</li><li><strong>6. Prise de RDV</strong> — toujours 2 créneaux proposés, confirmation par mail dans l'heure.</li></ul>
+<p><strong>Méthode ARA (Accepter · Reformuler · Argumenter) pour les objections :</strong></p>
+<ul><li><strong>"On travaille avec Decathlon"</strong> → Accepter, puis reformuler : "Quelle est votre principale difficulté avec eux ?" puis argumenter sur la faille identifiée.</li><li><strong>"On n'a pas de budget"</strong> → Requalifier plutôt qu'insister : "Quel est votre budget habituel pour ce type d'achat ?"</li><li><strong>"Envoyez-moi une documentation"</strong> → Reprendre la main avant d'envoyer : "Puis-je vous poser 2 questions rapides ?"</li><li><strong>"C'est trop cher"</strong> → "Par rapport à quoi ?" avant de défendre le prix.</li></ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — objection Decathlon</div>
+Pierre Lambert : "On commande déjà chez Decathlon, on est satisfaits." Réponse : "Je comprends, ils sont bien implantés. Quel est votre délai de livraison habituel ?" — "Environ 5 semaines." — "Chez nous c'est 3 semaines flocage inclus, avec un commercial dédié joignable directement." <strong>→ RDV obtenu 3 jours plus tard.</strong>
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>ARA : Accepter · Reformuler · Argumenter — jamais répondre sans avoir accepté d'abord</li>
+<li>Une objection prix se traite en identifiant le point de comparaison, jamais en baissant le prix sans contrepartie</li>
+</ul>
+</div>`},
+3:{t:"Conduire un entretien de prospection — Gérer plusieurs objections et la visite terrain",c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand les objections s'enchaînent</div>
+<p>À ce niveau, le prospect ne soulève plus une seule objection isolée : il en enchaîne plusieurs dans le même échange, parfois pour tester ta réaction plus que par vraie difficulté. Ton rôle est de traiter la bonne objection en premier, pas toutes en même temps.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — objections en cascade</div>
+"On est satisfaits de notre fournisseur actuel, et de toute façon le budget est déjà voté, et on n'a pas le temps de changer maintenant." Trois objections en une phrase. Mauvais réflexe : répondre aux trois d'un coup. Bon réflexe : identifier la plus bloquante ("le budget déjà voté" empêche tout achat cette année) et vérifier si c'est vraiment un frein définitif ou un prétexte : "Je comprends pour le budget de cette année — est-ce qu'un devis pour la saison prochaine, sans engagement, aurait un intérêt pour vous dès maintenant ?"
+</div>
+<p><strong>Préparer et mener une visite terrain :</strong> accroche personnalisée par prospect, objectif clair de la visite (découverte, devis, signature), documents à emporter (catalogue, grille tarifaire, échantillons, tablette pour devis immédiat). Pendant la visite : prendre des notes visibles, reformuler avant de proposer, ne jamais sortir le catalogue avant d'avoir qualifié les besoins.</p>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta gestion des objections — par exemple : comment as-tu choisi quelle objection traiter en premier, et cet ordre a-t-il changé l'issue de l'entretien ? Ce n'est pas un résumé de l'échange, c'est un vrai retour critique sur ta méthode.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à plusieurs objections enchaînées, traite la plus bloquante en premier, jamais toutes à la fois</li>
+<li>Une objection répétée par réflexe n'est pas toujours un frein définitif — vérifie-le avant d'abandonner</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode, pas un résumé de l'échange</li>
+</ul>
+</div>`},
+4:{t:"Conduire un entretien de prospection — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter la performance des entretiens</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>Plan d'appel</strong> : présentation · accroche perso · permission · découverte BANT · proposition ciblée · RDV (2 créneaux)</li>
+<li><strong>ARA</strong> : Accepter · Reformuler · Argumenter, objection par objection</li>
+<li><strong>Après une visite</strong> : compte-rendu sous 2h · devis sous 24h · mise à jour LABORO Connect immédiate</li>
+</ul>
+<p><strong>Indicateurs de performance :</strong> taux de contact = joints ÷ appelés × 100 · taux de RDV = RDV ÷ contacts joints × 100 (objectif &gt;10%) · taux de transformation RDV-devis (objectif &gt;50%) · durée moyenne d'appel qualifié : 4-8 minutes.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un prospect enchaîne plusieurs objections dans le même appel, dont une qui semble définitive. En autonomie complète, tu dois identifier la vraie objection bloquante, la traiter avec ARA, et conclure sur une action concrète (RDV ou date de relance précise) même en cas de refus immédiat.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : gérer un enchaînement d'objections et conclure sur une action, même face à un refus</li>
+<li>Un compte-rendu rédigé rapidement vaut mieux que plusieurs relances improvisées plus tard</li>
+</ul>
+</div>`},
+},
+'B4.4':{
+1:{t:'Assurer le suivi commercial — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
 <p><strong>B4.4 — Assurer le suivi commercial.</strong> Après un premier contact, le suivi c'est ce qui transforme un prospect en client.</p>
 <p><strong>La règle des 24h :</strong> envoyer le devis dans les 24h après un RDV. Un devis envoyé tard = client perdu.</p>
@@ -1779,39 +1914,31 @@ S6 : Relances finales + devis → signature · supports 50 €<br>
 RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + shorts = 847€ HT). Lundi suivant : relance mail "Bonjour M. Kowalski, avez-vous pu consulter notre proposition ?" — Il répond et signe.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#FFFBEB"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.4 — SUIVI COMMERCIAL — La règle des 24h LABORO</text>
-  <defs><marker id="arr8" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#D97706"/></marker></defs>
-  <!-- Timeline -->
   <line x1="40" y1="90" x2="640" y2="90" stroke="#D97706" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- RDV -->
   <circle cx="80" cy="90" r="22" fill="#1A2E4A"/>
   <text x="80" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RDV</text>
   <text x="80" y="98" text-anchor="middle" font-size="8" fill="#63B3ED">J0</text>
   <text x="80" y="126" text-anchor="middle" font-size="8" fill="#4A5568">Qualifier</text>
   <text x="80" y="138" text-anchor="middle" font-size="8" fill="#4A5568">le besoin</text>
-  <!-- Devis -->
   <circle cx="240" cy="90" r="22" fill="#D97706"/>
   <text x="240" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">DEVIS</text>
   <text x="240" y="98" text-anchor="middle" font-size="8" fill="#fff">J+1</text>
   <text x="240" y="126" text-anchor="middle" font-size="8" fill="#D97706" font-weight="700">⚡ 24h max</text>
   <text x="240" y="138" text-anchor="middle" font-size="8" fill="#4A5568">Personnalisé</text>
-  <!-- Relance 1 -->
   <circle cx="400" cy="90" r="22" fill="#2D5282"/>
   <text x="400" y="83" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RELANCE</text>
   <text x="400" y="95" text-anchor="middle" font-size="8" fill="#fff">J+5</text>
   <text x="400" y="126" text-anchor="middle" font-size="8" fill="#4A5568">"Avez-vous pu</text>
   <text x="400" y="138" text-anchor="middle" font-size="8" fill="#4A5568">consulter..."</text>
-  <!-- Relance 2 -->
   <circle cx="560" cy="90" r="22" fill="#4A6FA5"/>
   <text x="560" y="83" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RELANCE</text>
   <text x="560" y="95" text-anchor="middle" font-size="8" fill="#fff">J+10</text>
   <text x="560" y="126" text-anchor="middle" font-size="8" fill="#4A5568">Dernière</text>
   <text x="560" y="138" text-anchor="middle" font-size="8" fill="#4A5568">tentative</text>
-  <!-- Règle -->
   <rect x="10" y="36" width="660" height="28" rx="6" fill="#FEF3C7"/>
   <text x="340" y="55" text-anchor="middle" font-size="9" fill="#92400E">
     <tspan font-weight="700">Règle LABORO : </tspan>
@@ -1819,12 +1946,85 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
   </text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>1. La règle des 24h — envoyer le devis vite</strong></p><p>Un devis envoyé dans les <strong>24h après le RDV</strong> a 3 fois plus de chances d'aboutir qu'un devis envoyé 72h après. Le prospect est encore chaud, il se souvient de la conversation. Au-delà de 48h : le taux de signature chute de 40%.</p><p><strong>Structure d'un devis LABORO efficace :</strong></p><ul><li>En-tête : logo LABORO + coordonnées + date + numéro de devis</li><li>Destinataire : nom du décisionnaire (pas juste la société)</li><li>Tableau des produits : référence · désignation · quantité · PAHT · remise · PVHT · TVA · PVTTC</li><li>Conditions : délai de livraison garanti · conditions de paiement · validité du devis (30 jours)</li><li>Bas de page : signature du commercial + formule d'engagement</li></ul><p><strong>2. Stratégie de relance selon le délai — ne jamais laisser un devis sans suivi</strong></p><ul><li><strong>J+5 (moins d'une semaine)</strong> — Relance courte par mail : "Suite à notre échange du [date], avez-vous eu l'occasion d'étudier notre proposition ? Je reste disponible si vous avez des questions." Pas de pression.</li><li><strong>J+10 (10 jours)</strong> — Apporter un élément nouveau : témoignage d'un client similaire, actualité LABORO (nouvelle référence, promotion en cours), information sectorielle. L'objectif : rouvrir la conversation sans répéter le même message.</li><li><strong>J+15 ou plus</strong> — Appel direct. Identifier le blocage réel : budget (décision interne reportée ?), concurrent plus rapide (qui ?), besoin redéfini ? Adapter la proposition en conséquence.</li><li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans LABORO Connect : prospect perdu (raison), en veille (date de relance future), ou à réactiver (conditions à remplir).</li></ul><p><strong>3. Calculer et analyser les indicateurs de suivi</strong></p><ul><li><strong>Taux de relance</strong> = prospects relancés ÷ devis envoyés × 100 · objectif : 100% (tout devis doit être relancé)</li><li><strong>Taux de transformation devis-contrat</strong> = contrats signés ÷ devis envoyés × 100 · objectif LABORO : > 30%</li><li><strong>Délai moyen de signature</strong> = somme des jours entre envoi du devis et signature ÷ nombre de contrats</li><li><strong>CA en négociation</strong> = somme des devis en attente × taux de transformation estimé · indicateur de pilotage du pipeline commercial</li></ul><p><strong>4. Mettre à jour LABORO Connect après chaque action</strong></p><ul><li>Champs à renseigner obligatoirement après chaque contact : date de l'action · type (appel, mail, visite) · résultat (RDV, devis, refus, en attente) · prochaine action · date de relance</li><li>Statuts possibles dans LABORO Connect : Prospect froid · Prospect tiède · Prospect chaud · Devis envoyé · En négociation · Client · Perdu (raison)</li><li>Un prospect sans date de relance dans LABORO Connect = prospect invisible pour toute l'équipe = prospect perdu</li></ul><p><strong>5. Calculer le ROI d'une action commerciale</strong></p><p>Le <strong>ROI (retour sur investissement)</strong> permet de savoir si une action commerciale (opération de prospection, relance, formation, outil) a rapporté plus qu'elle n'a coûté. C'est l'indicateur qui transforme un simple bilan d'activité en preuve de rentabilité.</p><ul><li><strong>Formule</strong> : ROI (%) = (Gain généré par l'action − Coût de l'action) ÷ Coût de l'action × 100</li><li><strong>Gain généré</strong> : le CA (ou la marge, selon ce qui est demandé) directement attribuable à l'action évaluée</li><li><strong>Coût de l'action</strong> : tout ce qui a été dépensé pour la mener (budget, outils, temps valorisé si demandé)</li><li>Un ROI positif signifie que l'action a rapporté plus qu'elle n'a coûté ; plus il est élevé, plus l'action est rentable</li></ul><div class="res-ex"><div class="res-ex-l">Exemple — calcul de ROI</div>LABORO a investi 780 € dans une opération de prospection. Elle a généré 31 200 € de CA sur l'année.<br>ROI = (31 200 − 780) ÷ 780 × 100 ≈ <strong>3900%</strong>. Chaque euro investi en a rapporté environ 39. L'opération est donc très rentable, même si l'objectif initial de contrats signés n'est pas atteint à 100%.</div><p><strong>6. Appliquer la loi de Pareto (règle des 80/20) à un portefeuille clients</strong></p><p>La <strong>loi de Pareto</strong> observe que, dans beaucoup de situations commerciales, <strong>environ 80% du chiffre d'affaires provient de 20% des clients</strong>. Elle sert à prioriser : plutôt que de traiter tous les comptes de la même façon, on concentre l'attention sur ceux qui pèsent le plus.</p><ul><li><strong>Étape 1</strong> : classer les clients du CA le plus élevé au plus faible</li><li><strong>Étape 2</strong> : calculer le CA cumulé et repérer les clients qui représentent à eux seuls environ 80% du CA total — ce sont les 20% de comptes prioritaires</li><li><strong>Étape 3</strong> : adapter le suivi — les comptes du "top 20%" méritent un suivi rapproché et personnalisé (le prioriser en cas de temps limité), les autres un suivi plus standardisé</li><li>Attention : "80/20" est un ordre de grandeur, pas une règle mathématique exacte — l'important est la logique de priorisation, pas le chiffre au pourcentage près</li></ul><div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. Ce sont ces deux comptes qu'il faut prioriser en cas de charge de travail élevée — sans pour autant abandonner les comptes plus petits comme Club Sportif Sénart.</div><div class="res-ex"><div class="res-ex-l">Exemple LABORO — relance CE Thales J+10 (aucune réponse)</div>Objet : "Votre commande LABORO — un retour d'expérience qui pourrait vous intéresser"<br>Corps : "Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Depuis, nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte que le vôtre — leur retour est très positif sur nos délais. Je me permets de vous le partager si vous souhaitez. Seriez-vous disponible 10 min cette semaine pour que j'ajuste notre proposition ?"<br><strong>Résultat : rappel reçu le lendemain → devis accepté sous 48h.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Devis dans les 24h — pas de dérogation. 80% des ventes B2B se signent après la 5e prise de contact. Chaque relance doit apporter quelque chose de nouveau. Toujours qualifier le blocage avant de baisser le prix. LABORO Connect mis à jour dans les 10 minutes suivant chaque action — sans exception.</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Devis envoyé dans les 24h après le RDV, sans exception</li>
+<li>3 étapes : devis rapide · relance J+5 · relance J+10</li>
+<li>Chaque action se trace dans LABORO Connect</li>
+</ul>
 </div>`},
-  'B4.5':{t:"Valoriser l'offre LABORO face à la concurrence",c:`<div class="res-section res-debutant">
+2:{t:'Assurer le suivi commercial — Structurer le devis et les relances',c:`<div class="res-section">
+<div class="res-section-label">🟢 Structurer un devis et relancer efficacement</div>
+<p><strong>Structure d'un devis LABORO efficace :</strong></p>
+<ul>
+<li>En-tête : logo LABORO + coordonnées + date + numéro de devis</li>
+<li>Destinataire : nom du décisionnaire (pas juste la société)</li>
+<li>Tableau des produits : référence · désignation · quantité · PAHT · remise · PVHT · TVA · PVTTC</li>
+<li>Conditions : délai de livraison garanti · conditions de paiement · validité du devis (30 jours)</li>
+<li>Bas de page : signature du commercial + formule d'engagement</li>
+</ul>
+<p><strong>Stratégie de relance selon le délai — ne jamais laisser un devis sans suivi :</strong></p>
+<ul>
+<li><strong>J+5</strong> — Relance courte par mail, sans pression : "Suite à notre échange du [date], avez-vous eu l'occasion d'étudier notre proposition ?"</li>
+<li><strong>J+10</strong> — Apporter un élément nouveau (témoignage client similaire, actualité LABORO) pour rouvrir la conversation sans répéter le même message</li>
+<li><strong>J+15 ou plus</strong> — Appel direct pour identifier le blocage réel (budget, concurrent, besoin redéfini)</li>
+<li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans LABORO Connect : perdu, en veille, ou à réactiver</li>
+</ul>
+<p><strong>Indicateurs de suivi :</strong> taux de relance = prospects relancés ÷ devis envoyés × 100 (objectif 100%) · taux de transformation devis-contrat = contrats signés ÷ devis envoyés × 100 (objectif LABORO &gt; 30%) · délai moyen de signature.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — relance CE Thales J+10</div>
+"Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un devis LABORO complet inclut toujours le tableau produits avec PVHT/TVA/PVTTC et une validité de 30 jours</li>
+<li>Chaque relance doit apporter un élément nouveau, jamais répéter le même message</li>
+<li>Taux de transformation devis-contrat visé chez LABORO : &gt; 30%</li>
+</ul>
+</div>`},
+3:{t:'Assurer le suivi commercial — Calculer le ROI et prioriser avec Pareto',c:`<div class="res-section">
+<div class="res-section-label">🟠 Mesurer la rentabilité et prioriser un portefeuille</div>
+<p><strong>Calculer le ROI (retour sur investissement)</strong> d'une action commerciale : ROI (%) = (Gain généré − Coût de l'action) ÷ Coût de l'action × 100. Un ROI positif signifie que l'action a rapporté plus qu'elle n'a coûté.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — calcul de ROI</div>
+LABORO a investi 780 € dans une opération de prospection, qui a généré 31 200 € de CA sur l'année.<br>
+ROI = (31 200 − 780) ÷ 780 × 100 ≈ <strong>3900%</strong>. Chaque euro investi en a rapporté environ 39 — l'opération est très rentable, même si l'objectif initial de contrats signés n'est pas atteint à 100%.
+</div>
+<p><strong>Appliquer la loi de Pareto (règle des 80/20)</strong> à un portefeuille : environ 80% du CA provient souvent de 20% des clients. Étapes : classer les clients du CA le plus élevé au plus faible → repérer ceux qui représentent ~80% du CA cumulé → adapter le suivi (les comptes prioritaires méritent un suivi rapproché en cas de temps limité, sans pour autant abandonner les autres).</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>
+Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Sportif Sénart.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage de priorisation — par exemple : qu'aurais-tu risqué si tu avais traité tous les comptes à égalité de temps, sans tenir compte du poids de chacun dans le CA ? Ce n'est pas un résumé du calcul de ROI ou du classement Pareto, c'est un vrai retour critique sur ta méthode de priorisation.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>ROI = (Gain − Coût) ÷ Coût × 100 — un ROI très élevé n'annule pas un objectif de contrats non atteint</li>
+<li>Pareto : ~80% du CA vient souvent de ~20% des clients — c'est un ordre de grandeur, pas une règle exacte</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode de priorisation, pas un résumé des calculs</li>
+</ul>
+</div>`},
+4:{t:'Assurer le suivi commercial — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter un portefeuille de prospects en autonomie</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Champs à renseigner dans LABORO Connect après chaque action :</strong> date de l'action · type (appel, mail, visite) · résultat · prochaine action · date de relance.</p>
+<p><strong>Statuts possibles :</strong> Prospect froid · Prospect tiède · Prospect chaud · Devis envoyé · En négociation · Client · Perdu (raison). Un prospect sans date de relance = prospect invisible pour toute l'équipe = prospect perdu.</p>
+<p><strong>Réflexes à mobiliser :</strong> devis sous 24h · relance qui apporte du nouveau · calcul de ROI pour justifier un choix d'action · classement Pareto pour prioriser un portefeuille chargé.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un portefeuille de prospects à statuts variés (devis envoyés, en négociation, en veille) et un temps limité. En autonomie complète, tu dois prioriser les comptes à traiter en premier, calculer le ROI d'une action passée pour la justifier, et mettre à jour le statut de chaque prospect dans LABORO Connect.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : piloter un portefeuille entier en priorisant selon le poids réel de chaque compte, pas dans l'ordre d'arrivée</li>
+<li>LABORO Connect mis à jour dans les 10 minutes suivant chaque action, sans exception</li>
+</ul>
+</div>`},
+},
+'B4.5':{
+1:{t:"Valoriser l'offre LABORO — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
 <p><strong>B4.5 — Valoriser l'offre LABORO face à la concurrence.</strong> Face à un concurrent moins cher, le rôle du commercial n'est pas de baisser le prix mais de démontrer la valeur réelle de l'offre LABORO.</p>
 <p><strong>La méthode en 3 temps face à l'objection prix :</strong></p>
@@ -1838,7 +2038,6 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
@@ -1863,12 +2062,75 @@ Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." R�
   <text x="568" y="124" text-anchor="middle" font-size="7.5" fill="#BEE3F8">Fidélisation maximale</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
-<p><strong>1. Analyser les forces et faiblesses concurrentielles — construire le tableau comparatif</strong></p><p>Avant tout RDV stratégique, construire un tableau comparatif objectif sur les critères qui comptent pour CE prospect :</p><ul><li><strong>Critères à comparer</strong> : prix unitaire · remises · délai de livraison · délai flocage/broderie · service commercial dédié · livraison domicile · showroom physique · politique de retour · note clients</li><li><strong>Règle d'or</strong> : ne comparer que les critères sur lesquels LABORO est supérieur ou égal — ignorer ceux où l'écart est défavorable (les mentionner si le prospect les soulève)</li><li><strong>Jamais dénigrer un concurrent par son nom</strong> : comparer les offres, pas les entreprises. "Certains concurrents pratiquent un délai flocage de 5 semaines" — pas "Decathlon c'est nul".</li></ul><p><strong>Tableau type LABORO vs concurrents — secteur clubs sportifs :</strong></p><ul><li>Prix maillots flocage : LABORO 28 €/u · Decathlon Pro 24 €/u · SportRun 31 €/u → LABORO dans la moyenne</li><li>Délai flocage : LABORO 3 semaines · Decathlon Pro 5 semaines · SportRun 2 semaines → LABORO avantageux vs Decathlon</li><li>Remise clubs : LABORO 8-15% · Decathlon Pro 5-10% · SportRun 7-12% → LABORO meilleur</li><li>Commercial dédié : LABORO Oui · Decathlon Non · SportRun Partiellement → LABORO différenciateur fort</li><li>Livraison 48h domicile : LABORO Oui · Decathlon Oui 72h · SportRun Non → LABORO avantageux</li></ul><p><strong>2. Répondre à l'objection prix — méthode en 3 temps</strong></p><ul><li><strong>Temps 1 — Accepter</strong> : "Je comprends que le prix soit un critère important pour vous." Ne jamais réfuter d'emblée.</li><li><strong>Temps 2 — Quantifier la valeur</strong> : "Permettez-moi de vous montrer ce que notre offre inclut que les autres ne proposent pas." Chiffrer la valeur additionnelle : 2 semaines gagnées sur le flocage = possibilité de commander plus tard → moins de stock immobilisé · un commercial joignable = zéro perte de temps en SAV.</li><li><strong>Temps 3 — Proposer l'entrée de gamme si besoin</strong> : Si l'écart de prix reste rédhibitoire, proposer une première commande test à conditions préférentielles pour démontrer la valeur par l'expérience. "Pourquoi ne pas tester sur une commande de 20 unités pour voir ?"</li></ul><p><strong>3. Construire une proposition commerciale à plusieurs niveaux</strong></p><ul><li><strong>Offre Essentiel</strong> : produits standards · délai normal · paiement 30j · remise palier 1</li><li><strong>Offre Confort</strong> : produits premium + flocage · livraison prioritaire · suivi commercial mensuel · remise palier 2</li><li><strong>Offre Partenaire</strong> : contrat annuel · gamme complète · commercial dédié · accès showroom hors heures · conditions tarifaires préférentielles négociées</li><li>Avantage : le prospect choisit — il ne se sent pas piégé dans une seule option. Le coût d'opportunité est visible entre les niveaux.</li></ul><p><strong>4. Calculer la valeur de l'offre pour le prospect</strong></p><ul><li>Comparer le coût total LABORO vs concurrent sur la durée réelle d'utilisation, pas sur le prix unitaire seul</li><li>Exemple : LABORO 28 €/maillot · Decathlon 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines Decathlon = 14 jours gagnés. Si le tournoi est dans 3,5 semaines → Decathlon ne peut pas livrer à temps → l'écart de 80 € est nul.</li><li><strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse à l'objection prix (Marc Girault, Club Trail Sénart)</div>Marc Girault : "LABORO c'est 80 € de plus que Decathlon pour 20 maillots."<br>Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon, vous ne seriez pas livré à temps. Avec nous, vous avez les maillots 7 jours avant. Et si un problème survient à la livraison, je suis joignable directement — pas un centre d'appels. La différence de 80 €, c'est aussi cette tranquillité."<br><strong>Marc Girault signe le devis le lendemain.</strong></div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>On ne gagne jamais contre Decathlon sur le prix — on gagne sur la valeur et la relation. Chaque argument doit être chiffré ou illustré. L'offre à 3 niveaux laisse le prospect décider sans se sentir forcé. Calculer la valeur sur la durée réelle, pas sur le prix unitaire isolé. L'entrée de gamme est un investissement : un client LABORO satisfait reste en moyenne 4,2 ans.</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Méthode en 3 temps face au prix : accepter · quantifier la valeur · proposer une alternative</li>
+<li>Une offre à 3 niveaux laisse le prospect choisir sans se sentir piégé</li>
+</ul>
 </div>`},
-  'G4B':{t:'La prospection commerciale B2B',c:`<div class="res-section res-debutant">
+2:{t:"Valoriser l'offre LABORO — Comparer objectivement et argumenter",c:`<div class="res-section">
+<div class="res-section-label">🟢 Construire un comparatif et une offre à plusieurs niveaux</div>
+<p><strong>Analyser les forces et faiblesses concurrentielles :</strong> avant tout RDV stratégique, construire un tableau comparatif objectif sur les critères qui comptent pour CE prospect (prix, délai livraison, délai flocage, service commercial dédié, note clients...). Règle d'or : ne comparer que les critères où LABORO est supérieur ou égal, et ne jamais dénigrer un concurrent par son nom — comparer les offres, pas les entreprises.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — tableau comparatif clubs sportifs</div>
+Prix maillots flocage : LABORO 28 €/u · Decathlon Pro 24 €/u · SportRun 31 €/u.<br>
+Délai flocage : LABORO 3 semaines · Decathlon Pro 5 semaines · SportRun 2 semaines.<br>
+Commercial dédié : LABORO Oui · Decathlon Non · SportRun Partiellement → différenciateur fort pour LABORO.
+</div>
+<p><strong>Construire une offre à plusieurs niveaux :</strong></p>
+<ul>
+<li><strong>Offre Essentiel</strong> — produits standards, délai normal, paiement 30j</li>
+<li><strong>Offre Confort</strong> — produits premium + flocage, livraison prioritaire, suivi commercial mensuel</li>
+<li><strong>Offre Partenaire</strong> — contrat annuel, commercial dédié, conditions négociées</li>
+</ul>
+<p><strong>Répondre à l'objection prix en 3 temps :</strong> accepter ("je comprends que le prix soit un critère important") → quantifier la valeur (chiffrer ce que LABORO apporte en plus) → proposer une entrée de gamme ou une commande test si l'écart reste trop important.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Comparer objectivement, sans dénigrer un concurrent nommément</li>
+<li>3 niveaux d'offre : Essentiel · Confort · Partenaire</li>
+</ul>
+</div>`},
+3:{t:"Valoriser l'offre LABORO — Calculer la valeur réelle et arbitrer",c:`<div class="res-section">
+<div class="res-section-label">🟠 Calculer la valeur perçue et arbitrer un argumentaire concurrentiel</div>
+<p><strong>Calculer la valeur de l'offre pour le prospect</strong> — comparer le coût total sur la durée réelle d'utilisation, pas sur le prix unitaire seul. <strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — l'écart de prix qui devient nul</div>
+LABORO 28 €/maillot · Decathlon 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon = 14 jours gagnés. Si le tournoi du client est dans 3,5 semaines, Decathlon ne peut pas livrer à temps — l'écart de 80 € devient sans objet face au risque de ne pas être livré.
+</div>
+<p>Quand plusieurs arguments sont disponibles (prix, délai, service, garanties), il faut choisir lesquels mettre en avant selon ce qui compte réellement pour CE prospect précis — un argument fort pour un client (délai serré) peut être sans intérêt pour un autre (stock déjà constitué).</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse construite (Marc Girault, Club Trail Sénart)</div>
+Marc Girault : "LABORO c'est 80 € de plus que Decathlon pour 20 maillots."<br>
+Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon, vous ne seriez pas livré à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Marc Girault signe le devis le lendemain.</strong>
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix d'arguments — par exemple : pourquoi as-tu mis en avant le délai plutôt que le service commercial dédié dans ce cas précis, et qu'est-ce qui aurait changé avec un autre prospect ? Ce n'est pas un résumé de l'argumentaire, c'est un vrai retour critique sur ta sélection d'arguments.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Valeur perçue = Bénéfices ÷ Prix — un écart de prix peut devenir sans objet selon le contexte du prospect</li>
+<li>Sélectionner les arguments selon ce qui compte pour CE prospect précis, pas une liste générique</li>
+<li>La réflexivité = un vrai retour critique sur ta sélection d'arguments, pas un résumé</li>
+</ul>
+</div>`},
+4:{t:"Valoriser l'offre LABORO — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — argumenter face à la concurrence en autonomie</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Réflexes à mobiliser :</strong> comparatif objectif et ciblé sur le prospect · méthode en 3 temps face au prix (accepter, quantifier, alternative) · calcul de la valeur perçue sur la durée réelle · offre à plusieurs niveaux si le budget est un frein.</p>
+<p><strong>Jamais dénigrer un concurrent par son nom</strong> — comparer les offres, pas les entreprises. Un client LABORO satisfait reste en moyenne 4,2 ans : l'entrée de gamme est un investissement relationnel, pas juste une vente.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un prospect compare LABORO à un concurrent moins cher sur un critère précis. En autonomie complète, tu dois construire un argumentaire chiffré qui dépasse le simple prix, en t'appuyant sur la valeur réelle pour ce client (délai, service, garanties) et proposer une offre adaptée à son budget si besoin.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : construire un argumentaire chiffré et adapté au prospect, jamais une réponse générique sur le prix</li>
+</ul>
+</div>`},
+},
+  'G4B':{
+1:{t:'La prospection commerciale B2B — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — La prospection chez LABORO</div>
 <p><strong>Prospecter = trouver de nouveaux clients.</strong> Chez LABORO, la cible B2B = associations sportives, comités d'entreprise, clubs.</p>
 <p><strong>Les 3 questions avant de prospecter :</strong></p>
@@ -1893,45 +2155,32 @@ Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." R�
 <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="260" rx="12" fill="#F8FAFF"/>
   <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">ENTONNOIR DE PROSPECTION B2B — LABORO</text>
-  
-  <!-- Niveau 1 — Suspects -->
   <polygon points="100,40 580,40 520,88 160,88" fill="#1A2E4A"/>
   <text x="340" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">SUSPECTS</text>
   <text x="340" y="76" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">Toutes les associations sportives de l'Essonne (~400)</text>
-  <!-- Chiffre gauche -->
   <text x="88" y="68" text-anchor="end" font-size="18" font-weight="900" fill="#1A2E4A">400</text>
   <text x="88" y="82" text-anchor="end" font-size="8" fill="#4A6FA5">contacts</text>
-  
-  <!-- Niveau 2 — Prospects qualifiés -->
   <polygon points="160,96 520,96 460,144 220,144" fill="#2D5282"/>
   <text x="340" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">PROSPECTS QUALIFIÉS</text>
   <text x="340" y="132" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">Budget >300€, 15+ membres, actifs (~120)</text>
   <text x="148" y="124" text-anchor="end" font-size="18" font-weight="900" fill="#2D5282">120</text>
   <text x="148" y="138" text-anchor="end" font-size="8" fill="#4A6FA5">qualifiés</text>
-  
-  <!-- Niveau 3 — Contacts aboutis -->
   <polygon points="220,152 460,152 400,200 280,200" fill="#4A6FA5"/>
   <text x="340" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CONTACTS ABOUTIS</text>
   <text x="340" y="188" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">Appels décrochés (~60)</text>
   <text x="208" y="180" text-anchor="end" font-size="18" font-weight="900" fill="#4A6FA5">60</text>
   <text x="208" y="194" text-anchor="end" font-size="8" fill="#4A6FA5">aboutis</text>
-  
-  <!-- Niveau 4 — RDV obtenus -->
   <polygon points="280,208 400,208 368,240 312,240" fill="#63B3ED"/>
   <text x="340" y="224" text-anchor="middle" font-size="10" font-weight="700" fill="#1A2E4A">RDV</text>
   <text x="340" y="237" text-anchor="middle" font-size="9" fill="#1A2E4A">~12</text>
   <text x="268" y="228" text-anchor="end" font-size="18" font-weight="900" fill="#63B3ED">12</text>
   <text x="268" y="242" text-anchor="end" font-size="8" fill="#4A6FA5">RDV</text>
-  
-  <!-- Légende droite -->
   <text x="592" y="68" font-size="9" fill="#4A6FA5">Taux qualification</text>
   <text x="592" y="80" font-size="10" font-weight="700" fill="#1A2E4A">30%</text>
   <text x="592" y="124" font-size="9" fill="#4A6FA5">Taux contact</text>
   <text x="592" y="136" font-size="10" font-weight="700" fill="#1A2E4A">50%</text>
   <text x="592" y="180" font-size="9" fill="#4A6FA5">Taux RDV</text>
   <text x="592" y="192" font-size="10" font-weight="700" fill="#1A2E4A">20%</text>
-  
-  <!-- Objectif -->
   <rect x="10" y="246" width="660" height="10" rx="4" fill="#EBF4FF"/>
   <text x="340" y="254" text-anchor="middle" font-size="8.5" fill="#1A2E4A">
     <tspan font-weight="700">Objectif LABORO : </tspan>
@@ -1939,39 +2188,37 @@ Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." R�
   </text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>3 questions avant de prospecter : qui, où, comment</li>
+<li>5 techniques : phoning · emailing · réseaux sociaux · événements · recommandation</li>
+</ul>
+</div>`},
+2:{t:'La prospection commerciale B2B — Qualifier et mener un appel',c:`<div class="res-section">
+<div class="res-section-label">🟢 Méthode BANT et plan d'appel structuré</div>
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="160" rx="12" fill="#F0F9FF"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">MÉTHODE BANT — Qualifier un prospect B2B</text>
-  
-  <!-- B -->
   <rect x="15" y="38" width="155" height="108" rx="10" fill="#1A2E4A"/>
   <text x="92" y="68" text-anchor="middle" font-size="30" font-weight="900" fill="#63B3ED">B</text>
   <text x="92" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">BUDGET</text>
   <text x="92" y="102" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">"Quel est votre</text>
   <text x="92" y="114" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">budget équipement ?"</text>
   <text x="92" y="132" text-anchor="middle" font-size="8" fill="#63B3ED">Seuil LABORO : >300€</text>
-  
-  <!-- A -->
   <rect x="178" y="38" width="155" height="108" rx="10" fill="#2D5282"/>
   <text x="255" y="68" text-anchor="middle" font-size="30" font-weight="900" fill="#90CDF4">A</text>
   <text x="255" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">AUTORITÉ</text>
   <text x="255" y="102" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">"Qui décide des</text>
   <text x="255" y="114" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">achats d'équipement ?"</text>
   <text x="255" y="132" text-anchor="middle" font-size="8" fill="#90CDF4">Parler au décideur</text>
-  
-  <!-- N -->
   <rect x="341" y="38" width="155" height="108" rx="10" fill="#4A6FA5"/>
   <text x="418" y="68" text-anchor="middle" font-size="30" font-weight="900" fill="#BEE3F8">N</text>
   <text x="418" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">BESOIN</text>
   <text x="418" y="102" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">"Quels équipements</text>
   <text x="418" y="114" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">vous manquent ?"</text>
   <text x="418" y="132" text-anchor="middle" font-size="8" fill="#BEE3F8">Identifier le problème</text>
-  
-  <!-- T -->
   <rect x="504" y="38" width="161" height="108" rx="10" fill="#185FA5"/>
   <text x="584" y="68" text-anchor="middle" font-size="30" font-weight="900" fill="#EBF8FF">T</text>
   <text x="584" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">TIMING</text>
@@ -1980,10 +2227,31 @@ Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." R�
   <text x="584" y="132" text-anchor="middle" font-size="8" fill="#EBF8FF">Urgence = priorité</text>
 </svg>
 </div>
-<p><strong>Les 5 techniques de prospection :</strong></p><ul><li><strong>Phoning</strong> — Appel à froid ou à tiède. Efficace si bien préparé. Taux de RDV moyen : 5 à 15%.</li><li><strong>E-mailing</strong> — Masse ou personnalisé. Taux d'ouverture moyen B2B : 20-25%. Taux de clic : 3-5%.</li><li><strong>Visite terrain</strong> — La plus qualitative mais la plus coûteuse en temps. Réserver aux prospects à fort potentiel.</li><li><strong>Salons et événements</strong> — Forum sport, foires locales. Contacts chauds à requalifier rapidement après.</li><li><strong>Réseaux sociaux (LinkedIn)</strong> — Prospection douce. Commenter, partager, puis contacter.</li></ul><p><strong>Structure du plan d'appel (à mémoriser) :</strong></p><ul><li>1. Présentation : "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport à Évry."</li><li>2. Accroche : "Je vous contacte car nous équipons plusieurs clubs de votre secteur…"</li><li>3. Découverte : 2-3 questions BANT ouvertes</li><li>4. Proposition de valeur : 1-2 avantages LABORO ciblés sur ses besoins</li><li>5. Prise de RDV : "Seriez-vous disponible mardi ou jeudi pour un échange de 20 minutes ?"</li></ul><p><strong>Méthode BANT pour qualifier :</strong> Budget disponible · Authority (est-il décisionnaire ?) · Need (besoin réel identifié ?) · Timing (quand va-t-il acheter ?)</p><p><strong>Indicateurs d'une opération de prospection :</strong></p><ul><li>Taux de contact = prospects joints ÷ prospects appelés × 100</li><li>Taux de RDV = RDV obtenus ÷ contacts ×100</li><li>Taux de transformation = contrats signés ÷ devis envoyés × 100</li><li>Coût d'acquisition = budget opération ÷ nombre de nouveaux clients</li><li>ROI = (CA généré − coût) ÷ coût × 100</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CE Essonne</div>47 appels → 16 RDV (34%) → 11 devis → 4 contrats (36%). Budget : 780 €. CA an 1 : 31 200 € HT. ROI = (31 200 − 780) ÷ 780 × 100 = <strong>3 900%</strong>.</div><p><strong>Le plan de prospection — vue d'ensemble</strong></p>
+<p><strong>Structure du plan d'appel (à mémoriser) :</strong></p>
+<ul>
+<li>1. Présentation : "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport à Évry."</li>
+<li>2. Accroche : "Je vous contacte car nous équipons plusieurs clubs de votre secteur…"</li>
+<li>3. Découverte : 2-3 questions BANT ouvertes</li>
+<li>4. Proposition de valeur : 1-2 avantages LABORO ciblés sur ses besoins</li>
+<li>5. Prise de RDV : "Seriez-vous disponible mardi ou jeudi pour un échange de 20 minutes ?"</li>
+</ul>
+<p><strong>Indicateurs d'une opération de prospection :</strong> taux de contact = prospects joints ÷ prospects appelés × 100 · taux de RDV = RDV obtenus ÷ contacts × 100 · taux de transformation = contrats signés ÷ devis envoyés × 100 · coût d'acquisition = budget ÷ nouveaux clients · ROI = (CA généré − coût) ÷ coût × 100.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CE Essonne</div>
+47 appels → 16 RDV (34%) → 11 devis → 4 contrats (36%). Budget : 780 €. CA an 1 : 31 200 € HT. ROI = (31 200 − 780) ÷ 780 × 100 = <strong>3 900%</strong>.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>BANT : Budget · Authority · Need · Timing</li>
+<li>Plan d'appel en 5 étapes, toujours dans le même ordre</li>
+</ul>
+</div>`},
+3:{t:'La prospection commerciale B2B — Construire un plan complet',c:`<div class="res-section">
+<div class="res-section-label">🟠 Le plan de prospection — construire une stratégie, pas des actions isolées</div>
 <p>En PVOC, le plan de prospection est le document central qui structure toute l'activité commerciale. Il se distingue du simple "appel à froid" par sa dimension stratégique.</p>
 <ul>
-<li><strong>Prospection = processus</strong>, pas un acte isolé. Un prospect contacté une seule fois = prospect perdu dans 80% des cas.</li>
+<li><strong>Prospection = processus</strong>, pas un acte isolé. Un prospect contacté une seule fois est perdu dans 80% des cas.</li>
 <li><strong>La règle des 7 contacts</strong> : en B2B, il faut en moyenne 7 interactions avant une décision d'achat.</li>
 <li><strong>Mix de prospection</strong> : combiner au minimum 2 techniques (e-mail + phoning, ou LinkedIn + visite) multiplie les chances de contact par 2,5.</li>
 </ul>
@@ -1995,9 +2263,36 @@ Techniques : LinkedIn (semaine 1-2) → e-mailing (semaine 3-4) → phoning (sem
 Budget : 400 € · Indicateurs : taux de contact > 60%, taux de RDV > 10%, taux de transformation > 25%<br>
 <strong>Résultat : 7 contrats signés en 8 semaines (objectif dépassé)</strong>
 </div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>
+<p>Le choix du mix et de l'ordre des techniques n'est jamais figé : si un premier canal ne produit pas les résultats attendus à mi-parcours, il faut savoir réajuster le plan en cours de route plutôt que d'attendre la fin de l'opération pour constater l'échec.</p>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur la construction de ton plan — par exemple : qu'est-ce qui t'a fait choisir cet ordre de techniques plutôt qu'un autre, et qu'aurais-tu ajusté si le taux de contact avait été plus faible que prévu à mi-parcours ? Ce n'est pas un résumé du planning, c'est un vrai retour critique sur ta stratégie.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un plan de prospection combine cible qualifiée, calcul du volume nécessaire, mix de techniques, budget et indicateurs</li>
+<li>La règle des 7 contacts justifie de ne jamais abandonner après un seul essai</li>
+<li>La réflexivité = un vrai retour critique sur ta stratégie, pas un résumé du plan</li>
+</ul>
 </div>`},
-  'ACC':{t:"L'accueil professionnel chez LABORO",c:`<div class="res-section res-debutant">
+4:{t:'La prospection commerciale B2B — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — mener une opération de prospection de bout en bout</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Enchaînement complet à maîtriser :</strong> qualifier la cible (BANT) → dimensionner le volume de prospects nécessaire → choisir un mix d'au moins 2 techniques → construire le plan d'appel en 5 étapes → fixer les indicateurs avant le lancement → suivre et relancer avec la règle des 24h · assurer le suivi et le ROI (voir B4.4) → argumenter la valeur face à la concurrence (voir B4.5).</p>
+<p>G4B mobilise l'ensemble des sous-compétences B4.1 à B4.5 : c'est la vision d'ensemble d'une opération de prospection B2B, de la recherche du prospect jusqu'à la signature.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un objectif commercial B2B à atteindre en un temps limité. En autonomie complète, tu dois construire et mener l'opération de bout en bout : cibler, qualifier, dimensionner, planifier le mix de techniques, exécuter les appels/e-mails, suivre les devis, et argumenter face à la concurrence si nécessaire.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : mener une opération de prospection complète, de la cible à la signature</li>
+<li>G4B = la vue d'ensemble qui relie B4.1 à B4.5</li>
+</ul>
+</div>`},
+},
+  'ACC':{
+1:{t:"L'accueil professionnel chez LABORO — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — L'accueil chez LABORO</div>
 <p><strong>La règle des 30 secondes :</strong> tout visiteur doit être pris en charge en moins de 30 secondes. Un regard et un sourire suffisent si on est occupé.</p>
 <p><strong>Les 4 étapes d'un accueil réussi :</strong></p>
@@ -2012,7 +2307,6 @@ Budget : 400 € · Indicateurs : taux de contact > 60%, taux de RDV > 10%, taux
 M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, souriez : "Bonjour ! Je suis à vous dans 30 secondes." Vous finissez rapidement, vous vous approchez : "Voilà ! Vous cherchez quelque chose de particulier ?" — Il se sent attendu, pas ignoré.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
@@ -2029,7 +2323,6 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
   <text x="89" y="109" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">du client</text>
   <text x="89" y="124" text-anchor="middle" font-size="8" fill="#63B3ED">&lt; 30 secondes</text>
   <path d="M 165 87 L 180 87" stroke="#2C5282" stroke-width="2" marker-end="url(#arr5)" fill="none"/>
-  
   <rect x="182" y="38" width="148" height="98" rx="10" fill="#2D5282"/>
   <text x="256" y="63" text-anchor="middle" font-size="20">😊</text>
   <text x="256" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2. ACCUEILLIR</text>
@@ -2037,7 +2330,6 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
   <text x="256" y="109" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Sourire · Regard direct</text>
   <text x="256" y="124" text-anchor="middle" font-size="8" fill="#90CDF4">Toujours, même occupé</text>
   <path d="M 332 87 L 347 87" stroke="#2C5282" stroke-width="2" marker-end="url(#arr5)" fill="none"/>
-  
   <rect x="349" y="38" width="148" height="98" rx="10" fill="#4A6FA5"/>
   <text x="423" y="63" text-anchor="middle" font-size="20">🗺️</text>
   <text x="423" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3. ORIENTER</text>
@@ -2045,7 +2337,6 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
   <text x="423" y="109" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Identifier le besoin</text>
   <text x="423" y="124" text-anchor="middle" font-size="8" fill="#BEE3F8">Questions ouvertes</text>
   <path d="M 499 87 L 514 87" stroke="#2C5282" stroke-width="2" marker-end="url(#arr5)" fill="none"/>
-  
   <rect x="516" y="38" width="149" height="98" rx="10" fill="#185FA5"/>
   <text x="590" y="63" text-anchor="middle" font-size="20">🤝</text>
   <text x="590" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">4. ACCOMPAGNER</text>
@@ -2054,99 +2345,75 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
   <text x="590" y="124" text-anchor="middle" font-size="8" fill="#EBF8FF">Jusqu'à la vente</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Gérer les situations difficiles</div>
-<p><strong>4 étapes d'un accueil réussi :</strong></p><ul><li><strong>Détecter</strong> — Tout visiteur pris en charge sous 30 secondes. Même si on est occupé : un regard, un sourire et "Je suis à vous dans un instant" suffisent. L'attente sans reconnaissance est insupportable.</li><li><strong>Accueillir</strong> — Formule LABORO : "Bonjour, bienvenue chez LABORO, je suis [prénom], que puis-je faire pour vous ?" Debout, sourire, regard. Ne jamais rester assis.</li><li><strong>Orienter et accompagner</strong> — Jamais laisser un visiteur seul chercher. Accompagner physiquement ou confier à un collègue avec une présentation : "Je te confie M. Vidal, il cherche des chaussures trail."</li><li><strong>Prendre congé</strong> — "Au revoir M. Vidal, merci de votre visite, n'hésitez pas à revenir !" Toujours se lever, toujours sourire, toujours nommer le client.</li></ul><p><strong>L'accueil téléphonique — formule et règles :</strong></p><ul><li>Décrocher avant la 3e sonnerie</li><li>Formule : "LABORO Sport & Outdoor, [prénom], bonjour !"</li><li>Identifier l'appelant et l'objet de l'appel avant de transférer</li><li>Mettre en attente : "Je vous mets en attente un instant, ne quittez pas." Revenir toutes les 30 secondes si l'attente se prolonge.</li><li>Prendre un message complet : nom + prénom + coordonnées + objet + heure d'appel + meilleur moment pour rappeler</li></ul><p><strong>Gérer les situations difficiles — méthode des 3R :</strong></p><ul><li><strong>Reconnaître</strong> — "Je comprends que vous attendez depuis longtemps, c'est tout à fait normal de vous impatienter."</li><li><strong>Reformuler</strong> — "Si je comprends bien, vous cherchez…"</li><li><strong>Résoudre ou orienter</strong> — Apporter une solution ou rediriger vers la bonne personne avec une présentation complète.</li></ul><p><strong>Cas particuliers à maîtriser :</strong></p><ul><li>Visiteur en attente longue → reconnaître l'attente régulièrement, proposer de s'asseoir</li><li>Forte affluence → prioriser sans jamais ignorer un visiteur</li><li>Demande impossible → "Ce n'est pas possible de cette façon, mais voici ce que je peux faire pour vous…"</li><li>Situation d'urgence (malaise) → alerter immédiatement, appeler le 15 si doute, ne pas laisser la personne seule</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — journée Portes Ouvertes</div>3 visiteurs entrent en même temps. Thomas Moreau en prend un en charge. Toi : "Bonjour à tous ! Bienvenue chez LABORO. Je suis [prénom]. Je m'occupe de vous dans l'ordre, je reviens dans 2 minutes." → Sourire à chacun. Aucun ne se sent ignoré.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>30 secondes max pour prendre en charge un visiteur — c'est la règle absolue. Au téléphone, le sourire s'entend. Un visiteur mal accueilli ne reviendra jamais et en parlera à 10 personnes. L'accueil reflète l'image de LABORO.</div>
-</div>
-<div class="res-section">
-<div class="res-section-label">🟢 Accueil d'un visiteur professionnel</div>
-<p><strong>Un visiteur professionnel, c'est l'image de LABORO qui est en jeu.</strong> Fournisseur, partenaire, inspecteur, technicien — chaque visiteur professionnel suit un protocole spécifique.</p>
-<p><strong>Les 5 étapes de l'accueil professionnel :</strong></p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Accueillir</strong> — Formule professionnelle, se lever, sourire</li>
-<li><strong>Vérifier</strong> — Identité, objet de la visite, rendez-vous</li>
-<li><strong>Prévenir</strong> — Contacter l'interlocuteur interne avant de faire patienter</li>
-<li><strong>Remettre un badge</strong> — Tout visiteur externe reçoit un badge visiteur</li>
-<li><strong>Accompagner ou orienter</strong> — Ne jamais laisser un visiteur seul chercher son chemin</li>
+<li>4 étapes : détecter · accueillir · orienter · accompagner</li>
+<li>30 secondes maximum pour prendre en charge un visiteur — c'est la règle absolue</li>
 </ul>
-<p><strong>Le registre des visites :</strong> noter l'heure d'arrivée et de départ de chaque visiteur. C'est une obligation de sécurité (évacuation, assurance) et une trace professionnelle.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — visiteur sans rendez-vous</div>
-Un technicien arrive sans rendez-vous. ✅ Correct : "Bonjour, je suis [prénom]. Puis-je vous demander l'objet de votre visite et le nom de votre interlocuteur chez LABORO ?" → Vous vérifiez, vous prévenez, vous accompagnez. ❌ À éviter : le laisser entrer seul ou le renvoyer sans solution.
-</div>
-</div>
-
-<div class="res-section">
-<div class="res-section-label">🟢 Gérer la communication écrite — mails professionnels</div>
-<p><strong>La boîte mail d'accueil est souvent le premier contact d'un client ou d'un partenaire avec LABORO.</strong> Trier, prioriser et répondre sont des compétences clés.</p>
-<p><strong>Trier et prioriser :</strong></p>
+</div>`},
+2:{t:"L'accueil professionnel chez LABORO — Situations spécifiques et écrit",c:`<div class="res-section">
+<div class="res-section-label">🟢 Gérer les situations difficiles et l'accueil professionnel</div>
+<p><strong>La méthode des 3R</strong> pour gérer un visiteur mécontent ou impatient :</p>
 <ul>
-<li><strong>Urgent et important</strong> — Réclamation client, demande de rendez-vous imminent → traiter en priorité</li>
-<li><strong>Important, non urgent</strong> — Demande de renseignement, demande de partenariat → transmettre au bon interlocuteur</li>
-<li><strong>Non important</strong> — Spam, publicité, mail hors sujet → supprimer sans répondre</li>
+<li><strong>Reconnaître</strong> — "Je comprends que vous attendez depuis longtemps, c'est tout à fait normal de vous impatienter."</li>
+<li><strong>Reformuler</strong> — "Si je comprends bien, vous cherchez…"</li>
+<li><strong>Résoudre ou orienter</strong> — Apporter une solution ou rediriger vers la bonne personne avec une présentation complète.</li>
 </ul>
-<p><strong>Les 5 règles d'un mail professionnel :</strong></p>
-<ul>
-<li>Objet clair et précis dès la première lecture</li>
-<li>Formule d'introduction professionnelle ("Bonjour Madame, Monsieur,")</li>
-<li>Message concis — aller à l'essentiel en 3-5 phrases</li>
-<li>Formule de politesse finale ("Cordialement," ou "Bien cordialement,")</li>
-<li>Signature complète — prénom, nom, poste, coordonnées LABORO</li>
-</ul>
+<p><strong>Accueil d'un visiteur professionnel</strong> (fournisseur, partenaire, inspecteur) en 5 étapes : accueillir → vérifier identité/objet/RDV → prévenir l'interlocuteur interne avant de faire patienter → remettre un badge visiteur → accompagner ou orienter. Le registre des visites (heure d'arrivée/départ) est une obligation de sécurité.</p>
+<p><strong>Communication écrite — trier et prioriser une boîte mail :</strong> urgent et important (réclamation, RDV imminent) à traiter en priorité · important non urgent (renseignement, partenariat) à transmettre · non important (spam) à supprimer sans répondre.</p>
+<p><strong>5 règles d'un mail professionnel :</strong> objet clair · formule d'introduction · message concis (3-5 phrases) · formule de politesse finale · signature complète.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse professionnelle à un client</div>
 "Bonjour Madame Lambert, je prends bonne note de votre demande concernant votre commande n°2847. Je transmets immédiatement votre message à notre service e-commerce qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
 </div>
 </div>
-
-<div class="res-section">
-<div class="res-section-label">🟡 Accueil de groupe et coordination</div>
-<p><strong>Accueillir un groupe demande une préparation en amont.</strong> Classe en visite, délégation, groupe de clients — la logistique conditionne la qualité de l'accueil.</p>
-<p><strong>Préparer l'accueil d'un groupe :</strong></p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li>Confirmer le nombre de personnes et les besoins spécifiques (accessibilité, durée, intervenants)</li>
-<li>Préparer le matériel : badges, supports de présentation, salle configurée</li>
-<li>Briefer l'équipe : qui fait quoi, à quelle heure</li>
-<li>Prévoir les imprévus : intervenant absent, retard, groupe plus important que prévu</li>
+<li>Méthode 3R : reconnaître · reformuler · résoudre ou orienter</li>
+<li>Tout visiteur professionnel reçoit un badge et est inscrit au registre des visites</li>
+<li>Un mail professionnel reste concis : 3 à 5 phrases</li>
 </ul>
-<p><strong>Le discours d'accueil groupe :</strong> bienvenue + présentation de l'entreprise (30 sec) + programme de la visite + consignes de sécurité. Court, clair, professionnel.</p>
-<p><strong>Gérer les imprévus :</strong> toujours avoir un plan B. Un intervenant absent ? On réorganise le programme sans que le groupe le perçoive comme un problème.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — discours d'accueil groupe</div>
-"Bonjour à tous et bienvenue chez LABORO Sport & Outdoor. Je m'appelle [prénom] et je vais vous accompagner ce matin. LABORO, c'est [2 phrases courtes sur l'entreprise]. Au programme ce matin : [3 étapes]. Quelques consignes : [sécurité, règles de visite]. Des questions avant de commencer ?"
+</div>`},
+3:{t:"L'accueil professionnel chez LABORO — Coordonner et adapter",c:`<div class="res-section">
+<div class="res-section-label">🟠 Accueillir un groupe et adapter son accueil à des publics spécifiques</div>
+<p><strong>Préparer l'accueil d'un groupe</strong> (classe, délégation, groupe de clients) : confirmer le nombre de personnes et les besoins spécifiques (accessibilité, durée, intervenants) · préparer le matériel (badges, supports, salle) · briefer l'équipe · prévoir un plan B pour les imprévus (intervenant absent, retard, groupe plus important que prévu).</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — imprévu géré</div>
+Un intervenant prévu pour la visite est absent au dernier moment. Plutôt que d'annuler une partie du programme, on réorganise l'ordre de la visite pour combler le créneau sans que le groupe perçoive de problème — l'accompagnateur improvise une présentation supplémentaire sur un autre univers LABORO.
+</div>
+<p><strong>Adapter son accueil à des publics spécifiques</strong> — un bon accueil, c'est le même niveau de service pour tous, mais adapté à chaque personne :</p>
+<ul>
+<li><strong>Client anglophone</strong> — quelques formules suffisent ("Welcome to LABORO, how can I help you?"), sinon trouver un collègue ou montrer plutôt qu'expliquer</li>
+<li><strong>Client malentendant</strong> — se placer face à la personne, parler distinctement sans exagérer, proposer d'écrire si besoin</li>
+<li><strong>Client en fauteuil roulant</strong> — se mettre à la même hauteur, vérifier l'accessibilité du parcours, proposer de l'aide sans l'imposer</li>
+<li><strong>Client âgé</strong> — parler clairement, éviter le jargon, accompagner avec patience sur le numérique</li>
+</ul>
+<p>Quand plusieurs situations se superposent (par exemple un groupe qui inclut à la fois des visiteurs pressés et une personne à mobilité réduite), il faut choisir comment répartir son attention sans que personne ne se sente moins bien traité — ce qui suppose parfois de déléguer une partie de l'accueil à un collègue plutôt que de vouloir tout gérer seul.</p>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton organisation face à une situation complexe — par exemple : comment as-tu réparti ton attention entre plusieurs visiteurs aux besoins différents, et qu'aurais-tu fait différemment si la situation avait duré plus longtemps ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur tes choix d'organisation.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un accueil de groupe se prépare en amont : logistique, briefing d'équipe, plan B</li>
+<li>Adapter sa communication n'est pas faire moins bien, c'est faire autrement pour le même résultat</li>
+<li>La réflexivité = un vrai retour critique sur ton organisation, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:"L'accueil professionnel chez LABORO — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — gérer l'accueil en autonomie complète</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<p><strong>Réflexes à mobiliser selon la situation :</strong> accueil standard → 4 étapes en moins de 30 secondes · visiteur mécontent → méthode 3R · visiteur professionnel → vérifier/prévenir/badge/registre · communication écrite → trier par urgence et rédiger en 5 points · groupe → préparer en amont avec plan B · public spécifique → adapter sans dégrader le service.</p>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Plusieurs visiteurs aux profils différents se présentent en même temps (un groupe, un visiteur professionnel sans rendez-vous, un client mécontent). En autonomie complète, tu dois prioriser sans jamais donner l'impression à quelqu'un d'être ignoré, et mobiliser la bonne méthode pour chaque situation.
 </div>
 </div>
-
-<div class="res-section">
-<div class="res-section-label">🟡 Adapter son accueil à des publics spécifiques</div>
-<p><strong>Un bon accueil, c'est le même niveau de service pour tous — mais adapté à chaque personne.</strong></p>
-<p><strong>Client anglophone :</strong></p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li>Pas besoin de parler couramment anglais — quelques formules suffisent</li>
-<li>"Welcome to LABORO, how can I help you?" · "Do you speak French?" · "Let me find someone who can help you."</li>
-<li>Si la barrière est trop importante : trouver un collègue, utiliser un traducteur en ligne, montrer plutôt qu'expliquer</li>
+<li>Autonomie totale : reconnaître la bonne méthode à appliquer selon la situation rencontrée, sans guidage</li>
+<li>Un visiteur mal accueilli ne reviendra jamais et en parlera à 10 personnes — l'accueil reflète l'image de LABORO</li>
 </ul>
-<p><strong>Client malentendant :</strong></p>
-<ul>
-<li>Se placer face à la personne, à hauteur des yeux</li>
-<li>Parler distinctement, à rythme normal — ne pas exagérer l'articulation</li>
-<li>Proposer d'écrire si la communication est difficile</li>
-<li>Ne jamais parler à la place du client, ni montrer d'impatience</li>
-</ul>
-<p><strong>Client en fauteuil roulant :</strong></p>
-<ul>
-<li>Se mettre à la même hauteur pour converser (s'accroupir ou s'asseoir)</li>
-<li>Vérifier l'accessibilité du parcours avant de l'accompagner</li>
-<li>Proposer de l'aide sans l'imposer : "Puis-je vous aider ?" — respecter la réponse</li>
-</ul>
-<p><strong>Client âgé :</strong></p>
-<ul>
-<li>Parler clairement, à rythme adapté, sans condescendance</li>
-<li>Éviter le jargon technique et les abréviations</li>
-<li>Proposer de l'aide pour les démarches numériques (borne, site) avec patience</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Règle d'or</div>
-Adapter sa communication, ce n'est pas faire moins bien — c'est faire autrement pour atteindre le même résultat professionnel. Chaque client mérite la même qualité d'accueil, quelle que soit sa situation.
-</div>
-</div>
-`},
+</div>`},
+},
 };
 // Missions filtrées par classe
