@@ -20,11 +20,31 @@ function voirMissionsLiees(cat){
 // addClient() définie dans clients.js
 
 function populateMDJSelect(){
-  const sel = document.getElementById('mdj-select');
+  const sel = document.getElementById('mdj-ms');
   if(!sel) return;
-  sel.innerHTML = '<option value="">-- Choisir une mission du jour --</option>'
+  sel.innerHTML = '<option value="">— Mission —</option>'
     + MISSIONS.map(function(m){
         return '<option value="'+m.id+'">'+m.titre+' (P'+m.palier+' — '+m.comp+')</option>';
+      }).join('');
+}
+
+// --- Remplit le sélecteur d'élèves pour l'assignation individuelle ---
+async function populateMDJEleveSelect(){
+  const sel = document.getElementById('mdj-el');
+  if(!sel) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ sel.innerHTML = '<option value="">— Connecte-toi via le serveur —</option>'; return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok){
+    sel.innerHTML = '<option value="">— Erreur de chargement —</option>';
+    return;
+  }
+  const eleves = (r.data.eleves || []).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||''); });
+  sel.innerHTML = '<option value="">— Élève —</option>'
+    + eleves.map(function(e){
+        return '<option value="'+e.id+'">'+e.nom+' '+e.prenom+(e.classe?' ('+e.classe+')':'')+'</option>';
       }).join('');
 }
 
