@@ -211,7 +211,53 @@ function calcScore(ud){
 // Classement filtré PAR CLASSE : un élève ne voit que les élèves de sa propre classe.
 // La classe de chaque user est lue depuis ses données stockées (u.classe).
 // L'utilisateur courant (CU) est toujours rattaché à CU.classe.
+// ═══ CLASSEMENT SERVEUR (comptes connectés au backend) ═══
+// Le calcul du score reste 100% client (calcScore), seules les données brutes
+// des progressions de chaque élève de la classe viennent du serveur — évite
+// de dupliquer la logique de notation côté backend.
+let CLASSEMENT_CACHE = {};
+let CLASSEMENT_META = {};
+
+async function refreshClassementServeur(classe){
+  const token = localStorage.getItem('laboro_token');
+  if(!token || !classe || classe==='enseignant') return;
+  const meta = CLASSEMENT_META[classe] || (CLASSEMENT_META[classe] = {lastFetch:0, fetching:false});
+  if(meta.fetching) return;
+  if(Date.now() - meta.lastFetch < 15000) return; // évite de spammer le serveur
+  meta.fetching = true;
+  const r = await fetchJSON(LABORO_API + '/api/classement/' + classe, {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  meta.fetching = false;
+  meta.lastFetch = Date.now();
+  if(!r.ok || !r.data.ok) return;
+  const list = (r.data.eleves||[]).map(function(e){
+    const missions = {};
+    Object.entries(e.missions || {}).forEach(function(entry){
+      const mid = entry[0], p = entry[1];
+      missions[mid] = {
+        status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
+        score: p.score
+      };
+    });
+    const ud = { missions: missions };
+    return { nom: ((e.prenom?e.prenom+' ':'')+e.nom).trim(), mail: e.email, score: calcScore(ud), classe: classe };
+  }).sort(function(a,b){ return b.score - a.score; });
+  const changed = JSON.stringify(list) !== JSON.stringify(CLASSEMENT_CACHE[classe]);
+  CLASSEMENT_CACHE[classe] = list;
+  if(changed && typeof renderDashboard==='function'){
+    const dp = document.getElementById('panel-dashboard');
+    if(dp && dp.classList.contains('on')) renderDashboard();
+  }
+}
+
 function getClassement(classe){
+  const token = localStorage.getItem('laboro_token');
+  if(token && classe && classe!=='enseignant'){
+    refreshClassementServeur(classe); // rafraîchit en arrière-plan (throttlé)
+    return CLASSEMENT_CACHE[classe] || [];
+  }
+  // Ancien comportement local (comptes de test non connectés au serveur)
   const users = allU().filter(u => u.mail && !u.mail.includes('berruelle'));
   return users
     .map(u => {
