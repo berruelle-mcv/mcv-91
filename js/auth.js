@@ -338,6 +338,11 @@ function showApp(){
   if(niMdj) niMdj.style.display = ens ? 'block' : 'none';
   if(niCl) niCl.style.display = ens ? 'block' : 'none';
   if(nsEns) nsEns.style.display = ens ? 'block' : 'none';
+  // Visibilité nav "Gestion des classes" (administrateur uniquement)
+  const estAdminUtilisateur = localStorage.getItem('laboro_est_admin') === '1';
+  const niClassesAdmin = document.getElementById('ni-classes-admin');
+  if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? 'block' : 'none';
+  if(ens && typeof populateClasseSelects === 'function') populateClasseSelects();
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
   if(sbBt && !document.getElementById('btn-export') && !ens){
@@ -371,7 +376,7 @@ function goP(id,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const panel=document.getElementById('panel-'+id); if(panel)panel.classList.add('on');
   if(el)el.classList.add('on');
-  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC'};
+  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes'};
   document.getElementById('tb-t').textContent=t2[id]||id;
   if(id==='classe')renderClasse();
   if(id==='dashboard')renderDashboard();
@@ -382,6 +387,7 @@ function goP(id,el){
   if(id==='e2agec' && typeof renderE2AGEC==='function') renderE2AGEC();
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
+  if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();
 }
 function renderAll(){
   const safe = function(fn, name){
@@ -495,6 +501,7 @@ async function doLoginServeur(){
 
   localStorage.setItem('laboro_token', data.token);
   const u = data.utilisateur;
+  localStorage.setItem('laboro_est_admin', u.est_admin ? '1' : '0');
 
   const cls = u.classe || '';
   let poste;
