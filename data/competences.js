@@ -454,7 +454,8 @@ Un client conclut son achat, hésite sur le paiement, puis demande un service co
 </ul>
 </div>`},
 },
-'C2.1':{t:'Le suivi de la commande client',c:`<div class="res-section res-debutant">
+'C2.1':{
+1:{t:'Le suivi de la commande client — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les modes de livraison LABORO</div>
 <p><strong>Chez LABORO, 3 modes de livraison sont proposés aux clients :</strong></p>
 <ul>
@@ -468,26 +469,22 @@ Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi 
 ❌ À éviter : proposer la livraison standard (3-5 jours) qui risque d'arriver trop tard.
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="160" rx="12" fill="#F8FAFF"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">SUIVI COMMANDE — Les 3 modes LABORO</text>
-  <!-- Livraison standard -->
   <rect x="15" y="38" width="205" height="108" rx="10" fill="#1A2E4A"/>
   <text x="117" y="66" text-anchor="middle" font-size="22">📦</text>
   <text x="117" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">LIVRAISON DOMICILE</text>
   <text x="117" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Standard 3-5j — 4,90€ (offert dès 60€)</text>
   <text x="117" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Express 24-48h — 9,90€</text>
   <text x="117" y="128" text-anchor="middle" font-size="8" fill="#63B3ED">Chronopost · Numéro de suivi</text>
-  <!-- Click and collect -->
   <rect x="228" y="38" width="223" height="108" rx="10" fill="#2D5282"/>
   <text x="340" y="66" text-anchor="middle" font-size="22">🏪</text>
   <text x="340" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CLICK &amp; COLLECT</text>
   <text x="340" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Retrait showroom Évry</text>
   <text x="340" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Disponible sous 2h — Gratuit</text>
   <text x="340" y="128" text-anchor="middle" font-size="8" fill="#90CDF4">Commande en ligne + retrait</text>
-  <!-- Retard -->
   <rect x="459" y="38" width="206" height="108" rx="10" fill="#9B4444"/>
   <text x="562" y="66" text-anchor="middle" font-size="22">⚠️</text>
   <text x="562" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">EN CAS DE RETARD</text>
@@ -496,12 +493,73 @@ Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi 
   <text x="562" y="128" text-anchor="middle" font-size="8" fill="#FCA5A5">SMS · Délai précis · Excuse</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Le suivi de commande</div>
-<p><strong>5 étapes du suivi de commande :</strong></p><ul><li><strong>Enregistrer</strong> — Tous les détails dans LABORO Connect immédiatement : référence, produit, quantité, délai, mode de livraison, contact client.</li><li><strong>Vérifier la disponibilité</strong> — Si rupture partielle ou totale, contacter le client AVANT qu'il s'inquiète. Proposer une alternative.</li><li><strong>Suivre l'acheminement</strong> — Transmettre le numéro de suivi transporteur par SMS ou mail dès expédition. Chronopost = lien de suivi automatique.</li><li><strong>Anticiper les retards</strong> — C'est la règle d'or LABORO : contacter le client AVANT qu'il appelle. Un retard annoncé proactivement est presque toujours pardonné.</li><li><strong>Confirmer la réception</strong> — Appel ou mail de suivi J+2 = opportunité de fidélisation et de vente additionnelle.</li></ul><p><strong>Calculs utiles :</strong></p><ul><li>Délai de livraison = date de commande + délai fournisseur + délai transport</li><li>Stock d'alerte = ventes journalières × délai de réassort en jours</li><li>Taux de livraison dans les délais = (livraisons à temps ÷ total livraisons) × 100</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande Mairie d'Évry</div>Commande de 50 ballons Trigon (stock 31 unités). Rupture partielle détectée → appel immédiat à David Chemin → proposition : livraison partielle J+2 + solde J+12. Client satisfait de la transparence.</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Ne jamais attendre qu'un client appelle pour signaler un problème. LABORO Connect doit être mis à jour à chaque étape — pas en fin de journée. Un suivi proactif coûte 5 minutes et peut sauver un client.</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>3 modes : retrait magasin (24h, gratuit) · domicile (3-5j) · express (24-48h)</li>
+<li>Toujours choisir le mode adapté à l'urgence réelle du client, pas le moins cher par défaut</li>
+<li>Un retard doit être annoncé au client AVANT qu'il ne s'inquiète</li>
+</ul>
 </div>`},
-  'C2.1b':{t:'Les services associés — proposer et gérer',c:`<div class="res-section res-debutant">
+2:{t:'Le suivi de la commande client — Les 5 étapes du suivi',c:`<div class="res-section">
+<div class="res-section-label">🟢 Les 5 étapes d'un suivi de commande rigoureux</div>
+<ul><li><strong>Enregistrer</strong> — Tous les détails dans LABORO Connect immédiatement : référence, produit, quantité, délai, mode de livraison, contact client.</li><li><strong>Vérifier la disponibilité</strong> — Si rupture partielle ou totale, contacter le client AVANT qu'il s'inquiète. Proposer une alternative.</li><li><strong>Suivre l'acheminement</strong> — Transmettre le numéro de suivi transporteur par SMS ou mail dès expédition. Chronopost = lien de suivi automatique.</li><li><strong>Anticiper les retards</strong> — C'est la règle d'or LABORO : contacter le client AVANT qu'il appelle. Un retard annoncé proactivement est presque toujours pardonné.</li><li><strong>Confirmer la réception</strong> — Appel ou mail de suivi J+2 = opportunité de fidélisation et de vente additionnelle.</li></ul>
+<p><strong>Calculs utiles :</strong></p>
+<ul><li>Délai de livraison = date de commande + délai fournisseur + délai transport</li><li>Stock d'alerte = ventes journalières × délai de réassort en jours</li><li>Taux de livraison dans les délais = (livraisons à temps ÷ total livraisons) × 100</li></ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande Mairie d'Évry</div>Commande de 50 ballons Trigon (stock 31 unités). Rupture partielle détectée → appel immédiat à David Chemin → proposition : livraison partielle J+2 + solde J+12. Client satisfait de la transparence.</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Mettre à jour LABORO Connect à chaque étape, pas en fin de journée</li>
+<li>Ne jamais attendre qu'un client appelle pour signaler un problème</li>
+<li>Un suivi proactif coûte 5 minutes et peut sauver un client</li>
+</ul>
+</div>`},
+3:{t:'Le suivi de la commande client — Arbitrer entre plusieurs commandes',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand plusieurs commandes se disputent le même stock</div>
+<p>À ce niveau, la difficulté n'est plus une simple rupture isolée : plusieurs clients ont des besoins qui entrent en concurrence sur un stock limité, avec des urgences différentes. Ton rôle est d'arbitrer, pas seulement d'informer.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — deux commandes, un seul stock</div>
+Il reste 20 maillots en stock. Le club A (commande de 15, passée en premier, pas d'urgence signalée) et le club B (commande de 12, passée après, mais tournoi dans 3 jours) sont tous deux en attente. Servir dans l'ordre d'arrivée pénaliserait le club B alors que son besoin est réellement urgent ; tout donner au club B pénaliserait le club A qui a réservé en premier.
+</div>
+<p><strong>Méthode d'arbitrage :</strong> contacter les deux clients avant de trancher plutôt que de décider seul dans son coin. Proposer une solution qui limite la frustration des deux côtés (livraison partielle immédiate + réassort planifié et confirmé par écrit), et toujours documenter la décision dans LABORO Connect pour que toute l'équipe sache pourquoi ce choix a été fait.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — solution d'arbitrage</div>
+Club A : 15 maillots dont 10 disponibles tout de suite + 5 en réassort sous 5 jours (délai qu'il peut tenir, pas d'urgence). Club B : 10 maillots immédiats (suffisant pour l'entraînement de la semaine) + 2 en réassort avant le tournoi. Les deux clients sont prévenus le même jour, avec une date précise et non une promesse vague.</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : sur quel critère t'es-tu appuyé pour départager les deux commandes, et cet arbitrage était-il le plus juste possible pour LABORO comme pour les deux clients ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à un stock disputé entre plusieurs clients, informe et arbitre — ne laisse jamais le premier arrivé écraser l'autre sans explication</li>
+<li>Une solution d'arbitrage se documente toujours (LABORO Connect), pour que l'équipe comprenne le choix fait</li>
+<li>La réflexivité = un vrai retour critique sur ton arbitrage, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'Le suivi de la commande client — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter le suivi de commande</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>5 étapes</strong> : enregistrer · vérifier disponibilité · suivre l'acheminement · anticiper les retards · confirmer la réception</li>
+<li><strong>Règle d'or</strong> : toujours prévenir le client AVANT qu'il s'inquiète ou qu'il appelle</li>
+<li><strong>Stock disputé entre plusieurs commandes</strong> : arbitrer sur des critères objectifs (urgence réelle, ordre d'arrivée), informer les deux parties, documenter la décision</li>
+<li><strong>Calculs réflexes</strong> : délai livraison = commande + fournisseur + transport ; stock d'alerte = ventes/jour × délai réassort ; taux de livraison à temps = (livraisons à temps ÷ total) × 100</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Deux commandes concurrentes sur un stock limité, l'une avec un délai serré non signalé au départ. En autonomie complète, tu dois détecter le conflit, arbitrer selon des critères objectifs, prévenir les deux clients avec une date ferme, et tracer la décision.
+</div>
+<p><strong>Du suivi à la satisfaction client :</strong> un suivi de commande bien mené est l'un des premiers leviers de la satisfaction client (voir C2.3) — un client bien informé, même en cas de retard, reste en confiance ; un client livré sans nouvelle perd confiance même si le colis arrive à temps.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : détecter un conflit de stock, arbitrer, communiquer, tracer — sans guidage</li>
+<li>Un client informé proactivement pardonne presque tout ; un client silencieux ne pardonne rien</li>
+<li>Le suivi de commande est le socle de la satisfaction client, pas une simple formalité logistique</li>
+</ul>
+</div>`},
+},
+'C2.1b':{
+1:{t:'Les services associés — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les services associés LABORO</div>
 <p><strong>Un service associé, c'est quoi ?</strong></p>
 <p>C'est un service supplémentaire proposé <strong>en plus du produit</strong>. Chez LABORO, 5 services sont disponibles.</p>
@@ -519,7 +577,6 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
 </div>
 <p><strong>La règle d'or :</strong> proposer les services <strong>pendant</strong> la vente, jamais après l'encaissement.</p>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="155" rx="12" fill="#F8FAFF"/>
@@ -530,28 +587,24 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
   <text x="73" y="93" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Standard 48h</text>
   <text x="73" y="105" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">6,90€</text>
   <text x="73" y="118" text-anchor="middle" font-size="8" fill="#63B3ED">Express 24h 12,90€</text>
-  
   <rect x="144" y="36" width="126" height="105" rx="10" fill="#2D5282"/>
   <text x="207" y="62" text-anchor="middle" font-size="20">🏪</text>
   <text x="207" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">CLICK &amp; COLLECT</text>
   <text x="207" y="93" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Retrait Évry</text>
   <text x="207" y="105" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Sous 2h · Gratuit</text>
   <text x="207" y="118" text-anchor="middle" font-size="8" fill="#90CDF4">Idéal clubs locaux</text>
-  
   <rect x="278" y="36" width="126" height="105" rx="10" fill="#4A6FA5"/>
   <text x="341" y="62" text-anchor="middle" font-size="20">🎽</text>
   <text x="341" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">PERSONNALISATION</text>
   <text x="341" y="93" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Flocage · Broderie</text>
   <text x="341" y="105" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Min. 10 unités</text>
   <text x="341" y="118" text-anchor="middle" font-size="8" fill="#BEE3F8">Délai 2-4 semaines</text>
-  
   <rect x="412" y="36" width="126" height="105" rx="10" fill="#185FA5"/>
   <text x="475" y="62" text-anchor="middle" font-size="20">🧪</text>
   <text x="475" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">DÉMONSTRATION</text>
   <text x="475" y="93" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Essai 10-15 min</text>
   <text x="475" y="105" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Produits techniques</text>
   <text x="475" y="118" text-anchor="middle" font-size="8" fill="#EBF8FF">En showroom</text>
-  
   <rect x="546" y="36" width="124" height="105" rx="10" fill="#0C3D6E"/>
   <text x="608" y="62" text-anchor="middle" font-size="20">🛡️</text>
   <text x="608" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">GARANTIE ÉTENDUE</text>
@@ -560,9 +613,16 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
   <text x="608" y="118" text-anchor="middle" font-size="8" fill="#93C5FD">Sans justification</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Gérer les services associés</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>5 services : livraison · click and collect · personnalisation · démo · garantie</li>
+<li>Proposer pendant la vente, pas après l'encaissement</li>
+<li>Un service bien choisi augmente le panier ET la satisfaction du client</li>
+</ul>
+</div>`},
+2:{t:'Les services associés — Gérer et chiffrer',c:`<div class="res-section">
+<div class="res-section-label">🟢 Gérer les services associés dans la durée</div>
 <p><strong>Règles de gestion LABORO :</strong></p>
 <ul>
 <li>Proposer systématiquement — ne pas attendre que le client demande</li>
@@ -576,40 +636,69 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
 <li>TTC = HT × 1,20</li>
 <li>Remise clubs : 8% (≥10u) · 12% (≥30u) · 15% (≥50u)</li>
 </ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — chiffrer une commande textile</div>
+Club de 22 licenciés, maillots à 18€ HT/unité avec flocage. HT = 18 × 22 = 396€. Remise clubs applicable (≥10u) : 8% → 396 × 0,92 = 364,32€ HT. TTC = 364,32 × 1,20 = 437,18€.
 </div>
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Chiffrer l'impact d'un dysfonctionnement et construire un tableau de bord</div>
-<p><strong>Estimer le coût d'un dysfonctionnement (retard, erreur, service mal exécuté) :</strong></p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Coût du temps perdu</strong> = temps passé à gérer le problème (appels, mails, recherche de solution) × coût horaire moyen d'un collaborateur</li>
-<li><strong>+ Coût du geste commercial</strong> = bon d'achat, remise, remboursement partiel accordé au client pour compenser</li>
-<li><strong>+ Risque de perte du client</strong> = probabilité que le client ne recommande pas × valeur de son panier annuel moyen (à estimer, ex. panier annuel du client × 30% de risque)</li>
+<li>Un service proposé s'engage par écrit — LABORO en devient responsable</li>
+<li>Le calcul d'une commande textile suit toujours le même ordre : HT → remise → TTC</li>
+<li>Anticiper l'avancement d'un service évite de découvrir un retard au dernier moment</li>
+</ul>
+</div>`},
+3:{t:'Les services associés — Arbitrer des services incompatibles',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand deux services demandés entrent en conflit</div>
+<p>À ce niveau, le client demande plusieurs services à la fois, mais tous ne sont pas compatibles entre eux dans les délais ou les conditions annoncées. Ton rôle est d'identifier le vrai conflit et de proposer un compromis réaliste, pas de tout promettre pour satisfaire le client sur l'instant.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — livraison express + personnalisation, incompatibles</div>
+Un club demande une livraison express (24-48h) ET une personnalisation textile (délai 2-4 semaines) pour la même commande. Les deux délais sont incompatibles : la personnalisation ne peut pas être express. Mauvais réflexe : promettre les deux sans vérifier. Bon réflexe : expliquer le vrai délai combiné et proposer une alternative (ex. livrer les maillots non personnalisés en express pour l'entraînement, puis les floqués en différé pour la compétition).
+</div>
+<p><strong>Vérifier avant de promettre :</strong> chaque service a ses propres contraintes (délai minimum, quantité minimum, disponibilité). Avant d'accepter une combinaison de services, vérifie que chacun est réalisable dans le délai global annoncé au client — ne combine jamais deux promesses sans les avoir confrontées.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — quantité minimum non atteinte</div>
+Un client veut une personnalisation textile pour 6 maillots seulement (minimum LABORO : 10 unités). Tu ne peux pas promettre le service tel quel : "La personnalisation démarre à partir de 10 pièces chez LABORO. Je peux vous proposer d'attendre une commande groupée avec un autre client, ou l'appliquer si vous complétez à 10 maillots."</p>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'aurais-tu pu vérifier plus tôt dans l'échange pour éviter de devoir revenir sur une promesse ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Avant de combiner deux services, vérifie que leurs contraintes (délai, quantité minimum) sont compatibles</li>
+<li>Ne jamais promettre deux services incompatibles pour satisfaire le client sur l'instant — proposer un compromis réaliste</li>
+<li>La réflexivité = un vrai retour critique sur ta pratique, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'Les services associés — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter les services associés</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, en allant jusqu'au chiffrage et au pilotage.</p>
+<p><strong>Chiffrer le coût d'un dysfonctionnement (retard, erreur, service mal exécuté) :</strong></p>
+<ul>
+<li><strong>Coût du temps perdu</strong> = temps passé à gérer le problème × coût horaire moyen d'un collaborateur</li>
+<li><strong>+ Coût du geste commercial</strong> = bon d'achat, remise ou remboursement partiel accordé pour compenser</li>
+<li><strong>+ Risque de perte du client</strong> = probabilité de non-retour × valeur de son panier annuel moyen</li>
 <li><strong>Coût total estimé</strong> = temps perdu + geste commercial + risque de perte du client</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — retard flocage</div>
-1h de gestion (appels + mails) à 18 €/h = 18 € · Bon d'achat accordé au club = 30 € · Panier annuel du club estimé à 900 € avec 30% de risque de perte = 270 €.<br>Coût total estimé du dysfonctionnement : 18 + 30 + 270 = 318 €.
+1h de gestion à 18 €/h = 18 € · Bon d'achat accordé = 30 € · Panier annuel estimé 900 € avec 30% de risque de perte = 270 €. Coût total estimé : 318 €.
 </div>
-<p><strong>Construire un tableau de bord de suivi des services associés à 5 indicateurs :</strong></p>
-<p>Pour chaque indicateur, préciser : son nom, sa formule de calcul, sa fréquence de mesure, son objectif cible et son seuil d'alerte.</p>
+<p><strong>Construire un tableau de bord des services associés (5 indicateurs) :</strong> pour chacun, préciser nom, formule, fréquence, objectif cible et seuil d'alerte.</p>
 <ul>
-<li><strong>Taux de retard livraison</strong> — (livraisons en retard / livraisons totales) × 100 — hebdomadaire — objectif &lt; 8% — seuil d'alerte &gt; 12%</li>
-<li><strong>Taux d'erreur personnalisation</strong> — (commandes textile avec erreur / commandes textile totales) × 100 — mensuelle — objectif &lt; 5% — seuil d'alerte &gt; 10%</li>
-<li><strong>Délai moyen de résolution</strong> — somme des délais de résolution / nombre d'incidents — mensuelle — objectif &lt; 3 jours — seuil d'alerte &gt; 5 jours</li>
-<li><strong>Coût moyen des erreurs</strong> — somme des gestes commerciaux accordés / nombre d'erreurs — mensuelle — objectif &lt; 20 €/erreur — seuil d'alerte &gt; 40 €/erreur</li>
-<li><strong>Taux de satisfaction services associés</strong> — note moyenne des retours clients sur les services (/5) — trimestrielle — objectif ≥ 4/5 — seuil d'alerte &lt; 3,5/5</li>
+<li><strong>Taux de retard livraison</strong> — (retards / total) × 100 — hebdo — objectif &lt;8% — alerte &gt;12%</li>
+<li><strong>Taux d'erreur personnalisation</strong> — (erreurs / total textile) × 100 — mensuel — objectif &lt;5% — alerte &gt;10%</li>
+<li><strong>Délai moyen de résolution</strong> — somme des délais / nb incidents — mensuel — objectif &lt;3j — alerte &gt;5j</li>
+<li><strong>Coût moyen des erreurs</strong> — gestes commerciaux / nb erreurs — mensuel — objectif &lt;20€ — alerte &gt;40€</li>
+<li><strong>Satisfaction services associés</strong> — note moyenne /5 — trimestriel — objectif ≥4/5 — alerte &lt;3,5/5</li>
 </ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>5 services : livraison · click and collect · personnalisation · démo · garantie</li>
-<li>Proposer pendant la vente, pas après</li>
-<li>Tout service engagé = LABORO responsable</li>
-<li>Coût d'un dysfonctionnement = temps perdu + geste commercial + risque de perte du client</li>
+<li>Autonomie totale : chiffrer un dysfonctionnement et construire un tableau de bord sans guidage</li>
 <li>Un tableau de bord se construit avec 5 éléments par indicateur : nom, formule, fréquence, objectif, seuil d'alerte</li>
+<li>Chiffrer un problème permet de décider objectivement s'il faut agir en urgence ou non</li>
 </ul>
 </div>`},
-  'C2.2':{t:'Gérer une réclamation client',c:`<div class="res-section res-debutant">
+},
+'C2.2':{t:'Gérer une réclamation client',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Gérer une réclamation simplement</div>
 <p><strong>Une réclamation, c'est quoi ?</strong></p>
 <p>C'est quand un client exprime son insatisfaction — il n'a pas reçu ce qu'il attendait. Bien gérer une réclamation = transformer un client mécontent en client fidèle.</p>
