@@ -48,6 +48,26 @@ async function populateMDJEleveSelect(){
       }).join('');
 }
 
+// --- Remplit les listes déroulantes de classes (ajouter élève / mission du jour / changer de classe)
+//     avec les classes réellement attribuées à l'enseignant connecté (ou toutes si administrateur) ---
+async function populateClasseSelects(){
+  const token = localStorage.getItem('laboro_token');
+  if(!token) return;
+  const r = await fetchJSON(LABORO_API + '/api/classes', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok) return;
+  const classes = (r.data.classes || []).slice().sort(function(a,b){
+    return (a.libelle||'').localeCompare(b.libelle||'');
+  });
+  const options = '<option value="">— Classe —</option>'
+    + classes.map(function(c){ return '<option value="'+c.id+'">'+(c.libelle||c.id)+'</option>'; }).join('');
+  ['add-cls', 'mdj-cl', 'chcl-select'].forEach(function(id){
+    const sel = document.getElementById(id);
+    if(sel) sel.innerHTML = options;
+  });
+}
+
 // ═══════════════════════════════════════════════════════
 // ESPACE PRÉPARATION E2 AGEC — LABORO Sport & Outdoor
 // ═══════════════════════════════════════════════════════
