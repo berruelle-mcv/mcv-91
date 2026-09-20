@@ -508,7 +508,49 @@ async function doLoginServeur(){
     ? ((u.prenom||'') + ' ' + (u.nom||'')).trim()
     : mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, l => l.toUpperCase());
 
+  // Mot de passe par défaut / réinitialisé : on force le changement avant d'entrer dans l'appli
+  if(u.doit_changer_mdp){
+    window.__pendingLogin = { mail, cls, poste, nomComplet };
+    document.getElementById('login').classList.remove('on');
+    const modal = document.getElementById('modal-changer-mdp');
+    if(modal) modal.style.display = 'flex';
+    return;
+  }
+
   finishLogin(mail, cls, poste, nomComplet);
+}
+
+// --- Soumission du nouveau mot de passe (changement obligatoire à la 1ère connexion) ---
+async function soumettreNouveauMdp(){
+  const p1 = document.getElementById('new-mdp-1').value;
+  const p2 = document.getElementById('new-mdp-2').value;
+  const msgEl = document.getElementById('new-mdp-msg');
+  const setMsg = function(t,c){ if(msgEl){ msgEl.textContent = t; msgEl.style.color = c; } };
+
+  if(!p1 || p1.length < 6){ setMsg('Le mot de passe doit contenir au moins 6 caractères.', '#C53030'); return; }
+  if(p1 !== p2){ setMsg('Les deux mots de passe ne correspondent pas.', '#C53030'); return; }
+
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ setMsg('Session expirée — reconnecte-toi.', '#C53030'); return; }
+
+  setMsg('Enregistrement…', '#6B7280');
+  const r = await fetchJSON(LABORO_API + '/api/changer-mdp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ nouveauMdp: p1 })
+  });
+  if(!r.ok){ setMsg(r.erreur, '#C53030'); return; }
+  const d = r.data;
+  if(!d.ok){ setMsg('Échec : ' + (d.erreur || 'erreur inconnue'), '#C53030'); return; }
+
+  const modal = document.getElementById('modal-changer-mdp');
+  if(modal) modal.style.display = 'none';
+  document.getElementById('new-mdp-1').value = '';
+  document.getElementById('new-mdp-2').value = '';
+
+  const pending = window.__pendingLogin;
+  window.__pendingLogin = null;
+  if(pending) finishLogin(pending.mail, pending.cls, pending.poste, pending.nomComplet);
 }
 
 // ═══════════════════════════════════════════════════════════
