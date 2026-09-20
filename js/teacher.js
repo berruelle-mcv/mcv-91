@@ -212,6 +212,7 @@ function openProduit(id){
 function renderMDJPanel(){
   if(typeof populateMDJSelect === 'function') populateMDJSelect();
   if(typeof populateMDJEleveSelect === 'function') populateMDJEleveSelect();
+  if(typeof populateClasseSelects === 'function') populateClasseSelects();
   toggleMDJCible();
   renderMDJListe();
 }
