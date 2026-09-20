@@ -11,7 +11,7 @@ async function renderClasse(){
   const tb = document.getElementById('cl-tbody');
 
   if(!token){
-    if(tb) tb.innerHTML = '<tr><td colspan="10" style="padding:16px;color:var(--gm);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--gm);font-size:12px">'
       + 'Connecte-toi via le serveur (adresse mail + mot de passe) pour afficher la liste des élèves.'
       + '</td></tr>';
     if(typeof renderMDJListe === 'function') renderMDJListe();
@@ -24,19 +24,92 @@ async function renderClasse(){
     headers: { 'Authorization': 'Bearer ' + token }
   });
   if(!r.ok){
-    if(tb) tb.innerHTML = '<tr><td colspan="10" style="padding:16px;color:var(--rg);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--rg);font-size:12px">'
       + r.erreur + '</td></tr>';
     return;
   }
   const data = r.data;
   if(!data.ok){
-    if(tb) tb.innerHTML = '<tr><td colspan="10" style="padding:16px;color:var(--rg);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--rg);font-size:12px">'
       + 'Erreur : ' + (data.erreur || 'chargement impossible') + '</td></tr>';
     return;
   }
   ELEVES_SERVEUR = data.eleves || [];
 
+  // Premier rendu immédiat (identité des élèves), puis on charge la progression
+  // réelle de chacun (notes/missions) et on ré-affiche avec les vraies colonnes.
   afficherClasse();
+  const actifs = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  await chargerProgressionsClasse(actifs);
+  afficherClasse();
+}
+
+// ================================================
+//   Progression réelle des élèves (compétences, score, missions)
+//   — alimente les colonnes C1/C2/C3/G4/Score/Posture/Missions/Moy.
+//   de la Vue classe, l'export CSV et l'Analyse de classe.
+// ================================================
+
+let PROGRESSIONS_CLASSE = {}; // eleveId -> ud ({missions:{...}}) reconstruit depuis le serveur
+
+function construireUdEleve(progressions){
+  const ud = { missions: {} };
+  (progressions || []).forEach(function(p){
+    ud.missions[p.mission_id] = {
+      id: p.mission_id, // requis par calcScore()/calcNiveauComp() pour retrouver la mission dans MISSIONS
+      status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' || p.statut === 'corrige' ? 'att' : 'wip'),
+      score: p.note_finale != null ? p.note_finale : p.note_ia
+    };
+  });
+  return ud;
+}
+
+async function chargerProgressionsClasse(eleves){
+  const token = localStorage.getItem('laboro_token');
+  if(!token) return;
+  await Promise.all(eleves.map(async function(e){
+    const r = await fetchJSON(LABORO_API + '/api/eleves/' + e.id + '/progressions', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    if(r.ok && r.data && r.data.ok){
+      PROGRESSIONS_CLASSE[e.id] = construireUdEleve(r.data.progressions);
+    }
+  }));
+}
+
+// Libellé de "posture" pro selon le score — miroir des paliers du tableau de bord élève (dashboard.js)
+function posturePourScore(score, classeLibelle){
+  const c = (classeLibelle || '').toUpperCase();
+  const paliers = c.includes('PVOC') ? [
+    {min:0,max:24,label:'Nouveau collaborateur'},{min:25,max:49,label:'Chargé de prospection'},
+    {min:50,max:74,label:'Commercial terrain'},{min:75,max:89,label:'Négociateur confirmé'},
+    {min:90,max:100,label:'Expert LABORO'}
+  ] : c.includes('AGEC') ? [
+    {min:0,max:24,label:'Nouveau collaborateur'},{min:25,max:49,label:'Équipier commercial'},
+    {min:50,max:74,label:'Conseiller de vente'},{min:75,max:89,label:'Animateur commercial'},
+    {min:90,max:100,label:'Expert LABORO'}
+  ] : [
+    {min:0,max:24,label:'Nouveau collaborateur'},{min:25,max:49,label:'Équipier commercial'},
+    {min:50,max:74,label:'Conseiller de vente'},{min:75,max:89,label:'Commercial confirmé'},
+    {min:90,max:100,label:'Expert LABORO'}
+  ];
+  const p = paliers.find(function(x){ return score>=x.min && score<=x.max; }) || paliers[0];
+  return p.label;
+}
+
+// Niveau de compétence combiné pour la colonne "G4", selon le parcours de l'élève
+// (miroir de la consolidation C4A.x→G4A / B4.x→G4B faite ailleurs sur la plateforme — gUD() dans app.js)
+function niveauG4PourEleve(ud, classeLibelle){
+  const c = (classeLibelle || '').toUpperCase();
+  if(c.includes('AGEC')) return Math.max(calcNiveauComp('C4A', ud), calcNiveauComp('G4A', ud));
+  if(c.includes('PVOC')) return Math.max(calcNiveauComp('B4', ud), calcNiveauComp('G4B', ud));
+  return null; // 2nde : pas de bloc 4
+}
+
+function badgeNiveau(n){
+  if(n === null || n === undefined) return '<span style="color:var(--gm);font-size:11px">—</span>';
+  const cols = ['#A0AEC0','#63B3ED','#4A6FA5','#185FA5','#0A2540'];
+  return '<span style="display:inline-block;min-width:18px;text-align:center;font-size:11px;font-weight:800;color:#fff;background:'+cols[n]+';border-radius:5px;padding:2px 5px">'+n+'</span>';
 }
 
 function afficherClasse(){
@@ -63,13 +136,23 @@ function afficherClasse(){
 
   const liste = classeFiltre ? eleves.filter(e => (e.classe_libelle||'Sans classe')===classeFiltre) : eleves;
 
+  // Stats agrégées à partir de la progression réelle (PROGRESSIONS_CLASSE, chargée par renderClasse())
+  const statsListe = liste.map(function(e){
+    const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
+    const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
+    return { done: done.length, score: (typeof calcScore === 'function') ? calcScore(ud) : 0 };
+  });
+  const totalMissionsValidees = statsListe.reduce(function(a,x){ return a + x.done; }, 0);
+  const actifsScore = statsListe.filter(function(x){ return x.done > 0; });
+  const moyenneClasse = actifsScore.length ? Math.round(actifsScore.reduce(function(a,x){ return a+x.score; },0)/actifsScore.length) : null;
+
   const statsEl = document.getElementById('classe-stats');
   if(statsEl){
     statsEl.innerHTML =
       '<div style="background:var(--bc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--bl)">' + liste.length + '</div><div class="u-label-up">Élèves</div></div>'
       + '<div style="background:var(--vc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--vt)">' + classes.length + '</div><div class="u-label-up">Classe(s)</div></div>'
-      + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">—</div><div class="u-label-up">Missions validées</div></div>'
-      + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">—</div><div class="u-label-up">Moyenne classe</div></div>';
+      + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">' + totalMissionsValidees + '</div><div class="u-label-up">Missions validées</div></div>'
+      + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">' + (moyenneClasse!==null ? moyenneClasse+'/100' : '—') + '</div><div class="u-label-up">Moyenne classe</div></div>';
   }
 
   const titreEl = document.getElementById('cl-titre');
@@ -81,7 +164,7 @@ function afficherClasse(){
   if(!tb){ if(typeof renderMDJListe === 'function') renderMDJListe(); return; }
 
   if(!liste.length){
-    tb.innerHTML = '<tr><td colspan="10" style="padding:16px;color:var(--gm);font-size:12px">'
+    tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--gm);font-size:12px">'
       + (classeFiltre ? 'Aucun élève dans cette classe.' : 'Aucun élève pour le moment. Ajoute des élèves avec le formulaire ci-dessus.')
       + '</td></tr>';
     if(typeof renderMDJListe === 'function') renderMDJListe();
@@ -93,6 +176,13 @@ function afficherClasse(){
     const cls = e.classe_libelle || '—';
     const classeCodePortfolio = e.classe || '';
     const nomAffPropre = nomAff.replace(/'/g,"");
+    const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
+    const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
+    const score = (typeof calcScore === 'function') ? calcScore(ud) : 0;
+    const c1 = calcNiveauComp('C1', ud), c2 = calcNiveauComp('C2', ud), c3 = calcNiveauComp('C3', ud);
+    const g4 = niveauG4PourEleve(ud, cls);
+    const posture = done.length ? posturePourScore(score, cls) : '—';
+    const moy = done.length ? (done.reduce(function(a,m){ return a + (m.score||0); },0) / done.length).toFixed(1) : '—';
     const btnReset = '<button onclick="event.stopPropagation();resetMdpEleve(\'' + e.id + '\',\'' + nomAffPropre + '\')" '
       + 'title="Réinitialiser le mot de passe" '
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">🔑</button>';
@@ -101,10 +191,16 @@ function afficherClasse(){
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">📄</button>';
     const estSelectionne = SELECTED_ELEVE && SELECTED_ELEVE.id === e.id;
     return '<tr onclick="selectionnerEleve(\'' + e.id + '\')" style="cursor:pointer' + (estSelectionne ? ';background:var(--bc)' : '') + '">'
-      + '<td style="font-weight:700">' + nomAff + '</td>'
+      + '<td style="font-weight:700">' + nomAff + (e.statut && e.statut!=='actif' ? ' <span style="font-size:9px;font-weight:400;color:var(--gm)">(' + e.statut + ')</span>' : '') + '<div style="font-size:9px;color:var(--gm);font-weight:400">' + e.email + '</div></td>'
       + '<td class="u-label-sm">' + cls + '</td>'
-      + '<td colspan="5" style="font-size:11px;color:var(--gm)">' + e.email + '</td>'
-      + '<td style="font-size:10px;color:var(--vt);font-weight:700">' + (e.statut || 'actif') + '</td>'
+      + '<td style="text-align:center">' + badgeNiveau(c1) + '</td>'
+      + '<td style="text-align:center">' + badgeNiveau(c2) + '</td>'
+      + '<td style="text-align:center">' + badgeNiveau(c3) + '</td>'
+      + '<td style="text-align:center">' + badgeNiveau(g4) + '</td>'
+      + '<td style="text-align:center;font-weight:800;color:var(--bl)">' + score + '</td>'
+      + '<td style="font-size:10px;color:var(--gm)">' + posture + '</td>'
+      + '<td style="text-align:center">' + done.length + '</td>'
+      + '<td style="text-align:center">' + moy + '</td>'
       + '<td style="text-align:center;display:flex;gap:4px;justify-content:center">' + btnPortfolio + btnReset + '</td>'
       + '</tr>';
   }).join('');
@@ -230,5 +326,165 @@ async function supprimerEleve(){
   SELECTED_ELEVE = null;
   document.getElementById('eleve-selectionne-nom').textContent = '';
   alert(d.mode === 'supprime_definitivement' ? ('🗑 ' + nomAff + ' a été supprimé définitivement.') : ('📦 ' + nomAff + ' a été archivé(e).'));
+  renderClasse();
+}
+
+// ================================================
+//   Export CSV de la Vue classe (respecte le filtre de classe en cours)
+// ================================================
+
+function exporterClasse(){
+  const eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const liste = classeFiltre ? eleves.filter(function(e){ return (e.classe_libelle||'Sans classe')===classeFiltre; }) : eleves;
+  if(!liste.length){ alert('Aucun élève à exporter.'); return; }
+
+  const lignes = [['Nom','Prénom','Email','Classe','C1','C2','C3','G4','Score /100','Posture','Missions validées','Moyenne /20']];
+  liste.forEach(function(e){
+    const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
+    const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
+    const score = (typeof calcScore === 'function') ? calcScore(ud) : 0;
+    const c1 = calcNiveauComp('C1', ud), c2 = calcNiveauComp('C2', ud), c3 = calcNiveauComp('C3', ud);
+    const g4 = niveauG4PourEleve(ud, e.classe_libelle);
+    const posture = done.length ? posturePourScore(score, e.classe_libelle) : '';
+    const moy = done.length ? (done.reduce(function(a,m){ return a + (m.score||0); },0) / done.length).toFixed(1) : '';
+    lignes.push([
+      e.nom || '', e.prenom || '', e.email || '', e.classe_libelle || '',
+      c1, c2, c3, (g4===null || g4===undefined ? '' : g4),
+      score, posture, done.length, moy
+    ]);
+  });
+
+  const csv = lignes.map(function(ligne){
+    return ligne.map(function(v){
+      const s = String(v==null ? '' : v);
+      return /[",;\n]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s;
+    }).join(';');
+  }).join('\n');
+
+  // BOM UTF-8 + séparateur ';' pour une ouverture correcte dans Excel en français
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const dateStr = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = 'laboro-classe' + (classeFiltre ? '-' + classeFiltre.replace(/\s+/g,'_') : '') + '-' + dateStr + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ================================================
+//   Analyse de classe (modal) — vue d'ensemble pédagogique
+// ================================================
+
+function openAnalyse(){
+  const overlay = document.getElementById('ana-overlay');
+  if(!overlay) return;
+
+  const eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const liste = classeFiltre ? eleves.filter(function(e){ return (e.classe_libelle||'Sans classe')===classeFiltre; }) : eleves;
+
+  const titreEl = document.getElementById('ana-titre');
+  const sousEl = document.getElementById('ana-sous');
+  const bodyEl = document.getElementById('ana-body');
+  if(titreEl) titreEl.textContent = 'Analyse de classe';
+  if(sousEl) sousEl.textContent = (classeFiltre || 'Toutes les classes') + ' — ' + liste.length + ' élève(s)';
+
+  if(!liste.length){
+    if(bodyEl) bodyEl.innerHTML = '<div style="padding:16px;color:var(--gm);font-size:13px">Aucun élève à analyser.</div>';
+    overlay.classList.add('open');
+    return;
+  }
+
+  const stats = liste.map(function(e){
+    const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
+    const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
+    return {
+      nom: ((e.prenom?e.prenom+' ':'')+(e.nom||'')).trim() || e.email,
+      score: (typeof calcScore === 'function') ? calcScore(ud) : 0,
+      done: done.length,
+      c1: calcNiveauComp('C1', ud), c2: calcNiveauComp('C2', ud), c3: calcNiveauComp('C3', ud),
+      g4: niveauG4PourEleve(ud, e.classe_libelle)
+    };
+  });
+
+  const actifs = stats.filter(function(s){ return s.done>0; });
+  const moyenneClasse = actifs.length ? Math.round(actifs.reduce(function(a,s){ return a+s.score; },0)/actifs.length) : 0;
+  const totalMissions = stats.reduce(function(a,s){ return a+s.done; }, 0);
+  const enDifficulte = stats.filter(function(s){ return s.done>0 && s.score<40; }).sort(function(a,b){ return a.score-b.score; });
+  const enAvance = stats.slice().sort(function(a,b){ return b.score-a.score; }).slice(0,5);
+  const sansActivite = stats.filter(function(s){ return s.done===0; });
+
+  const labelsNiveaux = ['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
+  const colsNiveaux = ['#A0AEC0','#63B3ED','#4A6FA5','#185FA5','#0A2540'];
+  function barreCompetence(label, cle){
+    const concernes = stats.filter(function(s){ return s[cle] !== null && s[cle] !== undefined; });
+    if(!concernes.length) return '';
+    const counts = [0,0,0,0,0];
+    concernes.forEach(function(s){ counts[s[cle]]++; });
+    const segments = counts.map(function(c,i){
+      const pct = Math.round(c/concernes.length*100);
+      return pct>0 ? '<div style="height:100%;width:'+pct+'%;background:'+colsNiveaux[i]+'" title="'+labelsNiveaux[i]+' : '+c+'"></div>' : '';
+    }).join('');
+    return '<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--t1);margin-bottom:4px">'+label+'</div>'
+      + '<div style="display:flex;height:10px;border-radius:6px;overflow:hidden;background:#E2E8F0">'+segments+'</div></div>';
+  }
+
+  bodyEl.innerHTML =
+    '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">'
+    + '<div style="background:var(--bc);border-radius:8px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--bl)">'+moyenneClasse+'</div><div class="u-label-up">Score moyen /100</div></div>'
+    + '<div style="background:var(--vc,#D1FAE5);border-radius:8px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--vt,#065F46)">'+totalMissions+'</div><div class="u-label-up">Missions validées</div></div>'
+    + '<div style="background:var(--gc);border-radius:8px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--gr,#374151)">'+sansActivite.length+'</div><div class="u-label-up">Sans activité</div></div>'
+    + '</div>'
+    + '<div style="margin-bottom:16px">'
+    + barreCompetence('C1 — Fondamentaux relation client', 'c1')
+    + barreCompetence('C2 — Suivi et fidélisation', 'c2')
+    + barreCompetence('C3 — Analyse et action commerciale', 'c3')
+    + barreCompetence('G4 — Bloc spécialité (AGEC/PVOC)', 'g4')
+    + '</div>'
+    + (enDifficulte.length ? '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:800;color:#C53030;margin-bottom:6px">⚠ Élèves en difficulté (score &lt; 40, au moins 1 mission faite)</div>'
+      + enDifficulte.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+' — '+s.score+'/100 ('+s.done+' mission(s))</div>'; }).join('')
+      + '</div>' : '')
+    + (sansActivite.length ? '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:800;color:var(--gm);margin-bottom:6px">😴 Élèves sans aucune mission validée</div>'
+      + sansActivite.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+'</div>'; }).join('')
+      + '</div>' : '')
+    + '<div><div style="font-size:12px;font-weight:800;color:var(--bl);margin-bottom:6px">🏆 Meilleurs scores</div>'
+    + enAvance.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+' — '+s.score+'/100</div>'; }).join('')
+    + '</div>';
+
+  overlay.classList.add('open');
+}
+
+function closeAnalyse(){
+  const overlay = document.getElementById('ana-overlay');
+  if(overlay) overlay.classList.remove('open');
+}
+
+// ================================================
+//   Validation groupée des notes IA ≥ 12/20
+//   (jamais les réponses signalées comme suspectes par l'IA — celles-là
+//   restent "à examiner" pour l'enseignant, quel que soit leur score)
+// ================================================
+
+async function validerAll(){
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  if(!confirm('Valider automatiquement toutes les missions corrigées par l\'IA avec une note ≥ 12/20 ?\n\nLes réponses signalées comme suspectes par l\'IA ne sont jamais validées automatiquement — elles restent à examiner toi-même.')) return;
+
+  const btn = document.querySelector('.btn-val-all');
+  if(btn){ btn.disabled = true; btn.textContent = 'Validation en cours…'; }
+
+  const r = await fetchJSON(LABORO_API + '/api/classe/valider-notes-ia', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+
+  if(btn){ btn.disabled = false; btn.textContent = 'Valider notes IA ≥ 12/20'; }
+
+  if(!r.ok){ alert(r.erreur); return; }
+  const d = r.data;
+  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+  alert(d.valide > 0 ? ('✅ ' + d.valide + ' mission(s) validée(s) automatiquement.') : 'Aucune mission en attente avec une note ≥ 12/20 pour le moment.');
   renderClasse();
 }
