@@ -5,6 +5,25 @@
 
 // ═══ DASHBOARD ═══
 
+// --- Affiche la mission du jour assignée par l'enseignant (élève uniquement) ---
+async function renderMDJEleve(){
+  const wrap = document.getElementById('mdj-wrap');
+  if(!wrap) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ wrap.innerHTML=''; return; }
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/moi', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok || !r.data.mission){ wrap.innerHTML=''; return; }
+  const m = r.data.mission;
+  wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
+    + '<div class="ct" style="color:#8A6500">⭐ Mission du jour</div>'
+    + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
+    + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
+    + '<button onclick="handleMission(\''+m.mission_id+'\')" style="margin-top:8px;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir la mission</button>'
+    + '</div>';
+}
+
 // ═══ ACTUALITÉS LABORO ═══
 const ACTUS_LABORO=[
   {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons de football LABORO T5 et 30 chasubles LABORO Pro reçus en entrepôt. Mise en rayon prévue demain.'},
@@ -183,6 +202,8 @@ function renderDashboard(){
     const emp=clt[0];
     empW.innerHTML=`<div class="emp-mois"><div class="emp-ico">🏆</div><div><div class="emp-t">Employé du mois — ${now.toLocaleString('fr-FR',{month:'long'})}</div><div class="emp-n">${emp.nom}</div><div class="emp-s">Score LABORO : ${emp.score}/100</div></div></div>`;
   }else empW.innerHTML='';
+  // Mission du jour (élève uniquement) — assignée par l'enseignant
+  if(CU.classe !== 'enseignant' && typeof renderMDJEleve === 'function') renderMDJEleve();
   // Classement dans le dashboard
   const cltDash=document.getElementById('clt-dash');
   if(cltDash && clt.length>0){
