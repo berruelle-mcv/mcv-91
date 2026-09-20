@@ -90,8 +90,13 @@ async function afficherListeClasses(){
         }).join('')
       : '<span style="font-size:11px;color:var(--gm)">Aucun enseignant attribué pour l\'instant (visible uniquement par toi, l\'administrateur)</span>';
 
+    const libellePropre = (c.libelle || c.id).replace(/'/g, '');
     return '<div style="padding:12px 0;border-bottom:1px solid var(--gb)">'
-      + '<div style="font-weight:700;font-size:13px;margin-bottom:2px">' + (c.libelle || c.id) + '</div>'
+      + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">'
+        + '<div style="font-weight:700;font-size:13px">' + (c.libelle || c.id) + '</div>'
+        + '<span style="cursor:pointer;font-size:11px;color:var(--gm)" onclick="renommerClasse(\'' + c.id + '\',\'' + libellePropre + '\')" title="Renommer">✏️</span>'
+        + '<span style="cursor:pointer;font-size:11px;color:var(--rg)" onclick="supprimerClasse(\'' + c.id + '\',\'' + libellePropre + '\')" title="Supprimer">🗑</span>'
+      + '</div>'
       + '<div style="font-size:11px;color:var(--gm);margin-bottom:8px">' + (c.parcours_libelle || (c.niveau + ' ' + c.option)) + ' · ' + (c.annee_scolaire || '') + '</div>'
       + '<div style="margin-bottom:8px">' + badgesEns + '</div>'
       + (optionsEns
@@ -129,4 +134,34 @@ async function retirerAttribution(classeId, enseignantId, nomEns){
   });
   if(!r.ok || !r.data.ok){ alert('Échec : ' + (r.erreur || (r.data && r.data.erreur) || 'erreur inconnue')); return; }
   afficherListeClasses();
+}
+
+// --- Renommer une classe (corriger une erreur de saisie) ---
+async function renommerClasse(classeId, ancienLibelle){
+  const nouveauLibelle = prompt('Nouveau libellé pour cette classe :', ancienLibelle);
+  if(!nouveauLibelle || !nouveauLibelle.trim() || nouveauLibelle.trim() === ancienLibelle) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token) return;
+  const r = await fetchJSON(LABORO_API + '/api/classes/' + classeId, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ libelle: nouveauLibelle.trim() })
+  });
+  if(!r.ok || !r.data.ok){ alert('Échec : ' + (r.erreur || (r.data && r.data.erreur) || 'erreur inconnue')); return; }
+  afficherListeClasses();
+  if(typeof populateClasseSelects === 'function') populateClasseSelects();
+}
+
+// --- Supprimer une classe (uniquement si elle n'a jamais eu d'élève) ---
+async function supprimerClasse(classeId, libelle){
+  if(!confirm('Supprimer définitivement la classe "' + libelle + '" ?\n\n(Ce n\'est possible que si aucun élève n\'y a jamais été rattaché.)')) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token) return;
+  const r = await fetchJSON(LABORO_API + '/api/classes/' + classeId, {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok){ alert('⚠️ ' + (r.erreur || (r.data && r.data.erreur) || 'erreur inconnue')); return; }
+  afficherListeClasses();
+  if(typeof populateClasseSelects === 'function') populateClasseSelects();
 }
