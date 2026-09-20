@@ -698,7 +698,8 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
 </ul>
 </div>`},
 },
-'C2.2':{t:'Gérer une réclamation client',c:`<div class="res-section res-debutant">
+'C2.2':{
+1:{t:'Gérer une réclamation client — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Gérer une réclamation simplement</div>
 <p><strong>Une réclamation, c'est quoi ?</strong></p>
 <p>C'est quand un client exprime son insatisfaction — il n'a pas reçu ce qu'il attendait. Bien gérer une réclamation = transformer un client mécontent en client fidèle.</p>
@@ -710,22 +711,19 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
 <li><strong>S — Solution</strong> : proposer une solution concrète</li>
 <li><strong>A — Agir et tracer</strong> : appliquer la solution et noter l'incident dans LABORO Connect</li>
 </ul>
+<div class="res-ex"><div class="res-ex-l">Exemple simple</div>
+Client : "Ma commande n'est pas arrivée !" — Vous : "Je comprends, c'est frustrant. Votre commande devait arriver hier. Je vérifie immédiatement et je vous rappelle dans 30 minutes avec une solution."
+</div>
+</div>
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
-  <!-- Fond -->
   <rect width="680" height="230" rx="12" fill="#FFF8F8"/>
-  
-  <!-- Titre -->
   <text x="340" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#7B2D2D">MÉTHODE ERESA — Gérer une réclamation chez LABORO</text>
-  
-  <!-- Defs -->
   <defs>
     <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L0,6 L8,3 z" fill="#9B4444"/>
     </marker>
   </defs>
-  
-  <!-- Étape E1 — Écouter -->
   <rect x="10" y="45" width="116" height="120" rx="10" fill="#7B2D2D"/>
   <text x="68" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FECACA">E</text>
   <text x="68" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">ÉCOUTER</text>
@@ -733,11 +731,7 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
   <text x="68" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">sans interrompre</text>
   <text x="68" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Posture ouverte</text>
   <text x="68" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Regard direct</text>
-  
-  <!-- Flèche 1 -->
   <path d="M 128 105 L 143 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
-  
-  <!-- Étape R — Reformuler -->
   <rect x="145" y="45" width="116" height="120" rx="10" fill="#9B3636"/>
   <text x="203" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FCA5A5">R</text>
   <text x="203" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">REFORMULER</text>
@@ -745,11 +739,7 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
   <text x="203" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">bien..."</text>
   <text x="203" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Valider le problème</text>
   <text x="203" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Montrer qu'on écoute</text>
-  
-  <!-- Flèche 2 -->
   <path d="M 263 105 L 278 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
-  
-  <!-- Étape E2 — S'excuser -->
   <rect x="280" y="45" width="116" height="120" rx="10" fill="#B45454"/>
   <text x="338" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FCA5A5">E</text>
   <text x="338" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">S'EXCUSER</text>
@@ -757,11 +747,7 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
   <text x="338" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">pour la situation"</text>
   <text x="338" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Au nom de LABORO</text>
   <text x="338" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Même sans faute directe</text>
-  
-  <!-- Flèche 3 -->
   <path d="M 398 105 L 413 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
-  
-  <!-- Étape S — Solution -->
   <rect x="415" y="45" width="116" height="120" rx="10" fill="#C16060"/>
   <text x="473" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FEE2E2">S</text>
   <text x="473" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">SOLUTION</text>
@@ -769,11 +755,7 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
   <text x="473" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">options concrètes</text>
   <text x="473" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Délai précis</text>
   <text x="473" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Engagement ferme</text>
-  
-  <!-- Flèche 4 -->
   <path d="M 533 105 L 548 105" stroke="#9B4444" stroke-width="1.5" marker-end="url(#arrow2)" fill="none"/>
-  
-  <!-- Étape A — Accord -->
   <rect x="550" y="45" width="120" height="120" rx="10" fill="#D97B7B"/>
   <text x="610" y="78" text-anchor="middle" font-size="26" font-weight="900" fill="#FFF1F1">A</text>
   <text x="610" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">AGIR ET TRACER</text>
@@ -781,114 +763,126 @@ Un client veut une personnalisation textile pour 6 maillots seulement (minimum L
   <text x="610" y="124" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">et suivre</text>
   <text x="610" y="140" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Noter dans LABORO Connect</text>
   <text x="610" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.65)">Engagement + date</text>
-  
-  <!-- Barre résultat -->
   <rect x="10" y="178" width="660" height="40" rx="8" fill="#FEE2E2" stroke="#FECACA" stroke-width="1"/>
   <text x="340" y="193" text-anchor="middle" font-size="9" font-weight="700" fill="#7B2D2D">Objectif : transformer un client mécontent en ambassadeur LABORO</text>
   <text x="340" y="210" text-anchor="middle" font-size="8.5" fill="#9B4444">Un client dont la réclamation est bien gérée est plus fidèle qu'un client qui n'a jamais eu de problème.</text>
 </svg>
 </div>
-<div class="res-ex"><div class="res-ex-l">Exemple simple</div>
-Client : "Ma commande n'est pas arrivée !" — Vous : "Je comprends, c'est frustrant. Votre commande devait arriver hier. Je vérifie immédiatement et je vous rappelle dans 30 minutes avec une solution."
-</div>
-</div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<p><strong>Les 5 étapes LABORO — méthode ERESA :</strong></p><ul><li><strong>E — Écouter</strong> — Sans interrompre, sans se justifier. Le client a besoin d'être entendu avant tout. Durée : aussi longtemps qu'il le faut.</li><li><strong>R — Reformuler</strong> — "Si je comprends bien, vous avez reçu un produit endommagé alors que vous en avez besoin pour samedi. C'est bien ça ?" Montre qu'on a écouté.</li><li><strong>E — S'excuser</strong> — Au nom de LABORO, même si c'est la faute du transporteur. "Je suis vraiment désolé(e) pour cette situation."</li><li><strong>S — Proposer une Solution</strong> — Avoir en tête les 3 niveaux de compensation LABORO : échange immédiat / remboursement / bon d'achat compensatoire.</li><li><strong>A — Agir et tracer</strong> — Conclure avec un engagement clair, une date, un suivi. Tout noter dans LABORO Connect.</li></ul><p><strong>Droits du consommateur à connaître :</strong></p><ul><li>Droit de rétractation : 14 jours pour les achats en ligne (e-commerce uniquement)</li><li>Garantie légale de conformité : 2 ans sur tous les produits (Code de la consommation)</li><li>Garantie commerciale LABORO : 30 jours échange ou remboursement sans justification</li></ul><p><strong>Niveaux de geste commercial autorisés chez LABORO :</strong></p><ul><li>Conseiller de vente : bon d'achat jusqu'à 20 €</li><li>Responsable : remboursement partiel ou échange</li><li>PDG : geste exceptionnel au-delà</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 10€. Notation LABORO Connect "réclamation résolue — client satisfait".</div><p><strong>L'empathie dans le traitement des réclamations</strong></p>
-<p>L'empathie c'est la capacité à se mettre à la place du client et à lui montrer qu'on comprend ce qu'il ressent — sans forcément lui donner raison sur tout. C'est la compétence numéro 1 pour désamorcer une réclamation.</p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Phrases d'empathie efficaces</strong> :
-  <ul>
-    <li>"Je comprends tout à fait votre frustration, ce n'est pas ce qu'on vous a promis."</li>
-    <li>"Je suis sincèrement désolé(e) pour ce désagrément, vous avez eu raison de nous contacter."</li>
-    <li>"À votre place, j'aurais réagi de la même façon."</li>
-  </ul>
-</li>
-<li><strong>Ce qu'il ne faut JAMAIS dire</strong> :
-  <ul>
-    <li>"C'est pas de notre faute" → ça rejette la responsabilité</li>
-    <li>"C'est écrit dans les conditions générales" → ça met le client en tort</li>
-    <li>"Calmez-vous" → ça amplifie l'énervement</li>
-  </ul>
-</li>
-<li><strong>La règle des 3 E</strong> : Écouter sans interrompre · Exprimer l'empathie · Engager une solution concrète</li>
+<li>ERESA : Écouter · Reformuler · S'excuser · Solution · Agir et tracer</li>
+<li>Toujours écouter en entier avant de proposer quoi que ce soit</li>
+<li>S'excuser au nom de LABORO, même sans faute personnelle directe</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réclamation avec empathie</div>
-Client : "J'ai commandé des chaussures il y a 3 semaines, je n'ai toujours rien reçu. C'est un scandale !"<br><br>
-Mauvaise réponse : "Le délai c'est 3 semaines, c'est normal."<br><br>
-Bonne réponse avec empathie : "Je comprends votre mécontentement, attendre 3 semaines sans nouvelles c'est vraiment frustrant. Je vais vérifier immédiatement où en est votre commande et je vous rappelle dans les 30 minutes avec une réponse concrète."<br><br>
-<strong>Résultat</strong> : le client se sent entendu → la tension baisse → il reste client.
-</div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un client dont la réclamation est bien gérée est souvent plus fidèle qu'un client qui n'a jamais eu de problème. Écouter sans interrompre est la compétence la plus difficile et la plus importante.</div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Concevoir une politique de gestion des réclamations</div>
-<p><strong>Une politique de réclamations, c'est quoi ?</strong></p>
-<p>C'est un ensemble de règles et procédures que l'entreprise applique systématiquement pour traiter les insatisfactions. Elle garantit la cohérence et la qualité du traitement, quel que soit le collaborateur.</p>
-<p><strong>Les 4 piliers d'une bonne politique réclamations chez LABORO :</strong></p>
+</div>`},
+2:{t:'Gérer une réclamation client — Empathie et droits du consommateur',c:`<div class="res-section">
+<div class="res-section-label">🟢 Les 5 étapes détaillées et les droits à connaître</div>
+<ul><li><strong>E — Écouter</strong> — Sans interrompre, sans se justifier. Le client a besoin d'être entendu avant tout.</li><li><strong>R — Reformuler</strong> — "Si je comprends bien, vous avez reçu un produit endommagé alors que vous en avez besoin pour samedi. C'est bien ça ?"</li><li><strong>E — S'excuser</strong> — Au nom de LABORO, même si c'est la faute du transporteur.</li><li><strong>S — Proposer une Solution</strong> — 3 niveaux de compensation LABORO : échange immédiat / remboursement / bon d'achat compensatoire.</li><li><strong>A — Agir et tracer</strong> — Engagement clair, date, suivi, tout noté dans LABORO Connect.</li></ul>
+<p><strong>Droits du consommateur à connaître :</strong></p>
+<ul><li>Droit de rétractation : 14 jours pour les achats en ligne (e-commerce uniquement)</li><li>Garantie légale de conformité : 2 ans sur tous les produits (Code de la consommation)</li><li>Garantie commerciale LABORO : 30 jours échange ou remboursement sans justification</li></ul>
+<p><strong>Niveaux de geste commercial autorisés chez LABORO :</strong></p>
+<ul><li>Conseiller de vente : bon d'achat jusqu'à 20 €</li><li>Responsable : remboursement partiel ou échange</li><li>PDG : geste exceptionnel au-delà</li></ul>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 10€.</div>
+<p><strong>L'empathie — la compétence numéro 1 pour désamorcer une réclamation :</strong></p>
 <ul>
-<li><strong>1. Traçabilité</strong> — Toute réclamation est enregistrée dans LABORO Connect avec : date, client, nature du problème, solution apportée, délai de traitement.</li>
-<li><strong>2. Délais engagés</strong> — Accusé de réception sous 24h. Réponse complète sous 48h max. Solution ou compensation sous 72h.</li>
-<li><strong>3. Niveaux de compensation</strong> — Geste commercial (bon d'achat 10-20€) / Remboursement partiel / Remplacement produit / Remboursement total selon la gravité.</li>
-<li><strong>4. Analyse et prévention</strong> — Bilan mensuel des réclamations. Identification des causes récurrentes. Actions correctives décidées en équipe.</li>
+<li><strong>Phrases d'empathie efficaces</strong> : "Je comprends tout à fait votre frustration" · "Vous avez eu raison de nous contacter" · "À votre place, j'aurais réagi de la même façon"</li>
+<li><strong>Ce qu'il ne faut JAMAIS dire</strong> : "C'est pas de notre faute" (rejette la responsabilité) · "C'est écrit dans les conditions générales" (met le client en tort) · "Calmez-vous" (amplifie l'énervement)</li>
 </ul>
-<p><strong>Analyser les réclamations pour s'améliorer :</strong></p>
-<ul>
-<li>Taux de réclamation = (nb réclamations / nb ventes) × 100. Objectif LABORO : &lt; 2%</li>
-<li>Délai moyen de traitement = temps total de résolution / nb réclamations</li>
-<li>Taux de satisfaction post-réclamation = clients satisfaits après traitement / total</li>
-<li>Réclamations par type : livraison / produit défectueux / erreur commande / SAV</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Bonne pratique LABORO</div>
-Chaque mois, Nina Chevalier présente en réunion d'équipe le "Top 3 des réclamations du mois". L'équipe identifie la cause racine et décide d'une action corrective concrète. Résultat : le taux de réclamation a baissé de 3,2% à 1,8% en 6 mois.
+<div class="res-ex"><div class="res-ex-l">Exemple — réclamation avec empathie</div>
+Client : "J'ai commandé il y a 3 semaines, toujours rien reçu. C'est un scandale !" — Bonne réponse : "Je comprends votre mécontentement, attendre 3 semaines sans nouvelles c'est vraiment frustrant. Je vérifie immédiatement et je vous rappelle dans les 30 minutes avec une réponse concrète."
 </div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>Politique réclamations = traçabilité + délais + compensation + analyse</li>
-<li>Taux de réclamation cible LABORO : &lt; 2%</li>
-<li>Chaque réclamation est une opportunité d'amélioration</li>
-<li>Analyse mensuelle = actions correctives = baisse du taux</li>
+<li>Garantie légale 2 ans, garantie commerciale LABORO 30 jours, rétractation 14 jours en ligne</li>
+<li>Chaque niveau hiérarchique a un plafond de compensation défini</li>
+<li>Une phrase d'empathie ne donne pas forcément raison au client, mais reconnaît son ressenti</li>
 </ul>
 </div>`},
-  'C2.3':{t:'Mesurer et analyser la satisfaction client',c:`<div class="res-section res-debutant">
+3:{t:'Gérer une réclamation client — Réclamations sensibles',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand la réclamation dépasse le cadre habituel</div>
+<p>À ce niveau, la réclamation n'est plus simple à traiter avec la grille habituelle : le client demande une compensation supérieure à ce que tu peux accorder, ou il a en partie tort mais reste légitimement mécontent. Ton rôle est de trouver une solution juste, ni en cédant à tout, ni en refusant sèchement.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — demande de compensation excessive</div>
+Un client réclame un remboursement total pour une paire de chaussures légèrement décousue après 3 mois d'usage intensif, alors que la garantie couvre un défaut de fabrication, pas l'usure. Mauvais réflexe : refuser sec "ce n'est pas couvert". Bon réflexe : "Je comprends votre déception. Ce type d'usure après un usage intensif n'entre pas dans la garantie de conformité, mais je peux vous proposer un geste commercial de 15% sur une nouvelle paire, en reconnaissance de votre fidélité."
+</div>
+<p><strong>Un client en partie responsable :</strong> quand le client a lui-même contribué au problème (mauvais entretien, erreur de commande de sa part), l'empathie reste de mise, mais la solution doit rester proportionnée — accorder un geste commercial n'est pas reconnaître une faute LABORO qui n'existe pas.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — dépasser son plafond de compensation</div>
+Un conseiller de vente (plafond 20€) fait face à une réclamation qui mériterait un geste de 50€. Il ne doit ni promettre ce montant seul, ni laisser le client sans réponse : "Je vais transmettre votre dossier à mon responsable qui peut vous proposer un geste plus important — je vous confirme sous 24h maximum." Il ne fait jamais de fausse promesse pour clore l'échange plus vite.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta décision — par exemple : ta solution était-elle juste à la fois pour le client et pour LABORO, ou as-tu cédé/refusé par facilité ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à une demande excessive, ne refuse jamais sèchement — explique le cadre et propose une alternative proportionnée</li>
+<li>Si la solution dépasse ton plafond, transmets avec un engagement de délai — ne promets jamais à la place de ton responsable</li>
+<li>La réflexivité = un vrai retour critique sur ta décision, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'Gérer une réclamation client — Concevoir une politique de réclamations',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter la gestion des réclamations</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, en allant jusqu'au pilotage global.</p>
+<p><strong>Les 4 piliers d'une politique réclamations LABORO :</strong></p>
+<ul>
+<li><strong>Traçabilité</strong> — chaque réclamation enregistrée dans LABORO Connect (date, client, problème, solution, délai)</li>
+<li><strong>Délais engagés</strong> — accusé de réception sous 24h, réponse sous 48h max, solution sous 72h</li>
+<li><strong>Niveaux de compensation</strong> — geste commercial / remboursement partiel / remplacement / remboursement total selon la gravité</li>
+<li><strong>Analyse et prévention</strong> — bilan mensuel, causes récurrentes identifiées, actions correctives décidées en équipe</li>
+</ul>
+<p><strong>Indicateurs de pilotage :</strong></p>
+<ul>
+<li>Taux de réclamation = (nb réclamations / nb ventes) × 100 — objectif LABORO &lt; 2%</li>
+<li>Délai moyen de traitement = temps total de résolution / nb réclamations</li>
+<li>Taux de satisfaction post-réclamation = clients satisfaits après traitement / total</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Bonne pratique LABORO</div>
+Chaque mois, Nina Chevalier présente en réunion d'équipe le "Top 3 des réclamations du mois". L'équipe identifie la cause racine et décide d'une action corrective. Résultat : le taux de réclamation a baissé de 3,2% à 1,8% en 6 mois.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : concevoir et piloter une politique de réclamations complète, pas seulement en traiter une</li>
+<li>Chaque réclamation est une opportunité d'amélioration, pas juste un incident à clore</li>
+<li>Une analyse mensuelle sans action corrective ne sert à rien</li>
+</ul>
+</div>`},
+},
+'C2.3':{
+1:{t:'Mesurer et analyser la satisfaction client — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Comprendre la satisfaction client</div>
 <p><strong>Pourquoi mesurer la satisfaction ?</strong></p>
-<p>Un client satisfait revient et recommande LABORO. Un client insatisfait part et en parle autour de lui. Mesurer la satisfaction permet de s'ameliorer avant qu'il soit trop tard.</p>
-<p><strong>Les 2 indicateurs a connaitre :</strong></p>
+<p>Un client satisfait revient et recommande LABORO. Un client insatisfait part et en parle autour de lui. Mesurer la satisfaction permet de s'améliorer avant qu'il soit trop tard.</p>
+<p><strong>Les 2 indicateurs à connaître :</strong></p>
 <ul>
-<li><strong>Taux de satisfaction</strong> = (clients satisfaits + tres satisfaits) / total repondants x 100<br><em>Objectif LABORO : 80% minimum</em></li>
-<li><strong>NPS (Net Promoter Score)</strong> — on demande au client : de 0 a 10, recommanderiez-vous LABORO ?<br>— Notes 9-10 = Promoteurs (ils recommandent)<br>— Notes 7-8 = Neutres<br>— Notes 0-6 = Detracteurs (ils critiquent)<br><em>NPS = % Promoteurs − % Detracteurs. Un NPS positif est bon.</em></li>
+<li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) / total répondants x 100<br><em>Objectif LABORO : 80% minimum</em></li>
+<li><strong>NPS (Net Promoter Score)</strong> — on demande au client : de 0 à 10, recommanderiez-vous LABORO ?<br>— Notes 9-10 = Promoteurs (ils recommandent)<br>— Notes 7-8 = Neutres<br>— Notes 0-6 = Détracteurs (ils critiquent)<br><em>NPS = % Promoteurs − % Détracteurs. Un NPS positif est bon.</em></li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO</div>
-Sur 50 reponses : 30 tres satisfaits + 15 satisfaits + 5 insatisfaits.<br>
+Sur 50 réponses : 30 très satisfaits + 15 satisfaits + 5 insatisfaits.<br>
 Taux = (30+15)/50 x 100 = <strong>90%</strong><br>
-NPS : 20 Promoteurs, 5 Detracteurs = 40% - 10% = <strong>+30</strong>
+NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="170" rx="12" fill="#FFFBEB"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">LE NPS — Mesurer la satisfaction client LABORO</text>
-  <!-- Échelle NPS -->
   <text x="340" y="48" text-anchor="middle" font-size="10" fill="#4A5568">"Recommanderiez-vous LABORO à un ami ?" — Note de 0 à 10</text>
-  <!-- Détracteurs 0-6 -->
   <rect x="15" y="58" width="220" height="70" rx="8" fill="#FEE2E2"/>
   <text x="125" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#9B1C1C">😤 DÉTRACTEURS</text>
   <text x="125" y="96" text-anchor="middle" font-size="22" font-weight="900" fill="#EF4444">0 → 6</text>
   <text x="125" y="116" text-anchor="middle" font-size="9" fill="#9B1C1C">Insatisfaits — risque de mauvais avis</text>
-  <!-- Passifs 7-8 -->
   <rect x="243" y="58" width="193" height="70" rx="8" fill="#FEF9C3"/>
   <text x="339" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#854D0E">😐 PASSIFS</text>
   <text x="339" y="96" text-anchor="middle" font-size="22" font-weight="900" fill="#D97706">7 → 8</text>
   <text x="339" y="116" text-anchor="middle" font-size="9" fill="#854D0E">Neutres — pas de recommandation</text>
-  <!-- Promoteurs 9-10 -->
   <rect x="444" y="58" width="221" height="70" rx="8" fill="#D1FAE5"/>
   <text x="554" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#065F46">😍 PROMOTEURS</text>
   <text x="554" y="96" text-anchor="middle" font-size="22" font-weight="900" fill="#10B981">9 → 10</text>
   <text x="554" y="116" text-anchor="middle" font-size="9" fill="#065F46">Ambassadeurs — bouche-à-oreille</text>
-  <!-- Formule -->
   <rect x="15" y="138" width="650" height="24" rx="6" fill="#EBF4FF"/>
   <text x="340" y="154" text-anchor="middle" font-size="9.5" fill="#1A2E4A">
     <tspan font-weight="700">NPS = </tspan>
@@ -898,27 +892,75 @@ NPS : 20 Promoteurs, 5 Detracteurs = 40% - 10% = <strong>+30</strong>
   </text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Analyser et agir</div>
-<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS (Net Promoter Score)</strong> = % Promoteurs (notes 9-10) − % Détracteurs (notes 0-6). Les neutres (7-8) ne comptent pas. Un NPS > 0 est positif, > 30 est excellent.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux < 20% = résultats non représentatifs.</li></ul><p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul><p><strong>Comment analyser :</strong> Un taux de satisfaction n'a de sens qu'avec une action corrective. Identifier la cause → proposer une solution → mesurer l'amélioration.</p><div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (38% des insatisfaits) → négociation avec Chronopost.</div><p><strong>Analyser les verbatims clients</strong></p>
-<p>Un <strong>verbatim</strong> est une réponse textuelle libre d'un client dans une enquête de satisfaction ("En quelques mots, comment décririez-vous votre expérience ?"). C'est la donnée la plus riche car elle révèle les vrais motifs de satisfaction ou d'insatisfaction.</p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Verbatim positif</strong> → identifier ce qui crée de la valeur pour le client et amplifier</li>
-<li><strong>Verbatim négatif</strong> → identifier le problème précis, prioriser les corrections</li>
+<li>Taux de satisfaction = satisfaits ÷ répondants × 100 — objectif LABORO ≥ 80%</li>
+<li>NPS = % Promoteurs − % Détracteurs — objectif LABORO &gt; +20</li>
+<li>Mesurer permet d'agir avant qu'un client insatisfait ne parte définitivement</li>
+</ul>
+</div>`},
+2:{t:'Mesurer et analyser la satisfaction client — Collecter et calculer',c:`<div class="res-section">
+<div class="res-section-label">🟢 3 indicateurs et comment collecter les avis</div>
+<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS</strong> = % Promoteurs (9-10) − % Détracteurs (0-6). Les neutres (7-8) ne comptent pas.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux &lt; 20% = résultats non représentatifs.</li></ul>
+<p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul>
+<div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (38% des insatisfaits) → négociation avec Chronopost.</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un taux de réponse trop bas rend le résultat non fiable, quel que soit le score obtenu</li>
+<li>Un taux de satisfaction n'a de sens qu'avec une action corrective derrière</li>
+<li>Diversifier les canaux de collecte (mail, avis Google, magasin) donne une vision plus complète</li>
+</ul>
+</div>`},
+3:{t:'Mesurer et analyser la satisfaction client — Signaux contradictoires',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand les indicateurs racontent des histoires différentes</div>
+<p>À ce niveau, tu ne reçois plus un seul chiffre clair : le NPS peut être bon alors que le taux de satisfaction est décevant, ou l'inverse. Ton rôle est de comprendre pourquoi les indicateurs divergent avant de conclure trop vite.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — NPS bon, taux de satisfaction décevant</div>
+NPS = +28 (bon score) mais taux de satisfaction = 75,4% (sous l'objectif de 80%). Comment expliquer ce grand écart ? Le NPS mesure la recommandation future (l'image globale de LABORO), le taux de satisfaction mesure le vécu réel de LA dernière expérience. Un client peut rester fidèle à la marque (bon NPS) tout en étant déçu d'un achat précis (mauvaise note satisfaction) — les deux ne mesurent pas exactement la même chose.
+</div>
+<p><strong>Croiser les indicateurs avec les verbatims :</strong> quand un chiffre surprend, il faut aller chercher l'explication dans les commentaires libres des clients (verbatims) plutôt que de se contenter du chiffre seul. Un chiffre isolé peut induire en erreur ; un chiffre expliqué par des verbatims devient exploitable.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — expliquer l'écart par les verbatims</div>
+En lisant les commentaires liés aux notes basses de satisfaction, on découvre que 38% des insatisfaits mentionnent le même problème : les délais e-commerce. Le NPS reste bon car le produit et le conseil restent appréciés — seul un point précis (la livraison) tire le taux de satisfaction vers le bas. La priorité d'action devient claire : ce n'est pas toute l'expérience LABORO qui est en cause, mais un maillon logistique précis.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton interprétation — par exemple : qu'aurais-tu risqué de conclure à tort si tu n'avais regardé que le NPS, ou que le taux de satisfaction, séparément ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'analyse.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>NPS et taux de satisfaction ne mesurent pas exactement la même chose — un écart entre les deux n'est pas une erreur, c'est une info à creuser</li>
+<li>Un chiffre qui surprend s'explique en croisant avec les verbatims, jamais en l'ignorant</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode d'analyse, pas un résumé des chiffres</li>
+</ul>
+</div>`},
+4:{t:'Mesurer et analyser la satisfaction client — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — analyser les verbatims et piloter</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, jusqu'à l'analyse qualitative.</p>
+<p><strong>Analyser les verbatims clients :</strong> un verbatim est une réponse textuelle libre d'un client dans une enquête ("En quelques mots, comment décririez-vous votre expérience ?") — c'est la donnée la plus riche car elle révèle les vrais motifs de satisfaction ou d'insatisfaction.</p>
+<ul>
 <li><strong>Méthode d'analyse</strong> : regrouper les verbatims par thème (livraison, prix, conseil, accueil, produit) · compter les occurrences · identifier les 2-3 sujets les plus cités</li>
+<li><strong>Verbatim positif</strong> → identifier ce qui crée de la valeur et l'amplifier</li>
+<li><strong>Verbatim négatif</strong> → identifier le problème précis, prioriser les corrections sur le sujet le plus cité, pas sur le plus récent</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — analyse verbatims rayon running</div>
 24 avis Google analysés · Note moyenne : 3,8/5<br><br>
-<strong>Verbatims négatifs récurrents :</strong><br>
-"Pas assez de choix en tailles" (8 mentions) · "Délai de commande trop long" (5 mentions) · "Prix élevés" (4 mentions)<br><br>
-<strong>Verbatims positifs récurrents :</strong><br>
-"Conseiller très compétent" (11 mentions) · "Bonne ambiance en magasin" (7 mentions)<br><br>
-<strong>Action prioritaire</strong> : élargir les tailles disponibles → s'adresse au problème le plus cité (8/24 = 33% des avis)
+<strong>Négatifs récurrents :</strong> "Pas assez de choix en tailles" (8 mentions) · "Délai de commande trop long" (5) · "Prix élevés" (4)<br>
+<strong>Positifs récurrents :</strong> "Conseiller très compétent" (11) · "Bonne ambiance en magasin" (7)<br><br>
+<strong>Action prioritaire</strong> : élargir les tailles disponibles → s'adresse au problème le plus cité (8/24 = 33% des avis), pas au plus facile à corriger.
 </div>
-<div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>Un chiffre sans analyse ne sert à rien. Les insatisfaits sont plus précieux que les satisfaits — ils disent ce qu'il faut corriger. Comparer les résultats dans le temps est plus utile qu'un résultat isolé.</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : croiser indicateurs chiffrés et verbatims, prioriser l'action sur le sujet le plus cité</li>
+<li>Les insatisfaits sont plus précieux que les satisfaits — ils disent ce qu'il faut corriger</li>
+<li>Comparer les résultats dans le temps est plus utile qu'un résultat isolé</li>
+</ul>
 </div>`},
-  'C3.1':{t:"Traiter l'information et le contact client",c:`<div class="res-section res-debutant">
+},
+'C3.1':{
+1:{t:"Traiter l'information et le contact client — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Informer et communiquer avec les clients</div>
 <p><strong>La règle d'or LABORO :</strong> répondre à tout contact client en moins de 24h.</p>
 <p><strong>Les 3 canaux de communication LABORO :</strong></p>
@@ -939,26 +981,22 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 "Bonjour Mme Laurent, votre commande de chaussures Asics est bien enregistrée. Livraison prévue jeudi 16 entre 9h et 13h par Chronopost. Cordialement, Sophie — LABORO 01 XX XX XX XX"
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="155" rx="12" fill="#F8FAFF"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">COMMUNICATION CLIENT — Les 3 canaux LABORO · Règle des 24h</text>
-  <!-- Email -->
   <rect x="15" y="38" width="202" height="105" rx="10" fill="#1A2E4A"/>
   <text x="116" y="64" text-anchor="middle" font-size="22">📧</text>
   <text x="116" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">EMAIL</text>
   <text x="116" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Objet court · Corps 3-4 lignes</text>
   <text x="116" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Signature complète</text>
   <text x="116" y="126" text-anchor="middle" font-size="8" fill="#63B3ED">Réponse &lt; 24h · Toujours</text>
-  <!-- Téléphone -->
   <rect x="225" y="38" width="230" height="105" rx="10" fill="#2D5282"/>
   <text x="340" y="64" text-anchor="middle" font-size="22">📞</text>
   <text x="340" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">TÉLÉPHONE</text>
   <text x="340" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">"LABORO bonjour, [prénom]"</text>
   <text x="340" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Avant la 3e sonnerie</text>
   <text x="340" y="126" text-anchor="middle" font-size="8" fill="#90CDF4">Sourire — ça s'entend !</text>
-  <!-- En magasin -->
   <rect x="463" y="38" width="202" height="105" rx="10" fill="#4A6FA5"/>
   <text x="564" y="64" text-anchor="middle" font-size="22">🏪</text>
   <text x="564" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">EN MAGASIN</text>
@@ -967,48 +1005,79 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
   <text x="564" y="126" text-anchor="middle" font-size="8" fill="#BEE3F8">Jamais ignorer un client</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Développer la relation client multicanale</div>
-<p><strong>Personnaliser la communication :</strong></p>
-<ul>
-<li>Utiliser le nom du client dans tous les échanges</li>
-<li>Adapter le registre : formel avec les pros, chaleureux avec les particuliers</li>
-<li>Mémoriser les préférences dans LABORO Connect (sport pratiqué, pointure, historique)</li>
-</ul>
-<p><strong>Gérer les situations délicates :</strong></p>
-<ul>
-<li>Client mécontent au téléphone : écouter, ne pas interrompre, reformuler, proposer une solution</li>
-<li>Client absent lors d'une livraison : laisser un message clair, rappeler dans la journée</li>
-<li>Demande hors compétence : orienter vers le bon interlocuteur, ne jamais laisser sans réponse</li>
-</ul>
-<p><strong>Construire un tableau de bord de suivi des contacts :</strong></p>
-<ul>
-<li>Choisir des indicateurs simples : nom de l'indicateur · formule de calcul · objectif cible · fréquence de mise à jour</li>
-<li>Exemples d'indicateurs utiles : délai moyen de réponse par canal · taux de contacts non traités · volume de contacts/semaine · taux de satisfaction</li>
-<li>Un bon tableau de bord se lit en moins de 30 secondes : peu d'indicateurs, mais bien choisis et à jour</li>
-</ul>
-<p><strong>Segmenter la base de contacts pour prioriser les actions :</strong> tous les clients ne demandent pas le même traitement. On peut les classer en 3 catégories :</p>
-<ul>
-<li><strong>À relancer en priorité</strong> — client à fort potentiel ou contact resté sans réponse : agir vite (mail personnalisé, appel).</li>
-<li><strong>À entretenir</strong> — client actif et satisfait : maintenir le lien (newsletter, remerciement, invitation).</li>
-<li><strong>À réactiver</strong> — client dormant ou perdu (pas d'achat depuis plusieurs mois) : proposer une offre ou un prétexte concret pour le faire revenir.</li>
-</ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — segmenter un fichier clients LABORO</div>
-Isabelle Morin (8 mois sans achat, abonnée newsletter) → à réactiver, par mail avec une offre trail. Thomas Renard (achat il y a 3 semaines) → à entretenir, pas d'action urgente. Sophie Aubert (14 mois sans achat, non abonnée) → à réactiver en priorité, par téléphone puisque le mail ne suffira pas.
-</div>
-</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Réponse à tout contact en moins de 24h — règle absolue LABORO</li>
 <li>Email : objet clair · 3-4 lignes · signature complète</li>
 <li>Téléphone : décrocher avant la 3e sonnerie · se présenter</li>
-<li>Personnaliser avec le nom du client à chaque échange</li>
-<li>Segmenter : à relancer en priorité · à entretenir · à réactiver</li>
 </ul>
 </div>`},
-  'C3.2':{t:'Les actions de fidélisation client',c:`<div class="res-section res-debutant">
+2:{t:"Traiter l'information et le contact client — Personnaliser et suivre",c:`<div class="res-section">
+<div class="res-section-label">🟢 Développer la relation client multicanale</div>
+<p><strong>Personnaliser la communication :</strong></p>
+<ul><li>Utiliser le nom du client dans tous les échanges</li><li>Adapter le registre : formel avec les pros, chaleureux avec les particuliers</li><li>Mémoriser les préférences dans LABORO Connect (sport pratiqué, pointure, historique)</li></ul>
+<p><strong>Gérer les situations délicates :</strong></p>
+<ul><li>Client mécontent au téléphone : écouter, ne pas interrompre, reformuler, proposer une solution</li><li>Client absent lors d'une livraison : laisser un message clair, rappeler dans la journée</li><li>Demande hors compétence : orienter vers le bon interlocuteur, ne jamais laisser sans réponse</li></ul>
+<p><strong>Construire un tableau de bord de suivi des contacts :</strong></p>
+<ul><li>Choisir des indicateurs simples : nom · formule de calcul · objectif cible · fréquence de mise à jour</li><li>Exemples utiles : délai moyen de réponse par canal · taux de contacts non traités · volume de contacts/semaine</li><li>Un bon tableau de bord se lit en moins de 30 secondes</li></ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — personnaliser un échange</div>
+Plutôt que "Bonjour, votre commande est en cours" : "Bonjour M. Renard, votre paire de chaussures trail est bien en cours de préparation — vous devriez la recevoir jeudi, comme prévu pour votre sortie du week-end."
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Personnaliser = nom du client + détail de sa situation, pas juste une formule polie</li>
+<li>Une demande hors compétence s'oriente vers le bon interlocuteur, elle ne reste jamais sans réponse</li>
+<li>Un tableau de bord utile est court et lisible en 30 secondes</li>
+</ul>
+</div>`},
+3:{t:"Traiter l'information et le contact client — Prioriser sous contrainte",c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand plusieurs contacts demandent une réponse en même temps</div>
+<p>À ce niveau, tu ne traites plus un contact isolé : plusieurs demandes arrivent en même temps et tu ne peux pas toutes les traiter dans l'instant avec le même soin. Ton rôle est de prioriser selon des critères objectifs, pas selon l'ordre d'arrivée ou la facilité.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — trois contacts, un temps limité</div>
+En fin de journée : un email de réclamation reçu ce matin (délai de réponse LABORO : 24h, encore de la marge), un appel manqué d'un client B2B stratégique (jamais rappelé depuis 2 jours), et un client en magasin qui attend. Le client en magasin passe avant tout (présence physique immédiate) ; le rappel B2B en retard passe avant l'email qui a encore de la marge, car le délai LABORO est déjà dépassé pour lui.
+</div>
+<p><strong>Segmenter pour prioriser :</strong> tous les clients ne demandent pas le même traitement — à relancer en priorité (fort potentiel ou contact resté sans réponse), à entretenir (client actif satisfait), à réactiver (client dormant). Cette segmentation doit guider l'ordre de traitement quand le temps manque, pas seulement une organisation théorique.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — segmenter un fichier clients LABORO</div>
+Isabelle Morin (8 mois sans achat, abonnée newsletter) → à réactiver, par mail avec une offre trail. Thomas Renard (achat il y a 3 semaines) → à entretenir, pas d'action urgente. Sophie Aubert (14 mois sans achat, non abonnée) → à réactiver en priorité, par téléphone puisque le mail ne suffira pas.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : sur quel critère t'es-tu appuyé, et un collègue avec un autre critère aurait-il fait le même choix ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ton arbitrage.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à plusieurs contacts, priorise sur des critères objectifs (délai déjà dépassé, présence physique, enjeu client), pas sur l'ordre d'arrivée</li>
+<li>La segmentation (à relancer / entretenir / réactiver) sert à décider vite quand le temps manque</li>
+<li>La réflexivité = un vrai retour critique sur ton arbitrage, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:"Traiter l'information et le contact client — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter la relation contact client</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>Règle des 24h</strong> : aucun contact ne reste sans réponse au-delà</li>
+<li><strong>3 canaux</strong> : email (structuré, signé), téléphone (avant la 3e sonnerie), magasin (sous 30 secondes)</li>
+<li><strong>Segmentation</strong> : à relancer en priorité · à entretenir · à réactiver — sert à arbitrer quand plusieurs contacts arrivent en même temps</li>
+<li><strong>Priorisation sous contrainte</strong> : délai déjà dépassé et présence physique passent avant une marge encore disponible</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Trois contacts en attente simultanée avec des enjeux différents (client B2B stratégique, réclamation dans les temps, client en magasin). En autonomie complète, tu dois établir l'ordre de traitement, le justifier, et ne laisser personne totalement sans réponse.
+</div>
+<p><strong>Du contact à la fidélisation :</strong> une segmentation bien tenue du fichier clients est la base de toute action de fidélisation (voir C3.2) — sans contact traité et qualifié correctement, aucune campagne de fidélisation ne peut cibler juste.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : prioriser plusieurs contacts simultanés sur des critères objectifs, sans guidage</li>
+<li>Un contact bien qualifié aujourd'hui prépare la fidélisation de demain</li>
+<li>Ne jamais laisser un contact totalement sans réponse, même en priorité basse</li>
+</ul>
+</div>`},
+},
+'C3.2':{
+1:{t:'Les actions de fidélisation client — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les outils de fidélisation</div>
 <p><strong>Fidéliser = donner envie de revenir.</strong> Un client fidèle coûte 5 à 7× moins cher à conserver qu'à en trouver un nouveau.</p>
 <p><strong>Les 4 actions de fidélisation LABORO :</strong></p>
@@ -1026,55 +1095,35 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="180" rx="12" fill="#FFFBEB"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">CYCLE DE VIE CLIENT LABORO</text>
-  
   <defs>
     <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
       <path d="M0,0 L0,6 L7,3 z" fill="#D97706"/>
     </marker>
   </defs>
-  
-  <!-- Étapes -->
-  <!-- 1. Prospect -->
   <circle cx="60" cy="100" r="42" fill="#1A2E4A"/>
   <text x="60" y="93" text-anchor="middle" font-size="18">🔍</text>
   <text x="60" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">PROSPECT</text>
   <text x="60" y="123" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.7)">Inconnu</text>
-  
-  <!-- Flèche 1→2 -->
   <path d="M 103 100 L 143 100" stroke="#D97706" stroke-width="2" marker-end="url(#arr3)" fill="none"/>
   <text x="123" y="93" text-anchor="middle" font-size="7.5" fill="#D97706">1er contact</text>
-  
-  <!-- 2. Premier achat -->
   <circle cx="185" cy="100" r="42" fill="#2D5282"/>
   <text x="185" y="93" text-anchor="middle" font-size="18">🛒</text>
   <text x="185" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">1er ACHAT</text>
   <text x="185" y="123" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.7)">Nouveau client</text>
-  
-  <!-- Flèche 2→3 -->
   <path d="M 228 100 L 268 100" stroke="#D97706" stroke-width="2" marker-end="url(#arr3)" fill="none"/>
   <text x="248" y="93" text-anchor="middle" font-size="7.5" fill="#D97706">Suivi + carte PRO</text>
-  
-  <!-- 3. Client régulier -->
   <circle cx="310" cy="100" r="42" fill="#4A6FA5"/>
   <text x="310" y="93" text-anchor="middle" font-size="18">⭐</text>
   <text x="310" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RÉGULIER</text>
   <text x="310" y="123" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.7)">>2 achats/an</text>
-  
-  <!-- Flèche 3→4 -->
   <path d="M 353 100 L 393 100" stroke="#D97706" stroke-width="2" marker-end="url(#arr3)" fill="none"/>
   <text x="373" y="93" text-anchor="middle" font-size="7.5" fill="#D97706">Événements + avantages</text>
-  
-  <!-- 4. Ambassadeur -->
   <circle cx="435" cy="100" r="42" fill="#185FA5"/>
   <text x="435" y="93" text-anchor="middle" font-size="18">💎</text>
   <text x="435" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">AMBASSADEUR</text>
   <text x="435" y="123" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.7)">Recommande LABORO</text>
-  
-  <!-- Flèche risque -->
   <path d="M 310 142 Q 310 165 185 142" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr3)" fill="none"/>
   <text x="248" y="168" text-anchor="middle" font-size="7.5" fill="#EF4444">Risque attrition si pas de suivi</text>
-  
-  <!-- CLV -->
   <rect x="510" y="60" width="158" height="80" rx="8" fill="#FEF3C7" stroke="#FDE68A"/>
   <text x="589" y="82" text-anchor="middle" font-size="9" font-weight="700" fill="#92400E">CLV LABORO (B2C)</text>
   <text x="589" y="98" text-anchor="middle" font-size="9" fill="#92400E">Panier moyen : 87€</text>
@@ -1082,74 +1131,109 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
   <text x="589" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#D97706">= 1 305€/3 ans</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Piloter la fidélisation</div>
-<p><strong>Indicateurs de fidélisation :</strong></p>
-<ul>
-<li><strong>Taux de rétention</strong> = clients ayant acheté ≥2 fois ÷ clients totaux × 100. Objectif : >60%</li>
-<li><strong>NPS</strong> (Net Promoter Score) = % promoteurs − % détracteurs. Objectif LABORO : >+20</li>
-<li><strong>Fréquence d'achat</strong> = nombre d'achats moyen par client sur 12 mois</li>
-</ul>
-<p><strong>Segmentation clients :</strong> clients actifs (achat <6 mois) · clients dormants (6-18 mois) · clients perdus (>18 mois). Actions différentes selon segment.</p>
-<p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact. Le client montre un intérêt spontané : il faut savoir rebondir tout de suite, sans forcer, avec une proposition adaptée.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
-Pendant la soirée Rentrée Sportive, le directeur du Club Sportif Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Ce n'est pas le sujet du jour, mais Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?" Elle a transformé une remarque informelle en opportunité de vente.
-</div>
-</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>4 outils : carte PRO · newsletter · événements · club sport</li>
 <li>Proposer la carte PRO dès le 1er achat — systématiquement</li>
-<li>Fidéliser coûte 5 à 7× moins cher que conquérir</li>
-<li>Taux de rétention cible : >60% · NPS cible : >+20</li>
-<li>Vente au rebond : saisir une opportunité imprévue et rebondir tout de suite</li>
+<li>Fidéliser coûte 5 à 7× moins cher que conquérir un nouveau client</li>
 </ul>
 </div>`},
-  'C3.3':{t:'Évaluer les actions de fidélisation',c:`<div class="res-section res-debutant">
-<div class="res-section-label">🔵 Pour commencer — Les outils de fidélisation LABORO</div>
-<p><strong>Fidéliser, c'est quoi ?</strong></p>
-<p>Fidéliser un client c'est lui donner envie de <strong>revenir</strong> chez LABORO plutôt que d'aller chez un concurrent. C'est beaucoup moins coûteux que de trouver un nouveau client.</p>
-<p><strong>Les 4 outils LABORO :</strong></p>
+2:{t:'Les actions de fidélisation client — Piloter et segmenter',c:`<div class="res-section">
+<div class="res-section-label">🟢 Piloter la fidélisation avec des indicateurs</div>
+<p><strong>Indicateurs de fidélisation :</strong></p>
 <ul>
-<li><strong>Carte LABORO PRO</strong> — Programme de points. 1€ dépensé = 1 point. 100 points = 10€ de réduction. Réservée aux clients réguliers.</li>
-<li><strong>Newsletter mensuelle</strong> — Email envoyé chaque mois avec les nouveautés, promotions et conseils sport. Gratuit, opt-in.</li>
-<li><strong>Événements clients</strong> — Soirées, tests produits, sessions sport organisées pour les clients LABORO. Crée du lien et de l'attachement à la marque.</li>
-<li><strong>Programme Club Sport</strong> — Avantages spéciaux pour les associations sportives : remises automatiques, livraison prioritaire, interlocuteur dédié.</li>
+<li><strong>Taux de rétention</strong> = clients ayant acheté ≥2 fois ÷ clients totaux × 100. Objectif : >60%</li>
+<li><strong>NPS</strong> = % promoteurs − % détracteurs. Objectif LABORO : >+20</li>
+<li><strong>Fréquence d'achat</strong> = nombre d'achats moyen par client sur 12 mois</li>
 </ul>
+<p><strong>Segmentation clients :</strong> clients actifs (achat &lt;6 mois) · clients dormants (6-18 mois) · clients perdus (&gt;18 mois). Actions différentes selon segment.</p>
+<p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
+Pendant la soirée Rentrée Sportive, le directeur du Club Sportif Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?"
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Taux de rétention cible LABORO : &gt;60% · NPS cible : &gt;+20</li>
+<li>Un client dormant (6-18 mois) n'a pas les mêmes besoins qu'un client actif — l'action doit être adaptée</li>
+<li>Vente au rebond : saisir une opportunité imprévue sans forcer, tout de suite</li>
+</ul>
+</div>`},
+3:{t:'Les actions de fidélisation client — Choisir la bonne action',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand les signaux du client se contredisent</div>
+<p>À ce niveau, la segmentation simple (actif/dormant/perdu) ne suffit plus toujours : un client peut techniquement paraître dormant selon la fréquence, tout en montrant des signaux positifs qui changent l'action à mener. Ton rôle est de croiser les signaux avant de choisir l'action de fidélisation.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — client "dormant" mais pas vraiment</div>
+Un client n'a pas acheté depuis 8 mois (statistiquement "dormant"), mais son dernier panier était le plus gros de son historique (300€, contre 80€ en moyenne avant), suite à un achat de matériel durable (une paire de chaussures trail haut de gamme). Le traiter comme un client perdu classique (relance générique) serait une erreur : le produit acheté explique l'absence (il n'a simplement pas eu besoin de revenir), ce n'est pas un désintérêt.
+</div>
+<p><strong>Choisir l'action selon la cause probable, pas seulement selon la date :</strong> avant de lancer une action de réactivation générique, il faut se demander pourquoi le client n'est pas revenu — produit durable acheté, déménagement, mécontentement non signalé, simple oubli. Chaque cause appelle une action différente.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — deux clients dormants, deux actions différentes</div>
+Client A (dernier achat : consommable sportif classique, panier moyen) → probablement un oubli ou une baisse d'intérêt : relance avec une offre découverte nouveauté. Client B (dernier achat : équipement technique durable, gros panier) → probablement pas encore besoin de racheter : plutôt une action de lien (newsletter, invitation événement) qu'une offre commerciale insistante.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix — par exemple : qu'est-ce qui aurait pu t'induire en erreur si tu t'étais fié uniquement à la date du dernier achat ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta méthode de segmentation.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Une segmentation par date seule peut induire en erreur — croise-la toujours avec le type de produit acheté</li>
+<li>Chaque cause probable d'inactivité appelle une action de fidélisation différente</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'Les actions de fidélisation client — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — piloter une stratégie de fidélisation</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>4 outils</strong> : carte PRO · newsletter · événements · club sport</li>
+<li><strong>Indicateurs</strong> : taux de rétention (&gt;60%) · NPS (&gt;+20) · fréquence d'achat</li>
+<li><strong>Segmentation</strong> : actif / dormant / perdu — mais toujours croisée avec le type de produit acheté, jamais la date seule</li>
+<li><strong>Vente au rebond</strong> : saisir une opportunité imprévue, tout de suite, sans forcer</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un client "dormant" selon les chiffres, mais dont l'historique révèle une explication plausible autre que le désintérêt. En autonomie complète, tu dois choisir l'action de fidélisation la plus pertinente et justifier pourquoi une relance générique serait une erreur ici.
+</div>
+<p><strong>De la fidélisation à l'évaluation :</strong> une action de fidélisation ne vaut que si elle est évaluée après coup (voir C3.3) — sans mesure du résultat, impossible de savoir si l'action a vraiment fonctionné ou si le client serait revenu de toute façon.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : choisir une action de fidélisation adaptée à la vraie situation du client, pas au segment théorique</li>
+<li>Une action de fidélisation non évaluée est une action dont on ne sait jamais si elle a fonctionné</li>
+</ul>
+</div>`},
+},
+'C3.3':{
+1:{t:'Évaluer les actions de fidélisation — Les bases',c:`<div class="res-section res-debutant">
+<div class="res-section-label">🔵 Pour commencer — Pourquoi évaluer une action de fidélisation</div>
+<p><strong>Proposer une carte PRO, une newsletter ou un événement client (voir C3.2) ne suffit pas</strong> : il faut ensuite vérifier si l'action a vraiment donné envie au client de revenir. Sans évaluation, impossible de savoir si une action mérite d'être reconduite ou arrêtée.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — M. Ferreira</div>
-M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumulé 240 points = 24€ de réduction sur sa prochaine commande. Il a aussi été invité à la soirée test chaussures de trail. Résultat : il est client depuis 3 ans et recommande LABORO à son club.
+M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumulé 240 points = 24€ de réduction sur sa prochaine commande. Il a aussi été invité à la soirée test chaussures de trail. Résultat : il est client depuis 3 ans et recommande LABORO à son club — la carte PRO et la soirée ont visiblement fonctionné sur lui.
 </div>
-<p><strong>La règle d'or :</strong> proposer la carte LABORO PRO à chaque nouveau client dès le premier achat.</p>
+<p><strong>Un premier indicateur simple : le taux de rétention.</strong> Il mesure combien de clients reviennent acheter une seconde fois.</p>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="160" rx="12" fill="#FFFBEB"/>
   <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">4 INDICATEURS DE FIDÉLISATION — Objectifs LABORO</text>
-  <!-- Taux rétention -->
   <rect x="10" y="36" width="155" height="110" rx="10" fill="#276749"/>
   <text x="87" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX DE RÉTENTION</text>
   <text x="87" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#9AE6B4">&gt;60%</text>
   <text x="87" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Clients ≥2 achats</text>
   <text x="87" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">÷ clients période préc.</text>
   <text x="87" y="128" text-anchor="middle" font-size="7.5" fill="#9AE6B4">Actuel LABORO : 74% ✅</text>
-  <!-- Taux attrition -->
   <rect x="173" y="36" width="155" height="110" rx="10" fill="#9B4444"/>
   <text x="250" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX D'ATTRITION</text>
   <text x="250" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#FECACA">&lt;20%</text>
   <text x="250" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">100 − taux rétention</text>
   <text x="250" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Clients perdus</text>
   <text x="250" y="128" text-anchor="middle" font-size="7.5" fill="#FECACA">&gt;20% = signal d'alarme</text>
-  <!-- NPS -->
   <rect x="336" y="36" width="155" height="110" rx="10" fill="#D97706"/>
   <text x="413" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">NPS</text>
   <text x="413" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#FEF3C7">&gt;+20</text>
   <text x="413" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">% Promoteurs</text>
   <text x="413" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">− % Détracteurs</text>
   <text x="413" y="128" text-anchor="middle" font-size="7.5" fill="#FEF3C7">Actuel LABORO : +22 ✅</text>
-  <!-- ROI action -->
   <rect x="499" y="36" width="171" height="110" rx="10" fill="#2B6CB0"/>
   <text x="584" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">ROI ACTION</text>
   <text x="584" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#BEE3F8">&gt;0%</text>
@@ -1158,13 +1242,19 @@ M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumul
   <text x="584" y="128" text-anchor="middle" font-size="7.5" fill="#BEE3F8">ROI = 1 233% ✅</text>
 </svg>
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Mesurer et évaluer la fidélisation</div>
-<p><strong>Les 4 indicateurs clés :</strong></p>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
 <ul>
-<li><strong>Taux de rétention</strong> = clients ayant acheté ≥ 2 fois ÷ clients période précédente × 100. Objectif LABORO : > 60%</li>
-<li><strong>Taux d'attrition</strong> = 100 − taux de rétention. > 20% = signal d'alarme</li>
+<li>Une action de fidélisation se mesure, elle ne se suppose pas</li>
+<li>4 indicateurs clés : taux de rétention · taux d'attrition · NPS · ROI</li>
+<li>Sans évaluation, impossible de savoir si une action mérite d'être reconduite</li>
+</ul>
+</div>`},
+2:{t:'Évaluer les actions de fidélisation — Calculer et interpréter',c:`<div class="res-section">
+<div class="res-section-label">🟢 Les 4 indicateurs clés et leurs formules</div>
+<ul>
+<li><strong>Taux de rétention</strong> = clients ayant acheté ≥ 2 fois ÷ clients période précédente × 100. Objectif LABORO : &gt; 60%</li>
+<li><strong>Taux d'attrition</strong> = 100 − taux de rétention. &gt; 20% = signal d'alarme</li>
 <li><strong>ROI d'une action</strong> = (CA généré − coût) ÷ coût × 100. Positif = rentable</li>
 <li><strong>CLV</strong> (valeur vie client) = panier moyen × fréquence annuelle × durée fidélité (années)</li>
 </ul>
@@ -1172,34 +1262,142 @@ M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumul
 Coût : 1 200€ · CA soir : 4 200€ · CA 30j suivants : 11 800€<br>
 ROI = (4 200 + 11 800 − 1 200) ÷ 1 200 × 100 = <strong>1 233%</strong>
 </div>
+<p><strong>Interpréter, pas seulement calculer :</strong> un ROI positif ne dit pas tout — il faut aussi regarder si les clients de cette action reviennent ensuite (taux de rétention) ou s'ils n'ont acheté qu'une fois grâce à la promotion de l'événement.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>4 outils LABORO : carte PRO · newsletter · événements · club sport</li>
-<li>Fidéliser coûte 5 à 7× moins cher que conquérir</li>
-<li>Taux de rétention cible LABORO : > 60%</li>
-<li>ROI positif = action à reconduire</li>
+<li>ROI positif = action rentable, mais à confirmer avec le taux de rétention des clients touchés</li>
+<li>La CLV aide à savoir combien investir raisonnablement pour garder un client</li>
+<li>Toujours comparer un résultat à l'objectif LABORO, pas seulement regarder s'il est positif</li>
 </ul>
 </div>`},
-  'C3.3b':{t:'La fidélisation avancée — outils et stratégie',c:`<div class="res-section res-debutant">
-<div class="res-section-label">🔵 Pour commencer — Comprendre la fidélisation</div>
-<p><strong>Pourquoi fidéliser ? — La logique économique simple</strong></p><p>Conquérir un nouveau client coûte 5 à 7 fois plus cher que de fidéliser un client existant. Un client fidèle achète plus, revient plus souvent, et recommande LABORO à son entourage.</p><p><strong>Les 4 outils de fidélisation LABORO :</strong></p><ul><li><strong>Carte LABORO PRO</strong> — Points cumulés à chaque achat, offre anniversaire, accès ventes privées. À proposer systématiquement à la caisse.</li><li><strong>Newsletter mensuelle</strong> — Nouveautés, conseils, offres exclusives. Envoi le 1er lundi du mois. Objectif taux d'ouverture : > 30%.</li><li><strong>Soirée clients annuelle</strong> — Événement showroom en novembre. Réservé aux meilleurs clients. Objectif : renforcer le sentiment d'appartenance.</li><li><strong>Programme de parrainage</strong> — Parrain : 15 € de bon d'achat. Filleul : 10 € à la 1re commande. Activation via LABORO Connect.</li></ul><p><strong>Client satisfait vs client fidèle :</strong></p><ul><li><strong>Client satisfait</strong> — Content de son achat mais peut aller ailleurs si un concurrent fait une promo.</li><li><strong>Client fidèle</strong> — Revient automatiquement chez LABORO même si un concurrent est moins cher. Son CA augmente chaque année.</li></ul><p><strong>Construire un objectif SMART :</strong></p><ul><li><strong>S</strong>pécifique — "Passer de 31 à 45 participants à la soirée clients"</li><li><strong>M</strong>esurable — un chiffre précis à atteindre</li><li><strong>A</strong>tteignable — ambitieux mais réaliste avec les moyens disponibles</li><li><strong>R</strong>éaliste — en accord avec le budget et l'équipe</li><li><strong>T</strong>emporel — "Pour le 15 novembre 2026"</li></ul><div class="res-ex"><div class="res-ex-l">Exemple LABORO — proposer la carte PRO</div>"M. Vidal, vous êtes client depuis 3 ans — avez-vous votre carte LABORO PRO ? Sur cet achat vous auriez déjà 7 points, soit 7 € à utiliser à votre prochaine visite. Je vous l'active maintenant, c'est gratuit et sans engagement."</div><div class="res-ex" style="margin-top:8px"><div class="res-ex-l">À retenir</div>La fidélisation commence à la première vente. Proposer la carte LABORO PRO à chaque passage en caisse est une règle. Un client fidèle bien traité peut représenter 5 000 à 20 000 € de CA sur 10 ans.</div>
+3:{t:'Évaluer les actions de fidélisation — Arbitrer entre indicateurs',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand les indicateurs ne pointent pas dans le même sens</div>
+<p>À ce niveau, une action peut être rentable sur un indicateur et décevante sur un autre. Ton rôle est de décider si l'action doit être reconduite, ajustée ou arrêtée — pas seulement de constater les chiffres.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — ROI excellent, rétention décevante</div>
+La soirée Rentrée Sportive a un ROI de 1 233% (excellent), mais parmi les clients venus ce soir-là, seuls 22% ont racheté dans les 6 mois suivants (bien sous l'objectif de 60%). L'événement génère du chiffre immédiat mais ne fidélise pas réellement sur la durée — la remise ponctuelle a peut-être attiré des chasseurs de promo plutôt que de futurs clients réguliers.
 </div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Stratégie de fidélisation avancée</div>
-<p>Voir les indicateurs ROI, CLV et taux de rétention dans la ressource C3.3.</p>
+<p><strong>Ne pas s'arrêter au premier chiffre favorable :</strong> avant de recommander de reconduire une action à l'identique, il faut vérifier si son bon résultat immédiat se traduit aussi par un bon résultat dans la durée. Un ROI élevé sur un événement ponctuel n'est pas la même chose qu'une vraie fidélisation.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — décision d'ajustement</div>
+Plutôt que d'arrêter la soirée (ROI trop bon pour ça) ou de la reconduire à l'identique (rétention trop faible), la décision est d'ajuster : conditionner une partie de la remise du soir à l'inscription à la carte LABORO PRO, pour transformer l'attrait ponctuel en lien durable.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta décision — par exemple : qu'est-ce qui t'a permis de ne pas t'arrêter au ROI seul, et qu'est-ce que tu risquais de manquer si tu l'avais fait ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'évaluation.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>Fidéliser coûte 5 à 7× moins cher que conquérir</li>
-<li>4 outils LABORO : carte PRO · newsletter · événements · club sport</li>
-<li>Un client fidèle achète plus, revient plus souvent, recommande</li>
+<li>Un bon résultat sur un indicateur ne suffit pas à décider seul — croise toujours plusieurs indicateurs avant de conclure</li>
+<li>Une action peut être ajustée plutôt que reconduite à l'identique ou arrêtée</li>
+<li>La réflexivité = un vrai retour critique sur ta méthode d'évaluation, pas un résumé des chiffres</li>
 </ul>
 </div>`},
-  'G4A':{t:"Gérer l'espace commercial et développer la clientèle",c:`<div class="res-section res-debutant">
+4:{t:'Évaluer les actions de fidélisation — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — décider de l'avenir d'une action</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, jusqu'à la décision finale.</p>
+<ul>
+<li><strong>4 indicateurs</strong> : taux de rétention (&gt;60%) · taux d'attrition (&lt;20%) · NPS (&gt;+20) · ROI (&gt;0%)</li>
+<li><strong>Ne jamais décider sur un seul indicateur</strong> : un bon ROI ponctuel peut cacher une mauvaise rétention</li>
+<li><strong>3 décisions possibles</strong> : reconduire à l'identique / ajuster / arrêter — choisir selon l'ensemble des indicateurs, pas le plus flatteur</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Une action affiche des résultats contradictoires selon les indicateurs. En autonomie complète, tu dois croiser les chiffres, identifier la vraie cause de la contradiction, et recommander une décision argumentée (reconduire / ajuster / arrêter).
+</div>
+<p><strong>De l'évaluation à la stratégie :</strong> les résultats d'évaluation alimentent directement la définition des futurs objectifs de fidélisation (voir C3.3b, construction d'objectifs SMART) — on ne fixe pas un nouvel objectif sans avoir regardé ce que le précédent a donné.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : croiser les indicateurs et trancher entre reconduire, ajuster ou arrêter une action</li>
+<li>Une évaluation sert à décider, pas seulement à constater</li>
+</ul>
+</div>`},
+},
+'C3.3b':{
+1:{t:'La fidélisation avancée — Client satisfait vs client fidèle',c:`<div class="res-section res-debutant">
+<div class="res-section-label">🔵 Pour commencer — Deux notions à ne pas confondre</div>
+<p><strong>Client satisfait vs client fidèle :</strong></p>
+<ul>
+<li><strong>Client satisfait</strong> — Content de son achat mais peut aller ailleurs si un concurrent fait une promo.</li>
+<li><strong>Client fidèle</strong> — Revient automatiquement chez LABORO même si un concurrent est moins cher. Son CA augmente chaque année.</li>
+</ul>
+<p><strong>Le programme de parrainage LABORO :</strong> Parrain : 15 € de bon d'achat. Filleul : 10 € à la 1re commande. Activation via LABORO Connect.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — proposer la carte PRO</div>
+"M. Vidal, vous êtes client depuis 3 ans — avez-vous votre carte LABORO PRO ? Sur cet achat vous auriez déjà 7 points, soit 7 € à utiliser à votre prochaine visite. Je vous l'active maintenant, c'est gratuit et sans engagement."
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un client satisfait n'est pas automatiquement fidèle — il peut partir pour une promo concurrente</li>
+<li>Un client fidèle reste même si un concurrent est moins cher</li>
+<li>Le parrainage récompense parrain ET filleul — les deux ont intérêt à l'activer</li>
+</ul>
+</div>`},
+2:{t:'La fidélisation avancée — Construire un objectif SMART',c:`<div class="res-section">
+<div class="res-section-label">🟢 Fixer un objectif de fidélisation avec la méthode SMART</div>
+<ul>
+<li><strong>S</strong>pécifique — "Passer de 31 à 45 participants à la soirée clients"</li>
+<li><strong>M</strong>esurable — un chiffre précis à atteindre</li>
+<li><strong>A</strong>tteignable — ambitieux mais réaliste avec les moyens disponibles</li>
+<li><strong>R</strong>éaliste — en accord avec le budget et l'équipe</li>
+<li><strong>T</strong>emporel — "Pour le 15 novembre 2026"</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — objectif SMART complet</div>
+"Augmenter le nombre d'adhérents à la carte LABORO PRO de 320 à 400 (S, M) d'ici la fin de l'année scolaire (T), en formant l'équipe à la proposer systématiquement en caisse (A, R)." Chaque lettre de SMART est vérifiable dans cette phrase.
+</div>
+<p><strong>Un objectif qui n'est pas SMART</strong> reste un vœu pieux : "améliorer la fidélisation" ne dit ni combien, ni comment, ni pour quand — impossible ensuite de savoir s'il est atteint.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Un objectif de fidélisation doit toujours pouvoir se vérifier par un chiffre et une date</li>
+<li>SMART : Spécifique · Mesurable · Atteignable · Réaliste · Temporel</li>
+<li>Un objectif vague ne peut jamais être déclaré "atteint" ou "raté"</li>
+</ul>
+</div>`},
+3:{t:'La fidélisation avancée — Arbitrer entre plusieurs objectifs',c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand deux objectifs SMART se disputent les mêmes moyens</div>
+<p>À ce niveau, tu ne fixes plus un seul objectif isolé : plusieurs objectifs de fidélisation légitimes se présentent en même temps, mais le budget ou le temps de l'équipe ne permet pas de tout mener de front. Ton rôle est d'arbitrer, pas de tout promettre.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — deux objectifs, un seul budget</div>
+Objectif A : "Passer de 320 à 400 adhérents carte PRO d'ici juin" (nécessite du temps de formation d'équipe). Objectif B : "Organiser 2 soirées clients supplémentaires cette année" (nécessite un budget de 2 400€, déjà utilisé ailleurs). Le budget et le temps disponibles ne permettent pas les deux à pleine échelle cette année.
+</div>
+<p><strong>Arbitrer avec des critères, pas au hasard :</strong> lequel des deux objectifs a le meilleur rapport impact/coût ? Lequel s'appuie sur des ressources déjà disponibles (l'équipe peut être formée sans coût supplémentaire, contrairement à un nouvel événement) ? L'arbitrage doit s'appuyer sur les résultats d'évaluation des actions passées (voir C3.3), pas sur une préférence personnelle.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — arbitrage argumenté</div>
+"Je priorise l'objectif A (carte PRO) cette année : il ne demande pas de budget supplémentaire, juste de la formation, et l'évaluation de la dernière soirée client a montré un ROI ponctuel élevé mais une rétention décevante — un nouvel événement au même format risquerait de reproduire ce défaut avant de l'avoir corrigé."
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : quel critère a été décisif dans ton choix, et un collègue avec un autre critère aurait-il tranché différemment ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à plusieurs objectifs légitimes, arbitre sur des critères (impact/coût, ressources déjà disponibles), jamais au hasard</li>
+<li>Les résultats d'évaluation des actions passées doivent nourrir le choix du prochain objectif</li>
+<li>La réflexivité = un vrai retour critique sur ton arbitrage, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:'La fidélisation avancée — Fiche mémo express',c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — construire et arbitrer une stratégie de fidélisation</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>Client satisfait ≠ client fidèle</strong> — le fidèle reste même face à une offre concurrente moins chère</li>
+<li><strong>Objectif SMART</strong> : Spécifique · Mesurable · Atteignable · Réaliste · Temporel — toujours vérifiable par un chiffre et une date</li>
+<li><strong>Plusieurs objectifs en concurrence</strong> : arbitrer sur l'impact/coût et les ressources déjà disponibles, pas au hasard</li>
+<li><strong>S'appuyer sur l'évaluation passée</strong> (voir C3.3) pour ne pas répéter un défaut déjà identifié</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Deux objectifs de fidélisation légitimes, un budget ou un temps insuffisant pour les deux. En autonomie complète, tu dois formuler chaque objectif en SMART, arbitrer lequel prioriser, et justifier ta décision à partir des résultats d'évaluation disponibles.
+</div>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : formuler un objectif SMART et arbitrer entre plusieurs priorités concurrentes</li>
+<li>Une stratégie de fidélisation se construit sur les résultats passés, pas sur de bonnes intentions</li>
+</ul>
+</div>`},
+},
+'G4A':{t:"Gérer l'espace commercial et développer la clientèle",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Le merchandising chez LABORO</div>
 <p><strong>Le merchandising c'est l'art de présenter les produits pour donner envie d'acheter.</strong></p>
 <p><strong>Les 3 règles de base :</strong></p>
