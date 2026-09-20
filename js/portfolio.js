@@ -24,6 +24,7 @@ async function genererPortfolio(){
       const ud = { missions:{}, competences:{} };
       (r.data.progressions||[]).forEach(function(p){
         ud.missions[p.mission_id] = {
+          id: p.mission_id, // requis par calcScore() pour retrouver la mission (comp, coefficient) dans MISSIONS
           status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
           score: p.note_finale,
           date_validation: p.validated_at || p.submitted_at
@@ -51,6 +52,7 @@ async function genererPortfolioEleveServeur(eleveId, nomAff, classeCode){
   const ud = { missions:{}, competences:{} };
   (d.progressions||[]).forEach(function(p){
     ud.missions[p.mission_id] = {
+      id: p.mission_id, // requis par calcScore() pour retrouver la mission (comp, coefficient) dans MISSIONS
       status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
       score: p.note_finale,
       date_validation: p.validated_at || p.submitted_at
