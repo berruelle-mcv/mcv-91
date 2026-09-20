@@ -87,34 +87,9 @@ function ouvrirAccesRapide(){
   document.body.appendChild(overlay);
 }
 
-function doLogin(){
-  const mail=document.getElementById('inp-mail').value.trim();
-  const cls=document.getElementById('inp-classe').value;
-
-  if(mail.toLowerCase()==='ana'){
-    ouvrirAccesRapide();
-    return;
-  }
-
-  if(!mail||!cls){showLoginError('Merci de renseigner tous les champs.');return}
-  if(!mail.includes('@')){showLoginError('Adresse mail invalide — vérifie le format prenom.nom@monlycee.net.');return}
-  const posteMap={'enseignant':'Enseignant — Accès direction','2nde':'Découverte de la famille des métiers MCV'};
-  const poste=posteMap[cls]||(cls.includes('AGEC')?'Conseiller de vente — Showroom & E-commerce':cls.includes('PVOC')?'Commercial terrain — Prospection & Vente B2B':'');
-  if(!poste){showLoginError('Merci de sélectionner ta classe.');return}
-  // Vérification mot de passe enseignant
-  if(cls==='enseignant'){
-    const mdpVal=document.getElementById('inp-mdp')?.value||'';
-    if(!mdpVal){showLoginError('Merci de saisir le code d\'accès enseignant.');return}
-    // Hash SHA256 côté client
-    const hashMdp=async(str)=>{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')};
-    hashMdp(mdpVal).then(h=>{
-      if(h!=='3e4b672e60279a8fc681052361892d4a50239106de51b8dacf93dee8e3dd644d'){showLoginError('Code d\'accès incorrect. Contactez Pascal Berruelle.');return}
-      finishLogin(mail,cls,poste,null);
-    });
-    return;
-  }
-  finishLogin(mail,cls,poste,null);
-}
+// (ancien doLogin() de la version pré-serveur, supprimé le 20/09/2026 — code mort,
+// jamais appelé depuis le passage à doLoginServeur(). Contenait un hash de code
+// d'accès enseignant exposé côté client inutilement.)
 function finishLogin(mail,cls,poste,nomParam){
   const nom=nomParam||mail.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
   CU={mail,classe:cls,poste,nom};
@@ -465,8 +440,7 @@ function importerDonnees(){
 }
 
 // ════════════════════════════════════════════════
-// LOGIN SERVEUR (nouvelle version — branchée sur le backend)
-// Coexiste avec doLogin() classique. Ne le remplace pas.
+// LOGIN SERVEUR (version branchée sur le backend — seule utilisée)
 // ════════════════════════════════════════════════
 const LABORO_API = 'https://mcv.laboro-edu.fr';
 
