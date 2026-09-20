@@ -752,7 +752,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div id="panel-e2pvoc" class="panel"><div id="e2pvoc-home"></div></div>
 
     <div id="panel-missiondujour" class="panel">
-      <div class="mdj-cfg"><div class="ct">Assigner la mission du jour</div><div class="mdj-sel"><select id="mdj-cl"><option value="">— Classe —</option><option value="2nde">2nde</option><option value="1ere-AGEC">1ère AGEC</option><option value="1ere-PVOC">1ère PVOC</option><option value="Term-AGEC">Term. AGEC</option><option value="Term-PVOC">Term. PVOC</option></select><select id="mdj-ms"><option value="">— Mission —</option></select><button class="btn-mdj" onclick="assignerMDJ()">Assigner</button></div><div id="mdj-st" style="font-size:12px;color:var(--gm);margin-top:8px"></div></div>
+      <div class="mdj-cfg"><div class="ct">Assigner la mission du jour</div><div class="mdj-sel"><select id="mdj-cible" onchange="toggleMDJCible()"><option value="classe">À toute une classe</option><option value="eleve">À un élève précis</option></select><select id="mdj-cl"><option value="">— Classe —</option><option value="2nde">2nde</option><option value="1ere-AGEC">1ère AGEC</option><option value="1ere-PVOC">1ère PVOC</option><option value="Term-AGEC">Term. AGEC</option><option value="Term-PVOC">Term. PVOC</option></select><select id="mdj-el" style="display:none"><option value="">— Élève —</option></select><select id="mdj-ms"><option value="">— Mission —</option></select><button class="btn-mdj" onclick="assignerMDJ()">Assigner</button></div><div id="mdj-st" style="font-size:12px;color:var(--gm);margin-top:8px"></div></div>
       <div class="card"><div class="ct">Missions du jour assignées</div><div id="mdj-liste"></div></div>
     </div>
 
