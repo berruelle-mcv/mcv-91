@@ -204,19 +204,106 @@ function openProduit(id){
 // (historique disponible dans Git si besoin de la retrouver).
 
 // ═══════════════════════════════════════════════════════════
-//   Affichage des missions du jour assignées (vue enseignant)
-//   État actuel : le backend "missions du jour" n'est pas encore
-//   construit. Affiche proprement l'état vide et reste le point
-//   d'entrée pour brancher l'appel serveur plus tard.
+//   Mission du jour — assignation (classe entière ou élève précis)
+//   et affichage des assignations du jour (vue enseignant)
 // ═══════════════════════════════════════════════════════════
-function renderMDJListe(){
+
+// --- Appelé à l'ouverture du panneau "Mission du jour" ---
+function renderMDJPanel(){
+  if(typeof populateMDJSelect === 'function') populateMDJSelect();
+  if(typeof populateMDJEleveSelect === 'function') populateMDJEleveSelect();
+  toggleMDJCible();
+  renderMDJListe();
+}
+
+// --- Bascule l'affichage entre sélection "classe" et "élève" ---
+function toggleMDJCible(){
+  const cible = document.getElementById('mdj-cible');
+  const selCl = document.getElementById('mdj-cl');
+  const selEl = document.getElementById('mdj-el');
+  if(!cible || !selCl || !selEl) return;
+  const isEleve = cible.value === 'eleve';
+  selCl.style.display = isEleve ? 'none' : '';
+  selEl.style.display = isEleve ? '' : 'none';
+}
+
+// --- Assigner la mission du jour (classe ou élève selon le mode choisi) ---
+async function assignerMDJ(){
+  const st = document.getElementById('mdj-st');
+  const cible = document.getElementById('mdj-cible');
+  const mid = document.getElementById('mdj-ms').value;
+  if(!mid){ if(st) st.textContent = 'Choisis une mission.'; return; }
+
+  const isEleve = cible && cible.value === 'eleve';
+  const body = { mission_id: mid };
+  if(isEleve){
+    const elId = document.getElementById('mdj-el').value;
+    if(!elId){ if(st) st.textContent = 'Choisis un élève.'; return; }
+    body.eleve_id = elId;
+  } else {
+    const clCode = document.getElementById('mdj-cl').value;
+    if(!clCode){ if(st) st.textContent = 'Choisis une classe.'; return; }
+    body.classeCode = clCode;
+  }
+
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ if(st) st.textContent = 'Connecte-toi via le serveur (enseignant) pour assigner une mission.'; return; }
+
+  if(st) st.textContent = 'Assignation en cours…';
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify(body)
+  });
+  if(!r.ok){ if(st) st.textContent = r.erreur; return; }
+  const d = r.data;
+  if(!d.ok){ if(st) st.textContent = 'Échec : ' + (d.erreur || 'erreur inconnue'); return; }
+
+  if(st){
+    st.textContent = d.cible === 'eleve'
+      ? '✅ Mission "'+d.titre+'" assignée à '+d.prenom+' '+d.nom+'.'
+      : '✅ Mission "'+d.titre+'" assignée à la classe.';
+  }
+  renderMDJListe();
+}
+
+// --- Liste des missions du jour assignées aujourd'hui (classes + élèves) ---
+async function renderMDJListe(){
   const el = document.getElementById('mdj-liste');
   if(!el) return;
-  el.innerHTML =
-    '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
-    + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">'
-    + 'Aucune mission du jour assignée pour le moment.'
-    + '</div>';
+  const token = localStorage.getItem('laboro_token');
+  if(!token){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">'
+      + 'Connecte-toi via le serveur (enseignant) pour voir les missions du jour assignées.</div>';
+    return;
+  }
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/toutes', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--rg,#C53030);text-align:center">Impossible de charger les missions du jour.</div>';
+    return;
+  }
+  const { parClasse, parEleve } = r.data;
+  if((!parClasse || !parClasse.length) && (!parEleve || !parEleve.length)){
+    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
+      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">Aucune mission du jour assignée pour le moment.</div>';
+    return;
+  }
+  let html = '';
+  (parClasse||[]).forEach(function(a){
+    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
+      + '<span style="font-size:12px"><strong>'+(a.classe_libelle||a.classe_id)+'</strong> — '+a.titre+'</span>'
+      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
+  });
+  (parEleve||[]).forEach(function(a){
+    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
+      + '<span style="font-size:12px"><strong>'+a.nom+' '+a.prenom+'</strong> — '+a.titre+'</span>'
+      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
+  });
+  el.innerHTML = html;
 }
 
 function showFicheEleve(mail){
