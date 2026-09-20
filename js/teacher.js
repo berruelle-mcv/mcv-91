@@ -5,32 +5,72 @@
 // ================================================
 
 // ═══ VUE COMPÉTENCES ENSEIGNANT ═══
-function renderCompetencesEnseignant(){
+// Lit la progression réelle depuis le serveur (mêmes données que la Vue classe :
+// ELEVES_SERVEUR / PROGRESSIONS_CLASSE, js/classe-serveur.js), et non plus le
+// localStorage du navigateur enseignant — vide en conditions réelles puisque
+// les élèves travaillent depuis leurs propres appareils.
+async function renderCompetencesEnseignant(){
   const legend = document.getElementById('comp-legend');
   const grid = document.getElementById('comp-grid');
-  const allUsers = allU().filter(function(u){ return u.mail && u.classe !== 'enseignant'; });
+
+  const token = localStorage.getItem('laboro_token');
+  if(!token){
+    if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+      + '<div style="font-size:12px;color:var(--gm)">Connecte-toi via le serveur (adresse mail + mot de passe) pour afficher la progression réelle des élèves.</div></div>';
+    if(grid) grid.innerHTML = '';
+    return;
+  }
+
+  if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+    + '<div style="font-size:12px;color:var(--gm)">Chargement de la progression des élèves…</div></div>';
+  if(grid) grid.innerHTML = '';
+
+  if(!ELEVES_SERVEUR.length){
+    const r = await fetchJSON(LABORO_API + '/api/eleves', { headers: { 'Authorization': 'Bearer ' + token } });
+    if(!r.ok || !r.data.ok){
+      if(legend) legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb)">'
+        + '<div style="font-size:12px;color:var(--rg)">Impossible de charger les élèves.</div></div>';
+      return;
+    }
+    ELEVES_SERVEUR = r.data.eleves || [];
+  }
+  const actifs = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const manquants = actifs.filter(function(e){ return !PROGRESSIONS_CLASSE[e.id]; });
+  if(manquants.length) await chargerProgressionsClasse(manquants);
+
+  const eleves = actifs.map(function(e){ return { e: e, ud: PROGRESSIONS_CLASSE[e.id] || {missions:{}} }; });
+
+  // G4A/G4B ne concernent que les élèves AGEC/PVOC respectivement (2nde n'a pas de bloc 4) ;
+  // les missions portent comp:'C4A.x'/'B4.x', pas 'G4A.x'/'G4B.x' — d'où le calcNiveauComp
+  // sur les deux clés (miroir de niveauG4PourEleve dans classe-serveur.js).
+  function eleveConcerne(e, c){
+    if(c.code !== 'G4A' && c.code !== 'G4B') return true;
+    const cl = (e.classe_libelle || '').toUpperCase();
+    return c.code === 'G4A' ? cl.includes('AGEC') : cl.includes('PVOC');
+  }
+  function niveauPourCompetence(c, ud){
+    if(c.code === 'G4A') return Math.max(calcNiveauComp('C4A', ud), calcNiveauComp('G4A', ud));
+    if(c.code === 'G4B') return Math.max(calcNiveauComp('B4', ud), calcNiveauComp('G4B', ud));
+    return calcNiveauComp(c.code, ud);
+  }
 
   if(legend){
-    const total = allUsers.length;
+    const total = eleves.length;
     legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb);margin-bottom:4px">'
       + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:4px">Vue référentiel — Progression de la classe</div>'
-      + '<div style="font-size:11px;color:#6B7280">'+(total>0?total+' élève(s) connecté(s)':'Aucun élève connecté pour le moment.')+'</div>'
+      + '<div style="font-size:11px;color:#6B7280">'+(total>0?total+' élève(s)':'Aucun élève pour le moment.')+'</div>'
       + '</div>';
   }
 
   if(!grid) return;
 
-  const allS = gS();
-
   grid.innerHTML = COMP.map(function(c){
-    const levels = allUsers.map(function(u){
-      const ud = allS[u.mail] || {missions:{}, competences:{}};
-      return calcNiveauComp(c.code, ud);
-    });
+    const concernes = eleves.filter(function(x){ return eleveConcerne(x.e, c); });
+    const levels = concernes.map(function(x){ return niveauPourCompetence(c, x.ud); });
 
     const counts = [0,0,0,0,0];
     levels.forEach(function(l){ counts[l]++; });
-    const total = allUsers.length;
+    const total = concernes.length;
     const acquis = counts[3] + counts[4];
     const enCours = counts[1] + counts[2];
     const pctAcquis = total > 0 ? Math.round(acquis/total*100) : 0;
