@@ -5,20 +5,62 @@
 // ================================================
 
 // Portfolio de l'ÉLÈVE COURANT (bouton "Générer mon portfolio" côté élève)
-function genererPortfolio(){
+async function genererPortfolio(){
   if(!CU || !CU.mail){ if(typeof showLoginError==='function') showLoginError('Connecte-toi d\'abord.'); return; }
   // Côté élève, le portfolio CCF n'est pas proposé en 2nde (année transversale
   // de découverte : AGEC + PVOC + Accueil, sans logique d'épreuve CCF).
-  // L'enseignant, lui, garde l'accès via la fiche élève (genererPortfolioEleve).
+  // L'enseignant, lui, garde l'accès via la Vue classe (genererPortfolioEleveServeur).
   if(CU.classe && CU.classe.toUpperCase()==='2NDE' && CU.classe!=='enseignant'){
     alert('Le portfolio CCF sera disponible à partir de la 1ère. En 2nde, tu découvres les trois univers (accueil, vente, prospection) : ta progression est enregistrée et nourrira ton portfolio plus tard.');
     return;
   }
+  const token = localStorage.getItem('laboro_token');
+  if(token){
+    // Compte serveur : la progression réelle vient de la base (fiable, multi-appareil)
+    const r = await fetchJSON(LABORO_API + '/api/progressions', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    if(r.ok && r.data.ok){
+      const ud = { missions:{}, competences:{} };
+      (r.data.progressions||[]).forEach(function(p){
+        ud.missions[p.mission_id] = {
+          status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
+          score: p.note_finale,
+          date_validation: p.validated_at || p.submitted_at
+        };
+      });
+      afficherPortfolioDoc(ud, CU.nom, CU.classe);
+      return;
+    }
+    // En cas d'échec serveur, on retombe sur les données locales ci-dessous
+  }
   genererPortfolioEleve(CU.mail);
 }
 
-// Portfolio d'un élève donné (bouton "Portfolio" de la fiche élève côté enseignant,
-// et réutilisé par genererPortfolio() pour l'élève courant).
+// Portfolio d'un élève donné à partir de son identifiant serveur (bouton "📄 Portfolio"
+// dans la Vue classe côté enseignant — données réelles issues de la base).
+async function genererPortfolioEleveServeur(eleveId, nomAff, classeCode){
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/' + eleveId + '/progressions', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok){ alert(r.erreur); return; }
+  const d = r.data;
+  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
+  const ud = { missions:{}, competences:{} };
+  (d.progressions||[]).forEach(function(p){
+    ud.missions[p.mission_id] = {
+      status: p.statut === 'valide' ? 'done' : (p.statut === 'a_examiner' || p.statut === 'soumis' ? 'att' : 'wip'),
+      score: p.note_finale,
+      date_validation: p.validated_at || p.submitted_at
+    };
+  });
+  const nom = nomAff || (d.eleve.prenom + ' ' + d.eleve.nom);
+  afficherPortfolioDoc(ud, nom, classeCode || '');
+}
+
+// Portfolio d'un élève donné (ancienne fiche élève locale, conservée pour compatibilité).
 function genererPortfolioEleve(mail){
   const s = (typeof gS==='function') ? gS() : {};
   // Données de l'élève : depuis le store, ou l'utilisateur courant
@@ -28,6 +70,13 @@ function genererPortfolioEleve(mail){
 
   const nom = ud.nom || (CU && CU.mail===mail ? CU.nom : null) || mail.split('@')[0];
   const classe = ud.classe || (CU && CU.mail===mail ? CU.classe : '') || '';
+  afficherPortfolioDoc(ud, nom, classe);
+}
+
+// Construit et affiche le document de portfolio à partir d'un objet ud
+// {missions:{id:{status,score,date_validation}}, competences:{}} déjà prêt
+// (source locale ou serveur — la logique de rendu est identique dans les deux cas).
+function afficherPortfolioDoc(ud, nom, classe){
   const score = (typeof calcScore==='function') ? calcScore(ud) : 0;
 
   // Labels de niveau (0 à 4)
