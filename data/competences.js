@@ -330,7 +330,8 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 </ul>
 </div>`},
 },
-'C1.3':{t:"L'exécution de la vente — de l'accord à la fidélisation",c:`<div class="res-section res-debutant">
+'C1.3':{
+1:{t:"L'exécution de la vente — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les étapes finales d'une vente</div>
 <p><strong>La vente ne s'arrête pas au "oui" du client.</strong></p>
 <p>Après l'accord, il reste 4 étapes importantes pour finaliser correctement.</p>
@@ -344,7 +345,6 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 M. Kowalski achète des chaussures Salomon à 149€. Avant l'encaissement : "Je vous propose aussi notre garantie étendue 30 jours — c'est gratuit." Pendant : paiement CB, ticket remis, bon de garantie expliqué. Après : "Bonne sortie trail ! N'hésitez pas si vous avez la moindre question."
 </div>
 </div>
-
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F0FFF4"/>
@@ -354,46 +354,30 @@ M. Kowalski achète des chaussures Salomon à 149€. Avant l'encaissement : "Je
       <path d="M0,0 L0,6 L7,3 z" fill="#276749"/>
     </marker>
   </defs>
-  <!-- Étape 1 -->
   <rect x="15" y="38" width="148" height="98" rx="10" fill="#276749"/>
   <text x="89" y="66" text-anchor="middle" font-size="22">💳</text>
   <text x="89" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1. ENCAISSER</text>
   <text x="89" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">CB · Espèces · Chèque</text>
   <text x="89" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Carte fidélité si pas fait</text>
   <path d="M 165 87 L 180 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
-  <!-- Étape 2 -->
   <rect x="182" y="38" width="148" height="98" rx="10" fill="#2F855A"/>
   <text x="256" y="66" text-anchor="middle" font-size="22">🧾</text>
   <text x="256" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2. DOCUMENTS</text>
   <text x="256" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Ticket obligatoire dès 1€</text>
   <text x="256" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Garantie · Notice</text>
   <path d="M 332 87 L 347 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
-  <!-- Étape 3 -->
   <rect x="349" y="38" width="148" height="98" rx="10" fill="#38A169"/>
   <text x="423" y="66" text-anchor="middle" font-size="22">➕</text>
   <text x="423" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3. SERVICES +</text>
   <text x="423" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Livraison · Garantie étendue</text>
   <text x="423" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Personnalisation textile</text>
   <path d="M 499 87 L 514 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
-  <!-- Étape 4 -->
   <rect x="516" y="38" width="149" height="98" rx="10" fill="#48BB78"/>
   <text x="590" y="66" text-anchor="middle" font-size="22">👋</text>
   <text x="590" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">4. PRISE DE CONGÉ</text>
   <text x="590" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Remercier · Inviter</text>
   <text x="590" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">à revenir</text>
 </svg>
-</div>
-<hr style="border:none;border-top:1px solid var(--gb);margin:16px 0">
-<div class="res-section">
-<div class="res-section-label">🔵 Pour aller plus loin — Optimiser la conclusion de vente</div>
-<p><strong>Techniques de conclusion :</strong></p>
-<ul>
-<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les Salomon X Ultra pour leur amorti et leur légèreté — excellent choix pour le trail humide."</li>
-<li><strong>Alternative positive</strong> — "Vous préférez payer en CB ou en espèces ?"</li>
-<li><strong>Urgence factuelle</strong> — "C'est le dernier en taille 43 en stock."</li>
-</ul>
-<p><strong>Documents obligatoires :</strong> ticket de caisse (dès 1€) · facture pour les pros · bon de garantie légale 2 ans · bon de livraison si commande.</p>
-<p><strong>KPI à suivre :</strong> valeur panier moyen, taux d'ajout service complémentaire, taux de carte fidélité proposée.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -404,7 +388,73 @@ M. Kowalski achète des chaussures Salomon à 149€. Avant l'encaissement : "Je
 <li>La dernière impression = fidélisation ou perte du client</li>
 </ul>
 </div>`},
-  'C2.1':{t:'Le suivi de la commande client',c:`<div class="res-section res-debutant">
+2:{t:"L'exécution de la vente — Optimiser la conclusion",c:`<div class="res-section">
+<div class="res-section-label">🟢 Des techniques pour conclure sans forcer</div>
+<p>À ce niveau, tu ne te contentes plus d'appliquer les 4 étapes dans l'ordre : tu choisis la bonne formulation pour que le client se sente accompagné jusqu'au bout, jamais pressé.</p>
+<p><strong>Techniques de conclusion :</strong></p>
+<ul>
+<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les Salomon X Ultra pour leur amorti et leur légèreté — excellent choix pour le trail humide."</li>
+<li><strong>Alternative positive</strong> — "Vous préférez payer en CB ou en espèces ?" (jamais "Vous voulez payer ?" qui laisse la porte ouverte au renoncement)</li>
+<li><strong>Urgence factuelle</strong> — "C'est le dernier en taille 43 en stock." (vrai fait, jamais inventé pour forcer la vente)</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — proposer un service sans être insistant</div>
+Après l'accord sur une veste à 89€ : "Pour cette veste technique, on propose un traitement déperlant renouvelé, 8€ — ça double sa durée de vie face à la pluie. Je vous le montre rapidement ou vous préférez sans ?" La proposition est justifiée par un bénéfice concret, et le client garde le choix clairement formulé.
+</div>
+<p><strong>Documents obligatoires :</strong> ticket de caisse (dès 1€) · facture pour les pros · bon de garantie légale 2 ans · bon de livraison si commande.</p>
+<p><strong>KPI à suivre :</strong> valeur panier moyen, taux d'ajout service complémentaire, taux de carte fidélité proposée. Un(e) bon(ne) vendeur(se) LABORO regarde ces chiffres, pas seulement le nombre de ventes.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Une alternative positive engage plus qu'une question fermée</li>
+<li>Une urgence doit toujours être un fait vérifiable, jamais inventée</li>
+<li>Un service complémentaire se propose avec un bénéfice concret, pas comme une case à cocher</li>
+</ul>
+</div>`},
+3:{t:"L'exécution de la vente — Gérer les imprévus de fin de vente",c:`<div class="res-section">
+<div class="res-section-label">🟠 Quand la conclusion ne se passe pas comme prévu</div>
+<p>À ce niveau, un imprévu survient juste au moment de conclure : le client hésite au dernier moment, revient sur sa décision, ou une contrainte pratique complique l'encaissement. Ton rôle est de sécuriser la vente sans braquer le client, sans jamais le forcer.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — hésitation de dernière minute</div>
+Juste avant de payer, le client dit : "Finalement je ne suis pas sûr, c'est peut-être un peu cher." Mauvais réflexe : répéter l'argumentaire depuis le début. Bon réflexe : identifier PRÉCISÉMENT ce qui bloque maintenant — "Qu'est-ce qui vous fait hésiter, le prix ou autre chose ?" — puis répondre à ce point précis, pas à une objection générale.
+</div>
+<p><strong>Un document manquant ou une contrainte de paiement :</strong> le client n'a pas sa carte de fidélité sur lui, ou veut payer en plusieurs fois sans que ce soit prévu chez LABORO. Tu dois proposer une solution concrète (créer la carte avec son numéro de téléphone, orienter vers les modalités de paiement réellement disponibles) sans jamais promettre ce que LABORO ne peut pas faire.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple — contrainte de paiement</div>
+Client : "Je peux payer en 3 fois ?" Si LABORO ne propose pas cette option en caisse magasin : "Ce n'est pas possible en magasin, mais je peux vous montrer comment c'est proposé sur notre site pour les achats à partir de 100€ si ça vous intéresse." Tu ne dis jamais simplement "non", tu réorientes vers une solution réelle.
+</div>
+<p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta gestion de l'imprévu — par exemple : qu'est-ce qui, dans ta façon de conclure la vente initialement, aurait pu éviter cette hésitation de dernière minute ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Face à une hésitation de dernière minute, identifie le point de blocage précis avant de répondre</li>
+<li>Une contrainte que LABORO ne peut pas satisfaire se traite en réorientant vers une solution réelle, jamais par un simple refus</li>
+<li>La réflexivité = un vrai retour critique sur ta pratique, pas un résumé de la situation</li>
+</ul>
+</div>`},
+4:{t:"L'exécution de la vente — Fiche mémo express",c:`<div class="res-section">
+<div class="res-section-label">🔴 Fiche mémo express — conclure et enchaîner sur la fidélisation</div>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
+<ul>
+<li><strong>4 étapes</strong> : encaisser · documents (ticket obligatoire dès 1€) · services complémentaires · prise de congé</li>
+<li><strong>Conclusion</strong> : résumé des bénéfices choisis, alternative positive, jamais d'urgence inventée</li>
+<li><strong>Imprévu de dernière minute</strong> : identifier le point de blocage précis avant de répondre, jamais répéter l'argumentaire en entier</li>
+<li><strong>Contrainte que LABORO ne peut pas satisfaire</strong> : toujours réorienter vers une solution réelle, jamais un simple refus</li>
+</ul>
+<div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
+Un client conclut son achat, hésite sur le paiement, puis demande un service complémentaire non prévu au catalogue en magasin. En autonomie complète, tu dois sécuriser la vente, traiter l'hésitation, réorienter la demande de service vers une solution réelle, et finir sur une prise de congé qui donne envie de revenir.
+</div>
+<p><strong>De la vente à la fidélisation :</strong> la dernière impression laissée au client n'est jamais neutre — c'est la première brique de sa fidélisation (voir C3.2, Actions de fidélisation). Une vente bien conclue, avec une carte fidélité proposée et un service complémentaire pertinent, prépare directement le retour du client.</p>
+</div>
+<div class="res-retenir">
+<div class="res-retenir-l">À retenir</div>
+<ul>
+<li>Autonomie totale : sécuriser une vente jusqu'au bout, imprévu compris, sans guidage</li>
+<li>Jamais de refus sec — toujours une solution réelle en remplacement</li>
+<li>La conclusion de vente est le point de départ de la fidélisation, pas une simple formalité</li>
+</ul>
+</div>`},
+},
+'C2.1':{t:'Le suivi de la commande client',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Les modes de livraison LABORO</div>
 <p><strong>Chez LABORO, 3 modes de livraison sont proposés aux clients :</strong></p>
 <ul>
