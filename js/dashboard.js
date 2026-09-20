@@ -429,7 +429,7 @@ function compBadge(code){
     'G4A':'#2D5282','C4A.1':'#2D5282','C4A.2':'#2D5282','C4A.3':'#2D5282','G4B':'#7B2FBE',
     'B4.1':'#7B2FBE','B4.2':'#7B2FBE','B4.3':'#7B2FBE','B4.4':'#7B2FBE','B4.5':'#7B2FBE',
     'SA1':'#D97706','SA2':'#D97706','SA3':'#D97706',
-    'ACC':'#E63B2E','ACC1':'#E63B2E','ACC2':'#E63B2E','ACC3':'#E63B2E','ACC4':'#E63B2E'
+    'ACC':'#E63B2E'
   };
   const col = colors[code] || '#6B7280';
   return '<span style="background:'+col+'22;color:'+col+';font-size:9px;font-weight:800;padding:2px 7px;border-radius:6px;display:inline-block">'+code+'</span>';
