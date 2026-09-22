@@ -198,7 +198,7 @@ function renderDashboard(){
   const empW=document.getElementById('emp-wrap');
   const clt=getClassement(CU.classe);
   const now=new Date();
-  if(clt.length>0&&now.getDate()<=7){
+  if(clt.length>0&&clt[0].score>0&&now.getDate()<=7){
     const emp=clt[0];
     empW.innerHTML=`<div class="emp-mois"><div class="emp-ico">🏆</div><div><div class="emp-t">Employé du mois — ${now.toLocaleString('fr-FR',{month:'long'})}</div><div class="emp-n">${emp.nom}</div><div class="emp-s">Score LABORO : ${emp.score}/100</div></div></div>`;
   }else empW.innerHTML='';
@@ -206,7 +206,7 @@ function renderDashboard(){
   if(CU.classe !== 'enseignant' && typeof renderMDJEleve === 'function') renderMDJEleve();
   // Classement dans le dashboard
   const cltDash=document.getElementById('clt-dash');
-  if(cltDash && clt.length>0){
+  if(cltDash && clt.some(function(u){ return u.score>0; })){
     const medals=['🥇','🥈','🥉'];
     const myIdx=clt.findIndex(function(u){ return u.mail===CU.mail; });
     const myRank=myIdx>=0?myIdx+1:null;
