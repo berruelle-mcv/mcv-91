@@ -285,6 +285,47 @@ async function validerChangementClasse(){
   renderClasse();
 }
 
+function modifierEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const chcl = document.getElementById('chcl-panel');
+  if(chcl) chcl.style.display = 'none';
+  const panel = document.getElementById('mod-panel');
+  const msg = document.getElementById('mod-msg');
+  if(msg) msg.textContent = '';
+  document.getElementById('mod-nom').value = SELECTED_ELEVE.nom || '';
+  document.getElementById('mod-prenom').value = SELECTED_ELEVE.prenom || '';
+  document.getElementById('mod-email').value = SELECTED_ELEVE.email || '';
+  if(panel){ panel.style.display = panel.style.display === 'none' ? 'flex' : 'none'; }
+}
+
+async function validerModificationEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const msg = document.getElementById('mod-msg');
+  const nom = document.getElementById('mod-nom').value.trim();
+  const prenom = document.getElementById('mod-prenom').value.trim();
+  const email = document.getElementById('mod-email').value.trim();
+  if(!nom || !prenom || !email){
+    if(msg){ msg.textContent = 'Nom, prénom et email sont obligatoires.'; msg.style.color = 'var(--rg)'; }
+    return;
+  }
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/' + SELECTED_ELEVE.id, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ nom: nom, prenom: prenom, email: email })
+  });
+  if(!r.ok){ if(msg){ msg.textContent = r.erreur; msg.style.color = 'var(--rg)'; } return; }
+  const d = r.data;
+  if(!d.ok){ if(msg){ msg.textContent = d.erreur || 'Échec de la modification.'; msg.style.color = 'var(--rg)'; } return; }
+  document.getElementById('mod-panel').style.display = 'none';
+  SELECTED_ELEVE = null;
+  document.getElementById('eleve-selectionne-nom').textContent = '';
+  if(msg) msg.textContent = '';
+  alert('✅ Informations mises à jour pour ' + d.prenom + ' ' + d.nom + '.');
+  renderClasse();
+}
+
 async function reinitialiserEleve(){
   if(!verifierEleveSelectionne()) return;
   const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
@@ -413,7 +454,7 @@ function openAnalyse(){
   const moyenneClasse = actifs.length ? Math.round(actifs.reduce(function(a,s){ return a+s.score; },0)/actifs.length) : 0;
   const totalMissions = stats.reduce(function(a,s){ return a+s.done; }, 0);
   const enDifficulte = stats.filter(function(s){ return s.done>0 && s.score<40; }).sort(function(a,b){ return a.score-b.score; });
-  const enAvance = stats.slice().sort(function(a,b){ return b.score-a.score; }).slice(0,5);
+  const enAvance = actifs.slice().sort(function(a,b){ return b.score-a.score; }).slice(0,5);
   const sansActivite = stats.filter(function(s){ return s.done===0; });
 
   const labelsNiveaux = ['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
@@ -450,7 +491,7 @@ function openAnalyse(){
       + sansActivite.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+'</div>'; }).join('')
       + '</div>' : '')
     + '<div><div style="font-size:12px;font-weight:800;color:var(--bl);margin-bottom:6px">🏆 Meilleurs scores</div>'
-    + enAvance.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+' — '+s.score+'/100</div>'; }).join('')
+    + (enAvance.length ? enAvance.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+' — '+s.score+'/100</div>'; }).join('') : '<div style="font-size:12px;color:var(--gm)">Aucun élève actif pour l\'instant.</div>')
     + '</div>';
 
   overlay.classList.add('open');
