@@ -391,7 +391,11 @@ function renderDashboard(){
     const medals=['🥇','🥈','🥉'];
     const myIdx=clt.findIndex(function(u){ return u.mail===CU.mail; });
     const myRank=myIdx>=0?myIdx+1:null;
-    const top3=clt.slice(0,3);
+    // Seuls les élèves ayant un score > 0 méritent une place sur le podium —
+    // sinon des élèves n'ayant rien fait s'y retrouvaient juste par ordre de liste.
+    const scorers=clt.filter(function(u){ return u.score>0; });
+    const top3=scorers.slice(0,3);
+    const isMeInTop3=top3.some(function(u){ return u.mail===CU.mail; });
     // Podium
     let podHtml='<div class="podium" style="display:flex;gap:8px;justify-content:center;margin-bottom:12px">';
     // Ordre podium : 2ème, 1er, 3ème
@@ -417,7 +421,7 @@ function renderDashboard(){
     // Liste : uniquement le top 3 (on n'expose pas le classement complet de la classe,
     // ni donc la position du dernier, aux autres élèves)
     let listHtml='<div style="display:flex;flex-direction:column;gap:4px">';
-    clt.slice(0,3).forEach(function(u,i){
+    top3.forEach(function(u,i){
       const isMe=u.mail===CU.mail;
       const rankMedal=medals[i];
       listHtml+='<div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;'+(isMe?'background:var(--ac1b,#EBF4FF);font-weight:700':'background:transparent')+'">'
@@ -427,9 +431,12 @@ function renderDashboard(){
         +'</div>';
     });
     listHtml+='</div>';
-    // Mon rang si hors top 3 — visible seulement par l'élève lui-même, jamais par les autres
-    if(myRank && myRank>3){
-      listHtml+='<div style="font-size:10px;color:var(--gm);text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--gb)">Ton rang : #'+myRank+' · '+clt[myIdx].score+' pts</div>';
+    // Mon rang si hors podium — uniquement pour un élève ayant un score > 0
+    // (un élève à 0 point n'a pas de "rang" pertinent à afficher, ce serait arbitraire),
+    // visible seulement par l'élève lui-même, jamais par les autres.
+    if(!isMeInTop3 && myIdx>=0 && clt[myIdx].score>0){
+      const myScorerRank=scorers.findIndex(function(u){ return u.mail===CU.mail; })+1;
+      listHtml+='<div style="font-size:10px;color:var(--gm);text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--gb)">Ton rang : #'+myScorerRank+' · '+clt[myIdx].score+' pts</div>';
     }
     cltDash.innerHTML=podHtml+listHtml;
   } else if(cltDash){
