@@ -87,12 +87,168 @@ function setAccentColor(classe){
 }
 
 
+// ═══ FICHE DE POSTE & ORGANIGRAMME ═══
+
+const POSTES = {
+  'AGEC': {
+    titre: 'Conseiller(ère) de vente',
+    dept: 'Showroom & E-commerce',
+    manager: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    autre_dir: {nom:'Nina Chevalier', role:'Commerciale B2B — Prospection', couleur:'#0891B2', initiales:'NC'},
+    autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
+    pairs: ['Alex Moreau','Jade Fontaine'],
+    missions_principales: [
+      "Accueillir et conseiller les clients au showroom d'Évry",
+      "Assurer les ventes en ligne sur laboro-sport.fr",
+      "Gérer et optimiser l'espace commercial (merchandising, stocks)",
+      "Participer aux opérations commerciales et animations",
+      "Contribuer à la fidélisation de la clientèle",
+    ],
+    competences_cles: [
+      "Maîtrise des techniques de vente et de découverte des besoins",
+      "Gestion des stocks et approvisionnements",
+      "Merchandising et implantation des produits",
+      "Utilisation des outils digitaux (site e-commerce, réseaux sociaux)",
+      "Traitement des réclamations et suivi SAV",
+    ],
+    conditions: "CDI · Temps plein · Showroom Évry-Courcouronnes (91) · Rattaché(e) à Romain Sauzet"
+  },
+  'PVOC': {
+    titre: 'Commercial(e) terrain',
+    dept: 'Prospection & Vente B2B',
+    manager: {nom:'Nina Chevalier', role:'Responsable Commercial B2B', couleur:'#0891B2', initiales:'NC'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    autre_dir: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
+    autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
+    pairs: ['Théo Vasseur','Camille Dumas'],
+    missions_principales: [
+      "Prospecter et développer un portefeuille de clients professionnels (CE, clubs, mairies)",
+      "Conduire des entretiens de vente en face-à-face et par téléphone",
+      "Élaborer et suivre les devis et propositions commerciales",
+      "Fidéliser les clients existants et détecter de nouvelles opportunités",
+      "Alimenter et mettre à jour LABORO Connect",
+    ],
+    competences_cles: [
+      "Techniques de prospection multicanale (phoning, e-mailing, LinkedIn)",
+      "Négociation et traitement des objections",
+      "Élaboration de propositions commerciales",
+      "Gestion du portefeuille clients et suivi des relances",
+      "Reporting et analyse des performances commerciales",
+    ],
+    conditions: "CDI · Terrain + télétravail · Secteur Essonne (91) · Véhicule fourni · Rattaché(e) à Nina Chevalier"
+  }
+};
+
+function getPosteKey(){
+  const cls = (CU && CU.classe) || '';
+  if (cls.includes('AGEC')) return 'AGEC';
+  if (cls.includes('PVOC')) return 'PVOC';
+  return null;
+}
+
 function renderPosteCard(){
-  const el = document.getElementById('poste-card');
-  if(!el || !CU) return;
-  el.innerHTML = '<div style="font-size:11px;font-weight:700;color:var(--gm);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Mon poste</div>'
-    + '<div style="font-size:14px;font-weight:800;color:var(--t1)">' + (CU.poste||'Collaborateur') + '</div>'
-    + '<div style="font-size:11px;color:var(--gm);margin-top:2px">' + (CU.classe||'') + '</div>';
+  const wrap = document.getElementById('poste-card-wrap');
+  if (!wrap || !CU) return;
+  const key = getPosteKey();
+  if (!key) { wrap.innerHTML = ''; return; }
+  const p = POSTES[key];
+  wrap.innerHTML = '<div class="poste-card" onclick="openOrg()">'
+    + '<div class="poste-card-l">'
+    + '<div class="poste-card-tag">Mon poste chez LABORO</div>'
+    + '<div class="poste-card-titre">' + p.titre + '</div>'
+    + '<div class="poste-card-sub">' + p.dept + ' · Responsable : ' + p.manager.nom + '</div>'
+    + '</div>'
+    + '<div class="poste-card-r">'
+    + '<div class="poste-card-ico">🏢</div>'
+    + '<div class="poste-card-cta">Voir l\'organigramme →</div>'
+    + '</div>'
+    + '</div>';
+}
+
+function openOrg(){
+  const key = getPosteKey();
+  if (!key) return;
+  const p = POSTES[key];
+  document.getElementById('org-titre').textContent = 'Mon poste chez LABORO';
+  document.getElementById('org-sous').textContent = p.titre + ' · ' + p.dept;
+  renderOrgTree(key);
+  renderFichePoste(key);
+  document.getElementById('org-overlay').classList.add('open');
+}
+
+function closeOrg(){
+  document.getElementById('org-overlay').classList.remove('open');
+}
+
+function orgTab(idx, el){
+  document.querySelectorAll('.org-tab').forEach(function(t){ t.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById('org-content').style.display = idx === 0 ? '' : 'none';
+  document.getElementById('org-fp').style.display = idx === 1 ? '' : 'none';
+}
+
+function renderOrgTree(key){
+  const p = POSTES[key];
+  const nom = (CU && CU.nom) || 'Vous';
+
+  function node(initiales, nomP, role, cls, couleur, badge){
+    return '<div class="org-node ' + cls + '">'
+      + '<div class="org-node-ava" style="background:' + couleur + '">' + initiales + '</div>'
+      + '<div class="org-node-nom">' + nomP + '</div>'
+      + '<div class="org-node-role">' + role + '</div>'
+      + (badge ? '<div class="org-node-badge">' + badge + '</div>' : '')
+      + '</div>';
+  }
+
+  const initMe = nom.split(' ').map(function(w){ return w[0]; }).join('').substring(0,2).toUpperCase();
+  const couleurMe = key === 'AGEC' ? '#1D9E75' : '#0891B2';
+
+  let html = ''
+    + '<div class="org-tree">'
+    + '<div class="org-level">' + node(p.pdg.initiales, p.pdg.nom, p.pdg.role, 'top', p.pdg.couleur, '') + '</div>'
+    + '<div class="org-connector"></div>'
+    + '<div class="org-level" style="gap:24px;position:relative">'
+    + '<div style="position:relative">' + node(p.manager.initiales, p.manager.nom, p.manager.role, 'manager', p.manager.couleur, 'Ton responsable') + '</div>'
+    + '<div style="opacity:.5">' + node(p.autre_dir.initiales, p.autre_dir.nom, p.autre_dir.role, 'peer', p.autre_dir.couleur, '') + '</div>'
+    + '<div style="opacity:.5">' + node(p.autre_dir2.initiales, p.autre_dir2.nom, p.autre_dir2.role, 'peer', p.autre_dir2.couleur, '') + '</div>'
+    + '</div>'
+    + '<div class="org-connector"></div>'
+    + '<div class="org-level" style="gap:16px">'
+    + p.pairs.map(function(n){ return node(n.split(' ').map(function(w){ return w[0]; }).join(''), n, p.titre, 'peer', '#A0A09A', ''); }).join('')
+    + node(initMe, nom, p.titre, 'me', couleurMe, '⭐ Vous')
+    + '</div>'
+    + '</div>'
+    + '<div style="text-align:center;margin-top:16px;padding:10px;background:var(--gc);border-radius:8px;font-size:11px;color:var(--gm)">'
+    + 'Tu fais partie de l\'équipe <strong>' + p.dept + '</strong> de LABORO Sport & Outdoor — Évry-Courcouronnes (91)'
+    + '</div>';
+
+  document.getElementById('org-content').innerHTML = html;
+}
+
+function renderFichePoste(key){
+  const p = POSTES[key];
+  const html = ''
+    + '<div class="fp-section">'
+    + '<div class="fp-section-t">Responsable direct</div>'
+    + '<div class="fp-manager">'
+    + '<div class="fp-manager-ava" style="background:' + p.manager.couleur + '">' + p.manager.initiales + '</div>'
+    + '<div><div class="fp-manager-nom">' + p.manager.nom + '</div><div class="fp-manager-role">' + p.manager.role + '</div></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="fp-section">'
+    + '<div class="fp-section-t">Missions principales</div>'
+    + '<ul class="fp-liste">' + p.missions_principales.map(function(m){ return '<li>' + m + '</li>'; }).join('') + '</ul>'
+    + '</div>'
+    + '<div class="fp-section">'
+    + '<div class="fp-section-t">Compétences clés attendues</div>'
+    + '<ul class="fp-liste">' + p.competences_cles.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>'
+    + '</div>'
+    + '<div class="fp-section" style="margin-bottom:0">'
+    + '<div class="fp-section-t">Conditions</div>'
+    + '<p style="font-size:12px;color:var(--gr)">' + p.conditions + '</p>'
+    + '</div>';
+  document.getElementById('org-fp').innerHTML = html;
 }
 
 function renderCCFDashboard(){
