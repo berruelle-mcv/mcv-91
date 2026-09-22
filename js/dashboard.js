@@ -90,6 +90,30 @@ function setAccentColor(classe){
 // ═══ FICHE DE POSTE & ORGANIGRAMME ═══
 
 const POSTES = {
+  '2NDE': {
+    titre: 'Stagiaire découverte des métiers commerciaux',
+    dept: 'Découverte — Showroom & Prospection B2B',
+    manager: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    autre_dir: {nom:'Nina Chevalier', role:'Commerciale B2B — Prospection', couleur:'#0891B2', initiales:'NC'},
+    autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
+    pairs: ['Léo Girard','Manon Lefèvre'],
+    missions_principales: [
+      "Découvrir les métiers de la vente et de la relation client en showroom",
+      "Observer les techniques d'accueil et de prospection B2B",
+      "Participer aux tâches simples du quotidien commercial",
+      "Se familiariser avec les outils LABORO (LABORO Connect, catalogue)",
+      "Construire son projet d'orientation entre les options AGEC et PVOC",
+    ],
+    competences_cles: [
+      "Posture professionnelle de base (ponctualité, tenue, communication)",
+      "Techniques d'accueil et d'écoute active",
+      "Repérage des différents métiers de l'entreprise",
+      "Utilisation simple des outils numériques LABORO",
+      "Travail en équipe et respect des consignes",
+    ],
+    conditions: "Stage d'observation et de découverte · Showroom Évry-Courcouronnes (91) · Rattaché(e) à Romain Sauzet"
+  },
   'AGEC': {
     titre: 'Conseiller(ère) de vente',
     dept: 'Showroom & E-commerce',
@@ -142,6 +166,7 @@ const POSTES = {
 
 function getPosteKey(){
   const cls = (CU && CU.classe) || '';
+  if (cls === '2nde') return '2NDE';
   if (cls.includes('AGEC')) return 'AGEC';
   if (cls.includes('PVOC')) return 'PVOC';
   return null;
@@ -202,7 +227,7 @@ function renderOrgTree(key){
   }
 
   const initMe = nom.split(' ').map(function(w){ return w[0]; }).join('').substring(0,2).toUpperCase();
-  const couleurMe = key === 'AGEC' ? '#1D9E75' : '#0891B2';
+  const couleurMe = key === 'AGEC' ? '#1D9E75' : key === 'PVOC' ? '#0891B2' : '#2D5282';
 
   let html = ''
     + '<div class="org-tree">'
