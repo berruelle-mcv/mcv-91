@@ -233,20 +233,21 @@ function renderDashboard(){
         +'</div></div>';
     });
     podHtml+='</div>';
-    // Liste complète (max 8)
+    // Liste : uniquement le top 3 (on n'expose pas le classement complet de la classe,
+    // ni donc la position du dernier, aux autres élèves)
     let listHtml='<div style="display:flex;flex-direction:column;gap:4px">';
-    clt.slice(0,8).forEach(function(u,i){
+    clt.slice(0,3).forEach(function(u,i){
       const isMe=u.mail===CU.mail;
-      const rankMedal=i<3?medals[i]:(i+1)+'';
+      const rankMedal=medals[i];
       listHtml+='<div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;'+(isMe?'background:var(--ac1b,#EBF4FF);font-weight:700':'background:transparent')+'">'
-        +'<span style="width:22px;text-align:center;font-size:'+(i<3?'14':'11')+'px;flex-shrink:0">'+rankMedal+'</span>'
+        +'<span style="width:22px;text-align:center;font-size:14px;flex-shrink:0">'+rankMedal+'</span>'
         +'<span style="flex:1;font-size:12px;color:#1A2E4A;'+(isMe?'font-weight:800':'')+'white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+u.nom.split(' ')[0]+'</span>'
         +'<span style="font-size:11px;font-weight:800;color:var(--bl)">'+u.score+'</span>'
         +'</div>';
     });
     listHtml+='</div>';
-    // Mon rang si hors top 8
-    if(myRank && myRank>8){
+    // Mon rang si hors top 3 — visible seulement par l'élève lui-même, jamais par les autres
+    if(myRank && myRank>3){
       listHtml+='<div style="font-size:10px;color:var(--gm);text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--gb)">Ton rang : #'+myRank+' · '+clt[myIdx].score+' pts</div>';
     }
     cltDash.innerHTML=podHtml+listHtml;
