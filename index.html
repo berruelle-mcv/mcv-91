@@ -540,6 +540,27 @@ document.addEventListener('DOMContentLoaded', loadConfig);
   </div>
 </div>
 
+<!-- ORGANIGRAMME & FICHE DE POSTE -->
+<div class="org-overlay" id="org-overlay" onclick="if(event.target===this)closeOrg()">
+  <div class="org-modal">
+    <div class="org-hd">
+      <div>
+        <div class="org-hd-t" id="org-titre">Mon poste chez LABORO</div>
+        <div class="org-hd-s" id="org-sous">—</div>
+      </div>
+      <button class="org-cl" onclick="closeOrg()">✕</button>
+    </div>
+    <div class="org-body">
+      <div class="org-tabs">
+        <div class="org-tab on" onclick="orgTab(0,this)">🏢 Organigramme</div>
+        <div class="org-tab" onclick="orgTab(1,this)">📋 Fiche de poste</div>
+      </div>
+      <div id="org-content"></div>
+      <div id="org-fp" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
 <div id="ob-ens" class="scr" style="display:none">
   <div class="ob-ens-w">
     <div class="ob-ens-pg">
