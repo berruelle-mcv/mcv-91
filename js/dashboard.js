@@ -16,12 +16,26 @@ async function renderMDJEleve(){
   });
   if(!r.ok || !r.data.ok || !r.data.mission){ wrap.innerHTML=''; return; }
   const m = r.data.mission;
-  wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
-    + '<div class="ct" style="color:#8A6500">⭐ Mission du jour</div>'
-    + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
-    + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
-    + '<button onclick="handleMission(\''+m.mission_id+'\')" style="margin-top:8px;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir la mission</button>'
-    + '</div>';
+  // Si l'élève a déjà complété cette mission (assignée avant qu'il ne la fasse,
+  // ou assignation restée en place après coup), on ne propose plus de la "rouvrir"
+  // comme s'il restait du travail — on l'indique comme terminée.
+  const ud = (typeof gUD === 'function') ? gUD() : null;
+  const dejaFaite = ud && ud.missions && ud.missions[m.mission_id] && ud.missions[m.mission_id].status === 'done';
+  if(dejaFaite){
+    wrap.innerHTML = '<div class="card" style="background:#F0FDF4;border:1px solid #BBF7D0;margin-top:0">'
+      + '<div class="ct" style="color:#166534">⭐ Mission du jour</div>'
+      + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
+      + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
+      + '<div style="margin-top:8px;font-size:11px;font-weight:700;color:#166534">✅ Déjà complétée — bravo !</div>'
+      + '</div>';
+  } else {
+    wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
+      + '<div class="ct" style="color:#8A6500">⭐ Mission du jour</div>'
+      + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
+      + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
+      + '<button onclick="handleMission(\''+m.mission_id+'\')" style="margin-top:8px;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir la mission</button>'
+      + '</div>';
+  }
 }
 
 // ═══ ACTUALITÉS LABORO ═══
