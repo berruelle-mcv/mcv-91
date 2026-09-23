@@ -167,6 +167,27 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 </div>
 </div>
 
+<!-- ÉCRAN DE BLOCAGE — restriction horaire d'accès élèves -->
+<div id="blocage" class="scr">
+  <div class="lw">
+    <div class="ll" style="justify-content:center;align-items:center;text-align:center">
+      <div class="lz" style="align-self:center">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;justify-content:center">
+          <div class="lc"><span>L</span></div>
+          <div>
+            <div class="ln">LABORO</div>
+            <div class="lv">Sport & Outdoor · Évry-Courcouronnes (91)</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:40px;margin:20px 0 8px">🌙</div>
+      <div class="lt">Accès hors horaires scolaires</div>
+      <div class="ls" id="blocage-msg" style="margin-bottom:20px">La plateforme LABORO n'est pas accessible pour le moment.</div>
+      <button class="btn-li" onclick="location.reload()" style="max-width:280px">Réessayer →</button>
+    </div>
+  </div>
+</div>
+
 <!-- VITRINE PRESCRIPTEURS -->
 <div id="vitrine" class="scr" style="display:none;background:#F3F4F6;overflow-y:auto">
   <div style="max-width:900px;margin:0 auto;padding:40px 24px 80px">
@@ -661,6 +682,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div class="ni" id="ni-mdj" style="display:none" onclick="goP('missiondujour',this)"><div class="nd" style="background:var(--bl)"></div>Mission du jour</div>
     <div class="ni" id="ni-cl" style="display:none" onclick="goP('classe',this)"><div class="nd" style="background:#D4537E"></div>Vue classe</div>
     <div class="ni" id="ni-classes-admin" style="display:none" onclick="goP('classesadmin',this)"><div class="nd" style="background:#6B4EA8"></div>Gestion des classes</div>
+    <div class="ni" id="ni-acces-eleves" style="display:none" onclick="goP('acceseleves',this)"><div class="nd" style="background:#B45309"></div>Accès élèves</div>
   </div>
   <div class="sb-bt">
     <button class="btn-guide" id="btn-guide-ens" style="display:none;width:100%;padding:8px 12px;background:rgba(255,255,255,.08);border:.5px solid rgba(255,255,255,.2);border-radius:8px;color:rgba(255,255,255,.8);font-size:11px;font-weight:600;cursor:pointer;margin-bottom:8px;text-align:left" onclick="revoirObEns()">📖 Guide de démarrage</button>
@@ -844,6 +866,62 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       </div>
     </div>
 
+    <div id="panel-acceseleves" class="panel">
+      <div class="card" style="margin-bottom:12px">
+        <div class="ct">Restriction horaire d'accès élèves</div>
+        <div style="font-size:12px;color:var(--gm);margin-bottom:14px">Empêche les élèves de se connecter (et coupe leur session en cours) en dehors des horaires scolaires — utile pour éviter qu'ils complètent leurs missions chez eux, sans supervision, notamment avec l'aide d'une IA externe.</div>
+        <label style="display:flex;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer">
+          <input type="checkbox" id="acc-actif" style="width:16px;height:16px;cursor:pointer"/>
+          <span style="font-size:13px;font-weight:700">Restreindre l'accès élèves en dehors des horaires scolaires</span>
+        </label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;margin-bottom:6px">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Accès autorisé à partir de</div>
+            <input type="time" id="acc-debut" value="08:00" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"/>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Jusqu'à</div>
+            <input type="time" id="acc-fin" value="18:00" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"/>
+          </div>
+          <div>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding-bottom:8px">
+              <input type="checkbox" id="acc-weekend" style="width:15px;height:15px;cursor:pointer"/>
+              <span style="font-size:12px;font-weight:600">Bloquer aussi le week-end</span>
+            </label>
+          </div>
+          <button onclick="sauvegarderReglagesAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">Enregistrer</button>
+        </div>
+        <div id="acc-msg" style="font-size:11px;min-height:16px"></div>
+      </div>
+
+      <div class="card">
+        <div class="ct">Débloquer exceptionnellement</div>
+        <div style="font-size:12px;color:var(--gm);margin-bottom:14px">Lève le blocage un jour précis pour une classe entière ou un élève donné (rattrapage, devoir maison exceptionnel…), sans toucher au réglage général ci-dessus.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;margin-bottom:6px">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Pour</div>
+            <select id="acc-cible" onchange="toggleAccesCible()" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box">
+              <option value="classe">Toute une classe</option>
+              <option value="eleve">Un élève précis</option>
+            </select>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Classe / élève</div>
+            <select id="acc-cl" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"><option value="">— Classe —</option></select>
+            <select id="acc-el" style="display:none;width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"><option value="">— Élève —</option></select>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Date</div>
+            <input type="date" id="acc-date" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"/>
+          </div>
+          <button onclick="ajouterExceptionAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">+ Débloquer ce jour</button>
+        </div>
+        <div id="acc-exc-msg" style="font-size:11px;margin-bottom:10px;min-height:16px"></div>
+        <div style="font-size:11px;font-weight:700;color:var(--gm);text-transform:uppercase;margin-bottom:8px">Déblocages en cours</div>
+        <div id="acc-exc-liste">Chargement…</div>
+      </div>
+    </div>
+
     <div id="mo" class="mo">
       <div class="modal">
         <div class="mo-h"><div style="flex:1;min-width:0"><h2 id="mo-t" style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</h2><p id="mo-m" style="font-size:11px;opacity:.75;margin-top:2px">LABORO Sport & Outdoor</p><div id="mo-palier-desc" style="display:none;margin-top:6px;padding:6px 12px;border-radius:6px;font-size:11.5px;line-height:1.5;border-left:3px solid var(--ac1)"></div></div><div id="mo-timer" style="font-size:12px;font-weight:700;color:rgba(255,255,255,.85);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 10px;margin-right:8px;display:none;align-items:center;gap:5px"><span>⏱</span><span id="mo-timer-val">55:00</span></div><div class="mo-controls"><button class="mo-ctrl-btn" onclick="moMinimize()" title="Minimiser">─</button><button class="mo-ctrl-btn" onclick="moFullscreen()" id="mo-fs-btn" title="Plein écran">⛶</button><button class="mo-ctrl-btn mo-ctrl-close" onclick="closeMo()" title="Fermer">✕</button></div></div>
@@ -878,6 +956,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <script src="js/classe-serveur.js"></script>
 <script src="js/portfolio.js"></script>
 <script src="js/admin-classes.js"></script>
+<script src="js/admin-acces.js"></script>
 <script src="js/utils.js"></script>
 
 <div id="charte-laboro" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 100%);z-index:9999;overflow-y:auto;padding:40px 20px">
