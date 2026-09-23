@@ -1,3 +1,18 @@
+// ── Restriction horaire d'accès élèves : coupe l'accès et affiche l'écran de blocage ──
+function afficherBlocageHoraire(message){
+  // Évite les doubles affichages si plusieurs requêtes échouent en même temps
+  if(document.getElementById('blocage') && document.getElementById('blocage').classList.contains('on')) return;
+  localStorage.removeItem('laboro_token');
+  localStorage.removeItem('laboro_u');
+  localStorage.removeItem('laboro_est_admin');
+  if(typeof CU !== 'undefined') CU = null;
+  document.querySelectorAll('.scr').forEach(function(s){ s.classList.remove('on'); });
+  const blocageMsg = document.getElementById('blocage-msg');
+  if(blocageMsg) blocageMsg.textContent = message || "La plateforme LABORO n'est pas accessible pour le moment.";
+  const blocage = document.getElementById('blocage');
+  if(blocage) blocage.classList.add('on');
+}
+
 // ── Affichage erreur inline (remplace les alert() natifs) ──
 function showLoginError(msg){
   let el = document.getElementById('login-error');
@@ -317,6 +332,8 @@ function showApp(){
   const estAdminUtilisateur = localStorage.getItem('laboro_est_admin') === '1';
   const niClassesAdmin = document.getElementById('ni-classes-admin');
   if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? 'block' : 'none';
+  const niAccesEleves = document.getElementById('ni-acces-eleves');
+  if(niAccesEleves) niAccesEleves.style.display = (ens && estAdminUtilisateur) ? 'block' : 'none';
   if(ens && typeof populateClasseSelects === 'function') populateClasseSelects();
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
@@ -351,7 +368,7 @@ function goP(id,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const panel=document.getElementById('panel-'+id); if(panel)panel.classList.add('on');
   if(el)el.classList.add('on');
-  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes'};
+  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
   document.getElementById('tb-t').textContent=t2[id]||id;
   if(id==='classe')renderClasse();
   if(id==='dashboard')renderDashboard();
@@ -363,6 +380,7 @@ function goP(id,el){
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
   if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();
+  if(id==='acceseleves' && typeof renderAccesEleves==='function') renderAccesEleves();
 }
 function renderAll(){
   const safe = function(fn, name){
@@ -463,6 +481,8 @@ async function doLoginServeur(){
   });
 
   if(!r.ok){
+    // Écran de blocage horaire déjà affiché par fetchJSON — pas de message d'erreur en plus.
+    if(r.data && r.data.erreur === 'ACCES_HORAIRE_BLOQUE') return;
     showLoginError(r.erreur);
     return;
   }

@@ -48,6 +48,26 @@ async function populateMDJEleveSelect(){
       }).join('');
 }
 
+// --- Remplit le sélecteur d'élèves pour le déblocage exceptionnel (Accès élèves, admin) ---
+async function populateAccesEleveSelect(){
+  const sel = document.getElementById('acc-el');
+  if(!sel) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ sel.innerHTML = '<option value="">— Connecte-toi via le serveur —</option>'; return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  if(!r.ok || !r.data.ok){
+    sel.innerHTML = '<option value="">— Erreur de chargement —</option>';
+    return;
+  }
+  const eleves = (r.data.eleves || []).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||''); });
+  sel.innerHTML = '<option value="">— Élève —</option>'
+    + eleves.map(function(e){
+        return '<option value="'+e.id+'">'+e.nom+' '+e.prenom+(e.classe?' ('+e.classe+')':'')+'</option>';
+      }).join('');
+}
+
 // --- Remplit les listes déroulantes de classes (ajouter élève / mission du jour / changer de classe)
 //     avec les classes réellement attribuées à l'enseignant connecté (ou toutes si administrateur) ---
 async function populateClasseSelects(){
@@ -62,7 +82,7 @@ async function populateClasseSelects(){
   });
   const options = '<option value="">— Classe —</option>'
     + classes.map(function(c){ return '<option value="'+c.id+'">'+(c.libelle||c.id)+'</option>'; }).join('');
-  ['add-cls', 'mdj-cl', 'chcl-select'].forEach(function(id){
+  ['add-cls', 'mdj-cl', 'chcl-select', 'acc-cl'].forEach(function(id){
     const sel = document.getElementById(id);
     if(sel) sel.innerHTML = options;
   });

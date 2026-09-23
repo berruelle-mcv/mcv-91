@@ -32,6 +32,10 @@ async function fetchJSON(url, options){
   }
   if(!reponse.ok){
     console.error('fetchJSON — erreur HTTP :', url, reponse.status, data);
+    // Restriction horaire d'accès élèves : coupe l'accès partout, quel que soit l'appel en cours.
+    if(reponse.status === 403 && data && data.erreur === 'ACCES_HORAIRE_BLOQUE' && typeof afficherBlocageHoraire === 'function'){
+      afficherBlocageHoraire(data.message);
+    }
     return { ok:false, type:'http', erreur:(data && data.erreur) || ('Erreur serveur (code '+reponse.status+').'), status:reponse.status, data };
   }
   return { ok:true, data, status:reponse.status };
