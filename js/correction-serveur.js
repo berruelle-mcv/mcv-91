@@ -91,3 +91,78 @@ async function soumettreReponses(){
   if(typeof renderDashboard === 'function') renderDashboard();
   if(typeof renderMissions === 'function') renderMissions();
 }
+
+// ═══════════════════════════════════════════════════════════
+//   Récupération de la progression depuis le serveur (25/09/2026)
+//   Avant : les missions faites/notées n'étaient connues que du
+//   navigateur où l'élève avait travaillé → sur un autre poste,
+//   tout réapparaissait "à faire" (score 0, mission du jour non faite).
+//   Maintenant : à chaque entrée dans l'appli, on relit
+//   /api/progressions (la base du Pi = source de vérité) et on
+//   réaligne l'affichage. Les réponses, retours et brouillons
+//   locaux ne sont jamais effacés.
+// ═══════════════════════════════════════════════════════════
+async function synchroniserProgressionsServeur(){
+  if(!CU || CU.classe === 'enseignant') return;
+  // Accès rapide "ana" et comptes démo : pas de compte serveur à relire
+  // (le jeton restant dans le navigateur peut appartenir à un autre élève).
+  if(CU.mail === 'pascal@laboro.fr' || String(CU.mail).indexOf('@laboro-demo.fr') >= 0) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token) return;
+  const mailAuDepart = CU.mail;
+  try{
+    const rep = await fetch(LABORO_API + '/api/progressions', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    const d = await rep.json();
+    if(!d || !d.ok || !Array.isArray(d.progressions)) return;
+    if(!CU || CU.mail !== mailAuDepart) return; // déconnecté entre-temps
+
+    const ud = gUD();
+    if(!ud.missions) ud.missions = {};
+    let changed = false;
+    d.progressions.forEach(function(p){
+      if(!p || !p.mission_id) return;
+      let statutServeur;
+      if(p.statut === 'valide') statutServeur = 'done';
+      else if(p.statut === 'a_examiner' || p.statut === 'soumis') statutServeur = 'att';
+      else return; // statut inconnu : on ne touche à rien
+      const local = ud.missions[p.mission_id];
+      const noteServeur = p.note_finale != null ? p.note_finale : p.note_ia;
+      // Une mission validée sur ce poste ne redescend jamais en "en attente"
+      if(statutServeur === 'att' && local && local.status === 'done') return;
+      const dejaAJour = local && local.status === statutServeur
+        && (statutServeur !== 'done' || noteServeur == null || local.score === noteServeur);
+      if(dejaAJour) return;
+      const mis = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === p.mission_id; }) : null;
+      ud.missions[p.mission_id] = Object.assign({}, local, {
+        id: p.mission_id,
+        comp: (local && local.comp) || (mis ? mis.comp : undefined),
+        status: statutServeur,
+        note_ia: p.note_ia != null ? p.note_ia : (local ? local.note_ia : undefined),
+        score: statutServeur === 'done' ? noteServeur : (local ? local.score : undefined),
+        date_validation: p.validated_at || p.submitted_at || (local ? local.date_validation : undefined)
+      });
+      changed = true;
+    });
+
+    if(changed){
+      sUD(ud);
+      if(typeof renderAll === 'function'){ try{ renderAll(); }catch(e){ console.error(e); } }
+    }
+  }catch(e){
+    console.error('synchroniserProgressionsServeur :', e);
+  }
+}
+
+// Lancée à chaque entrée dans l'application (connexion normale,
+// première connexion après charte/accueil, changement de poste).
+(function(){
+  if(typeof window.showApp !== 'function') return;
+  const showAppOriginal = window.showApp;
+  window.showApp = function(){
+    const r = showAppOriginal.apply(this, arguments);
+    try{ synchroniserProgressionsServeur(); }catch(e){ console.error(e); }
+    return r;
+  };
+})();
