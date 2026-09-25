@@ -73,6 +73,7 @@ function openReleve(){
   const overlay = document.getElementById('rel-overlay');
   if(!overlay) return;
   if(!ELEVES_SERVEUR.length){ alert('Ouvre d\'abord la Vue classe pour charger la liste des élèves.'); return; }
+  const t = document.getElementById('rel-titre'); if(t) t.textContent = 'Relevé de notes par mission';
   renderReleve();
   overlay.classList.add('open');
 }
@@ -203,4 +204,58 @@ function exporterReleve(format){
     + (classeFiltre ? '-' + classeFiltre.replace(/\s+/g,'_') : '') + '-' + new Date().toISOString().slice(0,10) + '.csv';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+
+// ================================================
+//   "À examiner" (25/09/2026) — remplace "Valider notes IA ≥ 12/20"
+//   Le serveur valide déjà automatiquement toute note ≥ seuil de la classe
+//   (11 par défaut) : ce bouton ne trouvait donc jamais rien. Ce qui reste
+//   réellement à regarder, ce sont les missions restées SOUS le seuil.
+// ================================================
+function openAExaminer(){
+  const overlay = document.getElementById('rel-overlay');
+  if(!overlay) return;
+  if(!ELEVES_SERVEUR.length){ alert('Ouvre d\'abord la Vue classe pour charger la liste des élèves.'); return; }
+  const t = document.getElementById('rel-titre'); if(t) t.textContent = 'Missions à examiner';
+  const eleves = ELEVES_SERVEUR
+    .filter(function(e){ return e.statut !== 'archive'; })
+    .filter(function(e){ return !classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre; });
+  const lignes = [];
+  eleves.forEach(function(e){
+    (PROGRESSIONS_BRUTES[e.id] || []).forEach(function(p){
+      if(!p || p.statut !== 'a_examiner') return;
+      const note = noteProgression(p);
+      const m = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === p.mission_id; }) : null;
+      lignes.push({ e: e, id: p.mission_id, titre: m ? m.titre : '', comp: m ? m.comp : '', note: note, date: p.submitted_at || '' });
+    });
+  });
+  lignes.sort(function(a,b){ return (a.note==null?99:a.note) - (b.note==null?99:b.note) || nomEleve(a.e).localeCompare(nomEleve(b.e),'fr'); });
+
+  const sous = document.getElementById('rel-sous');
+  if(sous) sous.textContent = (classeFiltre || 'Toutes les classes') + ' — ' + lignes.length + ' mission(s) sous le seuil de validation';
+  const body = document.getElementById('rel-body');
+  if(!body) return;
+  if(!lignes.length){
+    body.innerHTML = '<div style="padding:16px;font-size:13px;color:var(--gm)">✅ Rien à examiner : toutes les missions corrigées ont atteint le seuil de validation.</div>';
+    overlay.classList.add('open');
+    return;
+  }
+  body.innerHTML =
+    '<div style="font-size:12px;color:var(--gm);line-height:1.5;margin-bottom:12px">Ces missions ont eu une note sous le seuil de validation de la classe (11/20 par défaut) : elles ne comptent pas encore dans le score de l\'élève. '
+    + 'L\'élève peut les corriger une fois ; s\'il a déjà utilisé ses 2 tentatives, c\'est à toi de voir avec lui. Les plus faibles notes sont en haut.</div>'
+    + '<table style="border-collapse:collapse;font-size:12px;width:100%">'
+    + '<thead><tr style="background:#F1F5F9;text-align:left"><th style="padding:8px">Élève</th><th style="padding:8px">Mission</th><th style="padding:8px;text-align:center">Note IA</th><th style="padding:8px">Dernière soumission</th></tr></thead><tbody>'
+    + lignes.map(function(l){
+        const n = niveauPourNote(l.note);
+        const d = l.date ? new Date(l.date) : null;
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e)
+          + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (l.e.classe_libelle||'') + '</div>') + '</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span></td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;text-align:center">'
+          + (l.note==null ? '—' : '<span style="display:inline-block;min-width:40px;padding:2px 6px;border-radius:5px;font-weight:800;background:' + n.bg + ';color:' + n.fg + '">' + fmtNote(l.note) + '</span>') + '</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;color:var(--gm)">' + (d && !isNaN(d) ? d.toLocaleDateString('fr-FR') + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '—') + '</td></tr>';
+      }).join('')
+    + '</tbody></table>';
+  overlay.classList.add('open');
 }

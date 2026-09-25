@@ -65,18 +65,19 @@ async function soumettreReponses(){
   const niveau = d.niveau;
   const feedback = d.feedback;
 
-  const prevNote = ud.missions[CM.id]?.note_ia || 0;
-  const progression = Math.max(0, note - prevNote);
+  // Règle "meilleure tentative" (serveur, 25/09/2026) : si la tentative précédente
+  // avait une meilleure note, le serveur la conserve (d.conservee) — la note retenue
+  // est alors d.note_conservee, pas la note de cette nouvelle tentative.
+  const noteRetenue = d.conservee ? d.note_conservee : note;
   ud.missions[CM.id] = {
     ...ud.missions[CM.id],
     status: (d.statut === 'valide') ? 'done' : 'att',
     tentatives: tent,
-    note_ia: note,
+    note_ia: noteRetenue,
     niveau_ia: niveau,
-    score: (d.statut === 'valide') ? note : ud.missions[CM.id]?.score,
+    score: (d.statut === 'valide') ? noteRetenue : ud.missions[CM.id]?.score,
     comp: CM.comp,
     id: CM.id,
-    progression,
     date_validation: new Date().toISOString(),
     feedback: { note, texte: feedback }
   };
@@ -87,8 +88,14 @@ async function soumettreReponses(){
   document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
   moTab(2, tabFb);
   majBoutonsMission(CM.id);
+  if(d.conservee){
+    document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
+      '<div style="background:#EBF4FF;border:1px solid #B5D4F4;border-left:4px solid #185FA5;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#1A2E4A">'
+      + '<strong>🛡️ Ta tentative précédente (' + String(d.note_conservee).replace('.', ',') + '/20) est conservée</strong> : c\'est ta meilleure note, tu ne perds rien. '
+      + 'Lis quand même le feedback ci-dessous pour comprendre ce qui a manqué cette fois.</div>');
+  }
   // Note insuffisante avec une tentative restante : on l'explique clairement
-  if(d.statut !== 'valide' && tent < 2){
+  else if(d.statut !== 'valide' && tent < 2){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
       '<div style="background:#FFF7E6;border:1px solid #F0C040;border-left:4px solid #D97706;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#7A4B00">'
       + '<strong>✏️ Tu peux corriger ta mission.</strong> Lis le feedback ci-dessous, retourne dans l\'onglet <strong>La mission</strong> : '
