@@ -47,17 +47,24 @@ async function soumettreReponses(){
   });
 
   if(!r.ok){
+    // Refus du serveur (limite de 2 tentatives comptée côté serveur depuis le 25/09/2026)
+    const code = r.data && r.data.code;
+    if(code === 'TENTATIVES_EPUISEES' || code === 'DEJA_VALIDEE'){
+      const ud2 = gUD();
+      ud2.missions[CM.id] = Object.assign({}, ud2.missions[CM.id], { id: CM.id,
+        tentatives: Math.max(2, (ud2.missions[CM.id] && ud2.missions[CM.id].tentatives) || 0) });
+      if(code === 'DEJA_VALIDEE') ud2.missions[CM.id].status = 'done';
+      sUD(ud2);
+    }
     alert(r.erreur);
-    btnS.textContent = 'Soumettre mes réponses';
-    btnS.disabled = false;
+    majBoutonsMission(CM.id);
     return;
   }
   const d = r.data;
 
   if(!d.ok){
     alert('Correction impossible : ' + (d.erreur || 'erreur inconnue') + '. Réessaie dans un instant.');
-    btnS.textContent = 'Soumettre mes réponses';
-    btnS.disabled = false;
+    majBoutonsMission(CM.id);
     return;
   }
 
@@ -72,7 +79,7 @@ async function soumettreReponses(){
   ud.missions[CM.id] = {
     ...ud.missions[CM.id],
     status: (d.statut === 'valide') ? 'done' : 'att',
-    tentatives: tent,
+    tentatives: (d.tentatives != null) ? d.tentatives : tent, // compteur du serveur s'il est fourni
     note_ia: noteRetenue,
     niveau_ia: niveau,
     score: (d.statut === 'valide') ? noteRetenue : ud.missions[CM.id]?.score,
@@ -88,6 +95,7 @@ async function soumettreReponses(){
   document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
   moTab(2, tabFb);
   majBoutonsMission(CM.id);
+  const tentFaites = (d.tentatives != null) ? d.tentatives : tent;
   if(d.conservee){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
       '<div style="background:#EBF4FF;border:1px solid #B5D4F4;border-left:4px solid #185FA5;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#1A2E4A">'
@@ -95,7 +103,7 @@ async function soumettreReponses(){
       + 'Lis quand même le feedback ci-dessous pour comprendre ce qui a manqué cette fois.</div>');
   }
   // Note insuffisante avec une tentative restante : on l'explique clairement
-  else if(d.statut !== 'valide' && tent < 2){
+  else if(d.statut !== 'valide' && tentFaites < 2){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
       '<div style="background:#FFF7E6;border:1px solid #F0C040;border-left:4px solid #D97706;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#7A4B00">'
       + '<strong>✏️ Tu peux corriger ta mission.</strong> Lis le feedback ci-dessous, retourne dans l\'onglet <strong>La mission</strong> : '
@@ -137,6 +145,10 @@ async function synchroniserProgressionsServeur(){
     let changed = false;
     d.progressions.forEach(function(p){
       if(!p || !p.mission_id) return;
+      // Compteur de tentatives tenu par le serveur : il fait foi, quel que soit le poste
+      if(p.tentatives != null && ud.missions[p.mission_id] && ud.missions[p.mission_id].tentatives !== p.tentatives){
+        ud.missions[p.mission_id].tentatives = p.tentatives; changed = true;
+      }
       let statutServeur;
       if(p.statut === 'valide') statutServeur = 'done';
       else if(p.statut === 'a_examiner' || p.statut === 'soumis') statutServeur = 'att';
@@ -155,7 +167,8 @@ async function synchroniserProgressionsServeur(){
         status: statutServeur,
         note_ia: p.note_ia != null ? p.note_ia : (local ? local.note_ia : undefined),
         score: statutServeur === 'done' ? noteServeur : (local ? local.score : undefined),
-        date_validation: p.validated_at || p.submitted_at || (local ? local.date_validation : undefined)
+        date_validation: p.validated_at || p.submitted_at || (local ? local.date_validation : undefined),
+        tentatives: p.tentatives != null ? p.tentatives : (local && local.tentatives)
       });
       changed = true;
     });
