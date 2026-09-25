@@ -325,15 +325,15 @@ function showApp(){
   const niMdj = document.getElementById('ni-mdj');
   const niCl = document.getElementById('ni-cl');
   const nsEns = document.getElementById('ns-ens');
-  if(niMdj) niMdj.style.display = ens ? 'block' : 'none';
-  if(niCl) niCl.style.display = ens ? 'block' : 'none';
+  if(niMdj) niMdj.style.display = ens ? '' : 'none'; // '' = affichage du CSS (.ni en flex : pastille alignée avec le texte)
+  if(niCl) niCl.style.display = ens ? '' : 'none';
   if(nsEns) nsEns.style.display = ens ? 'block' : 'none';
   // Visibilité nav "Gestion des classes" (administrateur uniquement)
   const estAdminUtilisateur = localStorage.getItem('laboro_est_admin') === '1';
   const niClassesAdmin = document.getElementById('ni-classes-admin');
-  if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? 'block' : 'none';
+  if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
   const niAccesEleves = document.getElementById('ni-acces-eleves');
-  if(niAccesEleves) niAccesEleves.style.display = (ens && estAdminUtilisateur) ? 'block' : 'none';
+  if(niAccesEleves) niAccesEleves.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
   if(ens && typeof populateClasseSelects === 'function') populateClasseSelects();
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
