@@ -5,7 +5,9 @@
 
 // ═══ DASHBOARD ═══
 
-// --- Affiche la mission du jour assignée par l'enseignant (élève uniquement) ---
+// --- Missions assignées par l'enseignant (élève uniquement) ---
+// Depuis le 25/09/2026 : plusieurs missions à la fois ; chacune disparaît dès
+// que l'élève l'a terminée (validée, ou 2 tentatives utilisées).
 async function renderMDJEleve(){
   const wrap = document.getElementById('mdj-wrap');
   if(!wrap) return;
@@ -14,28 +16,25 @@ async function renderMDJEleve(){
   const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/moi', {
     headers: { 'Authorization': 'Bearer ' + token }
   });
-  if(!r.ok || !r.data.ok || !r.data.mission){ wrap.innerHTML=''; return; }
-  const m = r.data.mission;
-  // Si l'élève a déjà complété cette mission (assignée avant qu'il ne la fasse,
-  // ou assignation restée en place après coup), on ne propose plus de la "rouvrir"
-  // comme s'il restait du travail — on l'indique comme terminée.
+  if(!r.ok || !r.data.ok){ wrap.innerHTML=''; return; }
+  let missions = Array.isArray(r.data.missions) ? r.data.missions : (r.data.mission ? [r.data.mission] : []);
+  // Double sécurité côté navigateur : ne pas afficher une mission que l'élève vient de terminer
   const ud = (typeof gUD === 'function') ? gUD() : null;
-  const dejaFaite = ud && ud.missions && ud.missions[m.mission_id] && ud.missions[m.mission_id].status === 'done';
-  if(dejaFaite){
-    wrap.innerHTML = '<div class="card" style="background:#F0FDF4;border:1px solid #BBF7D0;margin-top:0">'
-      + '<div class="ct" style="color:#166534">⭐ Mission du jour</div>'
-      + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
-      + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
-      + '<div style="margin-top:8px;font-size:11px;font-weight:700;color:#166534">✅ Déjà complétée — bravo !</div>'
-      + '</div>';
-  } else {
-    wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
-      + '<div class="ct" style="color:#8A6500">⭐ Mission du jour</div>'
-      + '<div style="font-size:13px;font-weight:700;margin-bottom:4px">'+m.titre+'</div>'
-      + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div>'
-      + '<button onclick="handleMission(\''+m.mission_id+'\')" style="margin-top:8px;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir la mission</button>'
-      + '</div>';
-  }
+  missions = missions.filter(function(m){
+    const loc = ud && ud.missions && ud.missions[m.mission_id];
+    return !(loc && (loc.status === 'done' || (loc.tentatives||0) >= 2));
+  });
+  if(!missions.length){ wrap.innerHTML=''; return; }
+  wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
+    + '<div class="ct" style="color:#8A6500">⭐ ' + (missions.length > 1 ? 'Missions demandées par ton professeur ('+missions.length+')' : 'Mission du jour') + '</div>'
+    + missions.map(function(m, i){
+        return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0'+(i ? ';border-top:1px solid #FDE68A' : '')+'">'
+          + '<div><div style="font-size:13px;font-weight:700;margin-bottom:2px">'+m.titre+'</div>'
+          + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div></div>'
+          + '<button onclick="handleMission(\''+m.mission_id+'\')" style="flex-shrink:0;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir</button>'
+          + '</div>';
+      }).join('')
+    + '</div>';
 }
 
 // ═══ ACTUALITÉS LABORO ═══

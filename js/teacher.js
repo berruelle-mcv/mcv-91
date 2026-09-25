@@ -301,50 +301,120 @@ async function assignerMDJ(){
   if(!d.ok){ if(st) st.textContent = 'Échec : ' + (d.erreur || 'erreur inconnue'); return; }
 
   if(st){
-    st.textContent = d.cible === 'eleve'
-      ? '✅ Mission "'+d.titre+'" assignée à '+d.prenom+' '+d.nom+'.'
-      : '✅ Mission "'+d.titre+'" assignée à la classe.';
+    const qui = d.cible === 'eleve' ? (d.prenom+' '+d.nom) : 'la classe';
+    st.textContent = d.deja
+      ? 'ℹ️ La mission "'+d.titre+'" est déjà en cours pour '+qui+' : rien à refaire.'
+      : '✅ Mission "'+d.titre+'" assignée à '+qui+'. Elle s\'ajoute aux missions déjà en cours.';
   }
   renderMDJListe();
 }
 
-// --- Liste des missions du jour assignées aujourd'hui (classes + élèves) ---
+// ═══ Missions assignées : en cours + historique (25/09/2026) ═══
+// Le serveur garde toutes les assignations (datées). Une mission disparaît de
+// l'écran de l'élève dès qu'il l'a terminée (validée ou 2 tentatives) ; ici,
+// l'enseignant voit l'avancement, peut retirer une mission, et garde l'historique.
+let MDJ_ASSIGNATIONS = [];
+let MDJ_DEPLIE = {};
+
+function fmtDateHeure(iso){
+  if(!iso) return '—';
+  const d = new Date(iso);
+  if(isNaN(d)) return '—';
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+}
+function cibleAssignation(a){
+  return a.cible === 'classe' ? (a.classe_libelle || a.classe_id) : (((a.nom||'').toUpperCase() + ' ' + (a.prenom||'')).trim() || 'Élève');
+}
+function etatAssignation(a){
+  if(a.retiree_at) return { code:'retiree', label:'Retirée', bg:'#F3F4F6', fg:'#6B7280' };
+  if(a.total > 0 && a.termines >= a.total) return { code:'terminee', label:'✅ Terminée', bg:'#DCFCE7', fg:'#166534' };
+  return { code:'encours', label:'🟡 En cours', bg:'#FEF3C7', fg:'#92400E' };
+}
+function barreAvancement(a){
+  const pct = a.total ? Math.round(a.termines / a.total * 100) : 0;
+  return '<div style="display:flex;align-items:center;gap:8px;min-width:150px">'
+    + '<div style="flex:1;height:8px;background:#E5E7EB;border-radius:5px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:#1B7F3B"></div></div>'
+    + '<span style="font-size:11px;font-weight:700;white-space:nowrap">'+a.termines+'/'+a.total+'</span></div>';
+}
+
 async function renderMDJListe(){
   const el = document.getElementById('mdj-liste');
   if(!el) return;
   const token = localStorage.getItem('laboro_token');
-  if(!token){
-    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
-      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">'
-      + 'Connecte-toi via le serveur (enseignant) pour voir les missions du jour assignées.</div>';
-    return;
+  const encadre = function(txt, col){ return '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;font-size:12px;color:'+(col||'var(--gm,#6B7280)')+';text-align:center">'+txt+'</div>'; };
+  if(!token){ el.innerHTML = encadre('Connecte-toi via le serveur (enseignant) pour voir les missions assignées.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/toutes', { headers: { 'Authorization': 'Bearer ' + token } });
+  if(!r.ok || !r.data.ok){ el.innerHTML = encadre('Impossible de charger les missions assignées.', 'var(--rg,#C53030)'); return; }
+  MDJ_ASSIGNATIONS = r.data.assignations || [];
+
+  const enCours = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours'; });
+  if(!enCours.length){
+    el.innerHTML = encadre('Aucune mission en cours. Les missions terminées par tous les élèves concernés passent automatiquement dans l\'historique.');
+  } else {
+    el.innerHTML = enCours.map(function(a){
+      const deplie = !!MDJ_DEPLIE[a.id];
+      const restants = (a.restants||[]).map(function(x){ return ((x.nom||'').toUpperCase()+' '+(x.prenom||'')).trim(); });
+      return '<div style="padding:10px 0;border-bottom:.5px solid var(--gc)">'
+        + '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">'
+        + '<div style="flex:1;min-width:220px;cursor:pointer" onclick="basculerRestantsMDJ(\''+a.id+'\')" title="Voir qui ne l\'a pas encore terminée">'
+        + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:#185FA5">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
+        + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+'</div></div>'
+        + barreAvancement(a)
+        + '<button onclick="retirerMDJ(\''+a.id+'\')" title="Retirer cette mission (elle reste dans l\'historique)" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">✕</button>'
+        + '</div>'
+        + (deplie ? '<div style="margin-top:6px;font-size:11px;color:#92400E;background:#FFFBEA;border-radius:6px;padding:6px 10px">'
+            + (restants.length ? '<strong>Pas encore terminée par :</strong> ' + restants.join(', ') : 'Tout le monde l\'a terminée.') + '</div>' : '')
+        + '</div>';
+    }).join('');
   }
-  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/toutes', {
-    headers: { 'Authorization': 'Bearer ' + token }
+  remplirFiltreHistoriqueMDJ();
+  renderMDJHistorique();
+}
+
+function basculerRestantsMDJ(id){ MDJ_DEPLIE[id] = !MDJ_DEPLIE[id]; renderMDJListe(); }
+
+async function retirerMDJ(id){
+  const a = MDJ_ASSIGNATIONS.find(function(x){ return x.id === id; });
+  if(!confirm('Retirer la mission ' + (a ? a.mission_id + ' pour ' + cibleAssignation(a) : '') + ' ?\n\nElle disparaîtra de l\'écran des élèves mais restera dans ton historique. Les réponses et notes déjà obtenues ne sont pas touchées.')) return;
+  const token = localStorage.getItem('laboro_token');
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/' + encodeURIComponent(id), { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } });
+  if(!r.ok || !r.data.ok){ alert(r.erreur || 'Retrait impossible.'); return; }
+  renderMDJListe();
+}
+
+function remplirFiltreHistoriqueMDJ(){
+  const sel = document.getElementById('mdj-hist-filtre');
+  if(!sel) return;
+  const actuel = sel.value;
+  const classes = [];
+  MDJ_ASSIGNATIONS.forEach(function(a){ const c = a.cible === 'classe' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)'; if(classes.indexOf(c) < 0) classes.push(c); });
+  classes.sort();
+  sel.innerHTML = '<option value="">Toutes les classes</option>' + classes.map(function(c){ return '<option value="'+c+'"'+(c===actuel?' selected':'')+'>'+c+'</option>'; }).join('');
+}
+
+function renderMDJHistorique(){
+  const el = document.getElementById('mdj-historique');
+  if(!el) return;
+  const sel = document.getElementById('mdj-hist-filtre');
+  const filtre = sel ? sel.value : '';
+  const liste = MDJ_ASSIGNATIONS.filter(function(a){
+    if(!filtre) return true;
+    const c = a.cible === 'classe' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)';
+    return c === filtre;
   });
-  if(!r.ok || !r.data.ok){
-    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
-      + 'font-size:12px;color:var(--rg,#C53030);text-align:center">Impossible de charger les missions du jour.</div>';
-    return;
-  }
-  const { parClasse, parEleve } = r.data;
-  if((!parClasse || !parClasse.length) && (!parEleve || !parEleve.length)){
-    el.innerHTML = '<div style="padding:14px 16px;background:var(--gc,#F3F4F6);border-radius:8px;'
-      + 'font-size:12px;color:var(--gm,#6B7280);text-align:center">Aucune mission du jour assignée pour le moment.</div>';
-    return;
-  }
-  let html = '';
-  (parClasse||[]).forEach(function(a){
-    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
-      + '<span style="font-size:12px"><strong>'+(a.classe_libelle||a.classe_id)+'</strong> — '+a.titre+'</span>'
-      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
-  });
-  (parEleve||[]).forEach(function(a){
-    html += '<div class="mr" style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--gc)">'
-      + '<span style="font-size:12px"><strong>'+a.nom+' '+a.prenom+'</strong> — '+a.titre+'</span>'
-      + '<span class="u-label-sm">'+a.comp_id+' P'+a.palier+'</span></div>';
-  });
-  el.innerHTML = html;
+  if(!liste.length){ el.innerHTML = '<div style="padding:12px;font-size:12px;color:var(--gm)">Aucune mission assignée pour le moment.</div>'; return; }
+  el.innerHTML = '<div style="overflow-x:auto"><table style="border-collapse:collapse;font-size:12px;width:100%">'
+    + '<thead><tr style="background:#F1F5F9;text-align:left"><th style="padding:7px 8px">Date</th><th style="padding:7px 8px">Pour qui</th><th style="padding:7px 8px">Mission</th><th style="padding:7px 8px">Avancement</th><th style="padding:7px 8px">État</th></tr></thead><tbody>'
+    + liste.map(function(a){
+        const e = etatAssignation(a);
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+'</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">'+cibleAssignation(a)+'</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span></td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7">'+a.termines+'/'+a.total+' terminée(s)</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:'+e.bg+';color:'+e.fg+'">'+e.label
+          + (a.retiree_at ? ' le '+fmtDateHeure(a.retiree_at).split(' ')[0] : '') + '</span></td></tr>';
+      }).join('')
+    + '</tbody></table></div>';
 }
 
 // (ancienne fiche élève détaillée showFicheEleve(), supprimée le 20/09/2026 —
