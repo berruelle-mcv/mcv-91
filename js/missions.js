@@ -133,7 +133,9 @@ function openMission(id){
     a.q.forEach(q=>{
       const qid=`q_${id}_${i}_${q.substring(0,8).replace(/\s/g,'_')}`;
       const saved=savedReps[qid]||'';
-      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="Rédige ta réponse ici…" oninput="autoSaveRep('${id}','${qid}',this)">${saved}</textarea></div>`;
+      const qcm=analyserQCM(q);
+      const ph=qcm?(qcm.mode==='ordre'?'Clique les lettres dans l\'ordre ci-dessus, puis justifie si demandé…':'Clique ta/tes réponse(s) ci-dessus, puis justifie si demandé…'):'Rédige ta réponse ici…';
+      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}','${qid}',this);majChoixQCM('${qid}')">${saved}</textarea></div>`;
     });
     html+='</div>';
   });
@@ -190,10 +192,7 @@ function openMission(id){
   // Bouton soumettre
   const st=ud.missions[id]?.status;
   const tent=ud.missions[id]?.tentatives||0;
-  const btnS=document.getElementById('btn-submit');
-  if(st==='done'){btnS.style.display='none';}
-  else if(tent>=2){btnS.textContent='Tentatives épuisées (2/2)';btnS.disabled=true;btnS.style.opacity='.5';}
-  else{btnS.style.display='';btnS.disabled=false;btnS.style.opacity='1';btnS.textContent=tent===1?'Soumettre (dernière tentative)':'Soumettre mes réponses';}
+  majBoutonsMission(id);
   moTab(0,document.querySelectorAll('.mo-tab')[0]);
   document.getElementById('mo').classList.add('open');document.getElementById('mo').classList.add('on');const _modal=document.querySelector('.modal');if(_modal)_modal.style.display='flex';
 }
@@ -210,13 +209,44 @@ function autoSaveRep(mid,qid,el){
   }
   sUD(ud);
 }
+// ═══ Boutons de la fenêtre mission (25/09/2026) ═══
+// Règles :
+//  • mission validée → plus de soumission possible
+//  • note IA < 12 après la 1re tentative → l'élève peut corriger ses réponses
+//    et soumettre une 2e (et dernière) fois
+//  • note IA ≥ 12 en attente de validation → on attend l'enseignant
+//  • "Effacer mes réponses" n'existe que pour un brouillon jamais soumis :
+//    une mission déjà corrigée est enregistrée sur le serveur, l'effacer
+//    dans le navigateur ne ferait que désynchroniser l'élève.
+const SEUIL_RESOUMISSION = 12;
+function majBoutonsMission(id){
+  const m = gUD().missions[id] || {};
+  const st = m.status, tent = m.tentatives || 0;
+  const btnS = document.getElementById('btn-submit');
+  const btnR = document.getElementById('btn-reset');
+  if(btnS){
+    btnS.style.display=''; btnS.disabled=false; btnS.style.opacity='1';
+    if(st==='done'){ btnS.style.display='none'; }
+    else if(st==='att' && m.note_ia!=null && m.note_ia>=SEUIL_RESOUMISSION){
+      btnS.textContent='⏳ En attente de validation par ton professeur'; btnS.disabled=true; btnS.style.opacity='.6';
+    }
+    else if(tent>=2){ btnS.textContent='Tentatives épuisées (2/2)'; btnS.disabled=true; btnS.style.opacity='.5'; }
+    else if(tent===1){ btnS.textContent='✏️ Soumettre ma correction (dernière tentative)'; }
+    else { btnS.textContent='Soumettre mes réponses'; }
+  }
+  if(btnR){
+    const soumise = tent>0 || st==='att' || st==='done';
+    btnR.style.display = soumise ? 'none' : '';
+  }
+}
 function resetMission(){
   if(!CM)return;
-  const st=gUD().missions[CM.id]?.status;
-  const msg=st==='done'
-    ? 'Cette mission est déjà validée. La recommencer effacera ta note et tes réponses. Es-tu sûr(e) ?'
-    : 'Recommencer cette mission effacera toutes tes réponses en cours. Es-tu sûr(e) ?';
-  if(!confirm(msg))return;
+  const m=gUD().missions[CM.id]||{};
+  if(m.tentatives>0||m.status==='att'||m.status==='done'){
+    alert('Cette mission a déjà été corrigée : tes réponses sont conservées. Tu peux les modifier directement.');
+    return;
+  }
+  if(!confirm('Effacer toutes tes réponses en cours sur cette mission ? (Rien n\'a encore été envoyé à la correction.)'))return;
   const ud=gUD();
   delete ud.missions[CM.id];
   sUD(ud);
@@ -514,3 +544,84 @@ function renderCompetences(){
 
 // Initialiser le drag de la modal au chargement
 document.addEventListener('DOMContentLoaded', function(){ setTimeout(initModalDrag, 500); });
+
+
+// ═══ Choix cliquables pour les questions à options A) B) C)… (25/09/2026) ═══
+// Beaucoup de questions disent "Coche…", "Laquelle…", "Remets dans l'ordre…"
+// mais n'affichaient qu'une zone de texte. On détecte les options dans l'énoncé
+// et on affiche des cases cliquables. Le choix est écrit en 1re ligne de la
+// zone de réponse ("Réponse : A, C" ou "Ordre : B → A → C") : la correction IA
+// reçoit donc exactement le même format texte qu'avant, sans rien changer côté serveur.
+function analyserQCM(q){
+  const re=/(?:^|\s)([A-F])\)\s+/g;
+  const pos=[];let mm;
+  while((mm=re.exec(q))!==null){ pos.push({l:mm[1],debut:mm.index+mm[0].length,idx:mm.index}); }
+  if(pos.length<2) return null;
+  // Les lettres doivent se suivre à partir de A (A, B, C…)
+  for(let i=0;i<pos.length;i++){ if(pos[i].l!==String.fromCharCode(65+i)) return null; }
+  const options=pos.map(function(p,i){
+    let txt=q.substring(p.debut, i+1<pos.length?pos[i+1].idx:q.length);
+    txt=txt.replace(/\s*[—–]\s*$/,'').replace(/\s*[.;]\s*$/,'').trim();
+    // Dernière option : couper une éventuelle consigne qui suit (". Donne…", ". Justifie…")
+    if(i===pos.length-1){ const cut=txt.search(/[.?!]?['’"»]?\s+(Justifie|Explique|Donne|Coche|Réponds|Puis|Pour chaque|Précise|Dans quel)/); if(cut>0) txt=txt.substring(0,cut+1); }
+    return {l:p.l, t:txt.replace(/^['"«\s]+|['"»\s]+$/g,'')};
+  });
+  const avant=q.substring(0,pos[0].idx).toLowerCase();
+  let mode='un';
+  if(/ordre|classe-les|classe les|numérote/.test(avant) || /dans quel ordre/i.test(q)) mode='ordre';
+  else if(/coche les|lesquel(le)?s|identifie les|choisis les|les \d+ (bonne|meilleur|plus|mauvaise)|\d+ bonnes|\bles \d+ |plusieurs/.test(avant)) mode='plusieurs';
+  return {mode:mode, options:options};
+}
+function lireChoixQCM(val){
+  const l1=String(val||'').split('\n')[0];
+  const mm=l1.match(/^(Réponse|Ordre)\s*:\s*(.*)$/);
+  if(!mm) return [];
+  return (mm[2].match(/\b[A-F]\b/g)||[]);
+}
+function renderChoixQCM(qid,qcm,saved){
+  const choisis=lireChoixQCM(saved);
+  const aide=qcm.mode==='ordre'?'Clique dans l\'ordre':(qcm.mode==='plusieurs'?'Plusieurs réponses possibles':'Une seule réponse');
+  return '<div class="qcm-wrap" id="qcm_'+qid+'" data-mode="'+qcm.mode+'" style="margin:8px 0 6px">'
+    +'<div style="font-size:10px;font-weight:700;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">'+aide+'</div>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:6px">'
+    +qcm.options.map(function(o){
+      const rang=choisis.indexOf(o.l);
+      const court=o.t.length>70?o.t.substring(0,67)+'…':o.t;
+      return '<button type="button" class="qcm-opt" data-l="'+o.l+'" onclick="choisirQCM(\''+qid+'\',\''+o.l+'\')" title="'+o.t.replace(/"/g,'&quot;')+'" style="'+styleOptQCM(rang>=0)+'">'
+        +'<span class="qcm-case" style="display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:'+(qcm.mode==='un'?'50%':'4px')+';border:1.5px solid currentColor;font-size:10px;font-weight:800;margin-right:6px">'
+        +(rang>=0?(qcm.mode==='ordre'?(rang+1):'✓'):'')+'</span><strong style="margin-right:4px">'+o.l+')</strong>'+court+'</button>';
+    }).join('')
+    +'</div></div>';
+}
+function styleOptQCM(on){
+  return 'display:inline-flex;align-items:center;text-align:left;padding:6px 10px;border-radius:8px;cursor:pointer;font-size:12px;line-height:1.35;max-width:100%;'
+    +(on?'background:#185FA5;color:#fff;border:1.5px solid #185FA5':'background:#fff;color:#1A2E4A;border:1.5px solid #CBD5E0');
+}
+function choisirQCM(qid,lettre){
+  const wrap=document.getElementById('qcm_'+qid), ta=document.getElementById(qid);
+  if(!wrap||!ta) return;
+  const mode=wrap.dataset.mode;
+  let choisis=lireChoixQCM(ta.value);
+  if(mode==='un') choisis=(choisis[0]===lettre)?[]:[lettre];
+  else if(choisis.indexOf(lettre)>=0) choisis=choisis.filter(function(x){return x!==lettre;});
+  else choisis.push(lettre);
+  if(mode==='plusieurs') choisis.sort();
+  const lignes=ta.value.split('\n');
+  const aUneLigneChoix=/^(Réponse|Ordre)\s*:/.test(lignes[0]||'');
+  const reste=(aUneLigneChoix?lignes.slice(1):lignes).join('\n');
+  const ligne=choisis.length?(mode==='ordre'?'Ordre : '+choisis.join(' → '):'Réponse : '+choisis.join(', ')):'';
+  ta.value=ligne?(ligne+(reste.trim()?'\n'+reste:'\n')):reste;
+  if(CM) autoSaveRep(CM.id,qid,ta);
+  majChoixQCM(qid);
+}
+function majChoixQCM(qid){
+  const wrap=document.getElementById('qcm_'+qid), ta=document.getElementById(qid);
+  if(!wrap||!ta) return;
+  const mode=wrap.dataset.mode, choisis=lireChoixQCM(ta.value);
+  wrap.querySelectorAll('.qcm-opt').forEach(function(b){
+    const rang=choisis.indexOf(b.dataset.l);
+    b.setAttribute('style',styleOptQCM(rang>=0));
+    const c=b.querySelector('.qcm-case');
+    if(c) c.textContent=rang>=0?(mode==='ordre'?String(rang+1):'✓'):'';
+  });
+}

@@ -51,6 +51,7 @@ async function renderClasse(){
 // ================================================
 
 let PROGRESSIONS_CLASSE = {}; // eleveId -> ud ({missions:{...}}) reconstruit depuis le serveur
+let PROGRESSIONS_BRUTES = {}; // eleveId -> progressions serveur telles quelles (note_ia, note_finale, statut…)
 
 function construireUdEleve(progressions){
   const ud = { missions: {} };
@@ -73,6 +74,7 @@ async function chargerProgressionsClasse(eleves){
     });
     if(r.ok && r.data && r.data.ok){
       PROGRESSIONS_CLASSE[e.id] = construireUdEleve(r.data.progressions);
+      PROGRESSIONS_BRUTES[e.id] = r.data.progressions || []; // pour le relevé de notes Pronote
     }
   }));
 }

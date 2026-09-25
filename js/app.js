@@ -188,28 +188,32 @@ const allU=()=>{
 const getMDJ=()=>{try{return JSON.parse(localStorage.getItem('laboro_mdj')||'{}')}catch{return{}}};
 const setMDJ=d=>localStorage.setItem('laboro_mdj',JSON.stringify(d));
 
-// ═══ SCORE LABORO (60/20/20) ═══
-function calcScore(ud){
-  const ms=Object.values(ud.missions||{});
+// ═══ SCORE LABORO (70 qualité / 30 engagement) — validé par Pascal le 25/09/2026 ═══
+// Calculé UNIQUEMENT à partir des missions validées et de leur note, pour que
+// l'élève et la Vue classe (données serveur) affichent toujours le même chiffre.
+//   • Qualité  /70 : moyenne des notes, pondérée par bloc de compétences, ramenée sur 70
+//   • Engagement /30 : 3 pts par mission validée, plafonné à 10 missions
+// (L'ancien bonus "progression" est supprimé : il n'existait que dans le navigateur
+//  de l'élève et valait +10 dès la 1re soumission — cause de l'écart élève / Vue classe.)
+const SCORE_PTS_PAR_MISSION = 3, SCORE_MISSIONS_MAX = 10;
+function calcScoreDetail(ud){
+  const ms=Object.values((ud&&ud.missions)||{});
   const done=ms.filter(m=>m.status==='done'&&m.score!=null);
-  if(!done.length)return 0;
-  // Composante 1 — moyenne pondérée 60%
   const coefs={'C1':3,'C2':2,'C3':3,'G4':4,'ACC':1};
-  let sw=0,wt=0;
+  let sw=0,wt=0,nb=0;
   done.forEach(m=>{
     const mis=MISSIONS.find(x=>x.id===m.id);
     if(!mis)return;
     const g=mis.comp.startsWith('C1')?'C1':mis.comp.startsWith('C2')?'C2':mis.comp.startsWith('C3')?'C3':mis.comp.startsWith('ACC')?'ACC':'G4';
     const c=coefs[g]||1;
-    sw+=m.score*c;wt+=c*20;
+    sw+=m.score*c;wt+=c;nb++;
   });
-  const moyP=wt?sw/wt*60:0;
-  // Composante 2 — régularité 20% (simulé : 2pts par mission soumise cette semaine, max 20)
-  const reg=Math.min(done.length*2,20);
-  // Composante 3 — progression 20% (amélioration entre tentatives, max 10)
-  const prog=Math.min(ms.filter(m=>m.progression&&m.progression>0).reduce((a,m)=>a+m.progression,0),10);
-  return Math.round(moyP+reg+prog);
+  const moyenne=wt?sw/wt:0;                                   // moyenne pondérée /20
+  const qualite=Math.round(moyenne/20*70);                    // /70
+  const engagement=Math.min(nb,SCORE_MISSIONS_MAX)*SCORE_PTS_PAR_MISSION; // /30
+  return {total:qualite+engagement, qualite, engagement, moyenne, nb};
 }
+function calcScore(ud){ return calcScoreDetail(ud).total; }
 
 // ═══ CLASSEMENT ═══
 // Classement filtré PAR CLASSE : un élève ne voit que les élèves de sa propre classe.

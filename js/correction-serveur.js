@@ -86,7 +86,14 @@ async function soumettreReponses(){
   tabFb.style.display = '';
   document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
   moTab(2, tabFb);
-  btnS.style.display = 'none';
+  majBoutonsMission(CM.id);
+  // Note insuffisante avec une tentative restante : on l'explique clairement
+  if(d.statut !== 'valide' && note < SEUIL_RESOUMISSION && tent < 2){
+    document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
+      '<div style="background:#FFF7E6;border:1px solid #F0C040;border-left:4px solid #D97706;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#7A4B00">'
+      + '<strong>✏️ Tu peux corriger ta mission.</strong> Lis le feedback ci-dessous, retourne dans l\'onglet <strong>La mission</strong> : '
+      + 'tes réponses sont toujours là. Améliore-les puis clique sur <strong>« Soumettre ma correction »</strong> (dernière tentative).</div>');
+  }
 
   if(typeof renderDashboard === 'function') renderDashboard();
   if(typeof renderMissions === 'function') renderMissions();
@@ -144,6 +151,19 @@ async function synchroniserProgressionsServeur(){
         date_validation: p.validated_at || p.submitted_at || (local ? local.date_validation : undefined)
       });
       changed = true;
+    });
+
+    // Missions notées "validée / en attente" dans ce navigateur mais inconnues du
+    // serveur (réinitialisées par l'enseignant, anciens essais locaux) : elles ne
+    // doivent plus compter dans le score. Les réponses restent conservées.
+    const surServeur = {};
+    d.progressions.forEach(function(p){ if(p && p.mission_id) surServeur[p.mission_id] = true; });
+    Object.keys(ud.missions).forEach(function(mid){
+      const m = ud.missions[mid];
+      if(m && (m.status === 'done' || m.status === 'att') && !surServeur[mid]){
+        ud.missions[mid] = Object.assign({}, m, { status: 'wip', score: undefined, note_ia: undefined, tentatives: 0 });
+        changed = true;
+      }
     });
 
     if(changed){

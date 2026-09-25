@@ -346,6 +346,7 @@ function renderDashboard(){
         const smEl = wbr ? wbr.querySelector('.sm') : null;
         if(smEl) smEl.textContent = 'Score LABORO /100';
       }
+      renderDetailScore(ud, msDone);
     }
   }
   // Afficher le palier
@@ -738,3 +739,40 @@ function renderMissions(){
   document.getElementById('missions-list').innerHTML = statsBar + cardsHtml;
 }
 
+
+// ═══ Explication du Score LABORO côté élève (25/09/2026) ═══
+// Les élèves ne comprenaient pas pourquoi un camarade avec une moyenne plus basse
+// pouvait avoir plus de points : on affiche le détail de LEUR calcul, en clair.
+function renderDetailScore(ud, msDone){
+  const wbr = document.querySelector('.wb-r');
+  if(!wbr) return;
+  let el = document.getElementById('wb-detail');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'wb-detail';
+    el.style.cssText = 'margin-top:6px';
+    wbr.appendChild(el);
+  }
+  if(!msDone){ el.innerHTML = ''; return; }
+  const d = calcScoreDetail(ud);
+  const ouvert = el.dataset.ouvert === '1';
+  const moy = d.moyenne.toFixed(1).replace('.', ',');
+  const reste = Math.max(0, SCORE_MISSIONS_MAX - d.nb);
+  el.innerHTML =
+    '<button type="button" onclick="basculerDetailScore()" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:14px;padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer">'
+    + (ouvert ? '▲ Masquer le détail' : 'ℹ️ Comment est calculé mon score ?') + '</button>'
+    + (ouvert ? '<div style="margin-top:8px;background:#fff;color:#1A2E4A;border-radius:10px;padding:10px 12px;font-size:11px;line-height:1.55;text-align:left;max-width:280px;box-shadow:0 4px 14px rgba(0,0,0,.18)">'
+      + '<div style="display:flex;justify-content:space-between;font-weight:800"><span>🎯 Qualité</span><span>' + d.qualite + ' / 70</span></div>'
+      + '<div style="color:#4A5568;margin-bottom:6px">Ta moyenne sur tes missions validées : <strong>' + moy + '/20</strong>. Mieux tu réussis, plus tu gagnes de points.</div>'
+      + '<div style="display:flex;justify-content:space-between;font-weight:800"><span>💪 Engagement</span><span>' + d.engagement + ' / 30</span></div>'
+      + '<div style="color:#4A5568;margin-bottom:6px">' + d.nb + ' mission(s) validée(s) × 3 pts'
+      + (reste > 0 ? ' — encore ' + reste + ' mission(s) pour avoir les 30 pts.' : ' — maximum atteint !') + '</div>'
+      + '<div style="border-top:1px solid #E2E8F0;padding-top:6px;color:#4A5568">Deux élèves peuvent avoir la même moyenne mais pas le même score : celui qui a validé plus de missions gagne des points d\'engagement. Seules les missions <strong>validées</strong> comptent.</div>'
+      + '</div>' : '');
+}
+function basculerDetailScore(){
+  const el = document.getElementById('wb-detail');
+  if(!el) return;
+  el.dataset.ouvert = el.dataset.ouvert === '1' ? '0' : '1';
+  renderDetailScore(gUD(), 1);
+}
