@@ -88,7 +88,7 @@ async function soumettreReponses(){
   moTab(2, tabFb);
   majBoutonsMission(CM.id);
   // Note insuffisante avec une tentative restante : on l'explique clairement
-  if(d.statut !== 'valide' && note < SEUIL_RESOUMISSION && tent < 2){
+  if(d.statut !== 'valide' && tent < 2){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
       '<div style="background:#FFF7E6;border:1px solid #F0C040;border-left:4px solid #D97706;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#7A4B00">'
       + '<strong>✏️ Tu peux corriger ta mission.</strong> Lis le feedback ci-dessous, retourne dans l\'onglet <strong>La mission</strong> : '

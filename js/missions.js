@@ -212,13 +212,12 @@ function autoSaveRep(mid,qid,el){
 // ═══ Boutons de la fenêtre mission (25/09/2026) ═══
 // Règles :
 //  • mission validée → plus de soumission possible
-//  • note IA < 12 après la 1re tentative → l'élève peut corriger ses réponses
+//  • mission "à examiner" (= note sous le seuil de validation de la classe,
+//    11 par défaut, fixé par le serveur) → l'élève peut corriger ses réponses
 //    et soumettre une 2e (et dernière) fois
-//  • note IA ≥ 12 en attente de validation → on attend l'enseignant
 //  • "Effacer mes réponses" n'existe que pour un brouillon jamais soumis :
 //    une mission déjà corrigée est enregistrée sur le serveur, l'effacer
 //    dans le navigateur ne ferait que désynchroniser l'élève.
-const SEUIL_RESOUMISSION = 12;
 function majBoutonsMission(id){
   const m = gUD().missions[id] || {};
   const st = m.status, tent = m.tentatives || 0;
@@ -227,9 +226,6 @@ function majBoutonsMission(id){
   if(btnS){
     btnS.style.display=''; btnS.disabled=false; btnS.style.opacity='1';
     if(st==='done'){ btnS.style.display='none'; }
-    else if(st==='att' && m.note_ia!=null && m.note_ia>=SEUIL_RESOUMISSION){
-      btnS.textContent='⏳ En attente de validation par ton professeur'; btnS.disabled=true; btnS.style.opacity='.6';
-    }
     else if(tent>=2){ btnS.textContent='Tentatives épuisées (2/2)'; btnS.disabled=true; btnS.style.opacity='.5'; }
     else if(tent===1){ btnS.textContent='✏️ Soumettre ma correction (dernière tentative)'; }
     else { btnS.textContent='Soumettre mes réponses'; }
