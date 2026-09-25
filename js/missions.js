@@ -99,7 +99,7 @@ function openMission(id){
   const m=MISSIONS.find(x=>x.id===id);if(!m)return;
   const ud=gUD();
   const locked=!isPalierUnlocked(m,ud)&&CU.classe!=='enseignant';
-  if(locked){alert('Valide d\'abord le Palier '+(m.palier-1)+' de cette compétence avec une note ≥ 11/20.');return;}
+  if(locked){alert('Fais d\'abord valider une mission du Palier '+(m.palier-1)+' de cette compétence.');return;}
   CM=m;repBuffer={};
   if(!ud.missions[id]){ud.missions[id]={status:'todo',id};sUD(ud);}
   document.querySelector('.mo').scrollTo(0,0);
@@ -107,7 +107,7 @@ function openMission(id){
   // Démarrer le timer
   startMoTimer(55);
   document.getElementById('mo-m').innerHTML=`${compBadge(m.comp)} · Palier ${m.palier} — ${['','Débutant','Apprenti','Professionnel compétent','Professionnel performant'][m.palier]}`;
-  const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Note ≥ 11/20 pour débloquer le Palier 2.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Note ≥ 11/20 pour débloquer le Palier 3.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Note ≥ 11/20 pour débloquer le Palier 4.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
+  const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Mission validée = Palier 2 débloqué.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Mission validée = Palier 3 débloqué.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Mission validée = Palier 4 débloqué.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
   const pdEl=document.getElementById('mo-palier-desc');
   if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource

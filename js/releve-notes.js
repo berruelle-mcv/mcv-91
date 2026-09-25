@@ -242,7 +242,7 @@ function openAExaminer(){
     return;
   }
   body.innerHTML =
-    '<div style="font-size:12px;color:var(--gm);line-height:1.5;margin-bottom:12px">Ces missions ont eu une note sous le seuil de validation de la classe (11/20 par défaut) : elles ne comptent pas encore dans le score de l\'élève. '
+    '<div style="font-size:12px;color:var(--gm);line-height:1.5;margin-bottom:12px">Ces missions ont eu une note sous le seuil de validation de la classe (10/20 pour tes classes actuellement) : elles ne comptent pas encore dans le score de l\'élève. '
     + 'L\'élève peut les corriger une fois ; s\'il a déjà utilisé ses 2 tentatives, c\'est à toi de voir avec lui. Les plus faibles notes sont en haut.</div>'
     + '<table style="border-collapse:collapse;font-size:12px;width:100%">'
     + '<thead><tr style="background:#F1F5F9;text-align:left"><th style="padding:8px">Élève</th><th style="padding:8px">Mission</th><th style="padding:8px;text-align:center">Note IA</th><th style="padding:8px">Dernière soumission</th></tr></thead><tbody>'

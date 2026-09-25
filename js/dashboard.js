@@ -617,12 +617,14 @@ function getMissions(){
 }
 function isPalierUnlocked(m,ud){
   if(m.palier===1)return true;
-  // Vérifier que le palier précédent de la même compétence est validé >= 11
+  // Le palier précédent de la même compétence doit être VALIDÉ. C'est le serveur qui
+  // valide, selon le seuil réglé pour la classe (10/20 aujourd'hui) — l'ancien seuil
+  // fixe "≥ 11" côté site bloquait à tort un élève validé avec 10/20 (25/09/2026).
   const prevPalier=m.palier-1;
   const prevMission=MISSIONS.find(x=>x.comp===m.comp&&x.palier===prevPalier);
   if(!prevMission)return true;
   const prev=ud.missions[prevMission.id];
-  return prev&&prev.status==='done'&&prev.score>=11;
+  return !!(prev&&prev.status==='done');
 }
 
 function compBadge(code){
