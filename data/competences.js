@@ -907,7 +907,7 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
 <div class="res-section-label">🟢 3 indicateurs et comment collecter les avis</div>
 <p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS</strong> = % Promoteurs (9-10) − % Détracteurs (0-6). Les neutres (7-8) ne comptent pas. Objectif LABORO : NPS supérieur à +20.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux &lt; 20% = résultats non représentatifs.</li></ul>
 <p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul>
-<div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (cités par 4 insatisfaits sur 11, soit 36%) → négociation avec le transporteur partenaire.</div>
+<div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>150 répondants : 62 très satisfaits + 55 satisfaits = 117 satisfaits. Taux = 117÷150×100 = <strong>78,0%</strong> (objectif 80% non atteint).<br>NPS : 51 promoteurs (34%) − 18 détracteurs (12%) = <strong>+22</strong> — score correct.<br>Action prioritaire : délais e-commerce (cités par 6 insatisfaits sur 14, soit 43%) → négociation avec le transporteur partenaire.</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -921,11 +921,11 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
 <div class="res-section-label">🟠 Quand les indicateurs racontent des histoires différentes</div>
 <p>À ce niveau, tu ne reçois plus un seul chiffre clair : le NPS peut être bon alors que le taux de satisfaction est décevant, ou l'inverse. Ton rôle est de comprendre pourquoi les indicateurs divergent avant de conclure trop vite.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — NPS bon, taux de satisfaction décevant</div>
-NPS = +28 (bon score) mais taux de satisfaction = 75,4% (sous l'objectif de 80%). Comment expliquer ce grand écart ? Le NPS mesure la recommandation future (l'image globale de LABORO), le taux de satisfaction mesure le vécu réel de LA dernière expérience. Un client peut rester fidèle à la marque (bon NPS) tout en étant déçu d'un achat précis (mauvaise note satisfaction) — les deux ne mesurent pas exactement la même chose.
+NPS = +22 (score correct) mais taux de satisfaction = 78,0% (sous l'objectif de 80%). Comment expliquer ce grand écart ? Le NPS mesure la recommandation future (l'image globale de LABORO), le taux de satisfaction mesure le vécu réel de LA dernière expérience. Un client peut rester fidèle à la marque (bon NPS) tout en étant déçu d'un achat précis (mauvaise note satisfaction) — les deux ne mesurent pas exactement la même chose.
 </div>
 <p><strong>Croiser les indicateurs avec les verbatims :</strong> quand un chiffre surprend, il faut aller chercher l'explication dans les commentaires libres des clients (verbatims) plutôt que de se contenter du chiffre seul. Un chiffre isolé peut induire en erreur ; un chiffre expliqué par des verbatims devient exploitable.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — expliquer l'écart par les verbatims</div>
-En lisant les commentaires liés aux notes basses de satisfaction, on découvre que 4 insatisfaits sur 11 (36%) mentionnent le même problème : les délais e-commerce. Le NPS reste bon car le produit et le conseil restent appréciés — seul un point précis (la livraison) tire le taux de satisfaction vers le bas. La priorité d'action devient claire : ce n'est pas toute l'expérience LABORO qui est en cause, mais un maillon logistique précis.
+En lisant les commentaires liés aux notes basses de satisfaction, on découvre que 6 insatisfaits sur 14 (43%) mentionnent le même problème : les délais e-commerce. Le NPS reste bon car le produit et le conseil restent appréciés — seul un point précis (la livraison) tire le taux de satisfaction vers le bas. La priorité d'action devient claire : ce n'est pas toute l'expérience LABORO qui est en cause, mais un maillon logistique précis.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton interprétation — par exemple : qu'aurais-tu risqué de conclure à tort si tu n'avais regardé que le NPS, ou que le taux de satisfaction, séparément ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'analyse.</p>
 </div>
@@ -1609,7 +1609,7 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <p><strong>Qualifier un prospect avec la méthode BANT :</strong></p>
 <ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
 <p><strong>Champs obligatoires dans LABORO Connect :</strong> les 8 champs de base (raison sociale, secteur, effectif, contact — nom et fonction du décisionnaire —, téléphone/e-mail, source d'identification, besoins estimés, date de relance), complétés à ce niveau par le score BANT, le statut (froid/tiède/chaud) et la prochaine action.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Aéronis Systèmes (Villebon-sur-Yvette) — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2046,7 +2046,7 @@ Un portefeuille de prospects à statuts variés (devis envoyés, en négociation
 </ul>
 <p><strong>Construire une offre à plusieurs niveaux</strong> (Essentiel · Confort · Partenaire) permet au client de choisir selon son budget, sans se sentir piégé dans une seule option.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — répondre à l'objection prix</div>
-Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." (écart calculé sur les prix hors remise) Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
+Un client dit : "Chez Decathlon Pro, c'est 60 € de moins pour 15 maillots." (28 € contre 24 € l'unité) Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -2377,7 +2377,7 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
 <p><strong>Communication écrite — trier et prioriser une boîte mail :</strong> urgent et important (réclamation, RDV imminent) à traiter en priorité · important non urgent (renseignement, partenariat) à transmettre · non important (spam) à supprimer sans répondre.</p>
 <p><strong>5 règles d'un mail professionnel :</strong> objet clair · formule d'introduction · message concis (3-5 phrases) · formule de politesse finale · signature complète.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse professionnelle à un client</div>
-"Bonjour Madame Lambert, je prends bonne note de votre demande concernant votre commande n°2847. Je transmets immédiatement votre message à notre service satisfaction client qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
+"Bonjour Monsieur Perrin, je prends bonne note de votre demande d'échange de taille concernant votre commande n°3962. Je transmets immédiatement votre message au service concerné, qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
 </div>
 </div>
 <div class="res-retenir">
