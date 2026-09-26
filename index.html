@@ -706,6 +706,8 @@ document.addEventListener('DOMContentLoaded', loadConfig);
   <div class="topbar"><div class="tb-t" id="tb-t">Tableau de bord</div><div class="tb-r"><span class="badge" id="tb-lvl" style="font-size:10px;padding:3px 9px;border-radius:10px;font-weight:700;margin-right:4px">—</span><span class="badge bb" id="tb-c" style="display:none">—</span><span style="font-size:11px;color:var(--gm)" id="tb-d"></span></div></div>
   <div class="content">
     <div id="panel-dashboard" class="panel on">
+      <div id="dash-ens" style="display:none"></div>
+      <div id="dash-eleve">
       <div class="wb">
         <div class="wb-l">
           <h2 id="wb-b">Bonjour !</h2>
@@ -741,6 +743,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <div class="ct">📊 Mes indicateurs</div>
         <div id="dash-indic"></div>
       </div>
+      </div><!-- /dash-eleve -->
     </div>
 
     <div id="panel-missions" class="panel">
@@ -970,6 +973,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <script src="js/teacher.js"></script>
 <script src="js/classe-serveur.js"></script>
 <script src="js/releve-notes.js"></script>
+<script src="js/dashboard-enseignant.js"></script>
 <script src="js/portfolio.js"></script>
 <script src="js/admin-classes.js"></script>
 <script src="js/admin-acces.js"></script>
