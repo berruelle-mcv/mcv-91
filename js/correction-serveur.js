@@ -192,7 +192,10 @@ async function synchroniserProgressionsServeur(){
     Object.keys(ud.missions).forEach(function(mid){
       const m = ud.missions[mid];
       if(m && (m.status === 'done' || m.status === 'att') && !surServeur[mid]){
-        ud.missions[mid] = Object.assign({}, m, { status: 'wip', score: undefined, note_ia: undefined, tentatives: 0 });
+        // Réinitialisée par l'enseignant (ou jamais arrivée au serveur) : on garde le brouillon
+        // des réponses mais on efface l'ancienne correction, pour ne pas afficher une note fantôme.
+        ud.missions[mid] = Object.assign({}, m, { status: 'wip', score: undefined, note_ia: undefined, tentatives: 0,
+          feedback: undefined, note_revue: undefined, commentaire_prof: undefined });
         changed = true;
       }
     });

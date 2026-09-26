@@ -588,14 +588,14 @@ function renderIndicateurs(){
   const ud = gUD();
   const missions = Object.entries(ud.missions||{});
   const done = missions.filter(function(m){ return m[1].status==='done'; });
-  const wip  = missions.filter(function(m){ return m[1].status==='wip'; });
+  const aCorriger = missions.filter(function(m){ return etatMissionEleve(m[1]).code==='a_corriger'; });
   const scores = done.filter(function(m){ return m[1].score != null; }).map(function(m){ return m[1].score; });
   const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1) : '—';
   const totalMissions = getMissions().length;
   const compsAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code, ud) >= 3; }).length;
   const kpis = [
     {label:'Missions complétées', value:done.length, total:totalMissions, icon:'✅', color:'#185FA5', bg:'#EBF4FF'},
-    {label:'En cours', value:wip.length, total:null, icon:'🔷', color:'#2D5282', bg:'#EBF4FF'},
+    {label:'À corriger', value:aCorriger.length, total:null, icon:'✏️', color:'#C2410C', bg:'#FFEDD5'},
     {label:'Moyenne générale', value:avg+'', total:null, unit:'/20', icon:'📊', color:'#D97706', bg:'#FEF3C7'},
     {label:'Compétences acquises', value:compsAcquis, total:COMP.length, icon:'⭐', color:'#7B2FBE', bg:'#EDE9FE'},
   ];
@@ -672,9 +672,12 @@ function renderMissions(){
   });
 
   // Stats rapides
-  const done   = ms.filter(function(m){ return ud.missions[m.id]?.status==='done'; }).length;
-  const wip    = ms.filter(function(m){ return ud.missions[m.id]?.status==='wip'; }).length;
-  const todo   = ms.length - done - wip;
+  const etatDe = function(m){ return etatMissionEleve(ud.missions[m.id]); };
+  const done   = ms.filter(function(m){ return etatDe(m).code==='validee'; }).length;
+  const aCorr  = ms.filter(function(m){ return etatDe(m).code==='a_corriger'; }).length;
+  const nonVal = ms.filter(function(m){ return etatDe(m).code==='non_validee'; }).length;
+  const wip    = ms.filter(function(m){ return etatDe(m).code==='brouillon'; }).length;
+  const todo   = ms.length - done - aCorr - nonVal - wip;
   const pct    = ms.length > 0 ? Math.round(done/ms.length*100) : 0;
 
   // Barre de progression globale
@@ -689,16 +692,17 @@ function renderMissions(){
     + '</div>'
     + '</div>'
     + '<div style="display:flex;gap:12px;font-size:11px;flex-shrink:0">'
-    + '<span class="u-success">✅ '+done+'</span>'
-    + '<span style="color:var(--bl);font-weight:700">🔷 '+wip+'</span>'
-    + '<span style="color:var(--gm);font-weight:600">○ '+todo+'</span>'
+    + '<span class="u-success" title="Validées">✅ '+done+' validée(s)</span>'
+    + (aCorr ? '<span style="color:#C2410C;font-weight:700" title="Note sous le seuil : tu peux corriger">✏️ '+aCorr+' à corriger</span>' : '')
+    + (nonVal ? '<span style="color:#B91C1C;font-weight:700" title="2 tentatives utilisées">⛔ '+nonVal+' non validée(s)</span>' : '')
+    + (wip ? '<span style="color:#92400E;font-weight:700" title="Commencées, pas encore envoyées">📝 '+wip+' brouillon(s)</span>' : '')
+    + '<span style="color:var(--gm);font-weight:600">○ '+todo+' à faire</span>'
     + '</div>'
     + '</div>';
 
   // Cards missions
   const cardsHtml = ms.map(function(m){
-    const st     = ud.missions[m.id]?.status || 'todo';
-    const sc     = ud.missions[m.id]?.score;
+    const etat   = etatMissionEleve(ud.missions[m.id]);
     const locked = !isPalierUnlocked(m, ud) && CU.classe !== 'enseignant';
     const pCol   = palierColors[m.palier] || '#4A6FA5';
     const pBg    = palierBgs[m.palier]   || '#EBF4FF';
@@ -707,19 +711,11 @@ function renderMissions(){
     // Badge statut
     const stBadge = locked
       ? '<span class="sp" style="background:#F3F4F6;color:#9CA3AF">🔒 P'+(m.palier-1)+' requis</span>'
-      : st==='done'
-        ? '<span class="sp" style="background:#D1FAE5;color:#065F46">✓ '+sc+'/20</span>'
-        : st==='att'
-        ? '<span class="sp" style="background:#DBEAFE;color:#1E40AF">⏳ En attente</span>'
-        : st==='wip'
-        ? '<span class="sp" style="background:#FEF3C7;color:#92400E">✏️ En cours</span>'
-        : '<span class="sp" style="background:#F3F4F6;color:#6B7280">À faire</span>';
+      : '<span class="sp" title="'+etat.aide+'" style="background:'+etat.bg+';color:'+etat.fg+'">'+etat.label+'</span>';
 
     // Barre de progression si en cours
-    const progressBar = st==='wip'
-      ? '<div class="pb" style="margin-top:8px"><div class="pf" style="width:40%"></div></div>'
-      : st==='done'
-      ? '<div class="pb" style="margin-top:8px"><div class="pf" style="width:100%;background:#185FA5"></div></div>'
+    const progressBar = etat.aide && etat.code !== 'a_faire'
+      ? '<div style="margin-top:6px;font-size:11px;color:'+etat.fg+'">'+etat.aide+'</div>'
       : '';
 
     const clickAction = "handleMission('" + m.id + "')";
@@ -786,4 +782,28 @@ function basculerDetailScore(){
   if(!el) return;
   el.dataset.ouvert = el.dataset.ouvert === '1' ? '0' : '1';
   renderDetailScore(gUD(), 1);
+}
+
+
+// ═══ État d'une mission vu par l'élève (26/09/2026) ═══
+// Un seul endroit décide du libellé, pour que « Mes missions » soit sans ambiguïté.
+function etatMissionEleve(m){
+  const fmt = function(n){ return String(n).replace('.', ','); };
+  if(!m || !m.status || m.status === 'todo')
+    return { code:'a_faire', label:'À faire', bg:'#F3F4F6', fg:'#6B7280', aide:'' };
+  if(m.status === 'done'){
+    const n = m.note_revue != null ? m.note_revue : m.score;
+    return { code:'validee', label:'✅ Validée' + (n != null ? ' · ' + fmt(n) + '/20' : ''), bg:'#D1FAE5', fg:'#065F46',
+             aide: m.commentaire_prof ? '💬 Ton professeur a laissé un commentaire : ouvre la mission, onglet Feedback.' : '' };
+  }
+  if(m.status === 'att'){
+    const n = m.note_revue != null ? m.note_revue : m.note_ia;
+    if((m.tentatives || 0) >= 2)
+      return { code:'non_validee', label:'⛔ Non validée' + (n != null ? ' · ' + fmt(n) + '/20' : ''), bg:'#FEE2E2', fg:'#B91C1C',
+               aide:'Tu as utilisé tes 2 tentatives : parles-en à ton professeur.' };
+    return { code:'a_corriger', label:'✏️ À corriger' + (n != null ? ' · ' + fmt(n) + '/20' : ''), bg:'#FFEDD5', fg:'#C2410C',
+             aide:'Note sous le seuil : lis le feedback et soumets ta correction (1 tentative restante).' };
+  }
+  // 'wip' : commencée dans ce navigateur, jamais envoyée
+  return { code:'brouillon', label:'📝 Brouillon', bg:'#FEF3C7', fg:'#92400E', aide:'Commencée mais pas encore envoyée : termine-la et clique sur « Soumettre ».' };
 }
