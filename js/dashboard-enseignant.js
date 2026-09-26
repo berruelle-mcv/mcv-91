@@ -15,6 +15,10 @@
 // ================================================
 
 let DASH_ENS_ASSIGNATIONS = [];
+// Classe affichée sur le tableau de bord ('' = toutes). Mémorisée dans le navigateur.
+let DASH_ENS_CLASSE_EFFECTIVE = '';
+function classeDashboardEffective(){ return DASH_ENS_CLASSE_EFFECTIVE || ''; }
+let DASH_ENS_CLASSE = (function(){ try{ return localStorage.getItem('laboro_dash_classe') || ''; }catch(e){ return ''; } })();
 let DASH_ENS_CHARGE_A = 0;
 const DASH_ENS_JOURS_RELANCE = 7;
 
@@ -63,7 +67,7 @@ async function renderDashboardEnseignant(){
     + boutonRaccourci('📌', 'Assigner une mission', "goP('missiondujour',document.getElementById('ni-mdj'))")
     + boutonRaccourci('📋', 'À examiner', "ouvrirDepuisAccueil('examiner')")
     + boutonRaccourci('📝', 'Relevé Pronote', "ouvrirDepuisAccueil('releve')")
-    + boutonRaccourci('👥', 'Vue classe', "allerVueClasse('')")
+    + boutonRaccourci('👥', 'Vue classe', "allerVueClasse(classeDashboardEffective())")
     + '</div></div>';
 
   if(!token){
@@ -107,8 +111,8 @@ function allerVueClasse(cls){
   goP('classe', document.getElementById('ni-cl'));
 }
 function ouvrirDepuisAccueil(quoi){
-  // Relevé et "À examiner" portent sur toutes les classes depuis l'accueil
-  classeFiltre = '';
+  // Relevé et "À examiner" portent sur la classe affichée sur le tableau de bord (ou toutes)
+  classeFiltre = classeDashboardEffective();
   if(typeof groupeFiltre !== 'undefined') groupeFiltre = '';
   if(quoi === 'examiner' && typeof openAExaminer === 'function') openAExaminer();
   if(quoi === 'releve' && typeof openReleve === 'function') openReleve();
@@ -117,7 +121,14 @@ function actualiserDashboardEnseignant(){ DASH_ENS_CHARGE_A = 0; renderDashboard
 
 // --- Calcul de toutes les données du tableau de bord ---
 function donneesDashboardEnseignant(){
-  const eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const tousEleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const toutesClasses = [...new Set(tousEleves.map(function(e){ return e.classe_libelle || 'Sans classe'; }))].sort();
+  // Classe mémorisée qui n'existe plus (ou pas attribuée à ce prof) → toutes ; une seule classe → celle-ci
+  if(DASH_ENS_CLASSE && toutesClasses.indexOf(DASH_ENS_CLASSE) < 0) DASH_ENS_CLASSE = '';
+  const classeChoisie = toutesClasses.length === 1 ? toutesClasses[0] : DASH_ENS_CLASSE;
+  DASH_ENS_CLASSE_EFFECTIVE = classeChoisie;
+  const eleves = classeChoisie ? tousEleves.filter(function(e){ return (e.classe_libelle || 'Sans classe') === classeChoisie; }) : tousEleves;
+  const idsEleves = {}; eleves.forEach(function(e){ idsEleves[e.id] = true; });
   const maintenant = new Date();
   const limiteRelance = new Date(maintenant.getTime() - DASH_ENS_JOURS_RELANCE*24*3600*1000);
   const soumissions = [];   // toutes les soumissions, pour l'activité récente
@@ -154,9 +165,13 @@ function donneesDashboardEnseignant(){
   });
 
   soumissions.sort(function(a,b){ return b.date - a.date; });
-  const enCours = DASH_ENS_ASSIGNATIONS.filter(function(a){ return !a.retiree_at && a.total > 0 && a.termines < a.total; });
+  const enCours = DASH_ENS_ASSIGNATIONS.filter(function(a){
+    if(a.retiree_at || !(a.total > 0) || a.termines >= a.total) return false;
+    if(!classeChoisie) return true;
+    return a.eleve_id ? !!idsEleves[a.eleve_id] : (a.classe_libelle || a.classe_id) === classeChoisie;
+  });
   const classes = Object.keys(parClasse).sort().map(function(k){ return parClasse[k]; });
-  return { eleves: eleves, classes: classes, soumissions: soumissions, enCours: enCours,
+  return { eleves: eleves, toutesClasses: toutesClasses, classeChoisie: classeChoisie, classes: classes, soumissions: soumissions, enCours: enCours,
            aExaminer: aExaminer, epuisees: epuisees, tentativesConnues: tentativesConnues, aujourdhui: aujourdhui };
 }
 
@@ -166,7 +181,7 @@ function contenuDashboardEnseignant(){
   if(!d.eleves.length){
     return '<div class="card" style="font-size:13px;color:var(--gm)">Aucun élève dans tes classes pour le moment. Ajoute-les depuis la Vue classe.</div>';
   }
-  return blocATraiter(d) + blocClasses(d)
+  return ongletsClasses(d) + blocATraiter(d) + blocClasses(d)
     + '<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;align-items:flex-start">'
     + '<div style="flex:1 1 380px;min-width:0">' + blocActivite(d) + '</div>'
     + '<div style="flex:1 1 300px;min-width:0">' + blocRelance(d) + '</div>'
@@ -189,7 +204,7 @@ function blocATraiter(d){
         ? tuile(d.epuisees, '2 tentatives épuisées', d.epuisees ? 'Élèves bloqués : à voir avec eux' : 'Aucun élève bloqué', d.epuisees ? '#B91C1C' : '#166534', d.epuisees ? '#FEF2F2' : '#F0FDF4', "ouvrirDepuisAccueil('examiner')")
         : '')
     + tuile(d.enCours.length, 'Mission(s) assignée(s) en cours', 'Suivre l\'avancement →', '#185FA5', '#EBF4FF', "goP('missiondujour',document.getElementById('ni-mdj'))")
-    + tuile(d.aujourdhui, 'Soumission(s) aujourd\'hui', 'Toutes classes confondues', '#4A5568', '#F7FAFC', '');
+    + tuile(d.aujourdhui, 'Soumission(s) aujourd\'hui', (d.classeChoisie ? d.classeChoisie : 'Toutes classes confondues'), '#4A5568', '#F7FAFC', '');
 
   const listeEnCours = d.enCours.slice(0, 4).map(function(a){
     const pct = a.total ? Math.round(a.termines / a.total * 100) : 0;
@@ -314,4 +329,35 @@ function blocComparaisonGroupes(c){
       }).join('')
     + '</tbody></table>'
     + (c.sansGroupe ? '<div style="font-size:11px;color:#C2410C;margin-top:4px">⚠ ' + c.sansGroupe + ' élève(s) sans groupe</div>' : '');
+}
+
+
+// ---------- Onglets de classe (26/09/2026) ----------
+// Chaque enseignant ne voit que les classes qui lui sont attribuées (filtrage
+// fait par le serveur). Choisir une classe filtre TOUT le tableau de bord.
+function ongletsClasses(d){
+  if(d.toutesClasses.length <= 1) return '';
+  const onglet = function(val, label, nb){
+    const on = d.classeChoisie === val;
+    const coul = !val ? '#1A2E4A' : val.indexOf('2nde') >= 0 ? '#2E7D5E' : val.indexOf('Term') >= 0 ? '#7B2D42' : '#185FA5';
+    return '<button onclick="choisirClasseDashboard(\'' + val.replace(/'/g, "\\'") + '\')" style="padding:9px 16px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:800;'
+      + (on ? 'background:' + coul + ';color:#fff;border:2px solid ' + coul + ';box-shadow:0 2px 8px rgba(0,0,0,.12)' : 'background:#fff;color:' + coul + ';border:2px solid #E2E8F0') + '">'
+      + label + (nb != null ? ' <span style="font-size:11px;font-weight:600;opacity:.8">' + nb + '</span>' : '') + '</button>';
+  };
+  const compte = {};
+  ELEVES_SERVEUR.forEach(function(e){ if(e.statut !== 'archive'){ const c = e.classe_libelle || 'Sans classe'; compte[c] = (compte[c]||0) + 1; } });
+  return '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px">'
+    + '<span style="font-size:11px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-right:4px">Afficher :</span>'
+    + d.toutesClasses.map(function(c){ return onglet(c, c, compte[c]); }).join('')
+    + onglet('', 'Toutes mes classes', null)
+    + '</div>';
+}
+function choisirClasseDashboard(cls){
+  DASH_ENS_CLASSE = cls || '';
+  try{ localStorage.setItem('laboro_dash_classe', DASH_ENS_CLASSE); }catch(e){}
+  const el = document.getElementById('dash-ens');
+  if(!el) return;
+  // on ne recharge pas les données : on ré-affiche avec le nouveau filtre
+  const entete = el.querySelector('.wb');
+  el.innerHTML = (entete ? entete.outerHTML : '') + contenuDashboardEnseignant();
 }
