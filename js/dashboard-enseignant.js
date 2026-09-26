@@ -126,13 +126,15 @@ function donneesDashboardEnseignant(){
 
   eleves.forEach(function(e){
     const cls = e.classe_libelle || 'Sans classe';
-    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [], G1: 0, G2: 0, sansGroupe: 0, scores: [] };
+    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [], G1: 0, G2: 0, sansGroupe: 0, scores: [], parGroupe: { G1: statsGroupeVide(), G2: statsGroupeVide() } };
     const c = parClasse[cls];
     c.eleves++;
     // Score LABORO (même calcul que le classement des élèves) — pour le top 3 de la classe
     const sc = (typeof calcScore === 'function' && PROGRESSIONS_CLASSE[e.id]) ? calcScore(PROGRESSIONS_CLASSE[e.id]) : 0;
     if(sc > 0) c.scores.push({ eleve: e, score: sc });
     if(e.groupe === 'G1') c.G1++; else if(e.groupe === 'G2') c.G2++; else c.sansGroupe++;
+    const sg = (e.groupe === 'G1' || e.groupe === 'G2') ? c.parGroupe[e.groupe] : null;
+    if(sg) sg.eleves++;
     let derniere = null, nb = 0;
     (PROGRESSIONS_BRUTES[e.id] || []).forEach(function(p){
       if(!p || !p.mission_id) return;
@@ -140,13 +142,15 @@ function donneesDashboardEnseignant(){
       const note = (p.note_finale != null) ? p.note_finale : p.note_ia;
       if(d){ nb++; if(!derniere || d > derniere) derniere = d; if(memeJour(d, maintenant)) aujourdhui++; }
       if(p.tentatives != null) tentativesConnues = true;
-      if(p.statut === 'valide'){ c.validees++; if(note != null){ c.sommeNotes += Number(note); c.nbNotes++; } }
+      if(p.statut === 'valide'){ c.validees++; if(note != null){ c.sommeNotes += Number(note); c.nbNotes++; }
+        if(sg){ sg.validees++; if(note != null){ sg.sommeNotes += Number(note); sg.nbNotes++; } } }
       if(p.statut === 'a_examiner'){ aExaminer++; if((p.tentatives||0) >= 2) epuisees++; }
       if(d) soumissions.push({ eleve: e, cls: cls, mission_id: p.mission_id, note: note, statut: p.statut, tentatives: p.tentatives, date: d });
     });
     if(!nb) c.jamais.push(e);
     else if(derniere < limiteRelance) c.inactifs.push({ eleve: e, derniere: derniere });
-    if(derniere && derniere >= limiteRelance) c.actifs7j++;
+    if(derniere && derniere >= limiteRelance){ c.actifs7j++; if(sg) sg.actifs7j++; }
+    if(!nb && sg) sg.jamais++;
   });
 
   soumissions.sort(function(a,b){ return b.date - a.date; });
@@ -202,25 +206,34 @@ function blocATraiter(d){
     + '</div>';
 }
 
+function statsGroupeVide(){ return { eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: 0 }; }
+
+// Carte de classe en bandeau (26/09/2026) : chiffres · podium · comparaison G1 / G2
 function blocClasses(d){
   const cartes = d.classes.map(function(c){
     const couleur = c.nom.indexOf('2nde') >= 0 ? '#2E7D5E' : c.nom.indexOf('Term') >= 0 ? '#7B2D42' : '#185FA5';
     const moy = c.nbNotes ? (c.sommeNotes / c.nbNotes) : null;
     const pctActifs = c.eleves ? Math.round(c.actifs7j / c.eleves * 100) : 0;
     const ligne = function(label, val){ return '<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0"><span style="color:var(--gm)">' + label + '</span><strong>' + val + '</strong></div>'; };
-    return '<div onclick="allerVueClasse(\'' + c.nom.replace(/'/g, "\\'") + '\')" title="Ouvrir la Vue classe de ' + c.nom + '" style="flex:1;min-width:210px;max-width:320px;border:1px solid #E2E8F0;border-top:4px solid ' + couleur + ';border-radius:10px;padding:12px 14px;cursor:pointer;background:#fff">'
-      + '<div style="font-size:14px;font-weight:900;color:' + couleur + ';margin-bottom:6px">' + c.nom + '</div>'
+    const titreCol = function(t){ return '<div style="font-size:10px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">' + t + '</div>'; };
+    const colChiffres = '<div style="flex:1 1 230px;min-width:0">'
+      + titreCol('La classe')
       + ligne('Élèves', c.eleves)
-      + ligne('Demi-groupes', (c.G1 || c.G2) ? ('G1 ' + c.G1 + ' · G2 ' + c.G2 + (c.sansGroupe ? ' · <span style="color:#C2410C">⚠ ' + c.sansGroupe + ' sans</span>' : '')) : '<span style="color:var(--gm);font-weight:400">non répartis</span>')
       + ligne('Actifs cette semaine', c.actifs7j + ' <span style="font-weight:400;color:var(--gm)">(' + pctActifs + ' %)</span>')
       + ligne('Missions validées', c.validees)
       + ligne('Moyenne des notes validées', moy != null ? pastilleNote(Math.round(moy*10)/10) : '—')
       + ligne('Aucune mission rendue', c.jamais.length ? '<span style="color:#C2410C">' + c.jamais.length + '</span>' : '0')
-      + blocTop3(c)
-      + '<div style="font-size:11px;color:' + couleur + ';margin-top:6px;font-weight:700">Voir la classe →</div>'
+      + '</div>';
+    const colPodium = '<div style="flex:1.3 1 280px;min-width:0">' + titreCol('🏆 Top 3 — Score LABORO') + blocPodium(c) + '</div>';
+    const colGroupes = '<div style="flex:1 1 240px;min-width:0">' + titreCol('Demi-groupes') + blocComparaisonGroupes(c) + '</div>';
+    return '<div onclick="allerVueClasse(\'' + c.nom.replace(/'/g, "\\'") + '\')" title="Ouvrir la Vue classe de ' + c.nom + '" style="border:1px solid #E2E8F0;border-left:5px solid ' + couleur + ';border-radius:10px;padding:12px 16px;cursor:pointer;background:#fff">'
+      + '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">'
+      + '<div style="font-size:15px;font-weight:900;color:' + couleur + '">' + c.nom + '</div>'
+      + '<div style="font-size:11px;color:' + couleur + ';font-weight:700">Voir la classe →</div></div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:22px">' + colChiffres + colPodium + colGroupes + '</div>'
       + '</div>';
   }).join('');
-  return '<div class="card" style="margin-top:14px"><div class="ct">🏫 Mes classes</div><div style="display:flex;flex-wrap:wrap;gap:12px">' + cartes + '</div></div>';
+  return '<div class="card" style="margin-top:14px"><div class="ct">🏫 Mes classes</div><div style="display:flex;flex-direction:column;gap:12px">' + cartes + '</div></div>';
 }
 
 function blocActivite(d){
@@ -256,17 +269,49 @@ function blocRelance(d){
 }
 
 
-// Top 3 de la classe (Score LABORO) — mêmes règles que le podium élève :
+// Podium de la classe (Score LABORO) — mêmes règles que le podium élève :
 // seuls les élèves ayant un score > 0, pas de 2e/3e artificiels.
-function blocTop3(c){
+function blocPodium(c){
   const top = c.scores.slice().sort(function(a,b){ return b.score - a.score; }).slice(0, 3);
-  const medailles = ['🥇','🥈','🥉'];
-  return '<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #E2E8F0">'
-    + '<div style="font-size:10px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Top 3 — Score LABORO</div>'
-    + (top.length ? top.map(function(t, i){
-        return '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:2px 0">'
-          + '<span>' + medailles[i] + ' ' + nomCourtEleve(t.eleve) + ((typeof badgeGroupe === 'function') ? badgeGroupe(t.eleve.groupe) : '') + '</span>'
-          + '<strong>' + t.score + '</strong></div>';
-      }).join('') : '<div style="font-size:11px;color:var(--gm)">Pas encore de mission validée.</div>')
+  if(!top.length) return '<div style="font-size:12px;color:var(--gm);padding:20px 0;text-align:center">Pas encore de mission validée.</div>';
+  // Ordre d'affichage : 2e – 1er – 3e (1er au centre, plus haut)
+  const places = [ { rang: 2, h: 44, fond: '#E5E7EB', med: '🥈' }, { rang: 1, h: 64, fond: '#FDE68A', med: '🥇' }, { rang: 3, h: 30, fond: '#FED7AA', med: '🥉' } ];
+  return '<div style="display:flex;align-items:flex-end;justify-content:center;gap:8px;padding-top:4px">'
+    + places.map(function(p){
+        const t = top[p.rang - 1];
+        if(!t) return '<div style="flex:1;max-width:120px"></div>';
+        return '<div style="flex:1;max-width:120px;text-align:center">'
+          + '<div style="font-size:20px;line-height:1">' + p.med + '</div>'
+          + '<div style="font-size:12px;font-weight:800;margin-top:3px;line-height:1.2">' + (t.eleve.prenom || '') + '</div>'
+          + '<div style="font-size:10px;color:var(--gm);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (t.eleve.nom || '').toUpperCase() + '</div>'
+          + '<div style="margin:2px 0 4px">' + ((typeof badgeGroupe === 'function') ? badgeGroupe(t.eleve.groupe) : '') + '</div>'
+          + '<div style="height:' + p.h + 'px;background:' + p.fond + ';border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#1A2E4A">' + t.score + '</div>'
+          + '</div>';
+      }).join('')
     + '</div>';
+}
+
+// Comparaison G1 / G2 (élèves, actifs, missions validées, moyenne)
+function blocComparaisonGroupes(c){
+  if(!c.G1 && !c.G2){
+    return '<div style="font-size:12px;color:var(--gm);line-height:1.5">Élèves pas encore répartis.<br><span style="color:#6B4EA8;font-weight:700">Répartir depuis la Vue classe →</span></div>';
+  }
+  const col = function(g){
+    const s = c.parGroupe[g], coul = (typeof COULEURS_GROUPES !== 'undefined' && COULEURS_GROUPES[g]) ? COULEURS_GROUPES[g] : { bg: '#E5E7EB', fg: '#374151' };
+    const moy = s.nbNotes ? Math.round(s.sommeNotes / s.nbNotes * 10) / 10 : null;
+    const pct = s.eleves ? Math.round(s.actifs7j / s.eleves * 100) : 0;
+    return { coul: coul, cellules: [ s.eleves, s.actifs7j + ' <span style="font-weight:400;color:var(--gm);font-size:10px">(' + pct + ' %)</span>', s.validees, moy != null ? pastilleNote(moy) : '—', s.jamais ? '<span style="color:#C2410C">' + s.jamais + '</span>' : '0' ] };
+  };
+  const g1 = col('G1'), g2 = col('G2');
+  const libelles = ['Élèves', 'Actifs cette semaine', 'Missions validées', 'Moyenne', 'Rien rendu'];
+  const td = 'padding:3px 4px;font-size:12px;text-align:center';
+  return '<table style="width:100%;border-collapse:collapse">'
+    + '<thead><tr><th></th>'
+    + '<th style="' + td + '"><span style="display:inline-block;padding:1px 10px;border-radius:8px;font-size:11px;font-weight:900;background:' + g1.coul.bg + ';color:' + g1.coul.fg + '">G1</span></th>'
+    + '<th style="' + td + '"><span style="display:inline-block;padding:1px 10px;border-radius:8px;font-size:11px;font-weight:900;background:' + g2.coul.bg + ';color:' + g2.coul.fg + '">G2</span></th></tr></thead><tbody>'
+    + libelles.map(function(l, i){
+        return '<tr><td style="padding:3px 0;font-size:12px;color:var(--gm)">' + l + '</td><td style="' + td + ';font-weight:800">' + g1.cellules[i] + '</td><td style="' + td + ';font-weight:800">' + g2.cellules[i] + '</td></tr>';
+      }).join('')
+    + '</tbody></table>'
+    + (c.sansGroupe ? '<div style="font-size:11px;color:#C2410C;margin-top:4px">⚠ ' + c.sansGroupe + ' élève(s) sans groupe</div>' : '');
 }
