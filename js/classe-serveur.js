@@ -246,6 +246,8 @@ function selectionnerEleve(eleveId){
   if(nomEl) nomEl.textContent = '✅ Sélectionné : ' + nomAff + (e.classe_libelle ? ' (' + e.classe_libelle + ')' : '');
   const chcl = document.getElementById('chcl-panel');
   if(chcl) chcl.style.display = 'none';
+  const chgrp = document.getElementById('chgrp-panel');
+  if(chgrp) chgrp.style.display = 'none';
   afficherClasse();
 }
 

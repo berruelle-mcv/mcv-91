@@ -149,3 +149,32 @@ async function enregistrerRepartition(){
   closeRepartition();
   afficherClasse();
 }
+
+
+// ---------- Un seul élève : « Changer de demi-groupe » (panneau d'actions) ----------
+function changerGroupeEleve(){
+  if(!verifierEleveSelectionne()) return;
+  const p = document.getElementById('chgrp-panel');
+  const t = document.getElementById('chgrp-actuel');
+  if(t) t.textContent = 'Actuellement : ' + (SELECTED_ELEVE.groupe || 'sans groupe');
+  if(p) p.style.display = p.style.display === 'none' ? 'flex' : 'none';
+}
+async function validerGroupeEleve(g){
+  if(!verifierEleveSelectionne()) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const e = SELECTED_ELEVE;
+  if((e.groupe || null) === (g || null)){ document.getElementById('chgrp-panel').style.display = 'none'; return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves-groupes', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ affectations: [{ eleve_id: e.id, groupe: g || null }] })
+  });
+  if(!r.ok || !r.data.ok){ alert((r.data && r.data.erreur) || r.erreur || 'Changement impossible.'); return; }
+  e.groupe = g || null;
+  if(typeof DASH_ENS_CHARGE_A !== 'undefined') DASH_ENS_CHARGE_A = 0;
+  document.getElementById('chgrp-panel').style.display = 'none';
+  const nomEl = document.getElementById('eleve-selectionne-nom');
+  if(nomEl) nomEl.textContent = '✅ ' + ((e.prenom||'') + ' ' + (e.nom||'')).trim() + ' est maintenant ' + (g ? 'en ' + g : 'sans groupe') + '.';
+  afficherClasse();
+}
