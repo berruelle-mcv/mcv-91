@@ -210,6 +210,7 @@ function afficherClasse(){
   }).join('');
 
   if(typeof renderMDJListe === 'function') renderMDJListe();
+  renderArchives();
 }
 
 function filtrerClasse(cls){
@@ -513,3 +514,40 @@ function closeAnalyse(){
 // (Validation groupée des notes IA ≥ 12/20 — supprimée le 26/09/2026 : le serveur
 //  valide déjà toute note ≥ seuil de la classe, et l'enseignant décide copie par copie
 //  depuis « À examiner » / le Relevé, voir copie.js.)
+
+
+// ================================================
+//   Élèves archivés (26/09/2026) — repliés sous le tableau de la Vue classe.
+//   Un élève archivé n'apparaît plus nulle part ; d'ici on peut le supprimer
+//   définitivement (même route que « 🗑 Supprimer cet élève », ?permanent=1).
+// ================================================
+let ARCHIVES_OUVERTES = false;
+function renderArchives(){
+  const el = document.getElementById('archives-wrap');
+  if(!el) return;
+  const archives = ELEVES_SERVEUR.filter(function(e){ return e.statut === 'archive' && (!classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre); });
+  if(!archives.length){ el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="card" style="margin-bottom:12px">'
+    + '<div onclick="ARCHIVES_OUVERTES=!ARCHIVES_OUVERTES;renderArchives()" style="cursor:pointer;font-size:12px;font-weight:800;color:var(--gm)">' + (ARCHIVES_OUVERTES ? '▼' : '▶') + ' 📦 Élèves archivés (' + archives.length + ')</div>'
+    + (ARCHIVES_OUVERTES ? '<div style="font-size:11px;color:var(--gm);margin:6px 0 8px">Ils n\'apparaissent plus nulle part (listes, classement, tableau de bord). Leurs données sont conservées tant qu\'ils ne sont pas supprimés définitivement.</div>'
+      + archives.map(function(e){
+          const nom = ((e.nom||'').toUpperCase() + ' ' + (e.prenom||'')).trim();
+          return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid #EDF2F7;font-size:12px">'
+            + '<div style="flex:1"><strong>' + nom + '</strong> <span style="color:var(--gm)">' + (e.email||'') + ' · ' + (e.classe_libelle||'') + '</span></div>'
+            + '<button onclick="supprimerArchiveDefinitivement(\'' + e.id + '\')" style="padding:4px 10px;background:none;border:.5px solid var(--rg);border-radius:6px;cursor:pointer;font-size:11px;color:var(--rg);font-weight:700">🗑 Supprimer définitivement</button></div>';
+        }).join('') : '')
+    + '</div>';
+}
+async function supprimerArchiveDefinitivement(id){
+  const e = ELEVES_SERVEUR.find(function(x){ return String(x.id) === String(id); });
+  if(!e) return;
+  const nom = ((e.prenom||'') + ' ' + (e.nom||'')).trim() || e.email;
+  if(!confirm('Supprimer DÉFINITIVEMENT « ' + nom + ' » (' + (e.email||'') + ') ?\n\nToutes ses données (missions, notes, copies) seront effacées. Cette action est irréversible.')) return;
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/' + encodeURIComponent(id) + '?permanent=1', { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } });
+  if(!r.ok){ alert(r.erreur); return; }
+  if(!r.data.ok){ alert('Échec : ' + (r.data.erreur || 'erreur inconnue')); return; }
+  alert(r.data.mode === 'supprime_definitivement' ? '🗑 ' + nom + ' a été supprimé(e) définitivement.' : 'Réponse du serveur : ' + (r.data.mode || 'ok'));
+  renderClasse();
+}

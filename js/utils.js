@@ -41,10 +41,11 @@ async function populateMDJEleveSelect(){
     sel.innerHTML = '<option value="">— Erreur de chargement —</option>';
     return;
   }
-  const eleves = (r.data.eleves || []).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||''); });
+  // Élèves archivés exclus (26/09/2026) ; classe réelle affichée (ex. « 2nde FMRC1 »)
+  const eleves = (r.data.eleves || []).filter(function(e){ return e.statut !== 'archive'; }).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||'','fr') || (a.prenom||'').localeCompare(b.prenom||'','fr'); });
   sel.innerHTML = '<option value="">— Élève —</option>'
     + eleves.map(function(e){
-        return '<option value="'+e.id+'">'+e.nom+' '+e.prenom+(e.classe?' ('+e.classe+')':'')+'</option>';
+        return '<option value="'+e.id+'">'+(e.nom||'').toUpperCase()+' '+(e.prenom||'')+(e.classe_libelle||e.classe?' ('+(e.classe_libelle||e.classe)+(e.groupe?' · '+e.groupe:'')+')':'')+'</option>';
       }).join('');
 }
 
@@ -61,10 +62,11 @@ async function populateAccesEleveSelect(){
     sel.innerHTML = '<option value="">— Erreur de chargement —</option>';
     return;
   }
-  const eleves = (r.data.eleves || []).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||''); });
+  // Élèves archivés exclus (26/09/2026) ; classe réelle affichée (ex. « 2nde FMRC1 »)
+  const eleves = (r.data.eleves || []).filter(function(e){ return e.statut !== 'archive'; }).slice().sort(function(a,b){ return (a.nom||'').localeCompare(b.nom||'','fr') || (a.prenom||'').localeCompare(b.prenom||'','fr'); });
   sel.innerHTML = '<option value="">— Élève —</option>'
     + eleves.map(function(e){
-        return '<option value="'+e.id+'">'+e.nom+' '+e.prenom+(e.classe?' ('+e.classe+')':'')+'</option>';
+        return '<option value="'+e.id+'">'+(e.nom||'').toUpperCase()+' '+(e.prenom||'')+(e.classe_libelle||e.classe?' ('+(e.classe_libelle||e.classe)+(e.groupe?' · '+e.groupe:'')+')':'')+'</option>';
       }).join('');
 }
 
