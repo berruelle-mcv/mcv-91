@@ -255,7 +255,7 @@ function blocActivite(d){
   const lignes = d.soumissions.slice(0, 12).map(function(s){
     const etat = s.statut === 'valide' ? '<span title="Validée">✅</span>'
       : ((s.tentatives||0) >= 2 ? '<span title="2 tentatives utilisées, sous le seuil">⛔</span>' : '<span title="À examiner — l\'élève peut encore corriger">⏳</span>');
-    return '<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #EDF2F7;font-size:12px">'
+    return '<div onclick="openCopie(\'' + s.eleve.id + '\',\'' + s.mission_id + '\')" title="Voir la copie" style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #EDF2F7;font-size:12px;cursor:pointer">'
       + '<div style="width:92px;flex-shrink:0;color:var(--gm);font-size:11px">' + quandLisible(s.date) + '</div>'
       + '<div style="flex:1;min-width:0"><div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + nomCourtEleve(s.eleve) + ' <span style="font-weight:400;color:var(--gm);font-size:10px">' + s.cls + '</span></div>'
       + '<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#4A5568"><strong style="color:#185FA5">' + s.mission_id + '</strong> ' + titreMission(s.mission_id) + '</div></div>'
@@ -263,7 +263,7 @@ function blocActivite(d){
   }).join('');
   return '<div class="card" style="margin-top:0"><div class="ct">🕒 Activité récente</div>'
     + (lignes || '<div style="font-size:12px;color:var(--gm)">Aucune soumission pour le moment.</div>')
-    + (lignes ? '<div style="font-size:10px;color:var(--gm);margin-top:6px">✅ validée · ⏳ l\'élève peut encore corriger · ⛔ 2 tentatives utilisées</div>' : '')
+    + (lignes ? '<div style="font-size:10px;color:var(--gm);margin-top:6px">✅ validée · ⏳ l\'élève peut encore corriger · ⛔ 2 tentatives utilisées · clic sur une ligne = voir la copie</div>' : '')
     + '</div>';
 }
 

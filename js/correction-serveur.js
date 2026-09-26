@@ -173,6 +173,17 @@ async function synchroniserProgressionsServeur(){
       changed = true;
     });
 
+    // Décision du professeur (26/09/2026) : commentaire + note revue, visibles par l'élève
+    d.progressions.forEach(function(p){
+      const loc = p && p.mission_id ? ud.missions[p.mission_id] : null;
+      if(!loc) return;
+      const com = p.commentaire_enseignant || '';
+      const revue = p.note_modifiee_par ? (p.note_finale != null ? p.note_finale : null) : null;
+      if((loc.commentaire_prof || '') !== com || (loc.note_revue != null ? loc.note_revue : null) !== revue){
+        loc.commentaire_prof = com; loc.note_revue = revue; changed = true;
+      }
+    });
+
     // Missions notées "validée / en attente" dans ce navigateur mais inconnues du
     // serveur (réinitialisées par l'enseignant, anciens essais locaux) : elles ne
     // doivent plus compter dans le score. Les réponses restent conservées.

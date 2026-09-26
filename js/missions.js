@@ -187,7 +187,8 @@ function openMission(id){
   // Feedback existant
   const fb=ud.missions[id]?.feedback;
   const tabFb=document.getElementById('tab-fb');
-  if(fb){tabFb.style.display='';document.getElementById('mo-fb').innerHTML=renderFb(fb);}
+  const blocProf=renderDecisionProf(ud.missions[id]);
+  if(fb||blocProf){tabFb.style.display='';document.getElementById('mo-fb').innerHTML=blocProf+(fb?renderFb(fb):'');}
   else tabFb.style.display='none';
   // Bouton soumettre
   const st=ud.missions[id]?.status;
@@ -620,4 +621,15 @@ function majChoixQCM(qid){
     const c=b.querySelector('.qcm-case');
     if(c) c.textContent=rang>=0?(mode==='ordre'?String(rang+1):'✓'):'';
   });
+}
+
+
+// Décision du professeur sur la copie (26/09/2026) : note revue + commentaire
+function renderDecisionProf(m){
+  if(!m || (m.note_revue == null && !m.commentaire_prof)) return '';
+  const e = function(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+  return '<div style="background:#F0FDF4;border:1px solid #BBF7D0;border-left:4px solid #16A34A;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12.5px;line-height:1.55;color:#14532D">'
+    + '<div style="font-weight:800;margin-bottom:4px">👩‍🏫 Ton professeur a relu ta copie' + (m.note_revue != null ? ' — note retenue : ' + String(m.note_revue).replace('.', ',') + '/20' : '') + '</div>'
+    + (m.commentaire_prof ? '<div style="white-space:pre-wrap">' + e(m.commentaire_prof) + '</div>' : '')
+    + '</div>';
 }
