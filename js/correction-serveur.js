@@ -191,10 +191,12 @@ async function synchroniserProgressionsServeur(){
     d.progressions.forEach(function(p){ if(p && p.mission_id) surServeur[p.mission_id] = true; });
     Object.keys(ud.missions).forEach(function(mid){
       const m = ud.missions[mid];
-      if(m && (m.status === 'done' || m.status === 'att') && !surServeur[mid]){
+      const traceCorrection = m && (m.status === 'done' || m.status === 'att' || m.feedback || m.note_ia != null || m.score != null || (m.tentatives || 0) > 0);
+      if(traceCorrection && !surServeur[mid]){
         // Réinitialisée par l'enseignant (ou jamais arrivée au serveur) : on garde le brouillon
         // des réponses mais on efface l'ancienne correction, pour ne pas afficher une note fantôme.
-        ud.missions[mid] = Object.assign({}, m, { status: 'wip', score: undefined, note_ia: undefined, tentatives: 0,
+        const aDesReponses = m.reponses && Object.keys(m.reponses).some(function(k){ return String(m.reponses[k] || '').trim(); });
+        ud.missions[mid] = Object.assign({}, m, { status: aDesReponses ? 'wip' : 'todo', score: undefined, note_ia: undefined, tentatives: 0,
           feedback: undefined, note_revue: undefined, commentaire_prof: undefined });
         changed = true;
       }

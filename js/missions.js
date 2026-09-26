@@ -258,7 +258,19 @@ function sauvegarderEtFermer(){
 }
 function renderFb(fb){
   const nc=fb.note>=12?'ni-h':fb.note>=8?'ni-m':'ni-l'; // barème de maîtrise (26/09/2026)
-  return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ${nc}">${fb.note}/20</span></div>${fb.texte}</div>`;
+  return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ${nc}">${fb.note}/20</span></div>${texteFeedbackLisible(fb.texte)}</div>`;
+}
+// Le feedback de l'IA arrive en « markdown » (**gras**, ---, listes) : on l'affiche proprement.
+// Le texte est d'abord échappé, puis seules quelques mises en forme sûres sont appliquées.
+function texteFeedbackLisible(t){
+  const e = String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return e
+    .replace(/^\s*-{3,}\s*$/gm, '<hr style="border:none;border-top:1px solid #E2E8F0;margin:10px 0">')
+    .replace(/^#{1,4}\s*(.+)$/gm, '<strong>$1</strong>')
+    .replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*\*/g, '')
+    .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>')
+    .replace(/\n/g, '<br>');
 }
 function openCoupDePouce(){
   const overlay = document.getElementById('cp-overlay');

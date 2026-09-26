@@ -83,7 +83,7 @@ function renderCopie(){
     + '<span style="font-size:12px;color:var(--gm)">Note proposée par l\'IA :</span>' + ((typeof pastilleNote === 'function') ? pastilleNote(d.note_ia) : esc(d.note_ia))
     + (d.alerte_ia ? '<span style="font-size:11px;font-weight:800;color:#B91C1C;background:#FEF2F2;padding:2px 8px;border-radius:8px">⚠ Réponse signalée comme suspecte par l\'IA</span>' : '')
     + '</div>'
-    + '<div style="font-size:12.5px;line-height:1.6;white-space:pre-wrap;background:#F8FAFC;border-radius:8px;padding:10px 12px;max-height:260px;overflow:auto">' + esc(fb.texte || '—') + '</div>';
+    + '<div style="font-size:12.5px;line-height:1.6;background:#F8FAFC;border-radius:8px;padding:10px 12px;max-height:320px;overflow:auto">' + ((typeof texteFeedbackLisible === 'function') ? texteFeedbackLisible(fb.texte || '—') : esc(fb.texte || '—')) + '</div>';
 
   // --- Décision de l'enseignant
   const peutAccorder = d.statut !== 'valide' && d.tentatives >= 1;
