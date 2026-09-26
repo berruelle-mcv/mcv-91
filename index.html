@@ -548,6 +548,19 @@ document.addEventListener('DOMContentLoaded', loadConfig);
   </div>
 </div>
 
+<div class="ana-overlay" id="grp-overlay" onclick="if(event.target===this)closeRepartition()">
+  <div class="ana-modal" style="max-width:720px">
+    <div class="ana-hd" style="background:linear-gradient(135deg,#6B4EA8,#4C3480)">
+      <div>
+        <div class="ana-hd-t">Répartir en demi-groupes</div>
+        <div class="ana-hd-s" id="grp-sous">—</div>
+      </div>
+      <button class="ana-cl" onclick="closeRepartition()">✕</button>
+    </div>
+    <div class="ana-body" id="grp-body"></div>
+  </div>
+</div>
+
 <div class="ana-overlay" id="rel-overlay" onclick="if(event.target===this)closeReleve()">
   <div class="ana-modal" style="max-width:1200px">
     <div class="ana-hd" style="background:linear-gradient(135deg,#1B7F3B,#0F5A28)">
@@ -792,7 +805,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div id="panel-e2pvoc" class="panel"><div id="e2pvoc-home"></div></div>
 
     <div id="panel-missiondujour" class="panel">
-      <div class="mdj-cfg"><div class="ct">Assigner une mission</div><div class="mdj-sel"><select id="mdj-cible" onchange="toggleMDJCible()"><option value="classe">À toute une classe</option><option value="eleve">À un élève précis</option></select><select id="mdj-cl"><option value="">— Classe —</option></select><select id="mdj-el" style="display:none"><option value="">— Élève —</option></select><select id="mdj-ms"><option value="">— Mission —</option></select><button class="btn-mdj" onclick="assignerMDJ()">Assigner</button></div><div id="mdj-st" style="font-size:12px;color:var(--gm);margin-top:8px"></div></div>
+      <div class="mdj-cfg"><div class="ct">Assigner une mission</div><div class="mdj-sel"><select id="mdj-cible" onchange="toggleMDJCible()"><option value="classe">À toute une classe</option><option value="groupe">À un demi-groupe (G1 / G2)</option><option value="eleve">À un élève précis</option></select><select id="mdj-cl"><option value="">— Classe —</option></select><select id="mdj-grp" style="display:none"><option value="G1">Groupe G1</option><option value="G2">Groupe G2</option></select><select id="mdj-el" style="display:none"><option value="">— Élève —</option></select><select id="mdj-ms"><option value="">— Mission —</option></select><button class="btn-mdj" onclick="assignerMDJ()">Assigner</button></div><div id="mdj-st" style="font-size:12px;color:var(--gm);margin-top:8px"></div></div>
       <div class="card"><div class="ct">Missions en cours</div><div id="mdj-liste"></div></div>
       <div class="card"><div class="ct" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">Historique des missions assignées <select id="mdj-hist-filtre" onchange="renderMDJHistorique()" style="font-size:12px;padding:4px 8px;border:.5px solid var(--gb);border-radius:6px"><option value="">Toutes les classes</option></select></div><div id="mdj-historique"></div></div>
     </div>
@@ -807,6 +820,11 @@ document.addEventListener('DOMContentLoaded', loadConfig);
             <input id="add-mail" placeholder="prenom.nom@monlycee.net" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;margin-bottom:6px;box-sizing:border-box"/>
             <select id="add-cls" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;margin-bottom:8px;box-sizing:border-box">
               <option value="">— Classe —</option>
+            </select>
+            <select id="add-grp" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;margin-bottom:8px;box-sizing:border-box">
+              <option value="">— Demi-groupe : pas encore réparti —</option>
+              <option value="G1">Groupe G1</option>
+              <option value="G2">Groupe G2</option>
             </select>
             <button onclick="ajouterEleve()" style="width:100%;padding:8px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">+ Ajouter cet élève</button>
             <div id="add-msg" style="font-size:11px;margin-top:6px;min-height:16px"></div>
@@ -845,12 +863,14 @@ document.addEventListener('DOMContentLoaded', loadConfig);
         <div style="font-size:11px;font-weight:700;color:var(--gm);margin-right:4px">Filtrer :</div>
         <div class="cls-tab on" onclick="filtrerClasse('',this)">Toutes les classes</div>
       </div>
+      <div id="groupe-tabs" style="display:none;gap:6px;flex-wrap:wrap;margin:-4px 0 12px;align-items:center"></div>
       <div id="classe-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px"></div>
       <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
         <button class="btn-val-all" onclick="openAExaminer()" style="margin-bottom:0">📋 À examiner</button>
         <button onclick="exporterClasse()" style="padding:8px 16px;background:none;border:.5px solid var(--gb);border-radius:7px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600">📊 Exporter la liste</button>
         <button class="ana-btn" onclick="openAnalyse()">📈 Analyse de classe</button>
         <button class="ana-btn" onclick="openReleve()" style="background:linear-gradient(135deg,#1B7F3B,#0F5A28)">📝 Relevé de notes (Pronote)</button>
+        <button class="ana-btn" onclick="openRepartition()" style="background:linear-gradient(135deg,#6B4EA8,#4C3480)">👥 Répartir en groupes G1 / G2</button>
       </div>
       <div class="card" style="overflow-x:auto;margin-bottom:12px">
         <div class="ct" id="cl-titre">Vue classe — cliquer sur un élève pour le sélectionner</div>
@@ -973,6 +993,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <script src="js/teacher.js"></script>
 <script src="js/classe-serveur.js"></script>
 <script src="js/releve-notes.js"></script>
+<script src="js/groupes.js"></script>
 <script src="js/dashboard-enseignant.js"></script>
 <script src="js/portfolio.js"></script>
 <script src="js/admin-classes.js"></script>
