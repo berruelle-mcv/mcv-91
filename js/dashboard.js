@@ -307,6 +307,16 @@ function renderCCFDashboard(){
 
 function renderDashboard(){
   if(!CU)return;
+  // Enseignant : tableau de bord dédié (dashboard-enseignant.js, 26/09/2026)
+  const dEns = document.getElementById('dash-ens'), dEl = document.getElementById('dash-eleve');
+  if(CU.classe === 'enseignant' && typeof renderDashboardEnseignant === 'function'){
+    if(dEns) dEns.style.display = '';
+    if(dEl) dEl.style.display = 'none';
+    renderDashboardEnseignant();
+    return;
+  }
+  if(dEns) dEns.style.display = 'none';
+  if(dEl) dEl.style.display = '';
   const ud=gUD();
   const sc=calcScore(ud);
   document.getElementById('wb-b').textContent='Bonjour '+CU.nom.split(' ')[0]+' !';

@@ -227,7 +227,7 @@ function openAExaminer(){
       if(!p || p.statut !== 'a_examiner') return;
       const note = noteProgression(p);
       const m = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === p.mission_id; }) : null;
-      lignes.push({ e: e, id: p.mission_id, titre: m ? m.titre : '', comp: m ? m.comp : '', note: note, date: p.submitted_at || '' });
+      lignes.push({ e: e, id: p.mission_id, titre: m ? m.titre : '', comp: m ? m.comp : '', note: note, date: p.submitted_at || '', tentatives: p.tentatives });
     });
   });
   lignes.sort(function(a,b){ return (a.note==null?99:a.note) - (b.note==null?99:b.note) || nomEleve(a.e).localeCompare(nomEleve(b.e),'fr'); });
@@ -251,7 +251,9 @@ function openAExaminer(){
         const d = l.date ? new Date(l.date) : null;
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e)
           + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (l.e.classe_libelle||'') + '</div>') + '</td>'
-          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span></td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span>'
+          + (l.tentatives != null ? (l.tentatives >= 2 ? ' <span style="font-size:10px;font-weight:700;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⛔ 2/2 tentatives</span>' : ' <span style="font-size:10px;color:#92400E;background:#FFFBEA;padding:1px 6px;border-radius:8px">peut encore corriger</span>') : '')
+          + '</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;text-align:center">'
           + (l.note==null ? '—' : '<span style="display:inline-block;min-width:40px;padding:2px 6px;border-radius:5px;font-weight:800;background:' + n.bg + ';color:' + n.fg + '">' + fmtNote(l.note) + '</span>') + '</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;color:var(--gm)">' + (d && !isNaN(d) ? d.toLocaleDateString('fr-FR') + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '—') + '</td></tr>';
