@@ -54,7 +54,7 @@ function donneesReleve(){
       if(note == null) return;                       // pas encore corrigée
       const valide = p.statut === 'valide';
       if(RELEVE_VALIDEES_SEULES && !valide) return;
-      cellules[e.id][p.mission_id] = { note: note, valide: valide, revue: !!p.note_modifiee_par };
+      cellules[e.id][p.mission_id] = { note: note, valide: valide, revue: !!p.note_modifiee_par, alerte: !!p.alerte_ia };
       missionsVues[p.mission_id] = true;
     });
   });
@@ -141,7 +141,7 @@ function renderReleve(){
           + d.missions.map(function(m){
               const c = d.cellules[e.id][m.id];
               if(!c) return '<td style="border-bottom:1px solid #EDF2F7;border-left:1px solid #EDF2F7;text-align:center;color:#CBD5E0">—</td>';
-              const attente = (c.valide ? '' : ' ⏳') + (c.revue ? ' ✎' : '');
+              const attente = (c.valide ? '' : ' ⏳') + (c.revue ? ' ✎' : '') + (c.alerte ? ' ⚠' : '');
               const titre = (c.revue ? 'Note revue par l\'enseignant' : (c.valide ? 'Note validée' : 'Note IA pas encore validée')) + ' — ' + fmtNote(c.note) + '/20 — cliquer pour voir la copie';
               const clic = ' onclick="openCopie(\'' + e.id + '\',\'' + m.id + '\')"';
               if(RELEVE_MODE === 'niveaux'){
@@ -153,7 +153,7 @@ function renderReleve(){
           + '</tr>';
       }).join('')
     + '</tbody></table></div>'
-    + '<div style="font-size:11px;color:var(--gm);margin-top:8px">⏳ = note proposée par l\'IA, pas encore validée · ✎ = note revue par toi. <strong>Clique sur une note pour voir la copie de l\'élève.</strong></div>';
+    + '<div style="font-size:11px;color:var(--gm);margin-top:8px">⏳ = note proposée par l\'IA, pas encore validée · ✎ = note revue par toi · ⚠ = réponse signalée par l\'IA. <strong>Clique sur une note pour voir la copie de l\'élève.</strong></div>';
 
   // Correspondance code → titre (pour créer les devoirs dans Pronote)
   html += '<div style="margin-top:16px"><div style="font-size:12px;font-weight:800;color:var(--t1,#1A2E4A);margin-bottom:6px">Missions du relevé</div>'
@@ -230,7 +230,7 @@ function openAExaminer(){
       if(!p || p.statut !== 'a_examiner') return;
       const note = noteProgression(p);
       const m = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === p.mission_id; }) : null;
-      lignes.push({ e: e, id: p.mission_id, titre: m ? m.titre : '', comp: m ? m.comp : '', note: note, date: p.submitted_at || '', tentatives: p.tentatives });
+      lignes.push({ e: e, id: p.mission_id, titre: m ? m.titre : '', comp: m ? m.comp : '', note: note, date: p.submitted_at || '', tentatives: p.tentatives, alerte: !!p.alerte_ia });
     });
   });
   lignes.sort(function(a,b){ return (a.note==null?99:a.note) - (b.note==null?99:b.note) || nomEleve(a.e).localeCompare(nomEleve(b.e),'fr'); });
@@ -255,6 +255,7 @@ function openAExaminer(){
         return '<tr onclick="openCopie(\'' + l.e.id + '\',\'' + l.id + '\')" title="Voir la copie" style="cursor:pointer"><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e) + ((typeof badgeGroupe === 'function') ? badgeGroupe(l.e.groupe) : '')
           + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (l.e.classe_libelle||'') + '</div>') + '</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span>'
+          + (l.alerte ? ' <span style="font-size:10px;font-weight:800;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⚠ signalée par l\'IA</span>' : '')
           + (l.tentatives != null ? (l.tentatives >= 2 ? ' <span style="font-size:10px;font-weight:700;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⛔ 2/2 tentatives</span>' : ' <span style="font-size:10px;color:#92400E;background:#FFFBEA;padding:1px 6px;border-radius:8px">peut encore corriger</span>') : '')
           + '</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;text-align:center">'

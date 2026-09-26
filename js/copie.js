@@ -110,6 +110,7 @@ function renderCopie(){
     + '<span style="color:var(--gm)">Rendue le ' + dateHeure(d.submitted_at) + '</span>'
     + (m ? '<span style="color:var(--gm)">' + esc(m.comp) + ' · Palier ' + esc(m.palier) + ' · seuil de la classe ' + esc(d.seuil) + '/20</span>' : '')
     + '</div>'
+    + blocIndices(d)
     + bloc('👩‍🏫 Ta décision', htmlDecision, '#F5F9FF')
     + bloc('📝 Réponses de l\'élève', htmlRep)
     + bloc('🤖 Correction proposée par l\'IA', htmlIA);
@@ -194,4 +195,36 @@ function openCopiesEleve(){
             + '<span style="color:#185FA5;font-weight:700">Ouvrir →</span></div>';
         }).join('');
   ouvrirOverlayCopie();
+}
+
+
+// ---------- Indices d'intégrité (26/09/2026) ----------
+// Faits mesurés, jamais des preuves : ils disent quelles copies regarder de plus près
+// ou reprendre à l'oral. Rien n'est affiché à l'élève.
+function blocIndices(d){
+  const i = d.integrite || null;
+  const mesure = i && (i.secondes > 0 || i.longueur > 0);
+  const lignes = [];
+  let vigilance = !!d.alerte_ia;
+  if(d.alerte_ia) lignes.push('<li><strong style="color:#B91C1C">⚠ Signalée par l\'IA</strong> : réponse possiblement hors sujet, recopiée de l\'énoncé ou d\'un style inhabituel pour un élève.</li>');
+  if(mesure){
+    const min = Math.floor(i.secondes / 60), sec = i.secondes % 60;
+    const duree = (min ? min + ' min ' : '') + sec + ' s';
+    const court = i.secondes < 120 && i.longueur > 400;
+    if(court) vigilance = true;
+    lignes.push('<li>Temps passé sur la mission : <strong>' + duree + '</strong>' + (court ? ' <span style="color:#B91C1C;font-weight:700">— très court pour ' + i.longueur + ' caractères écrits</span>' : '') + '</li>');
+    const part = i.longueur > 0 ? Math.min(100, Math.round(i.tapes / i.longueur * 100)) : 100;
+    const faible = i.longueur > 150 && part < 50;
+    if(faible) vigilance = true;
+    lignes.push('<li>Texte tapé au clavier dans LABORO : <strong>' + part + ' %</strong> (' + i.tapes + ' / ' + i.longueur + ' caractères)'
+      + (faible ? ' <span style="color:#B91C1C;font-weight:700">— une grande partie du texte n\'a pas été tapée ici (dictée vocale, remplissage automatique, autre poste ?)</span>' : '') + '</li>');
+    lignes.push('<li>Tentatives de copier-coller bloquées : <strong>' + i.collages_bloques + '</strong>' + (i.collages_bloques >= 3 ? ' <span style="color:#92400E;font-weight:700">— à noter</span>' : '') + '</li>');
+  } else {
+    lignes.push('<li style="color:var(--gm)">Pas de mesure pour cette copie (rendue avant le 26/09/2026 ou depuis un navigateur pas encore à jour).</li>');
+  }
+  return '<div style="border:1px solid ' + (vigilance ? '#FECACA' : '#E2E8F0') + ';border-radius:10px;padding:10px 14px;margin-bottom:12px;background:' + (vigilance ? '#FEF2F2' : '#F8FAFC') + '">'
+    + '<div style="font-size:11px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🔍 Indices ' + (vigilance ? '— à regarder de plus près' : '') + '</div>'
+    + '<ul style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.7">' + lignes.join('') + '</ul>'
+    + '<div style="font-size:11px;color:var(--gm);margin-top:6px">Ce sont des indices, pas des preuves : en cas de doute, fais reformuler l\'élève à l\'oral.</div>'
+    + '</div>';
 }

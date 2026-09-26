@@ -43,7 +43,7 @@ async function soumettreReponses(){
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     },
-    body: JSON.stringify({ mission_id: CM.id, reponses })
+    body: JSON.stringify({ mission_id: CM.id, reponses, integrite: (typeof integPourSoumission === 'function') ? integPourSoumission(CM.id, reponses) : null })
   });
 
   if(!r.ok){

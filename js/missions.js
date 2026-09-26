@@ -176,7 +176,9 @@ function openMission(id){
     const siqid=`q_${id}_imprevu`;const siSaved=savedReps[siqid]||'';
     html+=`<div class="imprevu"><div class="imprevu-l"><div class="imprevu-dot"></div>Situation imprévue — niveau Professionnel compétent/Professionnel performant requis</div><div class="imprevu-txt"><strong>${imprev.titre} :</strong> ${imprev.txt}</div><div class="qi"><span class="qn">⚡</span>${imprev.q}<textarea class="zone-rep${siSaved?' saved':''}" id="${siqid}" placeholder="Gère cette situation imprévue…" oninput="autoSaveRep('${id}','${siqid}',this)">${siSaved}</textarea></div></div>`;
   }
+  html = '<div style="font-size:11px;color:#4A5568;background:#F1F5F9;border-radius:6px;padding:6px 10px;margin-bottom:10px">🔒 Le copier-coller est désactivé dans les réponses : rédige avec tes propres mots.</div>' + html;
   document.getElementById('mo-mission').innerHTML=html;
+  if(typeof integDemarrer === 'function') integDemarrer(id);
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
   if(cpBtn){
@@ -277,6 +279,7 @@ function closeCoupDePouce(){
 // ══ GESTION FENÊTRE MISSION ══
 
 function closeMo(){
+  if(typeof integEnregistrer === 'function'){ integEnregistrer(); INTEG = null; } // fin de la session d'écriture
   stopMoTimer();
   const mo=document.getElementById('mo');
   const modal=document.querySelector('.modal');
@@ -288,6 +291,7 @@ function closeMo(){
 }
 
 function moMinimize(){
+  if(typeof integEnregistrer === 'function') integEnregistrer();
   const modal=document.querySelector('.modal');
   const mo=document.getElementById('mo');
   const tb=document.getElementById('mo-taskbar');
@@ -302,6 +306,7 @@ function moMinimize(){
 }
 
 function moRestore(){
+  if(typeof integReprendre === 'function') integReprendre();
   const modal=document.querySelector('.modal');
   const mo=document.getElementById('mo');
   const tb=document.getElementById('mo-taskbar');
@@ -608,6 +613,7 @@ function choisirQCM(qid,lettre){
   const reste=(aUneLigneChoix?lignes.slice(1):lignes).join('\n');
   const ligne=choisis.length?(mode==='ordre'?'Ordre : '+choisis.join(' → '):'Réponse : '+choisis.join(', ')):'';
   ta.value=ligne?(ligne+(reste.trim()?'\n'+reste:'\n')):reste;
+  if(typeof integNoterFrappe === 'function') integNoterFrappe(ligne.length); // clic sur une case = saisie de l'élève
   if(CM) autoSaveRep(CM.id,qid,ta);
   majChoixQCM(qid);
 }
@@ -633,3 +639,75 @@ function renderDecisionProf(m){
     + (m.commentaire_prof ? '<div style="white-space:pre-wrap">' + e(m.commentaire_prof) + '</div>' : '')
     + '</div>';
 }
+
+
+// ═══ Intégrité des copies (26/09/2026) ═══
+// Copier-coller bloqué dans les réponses ; copie du feedback bloquée ;
+// mesures simples envoyées avec la copie : temps passé sur la mission,
+// caractères tapés au clavier, tentatives de collage bloquées.
+// Ce ne sont que des indices pour l'enseignant, jamais une sanction automatique.
+let INTEG = null; // { mid, t0, tapes, collages }
+
+function integDemarrer(mid){
+  INTEG = { mid: mid, t0: Date.now(), tapes: 0, collages: 0 };
+  const zone = document.getElementById('mo-mission');
+  if(zone && !zone.dataset.integ){
+    zone.dataset.integ = '1';
+    const bloquer = function(e){
+      if(!e.target || !e.target.classList || !e.target.classList.contains('zone-rep')) return;
+      e.preventDefault();
+      if(INTEG) INTEG.collages++;
+      integMessage('📋 Le copier-coller est désactivé : rédige ta réponse avec tes propres mots.');
+    };
+    zone.addEventListener('paste', bloquer, true);
+    zone.addEventListener('drop', bloquer, true);
+    zone.addEventListener('input', function(e){
+      if(!INTEG || !e.target.classList || !e.target.classList.contains('zone-rep')) return;
+      if(e.inputType === 'insertText' || e.inputType === 'insertCompositionText') INTEG.tapes += (e.data || '').length;
+      else if(e.inputType === 'insertLineBreak') INTEG.tapes += 1;
+    }, true);
+  }
+  const fb = document.getElementById('mo-fb');
+  if(fb && !fb.dataset.integ){
+    fb.dataset.integ = '1';
+    fb.style.userSelect = 'none'; fb.style.webkitUserSelect = 'none';
+    ['copy','cut','contextmenu','dragstart'].forEach(function(ev){
+      fb.addEventListener(ev, function(e){ e.preventDefault(); if(ev === 'copy' || ev === 'cut') integMessage('Le feedback ne peut pas être copié : relis-le et corrige avec tes propres mots.'); }, true);
+    });
+  }
+}
+function integNoterFrappe(n){ if(INTEG) INTEG.tapes += Math.max(0, n|0); }
+function integReprendre(){ if(INTEG) INTEG.t0 = Date.now(); }
+// Ajoute la session en cours aux compteurs de la mission (mémorisés dans le navigateur)
+function integEnregistrer(){
+  if(!INTEG || !INTEG.mid) return;
+  const ud = gUD();
+  if(!ud.missions[INTEG.mid]) ud.missions[INTEG.mid] = { status: 'todo', id: INTEG.mid };
+  const m = ud.missions[INTEG.mid];
+  const cumul = m.integ || { secondes: 0, tapes: 0, collages_bloques: 0 };
+  cumul.secondes += Math.min(7200, Math.max(0, Math.round((Date.now() - INTEG.t0) / 1000)));
+  cumul.tapes += INTEG.tapes;
+  cumul.collages_bloques += INTEG.collages;
+  m.integ = cumul;
+  sUD(ud);
+  INTEG.t0 = Date.now(); INTEG.tapes = 0; INTEG.collages = 0;
+}
+// Valeurs envoyées au serveur avec la copie
+function integPourSoumission(mid, reponses){
+  if(INTEG && INTEG.mid === mid) integEnregistrer();
+  const m = gUD().missions[mid] || {};
+  const c = m.integ || { secondes: 0, tapes: 0, collages_bloques: 0 };
+  const longueur = Object.keys(reponses || {}).reduce(function(a, k){ return a + String(reponses[k] || '').length; }, 0);
+  return { secondes: c.secondes, tapes: c.tapes, collages_bloques: c.collages_bloques, longueur: longueur };
+}
+function integMessage(txt){
+  let t = document.getElementById('integ-toast');
+  if(!t){
+    t = document.createElement('div'); t.id = 'integ-toast';
+    t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#1A2E4A;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:5000;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:90vw;text-align:center';
+    document.body.appendChild(t);
+  }
+  t.textContent = txt; t.style.display = 'block';
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.style.display = 'none'; }, 3200);
+}
+window.addEventListener('beforeunload', function(){ try{ integEnregistrer(); }catch(e){} });
