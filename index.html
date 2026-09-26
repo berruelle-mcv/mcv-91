@@ -574,6 +574,19 @@ document.addEventListener('DOMContentLoaded', loadConfig);
   </div>
 </div>
 
+<div class="ana-overlay" id="copie-overlay" style="z-index:3100" onclick="if(event.target===this)closeCopie()">
+  <div class="ana-modal" style="max-width:900px">
+    <div class="ana-hd" style="background:linear-gradient(135deg,#185FA5,#0C447C)">
+      <div>
+        <div class="ana-hd-t" id="copie-titre">Copie</div>
+        <div class="ana-hd-s" id="copie-sous">—</div>
+      </div>
+      <button class="ana-cl" onclick="closeCopie()">✕</button>
+    </div>
+    <div class="ana-body" id="copie-body"></div>
+  </div>
+</div>
+
 <div class="ana-overlay" id="ana-overlay" onclick="if(event.target===this)closeAnalyse()">
   <div class="ana-modal">
     <div class="ana-hd">
@@ -842,6 +855,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
                 <button onclick="validerChangementClasse()" style="padding:6px 10px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">OK</button>
                 <button onclick="document.getElementById('chcl-panel').style.display='none'" style="padding:6px 8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:12px">✕</button>
               </div>
+              <button onclick="openCopiesEleve()" style="padding:8px;background:#EBF4FF;border:.5px solid #B5D4F4;border-radius:6px;cursor:pointer;font-size:12px;color:#185FA5;font-weight:700;text-align:left">📂 Voir ses copies et ses notes</button>
               <button onclick="changerGroupeEleve()" style="padding:8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600;text-align:left">👥 Changer de demi-groupe</button>
               <div id="chgrp-panel" style="display:none;gap:6px;align-items:center;padding:6px;background:var(--gc);border-radius:6px;flex-wrap:wrap">
                 <span id="chgrp-actuel" style="font-size:11px;color:var(--gm);flex:1;min-width:110px"></span>
@@ -1003,6 +1017,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <script src="js/releve-notes.js"></script>
 <script src="js/groupes.js"></script>
 <script src="js/dashboard-enseignant.js"></script>
+<script src="js/copie.js"></script>
 <script src="js/portfolio.js"></script>
 <script src="js/admin-classes.js"></script>
 <script src="js/admin-acces.js"></script>
