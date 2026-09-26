@@ -594,7 +594,7 @@ async function ajouterEleve(){
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     },
-    body: JSON.stringify({ nomComplet, email, classeCode })
+    body: JSON.stringify({ nomComplet, email, classeCode, groupe: (document.getElementById('add-grp')||{}).value || null })
   });
 
   if(!r.ok){
@@ -608,7 +608,7 @@ async function ajouterEleve(){
     return;
   }
 
-  showMsg('✅ ' + data.prenom + ' ' + data.nom + ' ajouté(e) — mot de passe : ' + data.motDePasseInitial, '#2E7D5E');
+  showMsg('✅ ' + data.prenom + ' ' + data.nom + ' ajouté(e)' + (data.groupe ? ' en ' + data.groupe : '') + ' — mot de passe : ' + data.motDePasseInitial, '#2E7D5E');
   if(nomEl) nomEl.value = '';
   if(mailEl) mailEl.value = '';
   if(typeof renderClasse === 'function') renderClasse();

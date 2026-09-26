@@ -136,7 +136,9 @@ function afficherClasse(){
         }).join('');
   }
 
-  const liste = classeFiltre ? eleves.filter(e => (e.classe_libelle||'Sans classe')===classeFiltre) : eleves;
+  const listeClasse = classeFiltre ? eleves.filter(e => (e.classe_libelle||'Sans classe')===classeFiltre) : eleves;
+  if(typeof renderGroupeTabs === 'function') renderGroupeTabs(listeClasse);
+  const liste = (typeof filtrerParGroupe === 'function') ? filtrerParGroupe(listeClasse) : listeClasse;
 
   // Stats agrégées à partir de la progression réelle (PROGRESSIONS_CLASSE, chargée par renderClasse())
   const statsListe = liste.map(function(e){
@@ -159,7 +161,7 @@ function afficherClasse(){
 
   const titreEl = document.getElementById('cl-titre');
   if(titreEl) titreEl.textContent = classeFiltre
-    ? ('Classe : ' + classeFiltre + ' — ' + liste.length + ' élève(s)')
+    ? ('Classe : ' + classeFiltre + ((typeof libelleGroupeFiltre === 'function' && libelleGroupeFiltre()) ? ' (' + libelleGroupeFiltre() + ')' : '') + ' — ' + liste.length + ' élève(s)')
     : ('Tous les élèves — ' + liste.length);
 
   const tb = document.getElementById('cl-tbody');
@@ -194,7 +196,7 @@ function afficherClasse(){
     const estSelectionne = SELECTED_ELEVE && SELECTED_ELEVE.id === e.id;
     return '<tr onclick="selectionnerEleve(\'' + e.id + '\')" style="cursor:pointer' + (estSelectionne ? ';background:var(--bc)' : '') + '">'
       + '<td style="font-weight:700">' + nomAff + (e.statut && e.statut!=='actif' ? ' <span style="font-size:9px;font-weight:400;color:var(--gm)">(' + e.statut + ')</span>' : '') + '<div style="font-size:9px;color:var(--gm);font-weight:400">' + e.email + '</div></td>'
-      + '<td class="u-label-sm">' + cls + '</td>'
+      + '<td class="u-label-sm">' + cls + ((typeof badgeGroupe === 'function') ? badgeGroupe(e.groupe) : '') + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c1) + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c2) + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c3) + '</td>'
@@ -212,6 +214,7 @@ function afficherClasse(){
 
 function filtrerClasse(cls){
   classeFiltre = cls || '';
+  if(typeof groupeFiltre !== 'undefined') groupeFiltre = '';
   afficherClasse();
 }
 
@@ -378,10 +381,11 @@ async function supprimerEleve(){
 
 function exporterClasse(){
   const eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
-  const liste = classeFiltre ? eleves.filter(function(e){ return (e.classe_libelle||'Sans classe')===classeFiltre; }) : eleves;
+  const listeClasse = classeFiltre ? eleves.filter(function(e){ return (e.classe_libelle||'Sans classe')===classeFiltre; }) : eleves;
+  const liste = (typeof filtrerParGroupe === 'function') ? filtrerParGroupe(listeClasse) : listeClasse;
   if(!liste.length){ alert('Aucun élève à exporter.'); return; }
 
-  const lignes = [['Nom','Prénom','Email','Classe','C1','C2','C3','G4','Score /100','Posture','Missions validées','Moyenne /20']];
+  const lignes = [['Nom','Prénom','Email','Classe','Groupe','C1','C2','C3','G4','Score /100','Posture','Missions validées','Moyenne /20']];
   liste.forEach(function(e){
     const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
     const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
@@ -391,7 +395,7 @@ function exporterClasse(){
     const posture = done.length ? posturePourScore(score, e.classe_libelle) : '';
     const moy = done.length ? (done.reduce(function(a,m){ return a + (m.score||0); },0) / done.length).toFixed(1) : '';
     lignes.push([
-      e.nom || '', e.prenom || '', e.email || '', e.classe_libelle || '',
+      e.nom || '', e.prenom || '', e.email || '', e.classe_libelle || '', e.groupe || '',
       c1, c2, c3, (g4===null || g4===undefined ? '' : g4),
       score, posture, done.length, moy
     ]);

@@ -36,6 +36,7 @@ function donneesReleve(){
   const eleves = ELEVES_SERVEUR
     .filter(function(e){ return e.statut !== 'archive'; })
     .filter(function(e){ return !classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre; })
+    .filter(function(e){ return (typeof filtrerParGroupe === 'function') ? filtrerParGroupe([e]).length > 0 : true; })
     .slice()
     .sort(function(a,b){
       return (a.classe_libelle||'').localeCompare(b.classe_libelle||'','fr')
@@ -87,7 +88,7 @@ function basculerValideesReleve(el){ RELEVE_VALIDEES_SEULES = !!el.checked; rend
 function renderReleve(){
   const d = donneesReleve();
   const sous = document.getElementById('rel-sous');
-  if(sous) sous.textContent = (classeFiltre || 'Toutes les classes') + ' — ' + d.eleves.length + ' élève(s), ' + d.missions.length + ' mission(s) notée(s)';
+  if(sous) sous.textContent = (classeFiltre || 'Toutes les classes') + (classeFiltre && typeof libelleGroupeFiltre === 'function' && libelleGroupeFiltre() ? ' (' + libelleGroupeFiltre() + ')' : '') + ' — ' + d.eleves.length + ' élève(s), ' + d.missions.length + ' mission(s) notée(s)';
   const body = document.getElementById('rel-body');
   if(!body) return;
 
@@ -135,7 +136,7 @@ function renderReleve(){
       }).join('')
     + '</tr></thead><tbody>'
     + d.eleves.map(function(e){
-        return '<tr><td style="position:sticky;left:0;z-index:1;background:#fff;padding:6px 10px;border-bottom:1px solid #EDF2F7;font-weight:700;white-space:nowrap">' + nomEleve(e)
+        return '<tr><td style="position:sticky;left:0;z-index:1;background:#fff;padding:6px 10px;border-bottom:1px solid #EDF2F7;font-weight:700;white-space:nowrap">' + nomEleve(e) + ((typeof badgeGroupe === 'function') ? badgeGroupe(e.groupe) : '')
           + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (e.classe_libelle||'') + '</div>') + '</td>'
           + d.missions.map(function(m){
               const c = d.cellules[e.id][m.id];
@@ -171,21 +172,21 @@ function exporterReleve(format){
   if(!d.missions.length){ alert('Aucune note à exporter.'); return; }
   const lignes = [];
   if(format === 'tableau'){
-    lignes.push(['Nom','Prénom','Classe'].concat(d.missions.map(function(m){ return m.id + ' — ' + m.titre; })));
+    lignes.push(['Nom','Prénom','Classe','Groupe'].concat(d.missions.map(function(m){ return m.id + ' — ' + m.titre; })));
     d.eleves.forEach(function(e){
-      lignes.push([e.nom||'', e.prenom||'', e.classe_libelle||''].concat(d.missions.map(function(m){
+      lignes.push([e.nom||'', e.prenom||'', e.classe_libelle||'', e.groupe||''].concat(d.missions.map(function(m){
         const c = d.cellules[e.id][m.id];
         if(!c) return '';
         return RELEVE_MODE === 'niveaux' ? niveauPourNote(c.note).label : fmtNote(c.note);
       })));
     });
   } else {
-    lignes.push(['Nom','Prénom','Classe','Code mission','Mission','Compétence','Palier','Note /20','Niveau de maîtrise','Statut']);
+    lignes.push(['Nom','Prénom','Classe','Groupe','Code mission','Mission','Compétence','Palier','Note /20','Niveau de maîtrise','Statut']);
     d.eleves.forEach(function(e){
       d.missions.forEach(function(m){
         const c = d.cellules[e.id][m.id];
         if(!c) return;
-        lignes.push([e.nom||'', e.prenom||'', e.classe_libelle||'', m.id, m.titre, m.comp, m.palier,
+        lignes.push([e.nom||'', e.prenom||'', e.classe_libelle||'', e.groupe||'', m.id, m.titre, m.comp, m.palier,
           fmtNote(c.note), niveauPourNote(c.note).label, c.valide ? 'Validée' : 'À valider']);
       });
     });
@@ -201,7 +202,7 @@ function exporterReleve(format){
   const a = document.createElement('a');
   a.href = url;
   a.download = 'laboro-releve-' + (format === 'tableau' ? (RELEVE_MODE === 'niveaux' ? 'niveaux' : 'notes') : 'detaille')
-    + (classeFiltre ? '-' + classeFiltre.replace(/\s+/g,'_') : '') + '-' + new Date().toISOString().slice(0,10) + '.csv';
+    + (classeFiltre ? '-' + classeFiltre.replace(/\s+/g,'_') : '') + ((classeFiltre && typeof groupeFiltre !== 'undefined' && groupeFiltre && groupeFiltre !== 'aucun') ? '-' + groupeFiltre : '') + '-' + new Date().toISOString().slice(0,10) + '.csv';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
@@ -220,7 +221,8 @@ function openAExaminer(){
   const t = document.getElementById('rel-titre'); if(t) t.textContent = 'Missions à examiner';
   const eleves = ELEVES_SERVEUR
     .filter(function(e){ return e.statut !== 'archive'; })
-    .filter(function(e){ return !classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre; });
+    .filter(function(e){ return !classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre; })
+    .filter(function(e){ return (typeof filtrerParGroupe === 'function') ? filtrerParGroupe([e]).length > 0 : true; });
   const lignes = [];
   eleves.forEach(function(e){
     (PROGRESSIONS_BRUTES[e.id] || []).forEach(function(p){
@@ -233,7 +235,7 @@ function openAExaminer(){
   lignes.sort(function(a,b){ return (a.note==null?99:a.note) - (b.note==null?99:b.note) || nomEleve(a.e).localeCompare(nomEleve(b.e),'fr'); });
 
   const sous = document.getElementById('rel-sous');
-  if(sous) sous.textContent = (classeFiltre || 'Toutes les classes') + ' — ' + lignes.length + ' mission(s) sous le seuil de validation';
+  if(sous) sous.textContent = (classeFiltre || 'Toutes les classes') + (classeFiltre && typeof libelleGroupeFiltre === 'function' && libelleGroupeFiltre() ? ' (' + libelleGroupeFiltre() + ')' : '') + ' — ' + lignes.length + ' mission(s) sous le seuil de validation';
   const body = document.getElementById('rel-body');
   if(!body) return;
   if(!lignes.length){
@@ -249,7 +251,7 @@ function openAExaminer(){
     + lignes.map(function(l){
         const n = niveauPourNote(l.note);
         const d = l.date ? new Date(l.date) : null;
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e)
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e) + ((typeof badgeGroupe === 'function') ? badgeGroupe(l.e.groupe) : '')
           + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (l.e.classe_libelle||'') + '</div>') + '</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span>'
           + (l.tentatives != null ? (l.tentatives >= 2 ? ' <span style="font-size:10px;font-weight:700;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⛔ 2/2 tentatives</span>' : ' <span style="font-size:10px;color:#92400E;background:#FFFBEA;padding:1px 6px;border-radius:8px">peut encore corriger</span>') : '')

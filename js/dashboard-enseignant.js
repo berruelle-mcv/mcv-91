@@ -103,11 +103,13 @@ function boutonRaccourci(ico, label, action){
 }
 function allerVueClasse(cls){
   classeFiltre = cls || '';
+  if(typeof groupeFiltre !== 'undefined') groupeFiltre = '';
   goP('classe', document.getElementById('ni-cl'));
 }
 function ouvrirDepuisAccueil(quoi){
   // Relevé et "À examiner" portent sur toutes les classes depuis l'accueil
   classeFiltre = '';
+  if(typeof groupeFiltre !== 'undefined') groupeFiltre = '';
   if(quoi === 'examiner' && typeof openAExaminer === 'function') openAExaminer();
   if(quoi === 'releve' && typeof openReleve === 'function') openReleve();
 }
@@ -124,9 +126,10 @@ function donneesDashboardEnseignant(){
 
   eleves.forEach(function(e){
     const cls = e.classe_libelle || 'Sans classe';
-    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [] };
+    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [], G1: 0, G2: 0, sansGroupe: 0 };
     const c = parClasse[cls];
     c.eleves++;
+    if(e.groupe === 'G1') c.G1++; else if(e.groupe === 'G2') c.G2++; else c.sansGroupe++;
     let derniere = null, nb = 0;
     (PROGRESSIONS_BRUTES[e.id] || []).forEach(function(p){
       if(!p || !p.mission_id) return;
@@ -183,7 +186,7 @@ function blocATraiter(d){
 
   const listeEnCours = d.enCours.slice(0, 4).map(function(a){
     const pct = a.total ? Math.round(a.termines / a.total * 100) : 0;
-    const qui = a.cible === 'classe' ? (a.classe_libelle || a.classe_id) : (((a.prenom||'') + ' ' + (a.nom||'').toUpperCase()).trim());
+    const qui = (typeof cibleAssignation === 'function') ? cibleAssignation(a) : (a.classe_libelle || a.classe_id || '');
     return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid #EDF2F7;font-size:12px">'
       + '<div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><strong>' + qui + '</strong> — <strong style="color:#185FA5">' + a.mission_id + '</strong> ' + (a.titre||'') + '</div>'
       + '<div style="width:110px;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden;flex-shrink:0"><div style="height:100%;width:' + pct + '%;background:#1B7F3B"></div></div>'
@@ -205,6 +208,7 @@ function blocClasses(d){
     return '<div onclick="allerVueClasse(\'' + c.nom.replace(/'/g, "\\'") + '\')" title="Ouvrir la Vue classe de ' + c.nom + '" style="flex:1;min-width:210px;max-width:320px;border:1px solid #E2E8F0;border-top:4px solid ' + couleur + ';border-radius:10px;padding:12px 14px;cursor:pointer;background:#fff">'
       + '<div style="font-size:14px;font-weight:900;color:' + couleur + ';margin-bottom:6px">' + c.nom + '</div>'
       + ligne('Élèves', c.eleves)
+      + ligne('Demi-groupes', (c.G1 || c.G2) ? ('G1 ' + c.G1 + ' · G2 ' + c.G2 + (c.sansGroupe ? ' · <span style="color:#C2410C">⚠ ' + c.sansGroupe + ' sans</span>' : '')) : '<span style="color:var(--gm);font-weight:400">non répartis</span>')
       + ligne('Actifs cette semaine', c.actifs7j + ' <span style="font-weight:400;color:var(--gm)">(' + pctActifs + ' %)</span>')
       + ligne('Missions validées', c.validees)
       + ligne('Moyenne des notes validées', moy != null ? pastilleNote(Math.round(moy*10)/10) : '—')

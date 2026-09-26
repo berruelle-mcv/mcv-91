@@ -266,6 +266,8 @@ function toggleMDJCible(){
   const isEleve = cible.value === 'eleve';
   selCl.style.display = isEleve ? 'none' : '';
   selEl.style.display = isEleve ? '' : 'none';
+  const selGr = document.getElementById('mdj-grp');
+  if(selGr) selGr.style.display = cible.value === 'groupe' ? '' : 'none'; // demi-groupe G1 / G2 (26/09/2026)
 }
 
 // --- Assigner la mission du jour (classe ou élève selon le mode choisi) ---
@@ -285,6 +287,10 @@ async function assignerMDJ(){
     const clCode = document.getElementById('mdj-cl').value;
     if(!clCode){ if(st) st.textContent = 'Choisis une classe.'; return; }
     body.classeCode = clCode;
+    if(cible && cible.value === 'groupe'){
+      const g = document.getElementById('mdj-grp');
+      body.groupe = g ? g.value : 'G1';
+    }
   }
 
   const token = localStorage.getItem('laboro_token');
@@ -301,10 +307,12 @@ async function assignerMDJ(){
   if(!d.ok){ if(st) st.textContent = 'Échec : ' + (d.erreur || 'erreur inconnue'); return; }
 
   if(st){
-    const qui = d.cible === 'eleve' ? (d.prenom+' '+d.nom) : 'la classe';
-    st.textContent = d.deja
-      ? 'ℹ️ La mission "'+d.titre+'" est déjà en cours pour '+qui+' : rien à refaire.'
-      : '✅ Mission "'+d.titre+'" assignée à '+qui+'. Elle s\'ajoute aux missions déjà en cours.';
+    const qui = d.cible === 'eleve' ? ('à ' + d.prenom+' '+d.nom) : (d.cible === 'groupe' ? 'au groupe ' + d.groupe + (d.nb_eleves_groupe != null ? ' (' + d.nb_eleves_groupe + ' élève(s))' : '') : 'à la classe');
+    if(d.cible === 'groupe' && d.nb_eleves_groupe === 0 && !d.deja){
+      st.textContent = '⚠️ Mission assignée au groupe ' + d.groupe + ', mais aucun élève de cette classe n\'est encore dans ce groupe. Répartis-les depuis la Vue classe (bouton « Répartir en groupes »).';
+    } else st.textContent = d.deja
+      ? 'ℹ️ La mission "'+d.titre+'" est déjà en cours ('+qui+') : rien à refaire.'
+      : '✅ Mission "'+d.titre+'" assignée '+qui+'. Elle s\'ajoute aux missions déjà en cours.';
   }
   renderMDJListe();
 }
@@ -323,7 +331,9 @@ function fmtDateHeure(iso){
   return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
 }
 function cibleAssignation(a){
-  return a.cible === 'classe' ? (a.classe_libelle || a.classe_id) : (((a.nom||'').toUpperCase() + ' ' + (a.prenom||'')).trim() || 'Élève');
+  if(a.cible === 'classe') return (a.classe_libelle || a.classe_id);
+  if(a.cible === 'groupe') return (a.classe_libelle || a.classe_id) + ' · ' + a.groupe;
+  return (((a.nom||'').toUpperCase() + ' ' + (a.prenom||'')).trim() || 'Élève');
 }
 function etatAssignation(a){
   if(a.retiree_at) return { code:'retiree', label:'Retirée', bg:'#F3F4F6', fg:'#6B7280' };
@@ -387,7 +397,7 @@ function remplirFiltreHistoriqueMDJ(){
   if(!sel) return;
   const actuel = sel.value;
   const classes = [];
-  MDJ_ASSIGNATIONS.forEach(function(a){ const c = a.cible === 'classe' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)'; if(classes.indexOf(c) < 0) classes.push(c); });
+  MDJ_ASSIGNATIONS.forEach(function(a){ const c = a.cible !== 'eleve' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)'; if(classes.indexOf(c) < 0) classes.push(c); });
   classes.sort();
   sel.innerHTML = '<option value="">Toutes les classes</option>' + classes.map(function(c){ return '<option value="'+c+'"'+(c===actuel?' selected':'')+'>'+c+'</option>'; }).join('');
 }
@@ -399,7 +409,7 @@ function renderMDJHistorique(){
   const filtre = sel ? sel.value : '';
   const liste = MDJ_ASSIGNATIONS.filter(function(a){
     if(!filtre) return true;
-    const c = a.cible === 'classe' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)';
+    const c = a.cible !== 'eleve' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)';
     return c === filtre;
   });
   if(!liste.length){ el.innerHTML = '<div style="padding:12px;font-size:12px;color:var(--gm)">Aucune mission assignée pour le moment.</div>'; return; }
