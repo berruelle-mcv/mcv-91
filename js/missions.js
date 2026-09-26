@@ -109,7 +109,7 @@ function openMission(id){
   document.getElementById('mo-m').innerHTML=`${compBadge(m.comp)} · Palier ${m.palier} — ${['','Débutant','Apprenti','Professionnel compétent','Professionnel performant'][m.palier]}`;
   const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Mission validée = Palier 2 débloqué.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Mission validée = Palier 3 débloqué.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Mission validée = Palier 4 débloqué.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
   const pdEl=document.getElementById('mo-palier-desc');
-  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier-1];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
+  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
   const res=getRes(m.comp, m.palier);
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
@@ -132,7 +132,7 @@ function openMission(id){
     html+=`<div class="ph2"><div class="ph-l" style="color:var(--vt)">Activité ${i+1} — ${a.t}</div>`;
     a.q.forEach(q=>{
       const qid=`q_${id}_${i}_${q.substring(0,8).replace(/\s/g,'_')}`;
-      const saved=savedReps[qid]||'';
+      const saved=reponseSauvee(savedReps,id,i,q,qid);
       const qcm=analyserQCM(q);
       const ph=qcm?(qcm.mode==='ordre'?'Clique les lettres dans l\'ordre ci-dessus, puis justifie si demandé…':'Clique ta/tes réponse(s) ci-dessus, puis justifie si demandé…'):'Rédige ta réponse ici…';
       html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}','${qid}',this);majChoixQCM('${qid}')">${saved}</textarea></div>`;
@@ -566,6 +566,16 @@ document.addEventListener('DOMContentLoaded', function(){ setTimeout(initModalDr
 // et on affiche des cases cliquables. Le choix est écrit en 1re ligne de la
 // zone de réponse ("Réponse : A, C" ou "Ordre : B → A → C") : la correction IA
 // reçoit donc exactement le même format texte qu'avant, sans rien changer côté serveur.
+// Brouillon d'une question (26/09/2026) : si l'énoncé a été reformulé depuis,
+// on retrouve la réponse de l'élève par le numéro de la question (1.2, 2.1…).
+function reponseSauvee(savedReps, id, i, q, qid){
+  if(savedReps[qid]) return savedReps[qid];
+  const num = q.split(' ')[0];
+  if(!/^\d+\.\d+$/.test(num)) return '';
+  const prefixe = 'q_' + id + '_' + i + '_' + num + '_';
+  const cles = Object.keys(savedReps).filter(function(k){ return k.indexOf(prefixe) === 0 && savedReps[k]; });
+  return cles.length === 1 ? savedReps[cles[0]] : '';
+}
 function analyserQCM(q){
   const re=/(?:^|\s)([A-F])\)\s+/g;
   const pos=[];let mm;

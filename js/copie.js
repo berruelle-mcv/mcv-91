@@ -71,7 +71,14 @@ function renderCopie(){
   if(m && m.activites){
     m.activites.forEach(function(a, i){
       htmlRep += '<div style="font-size:11px;font-weight:800;color:var(--vt);text-transform:uppercase;letter-spacing:.05em;margin-top:10px">Activité ' + (i+1) + ' — ' + esc(a.t) + '</div>';
-      a.q.forEach(function(q){ htmlRep += blocQ(q, reps[q]); delete reps[q]; });
+      a.q.forEach(function(q){
+        if(reps[q] !== undefined){ htmlRep += blocQ(q, reps[q]); delete reps[q]; return; }
+        // Énoncé reformulé depuis la copie (26/09/2026) : on retrouve la réponse par le numéro
+        const num = q.split(' ')[0];
+        const anciennes = /^\d+\.\d+$/.test(num) ? Object.keys(reps).filter(function(k){ return k.split(' ')[0] === num; }) : [];
+        if(anciennes.length === 1){ htmlRep += blocQ(anciennes[0], reps[anciennes[0]]); delete reps[anciennes[0]]; }
+        else htmlRep += blocQ(q, undefined);
+      });
     });
   }
   Object.keys(reps).forEach(function(k){ htmlRep += blocQ(k, reps[k]); }); // réflexivité, situation imprévue, questions modifiées depuis
