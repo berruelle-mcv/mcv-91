@@ -52,8 +52,8 @@ function calcPosturePro(ud){
   if(done.length >= 10) score += 5;
   const scores = done.filter(function(m){ return m.score != null; }).map(function(m){ return m.score; });
   const avg = scores.length ? scores.reduce(function(a,b){ return a+b; },0)/scores.length : 0;
-  if(avg >= 14) score += 10;
-  else if(avg >= 11) score += 5;
+  if(avg >= 15) score += 10;        // très bonne maîtrise (barème 26/09/2026)
+  else if(avg >= 12) score += 5;    // maîtrise satisfaisante
   return Math.max(0, Math.min(100, score));
 }
 
@@ -523,4 +523,4 @@ function ouvrirFicheClient(id){
 // (ancien système de correction manuelle locale validerMission()/showFicheEleve(),
 // supprimé le 20/09/2026 — code mort, plus aucun bouton de l'interface actuelle
 // ne l'appelle depuis le passage de la Vue classe au serveur : la validation des
-// notes IA passe désormais par validerAll()/la Vue classe, classe-serveur.js.)
+// notes IA passe désormais par la fenêtre « Copie » (copie.js) depuis la Vue classe.)

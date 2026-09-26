@@ -510,30 +510,6 @@ function closeAnalyse(){
   if(overlay) overlay.classList.remove('open');
 }
 
-// ================================================
-//   Validation groupée des notes IA ≥ 12/20
-//   (jamais les réponses signalées comme suspectes par l'IA — celles-là
-//   restent "à examiner" pour l'enseignant, quel que soit leur score)
-// ================================================
-
-async function validerAll(){
-  const token = localStorage.getItem('laboro_token');
-  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
-  if(!confirm('Valider automatiquement toutes les missions corrigées par l\'IA avec une note ≥ 12/20 ?\n\nLes réponses signalées comme suspectes par l\'IA ne sont jamais validées automatiquement — elles restent à examiner toi-même.')) return;
-
-  const btn = document.querySelector('.btn-val-all');
-  if(btn){ btn.disabled = true; btn.textContent = 'Validation en cours…'; }
-
-  const r = await fetchJSON(LABORO_API + '/api/classe/valider-notes-ia', {
-    method: 'POST',
-    headers: { 'Authorization': 'Bearer ' + token }
-  });
-
-  if(btn){ btn.disabled = false; btn.textContent = 'Valider notes IA ≥ 12/20'; }
-
-  if(!r.ok){ alert(r.erreur); return; }
-  const d = r.data;
-  if(!d.ok){ alert('Échec : ' + (d.erreur || 'erreur inconnue')); return; }
-  alert(d.valide > 0 ? ('✅ ' + d.valide + ' mission(s) validée(s) automatiquement.') : 'Aucune mission en attente avec une note ≥ 12/20 pour le moment.');
-  renderClasse();
-}
+// (Validation groupée des notes IA ≥ 12/20 — supprimée le 26/09/2026 : le serveur
+//  valide déjà toute note ≥ seuil de la classe, et l'enseignant décide copie par copie
+//  depuis « À examiner » / le Relevé, voir copie.js.)

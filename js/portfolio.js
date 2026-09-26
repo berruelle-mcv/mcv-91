@@ -159,7 +159,7 @@ function afficherPortfolioDoc(ud, nom, classe){
   // Liste des missions validées (les 8 meilleures pour rester lisible)
   const missionsHtml = nbValidees
     ? missionsValidees.slice(0,8).map(function(m){
-        const col = m.score>=14 ? '#185FA5' : m.score>=11 ? '#D97706' : '#C53030';
+        const col = m.score>=12 ? '#185FA5' : m.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
         const dateTxt = m.date ? new Date(m.date).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
         return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:11px">'
           + '<span style="color:#374151;flex:1">'+m.titre+'</span>'

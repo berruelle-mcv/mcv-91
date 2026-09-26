@@ -503,7 +503,7 @@ function renderDashboard(){
             if(!m) return '';
             const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
             const pCol = palierColors[m.palier] || '#4A6FA5';
-            const scoreColor = v.score>=14 ? '#185FA5' : v.score>=11 ? '#D97706' : '#C53030';
+            const scoreColor = v.score>=12 ? '#185FA5' : v.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
             return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:#F8FAFF;border-radius:10px;border-left:3px solid '+pCol+'">'
               + '<div class="u-flex-1">'
               + '<div style="font-size:12px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.titre+'</div>'

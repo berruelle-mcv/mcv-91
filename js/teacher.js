@@ -438,7 +438,7 @@ function handleMission(id){
   if(!m) return;
   const locked = !isPalierUnlocked(m, ud) && CU.classe !== 'enseignant';
   if(locked){
-    alert('Palier '+(m.palier-1)+' requis. Valide une mission de ce palier avec une note >= 11/20.');
+    alert('Palier '+(m.palier-1)+' requis : fais d\'abord valider une mission de ce palier.');
     return;
   }
   openMission(id);
@@ -455,7 +455,7 @@ function renderIndicateursPedago(){
   const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
   const byPalier = [0,0,0,0,0];
   done.forEach(function(m){ byPalier[m.palier]++; });
-  const reussi = scores.filter(function(s){ return s>=11; }).length;
+  const reussi = scores.filter(function(s){ return s>=10; }).length; // seuil de validation des classes
   const tauxReussite = scores.length ? Math.round(reussi/scores.length*100) : 0;
   const bestScore = scores.length ? Math.max.apply(null, scores) : 0;
   const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
@@ -472,7 +472,7 @@ function renderIndicateursPedago(){
       }).join('')
     + '</div></div>'
     + '<div class="card"><div class="ct">🎯 Ma performance</div><div class="u-grid-2">'
-    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#185FA5':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 11/20</div></div>'
+    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#185FA5':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 10/20 (validée)</div></div>'
     + '<div style="background:#EBF4FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div><div style="font-size:24px;font-weight:900;color:#2D5282">'+(bestScore>0?bestScore+'/20':'—')+'</div><div class="u-label">sur toutes les missions</div></div>'
     + '<div style="background:#FFF7ED;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Missions terminées</div><div style="font-size:24px;font-weight:900;color:#D97706">'+done.length+'/'+allMissions.length+'</div><div class="u-label">'+Math.round(done.length/allMissions.length*100)+'% complété</div></div>'
     + '<div style="background:#FAF5FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Moyenne générale</div><div style="font-size:24px;font-weight:900;color:#7B2FBE">'+(avg>0?avg.toFixed(1)+'/20':'—')+'</div><div class="u-label">sur missions notées</div></div>'

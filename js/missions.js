@@ -255,7 +255,7 @@ function sauvegarderEtFermer(){
   closeMo();
 }
 function renderFb(fb){
-  const nc=fb.note>=17?'ni-h':fb.note>=11?'ni-m':'ni-l';
+  const nc=fb.note>=12?'ni-h':fb.note>=8?'ni-m':'ni-l'; // barème de maîtrise (26/09/2026)
   return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ${nc}">${fb.note}/20</span></div>${fb.texte}</div>`;
 }
 function openCoupDePouce(){
@@ -421,11 +421,11 @@ function calcNiveauComp(compCode, ud){
   const totalDone = done.length;
   const totalMissions = missions.length;
   
-  // Maîtrisé : P3 ou P4 validé + moyenne >= 14 OU toutes missions faites
-  if((hasP3 || hasP4) && avg >= 14) return 4;
+  // Maîtrisé : P3 ou P4 validé + moyenne ≥ 15 (très bonne maîtrise — barème du 26/09/2026)
+  if((hasP3 || hasP4) && avg >= 15) return 4;
   // Acquis : P2 + P3 validés OU >= 75% des missions faites avec bonne moyenne
   if(hasP2 && hasP3) return 3;
-  if(totalDone >= Math.ceil(totalMissions * 0.75) && avg >= 11) return 3;
+  if(totalDone >= Math.ceil(totalMissions * 0.75) && avg >= 12) return 3; // moyenne satisfaisante
   // En progression : P2 validé OU >= 2 missions faites
   if(hasP2 || totalDone >= 2) return 2;
   // Découverte : au moins P1 validé

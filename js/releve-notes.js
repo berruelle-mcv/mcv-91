@@ -11,11 +11,11 @@
 //   (ELEVES_SERVEUR, PROGRESSIONS_BRUTES) : aucune nouvelle route serveur.
 // ================================================
 
-// Seuils validés par Pascal le 25/09/2026 : <5 / 5–9,5 / 10–14,5 / ≥15
+// Barème validé par Pascal le 26/09/2026 : < 8 / 8–11,5 / 12–14,5 / ≥ 15 (seuil de validation des classes inchangé : 10)
 const NIVEAUX_MAITRISE = [
   { min: 15, code: 'TB', label: 'Très bonne maîtrise',  bg: '#1B7F3B', fg: '#fff' }, // vert foncé
-  { min: 10, code: 'S',  label: 'Maîtrise satisfaisante', bg: '#9BE0A6', fg: '#0B3D18' }, // vert clair
-  { min: 5,  code: 'F',  label: 'Maîtrise fragile',       bg: '#FFE066', fg: '#5C4700' }, // jaune
+  { min: 12, code: 'S',  label: 'Maîtrise satisfaisante', bg: '#9BE0A6', fg: '#0B3D18' }, // vert clair
+  { min: 8,  code: 'F',  label: 'Maîtrise fragile',       bg: '#FFE066', fg: '#5C4700' }, // jaune
   { min: 0,  code: 'I',  label: 'Maîtrise insuffisante',  bg: '#E5484D', fg: '#fff' }  // rouge
 ];
 function niveauPourNote(note){
@@ -115,7 +115,7 @@ function renderReleve(){
   if(RELEVE_MODE === 'niveaux'){
     html += '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;font-size:11px">'
       + NIVEAUX_MAITRISE.slice().reverse().map(function(n, i){
-          const bornes = ['< 5', '5 à 9,5', '10 à 14,5', '≥ 15'][i];
+          const bornes = ['< 8', '8 à 11,5', '12 à 14,5', '≥ 15'][i];
           return '<span style="display:inline-flex;align-items:center;gap:6px"><span style="width:16px;height:16px;border-radius:4px;background:' + n.bg + ';display:inline-block"></span>' + n.label + ' <span style="color:var(--gm)">(' + bornes + '/20)</span></span>';
         }).join('')
       + '</div>';
