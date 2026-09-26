@@ -126,9 +126,12 @@ function donneesDashboardEnseignant(){
 
   eleves.forEach(function(e){
     const cls = e.classe_libelle || 'Sans classe';
-    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [], G1: 0, G2: 0, sansGroupe: 0 };
+    if(!parClasse[cls]) parClasse[cls] = { nom: cls, eleves: 0, actifs7j: 0, validees: 0, sommeNotes: 0, nbNotes: 0, jamais: [], inactifs: [], G1: 0, G2: 0, sansGroupe: 0, scores: [] };
     const c = parClasse[cls];
     c.eleves++;
+    // Score LABORO (même calcul que le classement des élèves) — pour le top 3 de la classe
+    const sc = (typeof calcScore === 'function' && PROGRESSIONS_CLASSE[e.id]) ? calcScore(PROGRESSIONS_CLASSE[e.id]) : 0;
+    if(sc > 0) c.scores.push({ eleve: e, score: sc });
     if(e.groupe === 'G1') c.G1++; else if(e.groupe === 'G2') c.G2++; else c.sansGroupe++;
     let derniere = null, nb = 0;
     (PROGRESSIONS_BRUTES[e.id] || []).forEach(function(p){
@@ -213,6 +216,7 @@ function blocClasses(d){
       + ligne('Missions validées', c.validees)
       + ligne('Moyenne des notes validées', moy != null ? pastilleNote(Math.round(moy*10)/10) : '—')
       + ligne('Aucune mission rendue', c.jamais.length ? '<span style="color:#C2410C">' + c.jamais.length + '</span>' : '0')
+      + blocTop3(c)
       + '<div style="font-size:11px;color:' + couleur + ';margin-top:6px;font-weight:700">Voir la classe →</div>'
       + '</div>';
   }).join('');
@@ -248,5 +252,21 @@ function blocRelance(d){
   }).join('');
   return '<div class="card" style="margin-top:0"><div class="ct">📣 Élèves à relancer</div>'
     + (sections || '<div style="font-size:12px;color:#166534">✅ Tous tes élèves ont rendu au moins une mission ces ' + DASH_ENS_JOURS_RELANCE + ' derniers jours.</div>')
+    + '</div>';
+}
+
+
+// Top 3 de la classe (Score LABORO) — mêmes règles que le podium élève :
+// seuls les élèves ayant un score > 0, pas de 2e/3e artificiels.
+function blocTop3(c){
+  const top = c.scores.slice().sort(function(a,b){ return b.score - a.score; }).slice(0, 3);
+  const medailles = ['🥇','🥈','🥉'];
+  return '<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #E2E8F0">'
+    + '<div style="font-size:10px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Top 3 — Score LABORO</div>'
+    + (top.length ? top.map(function(t, i){
+        return '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:2px 0">'
+          + '<span>' + medailles[i] + ' ' + nomCourtEleve(t.eleve) + ((typeof badgeGroupe === 'function') ? badgeGroupe(t.eleve.groupe) : '') + '</span>'
+          + '<strong>' + t.score + '</strong></div>';
+      }).join('') : '<div style="font-size:11px;color:var(--gm)">Pas encore de mission validée.</div>')
     + '</div>';
 }
