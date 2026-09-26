@@ -49,8 +49,8 @@ Un client entre dans le showroom. Tu es en train de ranger des articles.<br><br>
 <li><strong>A</strong>vantage — ce que cette caractéristique APPORTE</li>
 <li><strong>B</strong>énéfice — ce que le client EN RESSENT, pour lui, concrètement</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple tout fait — chaussures EasyRun</div>
-<strong>C</strong>aractéristique : "Cette chaussure a une semelle Contagrip avec des crampons profonds."<br>
+<div class="res-ex"><div class="res-ex-l">Exemple tout fait — chaussures trail Grip X</div>
+<strong>C</strong>aractéristique : "Cette chaussure a une semelle à crampons profonds."<br>
 <strong>A</strong>vantage : "...donc elle accroche très bien même sur terrain humide."<br>
 <strong>B</strong>énéfice : "...vous ne glisserez pas, même sous la pluie."
 </div>
@@ -89,7 +89,7 @@ La question ② est plus utile ici : elle t'aidera à orienter vers une gamme te
   <text x="104" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#4A9EE8">C</text>
   <text x="104" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CARACTÉRISTIQUE</text>
   <text x="104" y="120" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,.8)">Ce que le produit est</text>
-  <text x="104" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"Semelle Contagrip..."</text>
+  <text x="104" y="133" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.65)">"Semelle à crampons..."</text>
   <rect x="240" y="60" width="168" height="90" rx="10" fill="#2D5282"/>
   <text x="324" y="88" text-anchor="middle" font-size="28" font-weight="900" fill="#63B3ED">A</text>
   <text x="324" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">AVANTAGE</text>
@@ -103,7 +103,7 @@ La question ② est plus utile ici : elle t'aidera à orienter vers une gamme te
   <rect x="20" y="162" width="640" height="28" rx="6" fill="#EBF4FF"/>
   <text x="340" y="180" text-anchor="middle" font-size="9.5" fill="#1A2E4A">
     <tspan font-weight="700">Exemple LABORO : </tspan>
-    <tspan>"Ces chaussures ont une semelle Contagrip (C) — donc une excellente adhérence sur terrain humide (A) — vous pourrez courir sereinement même sous la pluie (B)."</tspan>
+    <tspan>"Semelle à crampons (C) — meilleure adhérence sur sol humide (A) — vous courez sereinement sous la pluie (B)."</tspan>
   </text>
 </svg>
 </div>
@@ -212,7 +212,7 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 <li><strong>Veille réglementaire</strong> — Suivre les changements de loi (garanties, étiquetage, RGPD).</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — veille concurrentielle</div>
-Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les nouveautés et les prix. Cette semaine : Decathlon lance un trail shoe à 59€ — LABORO a un équivalent à 79€. Elle prépare 3 arguments pour justifier l'écart de prix auprès des clients.
+Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les nouveautés et les prix. Cette semaine : Decathlon lance des chaussures trail à 69€ — LABORO a un équivalent, les Chaussures trail Grip X, à 95€. Elle prépare 3 arguments pour justifier l'écart de prix auprès des clients.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -275,7 +275,7 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
 <div class="res-section-label">🟢 Transformer une information de veille en argument de vente</div>
 <p>Une veille qui reste dans un tableau ne sert à rien : elle doit se transformer en argument concret face au client. La méthode : identifier l'écart avec le concurrent, puis construire une réponse qui ne dénigre jamais le concurrent par son nom.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — de la veille à l'argument</div>
-Nina a repéré que Decathlon vend un trail shoe équivalent 20€ moins cher. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle Contagrip et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Decathlon par son nom devant le client, elle compare les offres.
+Nina a repéré que Decathlon vend des chaussures trail équivalentes 26€ moins chères. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle à crampons profonds et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Decathlon par son nom devant le client, elle compare les offres.
 </div>
 <p><strong>Construire un tableau de veille simple :</strong> pour chaque concurrent suivi, note la date, le prix observé, l'info clé, et l'action à en tirer (rien / en parler à l'équipe / préparer un argument). Un tableau de veille sans colonne "action" n'est qu'une liste de curiosités.</p>
 </div>
@@ -337,12 +337,12 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 <p>Après l'accord, il reste 4 étapes importantes pour finaliser correctement.</p>
 <ul>
 <li><strong>1. Encaisser</strong> — CB, espèces, chèque. Vérifier le rendu monnaie. Proposer la carte fidélité si pas encore fait.</li>
-<li><strong>2. Remettre les documents</strong> — Ticket de caisse obligatoire dès 1€. Bon de garantie si produit technique. Notice si nécessaire.</li>
-<li><strong>3. Proposer les services complémentaires</strong> — Livraison, personnalisation, garantie étendue. C'est le dernier moment.</li>
+<li><strong>2. Remettre les documents</strong> — Ticket de caisse remis au client s'il le souhaite (depuis le 1er août 2023, il n'est plus imprimé systématiquement : propose-le, c'est sa preuve d'achat pour la garantie et les échanges). Bon de garantie si produit technique. Notice si nécessaire.</li>
+<li><strong>3. Proposer les services complémentaires</strong> — Livraison, personnalisation, rappel de la garantie commerciale 30 jours (incluse). C'est le dernier moment.</li>
 <li><strong>4. Prendre congé</strong> — Remercier, souhaiter bonne utilisation, inviter à revenir. La dernière impression compte autant que la première.</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — vente de chaussures trail</div>
-M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant l'encaissement : "Je vous propose aussi notre garantie étendue 30 jours — c'est gratuit." Pendant : paiement CB, ticket remis, bon de garantie expliqué. Après : "Bonne sortie trail ! N'hésitez pas si vous avez la moindre question."
+M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant l'encaissement : "Je vous propose aussi la livraison à domicile si vous préférez ne pas les emporter, et je vous rappelle que notre garantie commerciale 30 jours est incluse." Pendant : paiement CB, ticket proposé et remis à sa demande, bon de garantie expliqué. Après : "Bonne sortie trail ! N'hésitez pas si vous avez la moindre question."
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -363,13 +363,13 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
   <rect x="182" y="38" width="148" height="98" rx="10" fill="#2F855A"/>
   <text x="256" y="66" text-anchor="middle" font-size="22">🧾</text>
   <text x="256" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2. DOCUMENTS</text>
-  <text x="256" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Ticket obligatoire dès 1€</text>
+  <text x="256" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Ticket remis sur demande</text>
   <text x="256" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Garantie · Notice</text>
   <path d="M 332 87 L 347 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
   <rect x="349" y="38" width="148" height="98" rx="10" fill="#38A169"/>
   <text x="423" y="66" text-anchor="middle" font-size="22">➕</text>
   <text x="423" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3. SERVICES +</text>
-  <text x="423" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Livraison · Garantie étendue</text>
+  <text x="423" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Livraison · Garantie 30 j</text>
   <text x="423" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Personnalisation textile</text>
   <path d="M 499 87 L 514 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
   <rect x="516" y="38" width="149" height="98" rx="10" fill="#48BB78"/>
@@ -383,7 +383,7 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>4 étapes : encaisser · documents · services complémentaires · prise de congé</li>
-<li>Ticket de caisse obligatoire dès 1€</li>
+<li>Ticket de caisse : proposé et remis à la demande du client (plus imprimé systématiquement depuis le 1er août 2023) — c'est sa preuve d'achat</li>
 <li>Proposer la carte fidélité ET les services avant l'encaissement</li>
 <li>La dernière impression = fidélisation ou perte du client</li>
 </ul>
@@ -393,14 +393,14 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
 <p>À ce niveau, tu ne te contentes plus d'appliquer les 4 étapes dans l'ordre : tu choisis la bonne formulation pour que le client se sente accompagné jusqu'au bout, jamais pressé.</p>
 <p><strong>Techniques de conclusion :</strong></p>
 <ul>
-<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les chaussures trail Grip X pour leur amorti et leur légèreté — excellent choix pour le trail humide."</li>
+<li><strong>Résumé bénéfices</strong> — "Donc vous avez choisi les chaussures trail Grip X pour leurs crampons profonds et leur accroche — excellent choix pour le trail humide."</li>
 <li><strong>Alternative positive</strong> — "Vous préférez payer en CB ou en espèces ?" (jamais "Vous voulez payer ?" qui laisse la porte ouverte au renoncement)</li>
 <li><strong>Urgence factuelle</strong> — "C'est le dernier en taille 43 en stock." (vrai fait, jamais inventé pour forcer la vente)</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple — proposer un service sans être insistant</div>
 Après l'accord sur une veste à 89€ : "Pour cette veste technique, on propose un traitement déperlant renouvelé, 8€ — ça double sa durée de vie face à la pluie. Je vous le montre rapidement ou vous préférez sans ?" La proposition est justifiée par un bénéfice concret, et le client garde le choix clairement formulé.
 </div>
-<p><strong>Documents obligatoires :</strong> ticket de caisse (dès 1€) · facture pour les pros · bon de garantie légale 2 ans · bon de livraison si commande.</p>
+<p><strong>Documents à remettre :</strong> ticket de caisse (remis à la demande du client depuis le 1er août 2023 — pense à le proposer) · facture pour les pros · bon de garantie légale 2 ans · bon de livraison si commande.</p>
 <p><strong>KPI à suivre :</strong> valeur panier moyen, taux d'ajout service complémentaire, taux de carte fidélité proposée. Un(e) bon(ne) vendeur(se) LABORO regarde ces chiffres, pas seulement le nombre de ventes.</p>
 </div>
 <div class="res-retenir">
@@ -435,7 +435,7 @@ Client : "Je peux payer en 3 fois ?" Si LABORO ne propose pas cette option en ca
 <div class="res-section-label">🔴 Fiche mémo express — conclure et enchaîner sur la fidélisation</div>
 <p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
 <ul>
-<li><strong>4 étapes</strong> : encaisser · documents (ticket obligatoire dès 1€) · services complémentaires · prise de congé</li>
+<li><strong>4 étapes</strong> : encaisser · documents (ticket proposé, remis à la demande du client) · services complémentaires · prise de congé</li>
 <li><strong>Conclusion</strong> : résumé des bénéfices choisis, alternative positive, jamais d'urgence inventée</li>
 <li><strong>Imprévu de dernière minute</strong> : identifier le point de blocage précis avant de répondre, jamais répéter l'argumentaire en entier</li>
 <li><strong>Contrainte que LABORO ne peut pas satisfaire</strong> : toujours réorienter vers une solution réelle, jamais un simple refus</li>
@@ -459,14 +459,14 @@ Un client conclut son achat, hésite sur le paiement, puis demande un service co
 <div class="res-section-label">🔵 Pour commencer — Les modes de livraison LABORO</div>
 <p><strong>Chez LABORO, 3 modes de livraison sont proposés aux clients :</strong></p>
 <ul>
-<li><strong>Retrait en magasin</strong> — disponible sous 24h · Gratuit · Le client vient au showroom d'Évry</li>
-<li><strong>Livraison à domicile</strong> — délai 3 à 5 jours ouvrés · Tarif : 4,90€ (offert dès 60€)</li>
-<li><strong>Livraison express</strong> — délai 24-48h · Tarif : 9,90€ · Transporteur Chronopost</li>
+<li><strong>Click and collect</strong> — retrait au showroom d'Évry · prêt en 2h si en stock · Gratuit</li>
+<li><strong>Livraison standard à domicile</strong> — délai 48h · Tarif : 6,90 € · Transporteur partenaire</li>
+<li><strong>Livraison express à domicile</strong> — délai 24h · Tarif : 12,90 € · Transporteur partenaire</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Konaté commande 10 ballons</div>
-Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi vendredi.<br><br>
-✅ Conseil : proposer la livraison express (48h) pour être sûr d'avoir les ballons jeudi.<br>
-❌ À éviter : proposer la livraison standard (3-5 jours) qui risque d'arriver trop tard.
+Mme Konaté passe commande le mercredi en fin de journée. Elle a besoin des ballons pour son tournoi vendredi et ne peut pas passer au showroom.<br><br>
+✅ Conseil : proposer la livraison express 24h (12,90 €) pour avoir les ballons jeudi, avec un jour de marge.<br>
+❌ À éviter : proposer la livraison standard 48h (6,90 €), qui arriverait vendredi, le jour même du tournoi — trop risqué.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -476,14 +476,14 @@ Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi 
   <rect x="15" y="38" width="205" height="108" rx="10" fill="#1A2E4A"/>
   <text x="117" y="66" text-anchor="middle" font-size="22">📦</text>
   <text x="117" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">LIVRAISON DOMICILE</text>
-  <text x="117" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Standard 3-5j — 4,90€ (offert dès 60€)</text>
-  <text x="117" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Express 24-48h — 9,90€</text>
-  <text x="117" y="128" text-anchor="middle" font-size="8" fill="#63B3ED">Chronopost · Numéro de suivi</text>
+  <text x="117" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Standard 48h — 6,90€</text>
+  <text x="117" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Express 24h — 12,90€</text>
+  <text x="117" y="128" text-anchor="middle" font-size="8" fill="#63B3ED">Transporteur partenaire · N° de suivi</text>
   <rect x="228" y="38" width="223" height="108" rx="10" fill="#2D5282"/>
   <text x="340" y="66" text-anchor="middle" font-size="22">🏪</text>
   <text x="340" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CLICK &amp; COLLECT</text>
   <text x="340" y="99" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Retrait showroom Évry</text>
-  <text x="340" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Disponible sous 2h — Gratuit</text>
+  <text x="340" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.85)">Prêt en 2h si en stock — Gratuit</text>
   <text x="340" y="128" text-anchor="middle" font-size="8" fill="#90CDF4">Commande en ligne + retrait</text>
   <rect x="459" y="38" width="206" height="108" rx="10" fill="#9B4444"/>
   <text x="562" y="66" text-anchor="middle" font-size="22">⚠️</text>
@@ -496,17 +496,17 @@ Mme Konaté passe commande le lundi. Elle a besoin des ballons pour son tournoi 
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>3 modes : retrait magasin (24h, gratuit) · domicile (3-5j) · express (24-48h)</li>
+<li>3 modes : click and collect (2h, gratuit) · livraison standard 48h (6,90 €) · livraison express 24h (12,90 €)</li>
 <li>Toujours choisir le mode adapté à l'urgence réelle du client, pas le moins cher par défaut</li>
 <li>Un retard doit être annoncé au client AVANT qu'il ne s'inquiète</li>
 </ul>
 </div>`},
 2:{t:'Le suivi de la commande client — Les 5 étapes du suivi',c:`<div class="res-section">
 <div class="res-section-label">🟢 Les 5 étapes d'un suivi de commande rigoureux</div>
-<ul><li><strong>Enregistrer</strong> — Tous les détails dans LABORO Connect immédiatement : référence, produit, quantité, délai, mode de livraison, contact client.</li><li><strong>Vérifier la disponibilité</strong> — Si rupture partielle ou totale, contacter le client AVANT qu'il s'inquiète. Proposer une alternative.</li><li><strong>Suivre l'acheminement</strong> — Transmettre le numéro de suivi transporteur par SMS ou mail dès expédition. Chronopost = lien de suivi automatique.</li><li><strong>Anticiper les retards</strong> — C'est la règle d'or LABORO : contacter le client AVANT qu'il appelle. Un retard annoncé proactivement est presque toujours pardonné.</li><li><strong>Confirmer la réception</strong> — Appel ou mail de suivi J+2 = opportunité de fidélisation et de vente additionnelle.</li></ul>
+<ul><li><strong>Enregistrer</strong> — Tous les détails dans LABORO Connect immédiatement : référence, produit, quantité, délai, mode de livraison, contact client.</li><li><strong>Vérifier la disponibilité</strong> — Si rupture partielle ou totale, contacter le client AVANT qu'il s'inquiète. Proposer une alternative.</li><li><strong>Suivre l'acheminement</strong> — Transmettre le numéro de suivi transporteur par SMS ou mail dès expédition. Le transporteur partenaire fournit un lien de suivi.</li><li><strong>Anticiper les retards</strong> — C'est la règle d'or LABORO : contacter le client AVANT qu'il appelle. Un retard annoncé proactivement est presque toujours pardonné.</li><li><strong>Confirmer la réception</strong> — Appel ou mail de suivi J+2 = opportunité de fidélisation et de vente additionnelle.</li></ul>
 <p><strong>Calculs utiles :</strong></p>
 <ul><li>Délai de livraison = date de commande + délai fournisseur + délai transport</li><li>Stock d'alerte = ventes journalières × délai de réassort en jours</li><li>Taux de livraison dans les délais = (livraisons à temps ÷ total livraisons) × 100</li></ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande Mairie d'Évry</div>Commande de 50 ballons Trigon (stock 31 unités). Rupture partielle détectée → appel immédiat à David Chemin → proposition : livraison partielle J+2 + solde J+12. Client satisfait de la transparence.</div>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande d'un lycée</div>Commande de 30 T-shirts techniques pour le Lycée Blaise Pascal d'Orsay (stock 18 unités). Rupture partielle détectée → appel immédiat à Mme Roussel → proposition : livraison partielle J+2 + solde J+10. Client satisfait de la transparence.</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -525,6 +525,7 @@ Il reste 20 maillots en stock. Le club A (commande de 15, passée en premier, pa
 <p><strong>Méthode d'arbitrage :</strong> contacter les deux clients avant de trancher plutôt que de décider seul dans son coin. Proposer une solution qui limite la frustration des deux côtés (livraison partielle immédiate + réassort planifié et confirmé par écrit), et toujours documenter la décision dans LABORO Connect pour que toute l'équipe sache pourquoi ce choix a été fait.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — solution d'arbitrage</div>
 Club A : 15 maillots dont 10 disponibles tout de suite + 5 en réassort sous 5 jours (délai qu'il peut tenir, pas d'urgence). Club B : 10 maillots immédiats (suffisant pour l'entraînement de la semaine) + 2 en réassort avant le tournoi. Les deux clients sont prévenus le même jour, avec une date précise et non une promesse vague.</div>
+<p><strong>Rappel — piloter le suivi avec un tableau de bord :</strong> pour chaque indicateur (ex. taux de livraison dans les délais = livraisons à temps ÷ total livraisons × 100 · nombre de commandes en retard · délai moyen de livraison), précise le nom, la formule, la fréquence de suivi, l'objectif cible et le seuil d'alerte.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : sur quel critère t'es-tu appuyé pour départager les deux commandes, et cet arbitrage était-il le plus juste possible pour LABORO comme pour les deux clients ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision.</p>
 </div>
 <div class="res-retenir">
@@ -567,13 +568,13 @@ Deux commandes concurrentes sur un stock limité, l'une avec un délai serré no
 <ul>
 <li><strong>Livraison à domicile</strong> — Standard 48h (6,90 €) ou express 24h (12,90 €)</li>
 <li><strong>Click and collect</strong> — Retrait au showroom Évry sous 2h. Gratuit.</li>
-<li><strong>Personnalisation textile</strong> — Flocage/broderie sur maillots et polos. Délai 2-4 semaines. Min. 10 unités.</li>
+<li><strong>Personnalisation textile</strong> — Flocage inclus dans le prix (délai 3 semaines) ou broderie +2 € par pièce (délai 4 semaines), sur maillots et polos. Min. 10 unités.</li>
 <li><strong>Démonstration produit</strong> — Essai de 10-15 min pour les produits techniques.</li>
-<li><strong>Garantie étendue</strong> — 30 jours échange ou remboursement sans justification.</li>
+<li><strong>Garantie commerciale LABORO</strong> — 30 jours échange ou remboursement sans justification. Incluse.</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Konaté commande 15 maillots</div>
-On lui propose : personnalisation textile + livraison à domicile + garantie étendue.<br>
-Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — M. Diallo commande 12 maillots</div>
+12 maillots personnalisables à 28 € = 336 €. On lui propose : flocage des numéros (inclus) + broderie du logo du club (+2 € × 12 = 24 €) + livraison standard 48h (6,90 €), et on lui rappelle la garantie commerciale 30 jours incluse.<br>
+Son panier passe de 336 € à 336 + 24 + 6,90 = 366,90 €. Il est plus satisfait et reviendra.
 </div>
 <p><strong>La règle d'or :</strong> proposer les services <strong>pendant</strong> la vente, jamais après l'encaissement.</p>
 </div>
@@ -607,10 +608,10 @@ Son panier passe de 420 € à 447 €. Elle est plus satisfaite et reviendra.
   <text x="475" y="118" text-anchor="middle" font-size="8" fill="#EBF8FF">En showroom</text>
   <rect x="546" y="36" width="124" height="105" rx="10" fill="#0C3D6E"/>
   <text x="608" y="62" text-anchor="middle" font-size="20">🛡️</text>
-  <text x="608" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">GARANTIE ÉTENDUE</text>
+  <text x="608" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">GARANTIE COMMERCIALE</text>
   <text x="608" y="93" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">30 jours échange</text>
   <text x="608" y="105" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">ou remboursement</text>
-  <text x="608" y="118" text-anchor="middle" font-size="8" fill="#93C5FD">Sans justification</text>
+  <text x="608" y="118" text-anchor="middle" font-size="8" fill="#93C5FD">Incluse · Sans justification</text>
 </svg>
 </div>
 <div class="res-retenir">
@@ -652,11 +653,12 @@ Club de 22 licenciés, maillots à 18€ HT/unité avec flocage. HT = 18 × 22 =
 <div class="res-section-label">🟠 Quand deux services demandés entrent en conflit</div>
 <p>À ce niveau, le client demande plusieurs services à la fois, mais tous ne sont pas compatibles entre eux dans les délais ou les conditions annoncées. Ton rôle est d'identifier le vrai conflit et de proposer un compromis réaliste, pas de tout promettre pour satisfaire le client sur l'instant.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — livraison express + personnalisation, incompatibles</div>
-Un club demande une livraison express (24-48h) ET une personnalisation textile (délai 2-4 semaines) pour la même commande. Les deux délais sont incompatibles : la personnalisation ne peut pas être express. Mauvais réflexe : promettre les deux sans vérifier. Bon réflexe : expliquer le vrai délai combiné et proposer une alternative (ex. livrer les maillots non personnalisés en express pour l'entraînement, puis les floqués en différé pour la compétition).
+Un club demande une livraison express (24h) ET une personnalisation textile (délai 3 à 4 semaines) pour la même commande. Les deux délais sont incompatibles : la personnalisation ne peut pas être express. Mauvais réflexe : promettre les deux sans vérifier. Bon réflexe : expliquer le vrai délai combiné et proposer une alternative (ex. livrer les maillots non personnalisés en express pour l'entraînement, puis les floqués en différé pour la compétition).
 </div>
 <p><strong>Vérifier avant de promettre :</strong> chaque service a ses propres contraintes (délai minimum, quantité minimum, disponibilité). Avant d'accepter une combinaison de services, vérifie que chacun est réalisable dans le délai global annoncé au client — ne combine jamais deux promesses sans les avoir confrontées.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — quantité minimum non atteinte</div>
 Un client veut une personnalisation textile pour 6 maillots seulement (minimum LABORO : 10 unités). Tu ne peux pas promettre le service tel quel : "La personnalisation démarre à partir de 10 pièces chez LABORO. Je peux vous proposer d'attendre une commande groupée avec un autre client, ou l'appliquer si vous complétez à 10 maillots."</p>
+<p><strong>Rappel — évaluer les services avec un tableau de bord :</strong> pour chaque indicateur (ex. taux de retard livraison = retards ÷ total × 100 · taux d'erreur de personnalisation · satisfaction services /5), précise le nom, la formule, la fréquence, l'objectif cible et le seuil d'alerte.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'aurais-tu pu vérifier plus tôt dans l'échange pour éviter de devoir revenir sur une promesse ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
 </div>
 <div class="res-retenir">
@@ -783,7 +785,7 @@ Client : "Ma commande n'est pas arrivée !" — Vous : "Je comprends, c'est frus
 <ul><li>Droit de rétractation : 14 jours pour les achats en ligne (e-commerce uniquement)</li><li>Garantie légale de conformité : 2 ans sur tous les produits (Code de la consommation)</li><li>Garantie commerciale LABORO : 30 jours échange ou remboursement sans justification</li></ul>
 <p><strong>Niveaux de geste commercial autorisés chez LABORO :</strong></p>
 <ul><li>Conseiller de vente : bon d'achat jusqu'à 20 €</li><li>Responsable : remboursement partiel ou échange</li><li>PDG : geste exceptionnel au-delà</li></ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 10€.</div>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — Mme Renard</div>Tapis de yoga reçu endommagé. Écouter → reformuler → s'excuser → proposer : échange immédiat en magasin ou remboursement sous 5 jours. Mme Renard choisit l'échange + bon d'achat 20€.</div>
 <p><strong>L'empathie — la compétence numéro 1 pour désamorcer une réclamation :</strong></p>
 <ul>
 <li><strong>Phrases d'empathie efficaces</strong> : "Je comprends tout à fait votre frustration" · "Vous avez eu raison de nous contacter" · "À votre place, j'aurais réagi de la même façon"</li>
@@ -811,6 +813,7 @@ Un client réclame un remboursement total pour une paire de chaussures légèrem
 <div class="res-ex"><div class="res-ex-l">Exemple — dépasser son plafond de compensation</div>
 Un conseiller de vente (plafond 20€) fait face à une réclamation qui mériterait un geste de 50€. Il ne doit ni promettre ce montant seul, ni laisser le client sans réponse : "Je vais transmettre votre dossier à mon responsable qui peut vous proposer un geste plus important — je vous confirme sous 24h maximum." Il ne fait jamais de fausse promesse pour clore l'échange plus vite.
 </div>
+<p><strong>Rappel — la méthode ERESA reste ta base, même pour une réclamation sensible :</strong> Écouter · Reformuler · S'excuser · Solution · Agir et tracer (LABORO Connect). Niveaux de geste commercial : conseiller de vente jusqu'à 20 € de bon d'achat · responsable : remboursement partiel ou échange · PDG : geste exceptionnel au-delà. Une politique de réclamations repose sur 4 piliers : traçabilité · délais engagés · niveaux de compensation · analyse et prévention.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta décision — par exemple : ta solution était-elle juste à la fois pour le client et pour LABORO, ou as-tu cédé/refusé par facilité ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
 </div>
 <div class="res-retenir">
@@ -838,7 +841,7 @@ Un conseiller de vente (plafond 20€) fait face à une réclamation qui mérite
 <li>Taux de satisfaction post-réclamation = clients satisfaits après traitement / total</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Bonne pratique LABORO</div>
-Chaque mois, Nina Chevalier présente en réunion d'équipe le "Top 3 des réclamations du mois". L'équipe identifie la cause racine et décide d'une action corrective. Résultat : le taux de réclamation a baissé de 3,2% à 1,8% en 6 mois.
+Chaque mois, Marco Pellini, responsable Satisfaction Client, présente en réunion d'équipe le "Top 3 des réclamations du mois". L'équipe identifie la cause racine et décide d'une action corrective. Résultat : le taux de réclamation a baissé de 3,2% à 1,8% en 6 mois.
 </div>
 </div>
 <div class="res-retenir">
@@ -902,9 +905,9 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
 </div>`},
 2:{t:'Mesurer et analyser la satisfaction client — Collecter et calculer',c:`<div class="res-section">
 <div class="res-section-label">🟢 3 indicateurs et comment collecter les avis</div>
-<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS</strong> = % Promoteurs (9-10) − % Détracteurs (0-6). Les neutres (7-8) ne comptent pas.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux &lt; 20% = résultats non représentatifs.</li></ul>
+<p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS</strong> = % Promoteurs (9-10) − % Détracteurs (0-6). Les neutres (7-8) ne comptent pas. Objectif LABORO : NPS supérieur à +20.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux &lt; 20% = résultats non représentatifs.</li></ul>
 <p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul>
-<div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (38% des insatisfaits) → négociation avec Chronopost.</div>
+<div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>118 répondants : 52 très satisfaits + 37 satisfaits = 89 satisfaits. Taux = 89÷118×100 = <strong>75,4%</strong> (objectif 80% non atteint).<br>NPS : 44 promoteurs (37%) − 11 détracteurs (9%) = <strong>+28</strong> — bon score.<br>Action prioritaire : délais e-commerce (cités par 4 insatisfaits sur 11, soit 36%) → négociation avec le transporteur partenaire.</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -922,13 +925,14 @@ NPS = +28 (bon score) mais taux de satisfaction = 75,4% (sous l'objectif de 80%)
 </div>
 <p><strong>Croiser les indicateurs avec les verbatims :</strong> quand un chiffre surprend, il faut aller chercher l'explication dans les commentaires libres des clients (verbatims) plutôt que de se contenter du chiffre seul. Un chiffre isolé peut induire en erreur ; un chiffre expliqué par des verbatims devient exploitable.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — expliquer l'écart par les verbatims</div>
-En lisant les commentaires liés aux notes basses de satisfaction, on découvre que 38% des insatisfaits mentionnent le même problème : les délais e-commerce. Le NPS reste bon car le produit et le conseil restent appréciés — seul un point précis (la livraison) tire le taux de satisfaction vers le bas. La priorité d'action devient claire : ce n'est pas toute l'expérience LABORO qui est en cause, mais un maillon logistique précis.
+En lisant les commentaires liés aux notes basses de satisfaction, on découvre que 4 insatisfaits sur 11 (36%) mentionnent le même problème : les délais e-commerce. Le NPS reste bon car le produit et le conseil restent appréciés — seul un point précis (la livraison) tire le taux de satisfaction vers le bas. La priorité d'action devient claire : ce n'est pas toute l'expérience LABORO qui est en cause, mais un maillon logistique précis.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton interprétation — par exemple : qu'aurais-tu risqué de conclure à tort si tu n'avais regardé que le NPS, ou que le taux de satisfaction, séparément ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'analyse.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
+<li>Repères LABORO : taux de satisfaction ≥ 80% · NPS supérieur à +20</li>
 <li>NPS et taux de satisfaction ne mesurent pas exactement la même chose — un écart entre les deux n'est pas une erreur, c'est une info à creuser</li>
 <li>Un chiffre qui surprend s'explique en croisant avec les verbatims, jamais en l'ignorant</li>
 <li>La réflexivité = un vrai retour critique sur ta méthode d'analyse, pas un résumé des chiffres</li>
@@ -954,6 +958,7 @@ En lisant les commentaires liés aux notes basses de satisfaction, on découvre 
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Autonomie totale : croiser indicateurs chiffrés et verbatims, prioriser l'action sur le sujet le plus cité</li>
+<li>Repères LABORO : taux de satisfaction ≥ 80% · NPS supérieur à +20</li>
 <li>Les insatisfaits sont plus précieux que les satisfaits — ils disent ce qu'il faut corriger</li>
 <li>Comparer les résultats dans le temps est plus utile qu'un résultat isolé</li>
 </ul>
@@ -978,7 +983,7 @@ En lisant les commentaires liés aux notes basses de satisfaction, on découvre 
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse email client</div>
 Objet : "Votre commande n°2847 — livraison jeudi"<br>
-"Bonjour Mme Laurent, votre commande de chaussures Asics est bien enregistrée. Livraison prévue jeudi 16 entre 9h et 13h par Chronopost. Cordialement, Sophie — LABORO 01 XX XX XX XX"
+"Bonjour Mme Laurent, votre commande de Chaussures route Velocity est bien enregistrée. Livraison prévue jeudi 16 entre 9h et 13h par notre transporteur partenaire. Cordialement, Sophie — LABORO 01 XX XX XX XX"
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -1041,7 +1046,7 @@ En fin de journée : un email de réclamation reçu ce matin (délai de réponse
 </div>
 <p><strong>Segmenter pour prioriser :</strong> tous les clients ne demandent pas le même traitement — à relancer en priorité (fort potentiel ou contact resté sans réponse), à entretenir (client actif satisfait), à réactiver (client dormant). Cette segmentation doit guider l'ordre de traitement quand le temps manque, pas seulement une organisation théorique.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — segmenter un fichier clients LABORO</div>
-Isabelle Morin (8 mois sans achat, abonnée newsletter) → à réactiver, par mail avec une offre trail. Thomas Renard (achat il y a 3 semaines) → à entretenir, pas d'action urgente. Sophie Aubert (14 mois sans achat, non abonnée) → à réactiver en priorité, par téléphone puisque le mail ne suffira pas.
+Julie Marchand (achat il y a 10 jours, avis Google 5/5) → à entretenir : un message de remerciement suffit, pas d'action urgente. Hugo Lefort (11 mois sans achat, abonné newsletter) → à réactiver, par mail avec une invitation à un atelier en magasin. Un responsable de CE qui a demandé un devis la semaine dernière et n'a pas encore été rappelé → à relancer en priorité, par téléphone, car il attend une réponse de LABORO.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : sur quel critère t'es-tu appuyé, et un collègue avec un autre critère aurait-il fait le même choix ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ton arbitrage.</p>
 </div>
@@ -1128,7 +1133,7 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
   <text x="589" y="82" text-anchor="middle" font-size="9" font-weight="700" fill="#92400E">CLV LABORO (B2C)</text>
   <text x="589" y="98" text-anchor="middle" font-size="9" fill="#92400E">Panier moyen : 87€</text>
   <text x="589" y="112" text-anchor="middle" font-size="9" fill="#92400E">Fréquence : 3×/an</text>
-  <text x="589" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#D97706">= 1 305€/3 ans</text>
+  <text x="589" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#D97706">= 783€/3 ans</text>
 </svg>
 </div>
 <div class="res-retenir">
@@ -1143,14 +1148,14 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <div class="res-section-label">🟢 Piloter la fidélisation avec des indicateurs</div>
 <p><strong>Indicateurs de fidélisation :</strong></p>
 <ul>
-<li><strong>Taux de rétention</strong> = clients ayant acheté ≥2 fois ÷ clients totaux × 100. Objectif : >60%</li>
+<li><strong>Taux de rétention</strong> = clients de la période précédente qui ont racheté ÷ clients de la période précédente × 100. Objectif : >60%</li>
 <li><strong>NPS</strong> = % promoteurs − % détracteurs. Objectif LABORO : >+20</li>
 <li><strong>Fréquence d'achat</strong> = nombre d'achats moyen par client sur 12 mois</li>
 </ul>
 <p><strong>Segmentation clients :</strong> clients actifs (achat &lt;6 mois) · clients dormants (6-18 mois) · clients perdus (&gt;18 mois). Actions différentes selon segment.</p>
 <p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
-Pendant la soirée Rentrée Sportive, le directeur du Club Trail Forêt de Sénart discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi de nouveaux ballons pour la rentrée." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + ballons avec une remise club — je vous envoie un devis dès demain ?"
+Lors d'une livraison, Laurent Bouchard, responsable du CE Thales Massy, discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi des tapis de yoga pour la salle de sport du CE." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + tapis avec une remise sur le volume — je vous envoie un devis dès demain ?"
 </div>
 </div>
 <div class="res-retenir">
@@ -1219,7 +1224,7 @@ M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumul
   <rect x="10" y="36" width="155" height="110" rx="10" fill="#276749"/>
   <text x="87" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">TAUX DE RÉTENTION</text>
   <text x="87" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#9AE6B4">&gt;60%</text>
-  <text x="87" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Clients ≥2 achats</text>
+  <text x="87" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Clients qui ont racheté</text>
   <text x="87" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">÷ clients période préc.</text>
   <text x="87" y="128" text-anchor="middle" font-size="7.5" fill="#9AE6B4">Actuel LABORO : 74% ✅</text>
   <rect x="173" y="36" width="155" height="110" rx="10" fill="#9B4444"/>
@@ -1238,8 +1243,8 @@ M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumul
   <text x="584" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">ROI ACTION</text>
   <text x="584" y="80" text-anchor="middle" font-size="26" font-weight="900" fill="#BEE3F8">&gt;0%</text>
   <text x="584" y="98" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">(CA−Coût)÷Coût×100</text>
-  <text x="584" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Soirée LABORO</text>
-  <text x="584" y="128" text-anchor="middle" font-size="7.5" fill="#BEE3F8">ROI = 1 233% ✅</text>
+  <text x="584" y="110" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.8)">Soirée test trail</text>
+  <text x="584" y="128" text-anchor="middle" font-size="7.5" fill="#BEE3F8">ROI = 1 000% ✅</text>
 </svg>
 </div>
 <div class="res-retenir">
@@ -1253,14 +1258,14 @@ M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumul
 2:{t:'Évaluer les actions de fidélisation — Calculer et interpréter',c:`<div class="res-section">
 <div class="res-section-label">🟢 Les 4 indicateurs clés et leurs formules</div>
 <ul>
-<li><strong>Taux de rétention</strong> = clients ayant acheté ≥ 2 fois ÷ clients période précédente × 100. Objectif LABORO : &gt; 60%</li>
+<li><strong>Taux de rétention</strong> = clients de la période précédente qui ont racheté ÷ clients de la période précédente × 100. Objectif LABORO : &gt; 60%</li>
 <li><strong>Taux d'attrition</strong> = 100 − taux de rétention. &gt; 20% = signal d'alarme</li>
 <li><strong>ROI d'une action</strong> = (CA généré − coût) ÷ coût × 100. Positif = rentable</li>
 <li><strong>CLV</strong> (valeur vie client) = panier moyen × fréquence annuelle × durée fidélité (années)</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Calcul — Soirée Rentrée Sportive LABORO</div>
-Coût : 1 200€ · CA soir : 4 200€ · CA 30j suivants : 11 800€<br>
-ROI = (4 200 + 11 800 − 1 200) ÷ 1 200 × 100 = <strong>1 233%</strong>
+<div class="res-ex"><div class="res-ex-l">Calcul — Soirée test trail LABORO</div>
+Coût : 800€ · CA soir : 2 500€ · CA 30j suivants : 6 300€<br>
+ROI = (2 500 + 6 300 − 800) ÷ 800 × 100 = <strong>1 000%</strong>
 </div>
 <p><strong>Interpréter, pas seulement calculer :</strong> un ROI positif ne dit pas tout — il faut aussi regarder si les clients de cette action reviennent ensuite (taux de rétention) ou s'ils n'ont acheté qu'une fois grâce à la promotion de l'événement.</p>
 </div>
@@ -1276,7 +1281,7 @@ ROI = (4 200 + 11 800 − 1 200) ÷ 1 200 × 100 = <strong>1 233%</strong>
 <div class="res-section-label">🟠 Quand les indicateurs ne pointent pas dans le même sens</div>
 <p>À ce niveau, une action peut être rentable sur un indicateur et décevante sur un autre. Ton rôle est de décider si l'action doit être reconduite, ajustée ou arrêtée — pas seulement de constater les chiffres.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — ROI excellent, rétention décevante</div>
-La soirée Rentrée Sportive a un ROI de 1 233% (excellent), mais parmi les clients venus ce soir-là, seuls 22% ont racheté dans les 6 mois suivants (bien sous l'objectif de 60%). L'événement génère du chiffre immédiat mais ne fidélise pas réellement sur la durée — la remise ponctuelle a peut-être attiré des chasseurs de promo plutôt que de futurs clients réguliers.
+La soirée test trail a un ROI de 1 000% (excellent), mais parmi les clients venus ce soir-là, seuls 22% ont racheté dans les 6 mois suivants (bien sous l'objectif de 60%). L'événement génère du chiffre immédiat mais ne fidélise pas réellement sur la durée — la remise ponctuelle a peut-être attiré des chasseurs de promo plutôt que de futurs clients réguliers.
 </div>
 <p><strong>Ne pas s'arrêter au premier chiffre favorable :</strong> avant de recommander de reconduire une action à l'identique, il faut vérifier si son bon résultat immédiat se traduit aussi par un bon résultat dans la durée. Un ROI élevé sur un événement ponctuel n'est pas la même chose qu'une vraie fidélisation.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — décision d'ajustement</div>
@@ -1464,25 +1469,28 @@ Les chaussures trail Grip X sont placées à hauteur des yeux au centre du rayon
 <li><strong>Niveau yeux</strong> (1,20-1,70m) : zone la plus vendeuse → produits phares et à forte marge.</li>
 <li><strong>Niveau mains</strong> (0,80-1,20m) : produits courants.</li>
 <li><strong>Niveau sol</strong> (&lt;0,80m) : produits lourds, conditionnements en vrac.</li>
+<li><strong>Niveau chapeau</strong> (au-dessus de 1,70m) : bonne visibilité mais peu vendeur → produits volumineux, stock de présentation, signalétique.</li>
 </ul>
+<p><strong>Le facing</strong> = nombre de produits identiques présentés de face, côte à côte, sur un même niveau. Plus une référence a de facings, plus elle est visible : on en donne davantage aux best-sellers et aux produits à forte marge (minimum 2-3 par référence).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — erreur d'implantation</div>
-Rayon running : le modèle Velocity (best-seller, marge 38%) est placé au sol zone froide. Le modèle EasyRun (0 vente ce mois) est en zone chaude niveau yeux. Résultat : CA 24 800 € vs objectif 28 000 €. <strong>Correction</strong> : inverser les placements. Impact estimé : +15% de CA sur ce rayon.
+Rayon textile : la veste softshell (meilleure vente du rayon, forte marge) est placée au sol en zone froide. Un t-shirt d'ancienne collection (2 ventes ce mois) occupe le niveau des yeux en tête de gondole. Résultat : CA textile 9 600 € vs objectif 11 000 €. <strong>Correction</strong> : inverser les placements et donner plus de facings à la veste.
 </div>
 <p><strong>Gestion des stocks — les calculs de base :</strong></p>
 <ul>
 <li><strong>Stock d'alerte</strong> = ventes journalières × délai de réassort (jours). Ex : 3 paires/jour × 5 jours = <strong>15 paires</strong> → déclencher la commande dès ce seuil.</li>
-<li><strong>Quantité à commander</strong> = objectif de ventes ÷ colisage (arrondir au supérieur). Ex : 405 paires, colisage 6 → 405÷6 = 67,5 → <strong>68 colis</strong>.</li>
-<li><strong>Montant net de commande</strong> = montant brut − remise + frais de port. Ex : 68×6×75€ = 30 600€ · remise 10% = −3 060€ → <strong>27 540€ net</strong>.</li>
+<li><strong>Nombre de colis</strong> = quantité à commander ÷ colisage (arrondi au supérieur). Ex : 250 paires à commander, colisage 8 → 250÷8 = 31,25 → <strong>32 colis</strong>, soit 256 paires.</li>
+<li><strong>Montant net de commande</strong> = montant brut − remise + frais de port. Ex : 256×60€ = 15 360€ · remise 5% = −768€ · franco de port → <strong>14 592€ net</strong>.</li>
 </ul>
-<p><strong>Calcul du prix de vente — taux de marge :</strong></p>
+<p><strong>Calcul du prix de vente — taux de marque :</strong></p>
 <ul>
-<li><strong>Taux de marge</strong> = (PVHT − PAHT) ÷ PVHT × 100</li>
-<li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marge)</li>
+<li><strong>Taux de marque</strong> = (PVHT − PAHT) ÷ PVHT × 100 (la marge en % du prix de vente HT)</li>
+<li><strong>PVHT</strong> = PAHT ÷ (1 − taux de marque)</li>
+<li>À ne pas confondre avec le <strong>taux de marge</strong> = (PVHT − PAHT) ÷ PAHT × 100 (la marge en % du prix d'achat HT)</li>
 <li><strong>PVTTC</strong> = PVHT × (1 + taux de TVA) — TVA sport/textile 20%, alimentation 5,5%</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — calcul PVTTC d'un modèle de chaussures LABORO</div>
-PAHT = 89€ · marge souhaitée 38% · TVA 20%<br>
-PVHT = 89 ÷ (1−0,38) = 89 ÷ 0,62 = <strong>143,55€</strong> · PVTTC = 143,55 × 1,20 = <strong>172,26€</strong>
+<div class="res-ex"><div class="res-ex-l">Exemple — calcul du PVTTC d'un article</div>
+PAHT = 30€ · taux de marque souhaité 40% · TVA 20%<br>
+PVHT = 30 ÷ (1−0,40) = 30 ÷ 0,60 = <strong>50,00€</strong> · PVTTC = 50,00 × 1,20 = <strong>60,00€</strong>
 </div>
 </div>
 <div class="res-retenir">
@@ -1490,7 +1498,7 @@ PVHT = 89 ÷ (1−0,38) = 89 ÷ 0,62 = <strong>143,55€</strong> · PVTTC = 143
 <ul>
 <li>Zone chaude = nouveautés/promos ; zone froide = à animer avec signalétique</li>
 <li>Stock d'alerte = ventes/jour × délai réassort ; commander avant d'atteindre la rupture</li>
-<li>PVHT se calcule à partir du taux de marge souhaité, jamais l'inverse</li>
+<li>PVHT se calcule à partir du taux de marque souhaité : PVHT = PAHT ÷ (1 − taux de marque)</li>
 </ul>
 </div>`},
 3:{t:"Gérer l'espace commercial — Arbitrer stocks, fournisseurs et démarque",c:`<div class="res-section">
@@ -1504,11 +1512,12 @@ Fournisseur A : Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5
 <ul>
 <li><strong>Stock théorique</strong> = Stock initial + Livraisons − Quantités vendues</li>
 <li><strong>Démarque</strong> = Stock théorique − Stock réel (si positif) → produits manquants (vol, casse, erreur)</li>
-<li><strong>Taux de démarque</strong> = Démarque ÷ CA × 100 · objectif sectoriel &lt; 1,5%</li>
+<li><strong>Taux de démarque</strong> = valeur de la démarque HT (unités manquantes × prix d'achat HT) ÷ CA HT × 100 · deux repères : objectif sectoriel &lt; 1,5% ; au-delà de 3% = situation critique</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple — calcul démarque</div>
-Crème Squirrel : stock initial 35, livraison 0, vendues 28 → stock théorique = 7. Stock réel : 3 → démarque de 4 unités (vol possible ou casse non signalée).
+Crème anti-frottements : stock initial 35, livraison 0, vendues 28 → stock théorique = 7. Stock réel : 3 → démarque de 4 unités (vol possible ou casse non signalée).
 </div>
+<p><strong>Rappel — indicateurs de performance et méthode :</strong> taux de transformation (magasin) = acheteurs ÷ visiteurs × 100 · taux de conversion (site) = commandes ÷ visiteurs uniques × 100 · part des ventes en ligne = CA site ÷ CA total × 100 · écart à l'objectif = réalisé − objectif (en €), puis écart ÷ objectif × 100 (en %). Objectif SMART = Spécifique · Mesurable · Atteignable · Réaliste · Temporel (un chiffre, une cible, une date). Canaux digitaux : Instagram (surtout 18-35 ans, visuel) · Facebook (surtout 35-55 ans, clubs et CE) · Newsletter (clients existants) · Google My Business (recherche locale).</p>
 <p><strong>Gérer un produit à DDM courte :</strong> deux options s'opposent — promotion (−30%, lot 3+1) pour écouler vite, ou don à une association (anti-gaspillage). Il faut comparer les deux sur le CA et la marge dégagée avant de choisir, pas prendre l'option la plus rapide par réflexe.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'est-ce qui a fait pencher la balance entre les deux options (fournisseur, quantité, ou gestion de la démarque), et un autre critère aurait-il changé ta décision ? Ce n'est pas un résumé des calculs, c'est un vrai retour critique sur ta méthode de décision.</p>
 </div>
@@ -1557,8 +1566,9 @@ Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/partici
 <li>Activité sportive régulière (>1 entraînement/semaine)</li>
 <li>Budget équipement estimé >300€/an</li>
 </ul>
+<p><strong>Fiche prospect LABORO Connect — 8 champs de base :</strong> raison sociale · secteur · effectif · contact (nom et fonction) · téléphone / e-mail · source d'identification · besoins estimés · date de relance.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — recherche de prospects</div>
-Nina cherche des associations de foot en Essonne. Elle consulte le site de la FFF, section clubs affiliés 91. Elle trouve 47 clubs. Elle filtre : clubs de plus de 30 licenciés = 18 prospects qualifiés. Elle les saisit dans LABORO Connect avec téléphone et nom du président.
+Nina cherche des associations de foot en Essonne. Elle consulte le site de la FFF, section clubs affiliés 91. Elle trouve 47 clubs. Elle applique les 3 critères LABORO (au moins 15 licenciés, entraînement régulier, budget estimé supérieur à 300 €/an) : 18 clubs sont retenus comme prospects qualifiés. Elle les saisit dans LABORO Connect avec téléphone et nom du président.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -1598,8 +1608,8 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <p><strong>3 sources essentielles :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives, annuaires des CE, répertoires des collectivités.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels.</li></ul>
 <p><strong>Qualifier un prospect avec la méthode BANT :</strong></p>
 <ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
-<p><strong>Champs obligatoires dans LABORO Connect :</strong> raison sociale, secteur, taille, contact décisionnaire, source d'identification, score BANT, besoins estimés, statut (froid/tiède/chaud), prochaine action et date de relance.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — Score BANT : 3/4 — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
+<p><strong>Champs obligatoires dans LABORO Connect :</strong> les 8 champs de base (raison sociale, secteur, effectif, contact — nom et fonction du décisionnaire —, téléphone/e-mail, source d'identification, besoins estimés, date de relance), complétés à ce niveau par le score BANT, le statut (froid/tiède/chaud) et la prochaine action.</p>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Airbus Defence Élancourt — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1665,10 +1675,11 @@ Un lot de nouveaux prospects arrive via plusieurs canaux de veille en même temp
 <p><strong>B4.2 — Préparer et conduire une opération de prospection.</strong></p>
 <p><strong>Avant l'opération — les 3 étapes :</strong></p>
 <ul>
-<li><strong>Définir la cible</strong> — Qui ? Associations fitness en Essonne avec 20+ membres</li>
+<li><strong>Définir la cible</strong> — Qui ? Associations fitness en Essonne avec 15 membres ou plus</li>
 <li><strong>Préparer les outils</strong> — Script d'appel, email type, fiche prospect LABORO Connect</li>
 <li><strong>Fixer les objectifs</strong> — Ex : 50 appels/semaine · 10 RDV/mois · 3 ventes/mois</li>
 </ul>
+<p><strong>Le plan d'appel LABORO en 5 étapes :</strong> 1. Présentation (qui tu es) → 2. Accroche (raison de l'appel) → 3. Découverte des besoins → 4. Proposition (de rendez-vous ou d'offre) → 5. Conclusion (confirmer, remercier, noter la suite). La fiche B4.3 détaille ensuite l'argumentation et le traitement des objections.</p>
 <p><strong>Pendant — la règle des 3 contacts :</strong> si pas de réponse après 3 tentatives (appel + email + appel), passer au prospect suivant. Ne pas insister.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — plan d'opération</div>
 Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines · objectif 8 RDV · budget 0€ (phoning + emailing). Semaine 1 : appels de présentation. Semaine 2 : relances email. Semaines 3-4 : RDV et propositions.
@@ -1710,8 +1721,8 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
 </div>`},
 2:{t:'Préparer une opération de prospection — Dimensionner et rédiger',c:`<div class="res-section">
 <div class="res-section-label">🟢 Dimensionner l'opération et choisir les techniques</div>
-<p><strong>Remonter la chaîne de conversion</strong> pour savoir combien de prospects contacter : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3).</p>
-<p>Exemple : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60×0,12×0,30) = <strong>139 prospects à contacter</strong>.</p>
+<p><strong>Remonter la chaîne de conversion</strong> pour savoir combien de prospects contacter : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3). N'arrondis que le résultat final, toujours à l'entier supérieur.</p>
+<p>Exemple : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60×0,12×0,30) = 3 ÷ 0,0216 = 138,9 → <strong>139 prospects à contacter</strong>.</p>
 <p><strong>Techniques de prospection :</strong></p>
 <ul>
 <li><strong>Phoning</strong> — Taux de RDV 5-15%. Rapide, coût faible.</li>
@@ -1911,7 +1922,7 @@ Un prospect enchaîne plusieurs objections dans le même appel, dont une qui sem
 </ul>
 <p><strong>Tracer dans LABORO Connect :</strong> date du RDV, devis envoyé, date de relance, résultat.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — suivi devis</div>
-RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + shorts = 847€ HT). Lundi suivant : relance mail "Bonjour M. Kowalski, avez-vous pu consulter notre proposition ?" — Il répond et signe.
+RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + shorts = 847€ HT). Lundi suivant (J+5 tombe un dimanche : relance le premier jour ouvré) : relance mail "Bonjour M. Kowalski, avez-vous pu consulter notre proposition ?" — Il répond et signe.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -1973,7 +1984,7 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 </ul>
 <p><strong>Indicateurs de suivi :</strong> taux de relance = prospects relancés ÷ devis envoyés × 100 (objectif 100%) · taux de transformation devis-contrat = contrats signés ÷ devis envoyés × 100 (objectif LABORO &gt; 30%) · délai moyen de signature.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — relance CE Thales J+10</div>
-"Bonjour Isabelle, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CE Air France Toulouse dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
+"Bonjour Laurent, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CE Air France Orly dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
 </div>
 </div>
 <div class="res-retenir">
@@ -1988,12 +1999,12 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 <div class="res-section-label">🟠 Mesurer la rentabilité et prioriser un portefeuille</div>
 <p><strong>Calculer le ROI (retour sur investissement)</strong> d'une action commerciale : ROI (%) = (Gain généré − Coût de l'action) ÷ Coût de l'action × 100. Un ROI positif signifie que l'action a rapporté plus qu'elle n'a coûté.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — calcul de ROI</div>
-LABORO a investi 780 € dans une opération de prospection, qui a généré 31 200 € de CA sur l'année.<br>
-ROI = (31 200 − 780) ÷ 780 × 100 ≈ <strong>3900%</strong>. Chaque euro investi en a rapporté environ 39 — l'opération est très rentable, même si l'objectif initial de contrats signés n'est pas atteint à 100%.
+LABORO a investi 600 € dans une opération de prospection, qui a généré 18 000 € de CA sur l'année.<br>
+ROI = (18 000 − 600) ÷ 600 × 100 = <strong>2 900%</strong>. Chaque euro investi a généré 30 € de CA (soit 29 € de gain net) — l'opération est très rentable, mais il faut aussi vérifier si l'objectif de contrats signés est atteint : un bon ROI ne le remplace pas.
 </div>
 <p><strong>Appliquer la loi de Pareto (règle des 80/20)</strong> à un portefeuille : environ 80% du CA provient souvent de 20% des clients. Étapes : classer les clients du CA le plus élevé au plus faible → repérer ceux qui représentent ~80% du CA cumulé → adapter le suivi (les comptes prioritaires méritent un suivi rapproché en cas de temps limité, sans pour autant abandonner les autres).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>
-Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et ArianeGroup (28 000 € potentiel) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
+Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et CE Thales Massy (18 700 €/an) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage de priorisation — par exemple : qu'aurais-tu risqué si tu avais traité tous les comptes à égalité de temps, sans tenir compte du poids de chacun dans le CA ? Ce n'est pas un résumé du calcul de ROI ou du classement Pareto, c'est un vrai retour critique sur ta méthode de priorisation.</p>
 </div>
@@ -2035,7 +2046,7 @@ Un portefeuille de prospects à statuts variés (devis envoyés, en négociation
 </ul>
 <p><strong>Construire une offre à plusieurs niveaux</strong> (Essentiel · Confort · Partenaire) permet au client de choisir selon son budget, sans se sentir piégé dans une seule option.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — répondre à l'objection prix</div>
-Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
+Un client dit : "Chez Decathlon Pro, c'est 80 € de moins pour 20 maillots." (écart calculé sur les prix hors remise) Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -2096,12 +2107,12 @@ Commercial dédié : LABORO Oui · Decathlon Pro Non · SportRun Partiellement �
 <div class="res-section-label">🟠 Calculer la valeur perçue et arbitrer un argumentaire concurrentiel</div>
 <p><strong>Calculer la valeur de l'offre pour le prospect</strong> — comparer le coût total sur la durée réelle d'utilisation, pas sur le prix unitaire seul. <strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — l'écart de prix qui devient nul</div>
-LABORO 28 €/maillot · Decathlon Pro 24 €/maillot · pour 20 maillots → écart 80 €. Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon Pro = 14 jours gagnés. Si le tournoi du client est dans 3,5 semaines, Decathlon Pro ne peut pas livrer à temps — l'écart de 80 € devient sans objet face au risque de ne pas être livré.
+LABORO 28 €/maillot · Decathlon Pro 24 €/maillot · pour 25 maillots → écart 100 € (prix hors remise). Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon Pro = 14 jours gagnés. Si le tournoi du client est dans 4 semaines, Decathlon Pro ne peut pas livrer à temps — l'écart de 100 € devient sans objet face au risque de ne pas être livré.
 </div>
 <p>Quand plusieurs arguments sont disponibles (prix, délai, service, garanties), il faut choisir lesquels mettre en avant selon ce qui compte réellement pour CE prospect précis — un argument fort pour un client (délai serré) peut être sans intérêt pour un autre (stock déjà constitué).</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — réponse construite (Marc Girault, Club Trail Forêt de Sénart)</div>
-Marc Girault : "LABORO c'est 80 € de plus que Decathlon Pro pour 20 maillots."<br>
-Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 80 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 3,5 semaines — avec Decathlon Pro, vous ne seriez pas livré à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Marc Girault signe le devis le lendemain.</strong>
+<div class="res-ex"><div class="res-ex-l">Exemple — réponse construite (Mme Lemoine, présidente d'un club de basket)</div>
+Mme Lemoine : "LABORO c'est 100 € de plus que Decathlon Pro pour 25 maillots."<br>
+Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 100 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 4 semaines — avec Decathlon Pro, vous ne seriez pas livrée à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Mme Lemoine signe le devis le lendemain.</strong>
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix d'arguments — par exemple : pourquoi as-tu mis en avant le délai plutôt que le service commercial dédié dans ce cas précis, et qu'est-ce qui aurait changé avec un autre prospect ? Ce n'est pas un résumé de l'argumentaire, c'est un vrai retour critique sur ta sélection d'arguments.</p>
 </div>
@@ -2303,6 +2314,8 @@ Un objectif commercial B2B à atteindre en un temps limité. En autonomie compl�
 <li><strong>Accompagner</strong> — Guider vers le bon univers, rester disponible</li>
 </ul>
 <p><strong>Au téléphone :</strong> décrocher avant la 3e sonnerie. "LABORO bonjour, [prénom] à l'appareil."</p>
+<p><strong>Visiteur professionnel</strong> (fournisseur, partenaire, technicien) : 1. accueillir avec une formule professionnelle · 2. vérifier l'identité, l'objet de la visite et le RDV · 3. prévenir l'interlocuteur · 4. remettre un badge visiteur · 5. faire patienter ou accompagner. Noter l'heure d'arrivée et de départ dans le registre des visites.</p>
+<p><strong>Boîte mail :</strong> trier par urgence (réclamation, RDV imminent → en priorité · demande de renseignement → à traiter ou transmettre · spam → à supprimer sans répondre). Un mail professionnel : objet clair · formule d'introduction · message court (3-5 phrases) · formule de politesse · signature complète.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — accueil showroom</div>
 M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, souriez : "Bonjour ! Je suis à vous dans 30 secondes." Vous finissez rapidement, vous vous approchez : "Voilà ! Vous cherchez quelque chose de particulier ?" — Il se sent attendu, pas ignoré.
 </div>
@@ -2364,7 +2377,7 @@ M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, sou
 <p><strong>Communication écrite — trier et prioriser une boîte mail :</strong> urgent et important (réclamation, RDV imminent) à traiter en priorité · important non urgent (renseignement, partenariat) à transmettre · non important (spam) à supprimer sans répondre.</p>
 <p><strong>5 règles d'un mail professionnel :</strong> objet clair · formule d'introduction · message concis (3-5 phrases) · formule de politesse finale · signature complète.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse professionnelle à un client</div>
-"Bonjour Madame Lambert, je prends bonne note de votre demande concernant votre commande n°2847. Je transmets immédiatement votre message à notre service e-commerce qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
+"Bonjour Madame Lambert, je prends bonne note de votre demande concernant votre commande n°2847. Je transmets immédiatement votre message à notre service satisfaction client qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
 </div>
 </div>
 <div class="res-retenir">
