@@ -81,42 +81,6 @@ var LABORO_CONFIG = {
       "label": "Prospection et Valorisation de l'Offre Commerciale"
     }
   ],
-  "examens": [
-    {
-      "id": "E31",
-      "label": "E31 — Vente et suivi de clientèle",
-      "niveaux": [
-        "1ere-AGEC",
-        "1ere-PVOC",
-        "Term-AGEC",
-        "Term-PVOC"
-      ]
-    },
-    {
-      "id": "E32",
-      "label": "E32 — Animation et dynamisation de l'offre",
-      "niveaux": [
-        "1ere-AGEC",
-        "Term-AGEC"
-      ]
-    },
-    {
-      "id": "E33",
-      "label": "E33 — Prospection et valorisation",
-      "niveaux": [
-        "1ere-PVOC",
-        "Term-PVOC"
-      ]
-    },
-    {
-      "id": "E2",
-      "label": "E2 — Analyse et résolution de situations professionnelles",
-      "niveaux": [
-        "Term-AGEC",
-        "Term-PVOC"
-      ]
-    }
-  ],
   "couleurs": {
     "primaire": "#1A2E4A",
     "secondaire": "#0F5B8A",
@@ -168,5 +132,162 @@ var LABORO_CONFIG = {
     "e2_agec": "data/e2-agec.js",
     "e2_pvoc": "data/e2-pvoc.js"
   },
-  "api": "https://mcv.laboro-edu.fr"
+  "api": "https://mcv.laboro-edu.fr",
+  "demo": {
+    "eleve": {
+      "mail": "demo@laboro-demo.fr",
+      "nom": "Léa Martin",
+      "classe": "Term-AGEC",
+      "poste": "Conseiller de vente — Showroom & E-commerce",
+      "missions": {
+        "M023": {
+          "status": "done",
+          "score": 16,
+          "comp": "C1.1",
+          "progression": 2,
+          "date_validation": "2025-09-18T10:00:00.000Z"
+        },
+        "M024": {
+          "status": "done",
+          "score": 15,
+          "comp": "C1.2",
+          "progression": 1,
+          "date_validation": "2025-10-07T10:00:00.000Z"
+        },
+        "M025": {
+          "status": "done",
+          "score": 14,
+          "comp": "C2.2",
+          "progression": 0,
+          "date_validation": "2025-10-21T10:00:00.000Z"
+        },
+        "M026": {
+          "status": "done",
+          "score": 17,
+          "comp": "C1.3",
+          "progression": 2,
+          "date_validation": "2025-11-12T10:00:00.000Z"
+        },
+        "M028": {
+          "status": "done",
+          "score": 13,
+          "comp": "C2.3",
+          "progression": 0,
+          "date_validation": "2025-12-03T10:00:00.000Z"
+        },
+        "M029": {
+          "status": "done",
+          "score": 16,
+          "comp": "C3.2",
+          "progression": 1,
+          "date_validation": "2026-01-15T10:00:00.000Z"
+        },
+        "M030": {
+          "status": "done",
+          "score": 15,
+          "comp": "C3.3",
+          "progression": 0,
+          "date_validation": "2026-02-05T10:00:00.000Z"
+        },
+        "M031": {
+          "status": "done",
+          "score": 14,
+          "comp": "C3.1",
+          "progression": 1,
+          "date_validation": "2026-03-12T10:00:00.000Z"
+        },
+        "M032": {
+          "status": "done",
+          "score": 18,
+          "comp": "C4A.3",
+          "progression": 2,
+          "date_validation": "2026-04-02T10:00:00.000Z"
+        },
+        "M027": {
+          "status": "att",
+          "score": 0,
+          "comp": "C2.2",
+          "progression": 0
+        }
+      },
+      "competences": {
+        "C1.1": 3,
+        "C1.2": 3,
+        "C1.3": 3,
+        "C2.1": 2,
+        "C2.2": 2,
+        "C2.3": 2,
+        "C3.1": 3,
+        "C3.2": 3,
+        "C3.3": 3,
+        "C4A.1": 4,
+        "C4A.2": 4,
+        "C4A.3": 4
+      }
+    },
+    "camarades": [
+      {
+        "mail": "camille.demo@laboro-demo.fr",
+        "nom": "Camille Bernard",
+        "classe": "Term-AGEC",
+        "missions": {
+          "M023": {
+            "status": "done",
+            "score": 18,
+            "comp": "C1.1",
+            "progression": 2
+          },
+          "M024": {
+            "status": "done",
+            "score": 17,
+            "comp": "C1.2",
+            "progression": 1
+          },
+          "M026": {
+            "status": "done",
+            "score": 16,
+            "comp": "C1.3",
+            "progression": 1
+          },
+          "M029": {
+            "status": "done",
+            "score": 15,
+            "comp": "C3.2",
+            "progression": 0
+          },
+          "M032": {
+            "status": "done",
+            "score": 17,
+            "comp": "C4A.3",
+            "progression": 2
+          }
+        }
+      },
+      {
+        "mail": "hugo.demo@laboro-demo.fr",
+        "nom": "Hugo Lefèvre",
+        "classe": "Term-AGEC",
+        "missions": {
+          "M023": {
+            "status": "done",
+            "score": 12,
+            "comp": "C1.1",
+            "progression": 0
+          },
+          "M024": {
+            "status": "done",
+            "score": 13,
+            "comp": "C1.2",
+            "progression": 1
+          },
+          "M025": {
+            "status": "done",
+            "score": 11,
+            "comp": "C2.2",
+            "progression": 0
+          }
+        }
+      }
+    ]
+  }
 };

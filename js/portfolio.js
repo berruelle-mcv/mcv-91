@@ -117,13 +117,17 @@ function afficherPortfolioDoc(ud, nom, classe){
   // Regrouper les compétences par épreuve (G1→E31, G2→E32, G3→E33 en CCF ; G4/G4A/G4B→E2, épreuve écrite ponctuelle)
   // Bloc E2 adapté à l'option de l'élève : AGEC → G4A (espace commercial),
   // PVOC → G4B (prospection B2B). Si indéterminé (ex. enseignant), afficher les deux.
-  const estAGEC = (classe || '').toUpperCase().includes('AGEC');
-  const estPVOC = (classe || '').toUpperCase().includes('PVOC');
+  // Option de l'élève d'après sa classe ; à défaut, d'après l'univers s'il n'a qu'une option
+  // (LABORO Auto : bloc 4B seulement).
+  const optUnivers = (getCfg().options || []).map(function(o){ return o.id; });
+  const estAGEC = (classe || '').toUpperCase().includes('AGEC') || (optUnivers.length === 1 && optUnivers[0] === 'AGEC');
+  const estPVOC = (classe || '').toUpperCase().includes('PVOC') || (optUnivers.length === 1 && optUnivers[0] === 'PVOC');
   // (« G4 » = bloc 4 sans distinction d'option, utilisé par les univers à option unique)
   const groupesE2 = (estAGEC ? ['G4A'] : estPVOC ? ['G4B'] : ['G4A','G4B']).concat(['G4']);
-  const titreE2 = estAGEC ? 'Gérer l\'espace commercial'
-                : estPVOC ? 'Prospecter et vendre (B2B)'
-                : 'Gérer l\'espace / Prospecter';
+  // Intitulés officiels des blocs 4A / 4B (référentiel du Bac Pro MCV)
+  const titreE2 = estAGEC ? 'Animer et gérer l\'espace commercial'
+                : estPVOC ? 'Prospecter et valoriser l\'offre commerciale'
+                : 'Animer et gérer l\'espace commercial / Prospecter et valoriser l\'offre commerciale';
 
   const epreuves = [
     { code:'E31', titre:'Conseiller et vendre',           coef:'Coef. 3', groupes:['G1'] },
