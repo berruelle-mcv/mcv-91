@@ -99,6 +99,7 @@ function updateTimerDisplay(el){
 
 function openMission(id){
   const m=MISSIONS.find(x=>x.id===id);if(!m)return;
+  const moEl=document.getElementById('mo'); if(moEl) moEl.classList.remove('mo-apercu'); // voir voirMissionRecherche()
   const ud=gUD();
   const locked=!isPalierUnlocked(m,ud)&&CU.classe!=='enseignant';
   if(locked){alert('Fais d\'abord valider une mission du Palier '+(m.palier-1)+' de cette compétence.');return;}
@@ -298,7 +299,7 @@ function closeMo(){
   const mo=document.getElementById('mo');
   const modal=document.querySelector('.modal');
   const tb=document.getElementById('mo-taskbar');
-  if(mo){ mo.classList.remove('open'); mo.classList.remove('on'); }
+  if(mo){ mo.classList.remove('open'); mo.classList.remove('on'); mo.classList.remove('mo-apercu'); }
   if(modal){ modal.style.display='none'; modal.style.width=''; modal.style.height=''; modal.style.left=''; modal.style.top=''; modal.style.transform='translate(-50%,-50%)'; }
   if(tb){ tb.classList.remove('visible'); }
   moIsFullscreen=false;

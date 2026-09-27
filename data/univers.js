@@ -289,5 +289,32 @@ var LABORO_CONFIG = {
         }
       }
     ]
-  }
+  },
+  "recherche_synonymes": [
+    [
+      "chaussure",
+      "chaussures",
+      "running",
+      "trail"
+    ],
+    [
+      "vélo",
+      "cyclisme"
+    ],
+    [
+      "randonnée",
+      "outdoor"
+    ],
+    [
+      "club",
+      "association sportive",
+      "licencié"
+    ],
+    [
+      "textile",
+      "maillot",
+      "vêtement",
+      "tenue"
+    ]
+  ]
 };

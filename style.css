@@ -617,3 +617,17 @@ img { max-width: 100%; height: auto; }
   /* Texte un peu réduit pour les écrans étroits */
   body { font-size: 14px; }
 }
+/* « Trouver une mission » (enseignant) */
+.rm-bar{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.rm-bar input,.rm-bar select{padding:9px 11px;border:.5px solid var(--gb);border-radius:8px;font-size:13px;background:var(--wh,#fff);color:var(--gr);width:100%;box-sizing:border-box;min-width:0}
+.rm-bar input:focus,.rm-bar select:focus{outline:2px solid var(--th-principal);outline-offset:1px}
+.rm-exemples{font-size:11px;color:var(--gm);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.rm-chip{background:var(--th-fond);border:.5px solid var(--th-bordure);color:var(--th-fonce);border-radius:999px;padding:3px 10px;font-size:11px;cursor:pointer}
+.rm-chip:hover{background:var(--th-bordure)}
+.rm-info{font-size:12px;color:var(--gm);margin:4px 0 10px}
+.rm-item{border:.5px solid var(--gb);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--wh,#fff)}
+.rm-btn{padding:6px 12px;border-radius:7px;border:.5px solid var(--gb);background:#fff;color:var(--gr);font-size:12px;font-weight:600;cursor:pointer}
+.rm-btn-p{background:var(--th-principal);border-color:var(--th-principal);color:#fff}
+@media (max-width:720px){.rm-bar{grid-template-columns:1fr}}
+/* Aperçu d'une mission par l'enseignant (depuis « Trouver une mission ») : lecture seule */
+.mo-apercu #btn-submit,.mo-apercu #btn-cont,.mo-apercu #btn-reset,.mo-apercu #cp-btn,.mo-apercu #mo-timer{display:none!important}

@@ -340,6 +340,9 @@ function showApp(){
   // Génération de mission par IA (univers qui la proposent : menu présent dans index.html)
   const niGn = document.getElementById('ni-gn');
   if(niGn) niGn.style.display = ens ? '' : 'none';
+  // « Trouver une mission » : recherche par mot-clé (enseignants)
+  const niRm = document.getElementById('ni-rm');
+  if(niRm) niRm.style.display = ens ? '' : 'none';
   if(ens && typeof populateClasseSelects === 'function') populateClasseSelects();
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
@@ -378,7 +381,7 @@ function goP(id,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const panel=document.getElementById('panel-'+id); if(panel)panel.classList.add('on');
   if(el)el.classList.add('on');
-  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
+  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',recherche:'Trouver une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
   document.getElementById('tb-t').textContent=t2[id]||id;
   if(id==='classe')renderClasse();
   if(id==='dashboard')renderDashboard();
@@ -390,6 +393,7 @@ function goP(id,el){
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
   if(id==='generation' && typeof initGenerationMission==='function') initGenerationMission();
+  if(id==='recherche' && typeof initRechercheMissions==='function') initRechercheMissions();
   if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();
   if(id==='acceseleves' && typeof renderAccesEleves==='function') renderAccesEleves();
 }
