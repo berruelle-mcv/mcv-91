@@ -7,87 +7,7 @@
 <link rel="stylesheet" href="style.css?v=20260927">
 <!-- Réglages de l'univers (moteur commun) : DOIT rester le premier script -->
 <script src="data/univers.js?v=20260927"></script>
-<script>
-// ================================================
-//   LABORO — Chargement configuration filière
-//   Le moteur lit config.json avant tout démarrage
-// ================================================
-var LABORO_CONFIG = window.LABORO_CONFIG || null; // défini par data/univers.js
-
-async function loadConfig() {
-  try {
-    if (!LABORO_CONFIG) { // réglages normalement déjà chargés par data/univers.js
-      const response = await fetch('config.json');
-      LABORO_CONFIG = await response.json();
-    }
-    console.log('[LABORO] Config chargée :', LABORO_CONFIG.filiere, 'v' + LABORO_CONFIG.version);
-    document.title = LABORO_CONFIG.nom_plateforme || 'LABORO';
-    const vEls = document.querySelectorAll('#app-version, #tb-version');
-    vEls.forEach(el => { if(el) el.textContent = 'v' + LABORO_CONFIG.version; });
-    const ent = LABORO_CONFIG.entreprise || {};
-    const perso = LABORO_CONFIG.personnages || {};
-    const resp = perso.responsable || {};
-    const nomEnt = ent.nom || 'LABORO Sport & Outdoor';
-    const villeEnt = ent.ville || 'Évry-Courcouronnes';
-    const secteur = ent.secteur || 'Sport & Outdoor';
-    const nomResp = (resp.prenom || 'Romain') + ' ' + (resp.nom || 'Sauzet');
-    const posteResp = resp.poste || 'Resp. Commerce';
-    const setTxt = (id, txt) => { const el = document.getElementById(id); if(el) el.textContent = txt; };
-    setTxt('cfg-brand', nomEnt);
-    setTxt('cfg-brand-sub', villeEnt + ' · Essonne (91)');
-    setTxt('cfg-lv', secteur + ' · ' + villeEnt);
-    setTxt('cfg-entreprise-sub', secteur + ' · ' + villeEnt + ' (91)');
-    setTxt('msg-f', nomResp + ' — ' + posteResp);
-    setTxt('mo-m', nomEnt);
-    const nomPlateforme = LABORO_CONFIG.nom_plateforme || 'LABORO';
-    window.applyNomPlateforme = function() {
-      ['cfg-nom-plateforme','cfg-nom-plateforme-2','cfg-nom-plateforme-3','cfg-nom-plateforme-4'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.textContent = nomPlateforme;
-      });
-      document.querySelectorAll('.btn-li').forEach(el => {
-        if(el.textContent.includes('LABORO') || el.textContent.includes('Se connecter')) el.textContent = 'Se connecter à ' + nomPlateforme + ' →';
-      });
-    };
-    if(document.readyState === 'complete' || document.readyState === 'interactive') {
-      setTimeout(window.applyNomPlateforme, 100);
-    } else {
-      window.addEventListener('load', window.applyNomPlateforme);
-    }
-    if (LABORO_CONFIG.couleurs) {
-      document.documentElement.style.setProperty('--laboro-primary', LABORO_CONFIG.couleurs.primaire);
-      document.documentElement.style.setProperty('--laboro-secondary', LABORO_CONFIG.couleurs.secondaire);
-    }
-  } catch(e) {
-    console.warn('[LABORO] config.json non trouvé — valeurs par défaut utilisées');
-    LABORO_CONFIG = {
-      filiere: 'mcv',
-      version: '1.0.0',
-      nom_plateforme: 'LABORO',
-      entreprise: { nom: 'LABORO Sport & Outdoor', ville: 'Évry-Courcouronnes' },
-      couleurs: { primaire: '#1A2E4A', secondaire: '#0F5B8A' }
-    };
-  }
-}
-
-window.addEventListener('error', function(e) {
-  if(e.target && e.target.tagName === 'SCRIPT' && e.target.src) {
-    const src = e.target.src;
-    const fichier = src.split('/').pop();
-    console.error('[LABORO] Échec chargement :', fichier);
-    const existing = document.getElementById('laboro-error-banner');
-    if(!existing) {
-      const banner = document.createElement('div');
-      banner.id = 'laboro-error-banner';
-      banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#DC2626;color:#fff;padding:12px 20px;font-family:Arial,sans-serif;font-size:13px;font-weight:600;display:flex;align-items:center;gap:12px;';
-      banner.innerHTML = "⚠️ Erreur de chargement — Le fichier <strong>" + fichier + "</strong> n'a pas pu être chargé. Vérifiez votre connexion et rechargez la page. &nbsp;<button onclick='location.reload()' style='background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px'>Recharger</button>";
-      document.body.appendChild(banner);
-    }
-  }
-}, true);
-
-document.addEventListener('DOMContentLoaded', loadConfig);
-</script>
+<script src="js/univers-config.js?v=20260927b"></script>
 
 
 
@@ -724,6 +644,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
     <div class="ns" id="ns-ens" style="display:none">Enseignant</div>
     <div class="ni" id="ni-mdj" style="display:none" onclick="goP('missiondujour',this)"><div class="nd" style="background:var(--bl)"></div>Mission du jour</div>
     <div class="ni" id="ni-cl" style="display:none" onclick="goP('classe',this)"><div class="nd" style="background:#D4537E"></div>Vue classe</div>
+    <div class="ni" id="ni-gn" style="display:none" onclick="goP('generation',this)"><div class="nd" style="background:var(--rg)"></div>Générer mission</div>
     <div class="ni" id="ni-classes-admin" style="display:none" onclick="goP('classesadmin',this)"><div class="nd" style="background:#6B4EA8"></div>Gestion des classes</div>
     <div class="ni" id="ni-acces-eleves" style="display:none" onclick="goP('acceseleves',this)"><div class="nd" style="background:#B45309"></div>Accès élèves</div>
   </div>
@@ -914,6 +835,10 @@ document.addEventListener('DOMContentLoaded', loadConfig);
       <div id="archives-wrap"></div>
     </div>
 
+    <div id="panel-generation" class="panel">
+      <div class="card"><div class="ct">Générer une nouvelle mission</div><div class="gen-grid"><select id="g-opt"><option value="commun">Commun AGEC + PVOC (blocs 1 à 3)</option><option value="AGEC">1re / Term — option A (AGEC)</option><option value="PVOC">1re / Term — option B (PVOC)</option><option value="2nde">2nde</option></select><select id="g-pal"><option value="1">Palier 1 — Débutant</option><option value="2">Palier 2 — Apprenti</option><option value="3">Palier 3 — Professionnel compétent</option><option value="4">Palier 4 — Expert</option></select><select id="g-comp"></select><select id="g-cli"><option value="B2C particulier au showroom">B2C — Particulier (showroom)</option><option value="B2C particulier sur le site laboro-sport.fr">B2C — Particulier (site web)</option><option value="B2B comité d'entreprise">B2B — Comité d'entreprise</option><option value="B2B club sportif">B2B — Club sportif</option><option value="B2B association ou collectivité">B2B — Association / collectivité</option></select></div><button class="btn-gen" onclick="genMission()">Générer la mission →</button><div class="gen-res" id="gen-res" style="color:var(--gm);font-style:italic">La mission générée apparaîtra ici…</div></div>
+    </div>
+
     <div id="panel-classesadmin" class="panel">
       <div class="card" style="margin-bottom:12px">
         <div class="ct">Créer une classe</div>
@@ -1035,6 +960,7 @@ document.addEventListener('DOMContentLoaded', loadConfig);
 <script src="js/portfolio.js?v=20260927"></script>
 <script src="js/admin-classes.js?v=20260927"></script>
 <script src="js/admin-acces.js?v=20260927"></script>
+<script src="js/generation-mission.js?v=20260927b"></script>
 <script src="js/utils.js?v=20260927"></script>
 <script src="js/mot-de-passe.js?v=20260927"></script>
 <script src="js/brouillons-serveur.js?v=20260927"></script>

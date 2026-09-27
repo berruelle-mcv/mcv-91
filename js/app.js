@@ -135,7 +135,7 @@ function getMsg(classe,poste){
 
 // ═══ ÉTAT ═══
 let CU=null,CM=null,obStep=0,repBuffer={},classeFiltre='';
-// ── Accès aux réglages de l'univers (data/univers.js, ou config.json à défaut)
+// ── Accès aux réglages de l'univers (data/univers.js, source unique)
 const getCfg = () => (typeof LABORO_CONFIG !== 'undefined' && LABORO_CONFIG) || {};
 const getNomEntreprise = () => (getCfg().entreprise || {}).nom || 'LABORO Sport & Outdoor';
 // Couleur réelle (#RRGGBB) d'une couleur de thème « var(--th-…) » : nécessaire quand

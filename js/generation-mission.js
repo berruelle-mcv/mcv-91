@@ -5,12 +5,41 @@
 //   (#panel-generation) et dont le serveur a le réglage generation_mission.
 // ================================================
 
+// Liste des compétences proposées : celles des missions de l'univers (mêmes codes que la
+// base du serveur), limitées à l'option choisie (+ missions communes), dans l'ordre de COMP.
+function competencesGeneration(option){
+  if(typeof MISSIONS === 'undefined') return [];
+  const vues = {};
+  const liste = [];
+  MISSIONS.forEach(function(m){
+    if(!m || !m.comp || vues[m.comp]) return;
+    if(option && m.option && m.option !== option && m.option !== 'commun') return;
+    vues[m.comp] = true;
+    const c = (typeof COMP !== 'undefined') ? COMP.find(function(x){ return x.code === m.comp; }) : null;
+    liste.push({ code: m.comp, label: c ? c.label : String(m.comp_libelle || m.comp).replace(/^[^—]*—\s*/, '') });
+  });
+  const rang = function(code){
+    if(typeof COMP === 'undefined') return 1000;
+    const i = COMP.findIndex(function(x){ return x.code === code; });
+    if(i !== -1) return i;
+    const parent = COMP.findIndex(function(x){ return x.code === code.replace(/[a-z]+$/, ''); });
+    return parent !== -1 ? parent + 0.5 : 1000;  // ex. C2.1b juste après C2.1
+  };
+  return liste.sort(function(a, b){ return (rang(a.code) - rang(b.code)) || a.code.localeCompare(b.code); });
+}
+
 function initGenerationMission(){
   const selComp = document.getElementById('g-comp');
-  if(selComp && typeof COMP !== 'undefined'){
+  const selOpt = document.getElementById('g-opt');
+  if(selOpt && !selOpt.dataset.lie){
+    selOpt.addEventListener('change', initGenerationMission);
+    selOpt.dataset.lie = '1';
+  }
+  if(selComp){
     const current = selComp.value;
-    selComp.innerHTML = COMP.map(function(c){ return '<option value="'+c.code+'">'+c.code+' — '+c.label+'</option>'; }).join('');
-    if(current) selComp.value = current;
+    const comps = competencesGeneration(selOpt ? selOpt.value : '');
+    selComp.innerHTML = comps.map(function(c){ return '<option value="'+c.code+'">'+c.code+' — '+c.label+'</option>'; }).join('');
+    if(current && comps.some(function(c){ return c.code === current; })) selComp.value = current;
   }
 }
 
@@ -24,6 +53,8 @@ async function genMission(){
   const comp = compEl ? compEl.value : '';
   const palier = palEl ? palEl.value : '1';
   const clientType = cliEl ? cliEl.value : '';
+  const optEl = document.getElementById('g-opt');
+  const option = optEl ? optEl.value : '';
 
   const token = localStorage.getItem('laboro_token');
   if(!token){
@@ -39,15 +70,20 @@ async function genMission(){
     const r = await fetchJSON(LABORO_API + '/api/generer-mission', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-      body: JSON.stringify({ comp_code: comp, palier: parseInt(palier, 10), client_type: clientType })
+      body: JSON.stringify({ comp_code: comp, palier: parseInt(palier, 10), client_type: clientType, option: option })
     });
     if(!r.ok || !r.data.ok){
       res.style.color = 'var(--rg)';
       res.textContent = 'Erreur : ' + (r.erreur || (r.data && r.data.erreur) || 'génération impossible');
       return;
     }
+    const b = r.data.brouillon;
+    // Mêmes références de compétence que les missions existantes de l'univers
+    // (comp_ref et intitulé officiel), pour un JSON prêt à coller dans data/missions.js.
+    const modele = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(m){ return m.comp === b.comp; }) : null;
+    if(modele){ b.comp_ref = modele.comp_ref || b.comp_ref; b.comp_libelle = modele.comp_libelle || b.comp_libelle; }
     res.style.color = 'var(--gr)';
-    res.innerHTML = renderBrouillonMission(r.data.brouillon);
+    res.innerHTML = renderBrouillonMission(b);
   }finally{
     if(btn){ btn.textContent = btnTxtOrig; btn.disabled = false; }
   }
@@ -73,6 +109,7 @@ function renderBrouillonMission(m){
     + '<div style="font-size:11px;color:var(--gm);margin-top:2px;margin-bottom:12px">' + esc(m.comp) + ' — Palier ' + esc(m.palier) + ' — ' + esc(m.option) + '</div>'
     + '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Objectif :</strong> ' + esc(m.objectif) + '</div>'
     + '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Contexte :</strong> ' + esc(m.contexte) + '</div>'
+    + (m.contexte_pvoc ? '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Contexte PVOC :</strong> ' + esc(m.contexte_pvoc) + '</div>' : '')
     + (dossierRows ? '<div style="background:var(--gc);border-radius:8px;padding:10px;margin-bottom:10px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--gm);margin-bottom:6px">📁 ' + esc((m.dossier || {}).l || 'Dossier') + '</div>' + dossierRows + '</div>' : '')
     + '<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--gm);margin-bottom:6px">Activités</div>' + activitesHtml + '</div>'
     + '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Livrable :</strong> ' + esc(m.livrable) + '</div>'
