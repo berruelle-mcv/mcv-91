@@ -177,7 +177,7 @@ function startOb(){
           <div class="ob-step-d">Information client · Actions de fidélisation · Évaluation</div>
         </div></div>
       </div>
-      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:12px 16px;margin-top:10px;font-size:12px;color:rgba(255,255,255,.85)">
+      <div style="background:var(--th-fond,#F8FAFF);border-radius:10px;padding:12px 16px;margin-top:10px;font-size:12px;color:#374151">
         💡 <strong>Ton portfolio LABORO</strong> reprend exactement les compétences et critères des grilles CCF. Génère-le depuis ton espace avant chaque épreuve.
       </div>`;
     } else if(cls.includes('1ere')||cls.includes('1ère')){
@@ -226,13 +226,15 @@ function startOb(){
   }
   obStep=0;updateOb();
 }
-function obNext(){obStep++;if(obStep>=4){skipOb();return}updateOb()}
+// Nombre d'étapes = nombre de panneaux .obp présents dans index.html (propre à chaque univers)
+function nbEtapesOb(){return document.querySelectorAll('.obp').length||1}
+function obNext(){obStep++;if(obStep>=nbEtapesOb()){skipOb();return}updateOb()}
 function obPrev(){if(obStep>0){obStep--;updateOb();}}
 function updateOb(){
   document.querySelectorAll('.obp').forEach((p,i)=>p.classList.toggle('on',i===obStep));
   document.querySelectorAll('.obs').forEach((s,i)=>{s.className='obs'+(i<obStep?' done':i===obStep?' on':'');});
   // Mettre à jour les boutons nav dans chaque step
-  const isLast = obStep>=3;
+  const isLast = obStep>=nbEtapesOb()-1;
   const isFirst = obStep===0;
   document.querySelectorAll('.ob-btn-prev').forEach(b=>{b.style.display=isFirst?'none':'inline-flex';});
   document.querySelectorAll('.ob-btn-next').forEach(b=>{b.textContent=isLast?'Commencer mes missions →':'Suivant →';});

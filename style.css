@@ -66,6 +66,12 @@ body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--g
 .lb-s{margin-top:2rem;font-style:italic;color:#374151;font-size:13px;padding-top:1.5rem;border-top:1px solid #E8E4DC}
 .ob-h1{font-size:24px;font-weight:900;margin-bottom:8px;color:#1A2E4A;letter-spacing:-0.3px}
 .ob-sub{font-size:13px;color:#6B7280;margin-bottom:1.5rem;line-height:1.6}
+/* Étapes « Comment ça fonctionne ? » de l'accueil (1re et Terminale), même rendu que celles de 2nde */
+.ob-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+.ob-step{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid var(--th-ciel)}
+.ob-step-n{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.ob-step-t{font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:3px}
+.ob-step-d{font-size:12px;color:#6B7280;line-height:1.5}
 .kpi-r{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
 .km{background:#fff;border-radius:10px;padding:14px;text-align:center;border:1px solid #E5E7EB}
 .km-v{font-size:30px;font-weight:900;color:#2D5282;letter-spacing:-1px}.km-l{font-size:10px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em}
