@@ -1,6 +1,7 @@
 // ================================================
-//   LABORO Sport & Outdoor — État global, score, classement, utilitaires
-//   Version 1.0 — Architecture modulaire
+//   LABORO — Moteur commun : état global, score, classement, utilitaires
+//   (identique pour tous les univers ; ce qui change d'un univers à l'autre
+//    est lu dans LABORO_CONFIG, défini par data/univers.js)
 // ================================================
 
 
@@ -60,9 +61,9 @@ function getMsg(classe,poste){
   // ── Messages dynamiques selon progression ──
   // 1. Première connexion (aucune mission)
   if(done===0&&att===0){
-    if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue dans l'équipe LABORO ! Je suis "+getResp().nom+", "+getResp().poste+". Ta première mission t'attend — lis bien la ressource avant de te lancer. C'est comme ça qu'on progresse ici."};
-    if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:"Bienvenue chez LABORO ! Je suis "+getTutrice().nom+", "+getTutrice().poste+". Ta première mission de terrain t'attend. Prends le temps de lire la ressource — sur le terrain, on n'a pas de filet !"};
-    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue chez LABORO ! Je suis "+getResp().nom+", "+getResp().poste+". Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
+    if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue dans l'équipe "+getNomCourt()+" ! Je suis "+getResp().nom+", "+getResp().poste+". Ta première mission t'attend — lis bien la ressource avant de te lancer. C'est comme ça qu'on progresse ici."};
+    if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:"Bienvenue chez "+getNomCourt()+" ! Je suis "+getTutrice().nom+", "+getTutrice().poste+". Ta première mission de terrain t'attend. Prends le temps de lire la ressource — sur le terrain, on n'a pas de filet !"};
+    if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:"Bienvenue chez "+getNomCourt()+" ! Je suis "+getResp().nom+", "+getResp().poste+". Cette année tu vas découvrir nos métiers — la vente, la relation client, la gestion commerciale. Commence par explorer — lis bien la ressource avant chaque mission."};
   }
 
   // 2. Missions en attente de correction — encourager la patience
@@ -80,7 +81,7 @@ function getMsg(classe,poste){
 
   // 4. Très bonne moyenne — féliciter
   if(done>=3&&moy>=15){
-    if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:`Excellente moyenne à ${moy}/20 ! C'est exactement le niveau qu'on attend d'un(e) conseiller(ère) de vente chez LABORO. Continue comme ça — les meilleures opportunités vont aux meilleurs. Bravo.`};
+    if(classe.includes('AGEC')) return{from:getResp().nom+' — '+getResp().poste,txt:`Excellente moyenne à ${moy}/20 ! C'est exactement le niveau qu'on attend d'un(e) conseiller(ère) de vente chez ${getNomCourt()}. Continue comme ça — les meilleures opportunités vont aux meilleurs. Bravo.`};
     if(classe.includes('PVOC')) return{from:getTutrice().nom+' — '+getTutrice().poste,txt:`${moy}/20 de moyenne — impressionnant ! Un commercial avec ces résultats chez nous, on le garde. Tu prouves que travail et méthode paient. Continue sur cette lancée.`};
     if(classe==='2nde') return{from:getResp().nom+' — '+getResp().poste,txt:`Moyenne à ${moy}/20 — félicitations ! Tu montres déjà de vraies qualités professionnelles. Continue à t'investir comme ça.`};
   }
@@ -94,7 +95,7 @@ function getMsg(classe,poste){
   // 6. Messages par défaut selon période de l'année
   const msgs={
     '2nde':{from:getResp().nom+' — '+getResp().poste,textes:[
-      {debut:0,fin:1,txt:"Bienvenue chez LABORO ! Commence par explorer — lis bien la ressource avant chaque mission."},
+      {debut:0,fin:1,txt:"Bienvenue chez "+getNomCourt()+" ! Commence par explorer — lis bien la ressource avant chaque mission."},
       {debut:2,fin:4,txt:"Tu pars bientôt en stage. Sois curieux(se), observe comment l'entreprise fonctionne. Compare avec ce qu'on fait ici."},
       {debut:5,fin:7,txt:"Bienvenue de retour ! Reprends LABORO avec ton nouveau regard professionnel."},
       {debut:8,fin:11,txt:"Belle première année ! Tu repars avec de vraies bases professionnelles. Bonnes vacances !"},
@@ -115,7 +116,7 @@ function getMsg(classe,poste){
       {debut:0,fin:11,txt:`${done} missions validées. Maintenant c'est la régularité qui fait la différence. Continue à avancer.`},
     ]},
     'ens':{from:'LABORO — Plateforme pédagogique',textes:[
-      {debut:0,fin:11,txt:"Bienvenue M. Berruelle. Consultez la vue classe pour suivre vos élèves, valider les missions en attente et générer les analyses de classe."},
+      {debut:0,fin:11,txt:"Bienvenue"+((CU&&CU.nom)?" "+CU.nom:"")+". Consultez la vue classe pour suivre vos élèves, valider les missions en attente et générer les analyses de classe."},
     ]},
   };
 
@@ -125,15 +126,28 @@ function getMsg(classe,poste){
   else if(classe.includes('AGEC'))key='AGEC';
   else if(classe.includes('PVOC'))key='PVOC';
   const cfg=msgs[key];
-  const txt=cfg.textes.find(t=>m>=t.debut&&m<=t.fin)||cfg.textes[cfg.textes.length-1];
+  // Les périodes ci-dessus sont comptées en mois de l'ANNÉE SCOLAIRE (0 = septembre),
+  // pas en mois civils : sinon un élève lisait « Bon retour de stage » à la rentrée.
+  const mScolaire=(m+4)%12;
+  const txt=cfg.textes.find(t=>mScolaire>=t.debut&&mScolaire<=t.fin)||cfg.textes[cfg.textes.length-1];
   return{from:cfg.from,txt:txt.txt};
 }
 
 // ═══ ÉTAT ═══
 let CU=null,CM=null,obStep=0,repBuffer={},classeFiltre='';
-// ── Accès config filière (depuis config.json chargé au démarrage)
-const getCfg = () => LABORO_CONFIG || {};
+// ── Accès aux réglages de l'univers (data/univers.js, ou config.json à défaut)
+const getCfg = () => (typeof LABORO_CONFIG !== 'undefined' && LABORO_CONFIG) || {};
 const getNomEntreprise = () => (getCfg().entreprise || {}).nom || 'LABORO Sport & Outdoor';
+// Couleur réelle (#RRGGBB) d'une couleur de thème « var(--th-…) » : nécessaire quand
+// on lui ajoute une transparence en suffixe (ex. couleur + '22').
+function hexTheme(c){
+  const m = /^var\((--[\w-]+)\)$/.exec(c || '');
+  if(!m) return c;
+  const v = getComputedStyle(document.documentElement).getPropertyValue(m[1]).trim();
+  return /^#[0-9A-Fa-f]{6}$/.test(v) ? v : '#6B7280';
+}
+// Nom court de l'entreprise dans les phrases : « chez Vasseur », « l'équipe LABORO »…
+const getNomCourt = () => (getCfg().entreprise || {}).nom_court || 'LABORO';
 const getVille = () => (getCfg().entreprise || {}).ville || 'Évry-Courcouronnes';
 const getResp = () => {
   const r = (getCfg().personnages || {}).responsable || {};

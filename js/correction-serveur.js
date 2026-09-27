@@ -98,7 +98,7 @@ async function soumettreReponses(){
   const tentFaites = (d.tentatives != null) ? d.tentatives : tent;
   if(d.conservee){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
-      '<div style="background:#EBF4FF;border:1px solid #B5D4F4;border-left:4px solid #185FA5;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#1A2E4A">'
+      '<div style="background:var(--th-fond);border:1px solid var(--th-bordure);border-left:4px solid var(--th-principal);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:var(--th-fonce)">'
       + '<strong>🛡️ Ta tentative précédente (' + String(d.note_conservee).replace('.', ',') + '/20) est conservée</strong> : c\'est ta meilleure note, tu ne perds rien. '
       + 'Lis quand même le feedback ci-dessous pour comprendre ce qui a manqué cette fois.</div>');
   }

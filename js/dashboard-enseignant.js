@@ -192,7 +192,7 @@ function contenuDashboardEnseignant(){
 function tuile(valeur, label, sous, couleur, fond, action){
   return '<div ' + (action ? 'onclick="' + action + '" ' : '') + 'style="flex:1;min-width:170px;background:' + fond + ';border-radius:10px;padding:12px 14px;' + (action ? 'cursor:pointer' : '') + '">'
     + '<div style="font-size:26px;font-weight:900;color:' + couleur + ';line-height:1">' + valeur + '</div>'
-    + '<div style="font-size:12px;font-weight:800;color:#1A2E4A;margin-top:4px">' + label + '</div>'
+    + '<div style="font-size:12px;font-weight:800;color:var(--th-fonce);margin-top:4px">' + label + '</div>'
     + (sous ? '<div style="font-size:11px;color:var(--gm);margin-top:2px">' + sous + '</div>' : '')
     + '</div>';
 }
@@ -203,14 +203,14 @@ function blocATraiter(d){
     + (d.tentativesConnues
         ? tuile(d.epuisees, '2 tentatives épuisées', d.epuisees ? 'Élèves bloqués : à voir avec eux' : 'Aucun élève bloqué', d.epuisees ? '#B91C1C' : '#166534', d.epuisees ? '#FEF2F2' : '#F0FDF4', "ouvrirDepuisAccueil('examiner')")
         : '')
-    + tuile(d.enCours.length, 'Mission(s) assignée(s) en cours', 'Suivre l\'avancement →', '#185FA5', '#EBF4FF', "goP('missiondujour',document.getElementById('ni-mdj'))")
+    + tuile(d.enCours.length, 'Mission(s) assignée(s) en cours', 'Suivre l\'avancement →', 'var(--th-principal)', 'var(--th-fond)', "goP('missiondujour',document.getElementById('ni-mdj'))")
     + tuile(d.aujourdhui, 'Soumission(s) aujourd\'hui', (d.classeChoisie ? d.classeChoisie : 'Toutes classes confondues'), '#4A5568', '#F7FAFC', '');
 
   const listeEnCours = d.enCours.slice(0, 4).map(function(a){
     const pct = a.total ? Math.round(a.termines / a.total * 100) : 0;
     const qui = (typeof cibleAssignation === 'function') ? cibleAssignation(a) : (a.classe_libelle || a.classe_id || '');
     return '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid #EDF2F7;font-size:12px">'
-      + '<div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><strong>' + qui + '</strong> — <strong style="color:#185FA5">' + a.mission_id + '</strong> ' + (a.titre||'') + '</div>'
+      + '<div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><strong>' + qui + '</strong> — <strong style="color:var(--th-principal)">' + a.mission_id + '</strong> ' + (a.titre||'') + '</div>'
       + '<div style="width:110px;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden;flex-shrink:0"><div style="height:100%;width:' + pct + '%;background:#1B7F3B"></div></div>'
       + '<div style="font-weight:700;font-size:11px;width:44px;text-align:right;flex-shrink:0">' + a.termines + '/' + a.total + '</div></div>';
   }).join('');
@@ -226,7 +226,7 @@ function statsGroupeVide(){ return { eleves: 0, actifs7j: 0, validees: 0, sommeN
 // Carte de classe en bandeau (26/09/2026) : chiffres · podium · comparaison G1 / G2
 function blocClasses(d){
   const cartes = d.classes.map(function(c){
-    const couleur = c.nom.indexOf('2nde') >= 0 ? '#2E7D5E' : c.nom.indexOf('Term') >= 0 ? '#7B2D42' : '#185FA5';
+    const couleur = c.nom.indexOf('2nde') >= 0 ? '#2E7D5E' : c.nom.indexOf('Term') >= 0 ? '#7B2D42' : 'var(--th-principal)';
     const moy = c.nbNotes ? (c.sommeNotes / c.nbNotes) : null;
     const pctActifs = c.eleves ? Math.round(c.actifs7j / c.eleves * 100) : 0;
     const ligne = function(label, val){ return '<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0"><span style="color:var(--gm)">' + label + '</span><strong>' + val + '</strong></div>'; };
@@ -258,7 +258,7 @@ function blocActivite(d){
     return '<div onclick="openCopie(\'' + s.eleve.id + '\',\'' + s.mission_id + '\')" title="Voir la copie" style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #EDF2F7;font-size:12px;cursor:pointer">'
       + '<div style="width:92px;flex-shrink:0;color:var(--gm);font-size:11px">' + quandLisible(s.date) + '</div>'
       + '<div style="flex:1;min-width:0"><div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + nomCourtEleve(s.eleve) + ' <span style="font-weight:400;color:var(--gm);font-size:10px">' + s.cls + '</span></div>'
-      + '<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#4A5568"><strong style="color:#185FA5">' + s.mission_id + '</strong> ' + titreMission(s.mission_id) + '</div></div>'
+      + '<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#4A5568"><strong style="color:var(--th-principal)">' + s.mission_id + '</strong> ' + titreMission(s.mission_id) + '</div></div>'
       + pastilleNote(s.note) + etat + '</div>';
   }).join('');
   return '<div class="card" style="margin-top:0"><div class="ct">🕒 Activité récente</div>'
@@ -300,7 +300,7 @@ function blocPodium(c){
           + '<div style="font-size:12px;font-weight:800;margin-top:3px;line-height:1.2">' + (t.eleve.prenom || '') + '</div>'
           + '<div style="font-size:10px;color:var(--gm);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (t.eleve.nom || '').toUpperCase() + '</div>'
           + '<div style="margin:2px 0 4px">' + ((typeof badgeGroupe === 'function') ? badgeGroupe(t.eleve.groupe) : '') + '</div>'
-          + '<div style="height:' + p.h + 'px;background:' + p.fond + ';border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#1A2E4A">' + t.score + '</div>'
+          + '<div style="height:' + p.h + 'px;background:' + p.fond + ';border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:var(--th-fonce)">' + t.score + '</div>'
           + '</div>';
       }).join('')
     + '</div>';
@@ -339,7 +339,7 @@ function ongletsClasses(d){
   if(d.toutesClasses.length <= 1) return '';
   const onglet = function(val, label, nb){
     const on = d.classeChoisie === val;
-    const coul = !val ? '#1A2E4A' : val.indexOf('2nde') >= 0 ? '#2E7D5E' : val.indexOf('Term') >= 0 ? '#7B2D42' : '#185FA5';
+    const coul = !val ? 'var(--th-fonce)' : val.indexOf('2nde') >= 0 ? '#2E7D5E' : val.indexOf('Term') >= 0 ? '#7B2D42' : 'var(--th-principal)';
     return '<button onclick="choisirClasseDashboard(\'' + val.replace(/'/g, "\\'") + '\')" style="padding:9px 16px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:800;'
       + (on ? 'background:' + coul + ';color:#fff;border:2px solid ' + coul + ';box-shadow:0 2px 8px rgba(0,0,0,.12)' : 'background:#fff;color:' + coul + ';border:2px solid #E2E8F0') + '">'
       + label + (nb != null ? ' <span style="font-size:11px;font-weight:600;opacity:.8">' + nb + '</span>' : '') + '</button>';

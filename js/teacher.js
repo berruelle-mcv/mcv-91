@@ -57,7 +57,7 @@ async function renderCompetencesEnseignant(){
   if(legend){
     const total = eleves.length;
     legend.innerHTML = '<div style="background:#fff;border-radius:10px;padding:12px 16px;border:1px solid var(--gb);margin-bottom:4px">'
-      + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:4px">Vue référentiel — Progression de la classe</div>'
+      + '<div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:4px">Vue référentiel — Progression de la classe</div>'
       + '<div style="font-size:11px;color:#6B7280">'+(total>0?total+' élève(s)':'Aucun élève pour le moment.')+'</div>'
       + '</div>';
   }
@@ -77,10 +77,10 @@ async function renderCompetencesEnseignant(){
 
     const niveaux = [
       {label:'Non démarré', col:'#A0AEC0'},
-      {label:'Découverte',  col:'#63B3ED'},
-      {label:'En progression', col:'#4A6FA5'},
-      {label:'Acquis',     col:'#185FA5'},
-      {label:'Maîtrisé',  col:'#0A2540'}
+      {label:'Découverte',  col:'var(--th-vif)'},
+      {label:'En progression', col:'var(--th-second)'},
+      {label:'Acquis',     col:'var(--th-principal)'},
+      {label:'Maîtrisé',  col:'var(--th-nuit)'}
     ];
 
     const barSegments = total > 0 ? niveaux.map(function(n,i){
@@ -88,20 +88,20 @@ async function renderCompetencesEnseignant(){
       return pct > 0 ? '<div style="height:100%;width:'+pct+'%;background:'+n.col+';flex-shrink:0" title="'+n.label+' : '+counts[i]+'"></div>' : '';
     }).join('') : '<div style="height:100%;width:100%;background:#E2E8F0"></div>';
 
-    const statusColor = pctAcquis >= 75 ? '#185FA5' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
+    const statusColor = pctAcquis >= 75 ? 'var(--th-principal)' : pctAcquis >= 40 ? '#D97706' : '#A0AEC0';
 
     return '<div class="cc" style="border-left:4px solid '+statusColor+'">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
       + compBadge(c.code)
       + '<span style="font-size:11px;font-weight:800;color:'+statusColor+'">'+(total>0?pctAcquis+'% acquis':'—')+'</span>'
       + '</div>'
-      + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:10px">'+c.label+'</div>'
+      + '<div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:10px">'+c.label+'</div>'
       + (total > 0
         ? '<div style="display:flex;height:10px;border-radius:8px;overflow:hidden;margin-bottom:8px">'+barSegments+'</div>'
           + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">'
           + niveaux.map(function(n,i){
               return counts[i] > 0
-                ? '<span style="font-size:9px;font-weight:700;color:'+n.col+';background:'+n.col+'1A;padding:2px 7px;border-radius:8px">'+n.label+' : '+counts[i]+'</span>'
+                ? '<span style="font-size:9px;font-weight:700;color:'+n.col+';background:'+hexTheme(n.col)+'1A;padding:2px 7px;border-radius:8px">'+n.label+' : '+counts[i]+'</span>'
                 : '';
             }).join('')
           + '</div>'
@@ -119,8 +119,8 @@ function openProduit(id){
   const p = PRODUITS.find(function(x){ return x.id===id; });
   if(!p) return;
 
-  const c = CAT_CFG[p.cat] || {col:'#4A6FA5', light:'#EBF4FF'};
-  const pImg = PROD_IMAGES[p.id] || '';
+  const c = CAT_CFG[p.cat] || {col:'var(--th-second)', light:'var(--th-fond)'};
+  const pImg = PROD_IMAGES[p.id] || (typeof carPlaceholder==='function' ? carPlaceholder(p.segment) : '');
   const pvHT = (p.pv/1.2).toFixed(2);
   const margeE = ((p.pv/1.2) - p.pa).toFixed(2);
 
@@ -130,8 +130,8 @@ function openProduit(id){
     ? '<span style="color:#D97706;font-weight:700">⚠ Stock faible — '+p.stock+' u.</span>'
     : '<span class="u-success">✓ '+p.stock+' en stock</span>';
 
-  const nBg = {'Débutant':'#EBF4FF','Intermédiaire':'#EBF4FF','Expert':'#FEE2E2','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6','Pro':'#EBF4FF','Entraînement':'#F0FFF4','Loisir':'#FFF7ED','Spécialisé':'#FAF5FF'};
-  const nCo = {'Débutant':'#185FA5','Intermédiaire':'#2D5282','Expert':'#C53030','Compétition':'#C53030','Tous niveaux':'#6B7280','Pro':'#185FA5','Entraînement':'#27AE60','Loisir':'#D97706','Spécialisé':'#7B2FBE'};
+  const nBg = {'Débutant':'var(--th-fond)','Intermédiaire':'var(--th-fond)','Expert':'#FEE2E2','Compétition':'#FEE2E2','Tous niveaux':'#F3F4F6','Pro':'var(--th-fond)','Entraînement':'#F0FFF4','Loisir':'#FFF7ED','Spécialisé':'#FAF5FF'};
+  const nCo = {'Débutant':'var(--th-principal)','Intermédiaire':'var(--th-accent)','Expert':'#C53030','Compétition':'#C53030','Tous niveaux':'#6B7280','Pro':'var(--th-principal)','Entraînement':'#27AE60','Loisir':'#D97706','Spécialisé':'#7B2FBE'};
 
   // Pastilles coloris
   const colorisHtml = p.coloris && p.coloris.length
@@ -153,13 +153,20 @@ function openProduit(id){
       + '</div>'
     : '';
 
-  // Argumentaire 3 points
+  // Argumentaire 3 points (univers à fiches simples) — ou, si la fiche liste des
+  // équipements (univers Auto), ces faits bruts SANS argumentaire pré-rédigé :
+  // c'est à l'élève de construire le raisonnement.
+  const avecEquipements = !!(p.equipements && p.equipements.length);
   const args = [
-    '✓ ' + p.desc.split(',')[0],
-    '✓ Marque LABORO — 100% Sport & Outdoor',
+    '✓ ' + String(p.desc || '').split(',')[0],
+    '✓ ' + (((getCfg().textes||{}).argument_marque) || 'Marque LABORO — 100% Sport & Outdoor'),
     '✓ Disponible' + (p.stock > 0 ? ' en stock immédiat' : ' sur commande')
   ];
-  const argsHtml = '<div style="margin-bottom:10px">'
+  const argsHtml = avecEquipements
+    ? '<div style="margin-bottom:10px">' + p.equipements.map(function(e){
+        return '<div style="font-size:11px;color:#374151;padding:4px 0;border-bottom:1px solid #F3F4F6">✓ '+e+'</div>';
+      }).join('') + '</div>'
+    : '<div style="margin-bottom:10px">'
     + args.map(function(a){
         return '<div style="font-size:11px;color:#374151;padding:4px 0;border-bottom:1px solid #F3F4F6">'+a+'</div>';
       }).join('')
@@ -168,13 +175,13 @@ function openProduit(id){
   // Produits complémentaires — même catégorie, différent produit
   const comps = PRODUITS.filter(function(x){ return x.cat===p.cat && x.id!==p.id; }).slice(0,3);
   const compsHtml = comps.map(function(cp){
-    const cpImg = PROD_IMAGES[cp.id] || '';
-    const cpC = CAT_CFG[cp.cat] || {col:'#4A6FA5'};
+    const cpImg = PROD_IMAGES[cp.id] || (typeof carPlaceholder==='function' ? carPlaceholder(cp.segment) : '');
+    const cpC = CAT_CFG[cp.cat] || {col:'var(--th-second)'};
     return '<div onclick="openProduit(\''+cp.id+'\')" style="display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #E5E7EB;border-radius:10px;cursor:pointer;background:#fff" onmouseover="this.style.borderColor=\''+cpC.col+'\'" onmouseout="this.style.borderColor=\'#E5E7EB\'">'
       +'<div style="width:44px;height:36px;background:#F8FAFC;border-radius:6px;overflow:hidden;flex-shrink:0">'
       +(cpImg ? '<img src="'+cpImg+'" style="width:100%;height:100%;object-fit:contain;padding:2px">' : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#94A3B8">IMG</div>')
       +'</div>'
-      +'<div style="flex:1;min-width:0"><div style="font-size:10px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
+      +'<div style="flex:1;min-width:0"><div style="font-size:10px;font-weight:700;color:var(--th-fonce);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cp.nom+'</div>'
       +'<div style="font-size:10px;color:'+cpC.col+';font-weight:700">'+cp.pv+' €</div></div></div>';
   }).join('');
 
@@ -193,7 +200,7 @@ function openProduit(id){
     +'<div style="flex:1;padding:20px;display:flex;flex-direction:column;justify-content:space-between">'
     +'<div>'
     +'<div style="font-size:10px;color:var(--gm);margin-bottom:4px">'+p.cat+' · Réf. '+p.ref+'</div>'
-    +'<div style="font-size:19px;font-weight:900;color:#1A2E4A;line-height:1.2;margin-bottom:6px">'+p.nom+'</div>'
+    +'<div style="font-size:19px;font-weight:900;color:var(--th-fonce);line-height:1.2;margin-bottom:6px">'+p.nom+'</div>'
     +'<div style="font-size:12px;color:#4B5563;line-height:1.6;margin-bottom:8px">'+p.desc+'</div>'
     +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">'
     +(p.niveau?'<span style="background:'+(nBg[p.niveau]||'#F3F4F6')+';color:'+(nCo[p.niveau]||'#6B7280')+';font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px">'+p.niveau+'</span>':'')
@@ -202,7 +209,7 @@ function openProduit(id){
     +taillesHtml
     +'</div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">'
-    +'<div style="background:#F0F4FF;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div style="font-size:18px;font-weight:900;color:#1A2E4A">'+p.pa+' €</div></div>'
+    +'<div style="background:var(--th-fond2);border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Achat HT</div><div style="font-size:18px;font-weight:900;color:var(--th-fonce)">'+p.pa+' €</div></div>'
     +'<div style="background:#F0FFF4;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Vente TTC</div><div style="font-size:18px;font-weight:900;color:#27AE60">'+p.pv+' €</div><div style="font-size:10px;color:#6B7280">'+pvHT+' € HT</div></div>'
     +'<div style="background:#FFF7ED;border-radius:10px;padding:10px;text-align:center"><div style="font-size:9px;color:#6B7280;font-weight:700;text-transform:uppercase;margin-bottom:4px">Marge</div><div style="font-size:18px;font-weight:900;color:'+c.col+'">'+p.mar+' %</div><div style="font-size:10px;color:#6B7280">'+margeE+' €/u</div></div>'
     +'</div></div></div>'
@@ -211,17 +218,32 @@ function openProduit(id){
     // Caractéristiques + Argumentaire + Produits complémentaires
     +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">'
     +'<div style="padding:16px 18px;border-right:1px solid #F3F4F6">'
-    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Caractéristiques</div>'
+    +'<div style="font-size:11px;font-weight:800;color:var(--th-fonce);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Caractéristiques</div>'
     +'<div style="font-size:11px">Stock : '+stockHtml+'</div>'
     +(p.seuil>0?'<div style="font-size:10px;color:#9CA3AF;margin-top:2px">Seuil : '+p.seuil+' u. · TVA '+p.tva+'%</div>':'')
     +(p.tailles&&p.tailles.length?'<div style="font-size:10px;color:#6B7280;margin-top:6px">Tailles : '+p.tailles.join(', ')+'</div>':'')
+    +(p.puissance?'<div style="font-size:11px;color:#374151;margin-top:6px">⚙️ Puissance : <strong>'+p.puissance+' ch</strong></div>':'')
+    +(p.zero_100?'<div style="font-size:11px;color:#374151;margin-top:3px">🚀 0 à 100 km/h : <strong>'+p.zero_100+'</strong></div>':'')
+    +(p.vitesse_max?'<div style="font-size:11px;color:#374151;margin-top:3px">🏁 Vitesse max : <strong>'+p.vitesse_max+'</strong></div>':'')
+    +(p.boite?'<div style="font-size:11px;color:#374151;margin-top:3px">⚙️ Boîte : <strong>'+p.boite+'</strong></div>':'')
+    +(p.consommation_urbaine?'<div style="font-size:11px;color:#374151;margin-top:6px">⛽ Conso. urbaine : <strong>'+p.consommation_urbaine+'</strong></div>':(p.consommation?'<div style="font-size:11px;color:#374151;margin-top:6px">⛽ Consommation : <strong>'+p.consommation+'</strong></div>':''))
+    +(p.consommation_mixte?'<div style="font-size:11px;color:#374151;margin-top:3px">⛽ Conso. mixte : <strong>'+p.consommation_mixte+'</strong></div>':'')
+    +(p.reservoir?'<div style="font-size:11px;color:#374151;margin-top:3px">⛽ Réservoir : <strong>'+p.reservoir+'</strong></div>':'')
+    +(p.co2?'<div style="font-size:11px;color:#374151;margin-top:3px">🌱 Émissions CO2 : <strong>'+p.co2+'</strong></div>':'')
+    +(p.dimensions?'<div style="font-size:11px;color:#374151;margin-top:6px">📐 Dimensions : <strong>'+p.dimensions+'</strong></div>':'')
+    +(p.places?'<div style="font-size:11px;color:#374151;margin-top:3px">💺 Places : <strong>'+p.places+'</strong></div>':'')
+    +(p.coffre?'<div style="font-size:11px;color:#374151;margin-top:3px">🧳 Coffre : <strong>'+p.coffre+'</strong></div>':'')
+    +(p.garantie?'<div style="font-size:11px;color:#374151;margin-top:3px">🛡️ Garantie : <strong>'+p.garantie+'</strong></div>':'')
+    +(p.historique?'<div style="font-size:11px;color:#374151;margin-top:6px">📖 Historique : <strong>'+p.historique+'</strong></div>':'')
+    +(p.controle_technique?'<div style="font-size:11px;color:#374151;margin-top:3px">🔍 Contrôle technique : <strong>'+p.controle_technique+'</strong></div>':'')
+    +(p.garantie_occasion?'<div style="font-size:11px;color:#374151;margin-top:3px">🛡️ Garantie occasion : <strong>'+p.garantie_occasion+'</strong></div>':'')
     +'</div>'
     +'<div style="padding:16px 18px;border-right:1px solid #F3F4F6">'
-    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">💬 Argumentaire vendeur</div>'
+    +'<div style="font-size:11px;font-weight:800;color:var(--th-fonce);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">'+(avecEquipements?'🔧 Équipements':'💬 Argumentaire vendeur')+'</div>'
     +argsHtml
     +'</div>'
     +'<div style="padding:16px 18px">'
-    +'<div style="font-size:11px;font-weight:800;color:#1A2E4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔗 Produits complémentaires</div>'
+    +'<div style="font-size:11px;font-weight:800;color:var(--th-fonce);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">🔗 Produits complémentaires</div>'
     +(compsHtml?'<div style="display:flex;flex-direction:column;gap:6px">'+compsHtml+'</div>':'<div style="font-size:11px;color:#9CA3AF">Aucun produit associé.</div>')
     +'</div></div>'
     // Actions
@@ -367,7 +389,7 @@ async function renderMDJListe(){
       return '<div style="padding:10px 0;border-bottom:.5px solid var(--gc)">'
         + '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">'
         + '<div style="flex:1;min-width:220px;cursor:pointer" onclick="basculerRestantsMDJ(\''+a.id+'\')" title="Voir qui ne l\'a pas encore terminée">'
-        + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:#185FA5">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
+        + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:var(--th-principal)">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
         + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+'</div></div>'
         + barreAvancement(a)
         + '<button onclick="retirerMDJ(\''+a.id+'\')" title="Retirer cette mission (elle reste dans l\'historique)" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">✕</button>'
@@ -419,7 +441,7 @@ function renderMDJHistorique(){
         const e = etatAssignation(a);
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">'+cibleAssignation(a)+'</td>'
-          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span></td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span></td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7">'+a.termines+'/'+a.total+' terminée(s)</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:'+e.bg+';color:'+e.fg+'">'+e.label
           + (a.retiree_at ? ' le '+fmtDateHeure(a.retiree_at).split(' ')[0] : '') + '</span></td></tr>';
@@ -458,7 +480,7 @@ function renderIndicateursPedago(){
   const reussi = scores.filter(function(s){ return s>=10; }).length; // seuil de validation des classes
   const tauxReussite = scores.length ? Math.round(reussi/scores.length*100) : 0;
   const bestScore = scores.length ? Math.max.apply(null, scores) : 0;
-  const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
+  const palierColors = ['','var(--th-second)','var(--th-accent)','var(--th-principal)','#7B2FBE'];
   const palierLabels = ['','Débutant','Apprenti','Pro compétent','Pro performant'];
   const maxByPalier = Math.max.apply(null, byPalier.slice(1)) || 1;
 
@@ -468,12 +490,12 @@ function renderIndicateursPedago(){
     + [1,2,3,4].map(function(p){
         const count = byPalier[p];
         const pct = Math.round(count/maxByPalier*100);
-        return '<div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11px;font-weight:700;color:'+palierColors[p]+'">'+palierLabels[p]+'</span><span style="font-size:11px;font-weight:800;color:#1A2E4A">'+count+' mission'+(count>1?'s':'')+'</span></div><div style="background:#E2E8F0;border-radius:6px;height:10px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+palierColors[p]+';border-radius:6px;transition:width .5s"></div></div></div>';
+        return '<div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11px;font-weight:700;color:'+palierColors[p]+'">'+palierLabels[p]+'</span><span style="font-size:11px;font-weight:800;color:var(--th-fonce)">'+count+' mission'+(count>1?'s':'')+'</span></div><div style="background:#E2E8F0;border-radius:6px;height:10px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+palierColors[p]+';border-radius:6px;transition:width .5s"></div></div></div>';
       }).join('')
     + '</div></div>'
     + '<div class="card"><div class="ct">🎯 Ma performance</div><div class="u-grid-2">'
-    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'#185FA5':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 10/20 (validée)</div></div>'
-    + '<div style="background:#EBF4FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div><div style="font-size:24px;font-weight:900;color:#2D5282">'+(bestScore>0?bestScore+'/20':'—')+'</div><div class="u-label">sur toutes les missions</div></div>'
+    + '<div style="background:#F0FFF4;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Taux de réussite</div><div style="font-size:24px;font-weight:900;color:'+(tauxReussite>=80?'var(--th-principal)':tauxReussite>=60?'#D97706':'#C53030')+'">'+tauxReussite+'%</div><div class="u-label">note ≥ 10/20 (validée)</div></div>'
+    + '<div style="background:var(--th-fond);border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Meilleur score</div><div style="font-size:24px;font-weight:900;color:var(--th-accent)">'+(bestScore>0?bestScore+'/20':'—')+'</div><div class="u-label">sur toutes les missions</div></div>'
     + '<div style="background:#FFF7ED;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Missions terminées</div><div style="font-size:24px;font-weight:900;color:#D97706">'+done.length+'/'+allMissions.length+'</div><div class="u-label">'+Math.round(done.length/allMissions.length*100)+'% complété</div></div>'
     + '<div style="background:#FAF5FF;border-radius:10px;padding:12px;text-align:center"><div style="font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;margin-bottom:4px">Moyenne générale</div><div style="font-size:24px;font-weight:900;color:#7B2FBE">'+(avg>0?avg.toFixed(1)+'/20':'—')+'</div><div class="u-label">sur missions notées</div></div>'
     + '</div></div>'
@@ -482,7 +504,7 @@ function renderIndicateursPedago(){
         const compAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code,ud)>=3; }).length;
         const pct = Math.round(compAcquis/COMP.length*100);
         const nextMilestone = pct<25?25:pct<50?50:pct<75?75:100;
-        return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px"><span class="u-subtitle">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span><span class="u-muted">Prochain palier : '+nextMilestone+'%</span></div><div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#185FA5,#0A2540);border-radius:10px;transition:width .6s"></div>'
+        return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px"><span class="u-subtitle">'+compAcquis+'/'+COMP.length+' compétences acquises ('+pct+'%)</span><span class="u-muted">Prochain palier : '+nextMilestone+'%</span></div><div style="position:relative;background:#E2E8F0;border-radius:10px;height:14px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,var(--th-principal),var(--th-nuit));border-radius:10px;transition:width .6s"></div>'
           +[25,50,75].map(function(mark){ return '<div style="position:absolute;top:0;left:'+mark+'%;width:2px;height:100%;background:#fff;opacity:.6"></div>'; }).join('')
           +'</div><div style="display:flex;justify-content:space-between;font-size:9px;color:#9CA3AF;margin-top:3px"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>';
       })()

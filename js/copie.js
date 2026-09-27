@@ -63,8 +63,8 @@ function renderCopie(){
     const num = q.split(' ')[0];
     const texteQ = /^\d/.test(num) ? q.substring(q.indexOf(' ') + 1) : q;
     return '<div style="padding:10px 0;border-bottom:1px solid #EDF2F7">'
-      + '<div style="font-size:12px;color:#1A2E4A;line-height:1.5;margin-bottom:6px">' + (/^\d/.test(num) ? '<strong style="color:#185FA5">' + esc(num) + '</strong> ' : '') + esc(texteQ) + '</div>'
-      + (rep ? '<div style="font-size:13px;line-height:1.55;background:#F8FAFC;border-left:3px solid #185FA5;border-radius:0 6px 6px 0;padding:8px 12px;white-space:pre-wrap">' + esc(rep) + '</div>'
+      + '<div style="font-size:12px;color:var(--th-fonce);line-height:1.5;margin-bottom:6px">' + (/^\d/.test(num) ? '<strong style="color:var(--th-principal)">' + esc(num) + '</strong> ' : '') + esc(texteQ) + '</div>'
+      + (rep ? '<div style="font-size:13px;line-height:1.55;background:#F8FAFC;border-left:3px solid var(--th-principal);border-radius:0 6px 6px 0;padding:8px 12px;white-space:pre-wrap">' + esc(rep) + '</div>'
              : '<div style="font-size:12px;color:#B91C1C;font-style:italic">Pas de réponse</div>')
       + '</div>';
   };
@@ -101,7 +101,7 @@ function renderCopie(){
     + '</div>'
     + '<textarea id="copie-commentaire" placeholder="Commentaire pour l\'élève (facultatif) — il le verra dans sa mission" style="width:100%;min-height:64px;padding:8px 10px;border:1px solid #CBD5E0;border-radius:8px;font-size:13px;box-sizing:border-box;font-family:inherit">' + esc(d.commentaire_enseignant || '') + '</textarea>'
     + '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px">'
-    + '<button onclick="enregistrerDecisionCopie()" style="padding:9px 18px;background:#185FA5;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800">Enregistrer ma décision</button>'
+    + '<button onclick="enregistrerDecisionCopie()" style="padding:9px 18px;background:var(--th-principal);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800">Enregistrer ma décision</button>'
     + (peutAccorder ? '<button onclick="accorderTentativeCopie()" style="padding:9px 14px;background:#fff;color:#92400E;border:1px solid #F0C040;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">➕ Accorder une tentative supplémentaire</button>' : '')
     + '<span id="copie-msg" style="font-size:12px;flex:1;min-width:160px"></span>'
     + '</div>'
@@ -195,11 +195,11 @@ function openCopiesEleve(){
           const m = missionParId(p.mission_id);
           const note = p.note_finale != null ? p.note_finale : p.note_ia;
           return '<div onclick="openCopie(\'' + esc(e.id) + '\',\'' + esc(p.mission_id) + '\')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-bottom:1px solid #EDF2F7;cursor:pointer;font-size:12px">'
-            + '<div style="flex:1;min-width:0"><strong style="color:#185FA5">' + esc(p.mission_id) + '</strong> ' + esc(m ? m.titre : '')
+            + '<div style="flex:1;min-width:0"><strong style="color:var(--th-principal)">' + esc(p.mission_id) + '</strong> ' + esc(m ? m.titre : '')
             + '<div style="font-size:11px;color:var(--gm)">Rendue le ' + dateHeure(p.submitted_at) + ' · ' + (p.tentatives != null ? p.tentatives + '/2 tentative(s)' : '') + '</div></div>'
             + ((typeof pastilleNote === 'function') ? pastilleNote(note) : esc(note)) + (p.note_modifiee_par ? ' <span title="Note revue par l\'enseignant">✎</span>' : '')
             + (p.statut === 'valide' ? '<span title="Validée">✅</span>' : '<span title="Non validée">⏳</span>')
-            + '<span style="color:#185FA5;font-weight:700">Ouvrir →</span></div>';
+            + '<span style="color:var(--th-principal);font-weight:700">Ouvrir →</span></div>';
         }).join('');
   ouvrirOverlayCopie();
 }

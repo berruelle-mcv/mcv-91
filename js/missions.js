@@ -30,6 +30,8 @@ function getResKey(comp){
 // elle passe au nouveau format — aucun autre changement de code nécessaire.
 function getRes(comp, palier){
   const key = getResKey(comp);
+  // Ressource propre au palier rangée à part (ex. RES['C1.1-P2']) — univers LABORO Auto
+  if(palier && RES[key + '-P' + palier]) return RES[key + '-P' + palier];
   const entry = RES[key];
   if(!entry) return null;
   if(entry[1] || entry[2] || entry[3] || entry[4]){
@@ -107,9 +109,9 @@ function openMission(id){
   // Démarrer le timer
   startMoTimer(55);
   document.getElementById('mo-m').innerHTML=`${compBadge(m.comp)} · Palier ${m.palier} — ${['','Débutant','Apprenti','Professionnel compétent','Professionnel performant'][m.palier]}`;
-  const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de LABORO. L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Mission validée = Palier 2 débloqué.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Mission validée = Palier 3 débloqué.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Mission validée = Palier 4 débloqué.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
+  const palierDescs=['',"Palier 1 — Découverte · Tu découvres le contexte professionnel de "+getNomCourt()+". L'objectif est de comprendre les bases avant tout. Suis d'abord la ressource, puis réponds aux questions. Mission validée = Palier 2 débloqué.","Palier 2 — Apprenti · Tu connais les bases. Ici tu commences à les appliquer avec un cadre. Les questions demandent de la justification. Mission validée = Palier 3 débloqué.","Palier 3 — Professionnel compétent · Les situations sont complexes, les données plus nombreuses. On attend de toi de l'analyse, de la rigueur et de la réflexivité. Tu travailles comme un(e) professionnel(le) en poste. Mission validée = Palier 4 débloqué.","Palier 4 — Expert · Niveau stratégique. Tu es en autonomie complète. Les missions de ce palier te préparent directement aux épreuves de Terminale. Pas de palier suivant — c'est ici que tout se joue."];
   const pdEl=document.getElementById('mo-palier-desc');
-  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier];pdEl.style.display='block';const pc2=['','#E6F1FB','#EBF4FF','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
+  if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier];pdEl.style.display='block';const pc2=['','var(--th-voile)','var(--th-fond)','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
   const res=getRes(m.comp, m.palier);
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
@@ -121,10 +123,10 @@ function openMission(id){
   const contexteAffiche = (isPVOC && m.contexte_pvoc) ? m.contexte_pvoc : m.contexte;
   // ── Objectif de la mission (Axe 1 — compétence explicite) ──
   if(m.objectif){
-    html+=`<div style="background:#EBF4FF;border:.5px solid #B5D4F4;border-left:3px solid #185FA5;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px">
-      <div style="font-size:10px;font-weight:700;color:#185FA5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">🎯 Objectif de cette mission</div>
-      <div style="font-size:12px;color:#1A2E4A;line-height:1.6">${m.objectif}</div>
-      <div style="font-size:11px;color:#4A6FA5;margin-top:4px">Compétence travaillée : <strong>${m.comp}</strong> — ${m.comp_libelle}</div>
+    html+=`<div style="background:var(--th-fond);border:.5px solid var(--th-bordure);border-left:3px solid var(--th-principal);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px">
+      <div style="font-size:10px;font-weight:700;color:var(--th-principal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">🎯 Objectif de cette mission</div>
+      <div style="font-size:12px;color:var(--th-fonce);line-height:1.6">${m.objectif}</div>
+      <div style="font-size:11px;color:var(--th-second);margin-top:4px">Compétence travaillée : <strong>${m.comp}</strong> — ${m.comp_libelle}</div>
     </div>`;
   }
   html+=`<div class="ph1"><div class="ph-l" style="color:var(--bl)">Mise en situation</div><div class="ph-c">${contexteAffiche}</div></div>`;
@@ -152,7 +154,7 @@ function openMission(id){
   // ── Axe 3 : Grille de critères visible par l'élève AVANT soumission ──
   if(m.criteres && m.criteres.length > 0){
     const niveaux = ['Non acquis','En cours d\'acquisition','Acquis','Maîtrisé'];
-    const couleurs = ['#DC2626','#D97706','#1D9E75','#185FA5'];
+    const couleurs = ['#DC2626','#D97706','#1D9E75','var(--th-principal)'];
     html+=`<div style="background:#FFFBEA;border:.5px solid #F0C040;border-left:3px solid #D97706;border-radius:0 8px 8px 0;padding:12px 14px;margin-top:14px">
       <div style="font-size:10px;font-weight:700;color:#8A6500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">📋 Ce qu'on attend de toi — critères d'évaluation</div>
       <div style="font-size:11px;color:#92400E;margin-bottom:10px;line-height:1.5">Avant de soumettre, vérifie que ta réponse répond à chacun de ces critères.</div>
@@ -160,7 +162,7 @@ function openMission(id){
         <div style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:.5px solid #FDE68A${ci===m.criteres.length-1?';border-bottom:none':''}">
           <div style="width:20px;height:20px;border-radius:50%;background:#FEF3C7;border:1.5px solid #F0C040;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#B45309;flex-shrink:0;margin-top:1px">${ci+1}</div>
           <div style="flex:1">
-            <div style="font-size:11px;font-weight:700;color:#1A2E4A;margin-bottom:2px">${cr.c}</div>
+            <div style="font-size:11px;font-weight:700;color:var(--th-fonce);margin-bottom:2px">${cr.c}</div>
             <div style="font-size:11px;color:#6B7280;line-height:1.4">${cr.i}</div>
           </div>
         </div>
@@ -458,10 +460,10 @@ function renderCompetences(){
 
   const niveaux = [
     {label:'Non démarré',    col:'#A0AEC0', bg:'#F7FAFC', icon:'○'},
-    {label:'Découverte',     col:'#63B3ED', bg:'#EBF8FF', icon:'◔'},
-    {label:'En progression', col:'#4A6FA5', bg:'#EBF4FF', icon:'◑'},
-    {label:'Acquis',         col:'#185FA5', bg:'#F0FFF4', icon:'◕'},
-    {label:'Maîtrisé',      col:'#185FA5', bg:'#EBF4FF', icon:'●'}
+    {label:'Découverte',     col:'var(--th-vif)', bg:'#EBF8FF', icon:'◔'},
+    {label:'En progression', col:'var(--th-second)', bg:'var(--th-fond)', icon:'◑'},
+    {label:'Acquis',         col:'var(--th-principal)', bg:'#F0FFF4', icon:'◕'},
+    {label:'Maîtrisé',      col:'var(--th-principal)', bg:'var(--th-fond)', icon:'●'}
   ];
 
   // Calcul automatique pour tous les comps
@@ -489,7 +491,7 @@ function renderCompetences(){
     badgesDiv.style.cssText = 'display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px';
     niveaux.forEach(function(n,i){
       const span = document.createElement('span');
-      span.style.cssText = 'display:flex;align-items:center;gap:5px;background:'+n.bg+';border:1px solid '+n.col+'66;color:'+n.col+';font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px';
+      span.style.cssText = 'display:flex;align-items:center;gap:5px;background:'+n.bg+';border:1px solid '+hexTheme(n.col)+'66;color:'+n.col+';font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px';
       span.innerHTML = '<span style="width:10px;height:10px;border-radius:50%;background:'+n.col+';flex-shrink:0;display:inline-block"></span>'
         + n.label + ' <span style="opacity:.65">('+niveauCounts[i]+')</span>';
       badgesDiv.appendChild(span);
@@ -500,7 +502,7 @@ function renderCompetences(){
     statsDiv.innerHTML = '<span>✅ <strong>'+acquises+'</strong> acquise(s)</span>'
       + '<span>🔷 <strong>'+enCours+'</strong> en cours</span>'
       + '<span>○ <strong>'+niveauCounts[0]+'</strong> non démarrée(s)</span>'
-      + '<span style="color:#4A6FA5;font-style:italic">Progression calculée automatiquement</span>';
+      + '<span style="color:var(--th-second);font-style:italic">Progression calculée automatiquement</span>';
     
     legend.innerHTML = '';
     legend.appendChild(badgesDiv);
@@ -534,7 +536,7 @@ function renderCompetences(){
       + '</div>'
 
       // Nom
-      + '<div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:10px;line-height:1.3">'+c.label+'</div>'
+      + '<div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:10px;line-height:1.3">'+c.label+'</div>'
 
       // Barre de progression
       + '<div style="background:#E2E8F0;border-radius:8px;height:12px;overflow:hidden;margin-bottom:6px;position:relative">'
@@ -619,7 +621,7 @@ function renderChoixQCM(qid,qcm,saved){
 }
 function styleOptQCM(on){
   return 'display:inline-flex;align-items:center;text-align:left;padding:6px 10px;border-radius:8px;cursor:pointer;font-size:12px;line-height:1.35;max-width:100%;'
-    +(on?'background:#185FA5;color:#fff;border:1.5px solid #185FA5':'background:#fff;color:#1A2E4A;border:1.5px solid #CBD5E0');
+    +(on?'background:var(--th-principal);color:#fff;border:1.5px solid var(--th-principal)':'background:#fff;color:var(--th-fonce);border:1.5px solid #CBD5E0');
 }
 function choisirQCM(qid,lettre){
   const wrap=document.getElementById('qcm_'+qid), ta=document.getElementById(qid);
@@ -726,7 +728,7 @@ function integMessage(txt){
   let t = document.getElementById('integ-toast');
   if(!t){
     t = document.createElement('div'); t.id = 'integ-toast';
-    t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#1A2E4A;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:5000;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:90vw;text-align:center';
+    t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--th-fonce);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:5000;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:90vw;text-align:center';
     document.body.appendChild(t);
   }
   t.textContent = txt; t.style.display = 'block';

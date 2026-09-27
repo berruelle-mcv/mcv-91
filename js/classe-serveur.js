@@ -110,7 +110,7 @@ function niveauG4PourEleve(ud, classeLibelle){
 
 function badgeNiveau(n){
   if(n === null || n === undefined) return '<span style="color:var(--gm);font-size:11px">—</span>';
-  const cols = ['#A0AEC0','#63B3ED','#4A6FA5','#185FA5','#0A2540'];
+  const cols = ['#A0AEC0','var(--th-vif)','var(--th-second)','var(--th-principal)','var(--th-nuit)'];
   return '<span style="display:inline-block;min-width:18px;text-align:center;font-size:11px;font-weight:800;color:#fff;background:'+cols[n]+';border-radius:5px;padding:2px 5px">'+n+'</span>';
 }
 
@@ -129,10 +129,10 @@ function afficherClasse(){
       + '<span class="cls-count">' + eleves.length + '</span></div>'
       + classes.map(function(cls){
           const n = eleves.filter(e => (e.classe_libelle||'Sans classe')===cls).length;
-          const clsColor = cls.indexOf('2nde')>=0 ? '#2E7D5E' : cls.indexOf('Term')>=0 ? '#7B2D42' : '#185FA5';
+          const clsColor = cls.indexOf('2nde')>=0 ? '#2E7D5E' : cls.indexOf('Term')>=0 ? '#7B2D42' : 'var(--th-principal)';
           const activeStyle = classeFiltre===cls ? ('background:'+clsColor+';color:#fff;border-color:'+clsColor) : ('border-color:'+clsColor+';color:'+clsColor);
           return '<div class="cls-tab' + (classeFiltre===cls?' on':'') + '" onclick="filtrerClasse(\'' + cls + '\')" style="' + activeStyle + '">'
-            + cls + ' <span style="font-size:9px;background:#E6F1FB;color:#185FA5;padding:1px 5px;border-radius:8px">' + n + '</span></div>';
+            + cls + ' <span style="font-size:9px;background:var(--th-voile);color:var(--th-principal);padding:1px 5px;border-radius:8px">' + n + '</span></div>';
         }).join('');
   }
 
@@ -249,7 +249,39 @@ function selectionnerEleve(eleveId){
   if(chcl) chcl.style.display = 'none';
   const chgrp = document.getElementById('chgrp-panel');
   if(chgrp) chgrp.style.display = 'none';
+  const obs = document.getElementById('obs-panel');
+  if(obs) obs.style.display = 'none';
   afficherClasse();
+}
+
+// ================================================
+//   Observations de l'enseignant sur un élève (champ libre, visible
+//   des seuls enseignants) — panneau sous « Actions sur un élève »
+// ================================================
+function ouvrirObservations(){
+  if(!verifierEleveSelectionne()) return;
+  const panel = document.getElementById('obs-panel');
+  const zone = document.getElementById('obs-texte');
+  const msg = document.getElementById('obs-msg');
+  if(!panel || !zone) return;
+  zone.value = SELECTED_ELEVE.observations || '';
+  if(msg) msg.textContent = '';
+  panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+}
+async function enregistrerObservations(){
+  if(!verifierEleveSelectionne()) return;
+  const zone = document.getElementById('obs-texte');
+  const msg = document.getElementById('obs-msg');
+  const token = localStorage.getItem('laboro_token');
+  if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
+  const r = await fetchJSON(LABORO_API + '/api/eleves/observations', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ eleve_id: SELECTED_ELEVE.id, observations: zone.value })
+  });
+  if(!r.ok || !r.data.ok){ if(msg){ msg.textContent = r.erreur || 'Échec de l\'enregistrement.'; msg.style.color = 'var(--rg)'; } return; }
+  SELECTED_ELEVE.observations = zone.value;
+  if(msg){ msg.textContent = '✓ Observations enregistrées.'; msg.style.color = 'var(--vt)'; }
 }
 
 function verifierEleveSelectionne(){
@@ -354,10 +386,11 @@ async function reinitialiserEleve(){
 async function supprimerEleve(){
   if(!verifierEleveSelectionne()) return;
   const nomAff = ((SELECTED_ELEVE.prenom ? SELECTED_ELEVE.prenom + ' ' : '') + (SELECTED_ELEVE.nom || '')).trim() || SELECTED_ELEVE.email;
-  const estTest = (SELECTED_ELEVE.email || '').toLowerCase().includes('test');
+  // Même règle que le serveur : « test » en début d'adresse ou de segment (test.x@, x.test@, @test.fr)
+  const estTest = /(^|[._+@-])test/i.test(SELECTED_ELEVE.email || '');
   let permanent;
   if(estTest){
-    permanent = confirm('"' + nomAff + '" semble être un compte de test (email contenant "test").\n\nSupprimer DÉFINITIVEMENT ce compte ?\n\n(Annuler = archiver seulement, sans supprimer)');
+    permanent = confirm('"' + nomAff + '" semble être un compte de test (adresse de test).\n\nSupprimer DÉFINITIVEMENT ce compte ?\n\n(Annuler = archiver seulement, sans supprimer)');
   } else {
     if(!confirm('Archiver ' + nomAff + ' ?\n\nL\'élève disparaîtra de la vue classe mais ses données sont conservées (réversible par un administrateur de la base).')) return;
     permanent = false;
@@ -467,7 +500,7 @@ function openAnalyse(){
   const sansActivite = stats.filter(function(s){ return s.done===0; });
 
   const labelsNiveaux = ['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
-  const colsNiveaux = ['#A0AEC0','#63B3ED','#4A6FA5','#185FA5','#0A2540'];
+  const colsNiveaux = ['#A0AEC0','var(--th-vif)','var(--th-second)','var(--th-principal)','var(--th-nuit)'];
   function barreCompetence(label, cle){
     const concernes = stats.filter(function(s){ return s[cle] !== null && s[cle] !== undefined; });
     if(!concernes.length) return '';
@@ -488,10 +521,10 @@ function openAnalyse(){
     + '<div style="background:var(--gc);border-radius:8px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--gr,#374151)">'+sansActivite.length+'</div><div class="u-label-up">Sans activité</div></div>'
     + '</div>'
     + '<div style="margin-bottom:16px">'
-    + barreCompetence('C1 — Fondamentaux relation client', 'c1')
-    + barreCompetence('C2 — Suivi et fidélisation', 'c2')
-    + barreCompetence('C3 — Analyse et action commerciale', 'c3')
-    + barreCompetence('G4 — Bloc spécialité (AGEC/PVOC)', 'g4')
+    + barreCompetence('C1 — Bloc 1 : conseiller et vendre', 'c1')
+    + barreCompetence('C2 — Bloc 2 : suivre les ventes', 'c2')
+    + barreCompetence('C3 — Bloc 3 : fidéliser la clientèle et développer la relation client', 'c3')
+    + barreCompetence('G4 — Bloc 4 : option (AGEC / PVOC)', 'g4')
     + '</div>'
     + (enDifficulte.length ? '<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:800;color:#C53030;margin-bottom:6px">⚠ Élèves en difficulté (score &lt; 40, au moins 1 mission faite)</div>'
       + enDifficulte.map(function(s){ return '<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--gc)">'+s.nom+' — '+s.score+'/100 ('+s.done+' mission(s))</div>'; }).join('')

@@ -31,7 +31,7 @@ function showLoginError(msg){
 }
 
 // ================================================
-//   LABORO Sport & Outdoor — Authentification, login, logout, onboarding
+//   LABORO — Moteur commun : authentification, login, logout, onboarding
 //   Version 1.0 — Architecture modulaire
 // ================================================
 
@@ -52,18 +52,19 @@ function updatePoste(){
     if(hint) hint.style.display='none';
   } else if(cls==='2nde'){
     sel.value='Découverte de la famille des métiers MCV';
-    if(hint){hint.style.display='block';hint.textContent="Tu découvres les métiers du commerce et de la vente chez LABORO.";}
+    if(hint){hint.style.display='block';hint.textContent="Tu découvres les métiers du commerce et de la vente chez "+getNomCourt()+".";}
   } else if(cls.includes('AGEC')){
     sel.value='Conseiller de vente — Showroom & E-commerce';
-    if(hint){hint.style.display='block';hint.textContent="Tu travailles au showroom d'Évry et sur laboro-sport.fr.";}
+    if(hint){hint.style.display='block';hint.textContent=((getCfg().textes||{}).lieu_vente)||"Tu travailles au showroom d'Évry et sur laboro-sport.fr.";}
   } else if(cls.includes('PVOC')){
     sel.value='Commercial terrain — Prospection & Vente B2B';
-    if(hint){hint.style.display='block';hint.textContent='Tu prospectes et développes le portefeuille clients professionnels de LABORO.';}
+    if(hint){hint.style.display='block';hint.textContent='Tu prospectes et développes le portefeuille clients professionnels de '+getNomCourt()+'.';}
   }
 }
 // Outil de test (Pascal) : menu d'accès rapide à tous les profils.
 // Déclenché en tapant "ana" dans le champ mail (sur doLogin ET doLoginServeur).
-// ⚠️ À RETIRER avant le déploiement réel.
+// Raccourci VOLONTAIRE et permanent, demandé par Pascal : ne jamais le retirer
+// sans sa demande explicite (confirmé à plusieurs reprises).
 function ouvrirAccesRapide(){
   const profils = [
     {cls:'enseignant', label:'👨‍🏫 Enseignant'},
@@ -78,11 +79,11 @@ function ouvrirAccesRapide(){
   overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
   const box = document.createElement('div');
   box.style.cssText = 'background:#fff;border-radius:16px;padding:28px;min-width:280px;text-align:center';
-  box.innerHTML = '<div style="font-size:16px;font-weight:800;color:#1A2E4A;margin-bottom:20px">🔑 Accès rapide Pascal</div>';
+  box.innerHTML = '<div style="font-size:16px;font-weight:800;color:var(--th-fonce);margin-bottom:20px">🔑 Accès rapide Pascal</div>';
   profils.forEach(function(p){
     const btn = document.createElement('button');
     btn.textContent = p.label;
-    btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:#EBF4FF;color:#1A2E4A;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
+    btn.style.cssText = 'display:block;width:100%;margin-bottom:8px;padding:12px;background:var(--th-fond);color:var(--th-fonce);border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700';
     btn.onclick = function(){
       document.body.removeChild(overlay);
       const posteMap={
@@ -163,15 +164,15 @@ function startOb(){
       msg=`<div class="ob-h1">Prêt(e) pour les CCF ?</div>
       <div class="ob-sub">Cette année, tu passes tes épreuves de certification. LABORO t'y prépare directement.</div>
       <div class="ob-steps">
-        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282;color:#fff">E31</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-accent);color:#fff">E31</div><div>
           <div class="ob-step-t">Sous-épreuve E31 — Conseiller et vendre <span style="font-size:10px;opacity:.7">coef. 3</span></div>
           <div class="ob-step-d">Veille commerciale · Réalisation de la vente · Exécution de la vente · Communication</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5;color:#fff">E32</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-second);color:#fff">E32</div><div>
           <div class="ob-step-t">Sous-épreuve E32 — Suivre les ventes <span style="font-size:10px;opacity:.7">coef. 2</span></div>
           <div class="ob-step-d">Suivi commande · Services associés · Réclamations · Satisfaction client</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A;color:#fff">E33</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-fonce);color:#fff">E33</div><div>
           <div class="ob-step-t">Sous-épreuve E33 — Développer la relation client <span style="font-size:10px;opacity:.7">coef. 3</span></div>
           <div class="ob-step-d">Information client · Actions de fidélisation · Évaluation</div>
         </div></div>
@@ -183,44 +184,44 @@ function startOb(){
       msg=`<div class="ob-h1">Comment ça fonctionne ?</div>
       <div class="ob-sub">Tu connais déjà les bases. Cette année on va plus loin — missions plus complexes, contextes B2B, gestion de la relation client.</div>
       <div class="ob-steps">
-        <div class="ob-step"><div class="ob-step-n" style="background:#2D5282;color:#fff">1</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-accent);color:#fff">1</div><div>
           <div class="ob-step-t">📚 Lis la ressource</div>
           <div class="ob-step-d">Chaque mission inclut la méthode. Lis-la avant d'agir — même si tu penses connaître.</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#4A6FA5;color:#fff">2</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-second);color:#fff">2</div><div>
           <div class="ob-step-t">✍️ Produis en autonomie</div>
           <div class="ob-step-d">Les questions de 1ère demandent de vrais arguments, des calculs, des analyses. Pas de QCM.</div>
         </div></div>
-        <div class="ob-step"><div class="ob-step-n" style="background:#1A2E4A;color:#fff">3</div><div>
+        <div class="ob-step"><div class="ob-step-n" style="background:var(--th-fonce);color:#fff">3</div><div>
           <div class="ob-step-t">⭐ Progresse et monte en compétences</div>
           <div class="ob-step-d">Ton score et ton niveau de maîtrise sont suivis par ton enseignant. Vise le niveau Professionnel compétent ou Professionnel performant.</div>
         </div></div>
       </div>`;
     } else {
       // 2nde
-      msg=`<div style="font-size:11px;font-weight:700;color:#4A6FA5;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Mode d'emploi</div>
-      <div style="font-size:22px;font-weight:900;color:#1A2E4A;margin-bottom:6px">Comment ça fonctionne ?</div>
+      msg=`<div style="font-size:11px;font-weight:700;color:var(--th-second);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Mode d'emploi</div>
+      <div style="font-size:22px;font-weight:900;color:var(--th-fonce);margin-bottom:6px">Comment ça fonctionne ?</div>
       <div style="font-size:13px;color:#6B7280;margin-bottom:20px">3 étapes simples pour chaque mission.</div>
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:8px">
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid #DBEAFE">
-          <div style="width:34px;height:34px;background:#1A2E4A;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">1</div>
-          <div><div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:3px">📚 Tu apprends la notion</div>
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid var(--th-ciel)">
+          <div style="width:34px;height:34px;background:var(--th-fonce);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">1</div>
+          <div><div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:3px">📚 Tu apprends la notion</div>
           <div style="font-size:12px;color:#6B7280;line-height:1.5">Chaque mission commence par une ressource courte. Lis-la — elle contient tout ce qu'il faut savoir.</div></div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid #DBEAFE">
-          <div style="width:34px;height:34px;background:#2D5282;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">2</div>
-          <div><div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:3px">✍️ Tu réponds aux questions</div>
-          <div style="font-size:12px;color:#6B7280;line-height:1.5">Des situations réelles chez LABORO — tu observes, tu identifies, tu complètes. C'est guidé.</div></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid var(--th-ciel)">
+          <div style="width:34px;height:34px;background:var(--th-accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">2</div>
+          <div><div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:3px">✍️ Tu réponds aux questions</div>
+          <div style="font-size:12px;color:#6B7280;line-height:1.5">Des situations réelles chez ${getNomCourt()} — tu observes, tu identifies, tu complètes. C'est guidé.</div></div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid #DBEAFE">
-          <div style="width:34px;height:34px;background:#185FA5;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">3</div>
-          <div><div style="font-size:13px;font-weight:800;color:#1A2E4A;margin-bottom:3px">⭐ Tu progresses</div>
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#F8FAFF;border-radius:12px;border:1px solid var(--th-ciel)">
+          <div style="width:34px;height:34px;background:var(--th-principal);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0">3</div>
+          <div><div style="font-size:13px;font-weight:800;color:var(--th-fonce);margin-bottom:3px">⭐ Tu progresses</div>
           <div style="font-size:12px;color:#6B7280;line-height:1.5">Ton enseignant valide tes réponses. Tu montes en compétences et tu débloques de nouvelles missions.</div></div>
         </div>
       </div>`;
     }
     const wrapStart='<div style="background:#fff;border-radius:16px;padding:28px 32px;max-width:560px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.15)">';
-    const navHtml='<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><button class="ob-btn-prev" onclick="obPrev()" style="background:#F3F4F6;border:none;color:#374151;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">← Précédent</button><div style="display:flex;gap:10px"><button onclick="skipOb()" style="background:none;border:1px solid #E5E7EB;color:#6B7280;padding:10px 16px;border-radius:8px;font-size:12px;cursor:pointer">Passer</button><button class="ob-btn-next" onclick="obNext()" style="background:#1A2E4A;border:none;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">Commencer mes missions →</button></div></div></div>';
+    const navHtml='<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><button class="ob-btn-prev" onclick="obPrev()" style="background:#F3F4F6;border:none;color:#374151;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">← Précédent</button><div style="display:flex;gap:10px"><button onclick="skipOb()" style="background:none;border:1px solid #E5E7EB;color:#6B7280;padding:10px 16px;border-radius:8px;font-size:12px;cursor:pointer">Passer</button><button class="ob-btn-next" onclick="obNext()" style="background:var(--th-fonce);border:none;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">Commencer mes missions →</button></div></div></div>';
     ob3.innerHTML=wrapStart+msg+navHtml;
   }
   obStep=0;updateOb();
@@ -334,6 +335,9 @@ function showApp(){
   if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
   const niAccesEleves = document.getElementById('ni-acces-eleves');
   if(niAccesEleves) niAccesEleves.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
+  // Génération de mission par IA (univers qui la proposent : menu présent dans index.html)
+  const niGn = document.getElementById('ni-gn');
+  if(niGn) niGn.style.display = ens ? '' : 'none';
   if(ens && typeof populateClasseSelects === 'function') populateClasseSelects();
   // ── Boutons export/import dans la sidebar (sauvegarde entre postes) ──
   const sbBt = document.querySelector('.sb-bt');
@@ -356,10 +360,14 @@ function showApp(){
 }
 function doLogout(){
   CU=null;localStorage.removeItem('laboro_u');
+  // Effacer aussi le jeton serveur : sur un poste partagé, l'élève suivant
+  // ne doit hériter d'aucune session.
+  localStorage.removeItem('laboro_token');
+  localStorage.removeItem('laboro_est_admin');
   // Remettre la couleur par défaut
   const r=document.documentElement;
-  r.style.setProperty('--bl','#185FA5');r.style.setProperty('--bf','#0C447C');
-  r.style.setProperty('--bm','#B5D4F4');r.style.setProperty('--bc','#E6F1FB');
+  r.style.setProperty('--bl','var(--th-principal)');r.style.setProperty('--bf','var(--th-profond)');
+  r.style.setProperty('--bm','var(--th-bordure)');r.style.setProperty('--bc','var(--th-voile)');
   ['app','onboarding'].forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById('login').classList.add('on');
 }
@@ -379,6 +387,7 @@ function goP(id,el){
   if(id==='e2agec' && typeof renderE2AGEC==='function') renderE2AGEC();
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
+  if(id==='generation' && typeof initGenerationMission==='function') initGenerationMission();
   if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();
   if(id==='acceseleves' && typeof renderAccesEleves==='function') renderAccesEleves();
 }
@@ -460,7 +469,11 @@ function importerDonnees(){
 // ════════════════════════════════════════════════
 // LOGIN SERVEUR (version branchée sur le backend — seule utilisée)
 // ════════════════════════════════════════════════
-const LABORO_API = 'https://mcv.laboro-edu.fr';
+// Adresse du serveur de l'univers (data/univers.js) — jamais écrite en dur ici
+// Volontairement AUCUNE adresse par défaut : si data/univers.js manquait, le site
+// ne doit surtout pas se brancher par erreur sur le serveur d'un autre univers.
+const LABORO_API = getCfg().api || '';
+if(!LABORO_API) console.error('[LABORO] Adresse du serveur absente (data/univers.js) : connexion impossible.');
 
 async function doLoginServeur(){
   const mail = document.getElementById('inp-mail').value.trim();

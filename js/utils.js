@@ -91,7 +91,7 @@ async function populateClasseSelects(){
 }
 
 // ═══════════════════════════════════════════════════════
-// ESPACE PRÉPARATION E2 AGEC — LABORO Sport & Outdoor
+// ESPACE PRÉPARATION E2 AGEC (univers qui la proposent)
 // ═══════════════════════════════════════════════════════
 
 // Données et rendus E2 chargés depuis les fichiers externes :

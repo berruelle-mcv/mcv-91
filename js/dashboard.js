@@ -1,6 +1,6 @@
 // ================================================
-//   LABORO Sport & Outdoor — Dashboard élève/enseignant, actualités, indicateurs
-//   Version 1.0 — Architecture modulaire
+//   LABORO — Moteur commun : tableau de bord élève/enseignant, actualités, indicateurs
+//   (contenus propres à l'univers — actualités, postes — lus dans LABORO_CONFIG)
 // ================================================
 
 // ═══ DASHBOARD ═══
@@ -37,8 +37,9 @@ async function renderMDJEleve(){
     + '</div>';
 }
 
-// ═══ ACTUALITÉS LABORO ═══
-const ACTUS_LABORO=[
+// ═══ ACTUALITÉS DE L'ENTREPRISE ═══
+// Propres à chaque univers : LABORO_CONFIG.actus (data/univers.js). Liste ci-dessous = repli.
+const ACTUS_LABORO=(getCfg().actus && getCfg().actus.length) ? getCfg().actus : [
   {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons de football LABORO T5 et 30 chasubles LABORO Pro reçus en entrepôt. Mise en rayon prévue demain.'},
   {date:'Lun',icon:'📞',titre:'Prospect à rappeler',txt:'M. Dubois (CE Renault Évry) a demandé un devis pour 20 maillots personnalisés. Romain Sauzet prend en charge.'},
   {date:'Mar',icon:'🎯',titre:'Objectif semaine',txt:'Objectif : 8 500 € de CA cette semaine. À J+1 : 3 240 € réalisés. Bonne dynamique sur le rayon chaussures.'},
@@ -61,29 +62,16 @@ function getActusDuJour(){
   return filtered.length>0?filtered.slice(0,3):ACTUS_LABORO.slice(0,2);
 }
 
-function getIndicateursLive(ud){
-  const missions=Object.values(ud.missions||{});
-  const done=missions.filter(m=>m.status==='done').length;
-  const wip=missions.filter(m=>m.status==='wip').length;
-  const score=calcScore(ud);
-  // Stock critique simulé selon le jour
-  const stocks=[
-    {ref:'EasyRun LABORO T42',qty:2},
-    {ref:'Ballon football LABORO T5',qty:5},
-    {ref:'Tapis yoga 6mm',qty:3},
-  ];
-  const stockCritique=stocks[new Date().getDay()%stocks.length];
-  return {done,wip,score,stockCritique};
-}
+// (getIndicateursLive supprimée : code mort, jamais appelée, données de démo d'un seul univers.)
 
-// ═══ ACTUALITÉS LABORO ═══
+
 
 
 function setAccentColor(classe){
   const colors = {
-    '2nde':      {c1:'#2D5282', cf:'#1A3A6E', cm:'#BEE3F8', cb:'#EBF4FF'},
-    '1ere-AGEC': {c1:'#185FA5', cf:'#0C447C', cm:'#B5D4F4', cb:'#E6F1FB'},
-    '1ere-PVOC': {c1:'#185FA5', cf:'#0C447C', cm:'#B5D4F4', cb:'#E6F1FB'},
+    '2nde':      {c1:'var(--th-accent)', cf:'var(--th-profond2)', cm:'var(--th-pale)', cb:'var(--th-fond)'},
+    '1ere-AGEC': {c1:'var(--th-principal)', cf:'var(--th-profond)', cm:'var(--th-bordure)', cb:'var(--th-voile)'},
+    '1ere-PVOC': {c1:'var(--th-principal)', cf:'var(--th-profond)', cm:'var(--th-bordure)', cb:'var(--th-voile)'},
     'Term-AGEC': {c1:'#7B2D42', cf:'#5A1F30', cm:'#E8AABF', cb:'#F9E8EE'},
     'Term-PVOC': {c1:'#7B2D42', cf:'#5A1F30', cm:'#E8AABF', cb:'#F9E8EE'},
     'enseignant':{c1:'#2C2C2A', cf:'#1a1a18', cm:'#888780', cb:'#F1EFE8'}
@@ -102,12 +90,13 @@ function setAccentColor(classe){
 
 // ═══ FICHE DE POSTE & ORGANIGRAMME ═══
 
-const POSTES = {
+// Postes et organigramme : propres à chaque univers (LABORO_CONFIG.postes). Repli ci-dessous.
+const POSTES = (getCfg().postes && Object.keys(getCfg().postes).length) ? getCfg().postes : {
   '2NDE': {
     titre: 'Stagiaire découverte des métiers commerciaux',
     dept: 'Découverte — Showroom & Prospection B2B',
     manager: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
-    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'var(--th-principal)', initiales:'PB'},
     autre_dir: {nom:'Nina Chevalier', role:'Commerciale B2B — Prospection', couleur:'#0891B2', initiales:'NC'},
     autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
     pairs: ['Léo Girard','Manon Lefèvre'],
@@ -131,7 +120,7 @@ const POSTES = {
     titre: 'Conseiller(ère) de vente',
     dept: 'Showroom & E-commerce',
     manager: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
-    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'var(--th-principal)', initiales:'PB'},
     autre_dir: {nom:'Nina Chevalier', role:'Commerciale B2B — Prospection', couleur:'#0891B2', initiales:'NC'},
     autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
     pairs: ['Alex Moreau','Jade Fontaine'],
@@ -155,7 +144,7 @@ const POSTES = {
     titre: 'Commercial(e) terrain',
     dept: 'Prospection & Vente B2B',
     manager: {nom:'Nina Chevalier', role:'Responsable Commercial B2B', couleur:'#0891B2', initiales:'NC'},
-    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'#185FA5', initiales:'PB'},
+    pdg: {nom:'Pascal Berruelle', role:'PDG — LABORO Sport & Outdoor', couleur:'var(--th-principal)', initiales:'PB'},
     autre_dir: {nom:'Romain Sauzet', role:'Responsable Showroom & Commercial', couleur:'#6B4FA0', initiales:'RS'},
     autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
     pairs: ['Théo Vasseur','Camille Dumas'],
@@ -189,11 +178,11 @@ function renderPosteCard(){
   const wrap = document.getElementById('poste-card-wrap');
   if (!wrap || !CU) return;
   const key = getPosteKey();
-  if (!key) { wrap.innerHTML = ''; return; }
+  if (!key || !POSTES[key]) { wrap.innerHTML = ''; return; }
   const p = POSTES[key];
   wrap.innerHTML = '<div class="poste-card" onclick="openOrg()">'
     + '<div class="poste-card-l">'
-    + '<div class="poste-card-tag">Mon poste chez LABORO</div>'
+    + '<div class="poste-card-tag">Mon poste chez ' + getNomCourt() + '</div>'
     + '<div class="poste-card-titre">' + p.titre + '</div>'
     + '<div class="poste-card-sub">' + p.dept + ' · Responsable : ' + p.manager.nom + '</div>'
     + '</div>'
@@ -206,9 +195,9 @@ function renderPosteCard(){
 
 function openOrg(){
   const key = getPosteKey();
-  if (!key) return;
+  if (!key || !POSTES[key]) return;
   const p = POSTES[key];
-  document.getElementById('org-titre').textContent = 'Mon poste chez LABORO';
+  document.getElementById('org-titre').textContent = 'Mon poste chez ' + getNomCourt();
   document.getElementById('org-sous').textContent = p.titre + ' · ' + p.dept;
   renderOrgTree(key);
   renderFichePoste(key);
@@ -240,7 +229,7 @@ function renderOrgTree(key){
   }
 
   const initMe = nom.split(' ').map(function(w){ return w[0]; }).join('').substring(0,2).toUpperCase();
-  const couleurMe = key === 'AGEC' ? '#1D9E75' : key === 'PVOC' ? '#0891B2' : '#2D5282';
+  const couleurMe = key === 'AGEC' ? '#1D9E75' : key === 'PVOC' ? '#0891B2' : 'var(--th-accent)';
 
   let html = ''
     + '<div class="org-tree">'
@@ -248,17 +237,17 @@ function renderOrgTree(key){
     + '<div class="org-connector"></div>'
     + '<div class="org-level" style="gap:24px;position:relative">'
     + '<div style="position:relative">' + node(p.manager.initiales, p.manager.nom, p.manager.role, 'manager', p.manager.couleur, 'Ton responsable') + '</div>'
-    + '<div style="opacity:.5">' + node(p.autre_dir.initiales, p.autre_dir.nom, p.autre_dir.role, 'peer', p.autre_dir.couleur, '') + '</div>'
-    + '<div style="opacity:.5">' + node(p.autre_dir2.initiales, p.autre_dir2.nom, p.autre_dir2.role, 'peer', p.autre_dir2.couleur, '') + '</div>'
+    + [p.autre_dir, p.autre_dir2].filter(Boolean).map(function(d){ return '<div style="opacity:.5">' + node(d.initiales, d.nom, d.role, 'peer', d.couleur, '') + '</div>'; }).join('')
     + '</div>'
     + '<div class="org-connector"></div>'
     + '<div class="org-level" style="gap:16px">'
-    + p.pairs.map(function(n){ return node(n.split(' ').map(function(w){ return w[0]; }).join(''), n, p.titre, 'peer', '#A0A09A', ''); }).join('')
+    + (p.pairs || []).map(function(n){ return node(n.split(' ').map(function(w){ return w[0]; }).join(''), n, p.titre, 'peer', '#A0A09A', ''); }).join('')
     + node(initMe, nom, p.titre, 'me', couleurMe, '⭐ Vous')
     + '</div>'
     + '</div>'
     + '<div style="text-align:center;margin-top:16px;padding:10px;background:var(--gc);border-radius:8px;font-size:11px;color:var(--gm)">'
-    + 'Tu fais partie de l\'équipe <strong>' + p.dept + '</strong> de LABORO Sport & Outdoor — Évry-Courcouronnes (91)'
+    + 'Tu fais partie de l\'équipe <strong>' + p.dept + '</strong> de ' + getNomEntreprise() + ' — ' + getVille() + ' (91)'
+    + (getCfg().note_organigramme ? '<div style="margin-top:6px">' + getCfg().note_organigramme + '</div>' : '')
     + '</div>';
 
   document.getElementById('org-content').innerHTML = html;
@@ -274,6 +263,7 @@ function renderFichePoste(key){
     + '<div><div class="fp-manager-nom">' + p.manager.nom + '</div><div class="fp-manager-role">' + p.manager.role + '</div></div>'
     + '</div>'
     + '</div>'
+    + (p.mission ? '<div class="fp-section"><div class="fp-section-t">Mission principale</div><p style="font-size:12px;color:var(--gr);line-height:1.6">' + p.mission + '</p></div>' : '')
     + '<div class="fp-section">'
     + '<div class="fp-section-t">Missions principales</div>'
     + '<ul class="fp-liste">' + p.missions_principales.map(function(m){ return '<li>' + m + '</li>'; }).join('') + '</ul>'
@@ -282,6 +272,8 @@ function renderFichePoste(key){
     + '<div class="fp-section-t">Compétences clés attendues</div>'
     + '<ul class="fp-liste">' + p.competences_cles.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>'
     + '</div>'
+    + (p.qualites && p.qualites.length ? '<div class="fp-section"><div class="fp-section-t">Qualités attendues</div><div style="display:flex;gap:6px;flex-wrap:wrap">'
+        + p.qualites.map(function(q){ return '<span style="font-size:11px;font-weight:600;background:var(--bc);color:var(--bl);padding:4px 10px;border-radius:12px">' + q + '</span>'; }).join('') + '</div></div>' : '')
     + '<div class="fp-section" style="margin-bottom:0">'
     + '<div class="fp-section-t">Conditions</div>'
     + '<p style="font-size:12px;color:var(--gr)">' + p.conditions + '</p>'
@@ -299,7 +291,7 @@ function renderCCFDashboard(){
     + '<div style="background:var(--vc,#D1FAE5);border-radius:8px;padding:10px 14px;text-align:center">'
     + '<div style="font-size:20px;font-weight:800;color:var(--vt,#065F46)">' + done.length + '</div>'
     + '<div class="u-label-sm">Missions validées</div></div>'
-    + '<div style="background:var(--bc,#EBF4FF);border-radius:8px;padding:10px 14px;text-align:center">'
+    + '<div style="background:var(--bc,var(--th-fond));border-radius:8px;padding:10px 14px;text-align:center">'
     + '<div style="font-size:20px;font-weight:800;color:var(--bl)">' + comps.length + '</div>'
     + '<div class="u-label-sm">Compétences acquises</div></div>'
     + '</div>';
@@ -326,7 +318,7 @@ function renderDashboard(){
   const msgFromEl=document.getElementById('msg-f');
   if(msgFromEl){
     const initials=msgDyn.from.split(' ').slice(0,2).map(function(w){return w[0];}).join('').toUpperCase();
-    msgFromEl.innerHTML='<span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0A2540,#185FA5);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;box-shadow:0 2px 6px rgba(10,37,64,.3)">'+initials+'</span>'
+    msgFromEl.innerHTML='<span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--th-nuit),var(--th-principal));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;box-shadow:0 2px 6px rgba(10,37,64,.3)">'+initials+'</span>'
       +'<span>'+msgDyn.from+'</span>';
   }
   document.getElementById('msg-t').textContent=msgDyn.txt;
@@ -434,10 +426,10 @@ function renderDashboard(){
       const ps=podStyles[i]||podStyles[0];
       const isMe=u.mail===CU.mail;
       podHtml+='<div style="text-align:center;flex:1;max-width:90px">'
-        +'<div style="font-size:11px;font-weight:700;color:#1A2E4A;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(isMe?'<strong>'+u.nom.split(' ')[0]+'</strong>':u.nom.split(' ')[0])+'</div>'
+        +'<div style="font-size:11px;font-weight:700;color:var(--th-fonce);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(isMe?'<strong>'+u.nom.split(' ')[0]+'</strong>':u.nom.split(' ')[0])+'</div>'
         +'<div style="background:'+ps.bg+';border:1.5px solid '+ps.border+';border-radius:10px;height:'+ps.height+';display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px'+(isMe?';box-shadow:0 0 0 2px var(--bl)':'')+';">'
         +'<div style="font-size:20px">'+ps.medal+'</div>'
-        +'<div style="font-size:14px;font-weight:900;color:#1A2E4A">'+u.score+'</div>'
+        +'<div style="font-size:14px;font-weight:900;color:var(--th-fonce)">'+u.score+'</div>'
         +'<div style="font-size:8px;color:#6B7280">pts</div>'
         +'</div></div>';
     });
@@ -448,9 +440,9 @@ function renderDashboard(){
     top3.forEach(function(u,i){
       const isMe=u.mail===CU.mail;
       const rankMedal=medals[i];
-      listHtml+='<div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;'+(isMe?'background:var(--ac1b,#EBF4FF);font-weight:700':'background:transparent')+'">'
+      listHtml+='<div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;'+(isMe?'background:var(--ac1b,var(--th-fond));font-weight:700':'background:transparent')+'">'
         +'<span style="width:22px;text-align:center;font-size:14px;flex-shrink:0">'+rankMedal+'</span>'
-        +'<span style="flex:1;font-size:12px;color:#1A2E4A;'+(isMe?'font-weight:800':'')+'white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+u.nom.split(' ')[0]+'</span>'
+        +'<span style="flex:1;font-size:12px;color:var(--th-fonce);'+(isMe?'font-weight:800':'')+'white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+u.nom.split(' ')[0]+'</span>'
         +'<span style="font-size:11px;font-weight:800;color:var(--bl)">'+u.score+'</span>'
         +'</div>';
     });
@@ -468,13 +460,13 @@ function renderDashboard(){
       +'<div style="font-size:24px;margin-bottom:8px">🏆</div>'
       +'<div style="font-size:12px;font-weight:700;color:var(--gr);margin-bottom:4px">Le classement se construit au fil des missions</div>'
       +'<div style="font-size:11px;color:var(--gm);margin-bottom:12px">Complète ta première mission pour apparaître ici.</div>'
-      +'<button onclick="goP(&quot;missions&quot;,null)" style="padding:8px 18px;background:linear-gradient(135deg,#0A2540,#185FA5);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Voir mes missions →</button>'
+      +'<button onclick="goP(&quot;missions&quot;,null)" style="padding:8px 18px;background:linear-gradient(135deg,var(--th-nuit),var(--th-principal));color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Voir mes missions →</button>'
       +'</div>';
   }
   // Progression
-  const lc=['var(--gb)','#85B7EB','var(--bl)','var(--vt)','#27500A'];
+  const lc=['var(--gb)','var(--th-doux)','var(--bl)','var(--vt)','#27500A'];
   const niveauLabels2=['—','Découverte','En cours','Acquis','Maîtrisé'];
-  const niveauCols2=['var(--gb)','#63B3ED','#4A6FA5','#2D5282','#0A2540'];
+  const niveauCols2=['var(--gb)','var(--th-vif)','var(--th-second)','var(--th-accent)','var(--th-nuit)'];
   document.getElementById('dash-prog').innerHTML=COMP.slice(0,6).map(function(c){
     const lv=calcNiveauComp(c.code,ud);
     return '<div class="u-mb8">'
@@ -501,12 +493,12 @@ function renderDashboard(){
             const mid = entry[0]; const v = entry[1];
             const m = MISSIONS.find(function(x){ return x.id===mid; });
             if(!m) return '';
-            const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
-            const pCol = palierColors[m.palier] || '#4A6FA5';
-            const scoreColor = v.score>=12 ? '#185FA5' : v.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
+            const palierColors = ['','var(--th-second)','var(--th-accent)','var(--th-principal)','#7B2FBE'];
+            const pCol = palierColors[m.palier] || 'var(--th-second)';
+            const scoreColor = v.score>=12 ? 'var(--th-principal)' : v.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
             return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:#F8FAFF;border-radius:10px;border-left:3px solid '+pCol+'">'
               + '<div class="u-flex-1">'
-              + '<div style="font-size:12px;font-weight:700;color:#1A2E4A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.titre+'</div>'
+              + '<div style="font-size:12px;font-weight:700;color:var(--th-fonce);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.titre+'</div>'
               + '<div style="font-size:10px;color:#6B7280;margin-top:2px">'+compBadge(m.comp)+'</div>'
               + '</div>'
               + '<div style="font-size:16px;font-weight:900;color:'+scoreColor+'">'+v.score+'<span style="font-size:10px;color:#9CA3AF">/20</span></div>'
@@ -518,7 +510,7 @@ function renderDashboard(){
         + '<div style="font-size:24px;margin-bottom:8px">🚀</div>'
         + '<div style="font-size:12px;font-weight:700;color:var(--gr);margin-bottom:4px">Prêt(e) pour ta première mission ?</div>'
         + '<div style="font-size:11px;color:var(--gm);margin-bottom:12px">Lis la ressource, réponds aux questions, progresse.</div>'
-        + '<button onclick="goP(&quot;missions&quot;,null)" style="padding:8px 18px;background:linear-gradient(135deg,#0A2540,#185FA5);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Lancer ma première mission →</button>'
+        + '<button onclick="goP(&quot;missions&quot;,null)" style="padding:8px 18px;background:linear-gradient(135deg,var(--th-nuit),var(--th-principal));color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700">Lancer ma première mission →</button>'
         + '</div>';
     }
   }
@@ -542,15 +534,15 @@ function renderActus(){
 
   // Message personnalisé selon progression
   const persoMsg = score >= 80
-    ? {icon:'🏆', titre:'Excellent travail !', texte:'Ton score LABORO est dans le top 10%. Romain Sauzet a note ta progression — continue ainsi !', color:'#EBF4FF', border:'#185FA5'}
+    ? {icon:'🏆', titre:'Excellent travail !', texte:'Ton score LABORO est dans le top 10%. '+getResp().nom+' a noté ta progression — continue ainsi !', color:'var(--th-fond)', border:'var(--th-principal)'}
     : done.length === 0
-    ? {icon:'🚀', titre:'Bienvenue chez LABORO !', texte:'Ta première mission t\'attend. Lis bien la ressource avant de répondre — elle contient tout ce qu\'il faut savoir.', color:'#FEF3C7', border:'#D97706'}
+    ? {icon:'🚀', titre:'Bienvenue chez '+getNomCourt()+' !', texte:'Ta première mission t\'attend. Lis bien la ressource avant de répondre — elle contient tout ce qu\'il faut savoir.', color:'#FEF3C7', border:'#D97706'}
     : done.length < 5
-    ? {icon:'💪', titre:'Bonne lancee !', texte:'Tu as complété '+done.length+' mission(s). Chaque mission validée fait progresser tes compétences CCF.', color:'#EBF4FF', border:'#4A6FA5'}
+    ? {icon:'💪', titre:'Bonne lancée !', texte:'Tu as complété '+done.length+' mission(s). Chaque mission validée fait progresser tes compétences CCF.', color:'var(--th-fond)', border:'var(--th-second)'}
     : {icon:'⭐', titre:'Progression solide', texte:done.length+' missions complétées. Ton dossier CCF se construit automatiquement. Vise le niveau Professionnel compétent !', color:'#EDE9FE', border:'#7B2FBE'};
 
-  // Agenda mensuel
-  const agendas = [
+  // Agenda mensuel (un message par mois, janvier -> décembre) : LABORO_CONFIG.agenda, sinon repli
+  const agendas = (getCfg().agenda && getCfg().agenda.length === 12) ? getCfg().agenda : [
     'Inventaire annuel du showroom cette semaine.',
     'Salon ISPO Munich — LABORO y participe.',
     'Operation Printemps — -15% sur les chaussures trail.',
@@ -570,13 +562,13 @@ function renderActus(){
       return {icon:a.icon, titre:a.titre, texte:a.txt, color:'#F8FAFF', border:'#CBD5E0'};
     })
   ).concat([
-    {icon:'📅', titre:'Agenda LABORO', texte:agendas[month], color:'#F0F4FF', border:'#4A6FA5'}
+    {icon:'📅', titre:'Agenda LABORO', texte:agendas[month], color:'var(--th-fond2)', border:'var(--th-second)'}
   ]);
 
   el.innerHTML = items.map(function(a){
     return '<div style="background:'+a.color+';border-left:3px solid '+a.border+';border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start">'
       + '<span style="font-size:18px;flex-shrink:0">'+a.icon+'</span>'
-      + '<div><div style="font-size:11px;font-weight:800;color:#1A2E4A;margin-bottom:2px">'+a.titre+'</div>'
+      + '<div><div style="font-size:11px;font-weight:800;color:var(--th-fonce);margin-bottom:2px">'+a.titre+'</div>'
       + '<div style="font-size:11px;color:#4B5563;line-height:1.5">'+a.texte+'</div></div>'
       + '</div>';
   }).join('');
@@ -594,7 +586,7 @@ function renderIndicateurs(){
   const totalMissions = getMissions().length;
   const compsAcquis = COMP.filter(function(c){ return calcNiveauComp(c.code, ud) >= 3; }).length;
   const kpis = [
-    {label:'Missions complétées', value:done.length, total:totalMissions, icon:'✅', color:'#185FA5', bg:'#EBF4FF'},
+    {label:'Missions complétées', value:done.length, total:totalMissions, icon:'✅', color:'var(--th-principal)', bg:'var(--th-fond)'},
     {label:'À corriger', value:aCorriger.length, total:null, icon:'✏️', color:'#C2410C', bg:'#FFEDD5'},
     {label:'Moyenne générale', value:avg+'', total:null, unit:'/20', icon:'📊', color:'#D97706', bg:'#FEF3C7'},
     {label:'Compétences acquises', value:compsAcquis, total:COMP.length, icon:'⭐', color:'#7B2FBE', bg:'#EDE9FE'},
@@ -613,16 +605,31 @@ function renderIndicateurs(){
     + '</div>';
 }
 
+// Missions proposées à l'élève selon sa classe. Chaque univers déclare ses listes
+// dans data/missions.js ; une liste peut être découpée par palier (MISSIONS_PVOC_1,
+// MISSIONS_PVOC_2, MISSIONS_PVOC_3…) : les morceaux présents sont mis bout à bout.
+// Une liste absente (filière non ouverte dans cet univers) donne une liste vide
+// au lieu de faire planter la page.
+function listesMissionsClasse(cls){
+  const L = function(v){ return Array.isArray(v) ? v : []; };
+  if(cls==='2nde') return L(typeof MISSIONS_2NDE!=='undefined'?MISSIONS_2NDE:null);
+  if(cls==='1ere-AGEC') return L(typeof MISSIONS_AGEC_1!=='undefined'?MISSIONS_AGEC_1:null);
+  if(cls==='1ere-PVOC') return L(typeof MISSIONS_PVOC_1!=='undefined'?MISSIONS_PVOC_1:null)
+    .concat(L(typeof MISSIONS_PVOC_2!=='undefined'?MISSIONS_PVOC_2:null))
+    .concat(L(typeof MISSIONS_PVOC_3!=='undefined'?MISSIONS_PVOC_3:null));
+  if(cls==='Term-AGEC') return L(typeof MISSIONS_AGEC_T!=='undefined'?MISSIONS_AGEC_T:null);
+  if(cls==='Term-PVOC') return L(typeof MISSIONS_PVOC_T!=='undefined'?MISSIONS_PVOC_T:null);
+  return null;
+}
 function getMissions(){
   if(!CU)return[];
   const cls=CU.classe;
   if(cls==='enseignant')return MISSIONS;
-  if(cls==='2nde')return MISSIONS.filter(m=>MISSIONS_2NDE.includes(m.id)).sort((a,b)=>a.palier-b.palier||MISSIONS_2NDE.indexOf(a.id)-MISSIONS_2NDE.indexOf(b.id));
-  if(cls==='1ere-AGEC')return MISSIONS.filter(m=>MISSIONS_AGEC_1.includes(m.id));
-  if(cls==='1ere-PVOC')return MISSIONS.filter(m=>MISSIONS_PVOC_1.includes(m.id)).sort((a,b)=>a.palier-b.palier||MISSIONS_PVOC_1.indexOf(a.id)-MISSIONS_PVOC_1.indexOf(b.id));
-  if(cls==='Term-AGEC')return MISSIONS.filter(m=>MISSIONS_AGEC_T.includes(m.id));
-  if(cls==='Term-PVOC')return MISSIONS.filter(m=>MISSIONS_PVOC_T.includes(m.id));
-  return MISSIONS;
+  const liste=listesMissionsClasse(cls);
+  if(!liste)return MISSIONS;
+  const trie=(cls==='2nde'||cls==='1ere-PVOC');
+  const res=MISSIONS.filter(m=>liste.includes(m.id));
+  return trie?res.sort((a,b)=>a.palier-b.palier||liste.indexOf(a.id)-liste.indexOf(b.id)):res;
 }
 function isPalierUnlocked(m,ud){
   if(m.palier===1)return true;
@@ -638,15 +645,15 @@ function isPalierUnlocked(m,ud){
 
 function compBadge(code){
   const colors = {
-    'C1.1':'#4A6FA5','C1.2':'#4A6FA5','C1.3':'#4A6FA5',
-    'C2.1':'#E87722','C2.1b':'#E87722','C2.2':'#E87722','C2.3':'#E87722',
+    'C1.1':'var(--th-second)','C1.2':'var(--th-second)','C1.3':'var(--th-second)',
+    'C2.1':'#E87722','C2.1b':'#E87722','C2.2':'#E87722','C2.3':'#E87722','C2.4':'#E87722',
     'C3.1':'#0096C7','C3.2':'#0096C7','C3.3':'#0096C7','C3.3b':'#0096C7',
-    'G4A':'#2D5282','C4A.1':'#2D5282','C4A.2':'#2D5282','C4A.3':'#2D5282','G4B':'#7B2FBE',
+    'G4A':'var(--th-accent)','C4A.1':'var(--th-accent)','C4A.2':'var(--th-accent)','C4A.3':'var(--th-accent)','G4B':'#7B2FBE',
     'B4.1':'#7B2FBE','B4.2':'#7B2FBE','B4.3':'#7B2FBE','B4.4':'#7B2FBE','B4.5':'#7B2FBE',
     'SA1':'#D97706','SA2':'#D97706','SA3':'#D97706',
-    'ACC':'#E63B2E'
+    'ACC':'#E63B2E','ACC1':'#E63B2E','ACC2':'#E63B2E','ACC3':'#E63B2E','ACC4':'#E63B2E'
   };
-  const col = colors[code] || '#6B7280';
+  const col = hexTheme(colors[code] || '#6B7280');
   return '<span style="background:'+col+'22;color:'+col+';font-size:9px;font-weight:800;padding:2px 7px;border-radius:6px;display:inline-block">'+code+'</span>';
 }
 
@@ -659,8 +666,8 @@ function renderMissions(){
   if(fp) ms = ms.filter(function(m){ return m.palier==fp; });
   if(fc) ms = ms.filter(function(m){ return m.comp.startsWith(fc); });
 
-  const palierColors = ['','#4A6FA5','#2D5282','#185FA5','#7B2FBE'];
-  const palierBgs    = ['','#EBF4FF','#DBEAFE','#D1FAE5','#EDE9FE'];
+  const palierColors = ['','var(--th-second)','var(--th-accent)','var(--th-principal)','#7B2FBE'];
+  const palierBgs    = ['','var(--th-fond)','var(--th-ciel)','#D1FAE5','#EDE9FE'];
   const palierLabels = ['','Débutant','Apprenti','Pro compétent','Pro performant'];
 
   // Grouper par compétence pour un affichage structuré
@@ -704,8 +711,8 @@ function renderMissions(){
   const cardsHtml = ms.map(function(m){
     const etat   = etatMissionEleve(ud.missions[m.id]);
     const locked = !isPalierUnlocked(m, ud) && CU.classe !== 'enseignant';
-    const pCol   = palierColors[m.palier] || '#4A6FA5';
-    const pBg    = palierBgs[m.palier]   || '#EBF4FF';
+    const pCol   = palierColors[m.palier] || 'var(--th-second)';
+    const pBg    = palierBgs[m.palier]   || 'var(--th-fond)';
     const pLbl   = palierLabels[m.palier] || '';
 
     // Badge statut
@@ -768,7 +775,7 @@ function renderDetailScore(ud, msDone){
   el.innerHTML =
     '<button type="button" onclick="basculerDetailScore()" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:14px;padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer">'
     + (ouvert ? '▲ Masquer le détail' : 'ℹ️ Comment est calculé mon score ?') + '</button>'
-    + (ouvert ? '<div style="margin-top:8px;background:#fff;color:#1A2E4A;border-radius:10px;padding:10px 12px;font-size:11px;line-height:1.55;text-align:left;max-width:280px;box-shadow:0 4px 14px rgba(0,0,0,.18)">'
+    + (ouvert ? '<div style="margin-top:8px;background:#fff;color:var(--th-fonce);border-radius:10px;padding:10px 12px;font-size:11px;line-height:1.55;text-align:left;max-width:280px;box-shadow:0 4px 14px rgba(0,0,0,.18)">'
       + '<div style="display:flex;justify-content:space-between;font-weight:800"><span>🎯 Qualité</span><span>' + d.qualite + ' / 70</span></div>'
       + '<div style="color:#4A5568;margin-bottom:6px">Ta moyenne sur tes missions validées : <strong>' + moy + '/20</strong>. Mieux tu réussis, plus tu gagnes de points.</div>'
       + '<div style="display:flex;justify-content:space-between;font-weight:800"><span>💪 Engagement</span><span>' + d.engagement + ' / 30</span></div>'

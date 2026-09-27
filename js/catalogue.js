@@ -1,16 +1,16 @@
 // ================================================
-//   LABORO Sport & Outdoor — Catalogue produits
-//   Rendu catalogue LABORO, produits, navigation
-//   Version 2.0 — 11 catégories / 176 produits
+//   LABORO — Moteur commun : catalogue, produits, navigation
+//   Catégories et photos propres à l'univers : CATALOGUE_CFG / CATALOGUE_IMAGES
+//   (fichier de données de l'univers) ; à défaut, valeurs ci-dessous.
 // ================================================
 
 // ═══ CONFIGURATION CATÉGORIES ═══
-const CAT_CFG = {
+const CAT_CFG = (typeof CATALOGUE_CFG !== 'undefined') ? CATALOGUE_CFG : {
   'Football':                  {col:'#E63B2E', light:'#FFF0EF'},
   'Basketball':                {col:'#E87722', light:'#FFF5ED'},
   'Running':                   {col:'#0096C7', light:'#EFF9FF'},
   'Fitness':                   {col:'#7B2FBE', light:'#F8F0FF'},
-  'LABORO Pro Line':           {col:'#185FA5', light:'#EBF4FF'},
+  'LABORO Pro Line':           {col:'var(--th-principal)', light:'var(--th-fond)'},
   'Natation':                  {col:'#0077B6', light:'#E0F4FF'},
   'Tennis / Padel':            {col:'#F5A623', light:'#FFF8E6'},
   'Cyclisme':                  {col:'#27AE60', light:'#EDFBF2'},
@@ -22,7 +22,7 @@ const CAT_CFG = {
 // ═══ IMAGES PAR PRODUIT ═══
 const BASE = 'https://raw.githubusercontent.com/berruelle-mcv/mcv-91/main/img/';
 
-const PROD_IMAGES = {
+const PROD_IMAGES = (typeof CATALOGUE_IMAGES !== 'undefined') ? CATALOGUE_IMAGES : {
   // FOOTBALL
   'LAB-FOO-001': BASE+'football/ballon-pro-match-t5.png',
   'LAB-FOO-002': BASE+'football/ballon-training-t4.png',
@@ -219,19 +219,18 @@ function renderCatalogue(catFiltre){
     +'<div class="cat-tab '+((!catFiltre)?'on':'')+'" onclick="renderCatalogue(\'\')">Tous <span class="cat-count">'+PRODUITS.length+'</span></div>'
     +cats.map(function(c){
       const count=PRODUITS.filter(function(p){return p.cat===c;}).length;
-      const cc=CAT_CFG[c]||{col:'#4A6FA5'};
+      const cc=CAT_CFG[c]||{col:'var(--th-second)'};
       const isActive=catFiltre===c;
       return '<div class="cat-tab '+(isActive?'on':'')+'" onclick="renderCatalogue(\''+c+'\')" style="'+(isActive?'border-bottom:3px solid '+cc.col+';color:'+cc.col:'')+'">'+c+' <span class="cat-count">'+count+'</span></div>';
     }).join('')+'</div>';
 
   let gridHtml='';
   const makeBanner=function(cat,filtered){
-    const cc=CAT_CFG[cat]||{col:'#4A6FA5'};
-    return '<div style="background:#F0F4FF;border:1px solid #D0DCF0;border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px">'
+    const cc=CAT_CFG[cat]||{col:'var(--th-second)'};
+    return '<div style="background:var(--th-fond2);border:1px solid var(--th-bordure2);border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px">'
       +'<div style="width:10px;height:10px;border-radius:50%;background:'+cc.col+';flex-shrink:0"></div>'
-      +'<div><div style="font-size:15px;font-weight:900;color:#0A2540">'+cat+'</div>'
-      +'<div style="font-size:11px;color:#6B7280;margin-top:2px">'+PRODUITS.filter(function(p){return p.cat===cat;})[0]&&''+'</div></div>'
-      +'<div style="margin-left:auto;font-size:11px;font-weight:700;color:#185FA5;background:#D6E8FF;padding:4px 12px;border-radius:20px">'+filtered.length+' produits</div>'
+      +'<div><div style="font-size:15px;font-weight:900;color:var(--th-nuit)">'+cat+'</div></div>'
+      +'<div style="margin-left:auto;font-size:11px;font-weight:700;color:var(--th-principal);background:var(--th-fond3);padding:4px 12px;border-radius:20px">'+filtered.length+' produits</div>'
       +'</div>';
   };
 
@@ -250,24 +249,24 @@ function renderCatalogue(catFiltre){
 
 // ═══ CARD PRODUIT ═══
 function renderProdCard(p){
-  const c = CAT_CFG[p.cat]||{col:'#185FA5', light:'#EBF4FF'};
-  const img = PROD_IMAGES[p.id] || 'https://via.placeholder.com/400x400/F8FAFC/94A3B8?text=LABORO';
+  const c = CAT_CFG[p.cat]||{col:'var(--th-principal)', light:'var(--th-fond)'};
+  const img = PROD_IMAGES[p.id] || (typeof carPlaceholder === 'function' ? carPlaceholder(p.segment) : 'https://via.placeholder.com/400x400/F8FAFC/94A3B8?text=LABORO');
 
   const stockBadge = p.stock===0
     ? '<span style="display:inline-block;font-size:9px;font-weight:700;color:#6B7280;background:#F3F4F6;padding:3px 8px;border-radius:6px;margin-top:6px">Sur commande</span>'
     : p.stock<=p.seuil
     ? '<span style="display:inline-block;font-size:9px;font-weight:700;color:#B45309;background:#FEF3C7;padding:3px 8px;border-radius:6px;margin-top:6px">⚠ Stock faible</span>'
-    : '<span style="display:inline-block;font-size:9px;font-weight:700;color:#185FA5;background:#EBF4FF;padding:3px 8px;border-radius:6px;margin-top:6px">✓ En stock</span>';
+    : '<span style="display:inline-block;font-size:9px;font-weight:700;color:var(--th-principal);background:var(--th-fond);padding:3px 8px;border-radius:6px;margin-top:6px">✓ En stock</span>';
 
   return '<div class="pc" onclick="openProduit(\''+p.id+'\')">'
     + '<div style="position:relative;height:120px;overflow:hidden;background:#F8FAFC;border-radius:10px 10px 0 0">'
     + '<img src="'+img+'" alt="'+p.nom+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .3s" '
-    + 'onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'
+    + 'onerror="'+(typeof carPlaceholder === 'function' ? 'this.onerror=null;this.src=\''+carPlaceholder(p.segment)+'\'' : 'this.style.display=\'none\';this.nextSibling.style.display=\'flex\'')+'">'
     + '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:32px;background:#F1F5F9;color:#94A3B8">LABORO</div>'
     + '<div style="position:absolute;bottom:8px;left:8px;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);border:1px solid rgba(0,0,0,.08);color:#374151;font-size:9px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.4px">'+p.marque+'</div>'
     + '</div>'
     + '<div style="padding:12px 14px 14px">'
-    + '<div style="font-size:13px;font-weight:800;color:#0A2540;line-height:1.35;margin-bottom:3px">'+p.nom+'</div>'
+    + '<div style="font-size:13px;font-weight:800;color:var(--th-nuit);line-height:1.35;margin-bottom:3px">'+p.nom+'</div>'
     + '<div style="font-size:10px;color:#94A3B8;margin-bottom:10px">Réf. '+p.ref+'</div>'
     + '<div style="display:flex;align-items:center;justify-content:space-between">'
     + '<div style="font-size:18px;font-weight:900;color:'+c.col+';letter-spacing:-.5px">'+p.pv+' €</div>'
@@ -287,7 +286,7 @@ function selectRappel(id){
   });
   const el = document.getElementById('rc-'+id);
   const check = document.getElementById('rc-check-'+id);
-  if(el){ el.style.borderColor='#2D5282'; el.style.background='#EBF4FF'; }
+  if(el){ el.style.borderColor='var(--th-accent)'; el.style.background='var(--th-fond)'; }
   if(check) check.style.display = 'block';
   selectedRappelId = id;
   const cw = document.getElementById('rappel-custom-wrap');
@@ -303,11 +302,11 @@ function showNotifEleve(message, type){
     document.body.appendChild(notif);
   }
   const icons = {info:'📋', success:'✅', warning:'⚠️', rappel:'🔔'};
-  const bgs = {info:'#0A2540', success:'#0A2540', warning:'#7B3F00', rappel:'#1A2E4A'};
-  const borders = {info:'#185FA5', success:'#4A9EE8', warning:'#D97706', rappel:'#4A6FA5'};
+  const bgs = {info:'var(--th-nuit)', success:'var(--th-nuit)', warning:'#7B3F00', rappel:'var(--th-fonce)'};
+  const borders = {info:'var(--th-principal)', success:'var(--th-vif2)', warning:'#D97706', rappel:'var(--th-second)'};
   const ic = icons[type]||'📋';
-  const bg = bgs[type]||'#1A2E4A';
-  const bd = borders[type]||'#4A6FA5';
+  const bg = bgs[type]||'var(--th-fonce)';
+  const bd = borders[type]||'var(--th-second)';
   const closeBtn = document.createElement('button');
   closeBtn.textContent = '✕';
   closeBtn.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;flex-shrink:0;padding:0;margin-left:8px';
@@ -326,19 +325,19 @@ function showNotifEleve(message, type){
 
 const RAPPELS_TYPES = [
   {id:'tenue', label:'Tenue vestimentaire', icon:'👔',
-   msg:'Rappel professionnel : la tenue vestimentaire chez LABORO doit etre soignee et adaptee au poste. Merci de vous y conformer.'},
+   msg:'Rappel professionnel : la tenue vestimentaire chez '+getNomCourt()+' doit etre soignee et adaptee au poste. Merci de vous y conformer.'},
   {id:'telephone', label:'Telephone portable', icon:'📱',
    msg:'Votre responsable vous demande de ranger votre telephone personnel. Pendant les heures de travail, seul LABORO Connect est autorise.'},
   {id:'materiel', label:'Materiel de travail', icon:'🖊️',
-   msg:'Un collaborateur LABORO arrive toujours equipe : stylo, carnet, materiel necessaire. Pensez-y pour votre prochaine session.'},
+   msg:'Un collaborateur '+getNomCourt()+' arrive toujours equipe : stylo, carnet, materiel necessaire. Pensez-y pour votre prochaine session.'},
   {id:'posture', label:'Posture et attitude', icon:'💺',
-   msg:"Rappel : la posture physique fait partie de l'image professionnelle chez LABORO. Tenez-vous droit et restez concentre(e)."},
+   msg:"Rappel : la posture physique fait partie de l'image professionnelle chez "+getNomCourt()+". Tenez-vous droit et restez concentre(e)."},
   {id:'concentration', label:'Concentration', icon:'🎯',
-   msg:'Votre responsable note un manque de concentration. Chez LABORO, chaque mission compte. Reprenez votre travail avec serieux.'},
+   msg:'Votre responsable note un manque de concentration. Chez '+getNomCourt()+', chaque mission compte. Reprenez votre travail avec serieux.'},
   {id:'ponctualite', label:'Ponctualite', icon:'⏰',
-   msg:"La ponctualite est une valeur fondamentale chez LABORO. Merci d'etre a l'heure et de respecter les delais."},
+   msg:"La ponctualite est une valeur fondamentale chez "+getNomCourt()+". Merci d'etre a l'heure et de respecter les delais."},
   {id:'respect', label:"Respect et esprit d'equipe", icon:'🤝',
-   msg:"Rappel : le respect mutuel est au coeur des valeurs LABORO. Adoptez un comportement professionnel en toutes circonstances."},
+   msg:"Rappel : le respect mutuel est au coeur des valeurs "+getNomCourt()+". Adoptez un comportement professionnel en toutes circonstances."},
   {id:'libre', label:'Message personnalise...', icon:'✏️', msg:''}
 ];
 

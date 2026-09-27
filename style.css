@@ -5,6 +5,8 @@
 ================================================ */
 
 :root{--bl:#4A6FA5;--bf:#2D5282;--bc:#EBF4FF;--bm:#BEE3F8;--ac1:#4A6FA5;--ac1f:#2D5282;--ac1m:#BEE3F8;--gr:#1F2937;--gm:#6B7280;--gc:#F3F4F6;--gb:#E5E7EB;--vt:#1D9E75;--vc:#E1F5EE;--am:#D97706;--ac:#FEF3C7;--rg:#DC2626;--rc:#FEE2E2;--wh:#fff;--sidebar-bg:#fff;--card-bg:#fff;--body-bg:#F3F4F6;--border:#E5E7EB}
+/* Couleurs de l'univers utilisées par le moteur commun (js/*.js) : var(--th-…) — valeurs d'origine de LABORO Sport & Outdoor */
+:root{--th-fonce:#1A2E4A;--th-accent:#2D5282;--th-principal:#185FA5;--th-second:#4A6FA5;--th-fond:#EBF4FF;--th-nuit:#0A2540;--th-pastel:#93C5FD;--th-ciel:#DBEAFE;--th-bordure:#B5D4F4;--th-voile:#E6F1FB;--th-vif:#63B3ED;--th-profond:#0C447C;--th-doux:#85B7EB;--th-e2:#0F5B8A;--th-fond2:#F0F4FF;--th-bordure2:#D0DCF0;--th-fond3:#D6E8FF;--th-vif2:#4A9EE8;--th-profond2:#1A3A6E;--th-pale:#BEE3F8;--th-fonce2:#1E3A5F;--th-pale2:#BFDBFE}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--gr);background:#F3F4F6;min-height:100vh}
 .scr{display:none;min-height:100vh;background:linear-gradient(135deg,#0A2540 0%,#0C3D6E 100%)}.scr.on{display:flex;flex-direction:column}

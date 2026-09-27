@@ -95,7 +95,7 @@ function renderReleve(){
   const btn = function(mode, label){
     const on = RELEVE_MODE === mode;
     return '<button onclick="changerModeReleve(\'' + mode + '\')" style="padding:7px 14px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;'
-      + (on ? 'background:#185FA5;color:#fff;border:1px solid #185FA5' : 'background:#fff;color:#185FA5;border:1px solid #B5D4F4') + '">' + label + '</button>';
+      + (on ? 'background:var(--th-principal);color:#fff;border:1px solid var(--th-principal)' : 'background:#fff;color:var(--th-principal);border:1px solid var(--th-bordure)') + '">' + label + '</button>';
   };
   let html = '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px">'
     + btn('notes', '🔢 Notes /20') + btn('niveaux', '🎨 Niveaux de maîtrise')
@@ -132,7 +132,7 @@ function renderReleve(){
     + '<thead><tr><th style="position:sticky;top:0;left:0;z-index:3;background:#F1F5F9;text-align:left;padding:8px 10px;border-bottom:1px solid #CBD5E0;min-width:170px">Élève</th>'
     + d.missions.map(function(m){
         return '<th title="' + (m.id + ' — ' + m.titre).replace(/"/g,'&quot;') + '" style="position:sticky;top:0;z-index:2;background:#F1F5F9;padding:6px 6px;border-bottom:1px solid #CBD5E0;border-left:1px solid #E2E8F0;min-width:62px;text-align:center;font-size:11px">'
-          + '<div style="font-weight:800;color:#185FA5">' + m.id + '</div><div style="font-weight:600;color:var(--gm);font-size:9px">' + m.comp + ' · P' + m.palier + '</div></th>';
+          + '<div style="font-weight:800;color:var(--th-principal)">' + m.id + '</div><div style="font-weight:600;color:var(--gm);font-size:9px">' + m.comp + ' · P' + m.palier + '</div></th>';
       }).join('')
     + '</tr></thead><tbody>'
     + d.eleves.map(function(e){
@@ -156,10 +156,10 @@ function renderReleve(){
     + '<div style="font-size:11px;color:var(--gm);margin-top:8px">⏳ = note proposée par l\'IA, pas encore validée · ✎ = note revue par toi · ⚠ = réponse signalée par l\'IA. <strong>Clique sur une note pour voir la copie de l\'élève.</strong></div>';
 
   // Correspondance code → titre (pour créer les devoirs dans Pronote)
-  html += '<div style="margin-top:16px"><div style="font-size:12px;font-weight:800;color:var(--t1,#1A2E4A);margin-bottom:6px">Missions du relevé</div>'
+  html += '<div style="margin-top:16px"><div style="font-size:12px;font-weight:800;color:var(--t1,var(--th-fonce));margin-bottom:6px">Missions du relevé</div>'
     + '<table style="border-collapse:collapse;font-size:12px;width:100%">'
     + d.missions.map(function(m){
-        return '<tr><td style="padding:4px 8px;border-bottom:1px solid #EDF2F7;font-weight:800;color:#185FA5;white-space:nowrap">' + m.id + '</td>'
+        return '<tr><td style="padding:4px 8px;border-bottom:1px solid #EDF2F7;font-weight:800;color:var(--th-principal);white-space:nowrap">' + m.id + '</td>'
           + '<td style="padding:4px 8px;border-bottom:1px solid #EDF2F7">' + m.titre + '</td>'
           + '<td style="padding:4px 8px;border-bottom:1px solid #EDF2F7;color:var(--gm);white-space:nowrap">' + m.comp + ' · Palier ' + m.palier + '</td></tr>';
       }).join('')
@@ -254,7 +254,7 @@ function openAExaminer(){
         const d = l.date ? new Date(l.date) : null;
         return '<tr onclick="openCopie(\'' + l.e.id + '\',\'' + l.id + '\')" title="Voir la copie" style="cursor:pointer"><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">' + nomEleve(l.e) + ((typeof badgeGroupe === 'function') ? badgeGroupe(l.e.groupe) : '')
           + (classeFiltre ? '' : '<div style="font-size:9px;font-weight:400;color:var(--gm)">' + (l.e.classe_libelle||'') + '</div>') + '</td>'
-          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:#185FA5">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">' + l.id + '</strong> — ' + l.titre + ' <span style="color:var(--gm)">(' + l.comp + ')</span>'
           + (l.alerte ? ' <span style="font-size:10px;font-weight:800;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⚠ signalée par l\'IA</span>' : '')
           + (l.tentatives != null ? (l.tentatives >= 2 ? ' <span style="font-size:10px;font-weight:700;color:#B91C1C;background:#FEF2F2;padding:1px 6px;border-radius:8px">⛔ 2/2 tentatives</span>' : ' <span style="font-size:10px;color:#92400E;background:#FFFBEA;padding:1px 6px;border-radius:8px">peut encore corriger</span>') : '')
           + '</td>'

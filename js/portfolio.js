@@ -83,7 +83,7 @@ function afficherPortfolioDoc(ud, nom, classe){
 
   // Labels de niveau (0 à 4)
   const niveauLabels = ['Non démarré','Découverte','En progression','Acquis','Maîtrisé'];
-  const niveauCols   = ['#9CA3AF','#63B3ED','#4A6FA5','#185FA5','#0A2540'];
+  const niveauCols   = ['#9CA3AF','var(--th-vif)','var(--th-second)','var(--th-principal)','var(--th-nuit)'];
 
   // Positionnement global LABORO selon le score
   const posGlobal = score>=75 ? 'Professionnel performant'
@@ -114,12 +114,13 @@ function afficherPortfolioDoc(ud, nom, classe){
   const nbValidees = missionsValidees.length;
   const moyenne = nbValidees ? (missionsValidees.reduce(function(a,m){return a+m.score;},0)/nbValidees).toFixed(1) : '—';
 
-  // Regrouper les compétences par épreuve CCF (G1→E31, G2→E32, G3→E33, G4A/G4B→E2)
+  // Regrouper les compétences par épreuve (G1→E31, G2→E32, G3→E33 en CCF ; G4/G4A/G4B→E2, épreuve écrite ponctuelle)
   // Bloc E2 adapté à l'option de l'élève : AGEC → G4A (espace commercial),
   // PVOC → G4B (prospection B2B). Si indéterminé (ex. enseignant), afficher les deux.
   const estAGEC = (classe || '').toUpperCase().includes('AGEC');
   const estPVOC = (classe || '').toUpperCase().includes('PVOC');
-  const groupesE2 = estAGEC ? ['G4A'] : estPVOC ? ['G4B'] : ['G4A','G4B'];
+  // (« G4 » = bloc 4 sans distinction d'option, utilisé par les univers à option unique)
+  const groupesE2 = (estAGEC ? ['G4A'] : estPVOC ? ['G4B'] : ['G4A','G4B']).concat(['G4']);
   const titreE2 = estAGEC ? 'Gérer l\'espace commercial'
                 : estPVOC ? 'Prospecter et vendre (B2B)'
                 : 'Gérer l\'espace / Prospecter';
@@ -128,7 +129,7 @@ function afficherPortfolioDoc(ud, nom, classe){
     { code:'E31', titre:'Conseiller et vendre',           coef:'Coef. 3', groupes:['G1'] },
     { code:'E32', titre:'Suivre les ventes',              coef:'Coef. 2', groupes:['G2'] },
     { code:'E33', titre:'Développer la relation client',  coef:'Coef. 3', groupes:['G3'] },
-    { code:'E2',  titre:titreE2,                          coef:'Bloc 4',  groupes:groupesE2 },
+    { code:'E2',  titre:titreE2,                          coef:'Bloc 4 · coef. 4 · épreuve écrite ponctuelle (hors CCF)',  groupes:groupesE2 },
   ];
 
   // Construire les cartes de compétences par épreuve
@@ -149,7 +150,7 @@ function afficherPortfolioDoc(ud, nom, classe){
     const comps = COMP.filter(function(c){ return ep.groupes.indexOf(c.g) >= 0; });
     if(!comps.length) return '';
     return '<div style="margin-bottom:16px">'
-      + '<div style="font-size:11px;font-weight:800;color:#2D5282;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em">'
+      + '<div style="font-size:11px;font-weight:800;color:var(--th-accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em">'
       + ep.code+' — '+ep.titre+' <span style="font-size:9px;opacity:.6;font-weight:600">'+ep.coef+'</span></div>'
       + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">'
       + comps.map(carteComp).join('')
@@ -159,7 +160,7 @@ function afficherPortfolioDoc(ud, nom, classe){
   // Liste des missions validées (les 8 meilleures pour rester lisible)
   const missionsHtml = nbValidees
     ? missionsValidees.slice(0,8).map(function(m){
-        const col = m.score>=12 ? '#185FA5' : m.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
+        const col = m.score>=12 ? 'var(--th-principal)' : m.score>=8 ? '#D97706' : '#C53030'; // barème de maîtrise (26/09/2026)
         const dateTxt = m.date ? new Date(m.date).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—';
         return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:11px">'
           + '<span style="color:#374151;flex:1">'+m.titre+'</span>'
@@ -197,15 +198,15 @@ function afficherPortfolioDoc(ud, nom, classe){
   overlay.innerHTML =
     '<div id="portfolio-doc" style="max-width:780px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,.3)">'
     // En-tête
-    + '<div style="background:linear-gradient(135deg,#1A2E4A,#2D5282);padding:22px 26px;color:#fff;display:flex;justify-content:space-between;align-items:flex-start">'
+    + '<div style="background:linear-gradient(135deg,var(--th-fonce),var(--th-accent));padding:22px 26px;color:#fff;display:flex;justify-content:space-between;align-items:flex-start">'
     + '<div>'
     + '<div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Portfolio d\'activités professionnelles</div>'
     + '<div style="font-size:20px;font-weight:900">'+nom+'</div>'
-    + '<div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">'+(classe||'Bac Pro MCV')+' · LABORO Sport &amp; Outdoor · '+dateJour+'</div>'
+    + '<div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px">'+(classe||'Bac Pro MCV')+' · '+String(getNomEntreprise()).replace(/&/g,'&amp;')+' · '+dateJour+'</div>'
     + '</div>'
     + '<div style="text-align:right">'
     + '<div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px">Score LABORO</div>'
-    + '<div style="font-size:30px;font-weight:900;color:#93C5FD">'+score+'<span style="font-size:13px;opacity:.6">/100</span></div>'
+    + '<div style="font-size:30px;font-weight:900;color:var(--th-pastel)">'+score+'<span style="font-size:13px;opacity:.6">/100</span></div>'
     + '</div>'
     + '</div>'
     // Corps
@@ -219,12 +220,12 @@ function afficherPortfolioDoc(ud, nom, classe){
     + '</div>'
     // Appréciation
     + '<div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Appréciation motivée — générée automatiquement</div>'
-    + '<div style="background:#F0F4FF;border-left:3px solid #2D5282;border-radius:0 8px 8px 0;padding:12px 16px;font-size:12px;color:#1A2E4A;line-height:1.7">'+appreciation+'</div>'
+    + '<div style="background:var(--th-fond2);border-left:3px solid var(--th-accent);border-radius:0 8px 8px 0;padding:12px 16px;font-size:12px;color:var(--th-fonce);line-height:1.7">'+appreciation+'</div>'
     + '<div style="font-size:10px;color:#9CA3AF;font-style:italic;margin-top:10px;text-align:right">Généré par LABORO · '+nbValidees+' missions validées'+(classe?' · '+classe:'')+'</div>'
     + '</div>'
     // Barre d'actions (non imprimée)
     + '<div class="portfolio-actions" style="padding:14px 26px;background:#F8FAFF;border-top:1px solid #F3F4F6;display:flex;gap:10px;justify-content:flex-end">'
-    + '<button onclick="window.print()" style="background:#2D5282;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">🖨 Imprimer / PDF</button>'
+    + '<button onclick="window.print()" style="background:var(--th-accent);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">🖨 Imprimer / PDF</button>'
     + '<button onclick="fermerPortfolio()" style="background:#fff;color:#4B5563;border:1px solid #E5E7EB;padding:9px 18px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer">Fermer</button>'
     + '</div>'
     + '</div>';
