@@ -199,6 +199,23 @@ function openMission(id){
   const st=ud.missions[id]?.status;
   const tent=ud.missions[id]?.tentatives||0;
   majBoutonsMission(id);
+  // Le compteur de tentatives fait foi sur le serveur : on le relit à chaque ouverture
+  // (ex. tentative supplémentaire accordée par le professeur pendant la séance,
+  // sans que l'élève ait besoin de recharger la page — 28/09/2026).
+  if(CU && CU.classe!=='enseignant' && typeof synchroniserProgressionsServeur==='function'){
+    Promise.resolve(synchroniserProgressionsServeur()).then(function(){ if(CM && CM.id===id) majBoutonsMission(id); }).catch(function(){});
+    // Tentatives épuisées : tant que la mission reste ouverte, on revérifie toutes les 20 s
+    // (le bouton se débloque tout seul si le professeur accorde une tentative).
+    if(window.__attenteTentative){ clearInterval(window.__attenteTentative); window.__attenteTentative = null; }
+    if(((ud.missions[id]||{}).tentatives||0) >= 2){
+      window.__attenteTentative = setInterval(function(){
+        const mo = document.getElementById('mo');
+        const ouverte = mo && mo.classList.contains('open') && CM && CM.id === id;
+        if(!ouverte || ((gUD().missions[id]||{}).tentatives||0) < 2){ clearInterval(window.__attenteTentative); window.__attenteTentative = null; if(ouverte) majBoutonsMission(id); return; }
+        Promise.resolve(synchroniserProgressionsServeur()).then(function(){ if(CM && CM.id===id) majBoutonsMission(id); }).catch(function(){});
+      }, 20000);
+    }
+  }
   moTab(0,document.querySelectorAll('.mo-tab')[0]);
   document.getElementById('mo').classList.add('open');document.getElementById('mo').classList.add('on');const _modal=document.querySelector('.modal');if(_modal)_modal.style.display='flex';
 }

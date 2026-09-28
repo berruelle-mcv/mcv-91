@@ -208,6 +208,23 @@ function openCopiesEleve(){
 // ---------- Indices d'intégrité (26/09/2026) ----------
 // Faits mesurés, jamais des preuves : ils disent quelles copies regarder de plus près
 // ou reprendre à l'oral. Rien n'est affiché à l'élève.
+// Raisons de vérifier une copie à l'oral, à partir des indices (28/09/2026) —
+// utilisé aussi par le tableau de bord (« Copies à vérifier »). score ≥ 2 = à regarder.
+function raisonsVigilance(i, alerte){
+  const raisons = [];
+  let score = 0;
+  if(alerte){ raisons.push("signalée par l'IA"); score += 3; }
+  if(i && (i.secondes > 0 || i.longueur > 0)){
+    if(i.secondes < 120 && i.longueur > 400){ raisons.push('rendue très vite'); score += 2; }
+    const part = i.longueur > 0 ? Math.min(100, Math.round(i.tapes / i.longueur * 100)) : 100;
+    if(i.longueur > 150 && part < 50){ raisons.push('seulement ' + part + ' % tapé dans LABORO'); score += 2; }
+    if(i.collages_bloques >= 1){ raisons.push(i.collages_bloques + ' tentative' + (i.collages_bloques > 1 ? 's' : '') + ' de collage'); score += (i.collages_bloques >= 3 ? 2 : 1); }
+    const parMinute = i.secondes > 0 ? Math.round(i.longueur / i.secondes * 60) : 0;   // lecture comprise
+    if(i.longueur >= 500 && i.secondes >= 120 && parMinute >= 150){ raisons.push("écrite d'une traite (" + parMinute + ' caractères/min, lecture comprise)'); score += 1; }
+  }
+  return { score: score, raisons: raisons };
+}
+
 function blocIndices(d){
   const i = d.integrite || null;
   const mesure = i && (i.secondes > 0 || i.longueur > 0);
@@ -226,6 +243,9 @@ function blocIndices(d){
     lignes.push('<li>Texte tapé au clavier dans LABORO : <strong>' + part + ' %</strong> (' + i.tapes + ' / ' + i.longueur + ' caractères)'
       + (faible ? ' <span style="color:#B91C1C;font-weight:700">— une grande partie du texte n\'a pas été tapée ici (dictée vocale, remplissage automatique, autre poste ?)</span>' : '') + '</li>');
     lignes.push('<li>Tentatives de copier-coller bloquées : <strong>' + i.collages_bloques + '</strong>' + (i.collages_bloques >= 3 ? ' <span style="color:#92400E;font-weight:700">— à noter</span>' : '') + '</li>');
+    const parMinute = i.secondes > 0 ? Math.round(i.longueur / i.secondes * 60) : 0;
+    if(i.longueur >= 500 && i.secondes >= 120 && parMinute >= 150)
+      lignes.push('<li>Rythme d\'écriture : <strong>' + parMinute + ' caractères/min</strong>, lecture du dossier comprise <span style="color:#92400E;font-weight:700">— écrite d\'une traite : texte recopié depuis un autre écran ?</span></li>');
   } else {
     lignes.push('<li style="color:var(--gm)">Pas de mesure pour cette copie (rendue avant le 26/09/2026 ou depuis un navigateur pas encore à jour).</li>');
   }

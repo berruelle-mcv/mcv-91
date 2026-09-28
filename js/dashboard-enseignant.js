@@ -156,7 +156,8 @@ function donneesDashboardEnseignant(){
       if(p.statut === 'valide'){ c.validees++; if(note != null){ c.sommeNotes += Number(note); c.nbNotes++; }
         if(sg){ sg.validees++; if(note != null){ sg.sommeNotes += Number(note); sg.nbNotes++; } } }
       if(p.statut === 'a_examiner'){ aExaminer++; if((p.tentatives||0) >= 2) epuisees++; }
-      if(d) soumissions.push({ eleve: e, cls: cls, mission_id: p.mission_id, note: note, statut: p.statut, tentatives: p.tentatives, date: d });
+      if(d) soumissions.push({ eleve: e, cls: cls, mission_id: p.mission_id, note: note, statut: p.statut, tentatives: p.tentatives, date: d,
+                               integrite: p.integrite || null, alerte: !!p.alerte_ia });
     });
     if(!nb) c.jamais.push(e);
     else if(derniere < limiteRelance) c.inactifs.push({ eleve: e, derniere: derniere });
@@ -181,7 +182,7 @@ function contenuDashboardEnseignant(){
   if(!d.eleves.length){
     return '<div class="card" style="font-size:13px;color:var(--gm)">Aucun élève dans tes classes pour le moment. Ajoute-les depuis la Vue classe.</div>';
   }
-  return ongletsClasses(d) + blocATraiter(d) + blocClasses(d)
+  return ongletsClasses(d) + blocATraiter(d) + blocAVerifier(d) + blocClasses(d)
     + '<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;align-items:flex-start">'
     + '<div style="flex:1 1 380px;min-width:0">' + blocActivite(d) + '</div>'
     + '<div style="flex:1 1 300px;min-width:0">' + blocRelance(d) + '</div>'
@@ -218,6 +219,31 @@ function blocATraiter(d){
   return '<div class="card" style="margin-top:0"><div class="ct">🔔 À traiter aujourd\'hui</div>'
     + '<div style="display:flex;flex-wrap:wrap;gap:10px">' + tuiles + '</div>'
     + (listeEnCours ? '<div style="margin-top:12px"><div class="u-label-up" style="margin-bottom:4px">Missions assignées en cours</div>' + listeEnCours + '</div>' : '')
+    + '</div>';
+}
+
+// Copies à vérifier à l'oral (28/09/2026) : les indices les plus marqués des 14 derniers jours
+// (signalement de l'IA, rendu très rapide, texte peu tapé, collages tentés, écrit d'une traite).
+function blocAVerifier(d){
+  if(typeof raisonsVigilance !== 'function') return '';
+  const limite = Date.now() - 14 * 24 * 3600 * 1000;
+  const aVoir = d.soumissions
+    .filter(function(s){ return s.date && s.date.getTime() >= limite; })
+    .map(function(s){ return Object.assign({ v: raisonsVigilance(s.integrite, s.alerte) }, s); })
+    .filter(function(s){ return s.v.score >= 2; })
+    .sort(function(a, b){ return (b.v.score - a.v.score) || (b.date - a.date); });
+  const lignes = aVoir.slice(0, 8).map(function(s){
+    return '<div onclick="openCopie(\'' + s.eleve.id + '\',\'' + s.mission_id + '\')" title="Ouvrir la copie" style="display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid #EDF2F7;font-size:12px;cursor:pointer">'
+      + '<div style="width:92px;flex-shrink:0;color:var(--gm);font-size:11px">' + quandLisible(s.date) + '</div>'
+      + '<div style="flex:1;min-width:0"><div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + nomCourtEleve(s.eleve)
+      + ' <span style="font-weight:400;color:var(--gm)">— <strong style="color:var(--th-principal)">' + s.mission_id + '</strong> ' + titreMission(s.mission_id) + '</span></div>'
+      + '<div style="color:#B45309;font-size:11px;margin-top:2px">' + s.v.raisons.join(' · ') + '</div></div>'
+      + '<div style="flex-shrink:0">' + pastilleNote(s.note) + '</div></div>';
+  }).join('');
+  return '<div class="card" style="margin-top:14px"><div class="ct">🔍 Copies à vérifier à l\'oral <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--gm);font-size:11px">— 14 derniers jours · des indices, pas des preuves</span></div>'
+    + (lignes ? lignes + (aVoir.length > 8 ? '<div style="font-size:11px;color:var(--gm);padding-top:6px">… et ' + (aVoir.length - 8) + ' autre(s) copie(s) avec des indices.</div>' : '')
+              : '<div style="font-size:12px;color:var(--gm)">Aucune copie ne présente d\'indice marqué ces 14 derniers jours.</div>')
+    + '<div style="font-size:11px;color:var(--gm);margin-top:8px">Clique sur une copie pour voir le détail. En cas de doute, demande à l\'élève d\'expliquer une de ses réponses à l\'oral.</div>'
     + '</div>';
 }
 

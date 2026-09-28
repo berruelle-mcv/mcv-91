@@ -100,12 +100,122 @@
     if(!estEnseignant()){ masquer(); return; }
     peindre('gris');
     verifier(false);
-    minuterie = setInterval(function(){ if(!document.hidden) verifier(false); }, INTERVALLE_MS);
+    chargerCredit();
+    minuterie = setInterval(function(){ if(!document.hidden){ verifier(false); chargerCredit(); } }, INTERVALLE_MS);
   }
 
   function arreter(){
     if(minuterie){ clearInterval(minuterie); minuterie = null; }
     masquer();
+    const c = document.getElementById('credit-ia'); if(c) c.style.display = 'none';
+  }
+
+  // ─── Crédit IA (28/09/2026) : solde restant estimé ─────────────
+  // Anthropic ne donne pas le solde : le serveur compte ce que consomme chaque
+  // appel à l'IA (tous les LABORO du Pi) et le déduit du dernier solde saisi
+  // par l'administrateur (lu sur console.anthropic.com → Billing).
+  const SEUIL_ORANGE = 5, SEUIL_ROUGE = 2;   // en dollars
+  let dernierCredit = null;
+  // Montants en dollars ; les petites sommes (une correction ≈ 0,02 $) gardent 3 décimales
+  function dollars(x){
+    const fin = x > 0 && x < 1;
+    return Number(x).toLocaleString('fr-FR', { minimumFractionDigits: fin ? 3 : 2, maximumFractionDigits: fin ? 3 : 2 }) + ' $';
+  }
+  function badgeCredit(){
+    let b = document.getElementById('credit-ia');
+    if(b) return b;
+    const v = voyant();
+    if(!v) return null;
+    b = document.createElement('button');
+    b.id = 'credit-ia';
+    b.type = 'button';
+    b.style.cssText = 'display:none;align-items:center;gap:5px;border:none;cursor:pointer;font:inherit;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;margin-right:6px';
+    b.onclick = ouvrirCredit;
+    v.parentNode.insertBefore(b, v.nextSibling);
+    return b;
+  }
+  function couleurCredit(c){
+    if(!c || !c.ok || c.restant == null) return COULEURS.gris;
+    if(c.restant < SEUIL_ROUGE) return COULEURS.rouge;
+    if(c.restant < SEUIL_ORANGE) return COULEURS.orange;
+    return COULEURS.vert;
+  }
+  function peindreCredit(){
+    const b = badgeCredit();
+    if(!b || !dernierCredit || !dernierCredit.ok){ if(b) b.style.display = 'none'; return; }
+    const c = couleurCredit(dernierCredit);
+    b.style.display = 'inline-flex';
+    b.style.background = c.fond; b.style.color = c.texte;
+    b.textContent = dernierCredit.restant == null ? '💳 Crédit IA : à renseigner' : '💳 Crédit ≈ ' + dollars(dernierCredit.restant);
+    b.title = 'Crédit IA restant (estimation) — cliquer pour le détail';
+  }
+  async function chargerCredit(){
+    if(!estEnseignant()) return;
+    try{
+      const r = await fetch(apiBase() + '/api/credit-ia', { headers: { 'Authorization': 'Bearer ' + jeton() } });
+      if(r.status === 404){ dernierCredit = null; peindreCredit(); return; }   // serveur pas encore à jour
+      dernierCredit = await r.json();
+    }catch(e){ dernierCredit = null; }
+    peindreCredit();
+    if(document.getElementById('credit-ia-modal')) remplirCredit();
+  }
+  function remplirCredit(){
+    const corps = document.getElementById('credit-ia-corps');
+    if(!corps) return;
+    corps.innerHTML = '';
+    const c = dernierCredit;
+    if(!c || !c.ok){ ligne(corps, 'État', (c && c.erreur) || 'Informations indisponibles.', '#9B1C1C'); return; }
+    if(c.restant == null){
+      ligne(corps, 'Solde restant', "Aucun solde n'a encore été saisi. Lis le solde sur console.anthropic.com (Billing) et saisis-le ci-dessous : LABORO décomptera ensuite chaque correction.");
+    } else {
+      ligne(corps, 'Solde restant estimé', dollars(c.restant) + (c.corrections_restantes != null ? ' — environ ' + c.corrections_restantes.toLocaleString('fr-FR') + ' corrections' : ''), couleurCredit(c).texte);
+      ligne(corps, 'Dernier solde saisi', dollars(c.solde.montant) + ' ' + (heure(c.solde.quand) || '') + (c.solde.saisi_par ? ' (par ' + c.solde.saisi_par + ')' : ''));
+      ligne(corps, 'Consommé depuis', dollars(c.consomme) + ' — ' + c.appels + ' appel' + (c.appels > 1 ? 's' : '') + ' à l\'IA'
+        + ((c.par_univers || []).length > 1 ? ' (' + c.par_univers.map(function(u){ return u.univers + ' : ' + dollars(u.cout); }).join(', ') + ')' : ''));
+    }
+    ligne(corps, 'Ces 7 derniers jours', dollars(c.conso_7j) + (c.cout_moyen_correction ? ' — une correction coûte en moyenne ' + dollars(c.cout_moyen_correction) : ''));
+    const note = document.createElement('div');
+    note.style.cssText = 'font-size:11px;color:#6B7280;line-height:1.5;margin-bottom:10px';
+    note.textContent = "Estimation calculée par LABORO (Anthropic ne communique pas le solde)" + (c.partage ? ", tous les LABORO du serveur confondus, puisqu'ils partagent la même clé" : '') + ". Le vrai solde est sur console.anthropic.com → Billing ; resaisis-le après chaque recharge pour recaler l'estimation.";
+    corps.appendChild(note);
+    if(c.admin){
+      const f = document.createElement('div');
+      f.style.cssText = 'display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#F8FAFC;border-radius:8px;padding:10px';
+      f.innerHTML = '<label for="credit-ia-montant" style="font-size:12px;font-weight:700;color:#374151">Solde lu sur la console ($)</label>'
+        + '<input id="credit-ia-montant" type="text" inputmode="decimal" placeholder="ex. 18,50" style="width:110px;padding:7px 9px;border:1px solid #D1D5DB;border-radius:6px;font-size:13px">'
+        + '<button type="button" id="credit-ia-enreg" style="padding:7px 12px;background:var(--bl,#1F4E8C);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">Enregistrer</button>'
+        + '<span id="credit-ia-msg" style="font-size:11px;color:#6B7280;width:100%"></span>';
+      corps.appendChild(f);
+      f.querySelector('#credit-ia-enreg').onclick = async function(){
+        const val = f.querySelector('#credit-ia-montant').value.trim();
+        const msg = f.querySelector('#credit-ia-msg');
+        if(!val){ msg.textContent = 'Saisis le montant affiché sur la console.'; return; }
+        this.disabled = true;
+        try{
+          const r = await fetch(apiBase() + '/api/credit-ia', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jeton() }, body: JSON.stringify({ montant: val }) });
+          const d = await r.json();
+          if(!d.ok){ msg.textContent = d.erreur || 'Enregistrement impossible.'; msg.style.color = '#9B1C1C'; this.disabled = false; return; }
+          await chargerCredit();
+        }catch(e){ msg.textContent = 'Le serveur ne répond pas.'; msg.style.color = '#9B1C1C'; this.disabled = false; }
+      };
+    }
+  }
+  function ouvrirCredit(){
+    if(document.getElementById('credit-ia-modal')) return;
+    const ov = document.createElement('div');
+    ov.id = 'credit-ia-modal';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;padding:16px';
+    ov.onclick = function(ev){ if(ev.target === ov) ov.remove(); };
+    const boite = document.createElement('div');
+    boite.style.cssText = 'background:#fff;border-radius:12px;max-width:460px;width:100%;padding:22px 22px 18px;box-shadow:0 20px 60px rgba(0,0,0,.3)';
+    boite.innerHTML = '<div style="font-size:16px;font-weight:800;color:#1F2937;margin-bottom:14px">Crédit IA (Anthropic)</div>'
+      + '<div id="credit-ia-corps"></div>'
+      + '<div style="display:flex;justify-content:flex-end;margin-top:12px"><button type="button" id="credit-ia-fermer" style="padding:8px 14px;background:#EEF0F3;color:#374151;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700">Fermer</button></div>';
+    ov.appendChild(boite);
+    document.body.appendChild(ov);
+    boite.querySelector('#credit-ia-fermer').onclick = function(){ ov.remove(); };
+    remplirCredit();
+    chargerCredit();
   }
 
   // ─── Fenêtre de détail ────────────────────────────────────────
