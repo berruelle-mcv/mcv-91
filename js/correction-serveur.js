@@ -12,6 +12,8 @@ async function soumettreReponses(){
     return;
   }
 
+  // Indices d'intégrité pas encore transmis (cumulés par le serveur depuis le 28/09/2026)
+  const deltaInteg = (typeof integDeltaAttente === 'function') ? integDeltaAttente(CM.id) : null;
   const ud = gUD();
   const tent = (ud.missions[CM.id]?.tentatives || 0) + 1;
 
@@ -43,7 +45,8 @@ async function soumettreReponses(){
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     },
-    body: JSON.stringify({ mission_id: CM.id, reponses, integrite: (typeof integPourSoumission === 'function') ? integPourSoumission(CM.id, reponses) : null })
+    body: JSON.stringify({ mission_id: CM.id, reponses, integrite: (typeof integPourSoumission === 'function') ? integPourSoumission(CM.id, reponses) : null,
+      integ_delta: deltaInteg })
   });
 
   if(!r.ok){
@@ -76,6 +79,7 @@ async function soumettreReponses(){
   // avait une meilleure note, le serveur la conserve (d.conservee) — la note retenue
   // est alors d.note_conservee, pas la note de cette nouvelle tentative.
   const noteRetenue = d.conservee ? d.note_conservee : note;
+  Object.assign(ud, gUD()); // relire : le navigateur a pu enregistrer autre chose pendant la correction
   ud.missions[CM.id] = {
     ...ud.missions[CM.id],
     status: (d.statut === 'valide') ? 'done' : 'att',
@@ -89,6 +93,7 @@ async function soumettreReponses(){
     feedback: { note, texte: feedback }
   };
   sUD(ud);
+  if(typeof integDeltaEnvoye === 'function') integDeltaEnvoye(CM.id, deltaInteg);
 
   const tabFb = document.getElementById('tab-fb');
   tabFb.style.display = '';

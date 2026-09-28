@@ -691,6 +691,9 @@ function renderDecisionProf(m){
 let INTEG = null; // { mid, t0, tapes, collages }
 
 function integDemarrer(mid){
+  // Fenêtre réaffichée sans avoir été fermée (brouillon récupéré, autre mission ouverte…) :
+  // garder ce qui a été mesuré jusque-là au lieu de repartir de zéro
+  if(INTEG) integEnregistrer();
   INTEG = { mid: mid, t0: Date.now(), tapes: 0, collages: 0 };
   const zone = document.getElementById('mo-mission');
   if(zone && !zone.dataset.integ){
@@ -705,7 +708,7 @@ function integDemarrer(mid){
     zone.addEventListener('drop', bloquer, true);
     zone.addEventListener('input', function(e){
       if(!INTEG || !e.target.classList || !e.target.classList.contains('zone-rep')) return;
-      if(e.inputType === 'insertText' || e.inputType === 'insertCompositionText') INTEG.tapes += (e.data || '').length;
+      if(e.inputType === 'insertText' || e.inputType === 'insertCompositionText' || e.inputType === 'insertReplacementText') INTEG.tapes += (e.data || '').length || 1;
       else if(e.inputType === 'insertLineBreak') INTEG.tapes += 1;
     }, true);
   }
@@ -720,19 +723,42 @@ function integDemarrer(mid){
 }
 function integNoterFrappe(n){ if(INTEG) INTEG.tapes += Math.max(0, n|0); }
 function integReprendre(){ if(INTEG) INTEG.t0 = Date.now(); }
-// Ajoute la session en cours aux compteurs de la mission (mémorisés dans le navigateur)
+// Ajoute la session en cours aux compteurs de la mission.
+// Depuis le 28/09/2026, c'est le SERVEUR qui cumule : le navigateur garde seulement
+// ce qu'il n'a pas encore réussi à envoyer (integ_attente), transmis avec le brouillon
+// ou la copie. (m.integ, l'ancien cumul local, reste tenu pour compatibilité.)
 function integEnregistrer(){
   if(!INTEG || !INTEG.mid) return;
   const ud = gUD();
   if(!ud.missions[INTEG.mid]) ud.missions[INTEG.mid] = { status: 'todo', id: INTEG.mid };
   const m = ud.missions[INTEG.mid];
-  const cumul = m.integ || { secondes: 0, tapes: 0, collages_bloques: 0 };
-  cumul.secondes += Math.min(7200, Math.max(0, Math.round((Date.now() - INTEG.t0) / 1000)));
-  cumul.tapes += INTEG.tapes;
-  cumul.collages_bloques += INTEG.collages;
-  m.integ = cumul;
+  const sec = Math.min(7200, Math.max(0, Math.round((Date.now() - INTEG.t0) / 1000)));
+  [ 'integ', 'integ_attente' ].forEach(function(cle){
+    const c = m[cle] || { secondes: 0, tapes: 0, collages_bloques: 0 };
+    c.secondes += sec; c.tapes += INTEG.tapes; c.collages_bloques += INTEG.collages;
+    m[cle] = c;
+  });
   sUD(ud);
   INTEG.t0 = Date.now(); INTEG.tapes = 0; INTEG.collages = 0;
+}
+// Ce qui reste à envoyer au serveur pour cette mission (session en cours comprise)
+function integDeltaAttente(mid){
+  if(INTEG && INTEG.mid === mid) integEnregistrer();
+  const m = (gUD().missions || {})[mid] || {};
+  const a = m.integ_attente || {};
+  return { secondes: a.secondes || 0, tapes: a.tapes || 0, collages_bloques: a.collages_bloques || 0 };
+}
+// Le serveur a bien reçu « envoye » : on le retire de l'attente (sans perdre ce qui a été mesuré entre-temps)
+function integDeltaEnvoye(mid, envoye){
+  if(!envoye) return;
+  const ud = gUD();
+  const m = ud.missions && ud.missions[mid];
+  if(!m || !m.integ_attente) return;
+  const a = m.integ_attente;
+  a.secondes = Math.max(0, (a.secondes || 0) - envoye.secondes);
+  a.tapes = Math.max(0, (a.tapes || 0) - envoye.tapes);
+  a.collages_bloques = Math.max(0, (a.collages_bloques || 0) - envoye.collages_bloques);
+  sUD(ud);
 }
 // Valeurs envoyées au serveur avec la copie
 function integPourSoumission(mid, reponses){

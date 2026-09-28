@@ -210,41 +210,60 @@ function openCopiesEleve(){
 // ou reprendre à l'oral. Rien n'est affiché à l'élève.
 // Raisons de vérifier une copie à l'oral, à partir des indices (28/09/2026) —
 // utilisé aussi par le tableau de bord (« Copies à vérifier »). score ≥ 2 = à regarder.
+// Mesures d'une copie, normalisées. v: 2 = cumulées par le serveur (depuis le 28/09/2026),
+// fiables quel que soit le poste. Avant : mesurées par le seul navigateur, remises à zéro
+// si l'élève changeait de poste ou reprenait un brouillon → trop de fausses alertes.
+function mesuresInteg(i){
+  if(!i || !(i.secondes > 0 || i.longueur > 0)) return null;
+  const nonMesure = i.v === 2 ? Math.min(i.longueur || 0, i.non_mesure || 0) : 0;
+  return { fiable: i.v === 2, secondes: i.secondes || 0, tapes: i.tapes || 0, collages: i.collages_bloques || 0,
+    longueur: i.longueur || 0, nonMesure: nonMesure, mesuree: Math.max(0, (i.longueur || 0) - nonMesure) };
+}
+
 function raisonsVigilance(i, alerte){
   const raisons = [];
   let score = 0;
   if(alerte){ raisons.push("signalée par l'IA"); score += 3; }
-  if(i && (i.secondes > 0 || i.longueur > 0)){
-    if(i.secondes < 120 && i.longueur > 400){ raisons.push('rendue très vite'); score += 2; }
-    const part = i.longueur > 0 ? Math.min(100, Math.round(i.tapes / i.longueur * 100)) : 100;
-    if(i.longueur > 150 && part < 50){ raisons.push('seulement ' + part + ' % tapé dans LABORO'); score += 2; }
-    if(i.collages_bloques >= 1){ raisons.push(i.collages_bloques + ' tentative' + (i.collages_bloques > 1 ? 's' : '') + ' de collage'); score += (i.collages_bloques >= 3 ? 2 : 1); }
-    const parMinute = i.secondes > 0 ? Math.round(i.longueur / i.secondes * 60) : 0;   // lecture comprise
-    if(i.longueur >= 500 && i.secondes >= 120 && parMinute >= 150){ raisons.push("écrite d'une traite (" + parMinute + ' caractères/min, lecture comprise)'); score += 1; }
+  const m = mesuresInteg(i);
+  if(m){
+    if(m.collages >= 1){ raisons.push(m.collages + ' tentative' + (m.collages > 1 ? 's' : '') + ' de collage'); score += (m.collages >= 3 ? 2 : 1); }
+    if(m.fiable){
+      if(m.secondes < 120 && m.mesuree > 400){ raisons.push('rendue très vite'); score += 2; }
+      const part = m.mesuree > 0 ? Math.min(100, Math.round(m.tapes / m.mesuree * 100)) : 100;
+      if(m.mesuree > 150 && part < 50){ raisons.push('seulement ' + part + ' % tapé dans LABORO'); score += 2; }
+      const parMinute = m.secondes > 0 ? Math.round(m.mesuree / m.secondes * 60) : 0;   // lecture comprise
+      if(m.mesuree >= 500 && m.secondes >= 120 && parMinute >= 150){ raisons.push("écrite d'une traite (" + parMinute + ' caractères/min, lecture comprise)'); score += 1; }
+    }
   }
   return { score: score, raisons: raisons };
 }
 
 function blocIndices(d){
-  const i = d.integrite || null;
-  const mesure = i && (i.secondes > 0 || i.longueur > 0);
+  const m = mesuresInteg(d.integrite || null);
   const lignes = [];
   let vigilance = !!d.alerte_ia;
   if(d.alerte_ia) lignes.push('<li><strong style="color:#B91C1C">⚠ Signalée par l\'IA</strong> : réponse possiblement hors sujet, recopiée de l\'énoncé ou d\'un style inhabituel pour un élève.</li>');
-  if(mesure){
-    const min = Math.floor(i.secondes / 60), sec = i.secondes % 60;
+  if(m){
+    const min = Math.floor(m.secondes / 60), sec = m.secondes % 60;
     const duree = (min ? min + ' min ' : '') + sec + ' s';
-    const court = i.secondes < 120 && i.longueur > 400;
-    if(court) vigilance = true;
-    lignes.push('<li>Temps passé sur la mission : <strong>' + duree + '</strong>' + (court ? ' <span style="color:#B91C1C;font-weight:700">— très court pour ' + i.longueur + ' caractères écrits</span>' : '') + '</li>');
-    const part = i.longueur > 0 ? Math.min(100, Math.round(i.tapes / i.longueur * 100)) : 100;
-    const faible = i.longueur > 150 && part < 50;
-    if(faible) vigilance = true;
-    lignes.push('<li>Texte tapé au clavier dans LABORO : <strong>' + part + ' %</strong> (' + i.tapes + ' / ' + i.longueur + ' caractères)'
-      + (faible ? ' <span style="color:#B91C1C;font-weight:700">— une grande partie du texte n\'a pas été tapée ici (dictée vocale, remplissage automatique, autre poste ?)</span>' : '') + '</li>');
-    lignes.push('<li>Tentatives de copier-coller bloquées : <strong>' + i.collages_bloques + '</strong>' + (i.collages_bloques >= 3 ? ' <span style="color:#92400E;font-weight:700">— à noter</span>' : '') + '</li>');
-    const parMinute = i.secondes > 0 ? Math.round(i.longueur / i.secondes * 60) : 0;
-    if(i.longueur >= 500 && i.secondes >= 120 && parMinute >= 150)
+    const part = m.mesuree > 0 ? Math.min(100, Math.round(m.tapes / m.mesuree * 100)) : 100;
+    if(m.fiable){
+      const court = m.secondes < 120 && m.mesuree > 400;
+      if(court) vigilance = true;
+      lignes.push('<li>Temps passé sur la mission (toutes séances et tentatives) : <strong>' + duree + '</strong>' + (court ? ' <span style="color:#B91C1C;font-weight:700">— très court pour ' + m.mesuree + ' caractères écrits</span>' : '') + '</li>');
+      const faible = m.mesuree > 150 && part < 50;
+      if(faible) vigilance = true;
+      if(m.mesuree === 0) lignes.push('<li>Texte tapé au clavier dans LABORO : <strong>' + m.tapes + ' caractères</strong> depuis la nouvelle mesure</li>');
+      else lignes.push('<li>Texte tapé au clavier dans LABORO : <strong>' + part + ' %</strong> (' + m.tapes + ' / ' + m.mesuree + ' caractères)'
+        + (faible ? ' <span style="color:#B91C1C;font-weight:700">— une grande partie du texte n\'a pas été tapée ici (dictée vocale, remplissage automatique ?)</span>' : '') + '</li>');
+      if(m.nonMesure > 0) lignes.push('<li style="color:var(--gm)">' + m.nonMesure + ' caractères étaient déjà écrits avant la nouvelle mesure : ils ne sont pas comptés.</li>');
+    } else {
+      lignes.push('<li>Temps passé : <strong>' + duree + '</strong> · texte tapé : <strong>' + part + ' %</strong> (' + m.tapes + ' / ' + m.longueur + ')'
+        + ' <span style="color:var(--gm)">— ancienne mesure, faite sur un seul poste : elle ne voit ni le travail fait sur un autre poste, ni le texte repris d\'un brouillon ou d\'une 1re tentative. Non prise en compte.</span></li>');
+    }
+    lignes.push('<li>Tentatives de copier-coller bloquées : <strong>' + m.collages + '</strong>' + (m.collages >= 3 ? ' <span style="color:#92400E;font-weight:700">— à noter</span>' : '') + '</li>');
+    const parMinute = m.secondes > 0 ? Math.round(m.mesuree / m.secondes * 60) : 0;
+    if(m.fiable && m.mesuree >= 500 && m.secondes >= 120 && parMinute >= 150)
       lignes.push('<li>Rythme d\'écriture : <strong>' + parMinute + ' caractères/min</strong>, lecture du dossier comprise <span style="color:#92400E;font-weight:700">— écrite d\'une traite : texte recopié depuis un autre écran ?</span></li>');
   } else {
     lignes.push('<li style="color:var(--gm)">Pas de mesure pour cette copie (rendue avant le 26/09/2026 ou depuis un navigateur pas encore à jour).</li>');

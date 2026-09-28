@@ -41,20 +41,22 @@
   // ─── Envoi d'un brouillon ─────────────────────────────────────
   async function envoyer(mid, surDepart){
     if(!estEleve()) return;
-    const ud = gUD();
-    const m = ud.missions && ud.missions[mid];
+    const m = (gUD().missions || {})[mid];
     if(!m || !m.reponses || m.status === 'done') return;
     const versionEnvoyee = versions[mid] || 0;
+    // Indices d'intégrité mesurés ici et pas encore reçus par le serveur (28/09/2026)
+    const deltaInteg = (typeof integDeltaAttente === 'function') ? integDeltaAttente(mid) : null;
     if(!surDepart && typeof CM !== 'undefined' && CM && CM.id === mid) indicateur('Enregistrement…');
     try{
       const r = await fetch(apiBase() + '/api/brouillons/' + encodeURIComponent(mid), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jeton() },
-        body: JSON.stringify({ reponses: m.reponses }),
+        body: JSON.stringify({ reponses: m.reponses, integ_delta: deltaInteg }),
         keepalive: !!surDepart
       });
       const d = await r.json().catch(function(){ return {}; });
       if(!r.ok || !d.ok) throw new Error(d.erreur || ('HTTP ' + r.status));
+      if(typeof integDeltaEnvoye === 'function') integDeltaEnvoye(mid, deltaInteg);
       // Marquer "synchronisé" seulement si rien n'a été retapé entre-temps
       if((versions[mid] || 0) === versionEnvoyee){
         const ud2 = gUD();
@@ -152,12 +154,71 @@
     };
   }
 
+  // ─── Copie déjà rendue, ouverte sur un autre poste (28/09/2026) ───
+  // Après une correction, le brouillon serveur est effacé (la copie est dans
+  // progressions). Sur un poste qui n'a pas les réponses en mémoire, la mission
+  // s'ouvrait donc vide : l'élève ne retrouvait pas sa 1re tentative. On la recharge.
+  const copiesDemandees = {};
+  function aDuTexte(rep){ return !!rep && Object.keys(rep).some(function(k){ return String(rep[k] || '').trim(); }); }
+  async function restaurerCopieRendue(mid){
+    if(!estEleve() || copiesDemandees[mid]) return;
+    const m = (gUD().missions || {})[mid];
+    if(!m || !((m.tentatives || 0) > 0 || m.status === 'att' || m.status === 'done') || aDuTexte(m.reponses)) return;
+    const mis = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === mid; }) : null;
+    if(!mis) return;
+    copiesDemandees[mid] = true;
+    let p;
+    try{
+      const r = await fetch(apiBase() + '/api/progressions/' + encodeURIComponent(mid), { headers: { 'Authorization': 'Bearer ' + jeton() } });
+      const d = await r.json();
+      p = d && d.ok && d.progression && d.progression.reponses;
+    }catch(e){ delete copiesDemandees[mid]; return; }
+    if(!p || typeof p !== 'object') return;
+    const rep = {};
+    (mis.activites || []).forEach(function(a, i){
+      (a.q || []).forEach(function(q){
+        if(typeof p[q] === 'string') rep['q_' + mid + '_' + i + '_' + q.substring(0, 8).replace(/\s/g, '_')] = p[q];
+      });
+    });
+    if(typeof p['Question de réflexivité'] === 'string') rep['q_' + mid + '_reflexivite'] = p['Question de réflexivité'];
+    if(typeof p['Situation imprévue'] === 'string') rep['q_' + mid + '_imprevu'] = p['Situation imprévue'];
+    if(!aDuTexte(rep)) return;
+    const ud = gUD();
+    const loc = ud.missions[mid];
+    if(!loc || aDuTexte(loc.reponses)) return;   // l'élève a commencé à écrire entre-temps
+    loc.reponses = rep;
+    sUD(ud);
+    const mo = document.getElementById('mo');
+    const zones = Array.prototype.slice.call(document.querySelectorAll('#mo-mission .zone-rep'));
+    if(typeof CM !== 'undefined' && CM && CM.id === mid && mo && mo.classList.contains('open')
+       && !zones.some(function(z){ return z.value.trim(); })){
+      try{ window.openMission(mid); }catch(e){}
+    }
+  }
+
   // Fenêtre de mission rouverte : effacer l'ancien état affiché
   if(typeof window.openMission === 'function'){
     const orig = window.openMission;
-    window.openMission = function(){
+    window.openMission = function(id){
       const r = orig.apply(this, arguments);
       const el = document.getElementById('brouillon-etat'); if(el) el.textContent = '';
+      restaurerCopieRendue(id);
+      return r;
+    };
+  }
+
+  // Fenêtre de mission fermée : transmettre aussi le temps passé (même sans nouvelle frappe)
+  if(typeof window.closeMo === 'function'){
+    const orig = window.closeMo;
+    window.closeMo = function(){
+      const mid = (typeof INTEG !== 'undefined' && INTEG) ? INTEG.mid : null;
+      const r = orig.apply(this, arguments);
+      if(mid && estEleve() && !minuteries[mid]){
+        const m = (gUD().missions || {})[mid];
+        const a = m && m.integ_attente;
+        if(a && (a.secondes || a.tapes || a.collages_bloques) && m.reponses && Object.keys(m.reponses).length
+           && m.status !== 'att' && m.status !== 'done') envoyer(mid, false);
+      }
       return r;
     };
   }
