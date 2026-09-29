@@ -243,6 +243,7 @@ function blocIndices(d){
   const lignes = [];
   let vigilance = !!d.alerte_ia;
   if(d.alerte_ia) lignes.push('<li><strong style="color:#B91C1C">⚠ Signalée par l\'IA</strong> : réponse possiblement hors sujet, recopiée de l\'énoncé ou d\'un style inhabituel pour un élève.</li>');
+  if(d.integrite && d.integrite.maison) lignes.push('<li>🏠 <strong>Rendue depuis la maison</strong>, hors des horaires de cours (mission à terminer à la maison).</li>');
   if(m){
     const min = Math.floor(m.secondes / 60), sec = m.secondes % 60;
     const duree = (min ? min + ' min ' : '') + sec + ' s';

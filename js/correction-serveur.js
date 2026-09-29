@@ -34,6 +34,15 @@ async function soumettreReponses(){
     alert('Rédige au moins une réponse avant de soumettre.');
     return;
   }
+  // Questions laissées vides (29/09/2026) : prévenir avant d'utiliser une tentative
+  let vides = 0;
+  CM.activites.forEach((act,i) => act.q.forEach(q => {
+    const el = document.getElementById(`q_${CM.id}_${i}_${q.substring(0,8).replace(/\s/g,'_')}`);
+    if(el && !el.value.trim()) vides++;
+  }));
+  if(rfEl && !rfEl.value.trim()) vides++;
+  if(vides > 0 && !confirm('Il te reste ' + vides + (vides > 1 ? ' questions sans réponse' : ' question sans réponse')
+      + ' : une question sans réponse compte comme non traitée.\n\nSoumettre quand même ?')) return;
 
   const btnS = document.getElementById('btn-submit');
   btnS.textContent = 'Correction en cours…';

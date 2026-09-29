@@ -30,7 +30,9 @@ async function renderMDJEleve(){
     + missions.map(function(m, i){
         return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0'+(i ? ';border-top:1px solid #FDE68A' : '')+'">'
           + '<div><div style="font-size:13px;font-weight:700;margin-bottom:2px">'+m.titre+'</div>'
-          + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier+'</div></div>'
+          + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier
+          + (m.maison_jusqu_a && typeof dateMaisonLisible === 'function' ? ' · <strong style="color:#075985">🏠 à terminer à la maison avant '+dateMaisonLisible(m.maison_jusqu_a)+'</strong>' : '')
+          + '</div></div>'
           + '<button onclick="handleMission(\''+m.mission_id+'\')" style="flex-shrink:0;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir</button>'
           + '</div>';
       }).join('')

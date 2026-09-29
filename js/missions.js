@@ -728,7 +728,7 @@ function integReprendre(){ if(INTEG) INTEG.t0 = Date.now(); }
 // ce qu'il n'a pas encore réussi à envoyer (integ_attente), transmis avec le brouillon
 // ou la copie. (m.integ, l'ancien cumul local, reste tenu pour compatibilité.)
 function integEnregistrer(){
-  if(!INTEG || !INTEG.mid) return;
+  if(!INTEG || !INTEG.mid || typeof CU === 'undefined' || !CU) return;   // (déconnecté entre-temps)
   const ud = gUD();
   if(!ud.missions[INTEG.mid]) ud.missions[INTEG.mid] = { status: 'todo', id: INTEG.mid };
   const m = ud.missions[INTEG.mid];

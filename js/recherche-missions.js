@@ -296,6 +296,7 @@ function assignerMissionRecherche(id){
     const sel = document.getElementById('mdj-ms');
     if(sel && Array.from(sel.options).some(function(o){ return o.value === id; })){
       sel.value = id;
+      if(typeof apercuMDJ === 'function') apercuMDJ();
       const st = document.getElementById('mdj-st');
       if(st) st.textContent = 'Mission choisie : ' + id + '. Choisis la classe, le demi-groupe ou l\'élève, puis valide.';
       sel.scrollIntoView({ block: 'center' });

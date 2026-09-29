@@ -276,7 +276,125 @@ function renderMDJPanel(){
   if(typeof populateMDJEleveSelect === 'function') populateMDJEleveSelect();
   if(typeof populateClasseSelects === 'function') populateClasseSelects();
   toggleMDJCible();
+  toggleMDJMaison();
   renderMDJListe();
+  brancherApercuMDJ();
+  apercuMDJ();
+}
+
+// ═══ Avant d'assigner : déjà assignée ? déjà faite par qui ? (29/09/2026) ═══
+// Dès qu'on choisit une cible (classe, demi-groupe, élève) et une mission, un encadré
+// dit si elle est déjà assignée à cette cible et où en est chaque élève. La liste des
+// missions est marquée : 📌 déjà assignée à cette cible, « faite par x/y ».
+let MDJ_APERCU_T = null, MDJ_APERCU_N = 0, MDJ_APERCU_NOMS = false;
+function brancherApercuMDJ(){
+  ['mdj-cible','mdj-cl','mdj-grp','mdj-el','mdj-ms'].forEach(function(id){
+    const el = document.getElementById(id);
+    if(el && !el.dataset.apercu){ el.dataset.apercu = '1'; el.addEventListener('change', apercuMDJ); }
+  });
+}
+function cibleMDJCourante(){
+  const cible = document.getElementById('mdj-cible');
+  if(!cible) return null;
+  if(cible.value === 'eleve'){
+    const v = (document.getElementById('mdj-el') || {}).value;
+    return v ? { q: 'eleve_id=' + encodeURIComponent(v), libelle: 'cet élève' } : null;
+  }
+  const cl = (document.getElementById('mdj-cl') || {}).value;
+  if(!cl) return null;
+  if(cible.value === 'groupe'){
+    const g = (document.getElementById('mdj-grp') || {}).value || 'G1';
+    return { q: 'classeCode=' + encodeURIComponent(cl) + '&groupe=' + g, libelle: 'ce groupe (' + g + ')' };
+  }
+  return { q: 'classeCode=' + encodeURIComponent(cl), libelle: 'cette classe' };
+}
+function apercuMDJ(){ clearTimeout(MDJ_APERCU_T); MDJ_APERCU_T = setTimeout(apercuMDJMaintenant, 150); }
+function libellesMissionsMDJ(resume, total){
+  const sel = document.getElementById('mdj-ms');
+  if(!sel) return;
+  Array.from(sel.options).forEach(function(o){
+    if(!o.value) return;
+    if(!o.dataset.base) o.dataset.base = o.textContent;
+    const r = resume && resume[o.value];
+    let t = o.dataset.base;
+    if(r && r.assignee) t = '📌 ' + t;
+    if(r && r.faits && total) t += r.faits >= total ? ' — ✓ déjà faite par tous' : ' — faite par ' + r.faits + '/' + total;
+    o.textContent = t;
+  });
+}
+async function apercuMDJMaintenant(){
+  const box = document.getElementById('mdj-apercu');
+  const token = localStorage.getItem('laboro_token');
+  const c = cibleMDJCourante();
+  const n = ++MDJ_APERCU_N;
+  if(!box) return;
+  if(!c || !token){ box.innerHTML = ''; libellesMissionsMDJ(null, 0); return; }
+  const mid = (document.getElementById('mdj-ms') || {}).value;
+  const h = { headers: { 'Authorization': 'Bearer ' + token } };
+  const [rs, rd] = await Promise.all([
+    fetchJSON(LABORO_API + '/api/mission-du-jour/apercu?' + c.q, h),
+    mid ? fetchJSON(LABORO_API + '/api/mission-du-jour/apercu?' + c.q + '&mission_id=' + encodeURIComponent(mid), h) : Promise.resolve(null)
+  ]);
+  if(n !== MDJ_APERCU_N) return;   // une sélection plus récente a pris le relais
+  if(rs && rs.ok && rs.data.ok) libellesMissionsMDJ(rs.data.resume, rs.data.total);
+  if(!mid){ box.innerHTML = ''; return; }
+  if(!rd || !rd.ok || !rd.data.ok){ box.innerHTML = ''; return; }
+  box.innerHTML = htmlApercuMDJ(rd.data, c.libelle);
+}
+function htmlApercuMDJ(d, libelle){
+  const nomE = function(e){ return ((e.nom||'').toUpperCase() + ' ' + (e.prenom||'')).trim(); };
+  const pour = function(a){ return a.cible === 'eleve' ? 'à ' + nomE(a) : (a.cible === 'groupe' ? 'au groupe ' + a.groupe : 'à toute la classe'); };
+  const seul = libelle === 'cet élève';
+  const actives = d.assignations.filter(function(a){ return !a.retiree_at; });
+  const retirees = d.assignations.filter(function(a){ return a.retiree_at; });
+  const eleves = d.eleves || [];
+  const cat = { validee: [], epuisee: [], commencee: [], a_faire: [] };
+  eleves.forEach(function(e){ (cat[e.etat] || cat.a_faire).push(e); });
+  const restants = cat.commencee.length + cat.a_faire.length;
+  let l1;
+  if(actives.length){
+    l1 = '<strong>📌 Déjà assignée</strong> : ' + actives.map(function(a){
+      return pour(a) + ' le ' + fmtDateHeure(a.created_at).split(' ')[0] + (a.maison_jusqu_a ? ' (🏠 jusqu\'au ' + fmtDateHeure(a.maison_jusqu_a) + ')' : '');
+    }).join(' · ') + '.';
+  } else l1 = 'Pas encore assignée à ' + libelle + '.';
+  if(retirees.length) l1 += ' <span style="color:var(--gm)">Assignée puis retirée : ' + retirees.map(function(a){ return pour(a) + ' le ' + fmtDateHeure(a.created_at).split(' ')[0]; }).join(' · ') + '.</span>';
+  const pastille = function(txt, n, bg, fg){ return n ? '<span style="display:inline-block;padding:2px 9px;border-radius:10px;font-size:11.5px;font-weight:700;background:'+bg+';color:'+fg+';margin:2px 4px 2px 0">'+txt+' : '+n+'</span>' : ''; };
+  const l2 = !seul || !eleves.length
+    ? pastille('✅ validée', cat.validee.length, '#DCFCE7', '#166534') + pastille('⛔ 2 tentatives sans validation', cat.epuisee.length, '#FEE2E2', '#991B1B')
+      + pastille('✏️ commencée', cat.commencee.length, '#FEF3C7', '#92400E') + pastille('⬜ pas commencée', cat.a_faire.length, '#F1F5F9', '#475569')
+    : ({ validee: '✅ Déjà validée' + (eleves[0].note != null ? ' (' + eleves[0].note + '/20)' : ''), epuisee: '⛔ 2 tentatives utilisées sans validation', commencee: '✏️ Commencée', a_faire: '⬜ Pas encore commencée' })[eleves[0].etat];
+  let l3;
+  if(!eleves.length) l3 = '<span style="color:#92400E">Aucun élève dans ' + libelle + '.</span>';
+  else if(!restants) l3 = '<strong style="color:#B45309">⚠️ ' + (!seul ? 'Tous l\'ont déjà terminée' : 'Il ou elle l\'a déjà terminée') + ' : si tu l\'assignes, elle n\'apparaîtra chez personne.</strong>'
+    + (cat.epuisee.length ? ' Pour faire retravailler un élève, accorde-lui une tentative depuis sa copie (Vue classe).' : '');
+  else if(restants < eleves.length) l3 = 'Si tu l\'assignes, elle apparaîtra chez les <strong>' + restants + ' élève' + (restants > 1 ? 's' : '') + '</strong> qui ne l\'ont pas terminée (les autres ne la verront pas).';
+  else l3 = !seul ? 'Aucun élève ne l\'a encore terminée : elle apparaîtra chez tous.' : '';
+  const noms = !seul && eleves.length ? '<div style="margin-top:4px"><a href="#" onclick="MDJ_APERCU_NOMS=!MDJ_APERCU_NOMS;apercuMDJ();return false" style="font-size:11.5px">' + (MDJ_APERCU_NOMS ? '▲ masquer les noms' : '▼ voir les noms') + '</a></div>'
+    + (MDJ_APERCU_NOMS ? '<div style="font-size:11.5px;line-height:1.6;margin-top:4px">'
+      + [['validee','✅ Validée'],['epuisee','⛔ 2 tentatives'],['commencee','✏️ Commencée'],['a_faire','⬜ Pas commencée']].filter(function(x){ return cat[x[0]].length; })
+        .map(function(x){ return '<div><strong>' + x[1] + ' :</strong> ' + cat[x[0]].map(function(e){ return nomE(e) + (x[0] === 'validee' && e.note != null ? ' (' + e.note + ')' : ''); }).join(', ') + '</div>'; }).join('')
+      + '</div>' : '') : '';
+  return '<div style="margin-top:10px;padding:10px 12px;border-radius:8px;font-size:12.5px;line-height:1.55;background:' + (actives.length || !restants ? '#FFFBEA' : '#F8FAFC') + ';border:1px solid ' + (actives.length || !restants ? '#FDE68A' : '#E2E8F0') + '">'
+    + '<div>' + l1 + '</div><div style="margin-top:4px">' + l2 + '</div>' + (l3 ? '<div style="margin-top:4px">' + l3 + '</div>' : '') + noms + '</div>';
+}
+
+// « À terminer à la maison jusqu'au… » (29/09/2026) : échéance proposée = demain 8h
+function toggleMDJMaison(){
+  const cb = document.getElementById('mdj-maison');
+  const dt = document.getElementById('mdj-maison-date');
+  if(!cb || !dt) return;
+  dt.style.display = cb.checked ? '' : 'none';
+  if(cb.checked && !dt.value){
+    const d = new Date(); d.setDate(d.getDate() + 1); d.setHours(8, 0, 0, 0);
+    const p2 = function(n){ return String(n).padStart(2, '0'); };
+    dt.value = d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + 'T08:00';
+  }
+}
+function etiquetteMaison(a){
+  if(!a.maison_jusqu_a) return '';
+  const passee = new Date(a.maison_jusqu_a).getTime() <= Date.now();
+  return ' <span style="display:inline-block;padding:1px 7px;border-radius:9px;font-size:10.5px;font-weight:700;background:' + (passee ? '#F3F4F6;color:#6B7280' : '#E0F2FE;color:#075985') + '">🏠 '
+    + (passee ? 'maison (échéance passée)' : 'à la maison jusqu\'au ' + fmtDateHeure(a.maison_jusqu_a)) + '</span>';
 }
 
 // --- Bascule l'affichage entre sélection "classe" et "élève" ---
@@ -315,6 +433,14 @@ async function assignerMDJ(){
     }
   }
 
+  const cbMaison = document.getElementById('mdj-maison');
+  if(cbMaison && cbMaison.checked){
+    const v = (document.getElementById('mdj-maison-date') || {}).value;
+    const d = v ? new Date(v) : null;
+    if(!d || isNaN(d) || d.getTime() <= Date.now()){ if(st) st.textContent = 'Choisis une échéance « à la maison » à venir (date et heure).'; return; }
+    body.maison_jusqu_a = d.toISOString();
+  }
+
   const token = localStorage.getItem('laboro_token');
   if(!token){ if(st) st.textContent = 'Connecte-toi via le serveur (enseignant) pour assigner une mission.'; return; }
 
@@ -332,9 +458,14 @@ async function assignerMDJ(){
     const qui = d.cible === 'eleve' ? ('à ' + d.prenom+' '+d.nom) : (d.cible === 'groupe' ? 'au groupe ' + d.groupe + (d.nb_eleves_groupe != null ? ' (' + d.nb_eleves_groupe + ' élève(s))' : '') : 'à la classe');
     if(d.cible === 'groupe' && d.nb_eleves_groupe === 0 && !d.deja){
       st.textContent = '⚠️ Mission assignée au groupe ' + d.groupe + ', mais aucun élève de cette classe n\'est encore dans ce groupe. Répartis-les depuis la Vue classe (bouton « Répartir en groupes »).';
-    } else st.textContent = d.deja
-      ? 'ℹ️ La mission "'+d.titre+'" est déjà en cours ('+qui+') : rien à refaire.'
-      : '✅ Mission "'+d.titre+'" assignée '+qui+'. Elle s\'ajoute aux missions déjà en cours.';
+    } else {
+      const maisonTxt = d.maison_jusqu_a ? ' 🏠 À terminer à la maison jusqu\'au ' + fmtDateHeure(d.maison_jusqu_a) + ' : hors horaires, les élèves concernés ne pourront travailler que sur elle.' : '';
+      apercuMDJ();
+      st.textContent = d.deja
+        ? (d.maison_maj ? 'ℹ️ La mission "'+d.titre+'" était déjà en cours ('+qui+').' + maisonTxt
+                        : 'ℹ️ La mission "'+d.titre+'" est déjà en cours ('+qui+') : rien à refaire.')
+        : '✅ Mission "'+d.titre+'" assignée '+qui+'.' + (maisonTxt || ' Elle s\'ajoute aux missions déjà en cours.');
+    }
   }
   renderMDJListe();
 }
@@ -390,7 +521,7 @@ async function renderMDJListe(){
         + '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">'
         + '<div style="flex:1;min-width:220px;cursor:pointer" onclick="basculerRestantsMDJ(\''+a.id+'\')" title="Voir qui ne l\'a pas encore terminée">'
         + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:var(--th-principal)">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
-        + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+'</div></div>'
+        + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+etiquetteMaison(a)+'</div></div>'
         + barreAvancement(a)
         + '<button onclick="retirerMDJ(\''+a.id+'\')" title="Retirer cette mission (elle reste dans l\'historique)" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">✕</button>'
         + '</div>'
@@ -412,6 +543,7 @@ async function retirerMDJ(id){
   const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/' + encodeURIComponent(id), { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } });
   if(!r.ok || !r.data.ok){ alert(r.erreur || 'Retrait impossible.'); return; }
   renderMDJListe();
+  apercuMDJ();
 }
 
 function remplirFiltreHistoriqueMDJ(){
@@ -441,7 +573,7 @@ function renderMDJHistorique(){
         const e = etatAssignation(a);
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">'+cibleAssignation(a)+'</td>'
-          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span></td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span>'+etiquetteMaison(a)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7">'+a.termines+'/'+a.total+' terminée(s)</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:'+e.bg+';color:'+e.fg+'">'+e.label
           + (a.retiree_at ? ' le '+fmtDateHeure(a.retiree_at).split(' ')[0] : '') + '</span></td></tr>';
