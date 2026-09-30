@@ -159,12 +159,12 @@ Vous êtes employé(e) en tant que conseiller(ère) de vente au sein de LABORO d
               ressources: ['R-A7','R-A8'],
               points: 2,
               corrige: {
-                analyse: 'Les chaussures Trail X-Grip (91,64€ TTC) sont positionnées dans la fourchette haute de la concurrence (Decathlon 79,99€ / Sport 2000 89,99€ / Go Sport 94,99€). Le sac hydratation (35,81€) est légèrement au-dessus du prix moyen constaté (32€-38€). LABORO maintient un positionnement légèrement premium cohérent avec son image spécialiste.'
+                analyse: 'Les chaussures Trail X-Grip (91,64€ TTC) sont positionnées dans la fourchette haute de la concurrence (Sportélia 79,99€ / Sport 2000 89,99€ / Go Sport 94,99€). Le sac hydratation (35,81€) est légèrement au-dessus du prix moyen constaté (32€-38€). LABORO maintient un positionnement légèrement premium cohérent avec son image spécialiste.'
               }
             },
             {
               num: '3.3',
-              texte: 'Romain Sauzet décide de s\'aligner sur le prix de Decathlon pour les chaussures. Calculer le nouveau taux de marge. Détailler les calculs.',
+              texte: 'Romain Sauzet décide de s\'aligner sur le prix de Sportélia pour les chaussures. Calculer le nouveau taux de marge. Détailler les calculs.',
               type: 'calcul',
               ressources: ['R-A7','R-A8'],
               points: 2,
@@ -175,12 +175,12 @@ Vous êtes employé(e) en tant que conseiller(ère) de vente au sein de LABORO d
             },
             {
               num: '3.4',
-              texte: 'Analyser l\'opportunité pour LABORO d\'appliquer ce nouveau prix d\'alignement sur Decathlon.',
+              texte: 'Analyser l\'opportunité pour LABORO d\'appliquer ce nouveau prix d\'alignement sur Sportélia.',
               type: 'redaction',
               ressources: [],
               points: 2,
               corrige: {
-                analyse: 'L\'alignement sur Decathlon réduit le taux de marge de 45% à 36,99%, soit une perte de 8 points de marge. Cependant, cela permet à LABORO de rester compétitif face au leader du marché. L\'opportunité est réelle si l\'augmentation du volume de ventes compense la perte de marge unitaire. Il convient de s\'interroger sur le positionnement de LABORO : en tant que spécialiste, un prix premium peut se justifier si l\'offre de service (conseil expert, atelier trail) est mise en avant.'
+                analyse: 'L\'alignement sur Sportélia réduit le taux de marge de 45% à 36,99%, soit une perte de 8 points de marge. Cependant, cela permet à LABORO de rester compétitif face au leader du marché. L\'opportunité est réelle si l\'augmentation du volume de ventes compense la perte de marge unitaire. Il convient de s\'interroger sur le positionnement de LABORO : en tant que spécialiste, un prix premium peut se justifier si l\'offre de service (conseil expert, atelier trail) est mise en avant.'
               }
             }
           ]
@@ -453,7 +453,7 @@ Vous êtes employé(e) en tant que conseiller(ère) de vente au sein de LABORO d
       data: {
         headers: ['Concurrent','PV TTC Chaussures Trail','PV TTC Sac Hydratation 10L'],
         rows: [
-          ['Decathlon','79,99 €','32,99 €'],
+          ['Sportélia','79,99 €','32,99 €'],
           ['Sport 2000','89,99 €','37,50 €'],
           ['Go Sport','94,99 €','38,99 €'],
         ]

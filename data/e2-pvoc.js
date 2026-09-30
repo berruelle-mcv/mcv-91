@@ -28,7 +28,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               points: 2,
               corrige: {
                 methode: 'Opportunité = facteur externe favorable à LABORO\nMenace = facteur externe défavorable à LABORO',
-                reponse: `OPPORTUNITÉ : La tendance éco-responsable dans le sport est en pleine expansion (R-A2). Les acheteurs B2B (CE, clubs) sont de plus en plus sensibles aux critères RSE dans leurs appels d'offres — LABORO peut se différencier sur ce critère face à Decathlon Pro.\n\nMENACE : Le marché est dominé par des acteurs très structurés (Decathlon Pro, Intersport Pro) avec des réseaux nationaux et des prix compétitifs. LABORO, entreprise locale, doit faire face à des concurrents bénéficiant d'économies d'échelle importantes.`
+                reponse: `OPPORTUNITÉ : La tendance éco-responsable dans le sport est en pleine expansion (R-A2). Les acheteurs B2B (CE, clubs) sont de plus en plus sensibles aux critères RSE dans leurs appels d'offres — LABORO peut se différencier sur ce critère face à Sportélia Pro.\n\nMENACE : Le marché est dominé par des acteurs très structurés (Sportélia Pro, Intersport Pro) avec des réseaux nationaux et des prix compétitifs. LABORO, entreprise locale, doit faire face à des concurrents bénéficiant d'économies d'échelle importantes.`
               }
             },
             {
@@ -149,13 +149,13 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
             },
             {
               num: '2.3',
-              texte: 'Formuler trois réponses différenciées à l\'objection suivante : "Vos équipements EcoPerf sont plus chers que ceux de Decathlon Pro."',
+              texte: 'Formuler trois réponses différenciées à l\'objection suivante : "Vos équipements EcoPerf sont plus chers que ceux de Sportélia Pro."',
               type: 'rédactionnel',
               ressources: ['R-B2','R-B4'],
               points: 3,
               corrige: {
                 methode: 'Méthode de traitement des objections : Écouter → Reformuler → Répondre avec argument → Vérifier',
-                reponse: `RÉPONSE 1 — Argument qualité/durabilité :\n"Je comprends que le prix soit un point de vigilance. Nos équipements EcoPerf sont fabriqués pour durer minimum 5 ans versus 2–3 ans pour une gamme entrée de prix. Rapporté au coût par utilisation, ils reviennent souvent moins chers à terme. Et avec le flocage intégré, vous économisez le coût de personnalisation."\n\nRÉPONSE 2 — Argument différence de valeur :\n"C'est vrai que notre prix catalogue est légèrement supérieur. Mais contrairement à Decathlon Pro, vous bénéficiez d'un commercial dédié qui gère tout pour vous — tailles, commandes, relances — et d'une livraison en 48h sur l'Essonne. Pour un responsable de club bénévole, le temps que vous économisez a aussi une valeur."\n\nRÉPONSE 3 — Argument concession / offre du jour :\n"Aujourd'hui sur le forum, nous avons une offre exclusive : -10% sur toute première commande EcoPerf passée avant ce soir. Sur une commande de 30 maillots, ça représente [X] € d'économie. Je vous prépare un devis personnalisé en 5 minutes, qu'est-ce que vous en pensez ?"`
+                reponse: `RÉPONSE 1 — Argument qualité/durabilité :\n"Je comprends que le prix soit un point de vigilance. Nos équipements EcoPerf sont fabriqués pour durer minimum 5 ans versus 2–3 ans pour une gamme entrée de prix. Rapporté au coût par utilisation, ils reviennent souvent moins chers à terme. Et avec le flocage intégré, vous économisez le coût de personnalisation."\n\nRÉPONSE 2 — Argument différence de valeur :\n"C'est vrai que notre prix catalogue est légèrement supérieur. Mais contrairement à Sportélia Pro, vous bénéficiez d'un commercial dédié qui gère tout pour vous — tailles, commandes, relances — et d'une livraison en 48h sur l'Essonne. Pour un responsable de club bénévole, le temps que vous économisez a aussi une valeur."\n\nRÉPONSE 3 — Argument concession / offre du jour :\n"Aujourd'hui sur le forum, nous avons une offre exclusive : -10% sur toute première commande EcoPerf passée avant ce soir. Sur une commande de 30 maillots, ça représente [X] € d'économie. Je vous prépare un devis personnalisé en 5 minutes, qu'est-ce que vous en pensez ?"`
               }
             },
             {
@@ -231,7 +231,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
     'R-A2': {
       titre: 'Le marché du sport éco-responsable en France',
       type: 'texte',
-      data: `Le sport éco-responsable connaît une croissance de 14% par an depuis 2020. Les acheteurs institutionnels (CE, mairies, associations) intègrent désormais des critères environnementaux dans 62% de leurs appels d'offres sport (source : Observatoire du Sport Responsable 2023).\n\nLes principaux acteurs du marché (Decathlon, Intersport, Go Sport) proposent désormais leurs propres gammes "green", intensifiant la concurrence. Cependant, la demande de proximité et de conseil personnalisé reste un levier non exploité par les grandes enseignes.\n\nLe marché des équipements sport B2B en Essonne est estimé à 8–12 millions d'euros par an.\n\nSource : Étude FFF Sport & Responsabilité 2023`
+      data: `Le sport éco-responsable connaît une croissance de 14% par an depuis 2020. Les acheteurs institutionnels (CE, mairies, associations) intègrent désormais des critères environnementaux dans 62% de leurs appels d'offres sport (source : Observatoire du Sport Responsable 2023).\n\nLes principaux acteurs du marché (Sportélia, Intersport, Go Sport) proposent désormais leurs propres gammes "green", intensifiant la concurrence. Cependant, la demande de proximité et de conseil personnalisé reste un levier non exploité par les grandes enseignes.\n\nLe marché des équipements sport B2B en Essonne est estimé à 8–12 millions d'euros par an.\n\nSource : Étude FFF Sport & Responsabilité 2023`
     },
     'R-A3': {
       titre: 'Caractéristiques et engagements de la gamme EcoPerf',
@@ -351,7 +351,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
       titre: 'Fiche produit EcoPerf — Arguments commerciaux',
       type: 'tableau',
       data: {
-        headers: ['Critère', 'LABORO EcoPerf', 'Decathlon Pro', 'SportRun Pro'],
+        headers: ['Critère', 'LABORO EcoPerf', 'Sportélia Pro', 'SportRun Pro'],
         rows: [
           ['Prix unitaire HT', '62 €', '54 €', '68 €'],
           ['Certification éco', 'OEKO-TEX + GRS', 'Non certifié', 'OEKO-TEX uniquement'],

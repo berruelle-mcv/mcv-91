@@ -184,7 +184,7 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 <p><strong>Passer de la vente à la stratégie — l'outil SWOT :</strong> quand la mission te demande de concevoir ou défendre une stratégie commerciale (pas juste une vente), tu dois analyser la situation de LABORO avec l'outil SWOT :</p>
 <ul>
 <li><strong>S — Forces (Strengths)</strong> : atouts internes de LABORO (ex. commercial dédié, flocage rapide)</li>
-<li><strong>W — Faiblesses (Weaknesses)</strong> : points faibles internes (ex. prix parfois plus élevé que Decathlon)</li>
+<li><strong>W — Faiblesses (Weaknesses)</strong> : points faibles internes (ex. prix parfois plus élevé que Sportélia)</li>
 <li><strong>O — Opportunités (Opportunities)</strong> : éléments externes favorables (ex. essor du trail, demande locale en hausse)</li>
 <li><strong>T — Menaces (Threats)</strong> : éléments externes défavorables (ex. nouveau concurrent, hausse des coûts transporteur)</li>
 </ul>
@@ -206,13 +206,13 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 <p>C'est surveiller régulièrement ce qui se passe autour de toi : tes concurrents, les nouveaux produits, les attentes clients, les tendances du marché. Sans veille, tu découvres les mauvaises nouvelles trop tard — un concurrent a baissé ses prix depuis un mois et tu ne le savais pas.</p>
 <p><strong>Les 4 types de veille chez LABORO :</strong></p>
 <ul>
-<li><strong>Veille concurrentielle</strong> — Surveiller SportRun Évry, Decathlon, Go Sport. Leurs prix, leurs promos, leurs nouveautés.</li>
+<li><strong>Veille concurrentielle</strong> — Surveiller SportRun Évry, Sportélia, Go Sport. Leurs prix, leurs promos, leurs nouveautés.</li>
 <li><strong>Veille produit</strong> — Suivre les nouvelles sorties des grandes marques du secteur. Catalogues fournisseurs, salons pro.</li>
 <li><strong>Veille client</strong> — Écouter les avis Google, les retours en magasin, les questions posées. Comprendre ce qui manque.</li>
 <li><strong>Veille réglementaire</strong> — Suivre les changements de loi (garanties, étiquetage, RGPD).</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — veille concurrentielle</div>
-Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les nouveautés et les prix. Cette semaine : Decathlon lance des chaussures trail à 69€ — LABORO a un équivalent, les Chaussures trail Grip X, à 95€. Elle prépare 3 arguments pour justifier l'écart de prix auprès des clients.
+Nina Chevalier consulte le site de Sportélia chaque lundi matin. Elle note les nouveautés et les prix. Cette semaine : Sportélia lance des chaussures trail à 69€ — LABORO a un équivalent, les Chaussures trail Grip X, à 95€. Elle prépare 3 arguments pour justifier l'écart de prix auprès des clients.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -222,7 +222,7 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
   <rect x="15" y="38" width="155" height="118" rx="10" fill="#1A2E4A"/>
   <text x="92" y="64" text-anchor="middle" font-size="22">🏁</text>
   <text x="92" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">CONCURRENTIELLE</text>
-  <text x="92" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">SportRun, Decathlon</text>
+  <text x="92" y="97" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">SportRun, Sportélia</text>
   <text x="92" y="110" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Go Sport, Intersport</text>
   <text x="92" y="126" text-anchor="middle" font-size="8" fill="#63B3ED">Prix · Promos · Nouveautés</text>
   <text x="92" y="140" text-anchor="middle" font-size="8" fill="#63B3ED">Chaque lundi matin</text>
@@ -275,7 +275,7 @@ Nina Chevalier consulte le site de Decathlon chaque lundi matin. Elle note les n
 <div class="res-section-label">🟢 Transformer une information de veille en argument de vente</div>
 <p>Une veille qui reste dans un tableau ne sert à rien : elle doit se transformer en argument concret face au client. La méthode : identifier l'écart avec le concurrent, puis construire une réponse qui ne dénigre jamais le concurrent par son nom.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — de la veille à l'argument</div>
-Nina a repéré que Decathlon vend des chaussures trail équivalentes 26€ moins chères. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle à crampons profonds et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Decathlon par son nom devant le client, elle compare les offres.
+Nina a repéré que Sportélia vend des chaussures trail équivalentes 26€ moins chères. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle à crampons profonds et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Sportélia par son nom devant le client, elle compare les offres.
 </div>
 <p><strong>Construire un tableau de veille simple :</strong> pour chaque concurrent suivi, note la date, le prix observé, l'info clé, et l'action à en tirer (rien / en parler à l'équipe / préparer un argument). Un tableau de veille sans colonne "action" n'est qu'une liste de curiosités.</p>
 </div>
@@ -291,7 +291,7 @@ Nina a repéré que Decathlon vend des chaussures trail équivalentes 26€ moin
 <div class="res-section-label">🟠 Quand la veille donne plusieurs signaux en même temps</div>
 <p>À ce niveau, tu ne reçois plus une seule information claire : plusieurs signaux arrivent en même temps, parfois contradictoires ou de priorité différente. Ton rôle est de décider lequel traiter en premier, pas de tout traiter à la fois de la même façon.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — deux signaux le même jour</div>
-Le même lundi : (1) un client se plaint sur Google que le délai de livraison s'allonge, et (2) Decathlon lance une promo agressive sur les vestes trail, en pleine saison. Tu ne peux pas traiter les deux de la même urgence. Le signal client touche la réputation immédiate de LABORO (à remonter tout de suite au service concerné) ; la promo concurrente touche les ventes à venir (à préparer pour la semaine, pas dans l'heure).
+Le même lundi : (1) un client se plaint sur Google que le délai de livraison s'allonge, et (2) Sportélia lance une promo agressive sur les vestes trail, en pleine saison. Tu ne peux pas traiter les deux de la même urgence. Le signal client touche la réputation immédiate de LABORO (à remonter tout de suite au service concerné) ; la promo concurrente touche les ventes à venir (à préparer pour la semaine, pas dans l'heure).
 </div>
 <p><strong>Prioriser avec deux questions :</strong> "Est-ce que ça touche un client maintenant ?" (urgent) et "Est-ce que ça touche mes ventes des prochaines semaines ?" (important mais pas urgent). Un signal peut être les deux à la fois — c'est celui-là qu'il faut traiter en premier.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — signal à la fois urgent et important</div>
@@ -336,9 +336,9 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 <p><strong>La vente ne s'arrête pas au "oui" du client.</strong></p>
 <p>Après l'accord, il reste 4 étapes importantes pour finaliser correctement.</p>
 <ul>
-<li><strong>1. Encaisser</strong> — CB, espèces, chèque. Vérifier le rendu monnaie. Proposer la carte fidélité si pas encore fait.</li>
-<li><strong>2. Remettre les documents</strong> — Ticket de caisse remis au client s'il le souhaite (depuis le 1er août 2023, il n'est plus imprimé systématiquement : propose-le, c'est sa preuve d'achat pour la garantie et les échanges). Bon de garantie si produit technique. Notice si nécessaire.</li>
-<li><strong>3. Proposer les services complémentaires</strong> — Livraison, personnalisation, rappel de la garantie commerciale 30 jours (incluse). C'est le dernier moment.</li>
+<li><strong>1. Proposer les services complémentaires</strong> — Livraison, personnalisation, rappel de la garantie commerciale 30 jours (incluse), carte fidélité si pas encore faite. C'est le dernier moment : avant d'encaisser.</li>
+<li><strong>2. Encaisser</strong> — CB, espèces, chèque. Vérifier le rendu monnaie.</li>
+<li><strong>3. Remettre les documents</strong> — Ticket de caisse remis au client s'il le souhaite (depuis le 1er août 2023, il n'est plus imprimé systématiquement : propose-le, c'est sa preuve d'achat pour la garantie et les échanges). Bon de garantie si produit technique. Notice si nécessaire.</li>
 <li><strong>4. Prendre congé</strong> — Remercier, souhaiter bonne utilisation, inviter à revenir. La dernière impression compte autant que la première.</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — vente de chaussures trail</div>
@@ -355,22 +355,22 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
     </marker>
   </defs>
   <rect x="15" y="38" width="148" height="98" rx="10" fill="#276749"/>
-  <text x="89" y="66" text-anchor="middle" font-size="22">💳</text>
-  <text x="89" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1. ENCAISSER</text>
-  <text x="89" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">CB · Espèces · Chèque</text>
-  <text x="89" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Carte fidélité si pas fait</text>
+  <text x="89" y="66" text-anchor="middle" font-size="22">➕</text>
+  <text x="89" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1. SERVICES +</text>
+  <text x="89" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Livraison · Garantie 30 j</text>
+  <text x="89" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Carte fidélité si pas faite</text>
   <path d="M 165 87 L 180 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
   <rect x="182" y="38" width="148" height="98" rx="10" fill="#2F855A"/>
-  <text x="256" y="66" text-anchor="middle" font-size="22">🧾</text>
-  <text x="256" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2. DOCUMENTS</text>
-  <text x="256" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Ticket remis sur demande</text>
-  <text x="256" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Garantie · Notice</text>
+  <text x="256" y="66" text-anchor="middle" font-size="22">💳</text>
+  <text x="256" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2. ENCAISSER</text>
+  <text x="256" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">CB · Espèces · Chèque</text>
+  <text x="256" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Vérifier la monnaie</text>
   <path d="M 332 87 L 347 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
   <rect x="349" y="38" width="148" height="98" rx="10" fill="#38A169"/>
-  <text x="423" y="66" text-anchor="middle" font-size="22">➕</text>
-  <text x="423" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3. SERVICES +</text>
-  <text x="423" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Livraison · Garantie 30 j</text>
-  <text x="423" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Personnalisation textile</text>
+  <text x="423" y="66" text-anchor="middle" font-size="22">🧾</text>
+  <text x="423" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">3. DOCUMENTS</text>
+  <text x="423" y="99" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Ticket remis sur demande</text>
+  <text x="423" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">Garantie · Notice</text>
   <path d="M 499 87 L 514 87" stroke="#276749" stroke-width="2" marker-end="url(#arr4)" fill="none"/>
   <rect x="516" y="38" width="149" height="98" rx="10" fill="#48BB78"/>
   <text x="590" y="66" text-anchor="middle" font-size="22">👋</text>
@@ -382,7 +382,7 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>4 étapes : encaisser · documents · services complémentaires · prise de congé</li>
+<li>4 étapes : services complémentaires · encaisser · documents · prise de congé</li>
 <li>Ticket de caisse : proposé et remis à la demande du client (plus imprimé systématiquement depuis le 1er août 2023) — c'est sa preuve d'achat</li>
 <li>Proposer la carte fidélité ET les services avant l'encaissement</li>
 <li>La dernière impression = fidélisation ou perte du client</li>
@@ -890,15 +890,14 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
   <text x="340" y="154" text-anchor="middle" font-size="9.5" fill="#1A2E4A">
     <tspan font-weight="700">NPS = </tspan>
     <tspan>% Promoteurs − % Détracteurs  ·  </tspan>
-    <tspan font-weight="700">Objectif LABORO : NPS &gt; +20  ·  </tspan>
-    <tspan>Score actuel : +22 ✅</tspan>
+    <tspan font-weight="700">Objectif LABORO : NPS &gt; +20</tspan>
   </text>
 </svg>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
-<li>Taux de satisfaction = satisfaits ÷ répondants × 100 — objectif LABORO ≥ 80%</li>
+<li>Taux de satisfaction = (très satisfaits + satisfaits) ÷ répondants × 100 — objectif LABORO ≥ 80 %</li>
 <li>NPS = % Promoteurs − % Détracteurs — objectif LABORO &gt; +20</li>
 <li>Mesurer permet d'agir avant qu'un client insatisfait ne parte définitivement</li>
 </ul>
@@ -1212,8 +1211,8 @@ Un client "dormant" selon les chiffres, mais dont l'historique révèle une expl
 1:{t:'Évaluer les actions de fidélisation — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — Pourquoi évaluer une action de fidélisation</div>
 <p><strong>Proposer une carte PRO, une newsletter ou un événement client (voir C3.2) ne suffit pas</strong> : il faut ensuite vérifier si l'action a vraiment donné envie au client de revenir. Sans évaluation, impossible de savoir si une action mérite d'être reconduite ou arrêtée.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — M. Ferreira</div>
-M. Ferreira achète régulièrement. Grâce à sa carte LABORO PRO, il a accumulé 240 points = 24€ de réduction sur sa prochaine commande. Il a aussi été invité à la soirée test chaussures de trail. Résultat : il est client depuis 3 ans et recommande LABORO à son club — la carte PRO et la soirée ont visiblement fonctionné sur lui.
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — M. Lopez</div>
+M. Lopez achète régulièrement. Grâce à sa carte LABORO PRO, il a accumulé 240 points = 24€ de réduction sur sa prochaine commande. Il a aussi été invité à la soirée test chaussures de trail. Résultat : il est client depuis 3 ans et recommande LABORO à son club — la carte PRO et la soirée ont visiblement fonctionné sur lui.
 </div>
 <p><strong>Un premier indicateur simple : le taux de rétention.</strong> Il mesure combien de clients reviennent acheter une seconde fois.</p>
 </div>
@@ -1653,7 +1652,7 @@ Club A : score 83%, saison qui démarre dans 2 semaines. Club B : score 83%, mai
 <ul>
 <li><strong>Alertes Google</strong> — mots-clés ciblés, fréquence quotidienne/hebdomadaire</li>
 <li><strong>Veille des avis en ligne</strong> — clubs et CE, hebdomadaire</li>
-<li><strong>Suivi des prix concurrents</strong> — Decathlon Pro/SportRun, mensuel</li>
+<li><strong>Suivi des prix concurrents</strong> — Sportélia Pro/SportRun, mensuel</li>
 <li><strong>Newsletters sectorielles</strong> — fédérations, CCI, à réception</li>
 <li><strong>Flux LinkedIn suivis</strong> — pages cibles, quotidien</li>
 </ul>
@@ -1786,15 +1785,14 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 'B4.3':{
 1:{t:"Conduire un entretien de prospection — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.3 — Conduire un entretien de prospection.</strong> L'entretien suit un plan en 6 étapes.</p>
+<p><strong>B4.3 — Conduire un entretien de prospection.</strong> L'entretien suit le plan d'appel LABORO en 5 étapes (voir la fiche B4.2) ; l'étape 4 comprend l'argumentation et le traitement des objections.</p>
 <p><strong>Le plan d'appel LABORO :</strong></p>
 <ul>
-<li><strong>1. Accroche</strong> — "Bonjour M. [nom], je suis [prénom] de LABORO Sport à Évry..."</li>
-<li><strong>2. Objet</strong> — "Je vous appelle car nous équipons plusieurs clubs de votre secteur..."</li>
+<li><strong>1. Présentation</strong> — "Bonjour M. [nom], je suis [prénom] de LABORO Sport à Évry..."</li>
+<li><strong>2. Accroche</strong> — "Je vous appelle car nous équipons plusieurs clubs de votre secteur..."</li>
 <li><strong>3. Découverte</strong> — "Vous avez combien de licenciés ? Quelle est votre saison ?"</li>
-<li><strong>4. Argumentation</strong> — "Nous pouvons vous proposer..."</li>
-<li><strong>5. Traitement objections</strong> — "Je comprends, et justement..."</li>
-<li><strong>6. Conclusion</strong> — "Je vous propose un RDV mardi ou jeudi ?"</li>
+<li><strong>4. Proposition</strong> — argumentation ("Nous pouvons vous proposer...") et traitement des objections ("Je comprends, et justement...")</li>
+<li><strong>5. Conclusion</strong> — "Je vous propose un RDV mardi ou jeudi ?"</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple — accroche téléphonique</div>
 "Bonjour M. Ferreira, je suis Sophie de LABORO Sport à Évry. Nous équipons 12 clubs de foot en Essonne. Je vous contacte car votre club commence sa préparation d'hiver — est-ce que vous avez prévu votre équipement ?"
@@ -1859,9 +1857,9 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 <div class="res-section-label">🟢 Le plan d'appel détaillé et la méthode ARA</div>
 <ul><li><strong>1. Présentation</strong> (15s) — "Bonjour M. X, je suis [prénom], commercial chez LABORO Sport & Outdoor à Évry."</li><li><strong>2. Accroche personnalisée</strong> (20s) — un exemple concret récent lié à son secteur.</li><li><strong>3. Permission de continuer</strong> — "Est-ce que vous avez 3 minutes ?" (jamais "j'espère ne pas déranger", trop soumis).</li><li><strong>4. Découverte BANT</strong> — 2-3 questions ouvertes maximum, écouter plus que parler.</li><li><strong>5. Proposition ciblée</strong> — 1-2 avantages liés directement à ce qu'il vient de dire, jamais le catalogue en vrac.</li><li><strong>6. Prise de RDV</strong> — toujours 2 créneaux proposés, confirmation par mail dans l'heure.</li></ul>
 <p><strong>Méthode ARA (Accepter · Reformuler · Argumenter) pour les objections :</strong></p>
-<ul><li><strong>"On travaille avec Decathlon"</strong> → Accepter, puis reformuler : "Quelle est votre principale difficulté avec eux ?" puis argumenter sur la faille identifiée.</li><li><strong>"On n'a pas de budget"</strong> → Requalifier plutôt qu'insister : "Quel est votre budget habituel pour ce type d'achat ?"</li><li><strong>"Envoyez-moi une documentation"</strong> → Reprendre la main avant d'envoyer : "Puis-je vous poser 2 questions rapides ?"</li><li><strong>"C'est trop cher"</strong> → "Par rapport à quoi ?" avant de défendre le prix.</li></ul>
-<div class="res-ex"><div class="res-ex-l">Exemple — objection Decathlon</div>
-Pierre Lambert : "On commande déjà chez Decathlon, on est satisfaits." Réponse : "Je comprends, ils sont bien implantés. Quel est votre délai de livraison habituel ?" — "Environ 5 semaines." — "Chez nous c'est 3 semaines flocage inclus, avec un commercial dédié joignable directement." <strong>→ RDV obtenu 3 jours plus tard.</strong>
+<ul><li><strong>"On travaille avec Sportélia"</strong> → Accepter, puis reformuler : "Quelle est votre principale difficulté avec eux ?" puis argumenter sur la faille identifiée.</li><li><strong>"On n'a pas de budget"</strong> → Requalifier plutôt qu'insister : "Quel est votre budget habituel pour ce type d'achat ?"</li><li><strong>"Envoyez-moi une documentation"</strong> → Reprendre la main avant d'envoyer : "Puis-je vous poser 2 questions rapides ?"</li><li><strong>"C'est trop cher"</strong> → "Par rapport à quoi ?" avant de défendre le prix.</li></ul>
+<div class="res-ex"><div class="res-ex-l">Exemple — objection Sportélia</div>
+Pierre Lambert : "On commande déjà chez Sportélia, on est satisfaits." Réponse : "Je comprends, ils sont bien implantés. Quel est votre délai de livraison habituel ?" — "Environ 5 semaines." — "Chez nous c'est 3 semaines flocage inclus, avec un commercial dédié joignable directement." <strong>→ RDV obtenu 3 jours plus tard.</strong>
 </div>
 </div>
 <div class="res-retenir">
@@ -2046,7 +2044,7 @@ Un portefeuille de prospects à statuts variés (devis envoyés, en négociation
 </ul>
 <p><strong>Construire une offre à plusieurs niveaux</strong> (Essentiel · Confort · Partenaire) permet au client de choisir selon son budget, sans se sentir piégé dans une seule option.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — répondre à l'objection prix</div>
-Un client dit : "Chez Decathlon Pro, c'est 60 € de moins pour 15 maillots." (28 € contre 24 € l'unité) Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
+Un client dit : "Chez Sportélia Pro, c'est 60 € de moins pour 15 maillots." (28 € contre 24 € l'unité) Réponse : "Vous avez raison sur le prix — et avec LABORO, vous gagnez 2 semaines de délai de flocage en plus, et un commercial joignable directement en cas de souci. C'est aussi ça, la différence."
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
@@ -2084,9 +2082,9 @@ Un client dit : "Chez Decathlon Pro, c'est 60 € de moins pour 15 maillots." (2
 <div class="res-section-label">🟢 Construire un comparatif et une offre à plusieurs niveaux</div>
 <p><strong>Analyser les forces et faiblesses concurrentielles :</strong> avant tout RDV stratégique, construire un tableau comparatif objectif sur les critères qui comptent pour CE prospect (prix, délai livraison, délai flocage, service commercial dédié, note clients...). Règle d'or : ne comparer que les critères où LABORO est supérieur ou égal, et ne jamais dénigrer un concurrent par son nom — comparer les offres, pas les entreprises.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — tableau comparatif clubs sportifs</div>
-Prix maillots flocage : LABORO 28 €/u · Decathlon Pro 24 €/u · SportRun 31 €/u.<br>
-Délai flocage : LABORO 3 semaines · Decathlon Pro 5 semaines · SportRun 2 semaines.<br>
-Commercial dédié : LABORO Oui · Decathlon Pro Non · SportRun Partiellement → différenciateur fort pour LABORO.
+Prix maillots flocage : LABORO 28 €/u · Sportélia Pro 24 €/u · SportRun 31 €/u.<br>
+Délai flocage : LABORO 3 semaines · Sportélia Pro 5 semaines · SportRun 2 semaines.<br>
+Commercial dédié : LABORO Oui · Sportélia Pro Non · SportRun Partiellement → différenciateur fort pour LABORO.
 </div>
 <p><strong>Construire une offre à plusieurs niveaux :</strong></p>
 <ul>
@@ -2107,12 +2105,12 @@ Commercial dédié : LABORO Oui · Decathlon Pro Non · SportRun Partiellement �
 <div class="res-section-label">🟠 Calculer la valeur perçue et arbitrer un argumentaire concurrentiel</div>
 <p><strong>Calculer la valeur de l'offre pour le prospect</strong> — comparer le coût total sur la durée réelle d'utilisation, pas sur le prix unitaire seul. <strong>Formule de la valeur perçue</strong> : Valeur = Bénéfices obtenus ÷ Prix payé. Augmenter la valeur = augmenter les bénéfices perçus, pas forcément baisser le prix.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — l'écart de prix qui devient nul</div>
-LABORO 28 €/maillot · Decathlon Pro 24 €/maillot · pour 25 maillots → écart 100 € (prix hors remise). Mais délai flocage LABORO 3 semaines vs 5 semaines chez Decathlon Pro = 14 jours gagnés. Si le tournoi du client est dans 4 semaines, Decathlon Pro ne peut pas livrer à temps — l'écart de 100 € devient sans objet face au risque de ne pas être livré.
+LABORO 28 €/maillot · Sportélia Pro 24 €/maillot · pour 25 maillots → écart 100 € (prix hors remise). Mais délai flocage LABORO 3 semaines vs 5 semaines chez Sportélia Pro = 14 jours gagnés. Si le tournoi du client est dans 4 semaines, Sportélia Pro ne peut pas livrer à temps — l'écart de 100 € devient sans objet face au risque de ne pas être livré.
 </div>
 <p>Quand plusieurs arguments sont disponibles (prix, délai, service, garanties), il faut choisir lesquels mettre en avant selon ce qui compte réellement pour CE prospect précis — un argument fort pour un client (délai serré) peut être sans intérêt pour un autre (stock déjà constitué).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse construite (Mme Lemoine, présidente d'un club de basket)</div>
-Mme Lemoine : "LABORO c'est 100 € de plus que Decathlon Pro pour 25 maillots."<br>
-Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 100 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 4 semaines — avec Decathlon Pro, vous ne seriez pas livrée à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Mme Lemoine signe le devis le lendemain.</strong>
+Mme Lemoine : "LABORO c'est 100 € de plus que Sportélia Pro pour 25 maillots."<br>
+Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 100 € ça compte. Ce que vous gagnez avec LABORO : le flocage en 3 semaines contre 5 chez eux. Votre tournoi est dans 4 semaines — avec Sportélia Pro, vous ne seriez pas livrée à temps. Et si un problème survient à la livraison, je suis joignable directement." <strong>Mme Lemoine signe le devis le lendemain.</strong>
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix d'arguments — par exemple : pourquoi as-tu mis en avant le délai plutôt que le service commercial dédié dans ce cas précis, et qu'est-ce qui aurait changé avec un autre prospect ? Ce n'est pas un résumé de l'argumentaire, c'est un vrai retour critique sur ta sélection d'arguments.</p>
 </div>
@@ -2317,7 +2315,7 @@ Un objectif commercial B2B à atteindre en un temps limité. En autonomie compl�
 <p><strong>Visiteur professionnel</strong> (fournisseur, partenaire, technicien) : 1. accueillir avec une formule professionnelle · 2. vérifier l'identité, l'objet de la visite et le RDV · 3. prévenir l'interlocuteur · 4. remettre un badge visiteur · 5. faire patienter ou accompagner. Noter l'heure d'arrivée et de départ dans le registre des visites.</p>
 <p><strong>Boîte mail :</strong> trier par urgence (réclamation, RDV imminent → en priorité · demande de renseignement → à traiter ou transmettre · spam → à supprimer sans répondre). Un mail professionnel : objet clair · formule d'introduction · message court (3-5 phrases) · formule de politesse · signature complète.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — accueil showroom</div>
-M. Leroy entre. Vous êtes en train de ranger un rayon. Vous levez les yeux, souriez : "Bonjour ! Je suis à vous dans 30 secondes." Vous finissez rapidement, vous vous approchez : "Voilà ! Vous cherchez quelque chose de particulier ?" — Il se sent attendu, pas ignoré.
+M. Leroy entre. Tu es en train de ranger un rayon. Tu lèves les yeux, tu souris : "Bonjour ! Je suis à vous dans 30 secondes." Tu finis rapidement, tu t'approches : "Voilà ! Vous cherchez quelque chose de particulier ?" — Il se sent attendu, pas ignoré.
 </div>
 </div>
 <div class="res-visual" style="margin:18px 0">
