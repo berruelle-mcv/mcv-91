@@ -56,6 +56,17 @@ Un client entre dans le showroom. Tu es en train de ranger des articles.<br><br>
 </div>
 <p>Pour t'entraîner sur un autre produit : pars toujours d'une caractéristique du catalogue, puis demande-toi "et donc ?" pour trouver l'avantage, puis "et pour le client, ça veut dire quoi ?" pour trouver le bénéfice.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Reformuler</strong> — redire avec tes mots ce que le client vient de dire (« Si je comprends bien, vous… »), puis vérifier (« C'est bien ça ? ») : il se sent écouté et tu t'assures d'avoir compris avant de proposer quoi que ce soit.</li>
+<li><strong>Produit phare (best-seller)</strong> — produit qui se vend le plus dans un rayon ou un magasin, en nombre d'unités. Il faut le connaître par cœur : c'est lui que les clients demandent le plus souvent.</li>
+<li><strong>Prix TTC</strong> — prix affiché en magasin pour les particuliers : il comprend la TVA (20 % pour les articles de sport). C'est le prix que le client paie réellement.</li>
+<li><strong>Marge et taux de marque</strong> — marge = prix de vente HT − prix d'achat HT ; taux de marque = marge ÷ prix de vente HT × 100. Exemple : vendu 50 € HT, acheté 30 € HT → marge 20 € HT ; 20 ÷ 50 × 100 = 40 %.</li>
+<li><strong>Types d'arguments</strong> — argument produit (une caractéristique utile au client), argument prix (rapport qualité-prix, durée de vie, économie sur la durée), argument service (conseil, essai, garantie, retour possible en showroom).</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -133,6 +144,19 @@ La question ② est plus utile ici : elle t'aidera à orienter vers une gamme te
 <div class="res-ex"><div class="res-ex-l">Exemple — repérer le mobile SONCASE</div>
 Une cliente dit : "Je ne veux pas d'un article qui va s'user en 6 mois, j'ai déjà été déçue une fois." → mobile dominant : <strong>Sécurité</strong>. Ton argument doit insister sur la solidité et la garantie du produit, pas sur son prix ou sa nouveauté.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Devis</strong> — proposition chiffrée écrite, remise avant la vente : produits, quantités, prix unitaires, remise, total HT, TVA, total TTC, délai de livraison, date et durée de validité. Il n'engage le client que lorsqu'il le signe (avec la mention « bon pour accord ») ; pendant sa durée de validité, LABORO s'engage sur les prix indiqués.</li>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>Calcul d'un devis avec remise</strong> — dans cet ordre : montant brut TTC = prix unitaire TTC × quantité ; montant brut HT = brut TTC ÷ 1,20 ; remise = brut HT × taux de remise ; net HT = brut HT − remise ; TVA = net HT × 0,20 ; net TTC = net HT + TVA (ou net HT × 1,20). Exemple : 40 articles à 30 € TTC, remise 12 % → brut 1 200 € TTC → 1 000 € HT → remise 120 € → net 880 € HT → TVA 176 € → net 1 056 € TTC. On arrondit au centime.</li>
+<li><strong>Répartir un objectif</strong> — objectif total × part (en %) de chaque rayon ou canal. Exemple : objectif 400 000 € et un canal qui pèse 25 % → 400 000 × 0,25 = 100 000 €. La somme des parts doit faire 100 % ; si l'on augmente la part d'un canal prioritaire, on baisse d'autant celle d'un autre.</li>
+<li><strong>Canaux de vente</strong> — B2C showroom (en magasin), B2C e-commerce (sur laboro-sport.fr), B2B (clubs, entreprises, collectivités, tous canaux confondus). Un même objectif se découpe par canal et par rayon.</li>
+<li><strong>Vente complémentaire (ou additionnelle)</strong> — proposer, après l'accord sur le produit principal, un article qui lui est directement utile (une pompe avec un ballon), dans le budget du client et avec un bénéfice concret.</li>
+<li><strong>Garantie légale de conformité</strong> — obligatoire et gratuite : pendant 2 ans après la livraison d'un produit neuf acheté par un particulier, le vendeur doit corriger un défaut ou une non-conformité sans frais pour le client : le client choisit entre la réparation et le remplacement ; si c'est impossible ou si rien n'est fait dans les 30 jours, il peut obtenir une réduction du prix ou un remboursement. Elle ne couvre ni l'usure normale ni un mauvais usage. À ne pas confondre avec la <em>garantie commerciale</em> LABORO (30 jours, échange ou remboursement sans justification), un engagement volontaire de LABORO, qui s'ajoute à la garantie légale sans la remplacer.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -249,6 +273,18 @@ Nina Chevalier consulte le site de Sportélia chaque lundi matin. Elle note les 
   <text x="584" y="140" text-anchor="middle" font-size="8" fill="#EBF8FF">Fédérations sportives</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Types de concurrents</strong> — magasin indépendant (un seul point de vente, un propriétaire), grande enseigne (chaîne nationale avec de nombreux magasins et des prix d'achat bas), <em>pure player</em> (vend uniquement en ligne, sans magasin), service B2B d'une enseigne (vend aux clubs et aux entreprises). Chacun a des forces et des faiblesses différentes face à LABORO.</li>
+<li><strong>Chiffre d'affaires (CA)</strong> — montant total des ventes sur une période (mois, trimestre = 3 mois : T1 de janvier à mars, T2 d'avril à juin…). CA = prix de vente × quantités vendues. Précise toujours s'il est en HT ou en TTC.</li>
+<li><strong>Écart à l'objectif et taux de réalisation</strong> — écart = réalisé − objectif ; écart en % = écart ÷ objectif × 100 ; taux de réalisation = réalisé ÷ objectif × 100. Exemple : objectif 200 000 €, réalisé 230 000 € → écart +30 000 €, soit +15 % ; objectif réalisé à 115 %.</li>
+<li><strong>Taux d'évolution</strong> — (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100. Exemple : 60 paires vendues puis 72 → (72 − 60) ÷ 60 × 100 = +20 %. Un résultat négatif indique une baisse.</li>
+<li><strong>Part d'un rayon dans le CA</strong> — CA du rayon ÷ CA total × 100. Exemple : 45 000 € sur 300 000 € → 15 %. La somme des parts de tous les rayons fait 100 %.</li>
+<li><strong>Panier moyen</strong> — chiffre d'affaires ÷ nombre de ventes (tickets de caisse ou commandes). Exemple : 9 000 € pour 60 ventes → 150 €. On le calcule séparément pour les particuliers (B2C) et les professionnels (B2B), car leurs achats n'ont pas la même taille.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -278,6 +314,19 @@ Nina Chevalier consulte le site de Sportélia chaque lundi matin. Elle note les 
 Nina a repéré que Sportélia vend des chaussures trail équivalentes 26€ moins chères. Face à un client qui compare : "C'est vrai que certains modèles d'entrée de gamme sont moins chers. Ce modèle-ci a une semelle à crampons profonds et une garantie 3 ans — sur la durée, c'est vous qui économisez en ne rachetant pas de chaussures tous les ans." Elle ne cite jamais Sportélia par son nom devant le client, elle compare les offres.
 </div>
 <p><strong>Construire un tableau de veille simple :</strong> pour chaque concurrent suivi, note la date, le prix observé, l'info clé, et l'action à en tirer (rien / en parler à l'équipe / préparer un argument). Un tableau de veille sans colonne "action" n'est qu'une liste de curiosités.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux d'évolution</strong> — (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100. Exemple : 60 paires vendues puis 72 → (72 − 60) ÷ 60 × 100 = +20 %. Un résultat négatif indique une baisse.</li>
+<li><strong>Écart en points</strong> — différence entre deux pourcentages : un taux qui passe de 34 % à 40 % gagne 6 points (et non « 6 % »).</li>
+<li><strong>Taux de marge</strong> — marge ÷ prix d'achat HT × 100 (la marge rapportée au prix d'achat). Exemple : acheté 30 € HT, vendu 50 € HT → 20 ÷ 30 × 100 ≈ 66,7 %. À ne pas confondre avec le taux de marque, calculé sur le prix de vente. Il progresse quand LABORO achète moins cher ou vend davantage d'articles à forte marge.</li>
+<li><strong>Prix après réduction</strong> — prix × (1 − taux de réduction). Exemple : 120 € avec −25 % → 120 × 0,75 = 90 €. Une promotion est limitée dans le temps : après sa date de fin, on compare de nouveau avec le prix habituel.</li>
+<li><strong>Écart de prix</strong> — prix LABORO − prix du concurrent, en euros. Pour l'exprimer en %, on divise par le prix de référence : écart ÷ prix du concurrent × 100 (dis toujours « par rapport à qui »). Exemple : 60 € contre 50 € → 10 € de plus, soit 20 % plus cher que le concurrent. Sur une commande, on compare les totaux de chaque offre, remises déduites.</li>
+<li><strong>Référencer un produit</strong> — l'ajouter à l'assortiment (catalogue) du magasin. Avant de décider, on regarde la demande des clients, le prix d'achat et la marge possible, la place disponible en rayon et les produits proches déjà vendus (risque de concurrence entre eux).</li>
+<li><strong>Constat / hypothèse</strong> — un constat est un fait chiffré tiré des données (« l'outdoor baisse ») ; une hypothèse est une explication possible, formulée avec prudence (« peut-être à cause de… »), dont on indique comment la vérifier.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -379,6 +428,17 @@ M. Kowalski achète des chaussures trail expert carbone LABORO à 149€. Avant 
   <text x="590" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.85)">à revenir</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Documents de vente</strong> — <em>devis</em> : proposition chiffrée remise avant la vente ; <em>bon de livraison</em> : accompagne la marchandise, le client le signe à la réception (en notant ses réserves s'il y a un problème) ; <em>facture</em> : preuve de la vente, obligatoire pour une vente à un professionnel, remise à un particulier s'il la demande ; <em>ticket de caisse</em> : preuve d'achat du particulier en magasin.</li>
+<li><strong>Garantie légale de conformité</strong> — obligatoire et gratuite : pendant 2 ans après la livraison d'un produit neuf acheté par un particulier, le vendeur doit corriger un défaut ou une non-conformité sans frais pour le client : le client choisit entre la réparation et le remplacement ; si c'est impossible ou si rien n'est fait dans les 30 jours, il peut obtenir une réduction du prix ou un remboursement. Elle ne couvre ni l'usure normale ni un mauvais usage. À ne pas confondre avec la <em>garantie commerciale</em> LABORO (30 jours, échange ou remboursement sans justification), un engagement volontaire de LABORO, qui s'ajoute à la garantie légale sans la remplacer.</li>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>TVA collectée</strong> — TVA que LABORO facture à ses clients sur ses ventes (TTC − HT) ; LABORO la reverse ensuite à l'État, après déduction de la TVA qu'elle a elle-même payée sur ses achats.</li>
+<li><strong>Franchise en base de TVA</strong> — régime de certaines petites entreprises (souvent des micro-entrepreneurs) dont le chiffre d'affaires reste sous un seuil : elles ne facturent pas de TVA et l'indiquent par la mention « TVA non applicable, art. 293 B du CGI ». Cette mention dépend du régime du vendeur, pas de celui de l'acheteur.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -402,6 +462,19 @@ Après l'accord sur une veste à 89€ : "Pour cette veste technique, on propose
 </div>
 <p><strong>Documents à remettre :</strong> ticket de caisse (remis à la demande du client depuis le 1er août 2023 — pense à le proposer) · facture pour les pros · bon de garantie légale 2 ans · bon de livraison si commande.</p>
 <p><strong>KPI à suivre :</strong> valeur panier moyen, taux d'ajout service complémentaire, taux de carte fidélité proposée. Un(e) bon(ne) vendeur(se) LABORO regarde ces chiffres, pas seulement le nombre de ventes.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Rupture de stock, réassort</strong> — rupture : le produit n'est plus disponible (ni en rayon ni en réserve) ; réassort : réapprovisionnement, avec une date d'arrivée annoncée par le fournisseur, que l'on communique au client.</li>
+<li><strong>Fin de série</strong> — dernier stock d'un modèle qui ne sera plus fabriqué (souvent remplacé par un nouveau modèle) : il est souvent vendu moins cher.</li>
+<li><strong>Remboursement partiel</strong> — on rend au client seulement la différence entre ce qu'il a payé et ce qu'il doit finalement. Exemple : payé 70 € (article) + 5 € (livraison) = 75 € ; l'article est remplacé par un modèle à 60 €, livraison inchangée → il doit 65 €, on lui rembourse 10 €.</li>
+<li><strong>Avoir</strong> — document qui annule tout ou partie d'une facture (erreur, retour, remboursement partiel). Le client peut l'utiliser comme un crédit sur un prochain achat, ou être remboursé.</li>
+<li><strong>Panier moyen</strong> — chiffre d'affaires ÷ nombre de ventes (tickets de caisse ou commandes). Exemple : 9 000 € pour 60 ventes → 150 €. On le calcule séparément pour les particuliers (B2C) et les professionnels (B2B), car leurs achats n'ont pas la même taille.</li>
+<li><strong>Taux d'ajout d'un service</strong> — ventes avec au moins un service complémentaire ÷ ventes totales × 100. Exemple : 12 ventes avec service sur 40 → 30 %.</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -493,6 +566,17 @@ Mme Konaté passe commande le mercredi en fin de journée. Elle a besoin des bal
   <text x="562" y="128" text-anchor="middle" font-size="8" fill="#FCA5A5">SMS · Délai précis · Excuse</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Statut d'une commande</strong> — étape où en est la commande : enregistrée → en préparation → expédiée (remise au transporteur) → livrée. On le lit dans LABORO Connect avant de répondre au client, pour lui donner une information exacte.</li>
+<li><strong>Numéro de suivi</strong> — code donné par le transporteur au moment de l'expédition ; il permet au client de suivre son colis en ligne jusqu'à la livraison. On le transmet au client par SMS ou par mail.</li>
+<li><strong>Documents d'une commande en ligne</strong> — la <em>confirmation de commande</em> (mail envoyé au moment de l'achat : produits, prix, adresse, mode de livraison) ; la <em>facture</em> (preuve de l'achat) ; le <em>bon de livraison</em> (glissé dans le colis, il liste ce qui a été livré).</li>
+<li><strong>Compter les jours entre deux dates</strong> — dans un même mois : date d'arrivée − date de départ. Exemple : expédiée le 12, livrée le 15 → 15 − 12 = 3 jours. Sur deux mois différents : (nombre de jours du premier mois − date de départ) + date d'arrivée. Exemple : expédiée le 29 janvier, livrée le 3 février → (31 − 29) + 3 = 5 jours.</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -507,6 +591,18 @@ Mme Konaté passe commande le mercredi en fin de journée. Elle a besoin des bal
 <p><strong>Calculs utiles :</strong></p>
 <ul><li>Délai de livraison = date de commande + délai fournisseur + délai transport</li><li>Stock d'alerte = ventes journalières × délai de réassort en jours</li><li>Taux de livraison dans les délais = (livraisons à temps ÷ total livraisons) × 100</li></ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — Commande d'un lycée</div>Commande de 30 T-shirts techniques pour le Lycée Blaise Pascal d'Orsay (stock 18 unités). Rupture partielle détectée → appel immédiat à Mme Roussel → proposition : livraison partielle J+2 + solde J+10. Client satisfait de la transparence.</div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Livraison partielle et reliquat</strong> — on livre tout de suite une partie de la commande (ce qui est disponible) ; le reliquat est la quantité qui reste à livrer plus tard, avec une date annoncée. Reliquat = quantité commandée − quantité déjà livrée.</li>
+<li><strong>Produit de substitution</strong> — produit proche et disponible, proposé à la place de celui qui manque. Le client doit l'accepter ; s'il est moins cher, il ne paie que son prix.</li>
+<li><strong>Écart de prix d'une substitution</strong> — quantité remplacée × (prix du produit prévu − prix du produit de remplacement). Exemple : 10 articles à 25 € remplacés par un modèle à 18 € → 10 × (25 − 18) = 70 € de moins à facturer.</li>
+<li><strong>Nouvelle date de livraison</strong> — date prévue + retard annoncé. Exemple : prévue le mardi 4, retard de 8 jours → mercredi 12. On la compare tout de suite à la date où le client a vraiment besoin de la marchandise.</li>
+<li><strong>Geste commercial</strong> — compensation offerte volontairement pour une gêne (bon d'achat, frais de livraison remboursés, livraison express offerte), en plus de la solution au problème. Il est proportionné à la gêne et reste dans la limite autorisée à ton niveau ; au-delà, on demande l'accord du responsable.</li>
+<li><strong>Impact d'un incident</strong> — on l'évalue sous trois angles : commercial (vente ou client menacé), financier (argent perdu ou à rembourser), relationnel (confiance et image de LABORO).</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -614,6 +710,17 @@ Son panier passe de 336 € à 336 + 24 + 6,90 = 366,90 €. Il est plus satisfa
   <text x="608" y="118" text-anchor="middle" font-size="8" fill="#93C5FD">Incluse · Sans justification</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Flocage, broderie</strong> — le flocage applique à chaud, avec une presse, un nom, un numéro ou un logo sur le textile ; la broderie coud le motif avec du fil : elle est plus durable et plus haut de gamme, mais plus chère et plus longue à réaliser.</li>
+<li><strong>Total à payer</strong> — prix des articles + prix des services choisis (livraison, broderie…). Exemple : 3 articles à 40 € + livraison à 6,90 € → 120 + 6,90 = 126,90 €.</li>
+<li><strong>Date de livraison prévue</strong> — date d'expédition + délai de transport. Une livraison « 48 h » arrive 2 jours après l'expédition : un colis expédié le 29 d'un mois de 30 jours arrive le 1er du mois suivant.</li>
+<li><strong>Geste commercial</strong> — compensation offerte volontairement pour une gêne (bon d'achat, frais de livraison remboursés, livraison express offerte), en plus de la solution au problème. Il est proportionné à la gêne et reste dans la limite autorisée à ton niveau ; au-delà, on demande l'accord du responsable.</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -640,6 +747,17 @@ Son panier passe de 336 € à 336 + 24 + 6,90 = 366,90 €. Il est plus satisfa
 <div class="res-ex"><div class="res-ex-l">Exemple — chiffrer une commande textile</div>
 Club de 22 licenciés, maillots à 18€ HT/unité avec flocage. HT = 18 × 22 = 396€. Remise clubs applicable (≥10u) : 8% → 396 × 0,92 = 364,32€ HT. TTC = 364,32 × 1,20 = 437,18€.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Budget total autorisé</strong> — budget maximum par article × quantité. Exemple : 20 € au maximum par article pour 50 articles → 20 × 50 = 1 000 €. On compare ensuite le coût réel de la commande à ce budget.</li>
+<li><strong>Prix unitaire avec option</strong> — prix de base + prix de chaque option payante (une option incluse ne s'ajoute pas). Exemple : article à 20 € + option à 3 € par pièce → 23 € la pièce ; pour 50 pièces → 1 150 €.</li>
+<li><strong>Bon de commande</strong> — document qui fixe ce que le client commande : article, quantité, personnalisation (texte, logo, emplacement), prix, date et adresse de livraison, accord écrit du client. On vérifie qu'il est complet avant de lancer la fabrication, car une erreur de personnalisation ne se rattrape pas.</li>
+<li><strong>Prestataire</strong> — celui qui réalise une partie du service (ici l'atelier de flocage). On lui transmet une commande complète et on attend sa date confirmée avant de l'annoncer au client.</li>
+<li><strong>Délai en semaines</strong> — 1 semaine = 7 jours. Date de fin = date de départ + nombre de semaines × 7. Exemple : départ le lundi 3, délai de 3 semaines → 3 + 21 = lundi 24.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -770,6 +888,18 @@ Client : "Ma commande n'est pas arrivée !" — Vous : "Je comprends, c'est frus
   <text x="340" y="210" text-anchor="middle" font-size="8.5" fill="#9B4444">Un client dont la réclamation est bien gérée est plus fidèle qu'un client qui n'a jamais eu de problème.</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Garantie légale de conformité</strong> — obligatoire et gratuite : pendant 2 ans après la livraison d'un produit neuf acheté par un particulier, le vendeur doit corriger un défaut ou une non-conformité sans frais pour le client : le client choisit entre la réparation et le remplacement ; si c'est impossible ou si rien n'est fait dans les 30 jours, il peut obtenir une réduction du prix ou un remboursement. Elle ne couvre ni l'usure normale ni un mauvais usage. À ne pas confondre avec la <em>garantie commerciale</em> LABORO (30 jours, échange ou remboursement sans justification), un engagement volontaire de LABORO, qui s'ajoute à la garantie légale sans la remplacer.</li>
+<li><strong>Droit de rétractation</strong> — pour un achat à distance (site internet, téléphone), le particulier a 14 jours à compter de la réception pour renoncer à l'achat, sans avoir à se justifier. Il ne s'applique pas aux achats faits en magasin, ni aux produits personnalisés (maillot floqué à son nom, par exemple). Le vendeur rembourse au plus tard 14 jours après avoir été informé de la décision du client (il peut attendre d'avoir récupéré le produit ou la preuve de son expédition) ; les frais de retour sont à la charge du client, sauf si le vendeur a annoncé les prendre en charge.</li>
+<li><strong>Produit défectueux ou non conforme</strong> — défectueux : il ne fonctionne pas normalement (semelle décollée, tapis abîmé) ; non conforme : il ne correspond pas à ce qui a été commandé ou annoncé (mauvaise couleur, mauvaise taille). Dans les deux cas, c'est à LABORO de trouver la solution, sans frais pour le client (sauf usure normale ou mauvais usage).</li>
+<li><strong>Échange, remboursement, avoir, bon d'achat</strong> — échange : le client repart avec un produit identique (ou un autre) ; remboursement : il récupère son argent, en général par le même moyen de paiement ; avoir : document qui annule tout ou partie d'une facture et que le client peut utiliser comme un crédit ; bon d'achat : montant offert à dépenser chez LABORO, souvent avec une date limite.</li>
+<li><strong>Payer la différence</strong> — quand le client échange contre un produit plus cher, il paie : prix du nouveau produit − prix du produit rendu. Exemple : produit à 60 € échangé contre un modèle à 85 € → 85 − 60 = 25 € à payer.</li>
+<li><strong>Geste commercial</strong> — compensation offerte volontairement pour une gêne (bon d'achat, frais de livraison remboursés, livraison express offerte), en plus de la solution au problème. Il est proportionné à la gêne et reste dans la limite autorisée à ton niveau ; au-delà, on demande l'accord du responsable.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -794,6 +924,18 @@ Client : "Ma commande n'est pas arrivée !" — Vous : "Je comprends, c'est frus
 <div class="res-ex"><div class="res-ex-l">Exemple — réclamation avec empathie</div>
 Client : "J'ai commandé il y a 3 semaines, toujours rien reçu. C'est un scandale !" — Bonne réponse : "Je comprends votre mécontentement, attendre 3 semaines sans nouvelles c'est vraiment frustrant. Je vérifie immédiatement et je vous rappelle dans les 30 minutes avec une réponse concrète."
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Produit défectueux ou non conforme</strong> — défectueux : il ne fonctionne pas normalement (semelle décollée, tapis abîmé) ; non conforme : il ne correspond pas à ce qui a été commandé ou annoncé (mauvaise couleur, mauvaise taille). Dans les deux cas, c'est à LABORO de trouver la solution, sans frais pour le client (sauf usure normale ou mauvais usage).</li>
+<li><strong>Étiquette retour prépayée</strong> — étiquette de transport déjà payée par LABORO, envoyée au client (souvent par mail) : il la colle sur le colis et le dépose chez le transporteur sans rien payer.</li>
+<li><strong>CA cumulé</strong> — total des achats d'un client depuis le début de la relation. Il aide à mesurer ce que LABORO perdrait si ce client partait, et donc le soin à apporter à sa réclamation.</li>
+<li><strong>Gravité d'une réclamation</strong> — on la juge d'après la gêne réelle du client (urgence, cadeau, événement), la responsabilité de LABORO, la valeur du client et le risque pour l'image (avis en ligne, bouche-à-oreille).</li>
+<li><strong>Action corrective / action préventive</strong> — l'action corrective règle le cas du client ; l'action préventive agit sur la cause (contrôle de la commande avant expédition, par exemple) pour que l'erreur ne se reproduise pas.</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -894,6 +1036,17 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
   </text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Pourcentage (part)</strong> — partie ÷ total × 100. Exemple : 27 ballons sur 90 articles vendus → 27 ÷ 90 × 100 = 30 %.</li>
+<li><strong>Arrondir</strong> — au dixième : on garde 1 chiffre après la virgule ; au centième (0,01) : 2 chiffres. On regarde le chiffre suivant : s'il vaut 5 ou plus, on augmente le dernier chiffre gardé. Exemple : 66,666… → 66,7 au dixième, 66,67 au centième ; 21,052… → 21,1 et 21,05.</li>
+<li><strong>Bien choisir le total</strong> — un pourcentage se calcule toujours sur le bon total. Exemple : 3 clients insatisfaits sur 12 citent l'attente → 3 ÷ 12 × 100 = 25 % <em>des insatisfaits</em>, et non 25 % de tous les clients.</li>
+<li><strong>Segment</strong> — groupe de clients comparables (particuliers, clubs, entreprises). On mesure la satisfaction par segment, car un bon résultat global peut cacher un segment mécontent.</li>
+<li><strong>NPS (Net Promoter Score)</strong> — on demande « Recommanderiez-vous LABORO ? » (note de 0 à 10) : promoteurs = 9 ou 10, détracteurs = 0 à 6 ; NPS = % de promoteurs − % de détracteurs. C'est un nombre, pas un pourcentage : il va de −100 (uniquement des détracteurs) à +100 (uniquement des promoteurs). On l'écrit avec son signe : +22, −5.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -907,6 +1060,18 @@ NPS : 20 Promoteurs, 5 Détracteurs = 40% - 10% = <strong>+30</strong>
 <p><strong>3 indicateurs clés à maîtriser :</strong></p><ul><li><strong>Taux de satisfaction</strong> = (clients satisfaits + très satisfaits) ÷ total répondants × 100. Objectif LABORO : ≥ 80%.</li><li><strong>NPS</strong> = % Promoteurs (9-10) − % Détracteurs (0-6). Les neutres (7-8) ne comptent pas. Objectif LABORO : NPS supérieur à +20.</li><li><strong>Taux de réponse</strong> = répondants ÷ clients interrogés × 100. Taux &lt; 20% = résultats non représentatifs.</li></ul>
 <p><strong>Comment collecter les avis :</strong></p><ul><li>Enquête post-achat par e-mail (J+7 après livraison)</li><li>Avis Google — répondre à TOUS les avis, positifs et négatifs</li><li>Questionnaire en point de vente (tablette ou QR code)</li><li>Appel de satisfaction pour les clients B2B stratégiques</li></ul>
 <div class="res-ex"><div class="res-ex-l">Calcul complet — données LABORO</div>150 répondants : 62 très satisfaits + 55 satisfaits = 117 satisfaits. Taux = 117÷150×100 = <strong>78,0%</strong> (objectif 80% non atteint).<br>NPS : 51 promoteurs (34%) − 18 détracteurs (12%) = <strong>+22</strong> — score correct.<br>Action prioritaire : délais e-commerce (cités par 6 insatisfaits sur 14, soit 43%) → négociation avec le transporteur partenaire.</div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Parcours client</strong> — suite des étapes vécues par le client : arrivée, recherche du produit, conseil, essai, passage en caisse, après-vente. On l'améliore étape par étape.</li>
+<li><strong>Irritant</strong> — point du parcours qui agace ou freine le client (attente, produit introuvable, prix non affiché). Plusieurs critères peuvent relever du même irritant.</li>
+<li><strong>Verbatim</strong> — phrase d'un client recopiée mot pour mot (« On ne sait pas où aller »). Il illustre un chiffre et aide à comprendre la cause d'un mécontentement.</li>
+<li><strong>Retrouver les promoteurs à partir du NPS</strong> — NPS = % promoteurs − % détracteurs, donc % promoteurs = NPS + % détracteurs. Exemple : NPS +20 et 15 % de détracteurs → 35 % de promoteurs ; sur 60 répondants → 60 × 0,35 = 21 promoteurs.</li>
+<li><strong>Moyenne</strong> — somme des valeurs ÷ nombre de valeurs. Exemple : notes 8, 6 et 7 sur 10 → (8 + 6 + 7) ÷ 3 = 7 sur 10.</li>
+<li><strong>Base de calcul</strong> — on divise par le nombre de personnes qui ont répondu à <em>cette</em> question : si 3 clients sur 40 n'y ont pas répondu, le résultat se calcule sur 37.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1009,6 +1174,18 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
   <text x="564" y="126" text-anchor="middle" font-size="8" fill="#BEE3F8">Jamais ignorer un client</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+<li><strong>Répondre à un avis en ligne</strong> — la réponse est publique : elle est lue par les futurs clients. On remercie, on reconnaît le problème sans se justifier ni accuser, on n'y écrit aucune information personnelle, et on propose de poursuivre en privé.</li>
+<li><strong>CA cumulé, panier moyen, fréquence d'achat</strong> — CA cumulé : total des achats d'un client depuis le début ; panier moyen : CA ÷ nombre d'achats ; fréquence d'achat : nombre d'achats par an. Exemple : 600 € en 4 achats → panier moyen de 150 €.</li>
+<li><strong>Promoteur</strong> — client qui répond 9 ou 10 à la question « Recommanderiez-vous LABORO ? » : il parle en bien de LABORO autour de lui (voir le NPS, fiche C2.3).</li>
+<li><strong>Tag</strong> — étiquette ajoutée à une fiche client (Premium, Newsletter, Ambassadeur…) pour retrouver vite un groupe de clients et lui proposer la bonne action.</li>
+<li><strong>Prospect prioritaire</strong> — personne dont on connaît le besoin (ce qu'elle veut acheter), le budget (l'argent prévu) et le délai (quand elle veut acheter) : elle est prête à recevoir une proposition.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1028,6 +1205,19 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 <div class="res-ex"><div class="res-ex-l">Exemple — personnaliser un échange</div>
 Plutôt que "Bonjour, votre commande est en cours" : "Bonjour M. Renard, votre paire de chaussures trail est bien en cours de préparation — vous devriez la recevoir jeudi, comme prévu pour votre sortie du week-end."
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Jours ouvrés</strong> — du lundi au vendredi, hors jours fériés. Le samedi, le dimanche et les jours fériés ne comptent pas. Pour un délai « de 5 jours ouvrés », on compte à partir du lendemain : un article en stock commandé un lundi est livré le lundi suivant (s'il n'y a pas de jour férié dans la semaine).</li>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>Calcul d'un devis avec remise</strong> — dans cet ordre : montant brut TTC = prix unitaire TTC × quantité ; montant brut HT = brut TTC ÷ 1,20 ; remise = brut HT × taux de remise ; net HT = brut HT − remise ; TVA = net HT × 0,20 ; net TTC = net HT + TVA (ou net HT × 1,20). Exemple : 40 articles à 30 € TTC, remise 12 % → brut 1 200 € TTC → 1 000 € HT → remise 120 € → net 880 € HT → TVA 176 € → net 1 056 € TTC. On arrondit au centime.</li>
+<li><strong>Délai moyen de réponse</strong> — somme des délais de réponse ÷ nombre de contacts traités. Exemple : 3 mails traités en 10 h, 20 h et 30 h → (10 + 20 + 30) ÷ 3 = 20 h. Plus il baisse, mieux c'est.</li>
+<li><strong>Taux de réponse dans le délai</strong> — contacts traités dans le délai promis ÷ contacts reçus × 100. Exemple : 150 contacts, dont 120 traités en moins de 24 h → 80 %.</li>
+<li><strong>Taux d'évolution</strong> — (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100. Exemple : 60 paires vendues puis 72 → (72 − 60) ÷ 60 × 100 = +20 %. Un résultat négatif indique une baisse.</li>
+<li><strong>Urgent / important</strong> — urgent : doit être traité vite (réclamation, client qui attend une réponse aujourd'hui, avis négatif public) ; important : a un fort enjeu pour LABORO (grosse commande B2B), même s'il peut attendre quelques heures. On traite d'abord ce qui est à la fois urgent et important.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1135,6 +1325,18 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
   <text x="589" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#D97706">= 783€/3 ans</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Calculer une remise de fidélité</strong> — points gagnés = euros dépensés (1 € = 1 point) ; remise = nombre de tranches complètes de 100 points × 10 € (850 points → 8 tranches). Exemple : 800 € d'achats → 800 points → 8 × 10 = 80 € de remise.</li>
+<li><strong>CA annuel, fréquence d'achat</strong> — CA annuel : total des achats d'un client sur un an ; fréquence d'achat : nombre d'achats (ou de commandes) sur un an. Un client qui achète souvent, même pour de petits montants, revient régulièrement au magasin.</li>
+<li><strong>Potentiel de développement</strong> — ce qu'un client pourrait acheter en plus demain (club qui grandit, projet de commande, budget encore peu dépensé chez LABORO). Un petit client d'aujourd'hui peut être un gros client demain.</li>
+<li><strong>Client actif, dormant, perdu</strong> — chez LABORO : actif = dernier achat il y a moins de 6 mois ; dormant = entre 6 et 18 mois ; perdu = plus de 18 mois. On ne lui propose pas la même action : un client dormant, on cherche d'abord à le faire revenir.</li>
+<li><strong>Client stratégique</strong> — client très important pour l'avenir de LABORO : gros chiffre d'affaires, achats fréquents, forte influence (il recommande LABORO, il fait venir d'autres clients).</li>
+<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1156,6 +1358,19 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
 Lors d'une livraison, Laurent Bouchard, responsable du CE Thales Massy, discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi des tapis de yoga pour la salle de sport du CE." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + tapis avec une remise sur le volume — je vous envoie un devis dès demain ?"
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Écart à l'objectif et taux de réalisation</strong> — écart = réalisé − objectif ; écart en % = écart ÷ objectif × 100 ; taux de réalisation = réalisé ÷ objectif × 100. Exemple : objectif 200 000 €, réalisé 230 000 € → écart +30 000 €, soit +15 % ; objectif réalisé à 115 %.</li>
+<li><strong>Taux d'ouverture, taux de clic</strong> — taux d'ouverture = e-mails ouverts ÷ e-mails envoyés × 100 ; taux de clic = clics ÷ e-mails envoyés × 100. Précise toujours la base : « 4 % des e-mails envoyés » n'est pas « 4 % des e-mails ouverts ».</li>
+<li><strong>Ventiler un budget</strong> — le répartir poste par poste (déplacements, impressions, publicité, cadeaux…) : coût d'un poste = quantité × coût unitaire. Exemple : 150 plaquettes à 0,60 € → 90 €. La somme des postes ne dépasse jamais le budget, et chaque ligne se justifie par un objectif.</li>
+<li><strong>Jours fériés</strong> — jours de fête légale (1er janvier, lundi de Pâques, 1er mai, 8 mai, Ascension, lundi de Pentecôte, 14 juillet, 15 août, 1er novembre, 11 novembre, 25 décembre). Seul le 1er mai est obligatoirement chômé (sauf dans les activités qui ne peuvent pas s'arrêter : hôpitaux, transports…) ; pour les autres, cela dépend de l'entreprise : on vérifie les jours d'ouverture avant de planifier.</li>
+<li><strong>Panier moyen</strong> — chiffre d'affaires ÷ nombre de ventes (tickets de caisse ou commandes). Exemple : 9 000 € pour 60 ventes → 150 €. On le calcule séparément pour les particuliers (B2C) et les professionnels (B2B), car leurs achats n'ont pas la même taille.</li>
+<li><strong>Arrondir</strong> — au dixième : on garde 1 chiffre après la virgule ; au centième (0,01) : 2 chiffres. On regarde le chiffre suivant : s'il vaut 5 ou plus, on augmente le dernier chiffre gardé. Exemple : 66,666… → 66,7 au dixième, 66,67 au centième ; 21,052… → 21,1 et 21,05.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1246,6 +1461,17 @@ M. Lopez achète régulièrement. Grâce à sa carte LABORO PRO, il a accumulé 
   <text x="584" y="128" text-anchor="middle" font-size="7.5" fill="#BEE3F8">ROI = 1 000% ✅</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux d'utilisation</strong> — clients qui ont utilisé l'outil (la carte) ÷ clients qui le possèdent × 100. Exemple : 30 porteurs sur 50 ont utilisé leur carte → 60 %.</li>
+<li><strong>Écart en points</strong> — différence entre deux pourcentages : un taux qui passe de 34 % à 40 % gagne 6 points (et non « 6 % »).</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+<li><strong>Parrainage</strong> — un client (le parrain) fait venir un proche (le filleul) ; l'avantage promis est versé quand le filleul fait réellement son premier achat.</li>
+<li><strong>Compte rendu chiffré</strong> — trois éléments, dans l'ordre : le résultat (le chiffre obtenu), l'écart avec l'objectif (en points s'il s'agit de pourcentages), une action concrète pour progresser.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1267,6 +1493,18 @@ Coût : 800€ · CA soir : 2 500€ · CA 30j suivants : 6 300€<br>
 ROI = (2 500 + 6 300 − 800) ÷ 800 × 100 = <strong>1 000%</strong>
 </div>
 <p><strong>Interpréter, pas seulement calculer :</strong> un ROI positif ne dit pas tout — il faut aussi regarder si les clients de cette action reviennent ensuite (taux de rétention) ou s'ils n'ont acheté qu'une fois grâce à la promotion de l'événement.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de présence</strong> — présents ÷ invités × 100. Exemple : 36 présents pour 60 invités → 60 %.</li>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>CA par présent, panier moyen</strong> — CA par présent = CA de la soirée ÷ nombre de présents ; panier moyen = CA ÷ nombre d'acheteurs. Exemple : 3 000 € HT, 40 présents dont 10 acheteurs → 75 € par présent, 300 € par acheteur.</li>
+<li><strong>Note moyenne sur 5</strong> — pour la comparer à un pourcentage : note ÷ 5 × 100. Exemple : 4 sur 5 → 80 %. Une note moyenne ne dit pas combien de clients sont déçus : on la complète par les commentaires.</li>
+<li><strong>Objectif SMART</strong> — Spécifique (précis), Mesurable (chiffré), Atteignable, Réaliste, Temporel (avec une date). Exemple : « obtenir 40 présents et 5 000 € HT de CA le soir de l'événement ». Pas SMART : « faire une belle soirée ».</li>
+<li><strong>Indicateur</strong> — donnée chiffrée qui permet de suivre un résultat : un nom, une formule de calcul, un objectif cible et une fréquence de mesure. Exemple : temps d'attente moyen à l'accueil = total des minutes d'attente ÷ nombre de visiteurs, objectif moins de 5 minutes.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1452,6 +1690,19 @@ Les chaussures trail Grip X sont placées à hauteur des yeux au centre du rayon
   <text x="604" y="119" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.75)">Cohérent concurrence</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Zone chaude, zone froide</strong> — zone chaude : endroit où passent spontanément beaucoup de clients (entrée, allée principale, abords de la caisse) ; zone froide : endroit peu fréquenté (fond de magasin, coins, recoins). On repère les zones froides à des indices : peu de passage, faible éclairage, absence de panneau.</li>
+<li><strong>Allée principale, parcours client</strong> — l'allée principale est le grand passage que suivent la plupart des clients ; le parcours client est le chemin qu'ils font dans le magasin, de l'entrée à la caisse. Un bon aménagement les fait passer devant un maximum de rayons.</li>
+<li><strong>Gondole, tête de gondole</strong> — la gondole est le meuble à étagères où sont présentés les produits ; la tête de gondole est son extrémité, face à l'allée : très visible, elle sert aux promotions, aux nouveautés et aux produits mis en avant.</li>
+<li><strong>PLV (publicité sur le lieu de vente)</strong> — affiches, présentoirs, stop-rayons, kakémonos… qui attirent l'attention sur un produit ou une offre dans le magasin.</li>
+<li><strong>Signalétique</strong> — panneaux qui indiquent les univers et les rayons pour que le client s'oriente seul. Un rayon sans panneau devient souvent une zone froide.</li>
+<li><strong>Réassort</strong> — réapprovisionner le rayon : remettre en place les produits vendus depuis la réserve, ou recommander au fournisseur quand la réserve est vide. Un rayon vide, c'est une vente perdue.</li>
+<li><strong>Affichage des prix</strong> — en magasin, chaque produit exposé à la vente doit avoir un prix TTC lisible (étiquette ou affiche). Un produit sans prix ne reste pas en rayon : on vérifie son prix dans LABORO Connect et on le réétiquette.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1491,6 +1742,19 @@ Rayon textile : la veste softshell (meilleure vente du rayon, forte marge) est p
 PAHT = 30€ · taux de marque souhaité 40% · TVA 20%<br>
 PVHT = 30 ÷ (1−0,40) = 30 ÷ 0,60 = <strong>50,00€</strong> · PVTTC = 50,00 × 1,20 = <strong>60,00€</strong>
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Rotation du stock</strong> — nombre de fois où le stock est vendu puis renouvelé sur une période : quantités vendues ÷ stock moyen (stock moyen = (stock de début + stock de fin) ÷ 2). Exemple : 60 tentes vendues sur la période pour un stock moyen de 20 → rotation de 3. Plus elle est élevée, plus le produit se vend vite ; trop faible, le stock dort et immobilise de l'argent.</li>
+<li><strong>Rupture de stock, taux de rupture</strong> — un produit est en rupture quand il n'y en a plus ni en rayon ni en réserve. Taux de rupture = références en rupture ÷ références du rayon × 100 (on peut aussi le mesurer en jours de rupture sur la période). Exemple : 2 références en rupture sur 25 → 8 %.</li>
+<li><strong>Ventes perdues</strong> — CA perdu = nombre de ventes perdues × prix de vente ; marge perdue = nombre de ventes perdues × marge unitaire. Exemple : 5 clients repartis sans un article vendu 80 € TTC, avec 30 € HT de marge → 400 € TTC de CA et 150 € HT de marge perdus.</li>
+<li><strong>Linéaire</strong> — longueur de rayon, en mètres, sur laquelle les produits sont présentés. Linéaire au sol = longueur du meuble ; linéaire développé = linéaire au sol × nombre de niveaux (étagères). Exemple : 5 m sur 4 niveaux → 20 m de linéaire développé.</li>
+<li><strong>Objectif en hausse</strong> — quantité de départ × (1 + taux). Exemple : 80 unités et +15 % → 80 × 1,15 = 92 unités. Si le résultat n'est pas entier, on arrondit à l'entier supérieur (on ne vend pas une demi-paire).</li>
+<li><strong>Facteurs d'ambiance</strong> — éléments qui agissent sur les sens du client dans le magasin : lumière, musique, couleurs, odeurs, température, animation. Ils doivent coller au thème de l'opération sans gêner la circulation.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1594,6 +1858,18 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
   <text x="569" y="123" text-anchor="middle" font-size="7.5" fill="#BEE3F8">La recommandation = or</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
+<li><strong>CE (comité d'entreprise)</strong> — nom encore courant du CSE (comité social et économique) : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
+<li><strong>Raison sociale</strong> — nom officiel d'une entreprise ou d'une association (celui qui figure sur ses documents), parfois différent de son nom commercial.</li>
+<li><strong>Critères de qualification : « au moins », « plus de »</strong> — un prospect est retenu seulement s'il remplit <em>tous</em> les critères : un seul critère manqué suffit à l'écarter. « Au moins 15 » (≥ 15) inclut 15 ; « plus de 300 € » exclut 300 € tout juste ; « plus d'un entraînement par semaine » exclut une pratique d'une fois par semaine ou moins.</li>
+<li><strong>Portefeuille clients</strong> — ensemble des clients suivis par l'entreprise ou par un commercial. Le développer, c'est y ajouter de nouveaux clients et faire acheter davantage ceux qui y sont déjà.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1609,6 +1885,17 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
 <p><strong>Champs obligatoires dans LABORO Connect :</strong> les 8 champs de base (raison sociale, secteur, effectif, contact — nom et fonction du décisionnaire —, téléphone/e-mail, source d'identification, besoins estimés, date de relance), complétés à ce niveau par le score BANT, le statut (froid/tiède/chaud) et la prochaine action.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Aéronis Systèmes (Villebon-sur-Yvette) — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Prospect froid, tiède, chaud</strong> — un prospect n'a encore jamais acheté. Il est <em>froid</em> (aucun contact, aucun intérêt exprimé), <em>tiède</em> (un premier contact, un intérêt encore vague — par exemple un rendez-vous accepté) ou <em>chaud</em> (besoin et budget confirmés, décision proche). Le statut se met à jour dans LABORO Connect après chaque contact.</li>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Potentiel de CA et CA probable</strong> — potentiel = somme des budgets annuels connus des prospects ; CA probable = potentiel × taux de transformation. Exemple : budgets de 6 000 €, 3 000 € et 1 000 € HT → potentiel 10 000 € HT ; avec 25 % de transformation → 2 500 € HT probables. Un prospect au budget inconnu n'entre pas dans le calcul.</li>
+<li><strong>Prioriser (A, B, C)</strong> — A : à traiter tout de suite (fiche complète, prospect chaud, gros budget) ; B : important, à préparer (fiche à compléter, potentiel réel) ; C : à surveiller (peu d'informations ou faible potentiel). On justifie chaque classement par des faits du dossier.</li>
+<li><strong>Enrichir une fiche</strong> — compléter une fiche prospect avec des informations vérifiées (effectif, décisionnaire, budget) venant de sources fiables ; on note la source et la date, et une information supposée reste marquée « à vérifier ».</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1711,6 +1998,17 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
   <text x="574" y="120" text-anchor="middle" font-size="7.5" fill="#BEE3F8">SMART + mesurables</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+<li><strong>Prospect froid, tiède, chaud</strong> — un prospect n'a encore jamais acheté. Il est <em>froid</em> (aucun contact, aucun intérêt exprimé), <em>tiède</em> (un premier contact, un intérêt encore vague — par exemple un rendez-vous accepté) ou <em>chaud</em> (besoin et budget confirmés, décision proche). Le statut se met à jour dans LABORO Connect après chaque contact.</li>
+<li><strong>Objection</strong> — raison donnée par le prospect pour ne pas avancer (« on a déjà un fournisseur », « envoyez-moi une documentation », « c'est trop cher »). On l'écoute, on la reformule, on y répond avec un fait précis (un atout LABORO), sans critiquer le concurrent et sans forcer.</li>
+<li><strong>Mail de confirmation de rendez-vous</strong> — envoyé dans l'heure : objet clair, remerciement, date, heure, durée et forme du rendez-vous (téléphone, visite), sujet abordé, nom de l'interlocuteur LABORO, coordonnées pour prévenir en cas d'empêchement, signature complète.</li>
+<li><strong>Proposer deux créneaux</strong> — plutôt que « Quand êtes-vous disponible ? », on propose deux dates précises (« mardi 10 h ou jeudi 14 h ? ») : le choix est simple et le rendez-vous se fixe tout de suite. On ne propose que des créneaux réellement libres dans l'agenda.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1734,6 +2032,19 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
 <div class="res-ex"><div class="res-ex-l">Exemple — e-mailing clubs sportifs</div>
 Objet : "Équipez vos joueurs — livraison 48h". 3 arguments : flocage inclus, remise 8-15%, commercial dédié. Call-to-action unique : "Je demande un devis gratuit". Résultat : taux d'ouverture 31%.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Taux d'ouverture, taux de clic</strong> — taux d'ouverture = e-mails ouverts ÷ e-mails envoyés × 100 ; taux de clic = clics ÷ e-mails envoyés × 100. Précise toujours la base : « 4 % des e-mails envoyés » n'est pas « 4 % des e-mails ouverts ».</li>
+<li><strong>Résultat attendu</strong> — nombre de départ × taux, étape par étape. Exemple : 500 e-mails avec 5 % de clics → 25 clics ; si 1 clic sur 5 donne un rendez-vous → 25 ÷ 5 = 5 rendez-vous attendus. C'est une estimation, pas une garantie.</li>
+<li><strong>Coût par contact, par rendez-vous, par vente</strong> — coût total de l'action ÷ nombre de contacts (ou de rendez-vous, ou de ventes) obtenus. Exemple : 350 € pour 7 rendez-vous → 50 € par rendez-vous.</li>
+<li><strong>Ventiler un budget</strong> — le répartir poste par poste (déplacements, impressions, publicité, cadeaux…) : coût d'un poste = quantité × coût unitaire. Exemple : 150 plaquettes à 0,60 € → 90 €. La somme des postes ne dépasse jamais le budget, et chaque ligne se justifie par un objectif.</li>
+<li><strong>Règles d'un e-mailing de prospection</strong> — un professionnel (club, association, entreprise) peut recevoir un e-mail de prospection sans accord préalable s'il concerne son activité ; un particulier doit avoir donné son accord avant (sauf s'il est déjà client et que l'offre porte sur des produits semblables). Dans tous les cas, chaque e-mail indique qui l'envoie et permet de se désinscrire facilement.</li>
+<li><strong>Call-to-action (appel à l'action)</strong> — la seule action précise que l'on demande au lecteur, écrite comme un bouton ou un lien (« Je demande mon devis », « Je choisis un créneau »). Un seul par e-mail : plusieurs choix dispersent le lecteur.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1846,6 +2157,17 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
   <text x="627" y="118" text-anchor="middle" font-size="7.5" fill="rgba(0,0,0,.7)">Alternative positive</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Question ouverte / question fermée</strong> — une question ouverte laisse l'interlocuteur s'exprimer (« Comment équipez-vous vos équipes aujourd'hui ? ») ; une question fermée appelle oui/non ou un choix précis (« Votre saison commence-t-elle en septembre ? »). On découvre avec des questions ouvertes, on confirme avec des questions fermées.</li>
+<li><strong>Reformuler</strong> — redire avec tes mots ce que le client vient de dire (« Si je comprends bien, vous… »), puis vérifier (« C'est bien ça ? ») : il se sent écouté et tu t'assures d'avoir compris avant de proposer quoi que ce soit.</li>
+<li><strong>Qualifier avec BANT</strong> — Budget (combien peut-il dépenser ?), Autorité (qui décide ?), Besoin (que lui faut-il vraiment ?), Temps (quand décide-t-il ou achète-t-il ?). Une question ouverte par point suffit souvent.</li>
+<li><strong>Argument CAB</strong> — Caractéristique (ce qu'est l'offre : « flocage inclus, livré en 3 semaines ») → Avantage (ce que ça permet : « les maillots arrivent avant la reprise ») → Bénéfice pour <em>ce</em> client (« vos équipes sont équipées dès le premier match, sans stress »).</li>
+<li><strong>Devis</strong> — proposition chiffrée écrite, remise avant la vente : produits, quantités, prix unitaires, remise, total HT, TVA, total TTC, délai de livraison, date et durée de validité. Il n'engage le client que lorsqu'il le signe (avec la mention « bon pour accord ») ; pendant sa durée de validité, LABORO s'engage sur les prix indiqués.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1861,6 +2183,18 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 <div class="res-ex"><div class="res-ex-l">Exemple — objection Sportélia</div>
 Pierre Lambert : "On commande déjà chez Sportélia, on est satisfaits." Réponse : "Je comprends, ils sont bien implantés. Quel est votre délai de livraison habituel ?" — "Environ 5 semaines." — "Chez nous c'est 3 semaines flocage inclus, avec un commercial dédié joignable directement." <strong>→ RDV obtenu 3 jours plus tard.</strong>
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>Calcul d'un devis avec remise</strong> — dans cet ordre : montant brut TTC = prix unitaire TTC × quantité ; montant brut HT = brut TTC ÷ 1,20 ; remise = brut HT × taux de remise ; net HT = brut HT − remise ; TVA = net HT × 0,20 ; net TTC = net HT + TVA (ou net HT × 1,20). Exemple : 40 articles à 30 € TTC, remise 12 % → brut 1 200 € TTC → 1 000 € HT → remise 120 € → net 880 € HT → TVA 176 € → net 1 056 € TTC. On arrondit au centime.</li>
+<li><strong>Remise en %</strong> — remise = montant × taux ; montant net = montant − remise, ou directement montant × (1 − taux). Exemple : 500 € HT avec 8 % de remise → remise 40 € → 460 € HT (ou 500 × 0,92). Chez LABORO, les remises B2B se calculent sur le HT. Quand il y a des tranches (8 %, 12 %, 15 % selon la quantité), une seule tranche s'applique : celle qui correspond à la quantité commandée.</li>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Vente additionnelle, vente au rebond</strong> — vente additionnelle : proposer en plus un produit lié à ce que le client achète déjà (une pompe et des chasubles avec des ballons) ; vente au rebond : saisir une nouvelle occasion de vente qui apparaît au cours d'un échange sur un autre sujet (un besoin de tapis de yoga évoqué pendant une livraison de maillots).</li>
+<li><strong>Compte-rendu de visite</strong> — document court et factuel remis au responsable : pour chaque rendez-vous, qui, quoi (besoin, résultat obtenu), chiffres (devis, montants), prochaine étape avec sa date ; puis un bilan comparé à l'objectif de la journée et les points à améliorer.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1955,6 +2289,18 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
   </text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>J, J+5, J+10</strong> — J est le jour de départ (l'envoi du devis) ; J+5 est cinq jours plus tard. Exemple : devis envoyé un mercredi → J+5 tombe le lundi. Si la date tombe un jour non travaillé, on relance le premier jour ouvré suivant.</li>
+<li><strong>Relance</strong> — nouveau contact pour faire avancer un prospect qui n'a pas répondu (devis sans retour). Une bonne relance est courte, rappelle le contexte (date, objet), apporte un élément nouveau et se termine par une seule demande claire.</li>
+<li><strong>Élément nouveau</strong> — information utile que le prospect n'avait pas encore : disponibilité du stock, délai de livraison par rapport à sa date importante, témoignage d'un client comparable… Elle doit être vraie et vérifiable, jamais inventée pour presser le client.</li>
+<li><strong>Statuts d'un prospect dans LABORO Connect</strong> — froid → tiède → chaud → devis envoyé → client (ou perdu). On change de statut sur un fait vérifié, pas sur une intention.</li>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1984,6 +2330,17 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 <div class="res-ex"><div class="res-ex-l">Exemple — relance CE Thales J+10</div>
 "Bonjour Laurent, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CE Air France Orly dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de transformation</strong> — nombre à l'étape d'arrivée ÷ nombre à l'étape de départ × 100. Nomme toujours les deux étapes : en magasin, visiteurs → acheteurs ; en prospection, prospects contactés → rendez-vous, devis envoyés → contrats signés. Exemple : 48 acheteurs pour 160 visiteurs → 48 ÷ 160 × 100 = 30 %.</li>
+<li><strong>Écart en points</strong> — différence entre deux pourcentages : un taux qui passe de 34 % à 40 % gagne 6 points (et non « 6 % »).</li>
+<li><strong>Écart à l'objectif et taux de réalisation</strong> — écart = réalisé − objectif ; écart en % = écart ÷ objectif × 100 ; taux de réalisation = réalisé ÷ objectif × 100. Exemple : objectif 200 000 €, réalisé 230 000 € → écart +30 000 €, soit +15 % ; objectif réalisé à 115 %.</li>
+<li><strong>Simuler un résultat (« et si… »)</strong> — refaire le calcul avec une hypothèse, en changeant seulement le chiffre concerné. Exemple : 2 contrats sur 8 devis = 25 % ; si 2 devis de plus sont signés → 4 ÷ 8 × 100 = 50 %. Le nombre de devis envoyés, lui, ne change pas.</li>
+<li><strong>CA signé / CA potentiel</strong> — le CA signé correspond aux devis acceptés ; le CA potentiel, aux devis encore en attente. Le potentiel n'est pas acquis : on ne l'additionne jamais au CA signé comme s'il était gagné.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2071,6 +2428,18 @@ Un client dit : "Chez Sportélia Pro, c'est 60 € de moins pour 15 maillots." (
   <text x="568" y="124" text-anchor="middle" font-size="7.5" fill="#BEE3F8">Fidélisation maximale</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>HT, TTC et TVA</strong> — HT : hors taxes ; TTC : toutes taxes comprises (HT + TVA). Pour les articles de sport, la TVA est de 20 % : TTC = HT × 1,20 ; HT = TTC ÷ 1,20 ; TVA = TTC − HT. Exemple : 60 € TTC → 60 ÷ 1,20 = 50 € HT, dont 10 € de TVA. Attention : retirer 20 % du TTC donne un résultat faux (60 − 12 = 48 €).</li>
+<li><strong>Remise en %</strong> — remise = montant × taux ; montant net = montant − remise, ou directement montant × (1 − taux). Exemple : 500 € HT avec 8 % de remise → remise 40 € → 460 € HT (ou 500 × 0,92). Chez LABORO, les remises B2B se calculent sur le HT. Quand il y a des tranches (8 %, 12 %, 15 % selon la quantité), une seule tranche s'applique : celle qui correspond à la quantité commandée.</li>
+<li><strong>Écart de prix</strong> — prix LABORO − prix du concurrent, en euros. Pour l'exprimer en %, on divise par le prix de référence : écart ÷ prix du concurrent × 100 (dis toujours « par rapport à qui »). Exemple : 60 € contre 50 € → 10 € de plus, soit 20 % plus cher que le concurrent. Sur une commande, on compare les totaux de chaque offre, remises déduites.</li>
+<li><strong>Contrepartie</strong> — ce que le client donne en échange d'un avantage : engagement sur deux saisons, commande plus importante, paiement plus rapide… On n'accorde jamais une baisse de prix « gratuite » : elle réduit la marge sans rien rapporter.</li>
+<li><strong>Commande test</strong> — petite première commande, au tarif normal, qui permet au client de vérifier la qualité et le service sans prendre de risque, avant une commande plus importante.</li>
+<li><strong>Argument CAB</strong> — Caractéristique (ce qu'est l'offre : « flocage inclus, livré en 3 semaines ») → Avantage (ce que ça permet : « les maillots arrivent avant la reprise ») → Bénéfice pour <em>ce</em> client (« vos équipes sont équipées dès le premier match, sans stress »).</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -2093,6 +2462,19 @@ Commercial dédié : LABORO Oui · Sportélia Pro Non · SportRun Partiellement 
 <li><strong>Offre Partenaire</strong> — contrat annuel, commercial dédié, conditions négociées</li>
 </ul>
 <p><strong>Répondre à l'objection prix en 3 temps :</strong> accepter ("je comprends que le prix soit un critère important") → quantifier la valeur (chiffrer ce que LABORO apporte en plus) → proposer une entrée de gamme ou une commande test si l'écart reste trop important.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Remise en %</strong> — remise = montant × taux ; montant net = montant − remise, ou directement montant × (1 − taux). Exemple : 500 € HT avec 8 % de remise → remise 40 € → 460 € HT (ou 500 × 0,92). Chez LABORO, les remises B2B se calculent sur le HT. Quand il y a des tranches (8 %, 12 %, 15 % selon la quantité), une seule tranche s'applique : celle qui correspond à la quantité commandée.</li>
+<li><strong>Écart de prix</strong> — prix LABORO − prix du concurrent, en euros. Pour l'exprimer en %, on divise par le prix de référence : écart ÷ prix du concurrent × 100 (dis toujours « par rapport à qui »). Exemple : 60 € contre 50 € → 10 € de plus, soit 20 % plus cher que le concurrent. Sur une commande, on compare les totaux de chaque offre, remises déduites.</li>
+<li><strong>Critères pondérés</strong> — chaque critère de choix a un poids en % (le total fait 100 %). Note finale = somme des (note du critère × poids). Exemple : prix pesé 40 % et délai 60 %, notes 12 et 16 sur 20 → 12 × 0,40 + 16 × 0,60 = 4,8 + 9,6 = 14,4 sur 20.</li>
+<li><strong>Appel d'offres (consultation)</strong> — un acheteur demande à plusieurs fournisseurs une proposition pour le même besoin, puis les compare selon des critères annoncés à l'avance. La proposition doit répondre à chaque critère et arriver avant la date limite.</li>
+<li><strong>Marge et taux de marque</strong> — marge = prix de vente HT − prix d'achat HT ; taux de marque = marge ÷ prix de vente HT × 100. Exemple : vendu 50 € HT, acheté 30 € HT → marge 20 € HT ; 20 ÷ 50 × 100 = 40 %.</li>
+<li><strong>Effet d'une remise sur la marge</strong> — la remise se retire entièrement de la marge. Exemple : article vendu 50 € HT, acheté 30 € HT → marge 20 € ; avec 10 % de remise (5 €), la marge tombe à 15 € : un quart de la marge est perdu.</li>
+<li><strong>Contrepartie</strong> — ce que le client donne en échange d'un avantage : engagement sur deux saisons, commande plus importante, paiement plus rapide… On n'accorde jamais une baisse de prix « gratuite » : elle réduit la marge sans rien rapporter.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2356,6 +2738,18 @@ M. Leroy entre. Tu es en train de ranger un rayon. Tu lèves les yeux, tu souris
   <text x="590" y="124" text-anchor="middle" font-size="8" fill="#EBF8FF">Jusqu'à la vente</text>
 </svg>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Prendre un message</strong> — noter : date et heure de l'appel, nom (et entreprise) de la personne, numéro de rappel vérifié en le relisant, objet précis de l'appel, destinataire, et ce qui a été promis (« il vous rappelle dès son retour, après 14 h »). On ne promet que ce que l'on sait possible.</li>
+<li><strong>Mise en attente au téléphone</strong> — on demande l'accord (« Puis-je vous mettre en attente un instant ? »), on attend la réponse, puis on reprend la ligne régulièrement pour donner des nouvelles ; si l'attente se prolonge, on propose de rappeler.</li>
+<li><strong>Heures ouvrées</strong> — heures pendant lesquelles l'entreprise travaille (ni les nuits, ni les week-ends, ni les jours fériés). Un délai « sous 24 heures ouvrées » peut donc s'étendre sur plusieurs jours du calendrier : un message reçu le vendredi soir peut n'être traité qu'en début de semaine suivante.</li>
+<li><strong>Spam, hameçonnage</strong> — un spam est un message publicitaire non sollicité ; l'hameçonnage (<em>phishing</em>) imite un message officiel ou promet un cadeau pour faire cliquer sur un lien ou voler des informations. On ne clique pas, on ne répond pas, on le supprime (ou on le signale selon la consigne de l'entreprise).</li>
+<li><strong>Numéros d'urgence</strong> — 15 : SAMU (urgence médicale) ; 18 : pompiers ; 112 : numéro d'urgence européen, joignable depuis n'importe quel téléphone. On appelle si la personne a perdu connaissance, respire mal, ou en cas de doute sérieux.</li>
+<li><strong>CE (comité d'entreprise)</strong> — nom encore courant du CSE (comité social et économique) : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -2377,6 +2771,17 @@ M. Leroy entre. Tu es en train de ranger un rayon. Tu lèves les yeux, tu souris
 <div class="res-ex"><div class="res-ex-l">Exemple — réponse professionnelle à un client</div>
 "Bonjour Monsieur Perrin, je prends bonne note de votre demande d'échange de taille concernant votre commande n°3962. Je transmets immédiatement votre message au service concerné, qui reviendra vers vous dans les 24 heures. Cordialement, [Prénom] — LABORO Sport & Outdoor"
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Écart à l'objectif et taux de réalisation</strong> — écart = réalisé − objectif ; écart en % = écart ÷ objectif × 100 ; taux de réalisation = réalisé ÷ objectif × 100. Exemple : objectif 200 000 €, réalisé 230 000 € → écart +30 000 €, soit +15 % ; objectif réalisé à 115 %.</li>
+<li><strong>Panier moyen</strong> — chiffre d'affaires ÷ nombre de ventes (tickets de caisse ou commandes). Exemple : 9 000 € pour 60 ventes → 150 €. On le calcule séparément pour les particuliers (B2C) et les professionnels (B2B), car leurs achats n'ont pas la même taille.</li>
+<li><strong>Contact qualifié</strong> — visiteur dont on a noté des coordonnées vérifiées, un besoin précis (et si possible un budget ou une date d'achat) et l'accord pour être recontacté par LABORO. Un simple nom, sans besoin ni accord, n'est pas un contact qualifié.</li>
+<li><strong>Indicateur</strong> — donnée chiffrée qui permet de suivre un résultat : un nom, une formule de calcul, un objectif cible et une fréquence de mesure. Exemple : temps d'attente moyen à l'accueil = total des minutes d'attente ÷ nombre de visiteurs, objectif moins de 5 minutes.</li>
+<li><strong>Accessibilité</strong> — un établissement qui reçoit du public (magasin, salle d'accueil) doit en principe être accessible aux personnes en situation de handicap. Si un obstacle apparaît (ascenseur en panne), on adapte le parcours ou le lieu pour que chacun reçoive le même service, sans mettre personne à l'écart.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
