@@ -1235,7 +1235,7 @@ En fin de journée : un email de réclamation reçu ce matin (délai de réponse
 </div>
 <p><strong>Segmenter pour prioriser :</strong> tous les clients ne demandent pas le même traitement — à relancer en priorité (fort potentiel ou contact resté sans réponse), à entretenir (client actif satisfait), à réactiver (client dormant). Cette segmentation doit guider l'ordre de traitement quand le temps manque, pas seulement une organisation théorique.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — segmenter un fichier clients LABORO</div>
-Julie Marchand (achat il y a 10 jours, avis Google 5/5) → à entretenir : un message de remerciement suffit, pas d'action urgente. Hugo Lefort (11 mois sans achat, abonné newsletter) → à réactiver, par mail avec une invitation à un atelier en magasin. Un responsable de CE qui a demandé un devis la semaine dernière et n'a pas encore été rappelé → à relancer en priorité, par téléphone, car il attend une réponse de LABORO.
+Julie Marchand (achat il y a 10 jours, avis Google 5/5) → à entretenir : un message de remerciement suffit, pas d'action urgente. Hugo Lefort (11 mois sans achat, abonné newsletter) → à réactiver, par mail avec une invitation à un atelier en magasin. Un responsable de CSE qui a demandé un devis la semaine dernière et n'a pas encore été rappelé → à relancer en priorité, par téléphone, car il attend une réponse de LABORO.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : sur quel critère t'es-tu appuyé, et un collègue avec un autre critère aurait-il fait le même choix ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ton arbitrage.</p>
 </div>
@@ -1334,7 +1334,7 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <li><strong>Potentiel de développement</strong> — ce qu'un client pourrait acheter en plus demain (club qui grandit, projet de commande, budget encore peu dépensé chez LABORO). Un petit client d'aujourd'hui peut être un gros client demain.</li>
 <li><strong>Client actif, dormant, perdu</strong> — chez LABORO : actif = dernier achat il y a moins de 6 mois ; dormant = entre 6 et 18 mois ; perdu = plus de 18 mois. On ne lui propose pas la même action : un client dormant, on cherche d'abord à le faire revenir.</li>
 <li><strong>Client stratégique</strong> — client très important pour l'avenir de LABORO : gros chiffre d'affaires, achats fréquents, forte influence (il recommande LABORO, il fait venir d'autres clients).</li>
-<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
+<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CSE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
 </ul>
 </div>
 <div class="res-retenir">
@@ -1356,7 +1356,7 @@ Mme Torres achète pour 89€. À la caisse : "Vous avez une carte LABORO PRO ? 
 <p><strong>Segmentation clients :</strong> clients actifs (achat &lt;6 mois) · clients dormants (6-18 mois) · clients perdus (&gt;18 mois). Actions différentes selon segment.</p>
 <p><strong>La vente au rebond :</strong> c'est saisir une opportunité commerciale qui se présente de façon inattendue, au détour d'un autre échange — sans que ce soit l'objet initial du contact.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — vente au rebond LABORO</div>
-Lors d'une livraison, Laurent Bouchard, responsable du CE Thales Massy, discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi des tapis de yoga pour la salle de sport du CE." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + tapis avec une remise sur le volume — je vous envoie un devis dès demain ?"
+Lors d'une livraison, Laurent Bouchard, responsable du CSE Thales Massy, discute maillots floqués avec Nina et laisse échapper : "En fait il nous faudrait aussi des tapis de yoga pour la salle de sport du CSE." Nina rebondit aussitôt : "On peut justement vous faire une offre groupée maillots + tapis avec une remise sur le volume — je vous envoie un devis dès demain ?"
 </div>
 </div>
 <!-- notions -->
@@ -1780,7 +1780,7 @@ Fournisseur A : Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5
 <div class="res-ex"><div class="res-ex-l">Exemple — calcul démarque</div>
 Crème anti-frottements : stock initial 35, livraison 0, vendues 28 → stock théorique = 7. Stock réel : 3 → démarque de 4 unités (vol possible ou casse non signalée).
 </div>
-<p><strong>Rappel — indicateurs de performance et méthode :</strong> taux de transformation (magasin) = acheteurs ÷ visiteurs × 100 · taux de conversion (site) = commandes ÷ visiteurs uniques × 100 · part des ventes en ligne = CA site ÷ CA total × 100 · écart à l'objectif = réalisé − objectif (en €), puis écart ÷ objectif × 100 (en %). Objectif SMART = Spécifique · Mesurable · Atteignable · Réaliste · Temporel (un chiffre, une cible, une date). Canaux digitaux : Instagram (surtout 18-35 ans, visuel) · Facebook (surtout 35-55 ans, clubs et CE) · Newsletter (clients existants) · Google My Business (recherche locale).</p>
+<p><strong>Rappel — indicateurs de performance et méthode :</strong> taux de transformation (magasin) = acheteurs ÷ visiteurs × 100 · taux de conversion (site) = commandes ÷ visiteurs uniques × 100 · part des ventes en ligne = CA site ÷ CA total × 100 · écart à l'objectif = réalisé − objectif (en €), puis écart ÷ objectif × 100 (en %). Objectif SMART = Spécifique · Mesurable · Atteignable · Réaliste · Temporel (un chiffre, une cible, une date). Canaux digitaux : Instagram (surtout 18-35 ans, visuel) · Facebook (surtout 35-55 ans, clubs et CSE) · Newsletter (clients existants) · Google My Business (recherche locale).</p>
 <p><strong>Gérer un produit à DDM courte :</strong> deux options s'opposent — promotion (−30%, lot 3+1) pour écouler vite, ou don à une association (anti-gaspillage). Il faut comparer les deux sur le CA et la marge dégagée avant de choisir, pas prendre l'option la plus rapide par réflexe.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'est-ce qui a fait pencher la balance entre les deux options (fournisseur, quantité, ou gestion de la démarque), et un autre critère aurait-il changé ta décision ? Ce n'est pas un résumé des calculs, c'est un vrai retour critique sur ta méthode de décision.</p>
 </div>
@@ -1796,13 +1796,13 @@ Crème anti-frottements : stock initial 35, livraison 0, vendues 28 → stock th
 <div class="res-section-label">🔴 Fiche mémo express — piloter la performance globale</div>
 <p>Cette fiche est volontairement dense : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, en croisant plusieurs leviers.</p>
 <p><strong>E-commerce — indicateurs clés :</strong> taux de conversion = commandes ÷ visiteurs × 100 (moyenne nationale 2,96%) · % ventes en ligne = CA site ÷ CA total × 100 · panier moyen en ligne = CA site ÷ nb commandes.</p>
-<p><strong>Communication digitale :</strong> Instagram (18-35 ans, visuel) · Facebook (35-55 ans, CE/clubs) · Newsletter (clients existants) · Google My Business (référencement local). Un post efficace : visuel d'abord, texte &lt;150 mots, 3-5 hashtags, 1 seul call-to-action.</p>
+<p><strong>Communication digitale :</strong> Instagram (18-35 ans, visuel) · Facebook (35-55 ans, CSE/clubs) · Newsletter (clients existants) · Google My Business (référencement local). Un post efficace : visuel d'abord, texte &lt;150 mots, 3-5 hashtags, 1 seul call-to-action.</p>
 <p><strong>Piloter avec le SWOT :</strong> Forces (ce qui marche) · Faiblesses (ce qui freine) · Opportunités (à saisir) · Menaces (risques externes). Prioriser les actions sur les faiblesses qui limitent une force, ou les opportunités les plus faciles à saisir.</p>
 <p><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). En dessous = déficitaire, au-dessus = chaque vente dégage du bénéfice.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — atelier "Entretien & Prolongation équipement"</div>
 Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/participant. Seuil = 600 ÷ (35−12) = 600÷23 = <strong>27 participants</strong> pour être rentable.
 </div>
-<p><strong>Construire une offre B2B</strong> (clubs, CE, collectivités) : tarification dégressive par volume, paiement différé (30-60 jours), interlocuteur dédié, contrat annuel — à la différence du B2C (comptant, sans volume, sans interlocuteur attitré).</p>
+<p><strong>Construire une offre B2B</strong> (clubs, CSE, collectivités) : tarification dégressive par volume, paiement différé (30-60 jours), interlocuteur dédié, contrat annuel — à la différence du B2C (comptant, sans volume, sans interlocuteur attitré).</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1819,8 +1819,8 @@ Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/partici
 <p><strong>B4.1 — Rechercher des prospects.</strong> Un prospect c'est un client potentiel qu'on n'a pas encore. Le but : constituer une liste de contacts à démarcher.</p>
 <p><strong>3 sources principales chez LABORO :</strong></p>
 <ul>
-<li><strong>Fichiers existants</strong> — Mairie (associations déclarées), fédérations sportives départementales, annuaires CE</li>
-<li><strong>Réseaux sociaux</strong> — Facebook (groupes sport locaux), LinkedIn (DRH et responsables CE), Instagram (clubs sportifs)</li>
+<li><strong>Fichiers existants</strong> — Mairie (associations déclarées), fédérations sportives départementales, annuaires CSE</li>
+<li><strong>Réseaux sociaux</strong> — Facebook (groupes sport locaux), LinkedIn (DRH et responsables CSE), Instagram (clubs sportifs)</li>
 <li><strong>Terrain</strong> — Tournois locaux, forums associations, bouche-à-oreille clients actuels</li>
 </ul>
 <p><strong>Critères de qualification d'un prospect LABORO :</strong></p>
@@ -1842,12 +1842,12 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
   <text x="111" y="62" text-anchor="middle" font-size="20">🏛️</text>
   <text x="111" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">FICHIERS OFFICIELS</text>
   <text x="111" y="94" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Mairie · Fédérations sport</text>
-  <text x="111" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Annuaires CE · Sirene</text>
+  <text x="111" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Annuaires CSE · Sirene</text>
   <text x="111" y="123" text-anchor="middle" font-size="7.5" fill="#63B3ED">Gratuits et fiables</text>
   <rect x="220" y="36" width="240" height="100" rx="10" fill="#2D5282"/>
   <text x="340" y="62" text-anchor="middle" font-size="20">💻</text>
   <text x="340" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">RÉSEAUX SOCIAUX</text>
-  <text x="340" y="94" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">LinkedIn (DRH, CE) · Facebook</text>
+  <text x="340" y="94" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">LinkedIn (DRH, CSE) · Facebook</text>
   <text x="340" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,.8)">Instagram (clubs sportifs)</text>
   <text x="340" y="123" text-anchor="middle" font-size="7.5" fill="#90CDF4">Identifier le bon interlocuteur</text>
   <rect x="468" y="36" width="202" height="100" rx="10" fill="#4A6FA5"/>
@@ -1863,8 +1863,8 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <div class="res-section-label">📘 Les notions à connaître</div>
 <ul>
 <li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
-<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
-<li><strong>CE (comité d'entreprise)</strong> — nom encore courant du CSE (comité social et économique) : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
+<li><strong>B2B / B2C</strong> — B2B (de l'anglais <em>business to business</em>) : vente à des professionnels ou à des organisations (clubs, associations, entreprises, CSE, collectivités) ; B2C (<em>business to consumer</em>) : vente à des particuliers. En B2B, on raisonne souvent en HT et on passe par un devis.</li>
+<li><strong>CSE (comité social et économique)</strong> — il a remplacé l'ancien comité d'entreprise (CE), nom encore courant : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
 <li><strong>Raison sociale</strong> — nom officiel d'une entreprise ou d'une association (celui qui figure sur ses documents), parfois différent de son nom commercial.</li>
 <li><strong>Critères de qualification : « au moins », « plus de »</strong> — un prospect est retenu seulement s'il remplit <em>tous</em> les critères : un seul critère manqué suffit à l'écarter. « Au moins 15 » (≥ 15) inclut 15 ; « plus de 300 € » exclut 300 € tout juste ; « plus d'un entraînement par semaine » exclut une pratique d'une fois par semaine ou moins.</li>
 <li><strong>Portefeuille clients</strong> — ensemble des clients suivis par l'entreprise ou par un commercial. Le développer, c'est y ajouter de nouveaux clients et faire acheter davantage ceux qui y sont déjà.</li>
@@ -1880,11 +1880,11 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 </div>`},
 2:{t:'Rechercher des prospects — Qualifier avec BANT',c:`<div class="res-section">
 <div class="res-section-label">🟢 Sources approfondies et méthode BANT</div>
-<p><strong>3 sources essentielles :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives, annuaires des CE, répertoires des collectivités.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels.</li></ul>
+<p><strong>3 sources essentielles :</strong></p><ul><li><strong>Sources officielles</strong> — Societe.com, Infogreffe, annuaires des CCI, registres des associations sportives (DRAJES). Fiables, gratuites, exhaustives.</li><li><strong>Sources sectorielles</strong> — Fédérations sportives, annuaires des CSE, répertoires des collectivités.</li><li><strong>Sources terrain et réseaux</strong> — Salons professionnels (ISPO, Forum sport Essonne), LinkedIn, recommandations de clients actuels.</li></ul>
 <p><strong>Qualifier un prospect avec la méthode BANT :</strong></p>
-<ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
+<ul><li><strong>B</strong>udget — Quel budget annuel sport/équipement ?</li><li><strong>A</strong>uthority — Qui décide ? Responsable CSE, DRH, directeur sportif ?</li><li><strong>N</strong>eed — Quel besoin réel identifié ?</li><li><strong>T</strong>iming — Dans quel délai peut-il acheter ?</li></ul>
 <p><strong>Champs obligatoires dans LABORO Connect :</strong> les 8 champs de base (raison sociale, secteur, effectif, contact — nom et fonction du décisionnaire —, téléphone/e-mail, source d'identification, besoins estimés, date de relance), complétés à ce niveau par le score BANT, le statut (froid/tiède/chaud) et la prochaine action.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CE Essonne</div>Aéronis Systèmes (Villebon-sur-Yvette) — 1 400 salariés — Responsable CE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — fichier prospect CSE Essonne</div>Aéronis Systèmes (Villebon-sur-Yvette) — 1 400 salariés — Responsable CSE : Mme Dufour — Budget sport estimé 20 000 €/an — Besoin : maillots clubs internes + équipement fitness — 3 critères BANT sur 4 validés — Statut : tiède — Prochaine action : e-mailing ciblé J+3.</div>
 </div>
 <!-- notions -->
 <div class="res-section">
@@ -1938,7 +1938,7 @@ Club A : score 83%, saison qui démarre dans 2 semaines. Club B : score 83%, mai
 <p><strong>Mettre en place une veille automatisée</strong> — être alerté en continu sans relancer chaque recherche soi-même :</p>
 <ul>
 <li><strong>Alertes Google</strong> — mots-clés ciblés, fréquence quotidienne/hebdomadaire</li>
-<li><strong>Veille des avis en ligne</strong> — clubs et CE, hebdomadaire</li>
+<li><strong>Veille des avis en ligne</strong> — clubs et CSE, hebdomadaire</li>
 <li><strong>Suivi des prix concurrents</strong> — Sportélia Pro/SportRun, mensuel</li>
 <li><strong>Newsletters sectorielles</strong> — fédérations, CCI, à réception</li>
 <li><strong>Flux LinkedIn suivis</strong> — pages cibles, quotidien</li>
@@ -2019,7 +2019,7 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
 2:{t:'Préparer une opération de prospection — Dimensionner et rédiger',c:`<div class="res-section">
 <div class="res-section-label">🟢 Dimensionner l'opération et choisir les techniques</div>
 <p><strong>Remonter la chaîne de conversion</strong> pour savoir combien de prospects contacter : Nombre de prospects = objectif ÷ (taux1 × taux2 × taux3). N'arrondis que le résultat final, toujours à l'entier supérieur.</p>
-<p>Exemple : objectif 3 contrats CE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60×0,12×0,30) = 3 ÷ 0,0216 = 138,9 → <strong>139 prospects à contacter</strong>.</p>
+<p>Exemple : objectif 3 contrats CSE · taux contact 60% · taux RDV 12% · taux devis-contrat 30% → 3 ÷ (0,60×0,12×0,30) = 3 ÷ 0,0216 = 138,9 → <strong>139 prospects à contacter</strong>.</p>
 <p><strong>Techniques de prospection :</strong></p>
 <ul>
 <li><strong>Phoning</strong> — Taux de RDV 5-15%. Rapide, coût faible.</li>
@@ -2327,8 +2327,8 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 <li><strong>Au-delà de J+20 sans réponse</strong> — Qualifier le statut dans LABORO Connect : perdu, en veille, ou à réactiver</li>
 </ul>
 <p><strong>Indicateurs de suivi :</strong> taux de relance = prospects relancés ÷ devis envoyés × 100 (objectif 100%) · taux de transformation devis-contrat = contrats signés ÷ devis envoyés × 100 (objectif LABORO &gt; 30%) · délai moyen de signature.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — relance CE Thales J+10</div>
-"Bonjour Laurent, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CE Air France Orly dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
+<div class="res-ex"><div class="res-ex-l">Exemple — relance CSE Thales J+10</div>
+"Bonjour Laurent, je reviens vers vous suite à notre échange du [date]. Nous venons de livrer une commande textile pour le CSE Air France Orly dans le même contexte — leur retour est très positif sur nos délais. Seriez-vous disponible 10 min cette semaine ?" → Résultat : rappel reçu le lendemain, devis accepté sous 48h.
 </div>
 </div>
 <!-- notions -->
@@ -2359,7 +2359,7 @@ ROI = (18 000 − 600) ÷ 600 × 100 = <strong>2 900%</strong>. Chaque euro inve
 </div>
 <p><strong>Appliquer la loi de Pareto (règle des 80/20)</strong> à un portefeuille : environ 80% du CA provient souvent de 20% des clients. Étapes : classer les clients du CA le plus élevé au plus faible → repérer ceux qui représentent ~80% du CA cumulé → adapter le suivi (les comptes prioritaires méritent un suivi rapproché en cas de temps limité, sans pour autant abandonner les autres).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>
-Sur 5 comptes B2B, CE PSA Stellantis (22 400 €/an) et CE Thales Massy (18 700 €/an) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
+Sur 5 comptes B2B, CSE PSA Stellantis (22 400 €/an) et CSE Thales Massy (18 700 €/an) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage de priorisation — par exemple : qu'aurais-tu risqué si tu avais traité tous les comptes à égalité de temps, sans tenir compte du poids de chacun dans le CA ? Ce n'est pas un résumé du calcul de ROI ou du classement Pareto, c'est un vrai retour critique sur ta méthode de priorisation.</p>
 </div>
@@ -2523,7 +2523,7 @@ Un prospect compare LABORO à un concurrent moins cher sur un critère précis. 
   'G4B':{
 1:{t:'La prospection commerciale B2B — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer — La prospection chez LABORO</div>
-<p><strong>Prospecter = trouver de nouveaux clients.</strong> Chez LABORO, la cible B2B = associations sportives, comités d'entreprise, clubs.</p>
+<p><strong>Prospecter = trouver de nouveaux clients.</strong> Chez LABORO, la cible B2B = associations sportives, CSE, clubs.</p>
 <p><strong>Les 3 questions avant de prospecter :</strong></p>
 <ul>
 <li>Qui je cherche ? (profil client idéal : association de +20 membres, budget >500€/an)</li>
@@ -2627,7 +2627,7 @@ Un prospect compare LABORO à un concurrent moins cher sur un critère précis. 
 <li>5. Prise de RDV : "Seriez-vous disponible mardi ou jeudi pour un échange de 20 minutes ?"</li>
 </ul>
 <p><strong>Indicateurs d'une opération de prospection :</strong> taux de contact = prospects joints ÷ prospects appelés × 100 · taux de RDV = RDV obtenus ÷ contacts × 100 · taux de transformation = contrats signés ÷ devis envoyés × 100 · coût d'acquisition = budget ÷ nouveaux clients · ROI = (CA généré − coût) ÷ coût × 100.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CE Essonne</div>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — opération CSE Essonne</div>
 47 appels → 16 RDV (34%) → 11 devis → 4 contrats (36%). Budget : 780 €. CA an 1 : 31 200 € HT. ROI = (31 200 − 780) ÷ 780 × 100 = <strong>3 900%</strong>.
 </div>
 </div>
@@ -2646,9 +2646,9 @@ Un prospect compare LABORO à un concurrent moins cher sur un critère précis. 
 <li><strong>La règle des 7 contacts</strong> : en B2B, il faut en moyenne 7 interactions avant une décision d'achat.</li>
 <li><strong>Mix de prospection</strong> : combiner au minimum 2 techniques (e-mail + phoning, ou LinkedIn + visite) multiplie les chances de contact par 2,5.</li>
 </ul>
-<div class="res-ex"><div class="res-ex-l">Exemple LABORO — plan de prospection CE Essonne</div>
-Contexte : Nina Chevalier veut conquérir 5 CE sur le secteur Essonne en 2 mois.<br><br>
-Cible qualifiée : CE d'entreprises > 200 salariés · budget sport > 3 000 €/an · décisionnaire = responsable CE<br>
+<div class="res-ex"><div class="res-ex-l">Exemple LABORO — plan de prospection CSE Essonne</div>
+Contexte : Nina Chevalier veut conquérir 5 CSE sur le secteur Essonne en 2 mois.<br><br>
+Cible qualifiée : CSE d'entreprises > 200 salariés · budget sport > 3 000 €/an · décisionnaire = responsable CSE<br>
 Nombre de prospects à contacter : 5 contrats ÷ (0,60 × 0,12 × 0,30) = 232 contacts nécessaires<br>
 Techniques : LinkedIn (semaine 1-2) → e-mailing (semaine 3-4) → phoning (semaine 5-6) → visites (semaine 7-8)<br>
 Budget : 400 € · Indicateurs : taux de contact > 60%, taux de RDV > 10%, taux de transformation > 25%<br>
@@ -2747,7 +2747,7 @@ M. Leroy entre. Tu es en train de ranger un rayon. Tu lèves les yeux, tu souris
 <li><strong>Heures ouvrées</strong> — heures pendant lesquelles l'entreprise travaille (ni les nuits, ni les week-ends, ni les jours fériés). Un délai « sous 24 heures ouvrées » peut donc s'étendre sur plusieurs jours du calendrier : un message reçu le vendredi soir peut n'être traité qu'en début de semaine suivante.</li>
 <li><strong>Spam, hameçonnage</strong> — un spam est un message publicitaire non sollicité ; l'hameçonnage (<em>phishing</em>) imite un message officiel ou promet un cadeau pour faire cliquer sur un lien ou voler des informations. On ne clique pas, on ne répond pas, on le supprime (ou on le signale selon la consigne de l'entreprise).</li>
 <li><strong>Numéros d'urgence</strong> — 15 : SAMU (urgence médicale) ; 18 : pompiers ; 112 : numéro d'urgence européen, joignable depuis n'importe quel téléphone. On appelle si la personne a perdu connaissance, respire mal, ou en cas de doute sérieux.</li>
-<li><strong>CE (comité d'entreprise)</strong> — nom encore courant du CSE (comité social et économique) : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
+<li><strong>CSE (comité social et économique)</strong> — il a remplacé l'ancien comité d'entreprise (CE), nom encore courant : les représentants du personnel d'une entreprise, qui gèrent notamment des activités sportives et de loisirs pour les salariés. Pour LABORO, c'est un client B2B, et son responsable est souvent le décisionnaire.</li>
 </ul>
 </div>
 <div class="res-retenir">

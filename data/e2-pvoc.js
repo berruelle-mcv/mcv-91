@@ -7,14 +7,14 @@
 const E2_PVOC_SUJET = {
   titre: "Opération Sport en Entreprise",
   session: "Session d'entraînement — Option PVOC",
-  contexte: `LABORO Sport & Outdoor est une enseigne spécialisée dans la vente d'équipements sportifs, basée à Évry-Courcouronnes (91). L'enseigne commercialise ses produits auprès de particuliers via son showroom et son site e-commerce, ainsi qu'auprès de professionnels (clubs sportifs, comités d'entreprise, collectivités).
+  contexte: `LABORO Sport & Outdoor est une enseigne spécialisée dans la vente d'équipements sportifs, basée à Évry-Courcouronnes (91). L'enseigne commercialise ses produits auprès de particuliers via son showroom et son site e-commerce, ainsi qu'auprès de professionnels (clubs sportifs, CSE, collectivités).
 
 Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier, responsable prospection, vous associe à deux opérations commerciales : le lancement d'une nouvelle gamme de vêtements techniques éco-responsables \"EcoPerf\" auprès de revendeurs professionnels, puis la participation à un forum des associations sportives de l'Essonne.`,
   missions: [
     {
       id: 'M1',
       titre: 'Mission 1 — Participer à une opération de prospection',
-      intro: `LABORO prépare le lancement de sa nouvelle gamme de vêtements techniques éco-responsables "EcoPerf". Nina Chevalier souhaite vous associer à cette opération de prospection auprès des clubs sportifs et comités d'entreprise de l'Essonne.`,
+      intro: `LABORO prépare le lancement de sa nouvelle gamme de vêtements techniques éco-responsables "EcoPerf". Nina Chevalier souhaite vous associer à cette opération de prospection auprès des clubs sportifs et CSE de l'Essonne.`,
       activites: [
         {
           id: 'A1',
@@ -28,7 +28,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               points: 2,
               corrige: {
                 methode: 'Opportunité = facteur externe favorable à LABORO\nMenace = facteur externe défavorable à LABORO',
-                reponse: `OPPORTUNITÉ : La tendance éco-responsable dans le sport est en pleine expansion (R-A2). Les acheteurs B2B (CE, clubs) sont de plus en plus sensibles aux critères RSE dans leurs appels d'offres — LABORO peut se différencier sur ce critère face à Sportélia Pro.\n\nMENACE : Le marché est dominé par des acteurs très structurés (Sportélia Pro, Intersport Pro) avec des réseaux nationaux et des prix compétitifs. LABORO, entreprise locale, doit faire face à des concurrents bénéficiant d'économies d'échelle importantes.`
+                reponse: `OPPORTUNITÉ : La tendance éco-responsable dans le sport est en pleine expansion (R-A2). Les acheteurs B2B (CSE, clubs) sont de plus en plus sensibles aux critères RSE dans leurs appels d'offres — LABORO peut se différencier sur ce critère face à Sportélia Pro.\n\nMENACE : Le marché est dominé par des acteurs très structurés (Sportélia Pro, Intersport Pro) avec des réseaux nationaux et des prix compétitifs. LABORO, entreprise locale, doit faire face à des concurrents bénéficiant d'économies d'échelle importantes.`
               }
             },
             {
@@ -49,7 +49,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               ressources: ['R-A3'],
               points: 2,
               corrige: {
-                reponse: `SOLUTION 1 — Développer la notoriété par le digital :\nCréer un compte LinkedIn professionnel dédié aux acheteurs B2B (CE, clubs) pour diffuser des témoignages clients, des cas concrets et des offres. Coût faible, portée ciblée. Cette action répond directement à la faiblesse "notoriété limitée" en touchant les décisionnaires là où ils se trouvent.\n\nSOLUTION 2 — Réduire le délai de flocage :\nNégocier avec le prestataire flocage un service express (7 jours) pour les commandes urgentes, avec surcoût limité répercuté sur le client. Cela répond à la faiblesse "délai flocage 3 semaines" et améliore la compétitivité sur les appels d'offres à délai court.`
+                reponse: `SOLUTION 1 — Développer la notoriété par le digital :\nCréer un compte LinkedIn professionnel dédié aux acheteurs B2B (CSE, clubs) pour diffuser des témoignages clients, des cas concrets et des offres. Coût faible, portée ciblée. Cette action répond directement à la faiblesse "notoriété limitée" en touchant les décisionnaires là où ils se trouvent.\n\nSOLUTION 2 — Réduire le délai de flocage :\nNégocier avec le prestataire flocage un service express (7 jours) pour les commandes urgentes, avec surcoût limité répercuté sur le client. Cela répond à la faiblesse "délai flocage 3 semaines" et améliore la compétitivité sur les appels d'offres à délai court.`
               }
             },
             {
@@ -77,7 +77,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               ressources: ['R-A5','R-A6'],
               points: 2,
               corrige: {
-                reponse: `1. VALORISATION RSE : proposer des équipements éco-responsables améliore l'image du CE ou du club auprès de leurs adhérents — argument fort dans les rapports d'activité.\n2. PRIX COMPÉTITIFS AVEC REMISE VOLUME : les tarifs préférentiels B2B (jusqu'à 15% de remise dès 30 unités) permettent d'équiper les membres à moindre coût.\n3. FLOCAGE PERSONNALISÉ INCLUS : différencie le club avec des équipements aux couleurs de l'association — identité visuelle valorisante.\n4. CONSEIL ET SUIVI DÉDIÉ : un interlocuteur commercial unique gère les commandes, les tailles, les délais — gain de temps pour le responsable achats.`
+                reponse: `1. VALORISATION RSE : proposer des équipements éco-responsables améliore l'image du CSE ou du club auprès de leurs adhérents — argument fort dans les rapports d'activité.\n2. PRIX COMPÉTITIFS AVEC REMISE VOLUME : les tarifs préférentiels B2B (jusqu'à 15% de remise dès 30 unités) permettent d'équiper les membres à moindre coût.\n3. FLOCAGE PERSONNALISÉ INCLUS : différencie le club avec des équipements aux couleurs de l'association — identité visuelle valorisante.\n4. CONSEIL ET SUIVI DÉDIÉ : un interlocuteur commercial unique gère les commandes, les tailles, les délais — gain de temps pour le responsable achats.`
               }
             },
             {
@@ -87,7 +87,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               ressources: ['R-A7'],
               points: 3,
               corrige: {
-                reponse: `CIBLES SÉLECTIONNÉES (budget sport > 3 000 € HT, département 91) :\n\n• CE Safran Massy — Budget 8 500 € — Massy (91) ✅\n• CE PSA Stellantis Évry — Budget 6 200 € — Évry (91) ✅\n• AS Courcouronnes Football — Budget 4 100 € — Courcouronnes (91) ✅\n• Mairie de Ris-Orangis — Budget 5 800 € — Ris-Orangis (91) ✅\n• Club Athlétisme Corbeil-Essonnes — Budget 3 400 € — Corbeil (91) ✅\n\nEXCLUS :\n• AS Longjumeau Basket — Budget 1 800 € — sous le seuil\n• CE Amazon Brétigny — Brétigny (91) mais budget 2 200 € — sous le seuil\n\nJUSTIFICATION : les 5 cibles sélectionnées répondent aux deux critères (91 + budget > 3 000 €). Elles représentent le potentiel commercial le plus immédiat pour LABORO.`
+                reponse: `CIBLES SÉLECTIONNÉES (budget sport > 3 000 € HT, département 91) :\n\n• CSE Safran Massy — Budget 8 500 € — Massy (91) ✅\n• CSE PSA Stellantis Évry — Budget 6 200 € — Évry (91) ✅\n• AS Courcouronnes Football — Budget 4 100 € — Courcouronnes (91) ✅\n• Mairie de Ris-Orangis — Budget 5 800 € — Ris-Orangis (91) ✅\n• Club Athlétisme Corbeil-Essonnes — Budget 3 400 € — Corbeil (91) ✅\n\nEXCLUS :\n• AS Longjumeau Basket — Budget 1 800 € — sous le seuil\n• CSE Amazon Brétigny — Brétigny (91) mais budget 2 200 € — sous le seuil\n\nJUSTIFICATION : les 5 cibles sélectionnées répondent aux deux critères (91 + budget > 3 000 €). Elles représentent le potentiel commercial le plus immédiat pour LABORO.`
               }
             },
             {
@@ -98,7 +98,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
               points: 5,
               corrige: {
                 methode: 'Structure plan d\'appel : Prise de contact → Accroche → Découverte des besoins → Argumentation → Traitement des objections → Conclusion → Prise de congé',
-                reponse: `PLAN D'APPEL — Gamme EcoPerf LABORO\n\n📞 PRISE DE CONTACT\n"Bonjour, je suis [Prénom] de LABORO Sport & Outdoor à Évry. Je souhaitais joindre [Nom du responsable achats / CE], est-il(elle) disponible ?"\n\n🎯 ACCROCHE\n"Je vous contacte car nous venons de lancer notre gamme EcoPerf — des équipements sportifs certifiés éco-responsables à des prix très compétitifs pour les structures comme la vôtre. En ce moment, nous proposons une remise de 15% pour toute première commande passée avant vendredi soir."\n\n🔍 DÉCOUVERTE DES BESOINS\n"Pour vous faire une proposition adaptée : quel type d'équipements commandez-vous habituellement pour vos membres ? En quelle quantité et à quelle fréquence ? Avez-vous des engagements RSE ou une charte environnementale dans votre structure ?"\n\n💬 ARGUMENTATION (méthode CAB)\n"Notre gamme EcoPerf est fabriquée à 60% de matières recyclées, certifiée OEKO-TEX, avec flocage personnalisé inclus et livraison 48h sur l'Essonne. Ce qui signifie pour vous des équipements valorisants pour vos membres, à un prix inférieur de 10 à 15% à nos concurrents nationaux, sans effort logistique de votre côté."\n\n⚡ TRAITEMENT OBJECTION PRIX\n"Je comprends que le prix soit un critère important. Sachez qu'avec la remise de lancement 15% et votre volume estimé, votre commande vous reviendra à [X] € HT — soit [Y] € de moins qu'avec votre fournisseur actuel pour la même qualité."\n\n✅ CONCLUSION\n"Je vous propose de vous envoyer notre catalogue EcoPerf avec la grille tarifaire B2B personnalisée. Si vous me confirmez votre commande avant vendredi, je vous garantis la remise de 15% et je prends en charge personnellement le suivi. Puis-je vous envoyer ça dans l'heure ?"`
+                reponse: `PLAN D'APPEL — Gamme EcoPerf LABORO\n\n📞 PRISE DE CONTACT\n"Bonjour, je suis [Prénom] de LABORO Sport & Outdoor à Évry. Je souhaitais joindre [Nom du responsable achats / CSE], est-il(elle) disponible ?"\n\n🎯 ACCROCHE\n"Je vous contacte car nous venons de lancer notre gamme EcoPerf — des équipements sportifs certifiés éco-responsables à des prix très compétitifs pour les structures comme la vôtre. En ce moment, nous proposons une remise de 15% pour toute première commande passée avant vendredi soir."\n\n🔍 DÉCOUVERTE DES BESOINS\n"Pour vous faire une proposition adaptée : quel type d'équipements commandez-vous habituellement pour vos membres ? En quelle quantité et à quelle fréquence ? Avez-vous des engagements RSE ou une charte environnementale dans votre structure ?"\n\n💬 ARGUMENTATION (méthode CAB)\n"Notre gamme EcoPerf est fabriquée à 60% de matières recyclées, certifiée OEKO-TEX, avec flocage personnalisé inclus et livraison 48h sur l'Essonne. Ce qui signifie pour vous des équipements valorisants pour vos membres, à un prix inférieur de 10 à 15% à nos concurrents nationaux, sans effort logistique de votre côté."\n\n⚡ TRAITEMENT OBJECTION PRIX\n"Je comprends que le prix soit un critère important. Sachez qu'avec la remise de lancement 15% et votre volume estimé, votre commande vous reviendra à [X] € HT — soit [Y] € de moins qu'avec votre fournisseur actuel pour la même qualité."\n\n✅ CONCLUSION\n"Je vous propose de vous envoyer notre catalogue EcoPerf avec la grille tarifaire B2B personnalisée. Si vous me confirmez votre commande avant vendredi, je vous garantis la remise de 15% et je prends en charge personnellement le suivi. Puis-je vous envoyer ça dans l'heure ?"`
               }
             },
             {
@@ -226,12 +226,12 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
     'R-A1': {
       titre: 'LABORO présente sa nouvelle gamme EcoPerf',
       type: 'texte',
-      data: `Bonjour,\n\nNous sommes heureux de vous présenter notre nouvelle gamme EcoPerf, lancée en partenariat avec notre équipe R&D et des associations locales de sport en entreprise.\n\nLABORO Sport & Outdoor, c'est 6 ans d'expérience dans l'équipement sportif en Essonne, un showroom à Évry-Courcouronnes, une boutique en ligne et aujourd'hui plus de 45 clients B2B actifs (CE, clubs, collectivités).\n\nNotre chiffre d'affaires stagne depuis 18 mois et notre taux de notoriété auprès des structures associatives reste trop faible. Notre ambition est d'augmenter le CA B2B de 20% en 12 mois grâce au lancement EcoPerf.\n\nNina Chevalier, Responsable Prospection LABORO\n\nSource : Document interne LABORO`
+      data: `Bonjour,\n\nNous sommes heureux de vous présenter notre nouvelle gamme EcoPerf, lancée en partenariat avec notre équipe R&D et des associations locales de sport en entreprise.\n\nLABORO Sport & Outdoor, c'est 6 ans d'expérience dans l'équipement sportif en Essonne, un showroom à Évry-Courcouronnes, une boutique en ligne et aujourd'hui plus de 45 clients B2B actifs (CSE, clubs, collectivités).\n\nNotre chiffre d'affaires stagne depuis 18 mois et notre taux de notoriété auprès des structures associatives reste trop faible. Notre ambition est d'augmenter le CA B2B de 20% en 12 mois grâce au lancement EcoPerf.\n\nNina Chevalier, Responsable Prospection LABORO\n\nSource : Document interne LABORO`
     },
     'R-A2': {
       titre: 'Le marché du sport éco-responsable en France',
       type: 'texte',
-      data: `Le sport éco-responsable connaît une croissance de 14% par an depuis 2020. Les acheteurs institutionnels (CE, mairies, associations) intègrent désormais des critères environnementaux dans 62% de leurs appels d'offres sport (source : Observatoire du Sport Responsable 2023).\n\nLes principaux acteurs du marché (Sportélia, Intersport, Go Sport) proposent désormais leurs propres gammes "green", intensifiant la concurrence. Cependant, la demande de proximité et de conseil personnalisé reste un levier non exploité par les grandes enseignes.\n\nLe marché des équipements sport B2B en Essonne est estimé à 8–12 millions d'euros par an.\n\nSource : Étude FFF Sport & Responsabilité 2023`
+      data: `Le sport éco-responsable connaît une croissance de 14% par an depuis 2020. Les acheteurs institutionnels (CSE, mairies, associations) intègrent désormais des critères environnementaux dans 62% de leurs appels d'offres sport (source : Observatoire du Sport Responsable 2023).\n\nLes principaux acteurs du marché (Sportélia, Intersport, Go Sport) proposent désormais leurs propres gammes "green", intensifiant la concurrence. Cependant, la demande de proximité et de conseil personnalisé reste un levier non exploité par les grandes enseignes.\n\nLe marché des équipements sport B2B en Essonne est estimé à 8–12 millions d'euros par an.\n\nSource : Étude FFF Sport & Responsabilité 2023`
     },
     'R-A3': {
       titre: 'Caractéristiques et engagements de la gamme EcoPerf',
@@ -259,7 +259,7 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
         publications: 84,
         followers: '1 000',
         suivis: 312,
-        bio: 'Publication du 12 septembre\n\n🌿 LABORO lance sa gamme EcoPerf !\nDes équipements sportifs techniques, certifiés éco-responsables, à destination des clubs et CE de l\'Essonne.\nFlocage personnalisé · Livraison 48h · Conseil dédié\n\n📊 STATISTIQUES :\n• 28 Likes\n• 6 Commentaires\n• 7 Partages\n• Portée : 1 000 abonnés\n\nSource : Compte LinkedIn LABORO Sport & Outdoor'
+        bio: 'Publication du 12 septembre\n\n🌿 LABORO lance sa gamme EcoPerf !\nDes équipements sportifs techniques, certifiés éco-responsables, à destination des clubs et CSE de l\'Essonne.\nFlocage personnalisé · Livraison 48h · Conseil dédié\n\n📊 STATISTIQUES :\n• 28 Likes\n• 6 Commentaires\n• 7 Partages\n• Portée : 1 000 abonnés\n\nSource : Compte LinkedIn LABORO Sport & Outdoor'
       }
     },
     'R-A5': {
@@ -288,13 +288,13 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
       data: {
         headers: ['Structure', 'Type', 'Code postal', 'Ville', 'Contact', 'Budget sport HT/an'],
         rows: [
-          ['CE Safran Massy', 'CE', '91300', 'Massy', 'M. Bertrand', '8 500 €'],
-          ['CE PSA Stellantis Évry', 'CE', '91000', 'Évry', 'Mme Dupont', '6 200 €'],
+          ['CSE Safran Massy', 'CSE', '91300', 'Massy', 'M. Bertrand', '8 500 €'],
+          ['CSE PSA Stellantis Évry', 'CSE', '91000', 'Évry', 'Mme Dupont', '6 200 €'],
           ['AS Courcouronnes Football', 'Club', '91080', 'Courcouronnes', 'M. Faure', '4 100 €'],
           ['Mairie de Ris-Orangis', 'Collectivité', '91130', 'Ris-Orangis', 'Mme Laurent', '5 800 €'],
           ['Club Athlétisme Corbeil', 'Club', '91100', 'Corbeil-Essonnes', 'M. Simon', '3 400 €'],
           ['AS Longjumeau Basket', 'Club', '91160', 'Longjumeau', 'M. Petit', '1 800 €'],
-          ['CE Amazon Brétigny', 'CE', '91220', 'Brétigny', 'Mme Garcia', '2 200 €'],
+          ['CSE Amazon Brétigny', 'CSE', '91220', 'Brétigny', 'Mme Garcia', '2 200 €'],
           ['AS Viry-Châtillon Natation', 'Club', '91170', 'Viry-Châtillon', 'M. Moreau', '2 900 €']
         ]
       }
@@ -321,14 +321,14 @@ Vous êtes commercial(e) au sein de LABORO depuis quelques mois. Nina Chevalier,
     'R-B1': {
       titre: 'Forum des Associations Sportives — présentation de l\'événement',
       type: 'texte',
-      data: `FORUM DES ASSOCIATIONS SPORTIVES DE L'ESSONNE\nSamedi et dimanche, Gymnase Agora — Évry-Courcouronnes\n\nLe Forum des Associations Sportives de l'Essonne rassemble chaque automne plus de 200 associations et clubs sportifs du département. C'est le rendez-vous incontournable pour :\n• Rencontrer les responsables de clubs et CE du 91\n• Présenter de nouveaux équipements et services\n• Nouer des partenariats locaux\n\n500 visiteurs attendus sur les 2 jours, dont 60% de responsables achats.\nLABORO a réservé un stand de 12m² et bénéficiera de la présence de Jordan Vidal, sportif local suivi par 4 200 abonnés Instagram.\n\nSource : Programme officiel Forum Asso Sport 91`
+      data: `FORUM DES ASSOCIATIONS SPORTIVES DE L'ESSONNE\nSamedi et dimanche, Gymnase Agora — Évry-Courcouronnes\n\nLe Forum des Associations Sportives de l'Essonne rassemble chaque automne plus de 200 associations et clubs sportifs du département. C'est le rendez-vous incontournable pour :\n• Rencontrer les responsables de clubs et CSE du 91\n• Présenter de nouveaux équipements et services\n• Nouer des partenariats locaux\n\n500 visiteurs attendus sur les 2 jours, dont 60% de responsables achats.\nLABORO a réservé un stand de 12m² et bénéficiera de la présence de Jordan Vidal, sportif local suivi par 4 200 abonnés Instagram.\n\nSource : Programme officiel Forum Asso Sport 91`
     },
     'R-B2': {
       titre: 'Conseils pour réussir un stand événementiel B2B',
       type: 'conseils',
       data: [
         {element: 'Accroche', conseil: 'Interpeller le visiteur avec une question ouverte ou un fait marquant plutôt qu\'un discours commercial immédiat'},
-        {element: 'Découverte', conseil: 'Poser des questions sur le contexte du club/CE, leurs besoins récurrents, leur budget annuel et leurs critères d\'achat'},
+        {element: 'Découverte', conseil: 'Poser des questions sur le contexte du club/CSE, leurs besoins récurrents, leur budget annuel et leurs critères d\'achat'},
         {element: 'Argumentation', conseil: 'Utiliser la méthode CAB : Caractéristique → Avantage → Bénéfice client. Adapter selon la taille du club'},
         {element: 'Objections', conseil: 'Écouter sans interrompre, reformuler, répondre avec un argument chiffré, puis vérifier que l\'objection est levée'},
         {element: 'Conclusion', conseil: 'Proposer une action concrète immédiate : devis sur tablette, commande sur le stand, prise de RDV post-événement'},
