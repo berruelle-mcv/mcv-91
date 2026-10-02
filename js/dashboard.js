@@ -43,10 +43,10 @@ async function renderMDJEleve(){
 // Propres à chaque univers : LABORO_CONFIG.actus (data/univers.js). Liste ci-dessous = repli.
 const ACTUS_LABORO=(getCfg().actus && getCfg().actus.length) ? getCfg().actus : [
   {date:'Lun',icon:'📦',titre:'Réception commande',txt:'50 ballons de football LABORO T5 et 30 chasubles LABORO Pro reçus en entrepôt. Mise en rayon prévue demain.'},
-  {date:'Lun',icon:'📞',titre:'Prospect à rappeler',txt:'M. Dubois (CE Renault Évry) a demandé un devis pour 20 maillots personnalisés. Romain Sauzet prend en charge.'},
+  {date:'Lun',icon:'📞',titre:'Prospect à rappeler',txt:'M. Dubois (CSE Renault Évry) a demandé un devis pour 20 maillots personnalisés. Romain Sauzet prend en charge.'},
   {date:'Mar',icon:'🎯',titre:'Objectif semaine',txt:'Objectif : 8 500 € de CA cette semaine. À J+1 : 3 240 € réalisés. Bonne dynamique sur le rayon chaussures.'},
   {date:'Mar',icon:'⚠️',titre:'Stock critique',txt:'Chaussures running LABORO EasyRun taille 42 : 2 unités restantes. Commande fournisseur en cours — délai 5 jours.'},
-  {date:'Mer',icon:'🤝',titre:'Visite client B2B',txt:'Isabelle Faure (CE PSA Stellantis) visite le showroom à 14h. Préparer la salle de réunion et le catalogue B2B.'},
+  {date:'Mer',icon:'🤝',titre:'Visite client B2B',txt:'Isabelle Faure (CSE PSA Stellantis) visite le showroom à 14h. Préparer la salle de réunion et le catalogue B2B.'},
   {date:'Mer',icon:'📊',titre:'Bilan mi-semaine',txt:'4 réclamations traitées, taux de satisfaction 94%. Bravo a tous !'},
   {date:'Jeu',icon:'🚀',titre:'Nouvelle collection',txt:'Arrivée de la collection été : shorts 2en1, t-shirts techniques et coupe-vents légers. Étiquetage en cours.'},
   {date:'Jeu',icon:'📱',titre:'Avis Google',txt:'3 nouveaux avis cette semaine : 2 × 5 étoiles, 1 × 3 étoiles. Sophie Blanc gère les réponses.'},
@@ -151,7 +151,7 @@ const POSTES = (getCfg().postes && Object.keys(getCfg().postes).length) ? getCfg
     autre_dir2: {nom:'Marco Pellini', role:'Responsable Satisfaction Client', couleur:'#1D9E75', initiales:'MP'},
     pairs: ['Théo Vasseur','Camille Dumas'],
     missions_principales: [
-      "Prospecter et développer un portefeuille de clients professionnels (CE, clubs, mairies)",
+      "Prospecter et développer un portefeuille de clients professionnels (CSE, clubs, mairies)",
       "Conduire des entretiens de vente en face-à-face et par téléphone",
       "Élaborer et suivre les devis et propositions commerciales",
       "Fidéliser les clients existants et détecter de nouvelles opportunités",
@@ -556,7 +556,7 @@ function renderActus(){
     'Rentree scolaire — LABORO equipe les lycees pro.',
     'Salon Mondial du Sport Paris — octobre.',
     'Black Friday LABORO — -20% sur tout le catalogue.',
-    'Cadeaux entreprise et CE — commandes ouvertes.'
+    'Cadeaux entreprise et CSE — commandes ouvertes.'
   ];
 
   const items = [persoMsg].concat(
