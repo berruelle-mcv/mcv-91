@@ -202,10 +202,18 @@ async function synchroniserProgressionsServeur(){
     // serveur (réinitialisées par l'enseignant, anciens essais locaux) : elles ne
     // doivent plus compter dans le score. Les réponses restent conservées.
     const surServeur = {};
+    // Missions réinitialisées une à une par l'enseignant (02/10/2026) : réponses locales effacées aussi
+    const annulees = {};
+    (d.annulees || []).forEach(function(a){ if(a && a.mission_id) annulees[a.mission_id] = a.quand || '1'; });
     d.progressions.forEach(function(p){ if(p && p.mission_id) surServeur[p.mission_id] = true; });
     Object.keys(ud.missions).forEach(function(mid){
       const m = ud.missions[mid];
       const traceCorrection = m && (m.status === 'done' || m.status === 'att' || m.feedback || m.note_ia != null || m.score != null || (m.tentatives || 0) > 0);
+      if(annulees[mid] && !surServeur[mid] && m && m.annulee_vue !== annulees[mid]){
+        ud.missions[mid] = { id: mid, comp: m.comp, status: 'todo', annulee_vue: annulees[mid] };
+        changed = true;
+        return;
+      }
       if(traceCorrection && !surServeur[mid]){
         // Réinitialisée par l'enseignant (ou jamais arrivée au serveur) : on garde le brouillon
         // des réponses mais on efface l'ancienne correction, pour ne pas afficher une note fantôme.

@@ -138,7 +138,7 @@ function openMission(id){
       const saved=reponseSauvee(savedReps,id,i,q,qid);
       const qcm=analyserQCM(q);
       const ph=qcm?(qcm.mode==='ordre'?'Clique les lettres dans l\'ordre ci-dessus, puis justifie si demandé…':'Clique ta/tes réponse(s) ci-dessus, puis justifie si demandé…'):'Rédige ta réponse ici…';
-      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}','${qid}',this);majChoixQCM('${qid}')">${saved}</textarea></div>`;
+      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}',this.id,this);majChoixQCM(this.id)">${saved}</textarea></div>`;
     });
     html+='</div>';
   });
@@ -150,7 +150,7 @@ function openMission(id){
     // ── Axe 2 : question de réflexivité précise ou générique selon la mission ──
     const reflexQ={3:"Si tu devais expliquer à un jury professionnel comment tu as traité cette situation, que dirais-tu ? Qu'aurais-tu pu faire différemment ?",4:"En prenant du recul sur cette mission : comment ta pratique a-t-elle évolué ? En quoi cette compétence est-elle transférable à d'autres situations professionnelles ?"};
     const rq=m.reflexivite_q||reflexQ[m.reflexivite]||reflexQ[3];
-    html+=`<div class="reflexiv"><div class="reflexiv-l">Question de réflexivité</div><div class="reflexiv-desc">${rq}</div><textarea class="zone-rep${rfSaved?' saved':''}" id="${rfQid}" placeholder="Explique ta démarche…" oninput="autoSaveRep('${id}','${rfQid}',this)">${rfSaved}</textarea></div>`;
+    html+=`<div class="reflexiv"><div class="reflexiv-l">Question de réflexivité</div><div class="reflexiv-desc">${rq}</div><textarea class="zone-rep${rfSaved?' saved':''}" id="${rfQid}" placeholder="Explique ta démarche…" oninput="autoSaveRep('${id}',this.id,this)">${rfSaved}</textarea></div>`;
   }
   // ── Axe 3 : Grille de critères visible par l'élève AVANT soumission ──
   if(m.criteres && m.criteres.length > 0){
@@ -177,7 +177,7 @@ function openMission(id){
   const imprev=IMPREVU[getResKey(m.comp)]||IMPREVU[m.comp];
   if(moyComp>=15&&imprev){
     const siqid=`q_${id}_imprevu`;const siSaved=savedReps[siqid]||'';
-    html+=`<div class="imprevu"><div class="imprevu-l"><div class="imprevu-dot"></div>Situation imprévue — niveau Professionnel compétent/Professionnel performant requis</div><div class="imprevu-txt"><strong>${imprev.titre} :</strong> ${imprev.txt}</div><div class="qi"><span class="qn">⚡</span>${imprev.q}<textarea class="zone-rep${siSaved?' saved':''}" id="${siqid}" placeholder="Gère cette situation imprévue…" oninput="autoSaveRep('${id}','${siqid}',this)">${siSaved}</textarea></div></div>`;
+    html+=`<div class="imprevu"><div class="imprevu-l"><div class="imprevu-dot"></div>Situation imprévue — niveau Professionnel compétent/Professionnel performant requis</div><div class="imprevu-txt"><strong>${imprev.titre} :</strong> ${imprev.txt}</div><div class="qi"><span class="qn">⚡</span>${imprev.q}<textarea class="zone-rep${siSaved?' saved':''}" id="${siqid}" placeholder="Gère cette situation imprévue…" oninput="autoSaveRep('${id}',this.id,this)">${siSaved}</textarea></div></div>`;
   }
   html = '<div style="font-size:11px;color:#4A5568;background:#F1F5F9;border-radius:6px;padding:6px 10px;margin-bottom:10px">🔒 Le copier-coller est désactivé dans les réponses : rédige avec tes propres mots.</div>' + html;
   document.getElementById('mo-mission').innerHTML=html;
@@ -631,7 +631,7 @@ function renderChoixQCM(qid,qcm,saved){
     +qcm.options.map(function(o){
       const rang=choisis.indexOf(o.l);
       const court=o.t.length>70?o.t.substring(0,67)+'…':o.t;
-      return '<button type="button" class="qcm-opt" data-l="'+o.l+'" onclick="choisirQCM(\''+qid+'\',\''+o.l+'\')" title="'+o.t.replace(/"/g,'&quot;')+'" style="'+styleOptQCM(rang>=0)+'">'
+      return '<button type="button" class="qcm-opt" data-l="'+o.l+'" onclick="choisirQCM(this.closest(\'.qcm-wrap\').id.slice(4),this.dataset.l)" title="'+o.t.replace(/"/g,'&quot;')+'" style="'+styleOptQCM(rang>=0)+'">'
         +'<span class="qcm-case" style="display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:'+(qcm.mode==='un'?'50%':'4px')+';border:1.5px solid currentColor;font-size:10px;font-weight:800;margin-right:6px">'
         +(rang>=0?(qcm.mode==='ordre'?(rang+1):'✓'):'')+'</span><strong style="margin-right:4px">'+o.l+')</strong>'+court+'</button>';
     }).join('')
