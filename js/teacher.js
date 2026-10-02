@@ -523,8 +523,10 @@ async function renderMDJListe(){
         + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:var(--th-principal)">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
         + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+etiquetteMaison(a)+'</div></div>'
         + barreAvancement(a)
+        + '<button onclick="ouvrirMaisonMDJ(\''+a.id+'\')" title="Prolonger, ou donner à terminer à la maison" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">🏠 '+(a.maison_jusqu_a ? 'Prolonger' : 'Maison')+'</button>'
         + '<button onclick="retirerMDJ(\''+a.id+'\')" title="Retirer cette mission (elle reste dans l\'historique)" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">✕</button>'
         + '</div>'
+        + (MDJ_MAISON_EDIT === a.id ? panneauMaisonMDJ(a) : '')
         + (deplie ? '<div style="margin-top:6px;font-size:11px;color:#92400E;background:#FFFBEA;border-radius:6px;padding:6px 10px">'
             + (restants.length ? '<strong>Pas encore terminée par :</strong> ' + restants.join(', ') : 'Tout le monde l\'a terminée.') + '</div>' : '')
         + '</div>';
@@ -532,6 +534,50 @@ async function renderMDJListe(){
   }
   remplirFiltreHistoriqueMDJ();
   renderMDJHistorique();
+}
+
+// « 🏠 Prolonger » (02/10/2026) : repousser ou arrêter l'échéance « à la maison » d'une mission en cours
+let MDJ_MAISON_EDIT = null;
+function dateLocaleMDJ(d){
+  const p2 = function(n){ return String(n).padStart(2, '0'); };
+  return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + 'T' + p2(d.getHours()) + ':' + p2(d.getMinutes());
+}
+function baseMaisonMDJ(a){
+  const t = a && a.maison_jusqu_a ? new Date(a.maison_jusqu_a).getTime() : 0;
+  const d = new Date(Math.max(t, Date.now())); d.setSeconds(0, 0); return d;
+}
+function panneauMaisonMDJ(a){
+  const d = baseMaisonMDJ(a); d.setDate(d.getDate() + 1);
+  const bouton = function(txt, js, fort){ return '<button onclick="'+js+'" style="border:.5px solid var(--gb);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px;'+(fort?'background:var(--th-principal);color:#fff;font-weight:700':'background:#fff;color:#374151')+'">'+txt+'</button>'; };
+  return '<div style="margin-top:8px;padding:10px 12px;background:#E0F2FE;border-radius:8px;font-size:12px;color:#075985;display:flex;flex-wrap:wrap;align-items:center;gap:8px">'
+    + '<strong>🏠 À terminer à la maison jusqu\'au</strong>'
+    + '<input type="datetime-local" id="mdj-prol-date" value="'+dateLocaleMDJ(d)+'" style="padding:4px 6px;border:.5px solid var(--gb);border-radius:6px;font-size:12px">'
+    + bouton('+2 h', 'decalerMaisonMDJ(\''+a.id+'\',2)') + bouton('+1 jour', 'decalerMaisonMDJ(\''+a.id+'\',24)') + bouton('+3 jours', 'decalerMaisonMDJ(\''+a.id+'\',72)')
+    + bouton('Valider', 'validerMaisonMDJ(\''+a.id+'\',false)', true)
+    + (a.maison_jusqu_a ? bouton('Arrêter le travail à la maison', 'validerMaisonMDJ(\''+a.id+'\',true)') : '')
+    + bouton('Annuler', 'ouvrirMaisonMDJ(null)')
+    + '<span id="mdj-prol-msg" style="flex-basis:100%;color:#B91C1C"></span></div>';
+}
+function ouvrirMaisonMDJ(id){ MDJ_MAISON_EDIT = (id && MDJ_MAISON_EDIT !== id) ? id : null; renderMDJListe(); }
+function decalerMaisonMDJ(id, heures){
+  const a = MDJ_ASSIGNATIONS.find(function(x){ return x.id === id; });
+  const d = baseMaisonMDJ(a); d.setTime(d.getTime() + heures * 3600 * 1000);
+  const el = document.getElementById('mdj-prol-date'); if(el) el.value = dateLocaleMDJ(d);
+}
+async function validerMaisonMDJ(id, arreter){
+  const msg = document.getElementById('mdj-prol-msg');
+  const body = {};
+  if(!arreter){
+    const v = (document.getElementById('mdj-prol-date') || {}).value;
+    const d = v ? new Date(v) : null;
+    if(!d || isNaN(d) || d.getTime() <= Date.now()){ if(msg) msg.textContent = 'Choisis une date et une heure à venir.'; return; }
+    body.maison_jusqu_a = d.toISOString();
+  }
+  const token = localStorage.getItem('laboro_token');
+  const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/' + encodeURIComponent(id) + '/maison', { method: 'POST', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  if(!r.ok || !r.data.ok){ if(msg) msg.textContent = (r.data && r.data.erreur) || r.erreur || 'Modification impossible (le serveur est-il à jour ?).'; return; }
+  MDJ_MAISON_EDIT = null;
+  renderMDJListe();
 }
 
 function basculerRestantsMDJ(id){ MDJ_DEPLIE[id] = !MDJ_DEPLIE[id]; renderMDJListe(); }
