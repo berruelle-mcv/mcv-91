@@ -383,8 +383,8 @@ function goP(id,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const panel=document.getElementById('panel-'+id); if(panel)panel.classList.add('on');
   if(el)el.classList.add('on');
-  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',suivi:'Suivi des missions',classe:'Vue classe',generation:'Générer une mission',recherche:'Trouver une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
-  document.getElementById('tb-t').textContent=t2[id]||id;
+  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',suivi:'Suivi des missions',indicclasse:'Indicateurs de la classe',classe:'Vue classe',generation:'Générer une mission',recherche:'Trouver une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
+  document.getElementById('tb-t').textContent=(id==='missions'&&CU&&CU.classe==='enseignant')?'Banque de missions':(t2[id]||id);
   if(id==='classe')renderClasse();
   if(id==='dashboard')renderDashboard();
 
@@ -395,6 +395,7 @@ function goP(id,el){
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
   if(id==='suivi' && typeof renderSuiviMissions==='function') renderSuiviMissions();
+  if(id==='indicclasse' && typeof renderIndicateursClasse==='function') renderIndicateursClasse();
   if(id==='generation' && typeof initGenerationMission==='function') initGenerationMission();
   if(id==='recherche' && typeof initRechercheMissions==='function') initRechercheMissions();
   if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();

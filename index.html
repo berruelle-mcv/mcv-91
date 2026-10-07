@@ -545,18 +545,6 @@
   </div>
 </div>
 
-<div class="ana-overlay" id="ana-overlay" onclick="if(event.target===this)closeAnalyse()">
-  <div class="ana-modal">
-    <div class="ana-hd">
-      <div>
-        <div class="ana-hd-t" id="ana-titre">Analyse de classe</div>
-        <div class="ana-hd-s" id="ana-sous">—</div>
-      </div>
-      <button class="ana-cl" onclick="closeAnalyse()">✕</button>
-    </div>
-    <div class="ana-body" id="ana-body"></div>
-  </div>
-</div>
 
 <!-- ORGANIGRAMME & FICHE DE POSTE -->
 <div class="org-overlay" id="org-overlay" onclick="if(event.target===this)closeOrg()">
@@ -627,7 +615,7 @@
       <div class="ob-ens-card">
         <div class="ob-ens-tag">Fonctionnalité clé · 2/3</div>
         <div class="ob-ens-titre">📈 Analyser et<br>préparer la remédiation</div>
-        <div class="ob-ens-sub">Le bouton "Analyse de classe" calcule automatiquement les missions les moins réussies, les compétences fragiles et les points de blocage de votre classe.</div>
+        <div class="ob-ens-sub">La page « Indicateurs de la classe » calcule automatiquement les compétences et les missions les moins réussies, les élèves sans activité ou en difficulté de votre classe.</div>
         <div class="ob-ens-feat" style="margin-bottom:12px">
           <div class="ob-ens-feat-t">La fiche de remédiation</div>
           <div class="ob-ens-feat-d" style="margin-top:4px">En un clic, générez un document imprimable avec : élèves en difficulté · ressource pédagogique · zones à remplir pour votre cours de soutien.</div>
@@ -804,6 +792,10 @@
       <div class="card"><div class="ct">Où en est chaque élève dans les missions assignées ?</div><div id="sm-contenu"></div></div>
     </div>
 
+    <div id="panel-indicclasse" class="panel">
+      <div id="ic-contenu"></div>
+    </div>
+
     <div id="panel-classe" class="panel">
       <div class="card" style="margin-bottom:12px">
         <div class="ct">Gestion des élèves</div>
@@ -881,7 +873,7 @@
       <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
         <button class="btn-val-all" onclick="openAExaminer()" style="margin-bottom:0">📋 À examiner</button>
         <button onclick="exporterClasse()" style="padding:8px 16px;background:none;border:.5px solid var(--gb);border-radius:7px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600">📊 Exporter la liste</button>
-        <button class="ana-btn" onclick="openAnalyse()">📈 Analyse de classe</button>
+        <button class="ana-btn" onclick="ouvrirIndicateursClasse()">📈 Indicateurs de la classe</button>
         <button class="ana-btn" onclick="openReleve()" style="background:linear-gradient(135deg,#1B7F3B,#0F5A28)">📝 Relevé de notes (Pronote)</button>
         <button class="ana-btn" onclick="openRepartition()" style="background:linear-gradient(135deg,#6B4EA8,#4C3480)">👥 Répartir en groupes G1 / G2</button>
       </div>
@@ -1002,14 +994,14 @@
 <script src="data/e2-agec.js?v=20260930"></script>
 <script src="data/e2-pvoc.js?v=20261001cse"></script>
 <script src="js/app.js?v=20260927"></script>
-<script src="js/auth.js?v=20261007"></script>
+<script src="js/auth.js?v=20261007b"></script>
 <script src="js/dashboard.js?v=20261001cse"></script>
 <script src="js/missions.js?v=20261002"></script>
 <script src="js/correction-serveur.js?v=20261002"></script>
 <script src="js/catalogue.js?v=20260927"></script>
 <script src="js/clients.js?v=20260927"></script>
 <script src="js/teacher.js?v=20261002"></script>
-<script src="js/classe-serveur.js?v=20260927"></script>
+<script src="js/classe-serveur.js?v=20261007"></script>
 <script src="js/releve-notes.js?v=20260927"></script>
 <script src="js/groupes.js?v=20260927"></script>
 <script src="js/dashboard-enseignant.js?v=20261007"></script>
@@ -1027,6 +1019,8 @@
 <script src="js/maison.js?v=20260929"></script>
 <script src="js/memos.js?v=20261002"></script>
 <script src="js/suivi-missions.js?v=20261007"></script>
+<script src="js/indicateurs-classe.js?v=20261007"></script>
+<script src="js/menu-enseignant.js?v=20261007"></script>
 
 <div id="charte-laboro" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 100%);z-index:9999;overflow-y:auto;padding:40px 20px">
   <div style="max-width:680px;margin:0 auto">
