@@ -11,7 +11,7 @@ async function renderClasse(){
   const tb = document.getElementById('cl-tbody');
 
   if(!token){
-    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--gm);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="12" style="padding:16px;color:var(--gm);font-size:12px">'
       + 'Connecte-toi via le serveur (adresse mail + mot de passe) pour afficher la liste des élèves.'
       + '</td></tr>';
     if(typeof renderMDJListe === 'function') renderMDJListe();
@@ -24,13 +24,13 @@ async function renderClasse(){
     headers: { 'Authorization': 'Bearer ' + token }
   });
   if(!r.ok){
-    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--rg);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="12" style="padding:16px;color:var(--rg);font-size:12px">'
       + r.erreur + '</td></tr>';
     return;
   }
   const data = r.data;
   if(!data.ok){
-    if(tb) tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--rg);font-size:12px">'
+    if(tb) tb.innerHTML = '<tr><td colspan="12" style="padding:16px;color:var(--rg);font-size:12px">'
       + 'Erreur : ' + (data.erreur || 'chargement impossible') + '</td></tr>';
     return;
   }
@@ -168,14 +168,16 @@ function afficherClasse(){
   if(!tb){ if(typeof renderMDJListe === 'function') renderMDJListe(); return; }
 
   if(!liste.length){
-    tb.innerHTML = '<tr><td colspan="11" style="padding:16px;color:var(--gm);font-size:12px">'
+    tb.innerHTML = '<tr><td colspan="12" style="padding:16px;color:var(--gm);font-size:12px">'
       + (classeFiltre ? 'Aucun élève dans cette classe.' : 'Aucun élève pour le moment. Ajoute des élèves avec le formulaire ci-dessus.')
       + '</td></tr>';
     if(typeof renderMDJListe === 'function') renderMDJListe();
     return;
   }
 
-  tb.innerHTML = liste.map(function(e){
+  // Tri optionnel par dernière activité (activite-eleves.js, 07/10/2026)
+  const listeAffichee = (typeof trierParActivite === 'function') ? trierParActivite(liste) : liste;
+  tb.innerHTML = listeAffichee.map(function(e){
     const nomAff = ((e.prenom ? e.prenom + ' ' : '') + (e.nom || '')).trim() || e.email;
     const cls = e.classe_libelle || '—';
     const classeCodePortfolio = e.classe || '';
@@ -197,6 +199,7 @@ function afficherClasse(){
     return '<tr onclick="selectionnerEleve(\'' + e.id + '\')" style="cursor:pointer' + (estSelectionne ? ';background:var(--bc)' : '') + '">'
       + '<td style="font-weight:700">' + nomAff + (e.statut && e.statut!=='actif' ? ' <span style="font-size:9px;font-weight:400;color:var(--gm)">(' + e.statut + ')</span>' : '') + '<div style="font-size:9px;color:var(--gm);font-weight:400">' + e.email + '</div></td>'
       + '<td class="u-label-sm">' + cls + ((typeof badgeGroupe === 'function') ? badgeGroupe(e.groupe) : '') + '</td>'
+      + '<td>' + ((typeof celluleActivite === 'function') ? celluleActivite(e) : '—') + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c1) + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c2) + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c3) + '</td>'

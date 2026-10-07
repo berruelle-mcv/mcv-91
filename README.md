@@ -39,7 +39,7 @@ mcv-91/
     ├── dashboard.js, missions.js, catalogue.js, clients.js
     ├── correction-serveur.js, brouillons-serveur.js, maison.js
     ├── teacher.js, dashboard-enseignant.js, classe-serveur.js, copie.js, groupes.js
-    ├── recherche-missions.js, generation-mission.js, releve-notes.js, portfolio.js, suivi-missions.js, indicateurs-classe.js, menu-enseignant.js
+    ├── recherche-missions.js, generation-mission.js, releve-notes.js, portfolio.js, suivi-missions.js, indicateurs-classe.js, menu-enseignant.js, activite-eleves.js
     └── admin-classes.js, admin-acces.js, mot-de-passe.js, sante-ia.js
 ```
 
@@ -55,7 +55,7 @@ mcv-91/
 - Indices d'intégrité (temps, texte tapé, collages bloqués) et bloc « Copies à vérifier à l'oral ».
 - Mission du jour (classe, demi-groupe ou élève), avec aperçu « déjà assignée ? faite par qui ? » et option « à terminer à la maison ».
 - Trouver une mission (recherche par mot-clé avec synonymes du métier), génération de mission par l'IA (brouillon relu par l'enseignant).
-- Menu enseignant épuré (menu-enseignant.js), Indicateurs de la classe (compétences et missions les moins réussies, élèves sans activité ou en difficulté), Suivi des missions (tableau élèves × missions assignées, clic sur une case pour ouvrir la copie), Vue classe, relevé de notes, portfolio, horaires d'accès des élèves, brouillons sauvegardés sur le serveur.
+- Connexions et activité des élèves (colonne « Dernière activité » de la Vue classe, encadré dans la fiche élève), Menu enseignant épuré (menu-enseignant.js), Indicateurs de la classe (compétences et missions les moins réussies, élèves sans activité ou en difficulté), Suivi des missions (tableau élèves × missions assignées, clic sur une case pour ouvrir la copie), Vue classe, relevé de notes, portfolio, horaires d'accès des élèves, brouillons sauvegardés sur le serveur.
 - Pastille « Crédit IA » (solde estimé) et voyant de santé de l'IA.
 
 ## Déploiement

@@ -819,6 +819,7 @@
             <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:8px;text-transform:uppercase">Actions sur un élève sélectionné</div>
             <div style="font-size:11px;color:var(--gm);padding:8px;background:var(--gc);border-radius:6px;margin-bottom:8px">💡 Cliquer sur un élève dans le tableau ci-dessous pour le sélectionner, puis utiliser les actions.</div>
             <div id="eleve-selectionne-nom" style="font-size:12px;font-weight:700;color:var(--bf);margin-bottom:8px;min-height:18px"></div>
+            <div id="eleve-activite"></div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <button onclick="changerClasseEleve()" style="padding:8px;background:none;border:.5px solid var(--gb);border-radius:6px;cursor:pointer;font-size:12px;color:var(--gm);font-weight:600;text-align:left">✏️ Changer de classe</button>
               <div id="chcl-panel" style="display:none;gap:6px;align-items:center;padding:6px;background:var(--gc);border-radius:6px">
@@ -879,7 +880,7 @@
       </div>
       <div class="card" style="overflow-x:auto;margin-bottom:12px">
         <div class="ct" id="cl-titre">Vue classe — cliquer sur un élève pour le sélectionner</div>
-        <table class="ctl"><thead><tr><th>Élève</th><th>Classe</th><th>C1</th><th>C2</th><th>C3</th><th>G4</th><th>Score</th><th>Posture</th><th>Missions</th><th>Moy.</th><th>Actions</th></tr></thead><tbody id="cl-tbody"></tbody></table>
+        <table class="ctl"><thead><tr><th>Élève</th><th>Classe</th><th id="th-activite" onclick="if(typeof basculerTriActivite==='function')basculerTriActivite()" style="cursor:pointer" title="Cliquer pour trier : les plus anciennes en haut">Dernière activité</th><th>C1</th><th>C2</th><th>C3</th><th>G4</th><th>Score</th><th>Posture</th><th>Missions</th><th>Moy.</th><th>Actions</th></tr></thead><tbody id="cl-tbody"></tbody></table>
       </div>
       <div id="archives-wrap"></div>
     </div>
@@ -1001,7 +1002,7 @@
 <script src="js/catalogue.js?v=20260927"></script>
 <script src="js/clients.js?v=20260927"></script>
 <script src="js/teacher.js?v=20261002"></script>
-<script src="js/classe-serveur.js?v=20261007"></script>
+<script src="js/classe-serveur.js?v=20261007b"></script>
 <script src="js/releve-notes.js?v=20260927"></script>
 <script src="js/groupes.js?v=20260927"></script>
 <script src="js/dashboard-enseignant.js?v=20261007"></script>
@@ -1021,6 +1022,7 @@
 <script src="js/suivi-missions.js?v=20261007"></script>
 <script src="js/indicateurs-classe.js?v=20261007"></script>
 <script src="js/menu-enseignant.js?v=20261007"></script>
+<script src="js/activite-eleves.js?v=20261007"></script>
 
 <div id="charte-laboro" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 100%);z-index:9999;overflow-y:auto;padding:40px 20px">
   <div style="max-width:680px;margin:0 auto">
