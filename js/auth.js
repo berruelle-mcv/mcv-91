@@ -300,7 +300,7 @@ function showApp(){
   document.getElementById('tb-d').textContent=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
   const ens=CU.classe==='enseignant';
   document.body.classList.toggle('ens-mode',ens);
-  ['ns-ens','ni-mdj','ni-cl'].forEach(id=>document.getElementById(id).style.display=ens?'':'none');
+  ['ns-ens','ni-mdj','ni-sm','ni-cl'].forEach(id=>document.getElementById(id).style.display=ens?'':'none');
   const btnGuide=document.getElementById('btn-guide-ens');if(btnGuide)btnGuide.style.display=ens?'block':'none';
   // Message personnalisé
   const msgKey=CU.classe.includes('AGEC')?'AGEC':CU.classe.includes('PVOC')?'PVOC':CU.classe.includes('Term')?'Term':CU.classe==='enseignant'?'ens':'2nde';
@@ -330,6 +330,8 @@ function showApp(){
   const nsEns = document.getElementById('ns-ens');
   if(niMdj) niMdj.style.display = ens ? '' : 'none'; // '' = affichage du CSS (.ni en flex : pastille alignée avec le texte)
   if(niCl) niCl.style.display = ens ? '' : 'none';
+  const niSm = document.getElementById('ni-sm');
+  if(niSm) niSm.style.display = ens ? '' : 'none';
   if(nsEns) nsEns.style.display = ens ? 'block' : 'none';
   // Visibilité nav "Gestion des classes" (administrateur uniquement)
   const estAdminUtilisateur = localStorage.getItem('laboro_est_admin') === '1';
@@ -381,7 +383,7 @@ function goP(id,el){
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const panel=document.getElementById('panel-'+id); if(panel)panel.classList.add('on');
   if(el)el.classList.add('on');
-  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',classe:'Vue classe',generation:'Générer une mission',recherche:'Trouver une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
+  const t2={dashboard:'Tableau de bord',missions:'Mes missions',competences:'Mes compétences',catalogue:'Catalogue produits',clients:'Fichier clients',indicateurs:'Indicateurs commerciaux',missiondujour:'Mission du jour',suivi:'Suivi des missions',classe:'Vue classe',generation:'Générer une mission',recherche:'Trouver une mission',e2agec:'Préparation E2 — Option AGEC',e2pvoc:'Préparation E2 — Option PVOC',classesadmin:'Gestion des classes',acceseleves:'Accès élèves'};
   document.getElementById('tb-t').textContent=t2[id]||id;
   if(id==='classe')renderClasse();
   if(id==='dashboard')renderDashboard();
@@ -392,6 +394,7 @@ function goP(id,el){
   if(id==='e2agec' && typeof renderE2AGEC==='function') renderE2AGEC();
   if(id==='e2pvoc' && typeof renderE2PVOC==='function') renderE2PVOC();
   if(id==='missiondujour' && typeof renderMDJPanel==='function') renderMDJPanel();
+  if(id==='suivi' && typeof renderSuiviMissions==='function') renderSuiviMissions();
   if(id==='generation' && typeof initGenerationMission==='function') initGenerationMission();
   if(id==='recherche' && typeof initRechercheMissions==='function') initRechercheMissions();
   if(id==='classesadmin' && typeof renderClassesAdmin==='function') renderClassesAdmin();

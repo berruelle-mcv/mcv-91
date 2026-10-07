@@ -204,7 +204,7 @@ function blocATraiter(d){
     + (d.tentativesConnues
         ? tuile(d.epuisees, '2 tentatives épuisées', d.epuisees ? 'Élèves bloqués : à voir avec eux' : 'Aucun élève bloqué', d.epuisees ? '#B91C1C' : '#166534', d.epuisees ? '#FEF2F2' : '#F0FDF4', "ouvrirDepuisAccueil('examiner')")
         : '')
-    + tuile(d.enCours.length, 'Mission(s) assignée(s) en cours', 'Suivre l\'avancement →', 'var(--th-principal)', 'var(--th-fond)', "goP('missiondujour',document.getElementById('ni-mdj'))")
+    + tuile(d.enCours.length, 'Mission(s) assignée(s) en cours', 'Suivre l\'avancement →', 'var(--th-principal)', 'var(--th-fond)', "goP('suivi',document.getElementById('ni-sm'))")
     + tuile(d.aujourdhui, 'Soumission(s) aujourd\'hui', (d.classeChoisie ? d.classeChoisie : 'Toutes classes confondues'), '#4A5568', '#F7FAFC', '');
 
   const listeEnCours = d.enCours.slice(0, 4).map(function(a){
