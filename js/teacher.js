@@ -514,26 +514,177 @@ async function renderMDJListe(){
   if(!enCours.length){
     el.innerHTML = encadre('Aucune mission en cours. Les missions terminées par tous les élèves concernés passent automatiquement dans l\'historique.');
   } else {
-    el.innerHTML = enCours.map(function(a){
-      const deplie = !!MDJ_DEPLIE[a.id];
-      const restants = (a.restants||[]).map(function(x){ return ((x.nom||'').toUpperCase()+' '+(x.prenom||'')).trim(); });
-      return '<div style="padding:10px 0;border-bottom:.5px solid var(--gc)">'
-        + '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">'
-        + '<div style="flex:1;min-width:220px;cursor:pointer" onclick="basculerRestantsMDJ(\''+a.id+'\')" title="Voir qui ne l\'a pas encore terminée">'
-        + '<div style="font-size:12px"><strong>'+cibleAssignation(a)+'</strong> — <strong style="color:var(--th-principal)">'+a.mission_id+'</strong> '+(a.titre||'')+'</div>'
-        + '<div class="u-label-sm">Assignée le '+fmtDateHeure(a.created_at)+' · '+(a.comp_id||'')+' P'+(a.palier||'')+' · '+(deplie?'▲ masquer':'▼ qui reste ?')+etiquetteMaison(a)+'</div></div>'
-        + barreAvancement(a)
-        + '<button onclick="ouvrirMaisonMDJ(\''+a.id+'\')" title="Prolonger, ou donner à terminer à la maison" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">🏠 '+(a.maison_jusqu_a ? 'Prolonger' : 'Maison')+'</button>'
-        + '<button onclick="retirerMDJ(\''+a.id+'\')" title="Retirer cette mission (elle reste dans l\'historique)" style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)">✕</button>'
-        + '</div>'
-        + (MDJ_MAISON_EDIT === a.id ? panneauMaisonMDJ(a) : '')
-        + (deplie ? '<div style="margin-top:6px;font-size:11px;color:#92400E;background:#FFFBEA;border-radius:6px;padding:6px 10px">'
-            + (restants.length ? '<strong>Pas encore terminée par :</strong> ' + restants.join(', ') : 'Tout le monde l\'a terminée.') + '</div>' : '')
-        + '</div>';
-    }).join('');
+    // Élèves + notes : chargés en plus des assignations pour afficher les cartes par mission
+    if(!(await chargerElevesNotesMDJ(token))){
+      el.innerHTML = encadre('⏳ Chargement des élèves et de leurs notes…');
+      await chargerElevesNotesMDJ(token, true);
+    }
+    el.innerHTML = cartesMissionsMDJ(enCours);
   }
   remplirFiltreHistoriqueMDJ();
   renderMDJHistorique();
+}
+
+// ═══ Missions en cours, vue par mission (10/10/2026) ═══
+// Demande de Pascal : « pour une mission donnée, combien l'ont réalisée, les
+// notes, et qui ne l'a pas réalisée, le tout visible ». Une carte par mission
+// et par classe (si la même mission a été assignée à la classe puis au G2, une
+// seule carte). Mêmes règles que l'écran « Suivi des missions » (suivi-missions.js) :
+//   faite      = validée, ou 2 essais utilisés sous le seuil
+//   à reprendre = rendue (correction en cours) ou sous le seuil avec 1 essai restant
+//   pas faite  = pas commencée ou commencée sans être rendue
+// Aucune nouvelle route serveur : /api/eleves + /api/eleves/:id/progressions.
+let MDJ_NOTES_CHARGEES_A = 0;
+let MDJ_NOTES_EN_COURS = null;
+// Recharge élèves + notes (une seule requête à la fois)
+function rechargerElevesNotesMDJ(token){
+  if(MDJ_NOTES_EN_COURS) return MDJ_NOTES_EN_COURS;
+  MDJ_NOTES_EN_COURS = (async function(){
+    try {
+      const r = await fetchJSON(LABORO_API + '/api/eleves', { headers: { 'Authorization': 'Bearer ' + token } });
+      if(r.ok && r.data && r.data.ok){
+        ELEVES_SERVEUR = r.data.eleves || [];
+        if(typeof chargerProgressionsClasse === 'function'){
+          await chargerProgressionsClasse(ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; }));
+        }
+        MDJ_NOTES_CHARGEES_A = Date.now();
+      }
+    } catch(e){ console.error('MDJ notes', e); }
+    finally { MDJ_NOTES_EN_COURS = null; }
+  })();
+  return MDJ_NOTES_EN_COURS;
+}
+// true = données utilisables tout de suite ; false = rien en mémoire, il faut attendre
+async function chargerElevesNotesMDJ(token, forcer){
+  if(forcer){ await rechargerElevesNotesMDJ(token); return true; }
+  if(!MDJ_NOTES_CHARGEES_A) return false;
+  if(Date.now() - MDJ_NOTES_CHARGEES_A > 30000){
+    // Données un peu anciennes : on affiche quand même, et on redessine une fois à jour
+    rechargerElevesNotesMDJ(token).then(function(){
+      const el = document.getElementById('mdj-liste');
+      const enCours = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours'; });
+      if(el && enCours.length) el.innerHTML = cartesMissionsMDJ(enCours);
+    });
+  }
+  return true;
+}
+function escMDJ(t){ return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function nomCourtMDJ(e){ return ((e.nom || '').toUpperCase() + ' ' + (e.prenom || '')).trim() || 'Élève'; }
+function fmtNoteMDJ(n){ return n == null ? '' : String(Math.round(n * 2) / 2).replace('.', ','); }
+function etatEleveMDJ(p){
+  if(!p) return 'afaire';
+  if(p.statut === 'valide') return 'valide';
+  if(p.statut === 'a_examiner') return (p.tentatives || 0) >= 2 ? 'epuisee' : 'reprendre';
+  if(p.statut === 'soumis' || p.statut === 'corrige') return 'rendue';
+  return 'commencee';
+}
+function concerneMDJ(a, e){
+  if(a.cible === 'eleve') return String(a.eleve_id) === String(e.id);
+  const memeClasse = (a.classe_libelle && e.classe_libelle === a.classe_libelle) || (a.classe_id && e.classe_id != null && String(e.classe_id) === String(a.classe_id));
+  if(!memeClasse) return false;
+  if(a.cible === 'groupe') return e.groupe === a.groupe;
+  return true;
+}
+function classeCarteMDJ(a){
+  if(a.cible !== 'eleve') return a.classe_libelle || a.classe_id || '';
+  const e = (ELEVES_SERVEUR || []).find(function(x){ return String(x.id) === String(a.eleve_id); });
+  return (e && e.classe_libelle) || 'Élèves (individuel)';
+}
+function libelleCibleMDJ(a){
+  if(a.cible === 'groupe') return 'groupe ' + a.groupe;
+  if(a.cible === 'eleve') return ((a.nom||'').toUpperCase() + ' ' + (a.prenom||'')).trim() || 'un élève';
+  return 'toute la classe';
+}
+function cartesMissionsMDJ(enCours){
+  // Regroupement par classe + mission
+  const cartes = {};
+  enCours.forEach(function(a){
+    const cl = classeCarteMDJ(a);
+    const k = cl + '|' + a.mission_id;
+    (cartes[k] = cartes[k] || { classe: cl, mission_id: a.mission_id, titre: a.titre, comp_id: a.comp_id, palier: a.palier, assignations: [] }).assignations.push(a);
+  });
+  const maintenant = Date.now();
+  const liste = Object.keys(cartes).map(function(k){
+    const c = cartes[k];
+    const eleves = (ELEVES_SERVEUR || []).filter(function(e){
+      return e.statut !== 'archive' && c.assignations.some(function(a){ return concerneMDJ(a, e); });
+    });
+    c.faites = []; c.areprendre = []; c.pasfaites = [];
+    eleves.forEach(function(e){
+      const p = ((typeof PROGRESSIONS_BRUTES !== 'undefined' && PROGRESSIONS_BRUTES[e.id]) || []).find(function(x){ return x && x.mission_id === c.mission_id; }) || null;
+      const etat = etatEleveMDJ(p);
+      const n = p ? (p.note_finale != null ? p.note_finale : p.note_ia) : null;
+      const x = { e: e, etat: etat, note: n == null ? null : Number(n) };
+      if(etat === 'valide' || etat === 'epuisee') c.faites.push(x);
+      else if(etat === 'rendue' || etat === 'reprendre') c.areprendre.push(x);
+      else c.pasfaites.push(x);
+    });
+    const tri = function(a, b){ return nomCourtMDJ(a.e).localeCompare(nomCourtMDJ(b.e), 'fr'); };
+    c.faites.sort(tri); c.areprendre.sort(tri); c.pasfaites.sort(tri);
+    c.total = eleves.length;
+    const notes = c.faites.concat(c.areprendre).map(function(x){ return x.note; }).filter(function(n){ return n != null && !isNaN(n); });
+    c.moyenne = notes.length ? notes.reduce(function(s, n){ return s + n; }, 0) / notes.length : null;
+    c.nbNotes = notes.length;
+    c.echue = c.assignations.some(function(a){ return a.maison_jusqu_a && new Date(a.maison_jusqu_a).getTime() <= maintenant; });
+    c.derniere = Math.max.apply(null, c.assignations.map(function(a){ return new Date(a.created_at).getTime() || 0; }));
+    return c;
+  });
+  // Échéance maison passée d'abord (à clôturer), puis la plus récemment assignée
+  liste.sort(function(a, b){ return (b.echue - a.echue) || (b.derniere - a.derniere); });
+
+  const chip = function(x, mission, fond, coul, avecNote){
+    const cliquable = x.etat !== 'afaire' && x.etat !== 'commencee' && typeof openCopie === 'function';
+    const note = (avecNote && x.note != null) ? ' <strong>' + fmtNoteMDJ(x.note) + '</strong>' : '';
+    const ico = x.etat === 'epuisee' ? '⛔ ' : (x.etat === 'rendue' ? '📨 ' : (x.etat === 'reprendre' ? '🔁 ' : (x.etat === 'commencee' ? '✏️ ' : '')));
+    const titre = { valide:'Validée', epuisee:'2 essais utilisés, sous le seuil', rendue:'Rendue, correction en cours', reprendre:'Sous le seuil : peut encore la corriger', commencee:'Commencée, pas encore rendue', afaire:'Pas commencée' }[x.etat]
+      + (x.note != null && avecNote ? ' (' + fmtNoteMDJ(x.note) + '/20)' : '') + (cliquable ? ' — cliquer pour ouvrir la copie' : '');
+    return '<span title="' + escMDJ(titre) + '"' + (cliquable ? ' onclick="openCopie(\'' + escMDJ(x.e.id) + '\',\'' + escMDJ(mission) + '\')"' : '')
+      + ' style="display:inline-block;margin:2px 3px 2px 0;padding:2px 8px;border-radius:10px;font-size:11.5px;white-space:nowrap;background:' + fond + ';color:' + coul + (cliquable ? ';cursor:pointer' : '') + '">'
+      + ico + escMDJ(nomCourtMDJ(x.e)) + note + '</span>';
+  };
+  const couleurNote = function(n){ return n == null ? '#374151' : (n >= 12 ? '#166534' : (n >= 10 ? '#92400E' : '#B91C1C')); };
+  const btn = 'background:#fff;border:.5px solid var(--gb);border-radius:6px;padding:3px 9px;cursor:pointer;font-size:12px;color:var(--gm)';
+
+  return liste.map(function(c){
+    const pct = c.total ? Math.round(c.faites.length / c.total * 100) : 0;
+    const lignesAssign = c.assignations.map(function(a){
+      return '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--gm);margin-top:4px">'
+        + '<span>Assignée à <strong>' + escMDJ(libelleCibleMDJ(a)) + '</strong> le ' + fmtDateHeure(a.created_at) + '</span>' + etiquetteMaison(a)
+        + '<span style="flex:1"></span>'
+        + '<button onclick="ouvrirMaisonMDJ(\'' + a.id + '\')" title="Prolonger, ou donner à terminer à la maison" style="' + btn + '">🏠 ' + (a.maison_jusqu_a ? 'Prolonger' : 'Maison') + '</button>'
+        + '<button onclick="retirerMDJ(\'' + a.id + '\')" title="Retirer (les notes sont conservées, la mission passe dans l\'historique)" style="' + btn + '">✕ Retirer</button>'
+        + '</div>'
+        + (MDJ_MAISON_EDIT === a.id ? panneauMaisonMDJ(a) : '');
+    }).join('');
+    return '<div style="border:.5px solid var(--gb);border-radius:10px;padding:12px 14px;margin-bottom:10px;' + (c.echue ? 'border-left:4px solid #9CA3AF' : 'border-left:4px solid var(--th-principal)') + '">'
+      // En-tête : mission + chiffres clés
+      + '<div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">'
+      + '<div style="flex:1;min-width:220px">'
+      + '<div style="font-size:13.5px"><strong style="color:var(--th-principal)">' + escMDJ(c.mission_id) + '</strong> <strong>' + escMDJ(c.titre || '') + '</strong></div>'
+      + '<div class="u-label-sm">' + escMDJ(c.classe) + ' · ' + escMDJ(c.comp_id || '') + (c.palier ? ' P' + escMDJ(c.palier) : '') + '</div>'
+      + '</div>'
+      + '<div style="text-align:center;min-width:90px"><div style="font-size:20px;font-weight:800;color:var(--th-fonce,#1F2937)">' + c.faites.length + '<span style="font-size:13px;color:var(--gm)">/' + c.total + '</span></div><div style="font-size:10.5px;color:var(--gm)">réalisée</div></div>'
+      + '<div style="text-align:center;min-width:90px"><div style="font-size:20px;font-weight:800;color:' + couleurNote(c.moyenne) + '">' + (c.moyenne != null ? fmtNoteMDJ(c.moyenne) : '—') + '<span style="font-size:13px;color:var(--gm)">/20</span></div><div style="font-size:10.5px;color:var(--gm)">moyenne' + (c.nbNotes ? ' (' + c.nbNotes + ' note' + (c.nbNotes > 1 ? 's' : '') + ')' : '') + '</div></div>'
+      + '<div style="text-align:center;min-width:90px"><div style="font-size:20px;font-weight:800;color:' + (c.pasfaites.length ? '#B91C1C' : '#166534') + '">' + c.pasfaites.length + '</div><div style="font-size:10.5px;color:var(--gm)">pas faite</div></div>'
+      + '</div>'
+      + '<div style="height:6px;background:#E5E7EB;border-radius:4px;overflow:hidden;margin:8px 0 10px"><div style="height:100%;width:' + pct + '%;background:#1B7F3B"></div></div>'
+      // Pas faite : toujours visible, en premier
+      + (c.pasfaites.length
+          ? '<div style="background:#FEF2F2;border-radius:8px;padding:7px 10px;margin-bottom:6px"><div style="font-size:11.5px;font-weight:700;color:#991B1B;margin-bottom:3px">❌ Pas faite (' + c.pasfaites.length + ')</div>'
+            + c.pasfaites.map(function(x){ return chip(x, c.mission_id, '#fff', '#991B1B', false); }).join('') + '</div>'
+          : '<div style="background:#F0FDF4;border-radius:8px;padding:7px 10px;margin-bottom:6px;font-size:11.5px;font-weight:700;color:#166534">✅ Tous les élèves concernés l\'ont faite</div>')
+      + (c.areprendre.length
+          ? '<div style="background:#FFF7ED;border-radius:8px;padding:7px 10px;margin-bottom:6px"><div style="font-size:11.5px;font-weight:700;color:#9A3412;margin-bottom:3px">🔁 Rendue, en attente ou à reprendre (' + c.areprendre.length + ')</div>'
+            + c.areprendre.map(function(x){ return chip(x, c.mission_id, '#fff', '#9A3412', true); }).join('') + '</div>'
+          : '')
+      + (c.faites.length
+          ? '<div style="background:#F8FAFC;border-radius:8px;padding:7px 10px"><div style="font-size:11.5px;font-weight:700;color:#166534;margin-bottom:3px">✅ Faite (' + c.faites.length + ') — note sur 20</div>'
+            + c.faites.map(function(x){ return chip(x, c.mission_id, x.etat === 'epuisee' ? '#FEE2E2' : '#fff', couleurNote(x.note), true); }).join('') + '</div>'
+          : '')
+      + lignesAssign
+      + '</div>';
+  }).join('')
+  + '<div style="font-size:11px;color:var(--gm);margin-top:4px">Clique sur un nom pour ouvrir sa copie. « ✕ Retirer » enlève la mission de l\'écran des élèves ; les réponses et les notes sont conservées, et la mission passe dans l\'historique. ⛔ = 2 essais utilisés sous le seuil.</div>';
 }
 
 // « 🏠 Prolonger » (02/10/2026) : repousser ou arrêter l'échéance « à la maison » d'une mission en cours
