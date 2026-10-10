@@ -135,6 +135,12 @@ function getMsg(classe,poste){
 
 // ═══ ÉTAT ═══
 let CU=null,CM=null,obStep=0,repBuffer={},classeFiltre='';
+// Comptes test (10/10/2026) : même règle que la suppression définitive (classe-serveur.js)
+// et que le serveur — « test » en début d'adresse ou de segment (test.x@, x.test@, @test.fr).
+// Ils restent dans leur classe (on peut leur assigner des missions pour tester) mais
+// ne sont comptés dans aucune statistique (moyennes, totaux, classement, relevé Pronote).
+function estCompteTest(e){ return !!e && /(^|[._+@-])test/i.test(e.email || e.mail || ''); }
+function sansComptesTest(liste){ return (liste || []).filter(function(e){ return !estCompteTest(e); }); }
 // ── Accès aux réglages de l'univers (data/univers.js, source unique)
 const getCfg = () => (typeof LABORO_CONFIG !== 'undefined' && LABORO_CONFIG) || {};
 const getNomEntreprise = () => (getCfg().entreprise || {}).nom || 'LABORO Sport & Outdoor';
@@ -256,7 +262,7 @@ async function refreshClassementServeur(classe){
   meta.fetching = false;
   meta.lastFetch = Date.now();
   if(!r.ok || !r.data.ok) return;
-  const list = (r.data.eleves||[]).map(function(e){
+  const list = (r.data.eleves||[]).filter(function(e){ return !estCompteTest(e) || (CU && e.email === CU.mail); }).map(function(e){
     const missions = {};
     Object.entries(e.missions || {}).forEach(function(entry){
       const mid = entry[0], p = entry[1];

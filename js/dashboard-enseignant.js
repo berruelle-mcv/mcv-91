@@ -121,7 +121,7 @@ function actualiserDashboardEnseignant(){ DASH_ENS_CHARGE_A = 0; renderDashboard
 
 // --- Calcul de toutes les données du tableau de bord ---
 function donneesDashboardEnseignant(){
-  const tousEleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const tousEleves = sansComptesTest(ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; }));
   const toutesClasses = [...new Set(tousEleves.map(function(e){ return e.classe_libelle || 'Sans classe'; }))].sort();
   // Classe mémorisée qui n'existe plus (ou pas attribuée à ce prof) → toutes ; une seule classe → celle-ci
   if(DASH_ENS_CLASSE && toutesClasses.indexOf(DASH_ENS_CLASSE) < 0) DASH_ENS_CLASSE = '';
@@ -371,7 +371,7 @@ function ongletsClasses(d){
       + label + (nb != null ? ' <span style="font-size:11px;font-weight:600;opacity:.8">' + nb + '</span>' : '') + '</button>';
   };
   const compte = {};
-  ELEVES_SERVEUR.forEach(function(e){ if(e.statut !== 'archive'){ const c = e.classe_libelle || 'Sans classe'; compte[c] = (compte[c]||0) + 1; } });
+  ELEVES_SERVEUR.forEach(function(e){ if(e.statut !== 'archive' && !estCompteTest(e)){ const c = e.classe_libelle || 'Sans classe'; compte[c] = (compte[c]||0) + 1; } });
   return '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px">'
     + '<span style="font-size:11px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-right:4px">Afficher :</span>'
     + d.toutesClasses.map(function(c){ return onglet(c, c, compte[c]); }).join('')

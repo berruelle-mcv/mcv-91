@@ -66,7 +66,7 @@
       // On alimente les données partagées de l'espace enseignant (copie.js s'en sert pour l'en-tête de la copie)
       ELEVES_SERVEUR = rE.data.eleves || [];
       MDJ_ASSIGNATIONS = rA.data.assignations || [];
-      ETAT.eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+      ETAT.eleves = sansComptesTest(ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; }));
       ETAT.assignations = MDJ_ASSIGNATIONS;
       await chargerProgressionsClasse(ETAT.eleves);
       ETAT.erreur = ''; ETAT.charge = true;

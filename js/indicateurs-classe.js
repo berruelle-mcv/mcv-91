@@ -38,7 +38,7 @@
       const r = await fetchJSON(LABORO_API + '/api/eleves', { headers: { 'Authorization': 'Bearer ' + jeton() } });
       if(!r.ok || !r.data.ok){ ETAT.erreur = (r.data && r.data.erreur) || r.erreur || 'Impossible de charger les élèves.'; return; }
       ELEVES_SERVEUR = r.data.eleves || [];
-      ETAT.eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+      ETAT.eleves = sansComptesTest(ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; }));
       await chargerProgressionsClasse(ETAT.eleves);
       ETAT.erreur = ''; ETAT.charge = true;
       const cl = classes();

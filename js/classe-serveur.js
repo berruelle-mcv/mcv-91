@@ -141,7 +141,7 @@ function afficherClasse(){
   const liste = (typeof filtrerParGroupe === 'function') ? filtrerParGroupe(listeClasse) : listeClasse;
 
   // Stats agrégées à partir de la progression réelle (PROGRESSIONS_CLASSE, chargée par renderClasse())
-  const statsListe = liste.map(function(e){
+  const statsListe = sansComptesTest(liste).map(function(e){
     const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
     const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });
     return { done: done.length, score: (typeof calcScore === 'function') ? calcScore(ud) : 0 };
@@ -153,7 +153,7 @@ function afficherClasse(){
   const statsEl = document.getElementById('classe-stats');
   if(statsEl){
     statsEl.innerHTML =
-      '<div style="background:var(--bc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--bl)">' + liste.length + '</div><div class="u-label-up">Élèves</div></div>'
+      '<div style="background:var(--bc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--bl)">' + sansComptesTest(liste).length + '</div><div class="u-label-up">Élèves</div></div>'
       + '<div style="background:var(--vc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--vt)">' + classes.length + '</div><div class="u-label-up">Classe(s)</div></div>'
       + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">' + totalMissionsValidees + '</div><div class="u-label-up">Missions validées</div></div>'
       + '<div style="background:var(--gc);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--gr)">' + (moyenneClasse!==null ? moyenneClasse+'/100' : '—') + '</div><div class="u-label-up">Moyenne classe</div></div>';
@@ -197,7 +197,7 @@ function afficherClasse(){
       + 'style="background:none;border:.5px solid var(--gb);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:12px">📄</button>';
     const estSelectionne = SELECTED_ELEVE && SELECTED_ELEVE.id === e.id;
     return '<tr onclick="selectionnerEleve(\'' + e.id + '\')" style="cursor:pointer' + (estSelectionne ? ';background:var(--bc)' : '') + '">'
-      + '<td style="font-weight:700">' + nomAff + (e.statut && e.statut!=='actif' ? ' <span style="font-size:9px;font-weight:400;color:var(--gm)">(' + e.statut + ')</span>' : '') + '<div style="font-size:9px;color:var(--gm);font-weight:400">' + e.email + '</div></td>'
+      + '<td style="font-weight:700">' + nomAff + (e.statut && e.statut!=='actif' ? ' <span style="font-size:9px;font-weight:400;color:var(--gm)">(' + e.statut + ')</span>' : '') + (estCompteTest(e) ? ' <span title="Compte test : non compté dans les statistiques" style="font-size:9.5px;font-weight:700;background:#F3E8FF;color:#6B21A8;padding:1px 6px;border-radius:8px">🧪 test</span>' : '') + '<div style="font-size:9px;color:var(--gm);font-weight:400">' + e.email + '</div></td>'
       + '<td class="u-label-sm">' + cls + ((typeof badgeGroupe === 'function') ? badgeGroupe(e.groupe) : '') + '</td>'
       + '<td>' + ((typeof celluleActivite === 'function') ? celluleActivite(e) : '—') + '</td>'
       + '<td style="text-align:center">' + badgeNiveau(c1) + '</td>'
@@ -419,7 +419,7 @@ async function supprimerEleve(){
 // ================================================
 
 function exporterClasse(){
-  const eleves = ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; });
+  const eleves = sansComptesTest(ELEVES_SERVEUR.filter(function(e){ return e.statut !== 'archive'; }));
   const listeClasse = classeFiltre ? eleves.filter(function(e){ return (e.classe_libelle||'Sans classe')===classeFiltre; }) : eleves;
   const liste = (typeof filtrerParGroupe === 'function') ? filtrerParGroupe(listeClasse) : listeClasse;
   if(!liste.length){ alert('Aucun élève à exporter.'); return; }

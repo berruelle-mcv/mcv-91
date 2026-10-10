@@ -606,9 +606,11 @@ function cartesMissionsMDJ(enCours){
   const maintenant = Date.now();
   const liste = Object.keys(cartes).map(function(k){
     const c = cartes[k];
-    const eleves = (ELEVES_SERVEUR || []).filter(function(e){
+    const concernes = (ELEVES_SERVEUR || []).filter(function(e){
       return e.statut !== 'archive' && c.assignations.some(function(a){ return concerneMDJ(a, e); });
     });
+    const eleves = sansComptesTest(concernes);
+    c.tests = concernes.filter(estCompteTest);
     c.faites = []; c.areprendre = []; c.pasfaites = [];
     eleves.forEach(function(e){
       const p = ((typeof PROGRESSIONS_BRUTES !== 'undefined' && PROGRESSIONS_BRUTES[e.id]) || []).find(function(x){ return x && x.mission_id === c.mission_id; }) || null;
@@ -681,6 +683,7 @@ function cartesMissionsMDJ(enCours){
           ? '<div style="background:#F8FAFC;border-radius:8px;padding:7px 10px"><div style="font-size:11.5px;font-weight:700;color:#166534;margin-bottom:3px">✅ Faite (' + c.faites.length + ') — note sur 20</div>'
             + c.faites.map(function(x){ return chip(x, c.mission_id, x.etat === 'epuisee' ? '#FEE2E2' : '#fff', couleurNote(x.note), true); }).join('') + '</div>'
           : '')
+      + (c.tests.length ? '<div style="font-size:11px;color:var(--gm);margin-top:6px">🧪 Non compté' + (c.tests.length > 1 ? 's' : '') + ' (compte test) : ' + c.tests.map(function(e){ return escMDJ(nomCourtMDJ(e)); }).join(', ') + '</div>' : '')
       + lignesAssign
       + '</div>';
   }).join('')

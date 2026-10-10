@@ -34,7 +34,7 @@ function noteProgression(p){
 // Construit les données du relevé pour la classe actuellement filtrée
 function donneesReleve(){
   const eleves = ELEVES_SERVEUR
-    .filter(function(e){ return e.statut !== 'archive'; })
+    .filter(function(e){ return e.statut !== 'archive' && !estCompteTest(e); })
     .filter(function(e){ return !classeFiltre || (e.classe_libelle||'Sans classe') === classeFiltre; })
     .filter(function(e){ return (typeof filtrerParGroupe === 'function') ? filtrerParGroupe([e]).length > 0 : true; })
     .slice()
