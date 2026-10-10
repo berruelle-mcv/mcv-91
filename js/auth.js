@@ -338,7 +338,9 @@ function showApp(){
   const niClassesAdmin = document.getElementById('ni-classes-admin');
   if(niClassesAdmin) niClassesAdmin.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
   const niAccesEleves = document.getElementById('ni-acces-eleves');
-  if(niAccesEleves) niAccesEleves.style.display = (ens && estAdminUtilisateur) ? '' : 'none';
+  // « Accès élèves » : tout enseignant (ouvertures/fermetures sur SES classes) ; le réglage
+  // général des horaires y reste réservé à l'administrateur (10/10/2026)
+  if(niAccesEleves) niAccesEleves.style.display = ens ? '' : 'none';
   // Génération de mission par IA (univers qui la proposent : menu présent dans index.html)
   const niGn = document.getElementById('ni-gn');
   if(niGn) niGn.style.display = ens ? '' : 'none';

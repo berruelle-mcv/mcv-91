@@ -5,11 +5,11 @@
 //   celui écrit dans index.html ; pour un enseignant, on range les mêmes
 //   entrées autrement (sans rien dupliquer) :
 //     Enseignant ............ Tableau de bord, Mission du jour, Suivi des missions,
-//                             Vue classe, Indicateurs de la classe
+//                             Vue classe, Indicateurs de la classe, Accès élèves
 //     Missions .............. Banque de missions (= « Mes missions »), Trouver,
 //                             Générer
 //     Ce que voient les élèves  Catalogue produits, Fichier clients
-//     Administration ........ Gestion des classes, Accès élèves (administrateur)
+//     Administration ........ Gestion des classes (administrateur)
 //   Masqués pour l'enseignant : Mes compétences, Indicateurs de l'entreprise
 //   (chiffres fixes de décor), en-têtes « Mon espace » et nom de l'entreprise.
 //   Chargé APRÈS auth.js (s'accroche à showApp, comme memos.js).
@@ -50,14 +50,14 @@
     const nsEns = document.getElementById('ns-ens');
     if(nsEns) nsEns.textContent = 'Enseignant';
     const ordre = [
-      nsEns, item('dashboard'), document.getElementById('ni-mdj'), document.getElementById('ni-sm'), document.getElementById('ni-cl'), entreeIndicateursClasse(),
+      nsEns, item('dashboard'), document.getElementById('ni-mdj'), document.getElementById('ni-sm'), document.getElementById('ni-cl'), entreeIndicateursClasse(), document.getElementById('ni-acces-eleves'),
       enTete('ns-ens-missions', 'Missions'), item('missions'), document.getElementById('ni-rm'), document.getElementById('ni-gn'),
       enTete('ns-ens-univers', 'Ce que voient les élèves'), item('catalogue'), item('clients'),
-      enTete('ns-ens-admin', 'Administration'), document.getElementById('ni-classes-admin'), document.getElementById('ni-acces-eleves')
+      enTete('ns-ens-admin', 'Administration'), document.getElementById('ni-classes-admin')
     ].filter(Boolean);
     // Tout ce qui n'est pas dans l'ordre enseignant est masqué (et rangé à la fin)
     Array.from(n.children).forEach(function(el){ if(ordre.indexOf(el) < 0){ el.style.display = 'none'; n.appendChild(el); } });
-    ordre.forEach(function(el){ n.appendChild(el); if(el.id !== 'ni-classes-admin' && el.id !== 'ni-acces-eleves' && el.id !== 'ns-ens-admin') el.style.display = el.classList.contains('ns') ? 'block' : ''; });
+    ordre.forEach(function(el){ n.appendChild(el); if(el.id !== 'ni-classes-admin' && el.id !== 'ns-ens-admin') el.style.display = el.classList.contains('ns') ? 'block' : ''; });
     // Les entrées d'administration restent réservées à l'administrateur (auth.js les a déjà réglées)
     document.getElementById('ns-ens-admin').style.display = admin ? 'block' : 'none';
     renommer(item('missions'), 'Banque de missions');

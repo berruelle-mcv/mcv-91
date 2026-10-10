@@ -1,6 +1,8 @@
 // ================================================
-//   LABORO — Restriction horaire d'accès élèves (administrateur uniquement)
-//   Écran admin : réglages (on/off, horaires, week-end) + déblocages exceptionnels
+//   LABORO — Accès élèves
+//   Réglage général (on/off, horaires, week-end) : administrateur uniquement.
+//   Ouvertures / fermetures exceptionnelles d'une journée : tout enseignant,
+//   sur ses classes et leurs élèves (10/10/2026 — demande de Sandrine).
 // ================================================
 
 async function renderAccesEleves(){
@@ -34,6 +36,14 @@ async function chargerAccesEleves(){
   }
 
   const p = r.data.parametres;
+  // Non-administrateur : le réglage général est affiché en lecture seule
+  const admin = !!r.data.est_admin;
+  ['acc-actif', 'acc-debut', 'acc-fin', 'acc-weekend'].forEach(function(id){
+    const el = document.getElementById(id); if(el) el.disabled = !admin;
+  });
+  const btn = document.getElementById('acc-enregistrer'); if(btn) btn.style.display = admin ? '' : 'none';
+  const info = document.getElementById('acc-reglage-info'); if(info) info.style.display = admin ? 'none' : '';
+  ACCES_AUJOURDHUI = r.data.aujourdhui || '';
   const elActif = document.getElementById('acc-actif');
   const elDebut = document.getElementById('acc-debut');
   const elFin = document.getElementById('acc-fin');
@@ -46,11 +56,12 @@ async function chargerAccesEleves(){
   afficherListeExceptionsAcces(r.data.exceptions || []);
 }
 
+let ACCES_AUJOURDHUI = '';
 function afficherListeExceptionsAcces(exceptions){
   const el = document.getElementById('acc-exc-liste');
   if(!el) return;
   if(!exceptions.length){
-    el.innerHTML = '<div style="font-size:12px;color:var(--gm)">Aucun déblocage exceptionnel en cours.</div>';
+    el.innerHTML = '<div style="font-size:12px;color:var(--gm)">Aucune ouverture ni fermeture prévue.</div>';
     return;
   }
   el.innerHTML = exceptions.map(function(ex){
@@ -58,8 +69,13 @@ function afficherListeExceptionsAcces(exceptions){
       ? (ex.classe_libelle || ex.classe_id)
       : (ex.eleve_nom ? (ex.eleve_prenom + ' ' + ex.eleve_nom) : 'Élève inconnu');
     const dateAffichee = (ex.date || '').split('-').reverse().join('/');
-    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gb)">'
-      + '<div style="font-size:12px"><strong>' + cible + '</strong> — ' + dateAffichee + '</div>'
+    const ferme = ex.type === 'fermeture';
+    const badge = '<span style="font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;margin-right:8px;'
+      + (ferme ? 'background:#FEE2E2;color:#B91C1C">🔒 FERMÉ' : 'background:#D1FAE5;color:#047857">🔓 OUVERT') + '</span>';
+    const passee = ACCES_AUJOURDHUI && ex.date < ACCES_AUJOURDHUI;
+    const quand = ex.date === ACCES_AUJOURDHUI ? ' <span style="font-size:10px;font-weight:700;color:var(--bl)">(aujourd\'hui)</span>' : '';
+    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gb)' + (passee ? ';opacity:.5' : '') + '">'
+      + '<div style="font-size:12px">' + badge + '<strong>' + cible + '</strong> — ' + dateAffichee + quand + '</div>'
       + '<span style="cursor:pointer;color:var(--rg);font-size:12px;font-weight:600" onclick="retirerExceptionAcces(\'' + ex.id + '\')">✕ Retirer</span>'
       + '</div>';
   }).join('');
@@ -104,7 +120,8 @@ async function ajouterExceptionAcces(){
   const date = document.getElementById('acc-date').value;
   if(!date){ showMsg('Choisis une date.', '#C53030'); return; }
 
-  const body = { date };
+  const type = (document.getElementById('acc-type') || {}).value === 'fermeture' ? 'fermeture' : 'ouverture';
+  const body = { date, type };
   if(cible === 'eleve'){
     const elId = document.getElementById('acc-el').value;
     if(!elId){ showMsg('Choisis un élève.', '#C53030'); return; }
@@ -126,12 +143,13 @@ async function ajouterExceptionAcces(){
   });
   if(!r.ok || !r.data.ok){ showMsg('⚠️ ' + (r.erreur || (r.data && r.data.erreur) || 'Échec de l\'ajout.'), '#C53030'); return; }
 
-  showMsg('✅ Déblocage ajouté.', '#2E7D5E');
+  showMsg(type === 'fermeture' ? '✅ Fermeture enregistrée.' : '✅ Ouverture enregistrée.', '#2E7D5E');
   document.getElementById('acc-date').value = '';
   chargerAccesEleves();
 }
 
 async function retirerExceptionAcces(id){
+  if(!confirm('Retirer cette ouverture / fermeture ?')) return;
   const token = localStorage.getItem('laboro_token');
   if(!token) return;
   const r = await fetchJSON(LABORO_API + '/api/acces-eleves/exceptions/' + id, {
