@@ -25,18 +25,41 @@ async function renderMDJEleve(){
     return !(loc && (loc.status === 'done' || (loc.tentatives||0) >= 2));
   });
   if(!missions.length){ wrap.innerHTML=''; return; }
-  wrap.innerHTML = '<div class="card" style="background:#FFFBEA;border:1px solid #FDE68A;margin-top:0">'
-    + '<div class="ct" style="color:#8A6500">⭐ ' + (missions.length > 1 ? 'Missions demandées par ton professeur ('+missions.length+')' : 'Mission du jour') + '</div>'
-    + missions.map(function(m, i){
-        return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0'+(i ? ';border-top:1px solid #FDE68A' : '')+'">'
-          + '<div><div style="font-size:13px;font-weight:700;margin-bottom:2px">'+m.titre+'</div>'
-          + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier
-          + (m.maison_jusqu_a && typeof dateMaisonLisible === 'function' ? ' · <strong style="color:#075985">🏠 à terminer à la maison avant '+dateMaisonLisible(m.maison_jusqu_a)+'</strong>' : '')
-          + '</div></div>'
-          + '<button onclick="handleMission(\''+m.mission_id+'\')" style="flex-shrink:0;padding:6px 14px;background:#D97706;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir</button>'
-          + '</div>';
-      }).join('')
-    + '</div>';
+  // Un encadré par enseignant (10/10/2026, demande de Pascal pour la classe co-animée) :
+  // « donnée par M. Berruelle » sur fond bleu ciel, « par Mme Berruelle » sur fond rose.
+  // Couleur et civilité réglées dans la base (enseignants.couleur_eleve / civilite) ;
+  // sans réglage : encadré jaune et titre d'origine.
+  const THEMES = {
+    jaune: { fond:'#FFFBEA', bord:'#FDE68A', titre:'#8A6500', bouton:'#D97706' },
+    bleu:  { fond:'#E0F2FE', bord:'#7DD3FC', titre:'#075985', bouton:'#0284C7' },
+    rose:  { fond:'#FCE7F3', bord:'#F9A8D4', titre:'#9D174D', bouton:'#DB2777' }
+  };
+  const groupes = [];
+  missions.forEach(function(m){
+    const cle = m.donne_par || '';
+    let g = groupes.find(function(x){ return x.cle === cle; });
+    if(!g){ g = { cle: cle, theme: THEMES[m.couleur] || THEMES.jaune, missions: [] }; groupes.push(g); }
+    g.missions.push(m);
+  });
+  const parSeul = groupes.length === 1 && !groupes[0].cle;
+  wrap.innerHTML = groupes.map(function(g, gi){
+    const t = g.theme, n = g.missions.length;
+    const titre = g.cle
+      ? (n > 1 ? 'Missions données par ' + g.cle + ' (' + n + ')' : 'Mission donnée par ' + g.cle)
+      : (n > 1 ? 'Missions demandées par ton professeur (' + n + ')' : (parSeul ? 'Mission du jour' : 'Mission demandée par ton professeur'));
+    return '<div class="card" style="background:' + t.fond + ';border:1px solid ' + t.bord + ';margin-top:' + (gi ? '10px' : '0') + '">'
+      + '<div class="ct" style="color:' + t.titre + '">⭐ ' + titre + '</div>'
+      + g.missions.map(function(m, i){
+          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0'+(i ? ';border-top:1px solid ' + t.bord : '')+'">'
+            + '<div><div style="font-size:13px;font-weight:700;margin-bottom:2px">'+m.titre+'</div>'
+            + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier
+            + (m.maison_jusqu_a && typeof dateMaisonLisible === 'function' ? ' · <strong style="color:#075985">🏠 à terminer à la maison avant '+dateMaisonLisible(m.maison_jusqu_a)+'</strong>' : '')
+            + '</div></div>'
+            + '<button onclick="handleMission(\''+m.mission_id+'\')" style="flex-shrink:0;padding:6px 14px;background:' + t.bouton + ';color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir</button>'
+            + '</div>';
+        }).join('')
+      + '</div>';
+  }).join('');
 }
 
 // ═══ ACTUALITÉS DE L'ENTREPRISE ═══
