@@ -120,6 +120,8 @@
       col.premiere = dates.length ? new Date(Math.min.apply(null, dates)) : null;
       col.derniere = dates.length ? new Date(Math.max.apply(null, dates)) : null;
       col.active = col.assignations.some(function(a){ return !a.retiree_at; });
+      // Qui a assigné (10/10/2026) : prénom(s) des enseignants, sans doublon
+      col.par = col.assignations.map(function(a){ return a.assigne_par; }).filter(function(n, i, t){ return n && t.indexOf(n) === i; });
       const maisons = col.assignations.filter(function(a){ return !a.retiree_at && a.maison_jusqu_a; }).map(function(a){ return dateServeur(a.maison_jusqu_a); }).filter(Boolean);
       col.maison = maisons.length ? new Date(Math.max.apply(null, maisons)) : null;
       const m = missionParId(k); if(m){ col.titre = col.titre || m.titre; col.comp_id = col.comp_id || m.comp; col.palier = col.palier || m.palier; }
@@ -218,6 +220,7 @@
             + '<div style="max-width:120px;margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;color:var(--th-fonce)">' + esc(col.titre || '') + '</div>'
             + '<div>' + esc(col.comp_id || '') + (col.palier ? ' · P' + esc(col.palier) : '') + '</div>'
             + '<div>' + jourCourt(col.premiere) + '</div>'
+            + (col.par && col.par.length ? '<div title="Assignée par">par ' + esc(col.par.join(', ')) + '</div>' : '')
             + maison
             + '<div style="margin-top:3px">' + badge + ' <strong>' + faits + '/' + conc + '</strong></div></th>';
         }).join('')

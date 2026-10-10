@@ -344,6 +344,8 @@ async function apercuMDJMaintenant(){
 function htmlApercuMDJ(d, libelle){
   const nomE = function(e){ return ((e.nom||'').toUpperCase() + ' ' + (e.prenom||'')).trim(); };
   const pour = function(a){ return a.cible === 'eleve' ? 'à ' + nomE(a) : (a.cible === 'groupe' ? 'au groupe ' + a.groupe : 'à toute la classe'); };
+  // Qui a assigné (10/10/2026) : pris dans la liste des assignations déjà chargée
+  const par = function(a){ const x = (typeof MDJ_ASSIGNATIONS !== 'undefined' && MDJ_ASSIGNATIONS || []).find(function(y){ return y && y.id === a.id; }); const n = (a.assigne_par || (x && x.assigne_par)); return n ? ' par ' + escMDJ(n) : ''; };
   const seul = libelle === 'cet élève';
   const actives = d.assignations.filter(function(a){ return !a.retiree_at; });
   const retirees = d.assignations.filter(function(a){ return a.retiree_at; });
@@ -354,7 +356,7 @@ function htmlApercuMDJ(d, libelle){
   let l1;
   if(actives.length){
     l1 = '<strong>📌 Déjà assignée</strong> : ' + actives.map(function(a){
-      return pour(a) + ' le ' + fmtDateHeure(a.created_at).split(' ')[0] + (a.maison_jusqu_a ? ' (🏠 jusqu\'au ' + fmtDateHeure(a.maison_jusqu_a) + ')' : '');
+      return pour(a) + ' le ' + fmtDateHeure(a.created_at).split(' ')[0] + par(a) + (a.maison_jusqu_a ? ' (🏠 jusqu\'au ' + fmtDateHeure(a.maison_jusqu_a) + ')' : '');
     }).join(' · ') + '.';
   } else l1 = 'Pas encore assignée à ' + libelle + '.';
   if(retirees.length) l1 += ' <span style="color:var(--gm)">Assignée puis retirée : ' + retirees.map(function(a){ return pour(a) + ' le ' + fmtDateHeure(a.created_at).split(' ')[0]; }).join(' · ') + '.</span>';
@@ -651,7 +653,7 @@ function cartesMissionsMDJ(enCours){
     const pct = c.total ? Math.round(c.faites.length / c.total * 100) : 0;
     const lignesAssign = c.assignations.map(function(a){
       return '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--gm);margin-top:4px">'
-        + '<span>Assignée à <strong>' + escMDJ(libelleCibleMDJ(a)) + '</strong> le ' + fmtDateHeure(a.created_at) + '</span>' + etiquetteMaison(a)
+        + '<span>Assignée à <strong>' + escMDJ(libelleCibleMDJ(a)) + '</strong> le ' + fmtDateHeure(a.created_at) + (a.assigne_par ? ' par <strong>' + escMDJ(a.assigne_par) + '</strong>' : '') + '</span>' + etiquetteMaison(a)
         + '<span style="flex:1"></span>'
         + '<button onclick="ouvrirMaisonMDJ(\'' + a.id + '\')" title="Prolonger, ou donner à terminer à la maison" style="' + btn + '">🏠 ' + (a.maison_jusqu_a ? 'Prolonger' : 'Maison') + '</button>'
         + '<button onclick="retirerMDJ(\'' + a.id + '\')" title="Retirer (les notes sont conservées, la mission passe dans l\'historique)" style="' + btn + '">✕ Retirer</button>'
@@ -771,7 +773,7 @@ function renderMDJHistorique(){
     + '<thead><tr style="background:#F1F5F9;text-align:left"><th style="padding:7px 8px">Date</th><th style="padding:7px 8px">Pour qui</th><th style="padding:7px 8px">Mission</th><th style="padding:7px 8px">Avancement</th><th style="padding:7px 8px">État</th></tr></thead><tbody>'
     + liste.map(function(a){
         const e = etatAssignation(a);
-        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+'</td>'
+        return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+(a.assigne_par ? '<div style="font-size:11px;color:var(--gm)">par '+escMDJ(a.assigne_par)+'</div>' : '')+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">'+cibleAssignation(a)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span>'+etiquetteMaison(a)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7">'+a.termines+'/'+a.total+' terminée(s)</td>'
