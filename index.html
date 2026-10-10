@@ -918,7 +918,8 @@
     <div id="panel-acceseleves" class="panel">
       <div class="card" style="margin-bottom:12px">
         <div class="ct">Restriction horaire d'accès élèves</div>
-        <div style="font-size:12px;color:var(--gm);margin-bottom:14px">Empêche les élèves de se connecter (et coupe leur session en cours) en dehors des horaires scolaires — utile pour éviter qu'ils complètent leurs missions chez eux, sans supervision, notamment avec l'aide d'une IA externe.</div>
+        <div style="font-size:12px;color:var(--gm);margin-bottom:14px">Empêche les élèves de se connecter (et coupe leur session en cours) en dehors des horaires scolaires — utile pour éviter qu'ils complètent leurs missions chez eux, sans supervision, notamment avec l'aide d'une IA externe. Les comptes de test (adresse contenant « test », ex. eleve.test.1mcva2@…) ne sont jamais bloqués.</div>
+        <div id="acc-reglage-info" style="display:none;font-size:12px;background:var(--bc);border-radius:6px;padding:10px 12px;margin-bottom:12px">Réglage commun à tout l'établissement, défini par l'administrateur. Tu peux ouvrir ou fermer l'accès de tes classes un jour précis ci-dessous.</div>
         <label style="display:flex;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer">
           <input type="checkbox" id="acc-actif" style="width:16px;height:16px;cursor:pointer"/>
           <span style="font-size:13px;font-weight:700">Restreindre l'accès élèves en dehors des horaires scolaires</span>
@@ -938,15 +939,22 @@
               <span style="font-size:12px;font-weight:600">Bloquer aussi le week-end</span>
             </label>
           </div>
-          <button onclick="sauvegarderReglagesAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">Enregistrer</button>
+          <button id="acc-enregistrer" onclick="sauvegarderReglagesAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">Enregistrer</button>
         </div>
         <div id="acc-msg" style="font-size:11px;min-height:16px"></div>
       </div>
 
       <div class="card">
-        <div class="ct">Débloquer exceptionnellement</div>
-        <div style="font-size:12px;color:var(--gm);margin-bottom:14px">Lève le blocage un jour précis pour une classe entière ou un élève donné (rattrapage, devoir maison exceptionnel…), sans toucher au réglage général ci-dessus.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;margin-bottom:6px">
+        <div class="ct">Ouvrir ou fermer exceptionnellement</div>
+        <div style="font-size:12px;color:var(--gm);margin-bottom:14px"><strong>Ouvrir</strong> : lève le blocage horaire toute une journée (rattrapage, travail exceptionnel à la maison…). <strong>Fermer</strong> : coupe l'accès toute une journée, même pendant les horaires (évaluation, sortie…). Pour une classe entière ou un élève précis ; un réglage posé pour un élève l'emporte sur celui de sa classe.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;align-items:end;margin-bottom:6px">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Action</div>
+            <select id="acc-type" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box">
+              <option value="ouverture">🔓 Ouvrir l'accès</option>
+              <option value="fermeture">🔒 Fermer l'accès</option>
+            </select>
+          </div>
           <div>
             <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Pour</div>
             <select id="acc-cible" onchange="toggleAccesCible()" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box">
@@ -963,10 +971,10 @@
             <div style="font-size:11px;font-weight:700;color:var(--gm);margin-bottom:6px;text-transform:uppercase">Date</div>
             <input type="date" id="acc-date" style="width:100%;padding:8px 10px;border:.5px solid var(--gb);border-radius:6px;font-size:13px;box-sizing:border-box"/>
           </div>
-          <button onclick="ajouterExceptionAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">+ Débloquer ce jour</button>
+          <button onclick="ajouterExceptionAcces()" style="padding:9px 16px;background:var(--bl);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap">+ Ajouter</button>
         </div>
         <div id="acc-exc-msg" style="font-size:11px;margin-bottom:10px;min-height:16px"></div>
-        <div style="font-size:11px;font-weight:700;color:var(--gm);text-transform:uppercase;margin-bottom:8px">Déblocages en cours</div>
+        <div style="font-size:11px;font-weight:700;color:var(--gm);text-transform:uppercase;margin-bottom:8px">Ouvertures et fermetures prévues</div>
         <div id="acc-exc-liste">Chargement…</div>
       </div>
     </div>
@@ -995,7 +1003,7 @@
 <script src="data/e2-agec.js?v=20260930"></script>
 <script src="data/e2-pvoc.js?v=20261001cse"></script>
 <script src="js/app.js?v=20261010b"></script>
-<script src="js/auth.js?v=20261007b"></script>
+<script src="js/auth.js?v=20261010"></script>
 <script src="js/dashboard.js?v=20261001cse"></script>
 <script src="js/missions.js?v=20261002"></script>
 <script src="js/correction-serveur.js?v=20261002"></script>
@@ -1010,7 +1018,7 @@
 <script src="js/annulation.js?v=20261002"></script>
 <script src="js/portfolio.js?v=20260927f"></script>
 <script src="js/admin-classes.js?v=20260927"></script>
-<script src="js/admin-acces.js?v=20260927"></script>
+<script src="js/admin-acces.js?v=20261010"></script>
 <script src="js/generation-mission.js?v=20260927b"></script>
 <script src="js/recherche-missions.js?v=20260929"></script>
 <script src="js/utils.js?v=20260927f"></script>
@@ -1021,7 +1029,7 @@
 <script src="js/memos.js?v=20261002"></script>
 <script src="js/suivi-missions.js?v=20261010c"></script>
 <script src="js/indicateurs-classe.js?v=20261010b"></script>
-<script src="js/menu-enseignant.js?v=20261007"></script>
+<script src="js/menu-enseignant.js?v=20261010"></script>
 <script src="js/activite-eleves.js?v=20261007"></script>
 
 <div id="charte-laboro" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 100%);z-index:9999;overflow-y:auto;padding:40px 20px">
