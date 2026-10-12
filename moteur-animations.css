@@ -1,0 +1,127 @@
+/* ================================================
+   LABORO — Styles du moteur d'animations (js/moteur-animations.js)
+   Utilise les couleurs de thème existantes (--th-*) : la couleur
+   d'accent suit donc le niveau de l'élève comme le reste de LABORO.
+   Créé le 12/10/2026.
+   ================================================ */
+
+/* Zone « Découvrir en action » en tête de la ressource */
+.ma-zone{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.ma-zone-tete{display:flex;flex-direction:column;gap:2px;padding:2px 2px 0}
+.ma-zone-tete span{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--th-principal,#185FA5)}
+.ma-zone-tete small{font-size:12px;color:var(--gm,#6B7280)}
+
+.ma-carte{background:#fff;border:.5px solid var(--th-bordure,#B5D4F4);border-radius:10px;padding:14px}
+.ma-titre{font-size:13px;font-weight:700;color:var(--th-nuit,#0A2540);margin-bottom:4px}
+.ma-intro{font-size:12px;color:var(--gm,#6B7280);margin:0 0 10px;line-height:1.5}
+.ma-ligne{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.ma-btn{font:600 12px inherit;font-family:inherit;background:var(--th-principal,#185FA5);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.ma-btn:hover{filter:brightness(1.08)}
+.ma-btn:disabled{opacity:.45;cursor:default;filter:none}
+.ma-btn.ma-sec{background:#fff;color:var(--th-principal,#185FA5);border:1px solid var(--th-bordure,#B5D4F4)}
+.ma-btn.ma-petit{padding:4px 10px;font-size:11px;margin-top:8px}
+.ma-btn:focus-visible,.ma-flip:focus-visible,.ma-ecoute:focus-visible,.ma-notion summary:focus-visible{outline:2px solid var(--th-principal,#185FA5);outline-offset:2px}
+
+/* Bouton Écouter */
+.ma-ecoute{font:600 11px inherit;font-family:inherit;border:1px solid var(--th-bordure,#B5D4F4);background:#fff;color:var(--th-principal,#185FA5);border-radius:99px;padding:2px 10px;cursor:pointer;margin-left:auto;white-space:nowrap}
+.ma-ecoute.on{background:var(--th-principal,#185FA5);color:#fff}
+.res-section-label .ma-ecoute{margin-left:auto}
+.ma-ecoute-q{display:table;margin:6px 0 2px;border-color:#F2C27A;color:#8A4B00;background:#FFF8EC}
+.ma-ecoute-q.on{background:#D97706;color:#fff;border-color:#D97706}
+
+/* Saynète */
+.ma-film{background:#0A2540;border-radius:12px;color:#fff;overflow:hidden}
+.ma-film-tete{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;padding:10px 12px;font-size:13px}
+.ma-prise{font-size:11px;background:rgba(255,255,255,.14);padding:2px 9px;border-radius:99px}
+.ma-prise:empty{display:none}
+.ma-scene{display:block;width:100%;height:auto;max-width:100%;max-height:250px;margin:0 auto;background:#E9F0F8}
+.ma-perso{transition:transform .3s}
+.ma-perso.ma-parle{animation:ma-parle .5s ease-in-out infinite alternate}
+.ma-perso.ma-detourne{transform:translateX(-16px);opacity:.75}
+.ma-carton,.ma-verdict{transition:opacity .3s}
+@keyframes ma-parle{to{transform:translateY(-3px)}}
+.ma-sous-titre{background:#06192D;padding:10px 12px;font-size:13.5px;line-height:1.45;min-height:3.1em}
+.ma-sous-titre b{color:#93C5FD}
+.ma-film-pied{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px 12px}
+.ma-film .ma-btn{background:#fff;color:#0A2540}
+.ma-voix{font-size:12px;color:#B9CBE3;display:flex;gap:5px;align-items:center;cursor:pointer}
+.ma-avance{font-size:11px;color:#B9CBE3;margin-left:auto}
+
+/* Étapes */
+.ma-etapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.ma-etape{border:1px solid var(--gb,#E5E7EB);border-radius:10px;padding:10px;text-align:center;background:#fff;opacity:.35;transition:all .35s}
+.ma-etape.on{opacity:1;border-color:var(--th-principal,#185FA5);background:var(--th-fond,#EBF4FF);transform:translateY(-2px)}
+.ma-etape.vu{opacity:.8}
+.ma-etape-ico{font-size:22px;line-height:1.2;margin-bottom:4px}
+.ma-etape-k{font-size:11px;font-weight:800;color:var(--th-principal,#185FA5);text-transform:uppercase;letter-spacing:.04em}
+.ma-etape-s{font-size:11.5px;margin-top:3px;color:var(--gr,#1F2937);line-height:1.4}
+.ma-barre{height:4px;background:var(--gc,#F3F4F6);border-radius:4px;margin-top:10px;overflow:hidden}
+.ma-barre i{display:block;height:100%;width:0;background:var(--th-principal,#185FA5);transition:width .3s}
+
+/* Tri */
+.ma-tri-q{font-size:13px;font-weight:600;padding:10px 12px;background:var(--th-fond,#EBF4FF);border-radius:8px;min-height:1.6em;line-height:1.5}
+.ma-score{font-size:11px;color:var(--gm,#6B7280)}
+.ma-retour{font-size:12px;margin-top:8px;min-height:1.4em;line-height:1.5}
+.ma-retour.ok{color:#0B7A55}
+.ma-retour.ko{color:#B4331F}
+
+/* Chaîne */
+.ma-chaine-tete{display:flex;gap:10px;align-items:center}
+.ma-chaine-tete img{width:56px;height:56px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid var(--gb,#E5E7EB);flex:none}
+.ma-chaine{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:10px 0 0}
+.ma-maillon{flex:1 1 150px;border:1px solid var(--gb,#E5E7EB);border-radius:9px;padding:9px;font-size:12px;background:#fff;opacity:.25;transition:all .4s;line-height:1.45}
+.ma-maillon.on{opacity:1;border-color:var(--th-principal,#185FA5);box-shadow:0 2px 0 var(--th-bordure,#B5D4F4)}
+.ma-maillon small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--th-principal,#185FA5);font-weight:700;margin-bottom:3px}
+.ma-fleche{align-self:center;color:var(--th-principal,#185FA5);font-weight:800;opacity:.2;transition:opacity .4s}
+.ma-fleche.on{opacity:1}
+
+/* Calcul */
+.ma-champs{display:flex;flex-wrap:wrap;gap:8px 14px}
+.ma-champ{display:flex;flex-direction:column;gap:3px;font-size:11px;font-weight:600;color:var(--gr,#1F2937)}
+.ma-champ input,.ma-champ select{width:130px;padding:6px 8px;border:1px solid var(--gb,#E5E7EB);border-radius:7px;font:13px inherit;font-family:inherit;font-variant-numeric:tabular-nums}
+.ma-resultat{margin-top:10px;padding:10px 12px;background:var(--th-fond,#EBF4FF);border-radius:8px;font-size:12.5px;line-height:1.7;font-variant-numeric:tabular-nums}
+.ma-gros{font-size:16px;color:var(--th-nuit,#0A2540)}
+.ma-piege{color:#B4331F;font-size:11.5px}
+.ma-ent{position:relative;height:20px;background:#fff;border-radius:5px;margin-bottom:4px;overflow:hidden}
+.ma-ent i{position:absolute;left:0;top:0;bottom:0;background:var(--th-pastel,#93C5FD);border-radius:5px;transition:width .4s}
+.ma-ent span{position:relative;font-size:11px;padding-left:8px;line-height:20px;font-weight:600}
+
+/* Cartes à retourner */
+.ma-cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:6px 0}
+.ma-flip{position:relative;border:1px solid var(--th-bordure,#B5D4F4);border-radius:9px;padding:10px 10px 22px;background:#fff;cursor:pointer;font:12px inherit;font-family:inherit;color:var(--gr,#1F2937);text-align:left;min-height:70px;line-height:1.45;transition:background .2s}
+.ma-flip .ma-recto{font-weight:700;color:var(--th-nuit,#0A2540)}
+.ma-flip .ma-verso{display:none}
+.ma-flip .ma-indice{position:absolute;right:8px;bottom:5px;font-size:10px;color:var(--gm,#6B7280)}
+.ma-flip.ouverte{background:var(--th-fond,#EBF4FF)}
+.ma-flip.ouverte .ma-recto{display:block;font-size:11px;color:var(--th-principal,#185FA5);margin-bottom:4px}
+.ma-flip.ouverte .ma-verso{display:block}
+
+/* Fiche : notions repliables */
+.ma-li-notion{list-style:none;margin-left:-18px!important}
+.ma-notion{border-bottom:.5px solid var(--gc,#F3F4F6);padding:4px 0}
+.ma-notion summary{cursor:pointer;font-weight:700;color:var(--th-nuit,#0A2540);font-size:12.5px}
+.ma-notion summary::marker{color:var(--th-principal,#185FA5)}
+.ma-notion > div{font-size:12.5px;padding:4px 0 4px 14px;line-height:1.6}
+.res-section-label{flex-wrap:wrap}
+
+/* Mission : mise en situation présentée comme un message */
+.ma-situation{border-left-width:3px}
+.ma-sit-tete{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ma-avatar{flex:none;width:34px;height:34px;border-radius:50%;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.ma-sit-qui{display:flex;flex-direction:column;line-height:1.25}
+.ma-sit-qui strong{font-size:12.5px;color:var(--th-nuit,#0A2540)}
+.ma-sit-qui small{font-size:11px;color:var(--gm,#6B7280)}
+.ma-bulle{background:var(--th-fond,#EBF4FF);border-radius:3px 12px 12px 12px;padding:10px 12px;animation:ma-arrive .45s both}
+@keyframes ma-arrive{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
+
+/* Mission : vignettes produits dans le dossier */
+.doc-t th.ma-th-img{vertical-align:middle}
+.ma-vignette{width:42px;height:42px;object-fit:contain;background:#fff;border:1px solid var(--gb,#E5E7EB);border-radius:6px;vertical-align:middle;margin-right:8px;float:left}
+
+@media (max-width:560px){
+  .ma-etapes{grid-template-columns:1fr 1fr}
+  .ma-champ input,.ma-champ select{width:110px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ma-perso,.ma-etape,.ma-maillon,.ma-fleche,.ma-bulle,.ma-barre i,.ma-ent i{animation:none!important;transition:none!important}
+}
