@@ -21,6 +21,17 @@
 // ================================================
 
 
+// Réglages propres à l'univers, lus par js/moteur-animations.js (moteur commun
+// avec LABORO Auto). Sans autre réglage, le moteur garde ceux de LABORO Sport &
+// Outdoor : équipe, enseigne, objectifs (NPS > +20, satisfaction ≥ 80 %,
+// rétention > 60 %, attrition < 20 %).
+const ANIM_UNIVERS = {
+  // Calculatrices en mode « méthode » (choix de Pascal du 13/10/2026, comme dans
+  // LABORO Auto) : l'exemple de départ est résolu ; avec ses propres chiffres,
+  // l'élève voit le calcul posé et des « ? » à la place des résultats.
+  calcul: "methode"
+};
+
 const RES_ANIMEES = {
 
   // ─────────── BLOC 1 — VENTE ───────────
@@ -73,7 +84,7 @@ const RES_ANIMEES = {
         { ico: "🧾", k: "Documents", s: "Ticket proposé et remis sur demande, garantie, notice" },
         { ico: "👋", k: "Prise de congé", s: "Remercier, souhaiter bonne utilisation, inviter à revenir" }
       ] },
-    { type: "calcul", calc: "ttc", titre: "Passer du TTC au HT", intro: "Change le prix TTC et observe le calcul. La TVA sur les articles de sport est de 20 %." }
+    { type: "calcul", calc: "ttc", titre: "Passer du TTC au HT", intro: "Exemple résolu : un article à 60 € TTC. Avec ton propre prix TTC, le calcul se pose : à toi de le terminer. La TVA sur les articles de sport est de 20 %." }
   ],
 
   // ─────────── BLOC 2 — SUIVI ET SERVICES ───────────
@@ -143,8 +154,8 @@ const RES_ANIMEES = {
         ["Mme Konaté donne la note 10.", 2, "Promotrice."],
         ["M. Kowalski donne la note 7.", 1, "Passif : il ne critique pas mais ne recommande pas non plus."]
       ] },
-    { type: "calcul", calc: "nps", titre: "Calculer le NPS", intro: "Modifie les nombres de réponses et observe le NPS. C'est un nombre, pas un pourcentage : on l'écrit avec son signe." },
-    { type: "calcul", calc: "satisfaction", titre: "Calculer le taux de satisfaction" }
+    { type: "calcul", calc: "nps", titre: "Calculer le NPS", intro: "Exemple résolu : 50 réponses. Avec tes propres nombres de réponses, le calcul se pose : à toi de le terminer. Le NPS est un nombre, pas un pourcentage : on l'écrit avec son signe." },
+    { type: "calcul", calc: "satisfaction", titre: "Calculer le taux de satisfaction", intro: "Exemple résolu : 50 réponses. Avec tes propres chiffres, le calcul se pose : à toi de le terminer." }
   ],
 
   // ─────────── BLOC 3 — RELATION CLIENT ───────────
@@ -175,11 +186,11 @@ const RES_ANIMEES = {
         { ico: "⭐", k: "Régulier", s: "Plus de 2 achats par an : événements, avantages" },
         { ico: "💎", k: "Ambassadeur", s: "Il recommande LABORO autour de lui" }
       ] },
-    { type: "calcul", calc: "points", titre: "Calculer une remise de fidélité", intro: "1 € dépensé = 1 point. Chaque tranche complète de 100 points = 10 € de remise." }
+    { type: "calcul", calc: "points", titre: "Calculer une remise de fidélité", intro: "1 € dépensé = 1 point. Chaque tranche complète de 100 points = 10 € de remise. Avec un autre montant d'achats, le calcul se pose : à toi de le terminer." }
   ],
 
   "C3.3-1": [
-    { type: "calcul", calc: "retention", titre: "Taux de rétention et taux d'attrition", intro: "Combien de clients de l'an dernier sont revenus acheter ? Change les nombres et observe." },
+    { type: "calcul", calc: "retention", titre: "Taux de rétention et taux d'attrition", intro: "Combien de clients de l'an dernier sont revenus acheter ? Avec tes propres nombres, le calcul se pose : à toi de le terminer." },
     { type: "tri", titre: "Quel indicateur utiliser ?", consigne: "Pour chaque question que se pose LABORO, choisis l'indicateur qui y répond.",
       categories: ["Taux de rétention", "Taux d'attrition", "NPS", "ROI"],
       items: [
@@ -314,7 +325,7 @@ const RES_ANIMEES = {
         { ico: "📧", k: "J+5 — Relance", s: "« Avez-vous pu consulter notre proposition ? »" },
         { ico: "📞", k: "J+10 — Relance", s: "Dernière tentative, proposer une alternative" }
       ] },
-    { type: "calcul", calc: "relance", titre: "Quel jour relancer ?", intro: "Choisis le jour d'envoi du devis. Si la relance tombe un samedi ou un dimanche, on relance le premier jour ouvré suivant." },
+    { type: "calcul", calc: "relance", titre: "Quel jour relancer ?", valeurs: [0], intro: "Exemple résolu : un devis envoyé un lundi. Choisis un autre jour d'envoi : le calendrier s'affiche, à toi de compter. Si la relance tombe un samedi ou un dimanche, on relance le premier jour ouvré suivant." },
   ],
 
   "B4.5-1": [
@@ -337,7 +348,7 @@ const RES_ANIMEES = {
         { ico: "60", k: "Contacts aboutis", s: "Appels décrochés" },
         { ico: "12", k: "Rendez-vous", s: "Objectif : 3 ventes par mois" }
       ] },
-    { type: "calcul", calc: "entonnoir", titre: "Les taux de l'entonnoir", intro: "Chaque taux se calcule par rapport à l'étape précédente. Modifie les nombres pour voir l'effet." },
+    { type: "calcul", calc: "entonnoir", titre: "Les taux de l'entonnoir", intro: "Chaque taux se calcule par rapport à l'étape précédente. Avec tes propres nombres, le calcul se pose : à toi de le terminer." },
     { type: "tri", titre: "Quelle technique de prospection ?", consigne: "Choisis la technique décrite.",
       categories: ["Phoning", "Emailing", "Réseaux sociaux", "Événements", "Recommandation"],
       items: [
