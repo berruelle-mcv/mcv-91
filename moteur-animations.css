@@ -42,6 +42,9 @@
 @keyframes ma-parle{to{transform:translateY(-3px)}}
 .ma-sous-titre{background:#06192D;padding:10px 12px;font-size:13.5px;line-height:1.45;min-height:3.1em}
 .ma-sous-titre b{color:#93C5FD}
+.ma-sous-titre.ma-fin{background:#1D9E75;color:#fff}
+.ma-sous-titre.ma-fin strong{font-weight:700}
+.ma-film-mission{margin-bottom:14px}
 .ma-film-pied{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px 12px}
 .ma-film .ma-btn{background:#fff;color:#0A2540}
 .ma-voix{font-size:12px;color:#B9CBE3;display:flex;gap:5px;align-items:center;cursor:pointer}
