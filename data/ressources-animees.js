@@ -7,34 +7,24 @@
 //   Palier 1 couvert pour les 19 compétences (12/10/2026).
 //   Pour ajouter un palier : copier un bloc, changer la clé, adapter le texte.
 //
+//   13/10/2026 : les saynètes ont été retirées d'ici. Une compétence est
+//   partagée par plusieurs missions, une saynète ici s'affichait donc à
+//   l'identique dans chacune. Chaque mission a désormais SA saynète
+//   (data/saynetes-missions.js). Ne restent ici que les blocs de méthode
+//   (étapes, tri, chaîne, calcul, cartes), qui accompagnent la fiche de
+//   la compétence comme la fiche elle-même.
+//
 //   Personnages : uniquement l'équipe et les clients de l'univers LABORO
 //   (Thomas Moreau, conseiller de vente ; Nina Chevalier ; Romain Sauzet ;
 //   Marco Pellini ; clients déjà présents dans les fiches et missions).
 //   Aucune réflexivité ici : ce sont des supports de découverte (palier 1).
 // ================================================
 
-const PERSO_THOMAS = { nom: "Thomas", role: "Conseiller de vente", sexe: "h", couleur: "#185FA5", logo: true };
-const PERSO_NINA = { nom: "Nina", role: "Commerciale B2B", sexe: "f", couleur: "#7B2D42", logo: true };
-const PERSO_MARCO = { nom: "Marco", role: "Satisfaction client", sexe: "h", couleur: "#0F766E", logo: true };
 
 const RES_ANIMEES = {
 
   // ─────────── BLOC 1 — VENTE ───────────
   "C1.2-1": [
-    { type: "saynete", titre: "Deux accueils : lequel est le bon ?", decor: "showroom",
-      consigne: "Observe les deux accueils. Lequel donne envie à M. Vidal de rester ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "M. Vidal", role: "Client", sexe: "h", couleur: "#D97706" } },
-      lignes: [
-        { prise: "Prise 1 — à éviter", occupe: true, qui: null, txt: "Thomas range des cartons. M. Vidal entre dans le showroom…" },
-        { qui: "a", txt: "C'est pour quoi ?" },
-        { qui: "b", txt: "Euh… je regardais juste." },
-        { verdict: "ko", qui: null, txt: "Thomas n'a ni levé la tête ni dit bonjour. M. Vidal se sent de trop." },
-        { prise: "Prise 2 — le bon accueil", occupe: false, verdict: "off", qui: null, txt: "On recommence. Thomas pose son carton dès que M. Vidal entre." },
-        { qui: "a", txt: "Bonjour Monsieur, bienvenue chez LABORO ! Je suis Thomas, je suis à votre disposition." },
-        { qui: "b", txt: "Bonjour ! Je voudrais me mettre à la course à pied." },
-        { qui: "a", txt: "Avec plaisir ! Sur quel type de parcours aimeriez-vous courir ?" },
-        { verdict: "ok", qui: null, txt: "Saluer, se présenter, proposer son aide, puis une question ouverte pour découvrir le besoin." }
-      ] },
     { type: "tri", titre: "Question ouverte ou fermée ?", consigne: "Une question ouverte ne se répond pas par oui ou non. Classe chaque question.",
       categories: ["Ouverte", "Fermée"],
       items: [
@@ -56,17 +46,6 @@ const RES_ANIMEES = {
   ],
 
   "C1.1-1": [
-    { type: "saynete", titre: "Lundi matin : la veille de Nina", decor: "bureau",
-      consigne: "Écoute Nina : que fait-elle de l'information qu'elle a trouvée ?",
-      persos: { a: PERSO_NINA, b: PERSO_THOMAS },
-      lignes: [
-        { qui: null, txt: "Lundi, 9 heures. Comme chaque semaine, Nina consulte le site de Sportélia." },
-        { qui: "a", txt: "Thomas, regarde : Sportélia lance des chaussures trail à 69 euros." },
-        { qui: "b", txt: "Nos Grip X sont à 95 euros. Les clients vont nous en parler !" },
-        { qui: "a", txt: "Justement. Préparons trois arguments : crampons profonds, conseil personnalisé, retour possible au showroom." },
-        { qui: "b", txt: "Je les note pour toute l'équipe de vente." },
-        { verdict: "ok", qui: null, txt: "La veille sert à agir : une information trouvée devient un argument pour les clients." }
-      ] },
     { type: "etapes", titre: "Les 4 types de veille chez LABORO", voix: true,
       etapes: [
         { ico: "🏁", k: "Concurrentielle", s: "Prix, promos et nouveautés de SportRun, Sportélia, Go Sport" },
@@ -87,20 +66,6 @@ const RES_ANIMEES = {
   ],
 
   "C1.3-1": [
-    { type: "saynete", titre: "M. Kowalski passe en caisse", decor: "showroom",
-      consigne: "Compare les deux fins de vente : qu'a oublié Thomas dans la première ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "M. Kowalski", role: "Client", sexe: "h", couleur: "#475569" } },
-      lignes: [
-        { prise: "Prise 1 — à éviter", qui: null, txt: "M. Kowalski a choisi ses chaussures trail à 149 euros." },
-        { qui: "a", txt: "Ça fera 149 euros. Carte ? Voilà, c'est bon, au revoir." },
-        { verdict: "ko", qui: null, txt: "Pas de services proposés, pas de ticket, pas de remerciement. La vente est finie, la relation aussi." },
-        { prise: "Prise 2 — la bonne fin de vente", verdict: "off", qui: null, txt: "On recommence, avant l'encaissement." },
-        { qui: "a", txt: "Souhaitez-vous la livraison à domicile ? Et je vous rappelle que notre garantie commerciale de 30 jours est incluse." },
-        { qui: "b", txt: "Je les emporte, merci." },
-        { qui: "a", txt: "Paiement accepté. Voulez-vous votre ticket de caisse ? C'est votre preuve d'achat." },
-        { qui: "a", txt: "Merci Monsieur, bonne sortie trail ! N'hésitez pas à revenir si vous avez une question." },
-        { verdict: "ok", qui: null, txt: "Services, encaissement, documents, prise de congé : les 4 étapes après le oui." }
-      ] },
     { type: "etapes", titre: "Finaliser une vente : les 4 étapes après le « oui »",
       etapes: [
         { ico: "➕", k: "Services", s: "Livraison, garantie 30 jours, carte fidélité, avant d'encaisser" },
@@ -113,17 +78,6 @@ const RES_ANIMEES = {
 
   // ─────────── BLOC 2 — SUIVI ET SERVICES ───────────
   "C2.1-1": [
-    { type: "saynete", titre: "Mme Konaté a un tournoi vendredi", decor: "telephone",
-      consigne: "Écoute l'appel : quel mode de livraison Thomas propose-t-il, et pourquoi ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "Mme Konaté", role: "Cliente", sexe: "f", couleur: "#9333EA" } },
-      lignes: [
-        { qui: null, txt: "Mercredi, fin de journée. Mme Konaté appelle LABORO." },
-        { qui: "b", txt: "Bonjour, je commande dix ballons pour le tournoi de vendredi, mais je ne peux pas passer au showroom." },
-        { qui: "a", txt: "Je comprends. En livraison standard, 48 heures, vous les recevriez vendredi : c'est trop juste." },
-        { qui: "a", txt: "Je vous conseille l'express, en 24 heures, pour 12 euros 90. Vous les aurez jeudi, avec un jour de marge." },
-        { qui: "b", txt: "Parfait, je prends l'express." },
-        { verdict: "ok", qui: null, txt: "Thomas choisit le mode adapté à l'urgence réelle, pas le moins cher par défaut." }
-      ] },
     { type: "etapes", titre: "Où en est la commande ? Les statuts dans LABORO Connect",
       etapes: [
         { ico: "📝", k: "Enregistrée", s: "La commande est saisie et confirmée par mail" },
@@ -142,17 +96,6 @@ const RES_ANIMEES = {
   ],
 
   "C2.1b-1": [
-    { type: "saynete", titre: "M. Diallo commande 12 maillots", decor: "showroom",
-      consigne: "Compte les services que Thomas propose pendant la vente.",
-      persos: { a: PERSO_THOMAS, b: { nom: "M. Diallo", role: "Président de club", sexe: "h", couleur: "#15803D" } },
-      lignes: [
-        { qui: "b", txt: "Il me faut 12 maillots pour mon équipe." },
-        { qui: "a", txt: "Très bien. Le flocage des numéros est inclus. Voulez-vous aussi le logo du club brodé ? C'est 2 euros par maillot." },
-        { qui: "b", txt: "Oui, ce serait bien." },
-        { qui: "a", txt: "Je peux aussi vous les livrer au club en 48 heures, pour 6 euros 90. Et la garantie commerciale de 30 jours est incluse." },
-        { qui: "b", txt: "Livraison au club, parfait." },
-        { verdict: "ok", qui: null, txt: "Panier : 336 + 24 + 6,90 = 366,90 euros. Les services sont proposés pendant la vente, jamais après l'encaissement." }
-      ] },
     { type: "tri", titre: "Quel service associé répond au besoin ?", consigne: "Choisis le service LABORO qui correspond à chaque demande.",
       categories: ["Livraison", "Click and collect", "Personnalisation", "Démonstration", "Garantie commerciale"],
       items: [
@@ -165,19 +108,6 @@ const RES_ANIMEES = {
   ],
 
   "C2.2-1": [
-    { type: "saynete", titre: "Mme Renard : le tapis arrivé abîmé", decor: "showroom",
-      consigne: "Repère les 5 étapes ERESA dans la réponse de Marco.",
-      persos: { a: PERSO_MARCO, b: { nom: "Mme Renard", role: "Cliente", sexe: "f", couleur: "#BE123C" } },
-      lignes: [
-        { qui: "b", txt: "J'ai commandé un tapis de yoga sur votre site et il est arrivé déchiré ! C'est inadmissible." },
-        { qui: null, txt: "Écouter : Marco la laisse parler jusqu'au bout, sans l'interrompre." },
-        { qui: "a", txt: "Si je comprends bien, votre tapis de yoga commandé en ligne est arrivé endommagé ?" },
-        { qui: "a", txt: "Je suis vraiment désolé pour cette situation, Madame." },
-        { qui: "a", txt: "Je vous propose de l'échanger tout de suite : nous l'avons en stock. Les frais de retour sont pour nous." },
-        { qui: "b", txt: "D'accord, merci, c'est rapide." },
-        { qui: "a", txt: "Je fais l'échange et je note l'incident dans LABORO Connect." },
-        { verdict: "ok", qui: null, txt: "Écouter, Reformuler, s'Excuser, proposer une Solution, Agir et tracer : ERESA." }
-      ] },
     { type: "etapes", titre: "La méthode ERESA",
       etapes: [
         { ico: "E", k: "Écouter", s: "Laisser parler sans interrompre" },
@@ -219,20 +149,6 @@ const RES_ANIMEES = {
 
   // ─────────── BLOC 3 — RELATION CLIENT ───────────
   "C3.1-1": [
-    { type: "saynete", titre: "Le téléphone sonne chez LABORO", decor: "telephone",
-      consigne: "Compare les deux façons de décrocher.",
-      persos: { a: PERSO_THOMAS, b: { nom: "Mme Laurent", role: "Cliente", sexe: "f", couleur: "#0369A1" } },
-      lignes: [
-        { prise: "Prise 1 — à éviter", qui: null, txt: "Le téléphone sonne cinq fois avant que Thomas ne décroche." },
-        { qui: "a", txt: "Allô ?" },
-        { qui: "b", txt: "Euh… je suis bien chez LABORO ?" },
-        { verdict: "ko", qui: null, txt: "Trop tard, et sans se présenter : la cliente ne sait même pas à qui elle parle." },
-        { prise: "Prise 2 — le bon réflexe", verdict: "off", qui: null, txt: "On recommence. Thomas décroche avant la troisième sonnerie." },
-        { qui: "a", txt: "LABORO bonjour, Thomas à l'appareil. Que puis-je faire pour vous ?" },
-        { qui: "b", txt: "Bonjour, je voulais savoir quand ma commande de chaussures arrivera." },
-        { qui: "a", txt: "Je regarde tout de suite. Livraison prévue jeudi, entre 9 heures et 13 heures. Je vous envoie la confirmation par mail." },
-        { verdict: "ok", qui: null, txt: "Décrocher vite, se présenter en souriant, donner une information précise et vérifiée." }
-      ] },
     { type: "etapes", titre: "Les 4 parties d'un mail professionnel",
       etapes: [
         { ico: "✉️", k: "Objet", s: "Court et précis : « Votre commande n°2847 — livraison jeudi »" },
@@ -252,17 +168,6 @@ const RES_ANIMEES = {
   ],
 
   "C3.2-1": [
-    { type: "saynete", titre: "Mme Torres et la carte LABORO PRO", decor: "showroom",
-      consigne: "Pourquoi Mme Torres a-t-elle maintenant une bonne raison de revenir ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "Mme Torres", role: "Cliente", sexe: "f", couleur: "#C2410C" } },
-      lignes: [
-        { qui: null, txt: "Mme Torres achète pour 89 euros." },
-        { qui: "a", txt: "Avez-vous la carte LABORO PRO ?" },
-        { qui: "b", txt: "Non, je ne crois pas." },
-        { qui: "a", txt: "Je vous la crée tout de suite, c'est gratuit : vous gagnez déjà 89 points aujourd'hui. À 100 points, vous avez 10 euros de remise." },
-        { qui: "b", txt: "Ah, il m'en manque 11 seulement ? Je reviendrai !" },
-        { verdict: "ok", qui: null, txt: "Proposer la carte dès le premier achat : la cliente a maintenant une raison de revenir." }
-      ] },
     { type: "etapes", titre: "Le cycle de vie d'un client LABORO",
       etapes: [
         { ico: "🔍", k: "Prospect", s: "Pas encore client : premier contact" },
@@ -293,17 +198,6 @@ const RES_ANIMEES = {
   ],
 
   "C3.3b-1": [
-    { type: "saynete", titre: "M. Vidal, client depuis 3 ans", decor: "showroom",
-      consigne: "M. Vidal est satisfait. Que fait Thomas pour qu'il devienne fidèle ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "M. Vidal", role: "Client", sexe: "h", couleur: "#D97706" } },
-      lignes: [
-        { qui: "b", txt: "Je prends ces chaussettes. Vous savez, SportRun fait une promo en ce moment…" },
-        { qui: "a", txt: "Vous êtes client depuis 3 ans, M. Vidal. Avez-vous votre carte LABORO PRO ?" },
-        { qui: "b", txt: "Non, jamais pensé à la demander." },
-        { qui: "a", txt: "Je vous l'active maintenant : c'est gratuit et sans engagement. Et si vous parrainez un ami, vous recevez 15 euros, et lui 10 euros à sa première commande." },
-        { qui: "b", txt: "Mon collègue court aussi… je vais lui en parler !" },
-        { verdict: "ok", qui: null, txt: "Un client satisfait peut partir pour une promo. La carte et le parrainage lui donnent des raisons de rester." }
-      ] },
     { type: "tri", titre: "Client satisfait ou client fidèle ?", consigne: "Lis chaque comportement et classe le client.",
       categories: ["Satisfait", "Fidèle"],
       items: [
@@ -395,20 +289,6 @@ const RES_ANIMEES = {
   ],
 
   "B4.3-1": [
-    { type: "saynete", titre: "Nina appelle M. Ferreira", decor: "telephone",
-      consigne: "Suis le plan d'appel. Comment Nina obtient-elle le rendez-vous ?",
-      persos: { a: PERSO_NINA, b: { nom: "M. Ferreira", role: "Président de club", sexe: "h", couleur: "#15803D" } },
-      lignes: [
-        { qui: "a", txt: "Bonjour M. Ferreira, je suis Nina, de LABORO Sport à Évry." },
-        { qui: "a", txt: "Nous équipons douze clubs de foot en Essonne. Votre club commence sa préparation d'hiver : avez-vous prévu votre équipement ?" },
-        { qui: "b", txt: "Pas encore. Nous avons une quarantaine de licenciés." },
-        { qui: "a", txt: "Comment équipez-vous vos équipes aujourd'hui ?" },
-        { qui: "b", txt: "On a déjà un fournisseur, vous savez." },
-        { qui: "a", txt: "Je comprends, et justement : notre flocage est inclus et livré en 3 semaines, avant la reprise." },
-        { qui: "a", txt: "Je vous propose d'en parler de vive voix : mardi 10 heures ou jeudi 14 heures ?" },
-        { qui: "b", txt: "Jeudi, ça me va." },
-        { verdict: "ok", qui: null, txt: "Présentation, accroche, découverte, proposition avec réponse à l'objection, conclusion avec deux créneaux." }
-      ] },
     { type: "tri", titre: "Découvrir ou confirmer ?", consigne: "On découvre avec des questions ouvertes, on confirme avec des questions fermées.",
       categories: ["Question ouverte", "Question fermée"],
       items: [
@@ -435,32 +315,9 @@ const RES_ANIMEES = {
         { ico: "📞", k: "J+10 — Relance", s: "Dernière tentative, proposer une alternative" }
       ] },
     { type: "calcul", calc: "relance", titre: "Quel jour relancer ?", intro: "Choisis le jour d'envoi du devis. Si la relance tombe un samedi ou un dimanche, on relance le premier jour ouvré suivant." },
-    { type: "saynete", titre: "La relance de M. Kowalski", decor: "telephone",
-      consigne: "Que contient une bonne relance ?",
-      persos: { a: PERSO_NINA, b: { nom: "M. Kowalski", role: "Club de basket", sexe: "h", couleur: "#475569" } },
-      lignes: [
-        { qui: null, txt: "Devis envoyé mardi : 15 maillots et shorts, 847 euros HT. Pas de réponse." },
-        { qui: "a", txt: "Bonjour M. Kowalski, Nina de LABORO. Je reviens vers vous au sujet du devis de mardi pour vos maillots." },
-        { qui: "a", txt: "Bonne nouvelle : les tailles sont en stock, la livraison peut se faire avant votre premier match. Avez-vous pu consulter notre proposition ?" },
-        { qui: "b", txt: "Oui, ça nous convient. Je vous la renvoie signée aujourd'hui." },
-        { verdict: "ok", qui: null, txt: "Courte, rappel du contexte, un élément nouveau et vrai, une seule demande claire. Nina trace la relance dans LABORO Connect." }
-      ] }
   ],
 
   "B4.5-1": [
-    { type: "saynete", titre: "« Sportélia Pro est moins cher »", decor: "telephone",
-      consigne: "Repère les 3 temps de la réponse de Nina.",
-      persos: { a: PERSO_NINA, b: { nom: "M. Diallo", role: "Président de club", sexe: "h", couleur: "#15803D" } },
-      lignes: [
-        { prise: "Prise 1 — à éviter", qui: "b", txt: "Chez Sportélia Pro, c'est 60 euros de moins pour 15 maillots." },
-        { qui: "a", txt: "Ah… bon, je peux vous faire 60 euros de remise." },
-        { verdict: "ko", qui: null, txt: "Nina baisse le prix sans rien démontrer : LABORO perd de la marge pour rien." },
-        { prise: "Prise 2 — valoriser l'offre", verdict: "off", qui: "b", txt: "Chez Sportélia Pro, c'est 60 euros de moins pour 15 maillots." },
-        { qui: "a", txt: "Je comprends que le prix soit un critère important pour vous." },
-        { qui: "a", txt: "Avec LABORO, le flocage est livré en 3 semaines au lieu de 5, et vous avez un commercial joignable directement." },
-        { qui: "a", txt: "Si vous voulez vérifier par vous-même, commençons par une petite commande test." },
-        { verdict: "ok", qui: null, txt: "Accepter l'objection, quantifier la valeur, proposer une alternative." }
-      ] },
     { type: "tri", titre: "Bonne réponse à l'objection prix ?", consigne: "Le client dit : « C'est trop cher. » Ces réponses respectent-elles la méthode LABORO ?",
       categories: ["Bonne réponse", "À éviter"],
       items: [
@@ -494,19 +351,6 @@ const RES_ANIMEES = {
 
   // ─────────── ACCUEIL ───────────
   "ACC-1": [
-    { type: "saynete", titre: "La règle des 30 secondes", decor: "showroom",
-      consigne: "Thomas est occupé. Comment fait-il pour que M. Leroy se sente attendu ?",
-      persos: { a: PERSO_THOMAS, b: { nom: "M. Leroy", role: "Visiteur", sexe: "h", couleur: "#6D28D9" } },
-      lignes: [
-        { occupe: true, qui: null, txt: "Thomas range un rayon. M. Leroy entre." },
-        { qui: null, txt: "Détecter : Thomas lève les yeux tout de suite et sourit." },
-        { qui: "a", txt: "Bonjour ! Je suis à vous dans 30 secondes." },
-        { occupe: false, qui: null, txt: "Thomas termine rapidement et s'approche." },
-        { qui: "a", txt: "Voilà ! Vous cherchez quelque chose de particulier ?" },
-        { qui: "b", txt: "Oui, un équipement de randonnée." },
-        { qui: "a", txt: "Suivez-moi, l'univers outdoor est juste ici." },
-        { verdict: "ok", qui: null, txt: "Détecter, accueillir, orienter, accompagner : en moins de 30 secondes." }
-      ] },
     { type: "etapes", titre: "Les 4 étapes de l'accueil",
       etapes: [
         { ico: "👁️", k: "Détecter", s: "Repérer l'arrivée du client, en moins de 30 secondes" },
