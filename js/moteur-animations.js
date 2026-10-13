@@ -3,13 +3,20 @@
 //   Rend les ressources et les missions plus vivantes, sans toucher
 //   aux données des missions ni aux réponses des élèves.
 //
-//   Ce fichier ne contient AUCUN contenu pédagogique : il affiche des
-//   "blocs" décrits dans data/ressources-animees.js (RES_ANIMEES).
-//   Ajouter une animation à une ressource = ajouter quelques lignes de
-//   données là-bas, sans modifier ce fichier.
+//   Ce fichier ne contient AUCUN contenu pédagogique. Il affiche :
+//     - la saynète PROPRE À CHAQUE MISSION (data/saynetes-missions.js,
+//       SAYNETES_MISSIONS), en tête de l'onglet « La mission » ;
+//     - les blocs de méthode d'une compétence (data/ressources-animees.js,
+//       RES_ANIMEES), en tête de l'onglet « Apprendre d'abord ».
+//   Ajouter ou modifier une animation = modifier ces fichiers de données,
+//   sans toucher à ce fichier.
+//   13/10/2026 : les saynètes ne sont plus rattachées à la compétence
+//   (deux missions de même compétence affichaient la même scène) mais à
+//   la mission elle-même, avec sa variante PVOC.
 //
 //   Types de blocs :
-//     saynete  : petite scène jouée (personnages, sous-titres, voix)
+//     saynete  : petite scène jouée (personnages, sous-titres, voix) —
+//                utilisée pour les saynètes de mission
 //     etapes   : étapes qui s'allument l'une après l'autre
 //     tri      : exercice de classement avec correction immédiate
 //     chaine   : raisonnement qui se construit (ex. CAB)
@@ -167,6 +174,14 @@
         + '<text x="330" y="24" font-size="9" font-weight="700" fill="#8A4B00" text-anchor="middle" font-family="system-ui,sans-serif">AU BOUT DU FIL</text>'
         + '<rect x="30" y="150" width="160" height="6" rx="3" fill="#C9D6E6"/><rect x="250" y="150" width="160" height="6" rx="3" fill="#E5DAC4"/>';
     }
+    if(decor === "club"){
+      return '<rect width="440" height="200" fill="#E8F3EC"/><rect y="148" width="440" height="52" fill="#9FCFAE"/>'
+        + '<path d="M0 148h440" stroke="#fff" stroke-width="2"/><circle cx="220" cy="174" r="16" fill="none" stroke="#fff" stroke-width="2"/>'
+        + '<rect x="18" y="58" width="44" height="90" fill="none" stroke="#fff" stroke-width="3"/><rect x="378" y="58" width="44" height="90" fill="none" stroke="#fff" stroke-width="3"/>'
+        + '<rect x="160" y="16" width="120" height="30" rx="4" fill="#fff" opacity=".85"/>'
+        + '<text x="220" y="31" font-size="11" font-weight="800" fill="#0A2540" font-family="system-ui,sans-serif" text-anchor="middle">LABORO</text>'
+        + '<text x="220" y="41" font-size="6.5" fill="#4A6FA5" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">CHEZ LE CLIENT</text>';
+    }
     if(decor === "bureau"){
       return '<rect width="440" height="200" fill="#EEF2F7"/><rect y="152" width="440" height="48" fill="#D6DFEA"/>'
         + '<rect x="186" y="118" width="68" height="34" rx="3" fill="#B98A57"/><rect x="200" y="98" width="40" height="22" rx="2" fill="#0A2540"/><rect x="203" y="101" width="34" height="16" fill="#63B3ED"/>'
@@ -196,12 +211,17 @@
       +   '<g class="ma-verdict" opacity="0"><circle cx="410" cy="62" r="17" fill="#DC2626"/><text x="410" y="68" font-size="18" font-weight="800" fill="#fff" text-anchor="middle" font-family="system-ui,sans-serif">✗</text></g>'
       + '</svg>'
       + '<div class="ma-sous-titre" aria-live="polite"></div>'
-      + '<div class="ma-film-pied"><button type="button" class="ma-btn ma-lancer">▶ Lancer la scène</button>'
+      + '<div class="ma-film-pied"><button type="button" class="ma-btn ma-lancer">' + (b.mission ? "▶ Découvrir la situation" : "▶ Lancer la scène") + '</button>'
       + (MA.voixDispo() ? '<label class="ma-voix"><input type="checkbox" checked> Voix</label>' : "")
       + '<span class="ma-avance"></span></div>';
     var $ = function(s){ return racine.querySelector(s); };
     var pA = racine.querySelector("#" + uid + "a"), pB = racine.querySelector("#" + uid + "b");
-    var lignes = b.lignes || [];
+    var lignes = (b.lignes || []).map(function(l){
+      if(typeof l !== "string") return l;
+      var k = l.indexOf("|"), cle = l.slice(0, k), t = l.slice(k + 1);
+      if(cle === "a" || cle === "b") return { qui: cle, txt: t };
+      return { qui: null, txt: t, fin: cle === "fin" };
+    });
     var idx = 0, enCours = false, minuteur = null, jeton = 0;
 
     function afficher(l){
@@ -222,15 +242,17 @@
       if(pA) pA.classList.toggle("ma-parle", l.qui === "a");
       if(pB) pB.classList.toggle("ma-parle", l.qui === "b");
       var p = l.qui ? persos[l.qui] : null;
-      $(".ma-sous-titre").innerHTML = p
+      var st = $(".ma-sous-titre");
+      st.classList.toggle("ma-fin", !!l.fin);
+      st.innerHTML = p
         ? "<b>" + esc(p.nom) + " :</b> « " + esc(l.txt) + " »"
-        : "<i>" + esc(l.txt) + "</i>";
+        : (l.fin ? "🎯 <strong>" + esc(l.txt) + "</strong>" : "<i>" + esc(l.txt) + "</i>");
     }
     function terminer(){
       enCours = false;
       if(pA) pA.classList.remove("ma-parle");
       if(pB) pB.classList.remove("ma-parle");
-      $(".ma-lancer").textContent = "↻ Revoir la scène";
+      $(".ma-lancer").textContent = b.mission ? "↻ Revoir la situation" : "↻ Revoir la scène";
       $(".ma-avance").textContent = "";
     }
     function suivante(){
@@ -260,7 +282,7 @@
     // État au repos : premier plan visible, consigne d'observation
     var premiere = lignes[0] || {};
     afficher({ prise: premiere.prise || "", occupe: premiere.occupe || false, verdict: "off", qui: null,
-      txt: b.consigne || "Clique sur « Lancer la scène » et observe bien." });
+      txt: b.consigne || (b.mission ? "Clique sur « Découvrir la situation » : ta mission commence ici." : "Clique sur « Lancer la scène » et observe bien.") });
     return racine;
   }
 
@@ -663,9 +685,31 @@
       th.insertBefore(img, th.firstChild);
     });
   }
+  // Saynète propre à la mission (variante PVOC si la classe est en PVOC,
+  // même règle que l'affichage du contexte dans js/missions.js)
+  function saynetePour(m){
+    var tout = (typeof SAYNETES_MISSIONS !== "undefined") ? SAYNETES_MISSIONS : {};
+    var s = tout[m.id];
+    if(!s) return null;
+    var pvoc = typeof CU !== "undefined" && CU && CU.classe && String(CU.classe).indexOf("PVOC") >= 0;
+    return (pvoc && s.pvoc) ? s.pvoc : s;
+  }
+  function insererSaynete(zone, m){
+    if(zone.querySelector(".ma-film-mission")) return;
+    var s = saynetePour(m);
+    if(!s) return;
+    var film = MA.rendreBloc({ type: "saynete", mission: true, titre: s.titre, decor: s.decor, persos: { a: s.a, b: s.b }, lignes: s.lignes });
+    if(!film) return;
+    film.classList.add("ma-film-mission");
+    // Après le rappel « copier-coller désactivé » (premier bloc), avant le dossier
+    var premier = zone.firstElementChild;
+    if(premier && /copier-coller/i.test(premier.textContent || "")) zone.insertBefore(film, premier.nextSibling);
+    else zone.insertBefore(film, zone.firstChild);
+  }
   function enrichirMission(){
     var zone = document.getElementById("mo-mission");
     if(!zone) return;
+    if(typeof CM !== "undefined" && CM) insererSaynete(zone, CM);
     enrichirSituation(zone);
     enrichirRepliques(zone);
     enrichirDossier(zone);
