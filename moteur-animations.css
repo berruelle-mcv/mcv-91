@@ -2,7 +2,8 @@
    LABORO — Styles du moteur d'animations (js/moteur-animations.js)
    Utilise les couleurs de thème existantes (--th-*) : la couleur
    d'accent suit donc le niveau de l'élève comme le reste de LABORO.
-   Créé le 12/10/2026.
+   Créé le 12/10/2026 ; complété le 12/10/2026 pour les fiches simples
+   (LABORO Auto) et les nouvelles calculatrices ; 13/10/2026 : saynète de mission.
    ================================================ */
 
 /* Zone « Découvrir en action » en tête de la ressource */
@@ -30,7 +31,7 @@
 .ma-ecoute-q.on{background:#D97706;color:#fff;border-color:#D97706}
 
 /* Saynète */
-.ma-film{background:#0A2540;border-radius:12px;color:#fff;overflow:hidden}
+.ma-film{background:var(--th-nuit,#0A2540);border-radius:12px;color:#fff;overflow:hidden}
 .ma-film-tete{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;padding:10px 12px;font-size:13px}
 .ma-prise{font-size:11px;background:rgba(255,255,255,.14);padding:2px 9px;border-radius:99px}
 .ma-prise:empty{display:none}
@@ -40,13 +41,13 @@
 .ma-perso.ma-detourne{transform:translateX(-16px);opacity:.75}
 .ma-carton,.ma-verdict{transition:opacity .3s}
 @keyframes ma-parle{to{transform:translateY(-3px)}}
-.ma-sous-titre{background:#06192D;padding:10px 12px;font-size:13.5px;line-height:1.45;min-height:3.1em}
-.ma-sous-titre b{color:#93C5FD}
+.ma-sous-titre{background:rgba(0,0,0,.3);padding:10px 12px;font-size:13.5px;line-height:1.45;min-height:3.1em}
+.ma-sous-titre b{color:var(--th-pastel,#93C5FD)}
 .ma-sous-titre.ma-fin{background:#1D9E75;color:#fff}
 .ma-sous-titre.ma-fin strong{font-weight:700}
 .ma-film-mission{margin-bottom:14px}
 .ma-film-pied{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px 12px}
-.ma-film .ma-btn{background:#fff;color:#0A2540}
+.ma-film .ma-btn{background:#fff;color:var(--th-nuit,#0A2540)}
 .ma-voix{font-size:12px;color:#B9CBE3;display:flex;gap:5px;align-items:center;cursor:pointer}
 .ma-avance{font-size:11px;color:#B9CBE3;margin-left:auto}
 
@@ -85,6 +86,8 @@
 .ma-resultat{margin-top:10px;padding:10px 12px;background:var(--th-fond,#EBF4FF);border-radius:8px;font-size:12.5px;line-height:1.7;font-variant-numeric:tabular-nums}
 .ma-gros{font-size:16px;color:var(--th-nuit,#0A2540)}
 .ma-piege{color:#B4331F;font-size:11.5px}
+.ma-trou{display:inline-block;min-width:26px;text-align:center;font-weight:800;color:var(--th-principal,#185FA5);background:#fff;border:1.5px dashed var(--th-principal,#185FA5);border-radius:6px;padding:0 6px}
+.ma-aide-calc{margin:10px 0 0}
 .ma-ent{position:relative;height:20px;background:#fff;border-radius:5px;margin-bottom:4px;overflow:hidden}
 .ma-ent i{position:absolute;left:0;top:0;bottom:0;background:var(--th-pastel,#93C5FD);border-radius:5px;transition:width .4s}
 .ma-ent span{position:relative;font-size:11px;padding-left:8px;line-height:20px;font-weight:600}
@@ -121,10 +124,38 @@
 .doc-t th.ma-th-img{vertical-align:middle}
 .ma-vignette{width:42px;height:42px;object-fit:contain;background:#fff;border:1px solid var(--gb,#E5E7EB);border-radius:6px;vertical-align:middle;margin-right:8px;float:left}
 
+/* Calculatrice « jours ouvrés » */
+.ma-jours{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.ma-jour{display:flex;flex-direction:column;align-items:center;min-width:38px;padding:4px 2px;border-radius:7px;background:#fff;border:1px solid var(--gb,#E5E7EB);font-size:11px;font-weight:700;text-transform:capitalize;animation:ma-arrive .3s both}
+.ma-jour small{font-size:9.5px;font-weight:600;color:var(--gm,#6B7280);text-transform:none}
+.ma-jour.off{opacity:.45;background:var(--gc,#F3F4F6)}
+.ma-jour.dep{border-style:dashed}
+.ma-jour.ok{border-color:var(--th-bordure,#B5D4F4)}
+.ma-jour.fin{background:var(--th-principal,#185FA5);border-color:var(--th-principal,#185FA5);color:#fff}
+.ma-jour.fin small{color:#fff}
+
+/* Fiche simple : titres de parties, éviter / privilégier, erreur fréquente, liste à cocher */
+.ma-fiche-titre{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ma-ecoute-fiche{margin-left:8px;vertical-align:middle}
+.ma-fiche-barre{display:flex;justify-content:flex-end;margin:0 0 6px}
+.ma-fiche-titre .ma-ecoute-fiche{margin-left:auto}
+.res-b li.ma-eviter,.res-b li.ma-privilegier{list-style:none;margin:5px 0 5px -18px;padding:7px 10px;border-radius:8px;line-height:1.5}
+.res-b li.ma-eviter{background:#FDECEA;border-left:3px solid #DC2626}
+.res-b li.ma-privilegier{background:#E8F6EF;border-left:3px solid #1D9E75}
+.res-b p.ma-alerte{background:#FFF8EC;border:1px solid #F2C27A;border-radius:8px;padding:8px 10px}
+.res-b p.ma-cas{border-top:.5px solid var(--th-bordure,#B5D4F4);padding-top:10px;margin-top:14px}
+.ma-coche-liste{list-style:none;padding-left:0!important;margin-left:0!important}
+.ma-coche-liste > li{margin:4px 0}
+.ma-coche{display:flex;gap:8px;align-items:flex-start;cursor:pointer;padding:6px 8px;border-radius:8px;background:#fff;border:1px solid var(--gb,#E5E7EB);line-height:1.45}
+.ma-coche input{margin-top:3px;accent-color:var(--th-principal,#185FA5);flex:none}
+.ma-coche:has(input:checked){background:var(--th-fond,#EBF4FF);border-color:var(--th-bordure,#B5D4F4)}
+.ma-coche-etat{font-size:12px;font-weight:600;color:var(--th-principal,#185FA5);margin:6px 0 4px}
+.ma-coche-etat.ok{color:#0B7A55}
+
 @media (max-width:560px){
   .ma-etapes{grid-template-columns:1fr 1fr}
   .ma-champ input,.ma-champ select{width:110px}
 }
 @media (prefers-reduced-motion:reduce){
-  .ma-perso,.ma-etape,.ma-maillon,.ma-fleche,.ma-bulle,.ma-barre i,.ma-ent i{animation:none!important;transition:none!important}
+  .ma-perso,.ma-etape,.ma-maillon,.ma-fleche,.ma-bulle,.ma-barre i,.ma-ent i,.ma-jour{animation:none!important;transition:none!important}
 }
