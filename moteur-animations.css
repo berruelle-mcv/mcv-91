@@ -159,3 +159,39 @@
 @media (prefers-reduced-motion:reduce){
   .ma-perso,.ma-etape,.ma-maillon,.ma-fleche,.ma-bulle,.ma-barre i,.ma-ent i,.ma-jour{animation:none!important;transition:none!important}
 }
+
+/* Parcours élève (js/parcours-eleve.js, 14/10/2026) : case « J'ai lu la fiche » */
+.pe-case{margin:16px auto 4px;max-width:560px;border:1.5px dashed var(--th-bordure,#B5D4F4);border-radius:12px;padding:12px 16px;background:#fff;text-align:left}
+.pe-case.pe-pret{border-style:solid;border-color:var(--th-principal,#185FA5);background:var(--th-fond,#EBF4FF)}
+.pe-label{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;color:var(--th-nuit,#0A2540);cursor:pointer}
+.pe-label input{width:20px;height:20px;flex:none;accent-color:var(--th-principal,#185FA5);cursor:pointer}
+.pe-label input:disabled{cursor:not-allowed}
+.pe-label input:disabled + span{opacity:.55}
+.pe-aide{font-size:11.5px;color:var(--gm,#6B7280);margin:6px 0 0 30px;min-height:1em}
+
+/* Vérification de maîtrise (js/maitrise.js, 14/10/2026) */
+.mt-bloc{border:1.5px solid var(--th-principal,#185FA5);border-radius:12px;padding:14px 16px;margin-bottom:14px;background:var(--th-fond,#EBF4FF);font-size:13px;line-height:1.55;color:var(--th-nuit,#0A2540)}
+.mt-bloc.mt-fini{border-color:#86EFAC;background:#F0FDF4;padding:10px 14px}
+.mt-bloc p{margin:4px 0 8px}.mt-bloc ul{margin:0 0 10px;padding-left:20px}
+.mt-titre{font-size:15px;font-weight:800;margin-bottom:4px}
+.mt-btn{padding:9px 18px;background:var(--th-principal,#185FA5);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer}
+.mt-btn:disabled{opacity:.5;cursor:default}
+.mt-entete{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--th-principal,#185FA5)}
+.mt-chrono{font-size:16px;font-variant-numeric:tabular-nums;color:var(--th-nuit,#0A2540)}
+.mt-chrono.mt-urgent{color:#B91C1C}
+.mt-barre{height:6px;background:#fff;border-radius:4px;overflow:hidden;margin:6px 0 10px}
+.mt-barre-in{height:100%;width:100%;background:var(--th-principal,#185FA5);transition:width .25s linear}
+.mt-question{font-size:14px;font-weight:700;margin-bottom:8px}
+.mt-rep{width:100%;box-sizing:border-box;border:1px solid var(--th-bordure,#B5D4F4);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px;margin-bottom:8px;resize:vertical;background:#fff}
+.mt-err{color:#B91C1C}
+
+/* Accès aux missions (js/acces-missions.js, 14/10/2026) */
+.am-bandeau{background:#F3F4F6;border:1px solid #E5E7EB;border-radius:10px;padding:10px 14px;font-size:12.5px;color:#374151;margin-bottom:12px}
+.am-aide{font-size:12px;color:var(--gm,#6B7280);margin-bottom:10px;line-height:1.5}
+.am-ligne{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:8px 0;border-top:1px solid #EEF2F7}
+.am-classe{font-weight:700;font-size:13px;min-width:120px}
+.am-choix{display:inline-flex;border:1px solid var(--gb,#E2E8F0);border-radius:8px;overflow:hidden}
+.am-choix button{border:none;background:#fff;padding:6px 12px;font-size:12px;cursor:pointer;color:#374151}
+.am-choix button + button{border-left:1px solid var(--gb,#E2E8F0)}
+.am-choix button.am-on{background:var(--th-principal,#185FA5);color:#fff;font-weight:700;cursor:default}
+.am-etat{font-size:11.5px;color:#166534}
