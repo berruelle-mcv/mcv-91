@@ -327,3 +327,826 @@ const EXERCICES_MISSIONS = {
   ] }
 
 };
+
+// ─────────── Palier 1 (34 missions, 13/10/2026) ───────────
+// Exercices courts et très guidés (élèves de 2nde et de 1ère en début d'année).
+// Situation voisine de la mission : jamais la réponse aux questions.
+Object.assign(EXERCICES_MISSIONS, {
+
+"M001": { type: "tri", titre: "Une question qui fait parler le client", consigne: "Au rayon vélo, quelles questions font vraiment parler le client ?",
+  categories: ["Le client développe", "Le client répond par oui ou non"],
+  items: [
+    ["« Où avez-vous l'habitude de rouler ? »", 0, "« Où » ouvre la réponse."],
+    ["« Vous avez déjà un vélo ? »", 1, "Une seule réponse possible : oui ou non."],
+    ["« Qu'attendez-vous de votre futur casque ? »", 0, "Le client explique ses attentes."],
+    ["« C'est pour vous ? »", 1, "Réponse fermée."]
+  ] },
+
+"M002": { type: "tri", titre: "Concurrent direct ou pas ?", consigne: "Pour un magasin de sport, qui est un vrai concurrent ?",
+  categories: ["Concurrent", "Pas un concurrent"],
+  items: [
+    ["Un site internet qui vend des raquettes de tennis.", 0, "Il vend les mêmes produits que nous."],
+    ["La boulangerie à côté du showroom.", 1, "Elle ne vend pas d'articles de sport."],
+    ["Une grande enseigne de sport dans la ville voisine.", 0, "Mêmes clients, mêmes produits."],
+    ["Le club de foot qui achète nos maillots.", 1, "C'est un client."]
+  ] },
+
+"M003": { type: "tri", titre: "La bonne attitude face à un client mécontent", consigne: "Un client rapporte une gourde qui fuit. Ces réactions sont-elles professionnelles ?",
+  categories: ["Professionnel", "À éviter"],
+  items: [
+    ["Le laisser expliquer sans le couper.", 0, "On écoute d'abord."],
+    ["« Vous l'avez sûrement fait tomber. »", 1, "On n'accuse jamais le client."],
+    ["« Je comprends, c'est vraiment agaçant. »", 0, "On montre qu'on comprend."],
+    ["Lui dire de revenir quand le responsable sera là, sans rien proposer.", 1, "Le client repart sans solution."]
+  ] },
+
+"M005": { type: "etapes", titre: "Où en est un colis ?", intro: "Une commande en ligne passe par plusieurs étapes. Les voici dans l'ordre.",
+  etapes: [
+    { ico: "🛒", k: "Commande passée", s: "Le client paie sur le site" },
+    { ico: "📦", k: "Préparation", s: "On rassemble les articles en réserve" },
+    { ico: "🚚", k: "Expédition", s: "Le colis part chez le transporteur" },
+    { ico: "🏠", k: "Livraison", s: "Le client reçoit son colis" }
+  ] },
+
+"M007": { type: "tri", titre: "Avant ou après le paiement ?", consigne: "À la caisse, chaque geste a son moment.",
+  categories: ["Avant de payer", "Après avoir payé"],
+  items: [
+    ["Proposer la carte de fidélité.", 0, "Le client gagne des points sur cet achat."],
+    ["Proposer le ticket de caisse.", 1, "Il prouve l'achat qui vient d'être payé."],
+    ["Annoncer le montant à payer.", 0, "Le client sait ce qu'il doit."],
+    ["Souhaiter une bonne utilisation.", 1, "C'est la prise de congé."]
+  ] },
+
+"M010": { type: "tri", titre: "Satisfait ou pas ?", consigne: "Réponses à une enquête : dans quelle colonne compter chaque client ?",
+  categories: ["Compte comme satisfait", "Ne compte pas comme satisfait"],
+  items: [
+    ["Un client qui coche « très satisfait ».", 0, "Il est compté."],
+    ["Un client qui coche « satisfait ».", 0, "Il est compté aussi."],
+    ["Un client qui coche « neutre ».", 1, "Neutre n'est pas satisfait."],
+    ["Un client qui coche « insatisfait ».", 1, "Il n'est pas satisfait."]
+  ] },
+
+"M011": { type: "tri", titre: "Répondre à un avis en ligne", consigne: "Un client a laissé 3 étoiles. Ces phrases ont-elles leur place dans la réponse ?",
+  categories: ["À écrire", "À éviter"],
+  items: [
+    ["« Merci d'avoir pris le temps de laisser votre avis. »", 0, "On remercie toujours."],
+    ["« Vous êtes le seul à vous plaindre. »", 1, "On ne contredit pas un client en public."],
+    ["« Contactez-nous pour que l'on trouve une solution ensemble. »", 0, "On propose de continuer en privé."],
+    ["« Votre adresse est bien le 12 rue des Lilas ? »", 1, "Aucune information personnelle en public."]
+  ] },
+
+"M012": { type: "tri", titre: "Quel service pour quel client ?", consigne: "Un client achète un vélo d'appartement. Quel service LABORO lui proposer ?",
+  categories: ["Livraison", "Démonstration", "Garantie commerciale"],
+  items: [
+    ["« Il est trop lourd pour ma voiture. »", 0, "On le livre chez lui."],
+    ["« Je ne sais pas comment régler la résistance. »", 1, "On lui montre en magasin."],
+    ["« Et s'il ne me convient pas une fois à la maison ? »", 2, "30 jours pour échanger ou être remboursé."],
+    ["« J'habite au troisième sans ascenseur. »", 0, "La livraison évite de le porter."]
+  ] },
+
+"M013": { type: "tri", titre: "Client fidèle ou client de passage ?", consigne: "Pour une soirée de fidélisation, on invite d'abord les clients fidèles.",
+  categories: ["Client fidèle", "Client de passage"],
+  items: [
+    ["Elle achète chez LABORO depuis 4 ans, plusieurs fois par an.", 0, "Achats réguliers."],
+    ["Il est venu une fois, il y a deux ans.", 1, "Un seul achat, ancien."],
+    ["Un club qui commande ses maillots chaque saison.", 0, "Fidèle depuis plusieurs saisons."],
+    ["Un touriste qui a acheté une casquette.", 1, "Achat ponctuel."]
+  ] },
+
+"ACC1": { type: "etapes", titre: "Accueillir en 3 gestes", intro: "Même occupé, un bon accueil tient en trois gestes simples.",
+  etapes: [
+    { ico: "👀", k: "Regarder", s: "Lever les yeux dès que quelqu'un entre" },
+    { ico: "😊", k: "Sourire et saluer", s: "« Bonjour ! », même de loin" },
+    { ico: "🙋", k: "Se rendre disponible", s: "« Je suis à vous dans un instant. »" }
+  ] },
+
+"ACC2": { type: "tri", titre: "Au téléphone : oui ou non ?", consigne: "Ces gestes sont-ils professionnels au téléphone ?",
+  categories: ["Oui", "Non"],
+  items: [
+    ["Sourire en parlant : ça s'entend.", 0, "La voix devient plus chaleureuse."],
+    ["Manger pendant l'appel.", 1, "Le client l'entend."],
+    ["Demander la permission avant de mettre en attente.", 0, "Le client sait ce qui se passe."],
+    ["Raccrocher sans saluer quand on a fini.", 1, "On termine toujours poliment."]
+  ] },
+
+"ACC3": { type: "tri", titre: "Calmer ou énerver ?", consigne: "Un client s'impatiente à la caisse. Effet de chaque phrase ?",
+  categories: ["Calme la situation", "Énerve davantage"],
+  items: [
+    ["« Je comprends, je fais au plus vite pour vous. »", 0, "On reconnaît son attente."],
+    ["« Ce n'est pas ma faute s'il y a du monde. »", 1, "On se défend au lieu d'aider."],
+    ["« Je vous propose de passer à la caisse d'à côté. »", 0, "Une solution concrète."],
+    ["Ignorer sa remarque et continuer.", 1, "Le client se sent méprisé."]
+  ] },
+
+"ACC4": { type: "tri", titre: "Accueillir lors d'un événement", consigne: "Journée Portes Ouvertes : bonne ou mauvaise idée ?",
+  categories: ["Bonne idée", "Mauvaise idée"],
+  items: [
+    ["Arriver en avance pour préparer le poste d'accueil.", 0, "On est prêt avant les premiers visiteurs."],
+    ["Regarder son téléphone quand il n'y a personne.", 1, "Un visiteur peut arriver à tout moment."],
+    ["Connaître le programme de la journée par cœur.", 0, "On répond vite aux questions."],
+    ["Laisser le poste d'accueil vide pour aller aider en réserve.", 1, "Les visiteurs ne sont plus accueillis."]
+  ] },
+
+"SA1": { type: "tri", titre: "Gratuit ou payant ?", consigne: "Les services de livraison LABORO ont-ils un coût pour le client ?",
+  categories: ["Gratuit", "Payant"],
+  items: [
+    ["Le retrait au showroom (click and collect).", 0, "Le client vient chercher sa commande."],
+    ["La livraison express en 24 heures.", 1, "Elle coûte 12,90 €."],
+    ["La livraison standard en 48 heures.", 1, "Elle coûte 6,90 €."],
+    ["La garantie commerciale de 30 jours.", 0, "Elle est incluse."]
+  ] },
+
+"M017": { type: "tri", titre: "Où chercher des prospects ?", consigne: "Ces sources aident-elles à trouver des clubs ou des entreprises à contacter ?",
+  categories: ["Source utile", "Source inutile"],
+  items: [
+    ["Le site de la mairie, qui liste les associations.", 0, "Les associations y sont recensées."],
+    ["Un forum des associations.", 0, "On y rencontre des présidents de club."],
+    ["Un jeu vidéo de football.", 1, "Aucune information sur de vrais clubs."],
+    ["Le site d'une fédération sportive du département.", 0, "Il liste les clubs affiliés."]
+  ] },
+
+"M018": { type: "etapes", titre: "Avant de décrocher le téléphone", intro: "Un appel de prospection se prépare avant de composer le numéro.",
+  etapes: [
+    { ico: "📇", k: "Lire la fiche", s: "Nom, structure, besoins estimés" },
+    { ico: "🎯", k: "Fixer son objectif", s: "Par exemple, obtenir un rendez-vous" },
+    { ico: "🗒️", k: "Préparer son accroche", s: "Deux phrases pour se présenter" },
+    { ico: "🛡️", k: "Prévoir une objection", s: "Et la réponse à donner" }
+  ] },
+
+"M064": { type: "tri", titre: "Zone chaude ou zone froide ?", consigne: "Dans un magasin, certains endroits voient passer beaucoup plus de monde.",
+  categories: ["Zone chaude", "Zone froide"],
+  items: [
+    ["Juste après l'entrée.", 0, "Tous les clients y passent."],
+    ["Un recoin au fond, peu éclairé.", 1, "Peu de passage."],
+    ["Près des caisses.", 0, "Les clients y attendent."],
+    ["Un rayon sans panneau, derrière un pilier.", 1, "Les clients ne le voient pas."]
+  ] },
+
+"M065": { type: "chaine", titre: "Ton premier argument CAB", produit: "Tapis yoga 6mm",
+  intro: "Entraîne-toi sur le tapis de yoga 6 mm.",
+  questions: ["Et donc ?", "Et pour la cliente ?"],
+  maillons: [
+    { k: "Caractéristique", txt: "Ce tapis fait 6 mm d'épaisseur." },
+    { k: "Avantage", txt: "…donc il amortit bien sur un sol dur." },
+    { k: "Bénéfice", txt: "…vous n'aurez pas mal aux genoux pendant vos séances." }
+  ] },
+
+"M066": { type: "tri", titre: "Rayon prêt pour l'ouverture ?", consigne: "Ce que tu vois en faisant le tour du rayon à 9 h 45 : tout va bien ?",
+  categories: ["Rayon prêt", "À corriger avant l'ouverture"],
+  items: [
+    ["Chaque produit a son étiquette de prix.", 0, "Obligatoire et utile au client."],
+    ["Un carton vide traîne dans l'allée.", 1, "Danger et mauvaise image."],
+    ["Les produits sont alignés, faces bien visibles.", 0, "Le rayon donne envie."],
+    ["Une étagère est vide alors que le produit est en réserve.", 1, "Il faut faire le réassort."]
+  ] },
+
+"M067": { type: "tri", titre: "Quel document ?", consigne: "Associe chaque situation au bon document de vente.",
+  categories: ["Devis", "Bon de livraison", "Ticket de caisse"],
+  items: [
+    ["Un club veut connaître le prix avant de décider.", 0, "Une proposition chiffrée avant la vente."],
+    ["Le transporteur remet le colis et fait signer le client.", 1, "Il accompagne la marchandise."],
+    ["Un particulier paie ses chaussettes en magasin.", 2, "Sa preuve d'achat."],
+    ["Une association demande une estimation pour 20 ballons.", 0, "Un chiffrage avant engagement."]
+  ] },
+
+"M068": { type: "tri", titre: "Quel outil de fidélisation ?", consigne: "LABORO dispose de plusieurs outils. Lequel est décrit ?",
+  categories: ["Carte LABORO PRO", "Newsletter", "Soirée clients"],
+  items: [
+    ["1 € dépensé = 1 point.", 0, "Les points donnent droit à des remises."],
+    ["Un mail chaque mois avec les nouveautés et des conseils.", 1, "On garde le contact régulièrement."],
+    ["Une rencontre au showroom avec essais et avant-premières.", 2, "Un moment vécu ensemble."],
+    ["100 points = 10 € de remise.", 0, "Le principe de la carte."]
+  ] },
+
+"M069": { type: "tri", titre: "Ça va dans la fiche client ?", consigne: "Après un échange avec un client, que noter dans LABORO Connect ?",
+  categories: ["À noter", "À ne pas noter"],
+  items: [
+    ["Ce qu'il a acheté et la date.", 0, "C'est son historique."],
+    ["La prochaine action prévue : le rappeler lundi.", 0, "Personne n'oubliera."],
+    ["Ton avis personnel sur sa tenue.", 1, "Ce n'est pas une information commerciale."],
+    ["Son sport préféré, qu'il a mentionné.", 0, "Utile pour le conseiller la prochaine fois."]
+  ] },
+
+"M055": { type: "tri", titre: "Posséder ou utiliser ?", consigne: "Avoir une carte de fidélité, ce n'est pas forcément s'en servir.",
+  categories: ["Porteur qui l'utilise", "Porteur qui ne l'utilise pas"],
+  items: [
+    ["Elle présente sa carte à chaque passage en caisse.", 0, "Elle l'utilise."],
+    ["Il a la carte dans son portefeuille mais l'oublie toujours.", 1, "Il la possède sans s'en servir."],
+    ["Elle a utilisé ses points pour une remise le mois dernier.", 0, "Elle l'utilise."],
+    ["Il a créé sa carte il y a 2 ans et n'est jamais revenu.", 1, "Carte inutilisée."]
+  ] },
+
+"M057": { type: "cartes", titre: "Les mots du rayon", cartes: [
+    ["Un facing, c'est…", "Un produit visible de face dans le rayon."],
+    ["Un produit phare, c'est…", "Celui qui se vend le plus."],
+    ["Pourquoi placer un produit phare à hauteur des yeux ?", "C'est l'endroit que les clients voient le mieux."],
+    ["Un produit complémentaire, c'est…", "Un produit qui va avec un autre, comme des chaussettes avec des chaussures."]
+  ] },
+
+"M060": { type: "tri", titre: "Bonne ou mauvaise nouvelle ?", consigne: "Lis chaque phrase d'un tableau de bord : est-ce positif pour LABORO ?",
+  categories: ["Bonne nouvelle", "Mauvaise nouvelle"],
+  items: [
+    ["Le chiffre d'affaires du rayon tennis augmente de 10 %.", 0, "Les ventes progressent."],
+    ["Le rayon natation baisse de 5 %.", 1, "Les ventes reculent."],
+    ["Il y a plus de nouveaux clients que l'an dernier.", 0, "LABORO attire du monde."],
+    ["Le panier moyen diminue.", 1, "Les clients dépensent moins à chaque achat."]
+  ] },
+
+"M061": { type: "etapes", titre: "Les premiers mots face à un client irrité", intro: "Un client arrive mécontent. Les premières secondes comptent.",
+  etapes: [
+    { ico: "👋", k: "Saluer", s: "Calmement, en le regardant" },
+    { ico: "👂", k: "Écouter", s: "Le laisser tout dire, sans couper" },
+    { ico: "🤝", k: "Montrer qu'on comprend", s: "« Je comprends que ce soit agaçant. »" },
+    { ico: "🔄", k: "Reformuler", s: "« Si je comprends bien… »" }
+  ] },
+
+"M062": { type: "tri", titre: "Calculer un pourcentage : quel total ?", consigne: "Pour calculer un pourcentage, on divise par le bon total.",
+  categories: ["Bon total", "Mauvais total"],
+  items: [
+    ["9 joueurs satisfaits sur 24 interrogés : je divise par 24.", 0, "24 est le nombre de joueurs interrogés."],
+    ["9 joueurs satisfaits sur 24 interrogés : je divise par 9.", 1, "On divise toujours par le total."],
+    ["30 clients sur 50 répondants : je divise par 50.", 0, "50 est le total des répondants."],
+    ["30 clients sur 50 répondants : je divise par 30.", 1, "C'est la partie, pas le total."]
+  ] },
+
+"B41-P1": { type: "tri", titre: "Critère rempli ou pas ?", consigne: "Critères LABORO : au moins 15 membres, plus d'un entraînement par semaine, budget de plus de 300 € par an. Ce critère est-il rempli ?",
+  categories: ["Rempli", "Pas rempli"],
+  items: [
+    ["Un club de judo de 15 membres (critère : au moins 15).", 0, "« Au moins 15 » : 15 compte."],
+    ["Un club de pétanque qui joue une fois par semaine (critère : plus d'une fois).", 1, "Une fois ne suffit pas."],
+    ["Une association avec 280 € de budget (critère : plus de 300 €).", 1, "280 est inférieur à 300."],
+    ["Un club de basket qui s'entraîne trois fois par semaine.", 0, "Trois fois, c'est plus d'une fois."]
+  ] },
+
+"B42-P1": { type: "tri", titre: "Une bonne accroche téléphonique ?", consigne: "Les deux premières phrases d'un appel de prospection donnent envie d'écouter, ou pas.",
+  categories: ["Bonne accroche", "À reprendre"],
+  items: [
+    ["« Bonjour, je suis Inès, de LABORO Sport à Évry. Nous équipons plusieurs clubs de votre ville. »", 0, "On se présente et on donne une raison d'écouter."],
+    ["« Allô, vous voulez acheter des maillots ? »", 1, "Trop direct, sans présentation."],
+    ["« Bonjour, c'est pour une enquête… enfin, pour vendre. »", 1, "Pas clair et pas honnête."],
+    ["« Bonjour, je suis Hugo, de LABORO. Votre saison reprend bientôt : avez-vous prévu vos équipements ? »", 0, "Elle parle du besoin du club."]
+  ] },
+
+"B43-P1": { type: "tri", titre: "Découvrir le besoin d'un club", consigne: "Pendant un entretien de découverte, ces questions sont-elles utiles ?",
+  categories: ["Question utile", "Question inutile"],
+  items: [
+    ["« Combien de licenciés avez-vous cette saison ? »", 0, "On mesure le besoin."],
+    ["« Qui décide des achats d'équipement ? »", 0, "On sait à qui s'adresser."],
+    ["« Vous regardez le foot à la télé ? »", 1, "Sans lien avec le besoin."],
+    ["« Quand commence votre saison ? »", 0, "On connaît le délai."]
+  ] },
+
+"B44-P1": { type: "tri", titre: "Une bonne relance ?", consigne: "Un prospect n'a pas répondu à un devis. Ces relances sont-elles réussies ?",
+  categories: ["Bonne relance", "Relance maladroite"],
+  items: [
+    ["« Bonjour, avez-vous pu consulter le devis envoyé lundi pour vos ballons ? »", 0, "Courte, polie, elle rappelle le contexte."],
+    ["« Pourquoi vous ne répondez pas ? »", 1, "Agressive."],
+    ["Relancer trois fois dans la même journée.", 1, "Trop insistant."],
+    ["« Les tailles demandées sont en stock : souhaitez-vous que je bloque la commande ? »", 0, "Elle apporte une information utile."]
+  ] },
+
+"B45-P1": { type: "tri", titre: "Réponse au client qui trouve LABORO trop cher", consigne: "Ces réponses respectent-elles la règle LABORO ?",
+  categories: ["Bonne réponse", "À éviter"],
+  items: [
+    ["« Je comprends. Regardons ce qui est inclus dans notre offre. »", 0, "On accepte, puis on montre la valeur."],
+    ["« Le concurrent vend de la mauvaise qualité. »", 1, "On ne critique jamais un concurrent."],
+    ["« Bon, je vous fais une remise tout de suite. »", 1, "Pas de remise sans contrepartie."],
+    ["« Nous livrons plus vite, et vous avez un commercial joignable directement. »", 0, "On met en avant nos services."]
+  ] },
+
+"ACC5": { type: "tri", titre: "Accueillir un visiteur professionnel", consigne: "Un livreur ou un technicien arrive. Ces gestes font-ils partie de l'accueil ?",
+  categories: ["Oui", "Non"],
+  items: [
+    ["Lui demander son nom et la personne qu'il vient voir.", 0, "On vérifie l'objet de sa visite."],
+    ["Le laisser circuler seul dans les bureaux.", 1, "Un visiteur est accompagné."],
+    ["Lui remettre un badge visiteur.", 0, "On sait qui est dans les locaux."],
+    ["Noter son heure d'arrivée dans le registre.", 0, "Le registre garde une trace des visites."]
+  ] },
+
+"ACC6": { type: "tri", titre: "Que faire de ce mail ?", consigne: "Boîte mail d'un magasin de sport : quel traitement pour chaque message ?",
+  categories: ["Répondre soi-même", "Transmettre", "Supprimer"],
+  items: [
+    ["« À quelle heure ouvrez-vous le samedi ? »", 0, "Une demande simple."],
+    ["« Je voudrais un devis pour équiper mon club. »", 1, "À transmettre à la commerciale B2B."],
+    ["« Félicitations, vous avez gagné 1 000 € ! Cliquez ici. »", 2, "Un faux message : on ne clique pas."],
+    ["« Ma commande est arrivée cassée. »", 1, "À transmettre au service satisfaction client."]
+  ] }
+
+});
+
+// ─────────── Paliers 3 et 4 (61 missions, 13/10/2026) ───────────
+// Même règle : un exercice par mission, sur une situation voisine,
+// sans jamais donner la réponse aux questions de la mission.
+Object.assign(EXERCICES_MISSIONS, {
+
+"M023": { type: "tri", titre: "À quel axe de veille rattacher l'information ?", consigne: "Un dispositif de veille se range par axes. Classe chaque information repérée.",
+  categories: ["Concurrence", "Clients", "Fournisseurs et produits", "Réglementation"],
+  items: [
+    ["Un magasin de vélos ouvre à Corbeil avec un atelier de réparation.", 0, "Un nouvel acteur sur notre zone."],
+    ["Les clients demandent de plus en plus la location de matériel.", 1, "Une attente qui monte chez les clients."],
+    ["Une marque de textile sort une gamme en fibres recyclées.", 2, "Une nouveauté de l'offre fournisseurs."],
+    ["L'affichage de l'indice de réparabilité devient obligatoire sur certains produits.", 3, "Un changement de règle à respecter."]
+  ] },
+
+"M024": { type: "tri", titre: "Quel canal pour quelle étape ?", consigne: "Un prospect B2B écrit sur plusieurs canaux. Choisis le canal le plus adapté à chaque étape.",
+  categories: ["Téléphone", "Mail", "Rendez-vous"],
+  items: [
+    ["Rassurer vite un prospect qui attend une réponse depuis la veille.", 0, "La voix rassure et permet de dialoguer."],
+    ["Envoyer une proposition chiffrée que le client relira à tête reposée.", 1, "L'écrit garde une trace précise."],
+    ["Faire essayer les produits et voir l'espace à aménager.", 2, "Le face-à-face permet la démonstration."],
+    ["Confirmer la date et l'heure d'une rencontre.", 1, "Une confirmation écrite évite les malentendus."]
+  ] },
+
+"M025": { type: "cartes", titre: "Chiffrer le coût d'une réclamation", cartes: [
+    ["Coût direct d'une réclamation ?", "Le temps passé et les gestes accordés pour la traiter."],
+    ["Coût caché ?", "Le chiffre d'affaires futur perdu si le client ne revient pas."],
+    ["Un taux de satisfaction post-réclamation mesure…", "La part des clients satisfaits de la façon dont leur réclamation a été traitée."],
+    ["Pourquoi chercher la cause d'une réclamation ?", "Pour l'éviter la prochaine fois, au lieu de la réparer à chaque fois."]
+  ] },
+
+"SA3": { type: "tri", titre: "Écart à l'objectif : alerte ou pas ?", consigne: "Services d'un magasin de randonnée : chaque résultat est-il préoccupant ?",
+  categories: ["Objectif atteint", "Signal d'alerte"],
+  items: [
+    ["Satisfaction location de sacs : 4,5 sur 5, objectif 4.", 0, "Au-dessus de l'objectif."],
+    ["Délais de réparation tenus : 62 %, objectif 90 %.", 1, "Écart important : il faut agir."],
+    ["Retouches livrées à temps : 96 %, objectif 95 %.", 0, "L'objectif est atteint."],
+    ["Réclamations sur l'entretien des skis : en hausse de 40 %.", 1, "Une tendance qui se dégrade."]
+  ] },
+
+"M026": { type: "cartes", titre: "Vendre à une collectivité", cartes: [
+    ["Bon de commande public ?", "Le document officiel qui engage la collectivité : sans lui, on ne livre pas."],
+    ["Pourquoi vérifier le stock avant de confirmer ?", "Pour ne promettre que ce qu'on peut livrer à la date imposée."],
+    ["Facture d'une collectivité : particularité ?", "Elle doit reprendre exactement les références du bon de commande."],
+    ["Après la livraison, on…", "Assure le suivi pour faire de la commande une relation durable."]
+  ] },
+
+"M027": { type: "etapes", titre: "Une procédure de réclamation standard", intro: "Une procédure claire permet à chacun de traiter une réclamation de la même façon.",
+  etapes: [
+    { ico: "📥", k: "Enregistrer", s: "Toute réclamation, avec sa date et son canal" },
+    { ico: "🏷️", k: "Qualifier", s: "Type de problème et niveau d'urgence" },
+    { ico: "🛠️", k: "Résoudre", s: "Solution dans un délai fixé à l'avance" },
+    { ico: "📈", k: "Analyser", s: "Chaque semaine, les causes qui reviennent" }
+  ] },
+
+"M028": { type: "tri", titre: "Augmenter le taux de réponse d'une enquête", consigne: "Ces idées font-elles répondre plus de clients ?",
+  categories: ["Bonne idée", "Mauvaise idée"],
+  items: [
+    ["Envoyer un questionnaire de 3 minutes juste après l'achat.", 0, "Court et au bon moment."],
+    ["Envoyer 40 questions trois mois après l'achat.", 1, "Trop long, trop tard."],
+    ["Proposer un QR code sur le ticket de caisse.", 0, "Facile et immédiat."],
+    ["Relancer le même client tous les jours.", 1, "Insistant : on le lasse."]
+  ] },
+
+"M029": { type: "tri", titre: "Quel niveau de fidélité pour quel client ?", consigne: "Un programme à niveaux récompense davantage les meilleurs clients.",
+  categories: ["Niveau d'entrée", "Niveau intermédiaire", "Niveau premium"],
+  items: [
+    ["Un client qui vient de faire son premier achat.", 0, "On l'inscrit et on lui donne envie de revenir."],
+    ["Un client qui achète 3 ou 4 fois par an.", 1, "Régulier : on le récompense davantage."],
+    ["Un club qui commande toute sa saison chez nous.", 2, "Très gros client : avantages exclusifs."],
+    ["Un couple qui achète régulièrement depuis 5 ans et nous recommande.", 2, "Fidèle et ambassadeur."]
+  ] },
+
+"M030": { type: "cartes", titre: "Au-delà du chiffre d'affaires", cartes: [
+    ["Un événement peut être rentable…", "Sans rapporter beaucoup le soir même : on mesure aussi les achats des semaines suivantes."],
+    ["Bénéfice non financier ?", "Image, relation, recommandations, informations sur les clients."],
+    ["Reconduire, adapter ou remplacer : sur quoi décider ?", "Sur les objectifs fixés avant l'action, comparés aux résultats."],
+    ["Pourquoi mesurer le NPS après l'événement ?", "Pour savoir si les invités recommandent davantage l'entreprise."]
+  ] },
+
+"M031": { type: "tri", titre: "Bon modèle de réponse ou pas ?", consigne: "Une réponse type fait gagner du temps, à condition d'être bien pensée.",
+  categories: ["Bon modèle", "À reprendre"],
+  items: [
+    ["Un modèle avec un espace pour le nom du client et le numéro de commande.", 0, "Personnalisable en quelques secondes."],
+    ["Un modèle identique envoyé sans relecture à tout le monde.", 1, "Le client sent la réponse automatique."],
+    ["Un modèle qui annonce un délai précis de traitement.", 0, "Le client sait à quoi s'attendre."],
+    ["Un modèle qui renvoie le client vers un autre service sans coordonnées.", 1, "Le client est laissé sans solution."]
+  ] },
+
+"M032": { type: "tri", titre: "Segment B2B prometteur ou pas ?", consigne: "Pour développer le B2B, on cible les segments qui ont du potentiel.",
+  categories: ["Segment prioritaire", "Segment secondaire"],
+  items: [
+    ["Des écoles de danse avec beaucoup d'élèves et des achats chaque année.", 0, "Volume et régularité."],
+    ["Des associations qui achètent une fois tous les cinq ans.", 1, "Achats trop rares."],
+    ["Des entreprises qui organisent des challenges sportifs chaque trimestre.", 0, "Besoins réguliers et budget dédié."],
+    ["Des clubs déjà sous contrat de 3 ans avec un concurrent.", 1, "Peu accessibles à court terme."]
+  ] },
+
+"M033": { type: "cartes", titre: "Quand le CA cache un problème", cartes: [
+    ["Le CA peut monter même si moins de visiteurs achètent : pourquoi ?", "Parce que ceux qui achètent dépensent plus, ou que la fréquentation augmente."],
+    ["Solde clients ?", "Nouveaux clients − clients perdus."],
+    ["Taux de transformation bas : premières pistes ?", "Accueil, disponibilité des vendeurs, ruptures, prix affichés."],
+    ["Augmenter le panier moyen ?", "Ventes complémentaires, montée en gamme, lots."]
+  ] },
+
+"M034": { type: "etapes", titre: "Les premières heures d'une crise", intro: "Face à une crise, on agit vite et dans le bon ordre.",
+  etapes: [
+    { ico: "🧯", k: "Évaluer", s: "Combien de clients, quel enjeu, quelle échéance" },
+    { ico: "📞", k: "Informer", s: "Les clients touchés, avant qu'ils ne découvrent seuls" },
+    { ico: "🔄", k: "Solution de secours", s: "Ce qui peut être fait tout de suite avec le stock" },
+    { ico: "📝", k: "Rapport", s: "Faits, actions, coûts, et comment éviter que ça recommence" }
+  ] },
+
+"M035": { type: "tri", titre: "Expérience omnicanale ou non ?", consigne: "Le client passe d'un canal à l'autre sans rupture. Ces situations le permettent-elles ?",
+  categories: ["Omnicanal réussi", "Rupture entre canaux"],
+  items: [
+    ["Le client réserve en ligne et retire en magasin deux heures plus tard.", 0, "Les canaux se complètent."],
+    ["Le vendeur ne peut pas voir la commande passée sur le site.", 1, "Les informations ne circulent pas."],
+    ["Un panier abandonné déclenche un mail avec la disponibilité en magasin.", 0, "On relie le site et le magasin."],
+    ["Un produit acheté en ligne ne peut pas être échangé en magasin.", 1, "Le client est bloqué entre deux canaux."]
+  ] },
+
+"M036": { type: "tri", titre: "Priorité d'une commande B2B", consigne: "Plusieurs commandes à suivre : laquelle traiter en premier ?",
+  categories: ["Priorité haute", "Priorité normale"],
+  items: [
+    ["Une commande attendue après-demain pour un tournoi, bloquée chez le transporteur.", 0, "Échéance proche et client en risque."],
+    ["Une commande livrée hier, sans problème signalé.", 1, "On fera un simple suivi de satisfaction."],
+    ["Un client stratégique qui n'a pas reçu sa confirmation de commande.", 0, "Enjeu fort : on rassure vite."],
+    ["Une commande prévue dans trois semaines, dans les temps.", 1, "Pas d'urgence aujourd'hui."]
+  ] },
+
+"M037": { type: "cartes", titre: "Évaluer un programme de fidélité", cartes: [
+    ["ROI d'un programme ?", "(Gain généré − coût du programme) ÷ coût × 100."],
+    ["Taux d'inscription faible : premières causes ?", "Programme mal connu, inscription compliquée, avantages peu attractifs."],
+    ["Pourquoi comparer inscrits et non-inscrits ?", "Pour voir si le programme change vraiment le comportement d'achat."],
+    ["Valeur client (CLV) ?", "Ce qu'un client rapporte sur toute la durée de sa relation avec l'entreprise."]
+  ] },
+
+"M038": { type: "tri", titre: "Source de prospection fiable ou pas ?", consigne: "Pour repérer de grandes entreprises, toutes les sources ne se valent pas.",
+  categories: ["Source fiable", "Source à vérifier"],
+  items: [
+    ["L'annuaire officiel des entreprises (Sirene).", 0, "Données publiques et à jour."],
+    ["Un message anonyme sur un forum.", 1, "Impossible de vérifier l'auteur."],
+    ["Le site de la chambre de commerce de l'Essonne.", 0, "Source institutionnelle."],
+    ["Une liste d'entreprises trouvée sans date sur un blog.", 1, "Peut-être ancienne et incomplète."]
+  ] },
+
+"M039": { type: "cartes", titre: "Dimensionner une prospection", cartes: [
+    ["Point de départ du calcul ?", "L'objectif final (contrats), puis on remonte la chaîne de conversion."],
+    ["Si 1 rendez-vous sur 4 donne un contrat…", "Il faut 4 rendez-vous pour signer 1 contrat."],
+    ["Pourquoi prévoir les risques ?", "Pour avoir une parade prête au lieu d'improviser."],
+    ["Un bon planning de prospection montre…", "Les actions, les volumes et les relances, semaine par semaine."]
+  ] },
+
+"M040": { type: "tri", titre: "Accorder une remise ?", consigne: "Un prospect en négociation demande un effort. Réponse conforme à une bonne politique commerciale ?",
+  categories: ["Réponse adaptée", "Réponse risquée"],
+  items: [
+    ["« D'accord pour 5 %, si vous vous engagez sur la saison complète. »", 0, "Une remise contre une contrepartie."],
+    ["« Je vous fais 20 % tout de suite pour être sûr de signer. »", 1, "Marge sacrifiée sans contrepartie."],
+    ["« Je peux vous offrir la livraison si la commande dépasse le seuil prévu. »", 0, "Un geste encadré et lié au volume."],
+    ["« Je dois vérifier avec ma responsable, je vous rappelle demain. »", 0, "On ne dépasse pas sa limite d'autorisation."]
+  ] },
+
+"M041": { type: "tri", titre: "Sur quel critère LABORO peut-il gagner ?", consigne: "Un grand CSE note ses fournisseurs. Pour chaque critère, LABORO a-t-il un avantage ?",
+  categories: ["Avantage LABORO", "Point à défendre"],
+  items: [
+    ["Conseil d'un commercial dédié qui se déplace.", 0, "Proximité et suivi personnalisé."],
+    ["Prix unitaire le plus bas du marché.", 1, "Un grand réseau national peut être moins cher."],
+    ["Flocage réalisé dans son propre atelier.", 0, "Délais et corrections maîtrisés."],
+    ["Catalogue très étendu sur toutes les disciplines.", 1, "Un spécialiste régional a une offre plus ciblée."]
+  ] },
+
+"M042": { type: "tri", titre: "Quelle stratégie pour quel compte ?", consigne: "Dans un portefeuille B2B, chaque compte demande une approche différente.",
+  categories: ["Développer", "Entretenir", "Reconquérir"],
+  items: [
+    ["Un client qui achète peu mais dont le budget sport augmente.", 0, "Fort potentiel : on lui propose plus."],
+    ["Un client fidèle et satisfait qui commande régulièrement.", 1, "On garde le contact et la qualité de service."],
+    ["Un client mécontent depuis un incident de livraison.", 2, "On répare la relation avant tout."],
+    ["Un ancien client parti chez un concurrent l'an dernier.", 2, "On cherche à le faire revenir."]
+  ] },
+
+"M043": { type: "cartes", titre: "Faire le bilan d'une opération", cartes: [
+    ["ROI d'une opération de prospection ?", "(Marge ou CA généré − coût de l'opération) ÷ coût × 100."],
+    ["Coût d'acquisition d'un client ?", "Coût de l'opération ÷ nombre de nouveaux clients."],
+    ["Où se perd-on dans la chaîne de conversion ?", "À l'étape où le taux de passage est le plus faible."],
+    ["Un bon enseignement est…", "Concret, appuyé sur un chiffre, et réutilisable pour la prochaine opération."]
+  ] },
+
+"M044": { type: "tri", titre: "Classer dans une matrice SWOT", consigne: "Forces et faiblesses viennent de l'entreprise, opportunités et menaces de l'extérieur.",
+  categories: ["Force", "Faiblesse", "Opportunité", "Menace"],
+  items: [
+    ["L'équipe connaît très bien les clubs du département.", 0, "Un atout interne."],
+    ["Un seul commercial, à mi-temps, pour tout le B2B.", 1, "Une limite interne."],
+    ["Les entreprises développent le sport au travail.", 2, "Une tendance extérieure favorable."],
+    ["Un grand réseau national lance une offre B2B agressive.", 3, "Un risque extérieur."]
+  ] },
+
+"M080": { type: "tri", titre: "Objectif SMART ou pas ?", consigne: "Un objectif SMART est spécifique, mesurable, atteignable, réaliste et limité dans le temps.",
+  categories: ["Objectif SMART", "Objectif flou"],
+  items: [
+    ["« Vendre plus de raquettes. »", 1, "Ni chiffre ni date."],
+    ["« Vendre 60 raquettes de padel du 2 au 9 mai. »", 0, "Précis, chiffré, daté."],
+    ["« Que les clients soient contents. »", 1, "Impossible à mesurer tel quel."],
+    ["« Atteindre 85 % de satisfaction sur l'animation, mesurée le dernier jour. »", 0, "Mesurable et daté."]
+  ] },
+
+"M081": { type: "etapes", titre: "De l'insatisfaction au plan d'action", intro: "Un plan d'amélioration part des causes, pas des symptômes.",
+  etapes: [
+    { ico: "💸", k: "Chiffrer", s: "Ce que l'insatisfaction coûte à l'entreprise" },
+    { ico: "🔍", k: "Trouver les causes", s: "Pourquoi le problème arrive, pas seulement qu'il arrive" },
+    { ico: "❓", k: "Mieux mesurer", s: "Des questions d'enquête qui ciblent le problème" },
+    { ico: "🗓️", k: "Planifier", s: "Des actions datées, avec un responsable et un indicateur" }
+  ] },
+
+"M082": { type: "tri", titre: "Contrôler une livraison à la réception", consigne: "Avant de livrer un client, quelles vérifications auraient évité un problème ?",
+  categories: ["Contrôle utile", "Contrôle inutile"],
+  items: [
+    ["Ouvrir un carton au hasard et vérifier quelques articles.", 0, "Un échantillon détecte les défauts de série."],
+    ["Compter les articles par rapport au bon de livraison.", 0, "On repère les manquants avant le client."],
+    ["Vérifier la couleur du camion du transporteur.", 1, "Sans rapport avec la qualité livrée."],
+    ["Noter les réserves sur le bon de livraison en cas de dommage.", 0, "On garde un recours contre le fournisseur."]
+  ] },
+
+"M083": { type: "tri", titre: "Point fort ou axe de progrès ?", consigne: "Un bilan de stage s'appuie sur des faits. Comment classer chaque constat ?",
+  categories: ["Point fort", "Axe de progrès"],
+  items: [
+    ["« Les clients me disent que j'explique clairement les produits. »", 0, "Un retour positif appuyé sur des faits."],
+    ["« J'oublie souvent de proposer un produit complémentaire. »", 1, "Une habitude à travailler."],
+    ["« Je n'ose pas conclure la vente quand le client hésite. »", 1, "Une compétence à renforcer."],
+    ["« Mon tuteur m'a confié la caisse seul dès la deuxième semaine. »", 0, "Une marque de confiance."]
+  ] },
+
+"M084": { type: "tri", titre: "Objection et bonne réponse", consigne: "Associe chaque réponse à l'objection qu'elle traite.",
+  categories: ["« C'est trop cher »", "« On a déjà un fournisseur »", "« Je n'ai pas le temps »"],
+  items: [
+    ["« Je comprends. Comparons ce qui est compris dans chaque offre. »", 0, "On ramène la discussion sur la valeur."],
+    ["« Très bien. Pourquoi ne pas nous tester sur une petite commande ? »", 1, "Une commande test sans risque."],
+    ["« Je vous propose 10 minutes, mardi ou jeudi, quand cela vous arrange. »", 2, "Court, précis, facile à accepter."],
+    ["« Qu'est-ce qui vous plaît chez votre fournisseur actuel ? »", 1, "On découvre avant d'argumenter."]
+  ] },
+
+"M085": { type: "cartes", titre: "Une offre à trois niveaux", cartes: [
+    ["Pourquoi proposer trois niveaux d'offre ?", "Le client choisit selon son budget, sans se sentir piégé."],
+    ["Quel niveau est souvent choisi ?", "Celui du milieu, s'il est bien construit."],
+    ["Demande de remise importante : réflexe ?", "Vérifier la marge minimale et demander une contrepartie."],
+    ["Un argument face à un appel d'offres doit être…", "Relié à un critère de choix du client, et chiffré si possible."]
+  ] },
+
+"M086": { type: "cartes", titre: "Lire sa propre chaîne de conversion", cartes: [
+    ["Beaucoup d'appels, peu de rendez-vous : piste ?", "Travailler l'accroche et la découverte au téléphone."],
+    ["Beaucoup de devis, peu de signatures : piste ?", "Travailler la relance et la réponse aux objections."],
+    ["Écart à l'objectif ?", "Résultat − objectif, en nombre et en pourcentage."],
+    ["Un bon objectif personnel est…", "Chiffré, daté, et lié à l'étape la plus faible."]
+  ] },
+
+"M087": { type: "etapes", titre: "Gérer une urgence avec un partenaire", intro: "Quand la solution dépend d'un partenaire, on coordonne vite et on confirme tout par écrit.",
+  etapes: [
+    { ico: "📞", k: "Appeler le partenaire", s: "Expliquer l'urgence et demander un délai réaliste" },
+    { ico: "🅱️", k: "Préparer un plan B", s: "Une solution de secours si le délai ne tient pas" },
+    { ico: "🤝", k: "Rappeler le client", s: "À l'heure promise, avec une solution" },
+    { ico: "📧", k: "Confirmer par écrit", s: "Engagements, horaires et coordonnées" }
+  ] },
+
+"M090": { type: "tri", titre: "Décliner un objectif global", consigne: "Un objectif d'entreprise se découpe en objectifs plus petits. Comment classer chacun ?",
+  categories: ["Par canal", "Par rayon", "Par période"],
+  items: [
+    ["+12 % de chiffre d'affaires sur le site internet.", 0, "Le site est un canal de vente."],
+    ["+8 % sur le rayon cyclisme.", 1, "Un rayon de l'offre."],
+    ["60 % de l'objectif atteint dès la première année.", 2, "Un découpage dans le temps."],
+    ["+20 % sur les ventes aux entreprises par le commercial terrain.", 0, "Le terrain est un canal."]
+  ] },
+
+"M091": { type: "tri", titre: "Frein au changement et parade", consigne: "Lancer une veille partagée, c'est changer les habitudes. Quelle parade pour quel frein ?",
+  categories: ["« Je n'ai pas le temps »", "« Ça ne sert à rien »", "« Je ne sais pas faire »"],
+  items: [
+    ["Une fiche de veille qui se remplit en 2 minutes.", 0, "On réduit l'effort demandé."],
+    ["Montrer une vente gagnée grâce à une info de veille.", 1, "On prouve l'utilité."],
+    ["Un court atelier de prise en main avec un exemple.", 2, "On forme avant d'exiger."],
+    ["Un point de 5 minutes intégré à la réunion du lundi.", 0, "La veille entre dans un temps déjà prévu."]
+  ] },
+
+"M092": { type: "etapes", titre: "Les étapes d'un parcours client", intro: "Pour améliorer l'expérience, on regarde chaque moment vécu par le client.",
+  etapes: [
+    { ico: "🔎", k: "Avant", s: "Il cherche une information, en ligne ou autour de lui" },
+    { ico: "🚪", k: "Arrivée", s: "Il entre : accueil, orientation" },
+    { ico: "🛍️", k: "Pendant", s: "Conseil, essai, choix, passage en caisse" },
+    { ico: "💌", k: "Après", s: "Suivi, avis, raison de revenir" }
+  ] },
+
+"M112": { type: "tri", titre: "Arbitrer entre deux demandes", consigne: "Deux responsables veulent des choses différentes. Quelle méthode d'arbitrage est la plus solide ?",
+  categories: ["Arbitrage solide", "Arbitrage fragile"],
+  items: [
+    ["Comparer ce que chaque option a rapporté l'an dernier.", 0, "On s'appuie sur des chiffres."],
+    ["Donner raison à celui qui insiste le plus.", 1, "Ce n'est pas un critère objectif."],
+    ["Chercher une solution qui garde l'essentiel des deux demandes.", 0, "Un compromis argumenté."],
+    ["Décider au hasard pour gagner du temps.", 1, "Impossible à justifier."]
+  ] },
+
+"M093": { type: "etapes", titre: "Former un nouveau commercial", intro: "Une bonne formation fait pratiquer, pas seulement écouter.",
+  etapes: [
+    { ico: "🎯", k: "Objectif", s: "Ce qu'il saura faire à la fin de la séance" },
+    { ico: "📖", k: "Apport", s: "Court : l'offre, les cibles, la méthode" },
+    { ico: "🎭", k: "Mise en pratique", s: "Jeu de rôle sur un appel ou un rendez-vous" },
+    { ico: "✅", k: "Vérification", s: "Un petit test et un retour personnalisé" }
+  ] },
+
+"M094": { type: "cartes", titre: "La loi de Pareto", cartes: [
+    ["Le principe des 80/20 ?", "Une petite partie des clients fait souvent la plus grosse partie du chiffre d'affaires."],
+    ["Conséquence pour le commercial ?", "Les comptes stratégiques méritent un suivi renforcé."],
+    ["Les petits clients sont-ils inutiles ?", "Non : certains ont un fort potentiel de développement."],
+    ["Un plan de compte contient…", "Objectifs, interlocuteurs, actions et calendrier pour un client."]
+  ] },
+
+"M095": { type: "tri", titre: "Bénéfice ou risque d'un nouveau service ?", consigne: "Un magasin imagine un service d'abonnement à l'entretien des vélos.",
+  categories: ["Bénéfice", "Risque"],
+  items: [
+    ["Des revenus réguliers chaque mois.", 0, "Le CA devient plus prévisible."],
+    ["L'atelier débordé si trop de clients s'abonnent en même temps.", 1, "Une capacité à anticiper."],
+    ["Des clients qui reviennent souvent au magasin.", 0, "Plus d'occasions de vente."],
+    ["Un investissement de départ en outillage.", 1, "Un coût engagé avant les premières recettes."]
+  ] },
+
+"M113": { type: "tri", titre: "Signal faible ou signal fort ?", consigne: "Une veille efficace repère les signaux avant qu'ils ne deviennent des pertes.",
+  categories: ["Signal faible", "Signal fort"],
+  items: [
+    ["Un client CSE demande « par curiosité » les délais d'un concurrent.", 0, "Un indice discret à surveiller."],
+    ["Le CSE annonce qu'il change de fournisseur le mois prochain.", 1, "La décision est déjà prise."],
+    ["Le concurrent recrute un commercial dédié aux entreprises de l'Essonne.", 0, "Il prépare une offensive."],
+    ["Deux clubs annulent leur commande de la saison.", 1, "La perte est visible."]
+  ] },
+
+"B41-P3": { type: "tri", titre: "Pourquoi perd-on des prospects ?", consigne: "Classe chaque situation selon la cause de perte.",
+  categories: ["Pas de suivi", "Mauvaise qualification", "Fichier en désordre"],
+  items: [
+    ["Un prospect intéressé n'a jamais été rappelé.", 0, "Personne n'a assuré la relance."],
+    ["On a passé trois rendez-vous avec quelqu'un qui ne décide pas.", 1, "L'autorité n'avait pas été vérifiée."],
+    ["Le même club apparaît trois fois avec des contacts différents.", 2, "Des doublons dans le fichier."],
+    ["On a proposé une offre à un club sans budget cette année.", 1, "Le budget n'avait pas été vérifié."]
+  ] },
+
+"B42-P3": { type: "cartes", titre: "Un plan de prospection annuel", cartes: [
+    ["Point de départ ?", "Le chiffre d'affaires à gagner, divisé par le CA moyen d'un nouveau client."],
+    ["Pourquoi répartir par cible ?", "Chaque cible a son délai de décision et son potentiel."],
+    ["Pourquoi un calendrier trimestriel ?", "Pour tenir compte des moments où les clients décident."],
+    ["Un budget bien ventilé montre…", "Ce que coûte chaque action, trimestre par trimestre."]
+  ] },
+
+"B43-P3": { type: "tri", titre: "Ajustement à mi-parcours", consigne: "À mi-opération, l'objectif est en danger. Ces ajustements sont-ils pertinents ?",
+  categories: ["Ajustement pertinent", "Fausse bonne idée"],
+  items: [
+    ["Concentrer les efforts sur les prospects déjà en négociation.", 0, "Ils sont les plus proches de la signature."],
+    ["Baisser tous les prix de 20 % pour accélérer.", 1, "Marge sacrifiée sans garantie."],
+    ["Relancer les rendez-vous qui n'ont pas donné de devis.", 0, "On récupère des affaires en suspens."],
+    ["Arrêter de suivre les indicateurs pour gagner du temps.", 1, "On pilote alors à l'aveugle."]
+  ] },
+
+"B44-P3": { type: "tri", titre: "Règle de suivi bien formulée ?", consigne: "Une règle de suivi doit être claire et vérifiable.",
+  categories: ["Règle claire", "Règle floue"],
+  items: [
+    ["« Tout devis est relancé à J+5, puis à J+10. »", 0, "Délai précis, facile à contrôler."],
+    ["« On relance quand on a le temps. »", 1, "Impossible à vérifier."],
+    ["« Chaque échange est saisi dans LABORO Connect sous 24 heures. »", 0, "Précis et mesurable."],
+    ["« Il faut bien suivre ses clients. »", 1, "Trop vague pour être appliqué."]
+  ] },
+
+"B45-P3": { type: "chaine", titre: "Transformer un service en argument de valeur", produit: "Maillot réversible club",
+  intro: "Un club trouve un maillot moins cher ailleurs. Construis un argument de valeur sur le service.",
+  questions: ["Et donc ?", "Et pour le club, combien ça vaut ?"],
+  maillons: [
+    { k: "Caractéristique", txt: "LABORO stocke les tailles du club et réassortit en 48 heures." },
+    { k: "Avantage", txt: "…donc un nouveau joueur est équipé sans commande spéciale." },
+    { k: "Bénéfice", txt: "…le club n'achète plus de stock d'avance et n'immobilise pas son budget." }
+  ] },
+
+"M075": { type: "tri", titre: "Démarque ou pas ?", consigne: "La démarque, c'est l'écart entre le stock théorique et le stock réel. Ces situations en créent-elles ?",
+  categories: ["Crée de la démarque", "Ne crée pas de démarque"],
+  items: [
+    ["Un article volé dans le rayon.", 0, "Démarque inconnue."],
+    ["Un produit abîmé en réserve, qui ne peut plus être vendu.", 0, "Démarque connue."],
+    ["Un produit vendu normalement en caisse.", 1, "Sortie de stock enregistrée."],
+    ["Une erreur de saisie lors de la réception.", 0, "Démarque administrative."]
+  ] },
+
+"M096": { type: "etapes", titre: "Le changement de saison d'un rayon", intro: "Un changement de saison se planifie à rebours de la date d'ouverture.",
+  etapes: [
+    { ico: "📦", k: "Écouler", s: "Les produits de la saison passée achetés ferme" },
+    { ico: "↩️", k: "Retourner", s: "Ce que le fournisseur reprend, avec un bon de retour" },
+    { ico: "🗺️", k: "Implanter", s: "La nouvelle collection selon un plan" },
+    { ico: "📊", k: "Suivre", s: "Les indicateurs du nouveau rayon dès l'ouverture" }
+  ] },
+
+"M097": { type: "cartes", titre: "Les indicateurs d'un site marchand", cartes: [
+    ["Taux de conversion d'un site ?", "Commandes ÷ visiteurs × 100."],
+    ["Taux d'abandon de panier ?", "Paniers non validés ÷ paniers créés × 100."],
+    ["Causes fréquentes d'abandon ?", "Frais de livraison découverts trop tard, paiement compliqué, compte obligatoire."],
+    ["Panier moyen en ligne ?", "CA du site ÷ nombre de commandes."]
+  ] },
+
+"M098": { type: "tri", titre: "Quel réseau pour quel public ?", consigne: "Chaque réseau social touche un public différent.",
+  categories: ["Instagram", "Facebook", "LinkedIn"],
+  items: [
+    ["Des coureurs de 18 à 35 ans qui partagent leurs photos de course.", 0, "Public jeune et visuel."],
+    ["Des parents qui suivent le club de leurs enfants.", 1, "Groupes locaux et associations."],
+    ["Des responsables de CSE et de ressources humaines.", 2, "Réseau professionnel."],
+    ["Les membres d'une association de marche du quartier.", 1, "Communauté locale."]
+  ] },
+
+"M099": { type: "tri", titre: "Bon ou mauvais indicateur ?", consigne: "Tableau de bord d'un magasin de sport : l'indicateur est-il bon ou inquiétant ?",
+  categories: ["Plutôt bon", "Inquiétant"],
+  items: [
+    ["Le taux de rupture monte de 2 % à 9 %.", 1, "Plus de ventes perdues."],
+    ["Le NPS passe de +15 à +28.", 0, "Les clients recommandent davantage."],
+    ["La part des nouveaux clients chute de moitié.", 1, "Le magasin ne se renouvelle plus."],
+    ["Le taux de démarque baisse de 3 % à 1,5 %.", 0, "Moins de pertes."]
+  ] },
+
+"M103": { type: "tri", titre: "Menace ou opportunité ?", consigne: "Informations de veille pour un magasin de tennis. Comment les classer ?",
+  categories: ["Menace", "Opportunité"],
+  items: [
+    ["Un concurrent ouvre un espace de cordage express à 2 km.", 0, "Il peut attirer nos clients."],
+    ["Le padel se développe fortement dans le département.", 1, "Une nouvelle demande à saisir."],
+    ["Une grande enseigne baisse ses prix sur les balles.", 0, "Pression sur nos ventes."],
+    ["Un club voisin cherche un fournisseur pour son école de tennis.", 1, "Un nouveau client possible."]
+  ] },
+
+"M104": { type: "tri", titre: "Quel document pour quelle situation ?", consigne: "Après une vente, le bon document protège le client et le vendeur.",
+  categories: ["Ticket de caisse", "Facture", "Bon de garantie"],
+  items: [
+    ["Un particulier veut pouvoir échanger son article.", 0, "Sa preuve d'achat."],
+    ["Un club veut un justificatif pour sa comptabilité.", 1, "Obligatoire pour un professionnel."],
+    ["Un client achète une montre GPS et veut connaître sa couverture en cas de panne.", 2, "Il précise ce qui est couvert."],
+    ["Un particulier demande un document avec le détail HT et TVA.", 1, "Une facture peut lui être remise."]
+  ] },
+
+"M105": { type: "tri", titre: "Gravité d'un problème de commande", consigne: "Un sous-traitant annonce un problème. Quel niveau de gravité ?",
+  categories: ["Grave", "Gérable"],
+  items: [
+    ["Des maillots livrés après le tournoi pour lequel ils étaient commandés.", 0, "Le besoin du client n'est plus couvert."],
+    ["Un retard d'une journée, avec trois semaines de marge avant l'événement.", 1, "Le délai reste tenable."],
+    ["Une faute d'orthographe sur le nom du club, à 48 heures d'un match.", 0, "Image du client et délai court."],
+    ["Un carton livré dans une autre couleur d'emballage.", 1, "Sans impact sur le produit."]
+  ] },
+
+"M106": { type: "tri", titre: "Quel canal pour recontacter ce client ?", consigne: "Le bon canal dépend des habitudes du client.",
+  categories: ["Mail", "SMS", "Appel"],
+  items: [
+    ["Un client qui ouvre toutes les newsletters.", 0, "Il lit ses mails."],
+    ["Une cliente qui ne lit pas ses mails mais répond vite aux messages.", 1, "Le SMS est court et lu."],
+    ["Un très bon client qui n'est pas venu depuis 8 mois.", 2, "Un appel personnel montre qu'on tient à lui."],
+    ["Une information courte : la date d'une vente privée.", 1, "Un message bref suffit."]
+  ] },
+
+"M107": { type: "tri", titre: "Quel type d'action de fidélisation ?", consigne: "Associe chaque action à son type.",
+  categories: ["Avantage financier", "Expérience", "Reconnaissance"],
+  items: [
+    ["10 € offerts dès 100 points cumulés.", 0, "Un gain en argent."],
+    ["Une sortie trail encadrée réservée aux clients.", 1, "Un moment vécu ensemble."],
+    ["Un statut « Ambassadeur » affiché sur la carte.", 2, "Le client se sent valorisé."],
+    ["Un essai en avant-première des nouveautés.", 1, "Une expérience exclusive."]
+  ] },
+
+"M108": { type: "cartes", titre: "Diagnostiquer un rayon", cartes: [
+    ["Un produit sans aucune vente : questions à se poser ?", "Est-il visible, au bon prix, au bon endroit, et connu des vendeurs ?"],
+    ["Écart à l'objectif en % ?", "(Réalisé − objectif) ÷ objectif × 100."],
+    ["Taux de rupture élevé : conséquence ?", "Des ventes perdues et des clients déçus."],
+    ["Une bonne action corrective a…", "Un responsable, une date et un indicateur de suivi."]
+  ] },
+
+"M109": { type: "tri", titre: "Associations : quelle technique ?", consigne: "Les associations sportives ont leurs propres habitudes. Quelle technique pour quelle situation ?",
+  categories: ["E-mailing", "Forum ou événement", "Appel"],
+  items: [
+    ["Présenter LABORO à 40 associations en une seule journée.", 1, "Un forum des associations réunit beaucoup de contacts."],
+    ["Annoncer l'offre de rentrée à toute la liste.", 0, "Un envoi groupé et personnalisé."],
+    ["Obtenir un rendez-vous avec un président qui a ouvert le mail.", 2, "L'appel transforme l'intérêt."],
+    ["Faire toucher les nouveaux maillots aux bénévoles.", 1, "Un stand permet de montrer les produits."]
+  ] },
+
+"M110": { type: "tri", titre: "Statut du prospect après l'appel", consigne: "Après chaque appel, le statut se met à jour dans LABORO Connect.",
+  categories: ["Froid", "Tiède", "Chaud"],
+  items: [
+    ["Le prospect n'a pas décroché et ne connaît pas LABORO.", 0, "Aucun contact, aucun intérêt."],
+    ["Le prospect accepte de recevoir une documentation.", 1, "Un premier intérêt, encore vague."],
+    ["Le prospect confirme son budget et veut un devis cette semaine.", 2, "Besoin et budget confirmés."],
+    ["Le prospect accepte un rendez-vous dans 15 jours.", 1, "Intérêt réel, décision encore loin."]
+  ] },
+
+"M111": { type: "tri", titre: "Classer des devis en attente", consigne: "Par quel devis commencer la relance ?",
+  categories: ["Relancer en premier", "Relancer ensuite"],
+  items: [
+    ["Un devis important dont la validité expire vendredi.", 0, "Échéance proche."],
+    ["Un petit devis envoyé hier.", 1, "Trop tôt pour relancer."],
+    ["Un client qui a dit « je décide cette semaine ».", 0, "La décision est imminente."],
+    ["Une collectivité qui vote son budget dans deux mois.", 1, "Son calendrier impose d'attendre."]
+  ] },
+
+"M100": { type: "cartes", titre: "Inventaire et démarque", cartes: [
+    ["Stock théorique ?", "Stock initial + entrées − sorties enregistrées."],
+    ["Démarque ?", "Stock théorique − stock réel, quand le réel est inférieur."],
+    ["Surmarque ?", "Le stock réel est supérieur au théorique, souvent à cause d'une erreur de saisie."],
+    ["Taux de démarque ?", "Valeur de la démarque ÷ chiffre d'affaires × 100."]
+  ] },
+
+"M101": { type: "cartes", titre: "Commander au bon fournisseur", cartes: [
+    ["Quantité à commander ?", "Besoin prévu − stock disponible, arrondi au colisage."],
+    ["Minimum de commande : conséquence ?", "On commande parfois plus que le besoin, ou on regroupe des références."],
+    ["Scoring pondéré ?", "Chaque note est multipliée par l'importance du critère, puis on additionne."],
+    ["Un bon de commande précise…", "Fournisseur, références, quantités, prix, date et lieu de livraison."]
+  ] },
+
+"M102": { type: "cartes", titre: "Prix, atelier et réseaux sociaux", cartes: [
+    ["Prix de vente HT à partir du coût et du taux de marque ?", "Coût d'achat HT ÷ (1 − taux de marque)."],
+    ["Taux d'occupation d'un atelier ?", "Places occupées ÷ places proposées × 100."],
+    ["Seuil de rentabilité ?", "Le niveau de ventes à partir duquel les coûts sont couverts."],
+    ["Taux d'engagement d'une publication ?", "Interactions (j'aime, commentaires, partages) ÷ abonnés ou personnes touchées × 100."]
+  ] }
+
+});

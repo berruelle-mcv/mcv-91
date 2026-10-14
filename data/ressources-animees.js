@@ -7,6 +7,10 @@
 //   Palier 1 couvert pour les 19 compétences (12/10/2026).
 //   Pour ajouter un palier : copier un bloc, changer la clé, adapter le texte.
 //
+//   13/10/2026 (soir) : chaque mission a désormais SON exercice
+//   (data/exercices-missions.js). Ces blocs ne s'affichent plus que pour
+//   une mission qui n'aurait pas encore d'exercice propre (secours).
+//
 //   13/10/2026 : les saynètes ont été retirées d'ici. Une compétence est
 //   partagée par plusieurs missions, une saynète ici s'affichait donc à
 //   l'identique dans chacune. Chaque mission a désormais SA saynète
