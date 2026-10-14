@@ -6,8 +6,6 @@
 //   Ce fichier ne contient AUCUN contenu pédagogique. Il affiche :
 //     - la saynète PROPRE À CHAQUE MISSION (data/saynetes-missions.js,
 //       SAYNETES_MISSIONS), en tête de l'onglet « La mission » ;
-//     - l'exercice animé PROPRE À CHAQUE MISSION (data/exercices-missions.js,
-//       EXERCICES_MISSIONS), en tête de l'onglet « Apprendre d'abord » ;
 //     - les blocs de méthode d'une compétence (data/ressources-animees.js,
 //       RES_ANIMEES), en tête de l'onglet « Apprendre d'abord ».
 //   Ajouter ou modifier une animation = modifier ces fichiers de données,
@@ -16,32 +14,47 @@
 //   (deux missions de même compétence affichaient la même scène) mais à
 //   la mission elle-même, avec sa variante PVOC.
 //
+//   L'exercice animé PROPRE À CHAQUE MISSION vient de data/exercices-missions.js
+//   (EXERCICES_MISSIONS), en tête de « Apprendre d'abord » (14/10/2026).
+//
+//   Ce qui est propre à un univers (équipe, enseigne, objectifs chiffrés,
+//   reconnaissance des modèles du catalogue) se règle dans la constante
+//   ANIM_UNIVERS du même fichier de données. Sans ANIM_UNIVERS, le moteur
+//   garde les réglages de LABORO Sport & Outdoor (comportement du 12/10).
+//
 //   Types de blocs :
 //     saynete  : petite scène jouée (personnages, sous-titres, voix) —
 //                utilisée pour les saynètes de mission
+//                décors : showroom, club, concession, atelier, telephone, bureau, exterieur
 //     etapes   : étapes qui s'allument l'une après l'autre
 //     tri      : exercice de classement avec correction immédiate
 //     chaine   : raisonnement qui se construit (ex. CAB)
-//     calcul   : calculatrice guidée (NPS, TTC, points, rétention…)
+//     calcul   : calculatrice guidée (NPS, TTC, reste à payer, jours ouvrés,
+//                conversion, entonnoir, carburant, prévisionnel…)
 //     cartes   : cartes à retourner (auto-évaluation)
 //
 //   Enrichissements automatiques (toutes les ressources, toutes les missions) :
 //     - bouton « Écouter » sur chaque partie de la fiche ressource
 //     - « Les notions à connaître » repliables terme par terme
-//     - « À retenir » transformé en cartes à retourner
+//     - « À retenir » transformé en cartes à retourner (fiches à rubriques)
+//     - « En résumé… je vérifie » transformé en liste à cocher (fiches simples)
+//     - « À éviter » / « À privilégier » et « Erreur fréquente » mis en valeur
 //     - mise en situation présentée comme un message, avec écoute
 //     - répliques des clients dans les questions : bouton « Écouter »
 //     - images du catalogue dans les dossiers documentaires
 //
 //   Branchement : enveloppe window.openMission (même principe que
 //   js/brouillons-serveur.js et js/maison.js). Chargé en dernier.
-//   Créé le 12/10/2026.
+//   Créé le 12/10/2026 (LABORO MCV) ; rendu commun aux univers le 12/10/2026
+//   pour LABORO Auto.
+//   13/10/2026 : calculatrices en mode « méthode » (toutes celles des deux univers).
 // ================================================
 (function(){
   "use strict";
 
   var MA = window.MOTEUR_ANIM = {};
   var DONNEES = function(){ return (typeof RES_ANIMEES !== "undefined") ? RES_ANIMEES : {}; };
+  var U = function(){ return (typeof ANIM_UNIVERS !== "undefined" && ANIM_UNIVERS) ? ANIM_UNIVERS : {}; };
 
   // ─────────────────────────────────────────────
   //  Utilitaires
@@ -142,10 +155,15 @@
 
   // ─────────────────────────────────────────────
   //  Bloc SAYNÈTE
-  //  { type:"saynete", titre, decor:"showroom"|"telephone"|"bureau",
-  //    persos:{ a:{nom, role, sexe:"f"|"h", couleur}, b:{…} },
+  //  { type:"saynete", titre, decor:"showroom"|"concession"|"atelier"|"telephone"|"bureau",
+  //    persos:{ a:{nom, role, sexe:"f"|"h", couleur, logo}, b:{…} },
   //    lignes:[ {prise:"Prise 1 — à éviter", qui:"a"|"b"|null, txt, verdict:"ok"|"ko"|"off", occupe:true|false} ] }
   // ─────────────────────────────────────────────
+  function enseigne(){
+    var e = U().enseigne || {};
+    return { nom: e.nom || "LABORO", sous: e.sous || "SPORT & OUTDOOR · ÉVRY", lieu: e.lieu || "LABORO · ÉVRY",
+      fond: e.fond || "#0A2540", accent: e.accent || "#185FA5", logo: U().logo || "LABORO" };
+  }
   function svgPerso(x, p, id, decor){
     var f = p.sexe === "f";
     var peau = p.peau || (f ? "#F1C7A5" : "#E3B48F");
@@ -157,37 +175,97 @@
     var tel = decor === "telephone"
       ? '<rect x="' + (x + (x < 220 ? 9 : -17)) + '" y="84" width="8" height="15" rx="2" fill="#1F2937"/>'
       : "";
+    var ens = enseigne();
     return '<g class="ma-perso" id="' + id + '">'
       + '<circle cx="' + x + '" cy="92" r="13" fill="' + peau + '"/>' + tete + tel
       + '<rect x="' + (x-16) + '" y="106" width="32" height="46" rx="12" fill="' + corps + '"/>'
-      + (p.logo ? '<text x="' + x + '" y="132" font-size="6" fill="#fff" text-anchor="middle" font-family="system-ui,sans-serif">LABORO</text>' : "")
+      + (p.logo ? '<text x="' + x + '" y="132" font-size="6" fill="#fff" text-anchor="middle" font-family="system-ui,sans-serif">' + esc(ens.logo) + '</text>' : "")
       + '<text x="' + x + '" y="170" font-size="10" font-weight="700" fill="#0A2540" text-anchor="middle" font-family="system-ui,sans-serif">' + esc(p.nom) + '</text>'
       + (p.role ? '<text x="' + x + '" y="182" font-size="7.5" fill="#4A6FA5" text-anchor="middle" font-family="system-ui,sans-serif">' + esc(p.role) + '</text>' : "")
       + '</g>';
   }
-  function svgDecor(decor){
-    var enseigne = '<text x="220" y="28" font-size="13" font-weight="800" fill="#0A2540" font-family="system-ui,sans-serif" text-anchor="middle">LABORO</text>'
-      + '<text x="220" y="41" font-size="7" fill="#4A6FA5" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">SPORT &amp; OUTDOOR · ÉVRY</text>';
+  // Silhouette de voiture (x = avant gauche, y = bas des roues), ech = échelle
+  function svgVoiture(x, y, couleur, ech, utilitaire){
+    var s = ech || 1;
+    var c = couleur || "#B5651D";
+    var corps = utilitaire
+      ? '<path d="M0 -10h10l2-22h44l14 10h8v12z" fill="' + c + '"/><rect x="14" y="-29" width="14" height="9" rx="1" fill="#DCE8F2"/><path d="M58 -29l10 7h-10z" fill="#DCE8F2"/>'
+      : '<path d="M0 -9c0-6 4-8 10-9l12-11h30l14 11c6 1 10 3 10 9z" fill="' + c + '"/><path d="M24 -27h12v8h-20zM39 -27h12l9 8h-21z" fill="#DCE8F2"/>';
+    return '<g transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' + corps
+      + '<circle cx="16" cy="-8" r="6" fill="#1F2937"/><circle cx="16" cy="-8" r="2.4" fill="#9CA3AF"/>'
+      + '<circle cx="' + (utilitaire ? 62 : 60) + '" cy="-8" r="6" fill="#1F2937"/><circle cx="' + (utilitaire ? 62 : 60) + '" cy="-8" r="2.4" fill="#9CA3AF"/></g>';
+  }
+  function svgEnseigne(sousTexte){
+    var ens = enseigne();
+    var st = sousTexte || ens.sous;
+    var w = Math.round(Math.max(140, ens.nom.length * 11 + 30, st.length * 5.6 + 24));
+    return '<rect x="' + (220 - w / 2) + '" y="12" width="' + w + '" height="34" rx="5" fill="' + ens.fond + '"/>'
+      + '<text x="220" y="29" font-size="12" font-weight="800" fill="#fff" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">' + esc(ens.nom) + '</text>'
+      + '<text x="220" y="40" font-size="6.5" fill="#fff" opacity=".85" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">' + esc(st) + '</text>';
+  }
+  function svgDecor(decor, b){
+    var ens = enseigne();
+    var enseigneSport = '<text x="220" y="28" font-size="13" font-weight="800" fill="#0A2540" font-family="system-ui,sans-serif" text-anchor="middle">' + esc(ens.nom) + '</text>'
+      + '<text x="220" y="41" font-size="7" fill="#4A6FA5" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">' + esc(ens.sous) + '</text>';
+    var sous = b && b.enseigne;
     if(decor === "telephone"){
       return '<rect width="440" height="200" fill="#EEF3F9"/>'
         + '<rect x="0" y="0" width="218" height="200" fill="#E6EEF8"/><rect x="222" y="0" width="218" height="200" fill="#F6F1E7"/>'
         + '<line x1="220" y1="0" x2="220" y2="200" stroke="#B9C9DD" stroke-width="2" stroke-dasharray="5 5"/>'
-        + '<text x="110" y="24" font-size="9" font-weight="700" fill="#185FA5" text-anchor="middle" font-family="system-ui,sans-serif">LABORO · ÉVRY</text>'
-        + '<text x="330" y="24" font-size="9" font-weight="700" fill="#8A4B00" text-anchor="middle" font-family="system-ui,sans-serif">AU BOUT DU FIL</text>'
+        + '<text x="110" y="24" font-size="9" font-weight="700" fill="' + ens.accent + '" text-anchor="middle" font-family="system-ui,sans-serif">' + esc(sous || ens.lieu) + '</text>'
+        + '<text x="330" y="24" font-size="9" font-weight="700" fill="#8A4B00" text-anchor="middle" font-family="system-ui,sans-serif">' + esc((b && b.bout_du_fil) || "AU BOUT DU FIL") + '</text>'
         + '<rect x="30" y="150" width="160" height="6" rx="3" fill="#C9D6E6"/><rect x="250" y="150" width="160" height="6" rx="3" fill="#E5DAC4"/>';
+    }
+    if(decor === "bureau"){
+      return '<rect width="440" height="200" fill="#EEF2F7"/><rect y="152" width="440" height="48" fill="#D6DFEA"/>'
+        + '<rect x="186" y="118" width="68" height="34" rx="3" fill="#B98A57"/><rect x="200" y="98" width="40" height="22" rx="2" fill="#0A2540"/><rect x="203" y="101" width="34" height="16" fill="#63B3ED"/>'
+        + (U().enseigne ? svgEnseigne(sous) : enseigneSport);
     }
     if(decor === "club"){
       return '<rect width="440" height="200" fill="#E8F3EC"/><rect y="148" width="440" height="52" fill="#9FCFAE"/>'
         + '<path d="M0 148h440" stroke="#fff" stroke-width="2"/><circle cx="220" cy="174" r="16" fill="none" stroke="#fff" stroke-width="2"/>'
         + '<rect x="18" y="58" width="44" height="90" fill="none" stroke="#fff" stroke-width="3"/><rect x="378" y="58" width="44" height="90" fill="none" stroke="#fff" stroke-width="3"/>'
         + '<rect x="160" y="16" width="120" height="30" rx="4" fill="#fff" opacity=".85"/>'
-        + '<text x="220" y="31" font-size="11" font-weight="800" fill="#0A2540" font-family="system-ui,sans-serif" text-anchor="middle">LABORO</text>'
+        + '<text x="220" y="31" font-size="11" font-weight="800" fill="#0A2540" font-family="system-ui,sans-serif" text-anchor="middle">' + esc(ens.nom) + '</text>'
         + '<text x="220" y="41" font-size="6.5" fill="#4A6FA5" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">CHEZ LE CLIENT</text>';
     }
-    if(decor === "bureau"){
-      return '<rect width="440" height="200" fill="#EEF2F7"/><rect y="152" width="440" height="48" fill="#D6DFEA"/>'
-        + '<rect x="186" y="118" width="68" height="34" rx="3" fill="#B98A57"/><rect x="200" y="98" width="40" height="22" rx="2" fill="#0A2540"/><rect x="203" y="101" width="34" height="16" fill="#63B3ED"/>'
-        + enseigne;
+    if(decor === "exterieur"){
+      // Chez le client : façade d'entreprise, parking, utilitaire garé
+      var nomClient = (b && b.enseigne) || "CHEZ LE CLIENT";
+      var wc = Math.round(Math.max(140, nomClient.length * 6.6 + 30));
+      return '<rect width="440" height="200" fill="#E7EEF5"/>'
+        + '<rect x="40" y="50" width="360" height="100" fill="#D9D4CC"/><rect x="40" y="46" width="360" height="6" fill="#B8B0A4"/>'
+        + '<g fill="#BFD3E6"><rect x="62" y="72" width="40" height="30"/><rect x="338" y="72" width="40" height="30"/></g>'
+        + '<rect x="198" y="96" width="44" height="54" fill="#8C7B67"/>'
+        + '<rect x="' + (220 - wc / 2) + '" y="56" width="' + wc + '" height="20" rx="3" fill="#fff" stroke="#B8B0A4"/>'
+        + '<text x="220" y="70" font-size="9" font-weight="800" fill="#2B2B2E" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1">' + esc(nomClient) + '</text>'
+        + '<rect y="150" width="440" height="50" fill="#9AA3AD"/><g stroke="#fff" stroke-width="2"><line x1="20" y1="176" x2="60" y2="176"/><line x1="380" y1="176" x2="420" y2="176"/></g>'
+        + svgVoiture(18, 172, (b && b.couleurs && b.couleurs[0]) || "#F5F5F5", 1.05, true);
+    }
+    if(decor === "concession"){
+      // Hall d'exposition : vitrage, sol brillant, véhicules exposés
+      return '<rect width="440" height="200" fill="#EEF1F4"/>'
+        + '<g fill="#DCE6EF"><rect x="8" y="54" width="60" height="96"/><rect x="72" y="54" width="60" height="96"/><rect x="308" y="54" width="60" height="96"/><rect x="372" y="54" width="60" height="96"/></g>'
+        + '<g stroke="#C3D1DE" stroke-width="1"><line x1="38" y1="54" x2="38" y2="150"/><line x1="102" y1="54" x2="102" y2="150"/><line x1="338" y1="54" x2="338" y2="150"/><line x1="402" y1="54" x2="402" y2="150"/></g>'
+        + '<rect y="150" width="440" height="50" fill="#D5DCE3"/><rect y="150" width="440" height="3" fill="#C2CBD4"/>'
+        + svgVoiture(14, 166, (b && b.couleurs && b.couleurs[0]) || ens.accent, 1.05)
+        + svgVoiture(342, 166, (b && b.couleurs && b.couleurs[1]) || "#4B5563", 1.05)
+        + '<rect x="30" y="170" width="44" height="12" rx="2" fill="#fff" stroke="#C2CBD4"/><text x="52" y="179" font-size="6.5" font-weight="700" fill="' + ens.fond + '" text-anchor="middle" font-family="system-ui,sans-serif">' + esc((b && b.etiquettes && b.etiquettes[0]) || "NEUF") + '</text>'
+        + '<rect x="360" y="170" width="44" height="12" rx="2" fill="#fff" stroke="#C2CBD4"/><text x="382" y="179" font-size="6.5" font-weight="700" fill="' + ens.fond + '" text-anchor="middle" font-family="system-ui,sans-serif">' + esc((b && b.etiquettes && b.etiquettes[1]) || "OCCASION") + '</text>'
+        + svgEnseigne(sous);
+    }
+    if(decor === "atelier"){
+      // Atelier : pont élévateur, panneau d'outils, pneus
+      return '<rect width="440" height="200" fill="#E9ECEF"/><rect y="152" width="440" height="48" fill="#C9CED4"/>'
+        + '<g stroke="#F2B705" stroke-width="3"><line x1="0" y1="190" x2="440" y2="190" stroke-dasharray="14 10"/></g>'
+        + '<rect x="12" y="56" width="96" height="62" rx="3" fill="#D3D8DE" stroke="#B8C0C8"/>'
+        + '<g stroke="#5B6470" stroke-width="2.4" stroke-linecap="round"><line x1="24" y1="66" x2="24" y2="92"/><line x1="36" y1="66" x2="36" y2="86"/><line x1="48" y1="66" x2="48" y2="96"/><line x1="62" y1="66" x2="62" y2="88"/></g>'
+        + '<circle cx="84" cy="82" r="11" fill="none" stroke="#5B6470" stroke-width="3"/><rect x="74" y="100" width="22" height="10" rx="2" fill="#B5651D"/>'
+        + '<rect x="318" y="62" width="10" height="90" fill="#7B8794"/><rect x="420" y="62" width="10" height="90" fill="#7B8794"/>'
+        + '<rect x="314" y="104" width="120" height="6" fill="#5B6470"/>'
+        + svgVoiture(334, 104, (b && b.couleurs && b.couleurs[0]) || "#3F6E9A", 1.15)
+        + '<g fill="#2F3540"><rect x="16" y="132" width="26" height="20" rx="8"/><rect x="20" y="114" width="26" height="20" rx="8"/></g>'
+        + svgEnseigne(sous || "ATELIER");
     }
     // showroom (par défaut)
     return '<rect width="440" height="200" fill="#E9F0F8"/><rect y="152" width="440" height="48" fill="#CFDAE8"/>'
@@ -195,18 +273,19 @@
       + '<g fill="#185FA5" opacity=".7"><rect x="20" y="30" width="16" height="14" rx="3"/><rect x="44" y="33" width="14" height="11" rx="3"/><rect x="60" y="70" width="18" height="14" rx="3"/><rect x="24" y="110" width="22" height="14" rx="3"/></g>'
       + '<g fill="#B9C9DD"><rect x="356" y="44" width="70" height="5" rx="2"/><rect x="356" y="84" width="70" height="5" rx="2"/></g>'
       + '<g fill="#D97706" opacity=".6"><rect x="364" y="30" width="18" height="14" rx="3"/><rect x="396" y="72" width="20" height="12" rx="3"/></g>'
-      + enseigne;
+      + enseigneSport;
   }
   function blocSaynete(b){
     var racine = el("div", "ma-bloc ma-film");
     var persos = b.persos || {};
     var decor = b.decor || "showroom";
     var xa = decor === "telephone" ? 110 : 150, xb = decor === "telephone" ? 330 : 292;
+    if(decor === "concession" || decor === "atelier" || decor === "exterieur"){ xa = 170; xb = 272; }
     var uid = "ma" + Math.random().toString(36).slice(2, 8);
     racine.innerHTML =
         '<div class="ma-film-tete"><strong>🎬 ' + esc(b.titre || "Saynète") + '</strong><span class="ma-prise"></span></div>'
-      + '<svg class="ma-scene" viewBox="0 0 440 200" role="img" aria-label="' + esc(b.titre || "Saynète") + '">'
-      +   svgDecor(decor)
+      + '<svg class="ma-scene" viewBox="0 0 440 200" role="img" aria-label="' + esc(b.titre || "Saynète") + '" style="background:' + ({ telephone: "#EEF3F9", bureau: "#EEF2F7", concession: "#EEF1F4", atelier: "#E9ECEF" }[decor] || "#E9F0F8") + '">'
+      +   svgDecor(decor, b)
       +   '<g class="ma-carton" opacity="0"><rect x="' + (xa+12) + '" y="130" width="26" height="20" rx="2" fill="#B98A57"/><path d="M' + (xa+12) + ' 136h26" stroke="#8A6236"/></g>'
       +   (persos.a ? svgPerso(xa, persos.a, uid + "a", decor) : "")
       +   (persos.b ? svgPerso(xb, persos.b, uid + "b", decor) : "")
@@ -315,7 +394,7 @@
         barre.style.width = ((i + 1) / cases.length * 100) + "%";
         var e = et[i]; i++;
         var t = e.k + (e.s ? ". " + e.s : "");
-        if(b.voix !== false && MA.voixDispo()) MA.parler(t, "").then(function(){ min = setTimeout(suite, 350); });
+        if(b.voix !== false && MA.voixDispo()) MA.parler(t, "").then(function(){ if(mon === jeton) min = setTimeout(suite, 350); });
         else min = setTimeout(suite, 1500);
       })();
     });
@@ -404,22 +483,128 @@
   }
 
   // ─────────────────────────────────────────────
-  //  Bloc CALCUL  { type:"calcul", titre, intro, calc:"nps"|"ttc"|"points"|"retention"|"entonnoir"|"relance"|"satisfaction" }
+  //  Bloc CALCUL  { type:"calcul", titre, intro, calc:"…", valeurs:[…] (facultatif), objectif (facultatif) }
+  //  (relance : valeurs:[n] = jour d'envoi du devis proposé au départ, 0 = lundi ; mercredi par défaut)
+  //  Mode « méthode » (ANIM_UNIVERS.calcul = "methode", choix de Pascal du 13/10/2026) :
+  //  l'exemple de départ est résolu en entier ; dès que l'élève saisit ses propres
+  //  chiffres, la calculatrice pose le calcul avec ces chiffres et remplace chaque
+  //  résultat par « ? » — elle ne fait jamais à sa place le calcul de sa mission.
+  //  Les objectifs propres à l'univers se règlent dans ANIM_UNIVERS.objectifs
+  //  (sans réglage : objectifs de LABORO Sport & Outdoor). Mettre un objectif
+  //  à null pour ne pas afficher de comparaison.
   // ─────────────────────────────────────────────
   function fmt(n, d){
     if(!isFinite(n)) return "—";
     var f = Math.pow(10, d == null ? 1 : d);
     return (Math.round(n * f) / f).toLocaleString("fr-FR");
   }
+  function euros(n){ return fmt(n, 2) + " €"; }
+  var OBJ_DEFAUT = { nom: "LABORO", nps: 20, satisfaction: 80, retention: 60, attrition: 20 };
+  function objectif(cle){
+    var o = U().objectifs;
+    if(!o) return { v: OBJ_DEFAUT[cle], nom: OBJ_DEFAUT.nom };
+    return { v: (cle in o) ? o[cle] : null, nom: o.nom || "" };
+  }
+  var JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+  var TROU = "<span class='ma-trou'>?</span>";
+  // Versions « méthode » : le calcul est posé avec les chiffres de l'élève, sans résultat
+  var METHODES = {
+    nps: function(v){
+      var t = v[0] + v[1] + v[2]; if(!t) return "Saisis au moins une réponse.";
+      return "Total des répondants = " + v[0] + " + " + v[1] + " + " + v[2] + " = " + TROU + " (passifs compris)<br>"
+        + "% promoteurs = " + v[0] + " ÷ total × 100 = " + TROU + "<br>"
+        + "% détracteurs = " + v[2] + " ÷ total × 100 = " + TROU + "<br>"
+        + "NPS = % promoteurs − % détracteurs = " + TROU + " <span class='ma-intro'>(entre −100 et +100)</span>";
+    },
+    entonnoir: function(v, def){
+      var et = def.etapes, noms = def.taux || [];
+      var lignes = [];
+      for(var i = 1; i < v.length; i++){
+        lignes.push(esc(noms[i - 1] || (et[i - 1] + " → " + et[i])) + " = " + v[i] + " ÷ " + v[i - 1] + " × 100 = " + TROU);
+      }
+      return v.map(function(x, i){ return esc(et[i]) + " : <b>" + x + "</b>"; }).join(" → ") + "<br>" + lignes.join("<br>");
+    },
+    reste: function(v){
+      return "Reste à payer = " + euros(v[0]) + (v[1] ? " + " + euros(v[1]) + " (options)" : "") + " − " + euros(v[2]) + " (reprise)" + (v[3] ? " − " + euros(v[3]) + " (remise)" : "") + " = " + TROU + "<br>"
+        + "Solde à la livraison = reste à payer − " + euros(v[4]) + " (acompte) = " + TROU + "<br>"
+        + "Vérification : reste à payer + " + euros(v[2]) + (v[3] ? " + " + euros(v[3]) : "") + " doit redonner " + (v[1] ? "le prix + les options" : "le prix du véhicule") + ".";
+    },
+    joursouvres: function(v){
+      var d = v[0], n = Math.min(Math.floor(v[1]), 40);
+      if(n < 1) return "Saisis un délai d'au moins 1 jour ouvré.";
+      var cases = [];
+      for(var x = d + 1; x <= d + 14; x++){
+        var jj = x % 7;
+        cases.push("<span class='ma-jour" + (jj < 5 ? "" : " off") + "'>" + JOURS[jj].slice(0, 3) + "<small>" + (jj < 5 ? "&nbsp;" : "—") + "</small></span>");
+      }
+      return "<div class='ma-jours'><span class='ma-jour dep'>" + JOURS[d].slice(0, 3) + "<small>départ</small></span>" + cases.join("") + "</div>"
+        + "Compte " + n + " jour" + (n > 1 ? "s" : "") + " ouvré" + (n > 1 ? "s" : "") + " à partir du lendemain, sans le samedi ni le dimanche : arrivée le " + TROU + "."
+        + "<br><span class='ma-intro'>S'il y a un jour férié dans la période, il ne compte pas : ajoute un jour.</span>";
+    },
+    conversion: function(v){
+      if(!v[0]) return "Saisis le nombre de clients touchés.";
+      if(v[1] > v[0]) return "Il ne peut pas y avoir plus de ventes que de clients touchés.";
+      return "Taux de conversion = " + v[1] + " ÷ " + v[0] + " × 100 = " + TROU + "<br>"
+        + "Coût par vente = " + euros(v[2]) + " ÷ " + v[1] + " = " + TROU + "<br>"
+        + "<span class='ma-intro'>Un taux seul ne suffit pas : compare-le à un repère et regarde aussi le coût.</span>";
+    },
+    carburant: function(v){
+      return "Litres = " + fmt(v[0], 0) + " ÷ 100 × " + fmt(v[1], 2) + " = " + TROU + "<br>"
+        + "Coût = litres × " + fmt(v[2], 2) + " € = " + TROU + "<br>"
+        + "<span class='ma-intro'>Pour comparer deux véhicules, fais le calcul pour chacun, puis la différence.</span>";
+    },
+    previsionnel: function(v){
+      return "Résultat attendu = " + fmt(v[0], 0) + " × " + fmt(v[1], 2) + " ÷ 100 = " + TROU + "<br>"
+        + "Coût par contact = " + euros(v[2]) + " ÷ " + fmt(v[0], 0) + " = " + TROU + " · Coût par demande attendue = " + euros(v[2]) + " ÷ résultat attendu = " + TROU + "<br>"
+        + "<span class='ma-intro'>C'est une estimation, pas une garantie.</span>";
+    },
+    // Calculatrices de LABORO Sport & Outdoor (ajoutées le 13/10/2026)
+    satisfaction: function(v){
+      var t = v[0] + v[1] + v[2]; if(!t) return "Saisis au moins une réponse.";
+      return "Total des répondants = " + v[0] + " + " + v[1] + " + " + v[2] + " = " + TROU + "<br>"
+        + "Taux de satisfaction = (" + v[0] + " + " + v[1] + ") ÷ total × 100 = " + TROU + "<br>"
+        + "<span class='ma-intro'>Au numérateur : seulement les clients satisfaits et très satisfaits. Au dénominateur : tous les répondants.</span>";
+    },
+    ttc: function(v){
+      return "HT = TTC ÷ 1,20 = " + fmt(v[0], 2) + " ÷ 1,20 = " + TROU + "<br>"
+        + "TVA = TTC − HT = " + fmt(v[0], 2) + " − HT = " + TROU + "<br>"
+        + "<span class='ma-piege'>Piège : retirer 20 % du TTC (TTC × 0,80) ne donne pas le HT.</span>";
+    },
+    points: function(v){
+      return "Points gagnés = " + fmt(v[0], 2) + " € × 1 point par euro entier = " + TROU + "<br>"
+        + "Tranches complètes de 100 points = points ÷ 100, sans garder la partie après la virgule = " + TROU + "<br>"
+        + "Remise = tranches × 10 € = " + TROU + "<br>"
+        + "<span class='ma-intro'>Les points qui ne forment pas une tranche complète restent pour la prochaine fois.</span>";
+    },
+    retention: function(v){
+      if(!v[0]) return "Saisis le nombre de clients de la période précédente.";
+      if(v[1] > v[0]) return "Les clients qui ont racheté ne peuvent pas être plus nombreux que les clients de départ.";
+      return "Rétention = " + v[1] + " ÷ " + v[0] + " × 100 = " + TROU + "<br>"
+        + "Attrition = 100 − rétention = " + TROU + "<br>"
+        + "<span class='ma-intro'>Rétention + attrition = 100 % : c'est ta vérification.</span>";
+    },
+    relance: function(v){
+      var j = v[0], cases = [];
+      for(var x = j + 1; x <= j + 12; x++){
+        var jj = x % 7;
+        cases.push("<span class='ma-jour" + (jj < 5 ? "" : " off") + "'>" + JOURS[jj].slice(0, 3) + "<small>" + (jj < 5 ? "&nbsp;" : "—") + "</small></span>");
+      }
+      return "<div class='ma-jours'><span class='ma-jour dep'>" + JOURS[j].slice(0, 3) + "<small>devis (J)</small></span>" + cases.join("") + "</div>"
+        + "Devis (J) envoyé un <b>" + JOURS[j] + "</b>. Compte les jours à partir du lendemain, week-end compris.<br>"
+        + "J+5, première relance : " + TROU + "<br>J+10, dernière relance : " + TROU + "<br>"
+        + "<span class='ma-intro'>Si la relance tombe un samedi ou un dimanche, on relance le premier jour ouvré suivant.</span>";
+    }
+  };
   var CALCS = {
     nps: {
       champs: [["Promoteurs (notes 9-10)", 20], ["Passifs (notes 7-8)", 25], ["Détracteurs (notes 0-6)", 5]],
       calc: function(v){
         var t = v[0] + v[1] + v[2]; if(!t) return "Saisis au moins une réponse.";
         var pp = v[0] / t * 100, pd = v[2] / t * 100, nps = Math.round(pp - pd);
-        return "Total : " + t + " répondants<br>% promoteurs = " + v[0] + " ÷ " + t + " × 100 = <b>" + fmt(pp) + " %</b><br>% détracteurs = " + v[2] + " ÷ " + t + " × 100 = <b>" + fmt(pd) + " %</b><br>"
+        var o = objectif("nps");
+        return "Total : " + t + " répondants (passifs compris)<br>% promoteurs = " + v[0] + " ÷ " + t + " × 100 = <b>" + fmt(pp) + " %</b><br>% détracteurs = " + v[2] + " ÷ " + t + " × 100 = <b>" + fmt(pd) + " %</b><br>"
           + "NPS = " + fmt(pp) + " − " + fmt(pd) + " = <b class='ma-gros'>" + (nps > 0 ? "+" : "") + nps + "</b> "
-          + (nps > 20 ? "✅ objectif LABORO (> +20) atteint" : "⚠️ sous l'objectif LABORO (> +20)");
+          + (o.v == null ? "<span class='ma-intro'>(échelle de −100 à +100)</span>" : (nps > o.v ? "✅ objectif " + o.nom + " (> +" + o.v + ") atteint" : "⚠️ sous l'objectif " + o.nom + " (> +" + o.v + ")"));
       }
     },
     satisfaction: {
@@ -427,7 +612,9 @@
       calc: function(v){
         var t = v[0] + v[1] + v[2]; if(!t) return "Saisis au moins une réponse.";
         var taux = (v[0] + v[1]) / t * 100;
-        return "Taux = (" + v[0] + " + " + v[1] + ") ÷ " + t + " × 100 = <b class='ma-gros'>" + fmt(taux) + " %</b> " + (taux >= 80 ? "✅ objectif LABORO (≥ 80 %) atteint" : "⚠️ sous l'objectif LABORO (≥ 80 %)");
+        var o = objectif("satisfaction");
+        return "Taux = (" + v[0] + " + " + v[1] + ") ÷ " + t + " × 100 = <b class='ma-gros'>" + fmt(taux) + " %</b> "
+          + (o.v == null ? "" : (taux >= o.v ? "✅ objectif " + o.nom + " (≥ " + o.v + " %) atteint" : "⚠️ sous l'objectif " + o.nom + " (≥ " + o.v + " %)"));
       }
     },
     ttc: {
@@ -452,29 +639,110 @@
         if(!v[0]) return "Saisis le nombre de clients de la période précédente.";
         if(v[1] > v[0]) return "Les clients qui ont racheté ne peuvent pas être plus nombreux que les clients de départ.";
         var r = v[1] / v[0] * 100;
-        return "Rétention = " + v[1] + " ÷ " + v[0] + " × 100 = <b class='ma-gros'>" + fmt(r) + " %</b> " + (r > 60 ? "✅ (objectif > 60 %)" : "⚠️ (objectif > 60 %)")
-          + "<br>Attrition = 100 − " + fmt(r) + " = <b>" + fmt(100 - r) + " %</b> " + (100 - r < 20 ? "✅ (objectif < 20 %)" : "⚠️ signal d'alarme (> 20 %)");
+        var o = objectif("retention"), oa = objectif("attrition");
+        return "Rétention = " + v[1] + " ÷ " + v[0] + " × 100 = <b class='ma-gros'>" + fmt(r) + " %</b> " + (o.v == null ? "" : (r > o.v ? "✅ (objectif > " + o.v + " %)" : "⚠️ (objectif > " + o.v + " %)"))
+          + "<br>Attrition = 100 − " + fmt(r) + " = <b>" + fmt(100 - r) + " %</b> " + (oa.v == null ? "" : (100 - r < oa.v ? "✅ (objectif < " + oa.v + " %)" : "⚠️ signal d'alarme (> " + oa.v + " %)"));
       }
     },
     entonnoir: {
       champs: [["Suspects (toutes les associations)", 400], ["Prospects qualifiés", 120], ["Contacts aboutis", 60], ["Rendez-vous obtenus", 12]],
-      calc: function(v){
+      etapes: ["Suspects", "Qualifiés", "Aboutis", "RDV"],
+      calc: function(v, def){
         var t = function(a, b){ return b ? fmt(a / b * 100) + " %" : "—"; };
-        var max = Math.max(v[0], 1);
-        var barres = v.map(function(x, i){ return "<div class='ma-ent'><i style='width:" + Math.max(4, Math.min(100, x / max * 100)) + "%'></i><span>" + ["Suspects", "Qualifiés", "Aboutis", "RDV"][i] + " : " + x + "</span></div>"; }).join("");
-        return barres + "Taux de qualification = " + v[1] + " ÷ " + v[0] + " = <b>" + t(v[1], v[0]) + "</b> · Taux de contact = " + v[2] + " ÷ " + v[1] + " = <b>" + t(v[2], v[1]) + "</b> · Taux de RDV = " + v[3] + " ÷ " + v[2] + " = <b>" + t(v[3], v[2]) + "</b>";
+        var max = Math.max(v[0], 1), et = def.etapes;
+        var barres = v.map(function(x, i){ return "<div class='ma-ent'><i style='width:" + Math.max(4, Math.min(100, x / max * 100)) + "%'></i><span>" + esc(et[i]) + " : " + x + "</span></div>"; }).join("");
+        var noms = def.taux || ["Taux de qualification", "Taux de contact", "Taux de RDV"];
+        var lignes = [];
+        for(var i = 1; i < v.length; i++){
+          var pb = v[i] > v[i - 1];
+          lignes.push(esc(noms[i - 1] || (et[i - 1] + " → " + et[i])) + " = " + v[i] + " ÷ " + v[i - 1] + " = <b>" + (pb ? "—" : t(v[i], v[i - 1])) + "</b>"
+            + (pb ? " <span class='ma-piege'>(impossible : plus que l'étape précédente)</span>" : ""));
+        }
+        return barres + lignes.join(" · ");
       }
     },
     relance: {
       jours: true,
       calc: function(v){
-        var J = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+        var J = JOURS;
         var j = v[0];
         function ouvre(d){ var x = d % 7; var dec = x === 5 ? 2 : (x === 6 ? 1 : 0); return { j: J[(x + dec) % 7], decale: dec, brut: J[x] }; }
-        var r1 = ouvre(j + 1), r5 = ouvre(j + 5), r10 = ouvre(j + 10);
+        var r5 = ouvre(j + 5), r10 = ouvre(j + 10);
         var l = function(lib, r){ return lib + " : <b>" + r.j + "</b>" + (r.decale ? " <span class='ma-piege'>(" + r.brut + " n'est pas travaillé → premier jour ouvré suivant)</span>" : ""); };
         return "Devis (J) envoyé un <b>" + J[j] + "</b><br>" + l("J+5, première relance", r5) + "<br>" + l("J+10, dernière relance", r10)
           + "<br><span class='ma-intro'>Rappel : le devis part dans les 24 h après le rendez-vous.</span>";
+      }
+    },
+    // Reste à payer et solde d'un dossier de vente
+    reste: {
+      champs: [["Prix du véhicule (€)", 19000], ["Options payantes (€)", 0], ["Valeur de reprise (€)", 4500], ["Remise accordée (€)", 0], ["Acompte versé (€)", 1000]],
+      calc: function(v){
+        var reste = v[0] + v[1] - v[2] - v[3];
+        var solde = reste - v[4];
+        if(reste < 0) return "La reprise et la remise dépassent le prix : vérifie les montants saisis.";
+        return "Reste à payer = " + euros(v[0]) + (v[1] ? " + " + euros(v[1]) + " (options)" : "") + " − " + euros(v[2]) + " (reprise)" + (v[3] ? " − " + euros(v[3]) + " (remise)" : "")
+          + " = <b class='ma-gros'>" + euros(reste) + "</b><br>"
+          + "Solde à la livraison = " + euros(reste) + " − " + euros(v[4]) + " (acompte) = <b>" + euros(solde) + "</b><br>"
+          + "Vérification : " + euros(reste) + " + " + euros(v[2]) + (v[3] ? " + " + euros(v[3]) : "") + " = " + euros(reste + v[2] + v[3]) + (v[1] ? " = prix + options ✓" : " = prix du véhicule ✓")
+          + (solde < 0 ? "<br><span class='ma-piege'>L'acompte dépasse le reste à payer : impossible.</span>" : "");
+      }
+    },
+    // Délai en jours ouvrés (compté à partir du lendemain, sans jour férié)
+    joursouvres: {
+      jourDepart: "Jour de départ (commande, dépôt…)",
+      champs: [["Délai annoncé (jours ouvrés)", 3]],
+      calc: function(v){
+        var d = v[0], n = Math.min(Math.floor(v[1]), 40);
+        if(n < 1) return "Saisis un délai d'au moins 1 jour ouvré.";
+        var cases = [], compte = 0, x = d, semaines = 0;
+        while(compte < n){
+          x++; if(x % 7 === 0) semaines++;
+          var jj = x % 7, ouvre = jj < 5;
+          if(ouvre) compte++;
+          cases.push("<span class='ma-jour" + (ouvre ? (compte === n ? " fin" : " ok") : " off") + "'>" + JOURS[jj].slice(0, 3) + (ouvre ? "<small>" + compte + "</small>" : "<small>—</small>") + "</span>");
+        }
+        var fin = JOURS[x % 7];
+        var quand = semaines === 0 ? "de la même semaine" : (semaines === 1 ? "de la semaine suivante" : "dans " + semaines + " semaines");
+        return "<div class='ma-jours'><span class='ma-jour dep'>" + JOURS[d].slice(0, 3) + "<small>départ</small></span>" + cases.join("") + "</div>"
+          + "On compte à partir du lendemain, sans le samedi ni le dimanche : arrivée le <b class='ma-gros'>" + fin + "</b> " + quand + "."
+          + "<br><span class='ma-intro'>S'il y a un jour férié dans la période, il ne compte pas : ajoute un jour.</span>";
+      }
+    },
+    // Taux de conversion et coût par vente d'une action
+    conversion: {
+      champs: [["Clients touchés par l'action", 150], ["Ventes obtenues", 6], ["Coût total de l'action (€)", 1800]],
+      calc: function(v, def, b){
+        if(!v[0]) return "Saisis le nombre de clients touchés.";
+        if(v[1] > v[0]) return "Il ne peut pas y avoir plus de ventes que de clients touchés.";
+        var taux = v[1] / v[0] * 100;
+        var rep = b && b.repere;
+        return "Taux de conversion = " + v[1] + " ÷ " + v[0] + " × 100 = <b class='ma-gros'>" + fmt(taux) + " %</b>"
+          + (rep ? " " + (taux >= rep ? "✅" : "⚠️") + " (repère : " + fmt(rep) + " %)" : "") + "<br>"
+          + "Coût par vente = " + euros(v[2]) + " ÷ " + v[1] + " = <b>" + (v[1] ? euros(v[2] / v[1]) : "—") + "</b><br>"
+          + "<span class='ma-intro'>Un taux seul ne suffit pas : compare-le à un repère et regarde aussi le coût.</span>";
+      }
+    },
+    // Coût de carburant sur une distance
+    carburant: {
+      champs: [["Kilomètres parcourus", 12000], ["Consommation (L/100 km)", 6], ["Prix du litre (€)", 1.8]],
+      decimales: true,
+      calc: function(v){
+        var litres = v[0] / 100 * v[1];
+        return "Litres = " + fmt(v[0], 0) + " ÷ 100 × " + fmt(v[1], 2) + " = <b>" + fmt(litres, 1) + " L</b><br>"
+          + "Coût = " + fmt(litres, 1) + " L × " + fmt(v[2], 2) + " € = <b class='ma-gros'>" + euros(litres * v[2]) + "</b><br>"
+          + "<span class='ma-intro'>Pour comparer deux véhicules, fais le calcul pour chacun, puis la différence.</span>";
+      }
+    },
+    // Résultat attendu d'une opération de prospection
+    previsionnel: {
+      champs: [["Nombre de contacts", 2400], ["Taux habituel (%)", 1], ["Budget de l'opération (€)", 600]],
+      decimales: true,
+      calc: function(v){
+        var att = v[0] * v[1] / 100;
+        return "Résultat attendu = " + fmt(v[0], 0) + " × " + fmt(v[1], 2) + " % = <b class='ma-gros'>" + fmt(att, 1) + "</b> demande" + (att >= 2 ? "s" : "") + "<br>"
+          + "Coût par contact = " + euros(v[2]) + " ÷ " + fmt(v[0], 0) + " = <b>" + (v[0] ? euros(v[2] / v[0]) : "—") + "</b> · "
+          + "Coût par demande attendue = <b>" + (att ? euros(v[2] / att) : "—") + "</b><br>"
+          + "<span class='ma-intro'>C'est une estimation, pas une garantie.</span>";
       }
     }
   };
@@ -482,16 +750,43 @@
     var def = CALCS[b.calc];
     if(!def) return null;
     var racine = el("div", "ma-bloc ma-carte");
-    var champs = def.jours
-      ? '<label class="ma-champ">Jour d\'envoi du devis <select>' + ["lundi", "mardi", "mercredi", "jeudi", "vendredi"].map(function(j, i){ return '<option value="' + i + '"' + (i === 2 ? " selected" : "") + '>' + j + '</option>'; }).join("") + '</select></label>'
-      : def.champs.map(function(c){ return '<label class="ma-champ">' + esc(c[0]) + ' <input type="number" min="0" step="1" inputmode="numeric" value="' + c[1] + '"></label>'; }).join("");
+    var vals = b.valeurs || [];
+    var etiq = b.champs || [];
+    var champs = "";
+    if(def.jours){
+      var jr = vals[0] != null ? vals[0] : 2;
+      champs = '<label class="ma-champ">Jour d\'envoi du devis <select>' + JOURS.slice(0, 5).map(function(j, i){ return '<option value="' + i + '"' + (i === jr ? " selected" : "") + '>' + j + '</option>'; }).join("") + '</select></label>';
+    } else {
+      if(def.jourDepart){
+        var jd = vals.length > def.champs.length ? vals[0] : 0;
+        champs += '<label class="ma-champ">' + esc(def.jourDepart) + ' <select>' + JOURS.slice(0, 5).map(function(j, i){ return '<option value="' + i + '"' + (i === jd ? " selected" : "") + '>' + j + '</option>'; }).join("") + '</select></label>';
+        if(vals.length > def.champs.length) vals = vals.slice(1);
+      }
+      champs += def.champs.map(function(c, i){
+        var v = vals[i] != null ? vals[i] : c[1];
+        return '<label class="ma-champ">' + esc(etiq[i] || c[0]) + ' <input type="number" min="0" step="' + (def.decimales ? "any" : "1") + '" inputmode="decimal" value="' + v + '"></label>';
+      }).join("");
+    }
     racine.innerHTML = '<div class="ma-titre">🧮 ' + esc(b.titre) + '</div>'
       + (b.intro ? '<p class="ma-intro">' + esc(b.intro) + '</p>' : "")
       + '<div class="ma-champs">' + champs + '</div><div class="ma-resultat" aria-live="polite"></div>';
     var entrees = racine.querySelectorAll("input,select"), res = racine.querySelector(".ma-resultat");
+    var defLocal = def;
+    if(b.etapes || b.taux){ defLocal = Object.create(def); if(b.etapes) defLocal.etapes = b.etapes; if(b.taux) defLocal.taux = b.taux; }
+    var methode = (b.mode || U().calcul) === "methode" && METHODES[b.calc];
+    var lire = function(){ return Array.prototype.map.call(entrees, function(x){ var n = parseFloat(String(x.value).replace(",", ".")); return isFinite(n) && n >= 0 ? n : 0; }); };
+    var depart = lire().join("|");
+    if(methode){
+      var aide = el("p", "ma-intro ma-aide-calc", "📝 L'exemple de départ est résolu. Avec tes propres chiffres, le calcul est posé : à toi de trouver chaque « ? ».");
+      racine.insertBefore(aide, res);
+      var raz = el("button", "ma-btn ma-sec ma-petit", "↺ Revenir à l'exemple résolu");
+      raz.type = "button";
+      raz.addEventListener("click", function(){ entrees.forEach(function(x, i){ x.value = depart.split("|")[i]; }); maj(); });
+      racine.appendChild(raz);
+    }
     function maj(){
-      var v = Array.prototype.map.call(entrees, function(x){ var n = parseFloat(String(x.value).replace(",", ".")); return isFinite(n) && n >= 0 ? n : 0; });
-      res.innerHTML = def.calc(v);
+      var v = lire();
+      res.innerHTML = (methode && v.join("|") !== depart) ? METHODES[b.calc](v, defLocal, b) : def.calc(v, defLocal, b);
     }
     entrees.forEach(function(x){ x.addEventListener("input", maj); x.addEventListener("change", maj); });
     maj();
@@ -503,7 +798,7 @@
   // ─────────────────────────────────────────────
   function blocCartes(b){
     var racine = el("div", "ma-bloc ma-carte");
-    racine.innerHTML = '<div class="ma-titre">🃏 ' + esc(b.titre || "Teste-toi") + '</div><p class="ma-intro">Réponds de tête, puis retourne la carte pour vérifier.</p>';
+    racine.innerHTML = '<div class="ma-titre">🃏 ' + esc(b.titre || "Teste-toi") + '</div><p class="ma-intro">' + esc(b.intro || "Réponds de tête, puis retourne la carte pour vérifier.") + '</p>';
     racine.appendChild(grilleCartes(b.cartes || []));
     return racine;
   }
@@ -546,9 +841,19 @@
     }
     return null;
   }
-  function enrichirFiche(bloc){
-    if(!bloc || bloc.dataset.maFiche) return;
-    bloc.dataset.maFiche = "1";
+  // « Les notions à connaître » : un terme = une ligne repliable
+  function replierNotions(ul){
+    ul.querySelectorAll(":scope > li").forEach(function(li){
+      var fort = li.querySelector("strong");
+      if(!fort || li.firstElementChild !== fort) return;
+      var terme = fort.textContent.trim();
+      var reste = li.innerHTML.slice(li.innerHTML.indexOf("</strong>") + 9).replace(/^\s*[—:–-]\s*/, "");
+      var d = el("details", "ma-notion", "<summary>" + esc(terme) + "</summary><div>" + reste + "</div>");
+      li.innerHTML = ""; li.appendChild(d); li.classList.add("ma-li-notion");
+    });
+  }
+  // Fiche à rubriques (LABORO MCV) : .res-section-label + .res-retenir
+  function enrichirFicheRubriques(bloc){
     // 1. Bouton « Écouter » sur chaque partie
     bloc.querySelectorAll(".res-section").forEach(function(sec){
       var lab = sec.querySelector(".res-section-label");
@@ -559,14 +864,7 @@
     bloc.querySelectorAll(".res-section").forEach(function(sec){
       var lab = sec.querySelector(".res-section-label");
       if(!lab || !/notion/i.test(lab.textContent)) return;
-      sec.querySelectorAll(":scope > ul > li").forEach(function(li){
-        var fort = li.querySelector("strong");
-        if(!fort || li.firstElementChild !== fort) return;
-        var terme = fort.textContent.trim();
-        var reste = li.innerHTML.slice(li.innerHTML.indexOf("</strong>") + 9).replace(/^\s*[—:–-]\s*/, "");
-        var d = el("details", "ma-notion", "<summary>" + esc(terme) + "</summary><div>" + reste + "</div>");
-        li.innerHTML = ""; li.appendChild(d); li.classList.add("ma-li-notion");
-      });
+      sec.querySelectorAll(":scope > ul").forEach(replierNotions);
     });
     // 3. À retenir → cartes à retourner (la liste reste lisible si le découpage échoue)
     bloc.querySelectorAll(".res-retenir").forEach(function(r){
@@ -586,6 +884,98 @@
       }
     });
   }
+  // Fiche simple (LABORO Auto) : une section, des paragraphes-titres « <p><strong>Titre :</strong></p> »
+  function estTitre(n){
+    if(!n || n.tagName !== "P") return false;
+    var f = n.firstElementChild;
+    if(!f || f.tagName !== "STRONG") return false;
+    var t = texteDe(n);
+    return /:\s*$/.test(t) && texteDe(f).length >= t.length - 2;
+  }
+  function enrichirFicheSimple(bloc){
+    bloc.querySelectorAll(".res-section").forEach(function(sec){
+      var enfants = Array.prototype.slice.call(sec.children);
+      // Découpage en parties : intro (avant le 1er titre), puis un titre + ce qui le suit
+      var parties = [], cur = { titre: null, noeuds: [] };
+      enfants.forEach(function(n){
+        if(estTitre(n)){ if(cur.titre || cur.noeuds.length) parties.push(cur); cur = { titre: n, noeuds: [] }; }
+        else cur.noeuds.push(n);
+      });
+      if(cur.titre || cur.noeuds.length) parties.push(cur);
+
+      parties.forEach(function(p, i){
+        var tout = (p.titre ? [p.titre] : []).concat(p.noeuds);
+        var lire = function(){ return tout.map(texteDe).join(" ").replace(/🔊 Écouter|■ Arrêter|Retourner ↺/g, "").replace(/[✓✔]/g, ""); };
+        var t = p.titre ? texteDe(p.titre) : "";
+        if(p.titre && /^Cas pratique/i.test(t)) p.titre.classList.add("ma-cas");
+        // 1. Bouton « Écouter » sur chaque partie
+        if(p.titre){
+          if(!p.titre.querySelector(".ma-ecoute")){
+            var bt = MA.boutonEcoute(lire, "");
+            bt.classList.add("ma-ecoute-fiche");
+            p.titre.appendChild(bt);
+            p.titre.classList.add("ma-fiche-titre");
+          }
+        } else if(p.noeuds.length && !sec.querySelector(".ma-fiche-barre")){
+          var barre = el("div", "ma-fiche-barre");
+          barre.appendChild(MA.boutonEcoute(lire, "", "🔊 Écouter l'introduction"));
+          sec.insertBefore(barre, p.noeuds[0]);
+        }
+        // 2. Notions à connaître repliables
+        if(/notion/i.test(t)){
+          p.noeuds.forEach(function(n){ if(n.tagName === "UL") replierNotions(n); });
+          if(p.titre) p.titre.classList.add("ma-titre-notions");
+        }
+        // 3. « En résumé… je vérifie » → liste à cocher
+        if(/r[ée]sum[ée]|je v[ée]rifie/i.test(t)){
+          p.noeuds.forEach(function(n){ if(n.tagName === "UL") listeACocher(n); });
+        }
+      });
+      // 4. À éviter / À privilégier, erreur fréquente, cas pratique
+      sec.querySelectorAll("li").forEach(function(li){
+        var tx = texteDe(li);
+        if(/^❌/.test(tx)) li.classList.add("ma-eviter");
+        else if(/^✅/.test(tx)) li.classList.add("ma-privilegier");
+      });
+      sec.querySelectorAll(":scope > p").forEach(function(pp){
+        var tx = texteDe(pp);
+        if(/^⚠️?\s*Erreur fr[ée]quente/i.test(tx)) pp.classList.add("ma-alerte");
+      });
+    });
+  }
+  function listeACocher(ul){
+    if(ul.dataset.maCoche) return;
+    var lis = ul.querySelectorAll(":scope > li");
+    if(lis.length < 2) return;
+    ul.dataset.maCoche = "1";
+    ul.classList.add("ma-coche-liste");
+    var compteur = el("div", "ma-coche-etat", "");
+    function maj(){
+      var n = ul.querySelectorAll("input:checked").length;
+      compteur.innerHTML = n === lis.length
+        ? "✅ Tout est coché : tu as la méthode en tête, place à la mission !"
+        : "Coche chaque point quand tu sais l'appliquer : " + n + " / " + lis.length;
+      compteur.classList.toggle("ok", n === lis.length);
+    }
+    lis.forEach(function(li){
+      var html = li.innerHTML.replace(/^\s*[✓✔]\s*/, "");
+      li.innerHTML = "";
+      var lab = el("label", "ma-coche");
+      var cb = el("input"); cb.type = "checkbox";
+      cb.addEventListener("change", maj);
+      lab.appendChild(cb);
+      lab.appendChild(el("span", null, html));
+      li.appendChild(lab);
+    });
+    ul.parentNode.insertBefore(compteur, ul.nextSibling);
+    maj();
+  }
+  function enrichirFiche(bloc){
+    if(!bloc || bloc.dataset.maFiche) return;
+    bloc.dataset.maFiche = "1";
+    if(bloc.querySelector(".res-section-label, .res-retenir")) enrichirFicheRubriques(bloc);
+    else enrichirFicheSimple(bloc);
+  }
 
   function enrichirRessource(m){
     var zone = document.getElementById("mo-learn");
@@ -594,7 +984,7 @@
     // Un seul exercice, propre à la mission (data/exercices-missions.js).
     // Les blocs de compétence (data/ressources-animees.js) ne servent plus
     // que de secours pour une future mission qui n'aurait pas encore le sien
-    // (13/10/2026 : « une animation par mission », jamais partagée).
+    // (14/10/2026 : « une animation par mission », jamais partagée).
     var propre = (typeof EXERCICES_MISSIONS !== "undefined") ? EXERCICES_MISSIONS[m.id] : null;
     var blocs = propre ? [propre] : (blocsPour(m) || []);
     if(blocs.length && !zone.querySelector(".ma-zone")){
@@ -609,7 +999,11 @@
   // ─────────────────────────────────────────────
   //  Mission (onglet « La mission »)
   // ─────────────────────────────────────────────
-  var EQUIPE = [
+  //  Équipe : ANIM_UNIVERS.equipe = [{nom, poste, couleur, ton:"f"|"h", alias:"Prénom", exclure:"nom à ne pas confondre"}]
+  //  ANIM_UNIVERS.expediteur = { par_defaut: "Nom complet", strict: true }
+  //    strict : un membre n'est l'expéditeur que s'il est sujet d'une demande
+  //    (« Karim te demande… », « Michel souhaite… »), pas s'il est seulement cité.
+  var EQUIPE_DEFAUT = [
     ["Romain Sauzet", "Responsable Showroom & Commercial", "#185FA5", "h"],
     ["Nina Chevalier", "Responsable commerciale B2B", "#7B2D42", "f"],
     ["Marco Pellini", "Responsable Satisfaction Client", "#0F766E", "h"],
@@ -617,11 +1011,58 @@
     ["Thomas Moreau", "Conseiller de vente", "#2D5282", "h"],
     ["Yannick Perrot", "Responsable des achats", "#6B4E16", "h"]
   ];
+  function equipe(){
+    var e = U().equipe;
+    if(!e || !e.length) return EQUIPE_DEFAUT.map(function(p){ return { nom: p[0], poste: p[1], couleur: p[2], ton: p[3] }; });
+    return e;
+  }
+  // Demande adressée directement à l'élève (« Karim te demande… ») : prioritaire,
+  // y compris par un pronom (« Il te demande… » = la dernière personne de l'équipe citée) ;
+  // puis signalement (« Bruno t'alerte… ») ; sinon demande générale (« Michel veut… »).
+  var VERBES_TOI = "(?:te |t'|t’)(?:demande|confie|transmet|charge|fait suivre)";
+  var VERBES_SIGNAL = "(?:te |t'|t’)(?:informe|signale|alerte|propose|écrit|appelle|prévient|envoie|laisse)";
+  var VERBES_DEMANDE = "(?:demande|veut|souhaite|aimerait|voudrait|confie|transmet|accorde|lance|organise|prépare|doit|cherche|a besoin|compte sur|attend)";
+  function reNom(p){
+    var noms = [p.nom.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")];
+    if(p.alias) noms.push(String(p.alias).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    var excl = p.exclure ? "(?!\\s+" + String(p.exclure).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")" : "";
+    return "(?:" + noms.join("|") + ")" + excl;
+  }
   function expediteur(texte){
-    var t = texte || "", meilleur = null, pos = Infinity;
-    EQUIPE.forEach(function(p){ var i = t.indexOf(p[0]); if(i >= 0 && i < pos){ pos = i; meilleur = p; } });
+    var t = texte || "", reg = U().expediteur || {}, liste = equipe();
+    var meilleur = null, pos = Infinity;
+    if(reg.strict){
+      var SUITE = "(?:\\s+[A-ZÀ-Ý][a-zà-ÿ]+)?\\s*(?:,[^,.]{0,50},\\s*)?";
+      [VERBES_TOI, VERBES_SIGNAL, VERBES_DEMANDE].forEach(function(verbes, niveau){
+        if(meilleur) return;
+        liste.forEach(function(p){
+          var m = new RegExp("(?:^|[^A-Za-zÀ-ÿ])" + reNom(p) + SUITE + verbes).exec(t);
+          if(m && m.index < pos){ pos = m.index; meilleur = p; }
+        });
+        if(niveau < 2){
+          // « Il te demande… » : on remonte à la dernière personne de l'équipe citée avant le pronom
+          var rp = new RegExp("(?:^|[.;:!?]\\s*|,\\s*)(?:[Ii]l|[Ee]lle)\\s+" + verbes, "g"), mp;
+          while((mp = rp.exec(t))){
+            if(mp.index >= pos) break;
+            var avant = t.slice(0, mp.index), dernier = null, dpos = -1;
+            liste.forEach(function(p){
+              var r = new RegExp(reNom(p), "g"), x;
+              while((x = r.exec(avant))){ if(x.index > dpos){ dpos = x.index; dernier = p; } }
+            });
+            if(dernier){ pos = mp.index; meilleur = dernier; break; }
+          }
+        }
+      });
+      if(meilleur) return meilleur;
+      if(reg.par_defaut){
+        return liste.filter(function(p){ return p.nom === reg.par_defaut; })[0] || null;
+      }
+      return null;
+    }
+    liste.forEach(function(p){ var i = t.indexOf(p.nom); if(i >= 0 && i < pos){ pos = i; meilleur = p; } });
     return meilleur;
   }
+  MA.expediteur = expediteur;
   function enrichirSituation(zone){
     var ph = zone.querySelector(".ph1");
     if(!ph || ph.dataset.maSit) return;
@@ -630,11 +1071,12 @@
     ph.dataset.maSit = "1";
     var texte = texteDe(c);
     var exp = expediteur(texte);
-    var ini = exp ? exp[0].split(" ").map(function(x){ return x[0]; }).join("") : "📍";
+    var ini = exp ? exp.nom.split(" ").map(function(x){ return x[0]; }).join("") : "📍";
+    var nomU = (U().enseigne && U().enseigne.court) || "LABORO";
     var tete = el("div", "ma-sit-tete",
-      '<span class="ma-avatar" style="background:' + (exp ? exp[2] : "var(--th-principal,#185FA5)") + '">' + ini + '</span>'
-      + '<span class="ma-sit-qui"><strong>' + (exp ? esc(exp[0]) : "Ta mission chez LABORO") + '</strong><small>' + (exp ? esc(exp[1]) + " · message pour toi" : "Mise en situation") + '</small></span>');
-    tete.appendChild(MA.boutonEcoute(texte, exp ? exp[3] : ""));
+      '<span class="ma-avatar" style="background:' + (exp ? exp.couleur : "var(--th-principal,#185FA5)") + '">' + ini + '</span>'
+      + '<span class="ma-sit-qui"><strong>' + (exp ? esc(exp.nom) : "Ta mission chez " + esc(nomU)) + '</strong><small>' + (exp ? esc(exp.poste) + " · message pour toi" : "Mise en situation") + '</small></span>');
+    tete.appendChild(MA.boutonEcoute(texte, exp ? exp.ton : ""));
     ph.classList.add("ma-situation");
     ph.insertBefore(tete, ph.firstChild);
     c.classList.add("ma-bulle");
@@ -663,33 +1105,59 @@
     });
   }
   // Images du catalogue dans les dossiers documentaires
+  //  ANIM_UNIVERS.catalogue = { cles_modele: true, colonnes_vehicule: /^(vehicule|modele)/ }
+  //    cles_modele : reconnaît aussi « Captur », « Kangoo Van »… (marque + modèle, modèle seul)
+  //    colonnes_vehicule : intitulés de ligne dont la valeur (colonne de droite) désigne un véhicule
   var indexProduits = null;
-  function produitPour(libelle){
-    if(typeof PRODUITS === "undefined" || typeof PROD_IMAGES === "undefined") return null;
-    if(!indexProduits){
-      indexProduits = PRODUITS.filter(function(p){ return PROD_IMAGES[p.id]; }).map(function(p){ return { n: normaliser(p.nom), p: p }; })
-        .filter(function(x){ return x.n.length >= 8; })
-        .sort(function(a, b){ return b.n.length - a.n.length; });
+  function construireIndex(){
+    var cfg = U().catalogue || {};
+    var vus = {}, idx = [];
+    function ajouter(cle, p, min){
+      var n = normaliser(cle);
+      if(n.length < (min || 8) || vus[n]) return;
+      vus[n] = 1; idx.push({ n: n, p: p });
     }
+    PRODUITS.filter(function(p){ return PROD_IMAGES[p.id]; }).forEach(function(p){
+      ajouter(p.nom, p);
+      if(cfg.cles_modele && p.modele){
+        var nm = (p.marque && p.modele.indexOf(p.marque) !== 0 ? p.marque + " " : "") + p.modele;
+        var q = { id: p.id, nom: nm };
+        ajouter(nm, q, 6);
+        ajouter(p.modele, q, 5);
+      }
+    });
+    return idx.sort(function(a, b){ return b.n.length - a.n.length; });
+  }
+  function produitPour(libelle, strictDebut){
+    if(typeof PRODUITS === "undefined" || typeof PROD_IMAGES === "undefined") return null;
+    if(!indexProduits) indexProduits = construireIndex();
     var l = normaliser(String(libelle).replace(/^\s*[A-Z0-9]{1,2}\s*[)\-.]\s*/, ""));
-    if(l.length < 6) return null;
+    if(l.length < 5) return null;
     for(var i = 0; i < indexProduits.length; i++){
       var x = indexProduits[i];
-      if(l === x.n || l.indexOf(x.n) === 0 || (x.n.indexOf(l) === 0 && l.length >= 12)) return x.p;
+      var debut = l.indexOf(x.n) === 0 && (l.length === x.n.length || l.charAt(x.n.length) === " ");
+      if(l === x.n || debut || (!strictDebut && x.n.indexOf(l) === 0 && l.length >= 12)) return x.p;
     }
     return null;
   }
+  function vignette(p){
+    var img = el("img", "ma-vignette");
+    img.src = PROD_IMAGES[p.id]; img.alt = p.nom; img.loading = "lazy";
+    img.addEventListener("error", function(){ img.remove(); });
+    return img;
+  }
   function enrichirDossier(zone){
-    zone.querySelectorAll(".doc-t th").forEach(function(th){
-      if(th.dataset.maImg) return;
+    var cfg = U().catalogue || {};
+    var colVeh = cfg.colonnes_vehicule ? new RegExp(cfg.colonnes_vehicule, "i") : null;
+    zone.querySelectorAll(".doc-t tr").forEach(function(tr){
+      var th = tr.querySelector("th"), td = tr.querySelector("td");
+      if(!th || th.dataset.maImg) return;
       th.dataset.maImg = "1";
       var p = produitPour(th.textContent);
+      if(!p && colVeh && td && colVeh.test(normaliser(th.textContent))) p = produitPour(td.textContent, true);
       if(!p) return;
-      var img = el("img", "ma-vignette");
-      img.src = PROD_IMAGES[p.id]; img.alt = p.nom; img.loading = "lazy";
-      img.addEventListener("error", function(){ img.remove(); });
       th.classList.add("ma-th-img");
-      th.insertBefore(img, th.firstChild);
+      th.insertBefore(vignette(p), th.firstChild);
     });
   }
   // Saynète propre à la mission (variante PVOC si la classe est en PVOC,
@@ -701,11 +1169,13 @@
     var pvoc = typeof CU !== "undefined" && CU && CU.classe && String(CU.classe).indexOf("PVOC") >= 0;
     return (pvoc && s.pvoc) ? s.pvoc : s;
   }
+  MA.saynetePour = saynetePour;
   function insererSaynete(zone, m){
     if(zone.querySelector(".ma-film-mission")) return;
     var s = saynetePour(m);
     if(!s) return;
-    var film = MA.rendreBloc({ type: "saynete", mission: true, titre: s.titre, decor: s.decor, persos: { a: s.a, b: s.b }, lignes: s.lignes });
+    var film = MA.rendreBloc({ type: "saynete", mission: true, titre: s.titre, decor: s.decor, persos: { a: s.a, b: s.b }, lignes: s.lignes,
+      enseigne: s.enseigne, bout_du_fil: s.bout_du_fil, etiquettes: s.etiquettes, couleurs: s.couleurs });
     if(!film) return;
     film.classList.add("ma-film-mission");
     // Après le rappel « copier-coller désactivé » (premier bloc), avant le dossier
