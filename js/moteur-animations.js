@@ -591,10 +591,12 @@
     var zone = document.getElementById("mo-learn");
     if(!zone) return;
     var fiche = zone.querySelector(".res-block");
-    // Exercice propre à la mission (data/exercices-missions.js) d'abord,
-    // puis les blocs de méthode de la compétence (data/ressources-animees.js)
+    // Un seul exercice, propre à la mission (data/exercices-missions.js).
+    // Les blocs de compétence (data/ressources-animees.js) ne servent plus
+    // que de secours pour une future mission qui n'aurait pas encore le sien
+    // (13/10/2026 : « une animation par mission », jamais partagée).
     var propre = (typeof EXERCICES_MISSIONS !== "undefined") ? EXERCICES_MISSIONS[m.id] : null;
-    var blocs = (propre ? [propre] : []).concat(blocsPour(m) || []);
+    var blocs = propre ? [propre] : (blocsPour(m) || []);
     if(blocs.length && !zone.querySelector(".ma-zone")){
       var z = el("div", "ma-zone");
       z.appendChild(el("div", "ma-zone-tete", "<span>Découvrir en action</span><small>Regarde, manipule, vérifie que tu as compris. La fiche complète est juste en dessous.</small>"));
