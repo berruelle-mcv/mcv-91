@@ -277,6 +277,8 @@ function sauvegarderEtFermer(){
   closeMo();
 }
 function renderFb(fb){
+  // Note masquée (14/10/2026) : 1re tentative sous le seuil → la note arrive après la 2e tentative
+  if(fb.note==null) return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ni-m" title="Ta note s'affichera après ta 2e tentative">🔒 Note après ta 2<sup>e</sup> tentative</span></div>${texteFeedbackLisible(fb.texte)}</div>`;
   const nc=fb.note>=12?'ni-h':fb.note>=8?'ni-m':'ni-l'; // barème de maîtrise (26/09/2026)
   return`<div class="fb-box"><div class="fb-l">Feedback IA<span class="note-ia ${nc}">${fb.note}/20</span></div>${texteFeedbackLisible(fb.texte)}</div>`;
 }

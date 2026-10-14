@@ -55,7 +55,7 @@ async function soumettreReponses(){
       'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify({ mission_id: CM.id, reponses, integrite: (typeof integPourSoumission === 'function') ? integPourSoumission(CM.id, reponses) : null,
-      integ_delta: deltaInteg })
+      integ_delta: deltaInteg, fiche: (typeof ficheEnCours === 'function') ? ficheEnCours() : null })
   });
 
   if(!r.ok){
@@ -68,6 +68,7 @@ async function soumettreReponses(){
       if(code === 'DEJA_VALIDEE') ud2.missions[CM.id].status = 'done';
       sUD(ud2);
     }
+    if(code === 'MISSION_NON_ASSIGNEE' && typeof accesMissionsActualiser === 'function') accesMissionsActualiser();
     alert(r.erreur);
     majBoutonsMission(CM.id);
     return;
@@ -80,7 +81,9 @@ async function soumettreReponses(){
     return;
   }
 
-  const note = d.note;
+  // Note masquée (14/10/2026) : 1re tentative sous le seuil → pas de note, seulement les priorités
+  const masquee = !!d.note_masquee || d.note == null;
+  const note = masquee ? null : d.note;
   const niveau = d.niveau;
   const feedback = d.feedback;
 
@@ -93,21 +96,24 @@ async function soumettreReponses(){
     ...ud.missions[CM.id],
     status: (d.statut === 'valide') ? 'done' : 'att',
     tentatives: (d.tentatives != null) ? d.tentatives : tent, // compteur du serveur s'il est fourni
-    note_ia: noteRetenue,
+    note_ia: masquee ? null : noteRetenue,
+    note_masquee: masquee || undefined,
     niveau_ia: niveau,
     score: (d.statut === 'valide') ? noteRetenue : ud.missions[CM.id]?.score,
     comp: CM.comp,
     id: CM.id,
     date_validation: new Date().toISOString(),
-    feedback: { note, texte: feedback }
+    feedback: { note, texte: feedback, masquee: masquee || undefined }
   };
   sUD(ud);
   if(typeof integDeltaEnvoye === 'function') integDeltaEnvoye(CM.id, deltaInteg);
 
   const tabFb = document.getElementById('tab-fb');
   tabFb.style.display = '';
-  document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback });
+  document.getElementById('mo-fb').innerHTML = renderFb({ note, texte: feedback, masquee });
   moTab(2, tabFb);
+  // Mission réussie : 2 questions rapides sur sa copie avant de lire le feedback (js/maitrise.js)
+  if(d.maitrise && d.maitrise.a_faire && typeof lancerMaitrise === 'function') lancerMaitrise(CM.id, true);
   majBoutonsMission(CM.id);
   const tentFaites = (d.tentatives != null) ? d.tentatives : tent;
   if(d.conservee){
@@ -120,7 +126,9 @@ async function soumettreReponses(){
   else if(d.statut !== 'valide' && tentFaites < 2){
     document.getElementById('mo-fb').insertAdjacentHTML('afterbegin',
       '<div style="background:#FFF7E6;border:1px solid #F0C040;border-left:4px solid #D97706;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;color:#7A4B00">'
-      + '<strong>✏️ Tu peux corriger ta mission.</strong> Lis le feedback ci-dessous, retourne dans l\'onglet <strong>La mission</strong> : '
+      + '<strong>✏️ Tu peux corriger ta mission.</strong> '
+      + (masquee ? 'Ta note s\'affichera après ta 2<sup>e</sup> tentative : concentre-toi sur tes priorités ci-dessous et relis les parties de la fiche indiquées par 📖 (onglet <strong>Apprendre d\'abord</strong>). ' : 'Lis le feedback ci-dessous. ')
+      + 'Retourne ensuite dans l\'onglet <strong>La mission</strong> : '
       + 'tes réponses sont toujours là. Améliore-les puis clique sur <strong>« Soumettre ma correction »</strong> (dernière tentative).</div>');
   }
 
@@ -179,7 +187,7 @@ async function synchroniserProgressionsServeur(){
         id: p.mission_id,
         comp: (local && local.comp) || (mis ? mis.comp : undefined),
         status: statutServeur,
-        note_ia: p.note_ia != null ? p.note_ia : (local ? local.note_ia : undefined),
+        note_ia: p.note_masquee ? null : (p.note_ia != null ? p.note_ia : (local ? local.note_ia : undefined)),
         score: statutServeur === 'done' ? noteServeur : (local ? local.score : undefined),
         date_validation: p.validated_at || p.submitted_at || (local ? local.date_validation : undefined),
         tentatives: p.tentatives != null ? p.tentatives : (local && local.tentatives)

@@ -14,6 +14,7 @@
 //   (deux missions de même compétence affichaient la même scène) mais à
 //   la mission elle-même, avec sa variante PVOC.
 //
+//   Fin d'un exercice : événement « ma-termine » (écouté par js/parcours-eleve.js).
 //   L'exercice animé PROPRE À CHAQUE MISSION vient de data/exercices-missions.js
 //   (EXERCICES_MISSIONS), en tête de « Apprendre d'abord » (14/10/2026).
 //
@@ -370,6 +371,15 @@
   // ─────────────────────────────────────────────
   //  Bloc ÉTAPES  { type:"etapes", titre, intro, etapes:[{ico, k, s}] }
   // ─────────────────────────────────────────────
+  // Signale qu'un exercice est terminé (écouté par js/parcours-eleve.js
+  // pour débloquer la case « J'ai lu la fiche et fait l'exercice », 14/10/2026)
+  function termine(racine){
+    if(racine._termine) return;
+    racine._termine = true;
+    try{ racine.dispatchEvent(new CustomEvent("ma-termine", { bubbles: true })); }catch(e){}
+  }
+  MA.termine = termine;
+
   function blocEtapes(b){
     var racine = el("div", "ma-bloc ma-carte");
     var et = b.etapes || [];
@@ -389,7 +399,7 @@
       (function suite(){
         if(mon !== jeton) return;
         if(i > 0) cases[i - 1].classList.replace("on", "vu");
-        if(i >= cases.length){ cases.forEach(function(c){ c.classList.remove("vu"); c.classList.add("on"); }); return; }
+        if(i >= cases.length){ cases.forEach(function(c){ c.classList.remove("vu"); c.classList.add("on"); }); termine(racine); return; }
         cases[i].classList.add("on");
         barre.style.width = ((i + 1) / cases.length * 100) + "%";
         var e = et[i]; i++;
@@ -422,6 +432,7 @@
         q.innerHTML = "<strong>Terminé : " + bons + " / " + items.length + " bonne" + (bons > 1 ? "s" : "") + " réponse" + (bons > 1 ? "s" : "") + ".</strong> "
           + (bons === items.length ? "Parfait, tu es prêt(e) pour la mission." : "Relis la fiche, puis recommence pour viser le sans-faute.");
         choix.forEach(function(c){ c.hidden = true; });
+        termine(racine);
         sc.innerHTML = '<button type="button" class="ma-btn ma-sec ma-rejouer">↻ Recommencer</button>';
         sc.querySelector(".ma-rejouer").addEventListener("click", function(){ i = 0; bons = 0; ret.textContent = ""; ret.className = "ma-retour"; choix.forEach(function(c){ c.hidden = false; }); montrer(); });
         return;
@@ -473,7 +484,7 @@
     function maj(){
       mail.forEach(function(x, i){ x.classList.toggle("on", i <= etat); });
       fl.forEach(function(x, i){ x.classList.toggle("on", i < etat); });
-      if(etat >= m.length - 1){ bt.textContent = "Raisonnement complet ✓"; bt.disabled = true; }
+      if(etat >= m.length - 1){ bt.textContent = "Raisonnement complet ✓"; bt.disabled = true; if(etat > 0) termine(racine); }
       else { bt.textContent = qs[etat] || "Et ensuite ?"; bt.disabled = false; }
     }
     bt.addEventListener("click", function(){ etat++; maj(); });
@@ -799,7 +810,12 @@
   function blocCartes(b){
     var racine = el("div", "ma-bloc ma-carte");
     racine.innerHTML = '<div class="ma-titre">🃏 ' + esc(b.titre || "Teste-toi") + '</div><p class="ma-intro">' + esc(b.intro || "Réponds de tête, puis retourne la carte pour vérifier.") + '</p>';
-    racine.appendChild(grilleCartes(b.cartes || []));
+    var g = grilleCartes(b.cartes || []);
+    var vues = {};
+    g.querySelectorAll(".ma-flip").forEach(function(bt, i){
+      bt.addEventListener("click", function(){ vues[i] = true; if(Object.keys(vues).length >= (b.cartes || []).length) termine(racine); });
+    });
+    racine.appendChild(g);
     return racine;
   }
   function grilleCartes(cartes){

@@ -114,9 +114,11 @@ function renderCopie(){
     + statutTxt
     + '<span>Note retenue : ' + ((typeof pastilleNote === 'function') ? pastilleNote(noteRetenue) : esc(noteRetenue)) + (revue ? ' <span title="Note revue par l\'enseignant">✎</span>' : '') + '</span>'
     + '<span style="color:var(--gm)">Tentatives utilisées : <strong>' + d.tentatives + '/2</strong></span>'
+    + etiquetteMaitrise(d)
     + '<span style="color:var(--gm)">Rendue le ' + dateHeure(d.submitted_at) + '</span>'
     + (m ? '<span style="color:var(--gm)">' + esc(m.comp) + ' · Palier ' + esc(m.palier) + ' · seuil de la classe ' + esc(d.seuil) + '/20</span>' : '')
     + '</div>'
+    + blocMaitrise(d)
     + blocIndices(d)
     + bloc('👩‍🏫 Ta décision', htmlDecision, '#F5F9FF')
     + bloc('📝 Réponses de l\'élève', htmlRep)
@@ -217,7 +219,16 @@ function mesuresInteg(i){
   if(!i || !(i.secondes > 0 || i.longueur > 0)) return null;
   const nonMesure = i.v === 2 ? Math.min(i.longueur || 0, i.non_mesure || 0) : 0;
   return { fiable: i.v === 2, secondes: i.secondes || 0, tapes: i.tapes || 0, collages: i.collages_bloques || 0,
-    longueur: i.longueur || 0, nonMesure: nonMesure, mesuree: Math.max(0, (i.longueur || 0) - nonMesure) };
+    longueur: i.longueur || 0, nonMesure: nonMesure, mesuree: Math.max(0, (i.longueur || 0) - nonMesure),
+    // Parcours élève (js/parcours-eleve.js, 14/10/2026) : absents des copies plus anciennes
+    parcours: (i.fiche_sec != null || i.sorties != null),
+    ficheSec: i.fiche_sec || 0, ficheCochee: !!i.fiche_cochee, sorties: i.sorties || 0, sortiesSec: i.sorties_sec || 0 };
+}
+
+function dureeCourte(sec){
+  sec = Math.max(0, Math.round(sec || 0));
+  const min = Math.floor(sec / 60), s = sec % 60;
+  return (min ? min + ' min ' : '') + (s || !min ? s + ' s' : '');
 }
 
 function raisonsVigilance(i, alerte){
@@ -234,8 +245,44 @@ function raisonsVigilance(i, alerte){
       const parMinute = m.secondes > 0 ? Math.round(m.mesuree / m.secondes * 60) : 0;   // lecture comprise
       if(m.mesuree >= 500 && m.secondes >= 120 && parMinute >= 150){ raisons.push("écrite d'une traite (" + parMinute + ' caractères/min, lecture comprise)'); score += 1; }
     }
+    if(i && i.maitrise === 'a_verifier'){ raisons.push('maîtrise à vérifier'); score += 2; }
+    if(m.parcours){
+      if(m.sorties >= 3 || m.sortiesSec >= 120){ raisons.push('a quitté la page ' + m.sorties + ' fois (' + dureeCourte(m.sortiesSec) + ')'); score += (m.sorties >= 6 || m.sortiesSec >= 300 ? 2 : 1); }
+      if(m.ficheCochee && m.ficheSec < 45){ raisons.push('fiche lue en ' + m.ficheSec + ' s'); score += 1; }
+    }
   }
   return { score: score, raisons: raisons };
+}
+
+// ═══ Vérification de maîtrise (14/10/2026) ═══
+// Après une mission réussie, l'élève a répondu à 2 questions sur sa copie (60 s chacune).
+function etiquetteMaitrise(d){
+  const v = (d.maitrise && d.maitrise.verdict) || (d.integrite && d.integrite.maitrise);
+  if(!v) return '';
+  const t = { confirmee: ['✅ Maîtrise confirmée', '#DCFCE7', '#166534'],
+              a_verifier: ['⚠️ Maîtrise à vérifier', '#FEF3C7', '#92400E'],
+              en_attente: ['⏳ Vérification pas encore faite', '#F3F4F6', '#4B5563'] }[v];
+  if(!t) return '';
+  return '<span style="background:' + t[1] + ';color:' + t[2] + ';font-weight:800;padding:3px 10px;border-radius:12px">' + t[0] + '</span>';
+}
+function blocMaitrise(d){
+  const mt = d.maitrise;
+  if(!mt || !mt.questions || !mt.questions.length) return '';
+  const e = function(t){ return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+  const aVerifier = mt.verdict === 'a_verifier';
+  const qr = mt.questions.map(function(q, i){
+    const r = (mt.reponses || [])[i];
+    const rep = !r ? '<em style="color:var(--gm)">pas encore répondu</em>'
+      : (r.hors_delai || !String(r.texte || '').trim()) ? '<em style="color:#B91C1C">aucune réponse dans la minute</em>'
+      : '« ' + e(r.texte) + ' » <span style="color:var(--gm)">(' + r.sec + ' s)</span>';
+    return '<li style="margin-bottom:4px"><strong>' + e(q) + '</strong><br>' + rep + '</li>';
+  }).join('');
+  return '<div style="border:1px solid ' + (aVerifier ? '#FDE68A' : '#E2E8F0') + ';border-radius:10px;padding:10px 14px;margin-bottom:12px;background:' + (aVerifier ? '#FFFBEB' : '#F8FAFC') + '">'
+    + '<div style="font-size:11px;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🎯 Vérification de maîtrise ' + etiquetteMaitrise(d) + '</div>'
+    + (mt.commentaire ? '<div style="font-size:12.5px;margin-bottom:6px">' + e(mt.commentaire) + '</div>' : '')
+    + '<ol style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.6">' + qr + '</ol>'
+    + '<div style="font-size:11px;color:var(--gm);margin-top:6px">2 questions sur sa propre copie, 1 minute chacune, sans retour en arrière. Un indice, pas une preuve : « à vérifier » = lui demander d\'expliquer à l\'oral.</div>'
+    + '</div>';
 }
 
 function blocIndices(d){
@@ -263,6 +310,18 @@ function blocIndices(d){
         + ' <span style="color:var(--gm)">— ancienne mesure, faite sur un seul poste : elle ne voit ni le travail fait sur un autre poste, ni le texte repris d\'un brouillon ou d\'une 1re tentative. Non prise en compte.</span></li>');
     }
     lignes.push('<li>Tentatives de copier-coller bloquées : <strong>' + m.collages + '</strong>' + (m.collages >= 3 ? ' <span style="color:#92400E;font-weight:700">— à noter</span>' : '') + '</li>');
+    if(m.parcours){
+      const sortiesFortes = m.sorties >= 3 || m.sortiesSec >= 120;
+      if(sortiesFortes) vigilance = true;
+      lignes.push('<li>Sorties de la page de mission (autre onglet ou fenêtre) : <strong>' + m.sorties + '</strong>'
+        + (m.sorties ? ', ' + dureeCourte(m.sortiesSec) + ' au total' : '')
+        + (sortiesFortes ? ' <span style="color:#B91C1C;font-weight:700">— a souvent quitté la mission : réponses cherchées ailleurs ?</span>' : '') + '</li>');
+      if(m.ficheCochee){
+        const rapide = m.ficheSec < 45;
+        lignes.push('<li>Fiche « Apprendre d\'abord » : lue <strong>' + dureeCourte(m.ficheSec) + '</strong> avant de cocher la case'
+          + (rapide ? ' <span style="color:#92400E;font-weight:700">— lecture très rapide</span>' : '') + '</li>');
+      }
+    }
     const parMinute = m.secondes > 0 ? Math.round(m.mesuree / m.secondes * 60) : 0;
     if(m.fiable && m.mesuree >= 500 && m.secondes >= 120 && parMinute >= 150)
       lignes.push('<li>Rythme d\'écriture : <strong>' + parMinute + ' caractères/min</strong>, lecture du dossier comprise <span style="color:#92400E;font-weight:700">— écrite d\'une traite : texte recopié depuis un autre écran ?</span></li>');
