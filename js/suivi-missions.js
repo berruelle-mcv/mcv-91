@@ -224,11 +224,12 @@
       + '<div style="font-size:11px;color:var(--gm);margin:-4px 0 10px">Devant le nom : 🟢 à jour · 🟡 du travail en attente · 🟠 moins de la moitié validée · 🔴 rien de validé</div></div>';
 
     // Tableau
-    const th = 'padding:6px 8px;border-bottom:1px solid var(--gb);font-size:11px;vertical-align:bottom;background:#F8FAFC';
-    const stickyTh = 'position:sticky;left:0;z-index:2;';
+    // En-têtes figés un par un (15/10/2026) : fond opaque, au-dessus des cases quand on fait défiler
+    const th = 'padding:6px 8px;border-bottom:1px solid var(--gb);font-size:11px;vertical-align:bottom;background:#F8FAFC;position:sticky;top:0;z-index:3;background-clip:padding-box;';
+    const stickyTh = 'left:0;z-index:4;';
     h += '<div style="overflow:auto;max-height:70vh;border:.5px solid var(--gb);border-radius:8px">'
       + '<table style="border-collapse:separate;border-spacing:0;font-size:12px;min-width:100%">'
-      + '<thead style="position:sticky;top:0;z-index:3"><tr>'
+      + '<thead><tr>'
       + '<th style="' + th + stickyTh + 'text-align:left;min-width:170px">Élève</th>'
       + '<th style="' + th + 'text-align:center;min-width:70px" title="Missions validées / missions qui lui sont demandées (hors missions retirées)">Validées</th>'
       + colsAff.map(function(col){
@@ -239,7 +240,7 @@
             : '<span style="background:#FEF3C7;color:#92400E;border-radius:8px;padding:0 5px">en cours</span>');
           const maison = (col.active && col.maison) ? '<div title="À terminer à la maison" style="color:' + (col.maison < new Date() ? '#6B7280' : '#075985') + '">🏠 ' + (col.maison < new Date() ? 'échue ' : 'jusqu\'au ') + jourCourt(col.maison) + '</div>' : '';
           return '<th style="' + th + 'text-align:center;min-width:120px;max-width:170px;font-weight:600;color:var(--gm)" title="' + esc(col.titre || '') + '">'
-            + '<div style="font-weight:800;color:var(--th-fonce);font-size:12px;line-height:1.3;white-space:normal">' + esc(col.titre || col.mission_id) + '</div>'
+            + '<div style="font-weight:800;color:var(--th-fonce);font-size:12px;line-height:1.3;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' + esc(col.titre || col.mission_id) + '</div>'
             + '<div>' + esc(col.comp_id || '') + (col.palier ? ' · P' + esc(col.palier) : '') + ' · ' + jourCourt(col.premiere) + '</div>'
             + (col.parNoms && col.parNoms.length ? '<div title="Donnée par" style="margin-top:2px">' + col.parNoms.map(function(p){ return '<span style="font-weight:800;border-radius:6px;padding:0 6px;' + styleEnseignant(p.couleur) + '">' + esc(p.nom) + '</span>'; }).join(' ') + '</div>'
               : (col.par && col.par.length ? '<div title="Assignée par">par ' + esc(col.par.join(', ')) + '</div>' : ''))
