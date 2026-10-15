@@ -42,12 +42,36 @@
   // ───────── Classes du prof et classe choisie ─────────
   let CLASSES = [];   // [{ id, libelle }]
   let ASSIGNATIONS = []; let ASSIGN_A = 0;
+  // Administrateur (15/10/2026) : il voit toutes les classes de l'établissement, mais par défaut
+  // l'espace prof ne montre que SES classes (celles qui lui sont attribuées). Réglable dans Réglages.
+  let CLASSES_TOUTES = [];
+  function monId(){
+    try{ const t = jeton().split('.')[1].replace(/-/g, '+').replace(/_/g, '/'); return JSON.parse(atob(t)).id || null; }catch(e){ return null; }
+  }
+  function voirToutes(){ return lireLS('laboro_prof_toutes_classes', '0') === '1'; }
+  function filtrerMesClasses(){
+    const moi = monId();
+    const miennes = CLASSES_TOUTES.filter(function(c){ return Array.isArray(c.enseignants) && c.enseignants.some(function(x){ return x.id === moi; }); });
+    CLASSES = (!voirToutes() && miennes.length) ? miennes : CLASSES_TOUTES.slice();
+  }
   async function chargerClasses(){
-    if(CLASSES.length || !jeton()) return CLASSES;
+    if(CLASSES_TOUTES.length || !jeton()) return CLASSES;
     const r = await fetchJSON(LABORO_API + '/api/classes', { headers: entetes() });
-    if(r.ok && r.data && r.data.ok) CLASSES = (r.data.classes || []).map(function(c){ return { id: c.id, libelle: c.libelle || c.id }; });
+    if(r.ok && r.data && r.data.ok) CLASSES_TOUTES = (r.data.classes || []).map(function(c){ return { id: c.id, libelle: c.libelle || c.id, enseignants: c.enseignants || null }; });
+    filtrerMesClasses();
     return CLASSES;
   }
+  // Classes affichées (libellés), ou null si on ne filtre pas
+  function classesAffichees(){
+    if(!CLASSES.length || CLASSES.length === CLASSES_TOUTES.length) return null;
+    return CLASSES.map(function(c){ return c.libelle; });
+  }
+  function eleveAffiche(e){ const l = classesAffichees(); return !l || l.indexOf(e.classe_libelle) >= 0; }
+  window.epVoirToutesClasses = function(oui){
+    ecrireLS('laboro_prof_toutes_classes', oui ? '1' : '0');
+    filtrerMesClasses(); selecteurClasse(); appliquerClasse(); renderReglages();
+    if(typeof DASH_ENS_CHARGE_A !== 'undefined') DASH_ENS_CHARGE_A = 0;
+  };
   async function chargerAssignations(forcer){
     if(!forcer && Date.now() - ASSIGN_A < 30000) return ASSIGNATIONS;
     const r = await fetchJSON(LABORO_API + '/api/mission-du-jour/toutes', { headers: entetes() });
@@ -212,7 +236,7 @@
   }
   function donneesAujourdhui(){
     const f = faits();
-    const eleves = sansComptesTest((typeof ELEVES_SERVEUR !== 'undefined' ? ELEVES_SERVEUR : []).filter(function(e){ return e.statut !== 'archive'; }));
+    const eleves = sansComptesTest((typeof ELEVES_SERVEUR !== 'undefined' ? ELEVES_SERVEUR : []).filter(function(e){ return e.statut !== 'archive' && eleveAffiche(e); }));
     const items = [];
     const sousSeuil = {};   // classe -> [noms]
     const relance = {};     // classe -> [élèves]
@@ -306,7 +330,12 @@
     }, 200);
   };
   function blocMissionsEnCours(){
-    const enCours = (typeof DASH_ENS_ASSIGNATIONS !== 'undefined' ? DASH_ENS_ASSIGNATIONS : []).filter(function(a){ return !a.retiree_at && a.total > 0 && a.termines < a.total; });
+    const l = classesAffichees();
+    const idsAff = {}; ((typeof ELEVES_SERVEUR !== 'undefined') ? ELEVES_SERVEUR : []).forEach(function(e){ if(eleveAffiche(e)) idsAff[String(e.id)] = true; });
+    const enCours = (typeof DASH_ENS_ASSIGNATIONS !== 'undefined' ? DASH_ENS_ASSIGNATIONS : []).filter(function(a){
+      if(a.retiree_at || !(a.total > 0) || a.termines >= a.total) return false;
+      return !l || (a.cible === 'eleve' ? !!idsAff[String(a.eleve_id)] : l.indexOf(a.classe_libelle) >= 0);
+    });
     if(!enCours.length) return '';
     return '<div class="card ep-carte"><div class="ep-lab">Missions en cours</div>'
       + enCours.slice(0, 12).map(function(a){
@@ -652,7 +681,11 @@
       + '<button type="button" class="ep-btn2" onclick="goP(\'catalogue\',document.getElementById(\'ni-ep-reglages\'))">Catalogue produits</button>'
       + '<button type="button" class="ep-btn2" onclick="goP(\'clients\',document.getElementById(\'ni-ep-reglages\'))">Fichier clients</button>'
       + '<button type="button" class="ep-btn2" onclick="if(typeof revoirObEns===\'function\')revoirObEns()">Guide de démarrage</button></div></div>'
-      + '<div class="card ep-carte" id="ep-reglages-admin" style="display:none"><div class="ep-lab">Administration</div><button type="button" class="ep-btn2" onclick="goP(\'classesadmin\',document.getElementById(\'ni-ep-reglages\'))">Gestion des classes et des enseignants</button></div>'
+      + '<div class="card ep-carte" id="ep-reglages-admin" style="display:none"><div class="ep-lab">Administration</div>'
+      + '<div class="ep-todo-d" style="margin-bottom:8px">Classes affichées dans ton espace prof (Aujourd\'hui, Ma classe, Donner une mission) :</div>'
+      + '<div class="ep-choix" id="ep-choix-classes"><button type="button" data-v="0" onclick="epVoirToutesClasses(false)">Mes classes</button><button type="button" data-v="1" onclick="epVoirToutesClasses(true)">Toutes les classes</button></div>'
+      + '<div class="ep-todo-d" id="ep-mes-classes" style="margin:8px 0 12px"></div>'
+      + '<button type="button" class="ep-btn2" onclick="goP(\'classesadmin\',document.getElementById(\'ni-ep-reglages\'))">Gestion des classes et des enseignants</button></div>'
       + '</div>';
     const s = z.querySelector('#ep-seuil');
     s.value = lireLS('laboro_seuil_credit', '5');
@@ -662,6 +695,15 @@
     construireReglages();
     const adm = document.getElementById('ep-reglages-admin');
     if(adm) adm.style.display = lireLS('laboro_est_admin', '0') === '1' ? '' : 'none';
+    const ch = document.getElementById('ep-choix-classes');
+    if(ch) Array.prototype.forEach.call(ch.querySelectorAll('button'), function(b){ b.classList.toggle('on', b.getAttribute('data-v') === (voirToutes() ? '1' : '0')); });
+    const mc = document.getElementById('ep-mes-classes');
+    if(mc){
+      const moi = monId();
+      const miennes = CLASSES_TOUTES.filter(function(c){ return Array.isArray(c.enseignants) && c.enseignants.some(function(x){ return x.id === moi; }); });
+      mc.textContent = miennes.length ? 'Tes classes : ' + miennes.map(function(c){ return c.libelle; }).join(', ') + '.'
+        : 'Aucune classe ne t\'est attribuée : toutes les classes sont affichées. Attribue-toi tes classes dans « Gestion des classes ».';
+    }
     if(typeof accesMissionsRenderProf === 'function') accesMissionsRenderProf();
     const c = typeof creditIAActuel === 'function' ? creditIAActuel() : null;
     const el = document.getElementById('ep-credit');
@@ -750,7 +792,9 @@
           document.body.classList.add('ep');
           creerPanneaux();
           construireMenu();
-          chargerClasses().then(function(){ selecteurClasse(); appliquerClasse(); const w = document.getElementById('ep-classe-wrap'); if(w){ const ouvert = document.querySelector('.panel.on'); const g = ouvert ? groupeDe(ouvert.id.replace('panel-', '')) : null; w.style.display = (g && GROUPES[g].avecClasse) ? '' : 'none'; } });
+          chargerClasses().then(function(){ selecteurClasse(); appliquerClasse();
+            const pd = document.getElementById('panel-dashboard');
+            if(pd && pd.classList.contains('on') && classesAffichees() && typeof renderDashboardEnseignant === 'function') renderDashboardEnseignant(); const w = document.getElementById('ep-classe-wrap'); if(w){ const ouvert = document.querySelector('.panel.on'); const g = ouvert ? groupeDe(ouvert.id.replace('panel-', '')) : null; w.style.display = (g && GROUPES[g].avecClasse) ? '' : 'none'; } });
           chargerAssignations();
           const ouvert = document.querySelector('.panel.on');
           const id = ouvert ? ouvert.id.replace('panel-', '') : 'dashboard';
