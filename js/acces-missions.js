@@ -101,7 +101,7 @@
 
   // ── Professeur : le réglage, en haut de « Mission du jour » ──
   function carteProf(){
-    var panneau = document.getElementById("panel-missiondujour");
+    var panneau = document.getElementById("ep-reglages-acces") || document.getElementById("panel-missiondujour");
     if(!panneau) return null;
     var c = document.getElementById("am-carte");
     if(!c){
@@ -148,6 +148,7 @@
       });
     });
   }
+  window.accesMissionsRenderProf = function(){ try{ if(estEnseignant()) renderProf(); }catch(e){} };
   if(typeof window.renderMDJPanel === "function"){
     var origPanel = window.renderMDJPanel;
     window.renderMDJPanel = function(){

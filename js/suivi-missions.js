@@ -122,11 +122,17 @@
       col.active = col.assignations.some(function(a){ return !a.retiree_at; });
       // Qui a assigné (10/10/2026) : prénom(s) des enseignants, sans doublon
       col.par = col.assignations.map(function(a){ return a.assigne_par; }).filter(function(n, i, t){ return n && t.indexOf(n) === i; });
+      // Qui l'a donnée, avec la couleur vue par les élèves (15/10/2026)
+      col.parNoms = [];
+      col.assignations.forEach(function(a){ if(a.par_nom && !col.parNoms.some(function(p){ return p.nom === a.par_nom; })) col.parNoms.push({ nom: a.par_nom, couleur: a.par_couleur }); });
       const maisons = col.assignations.filter(function(a){ return !a.retiree_at && a.maison_jusqu_a; }).map(function(a){ return dateServeur(a.maison_jusqu_a); }).filter(Boolean);
       col.maison = maisons.length ? new Date(Math.max.apply(null, maisons)) : null;
-      const m = missionParId(k); if(m){ col.titre = col.titre || m.titre; col.comp_id = col.comp_id || m.comp; col.palier = col.palier || m.palier; }
+      const m = missionParId(k); if(m){ col.titre = m.titre || col.titre; col.comp_id = col.comp_id || m.comp; col.palier = col.palier || m.palier; }
       return col;
     }).sort(function(a, b){ return (b.derniere || 0) - (a.derniere || 0); });
+  }
+  function styleEnseignant(c){
+    return c === 'rose' ? 'background:#FCE7F3;color:#9D174D' : (c === 'bleu' ? 'background:#E0F2FE;color:#075985' : 'background:#FFFBEA;color:#8A6500');
   }
   function caseEleve(e, col){
     const p = (PROGRESSIONS_BRUTES[e.id] || []).find(function(x){ return x && x.mission_id === col.mission_id; }) || null;
@@ -142,6 +148,8 @@
     const lesClasses = classes();
     if(!lesClasses.length){ el.innerHTML = encadre('Aucun élève dans tes classes pour le moment.'); return; }
 
+    // Espace prof (15/10/2026) : la classe choisie en haut de l'écran s'applique partout
+    if(typeof classeProf === 'function'){ const g = classeProf(); if(g && lesClasses.indexOf(g) >= 0 && g !== CHOIX.classe){ CHOIX.classe = g; CHOIX.groupe = ''; } }
     const c = CHOIX.classe;
     let eleves = elevesDeClasse(c);
     if(CHOIX.groupe) eleves = eleves.filter(function(e){ return CHOIX.groupe === 'aucun' ? !e.groupe : e.groupe === CHOIX.groupe; });
@@ -164,7 +172,7 @@
 
     const sel = 'padding:6px 9px;border:.5px solid var(--gb);border-radius:6px;font-size:12.5px;background:#fff';
     const aGroupes = elevesDeClasse(c).some(function(e){ return !!e.groupe; });
-    let h = '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
+    let h = '<div class="sm-classes" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
       + lesClasses.map(function(x, ix){
           const n = assignationsDeClasse(x).filter(function(a){ return !a.retiree_at && a.total > 0 && a.termines < a.total; }).length;
           return '<div class="cls-tab' + (x === c ? ' on' : '') + '" onclick="smClasse(' + ix + ')" style="' + (x === c ? 'background:var(--th-principal);color:#fff;border-color:var(--th-principal)' : '') + '">' + esc(x)
@@ -192,13 +200,14 @@
     h += '<div style="font-size:12.5px;color:var(--gm);margin-bottom:8px">'
       + '<strong style="color:var(--th-fonce)">' + lignes.length + ' élève' + (lignes.length > 1 ? 's' : '') + '</strong> · '
       + cols.length + ' mission' + (cols.length > 1 ? 's' : '') + ' assignée' + (cols.length > 1 ? 's' : '') + ' · '
-      + '<span style="color:#166534">' + nbAJour + ' à jour</span> · <span style="color:#92400E">' + nbRetard + ' avec du travail en attente</span></div>';
+      + '<span style="color:#166534">' + nbAJour + ' à jour</span> · <span style="color:#92400E">' + nbRetard + ' avec du travail en attente</span>'
+      + ' · <button type="button" onclick="var l=document.getElementById(\'sm-legende\');l.style.display=l.style.display===\'none\'?\'\':\'none\'" style="border:1px solid var(--gb);background:#fff;border-radius:10px;padding:1px 8px;cursor:pointer;font-size:11.5px;font-weight:700;color:var(--gm)">? Légende</button></div>';
 
-    // Légende
-    h += '<div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:var(--gm);margin-bottom:10px">'
+    // Légende (repliée : un clic sur « ? Légende » l'affiche — 15/10/2026)
+    h += '<div id="sm-legende" style="display:none"><div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:var(--gm);margin-bottom:10px">'
       + ['valide','reprendre','epuisee','rendue','commencee','afaire'].map(function(k){ return '<span>' + STYLES[k].ico + ' ' + STYLES[k].lib + '</span>'; }).join('')
       + '<span style="opacity:.55">✅ grisé : faite sans lui avoir été demandée</span><span>· : pas demandée (ou mission retirée)</span></div>'
-      + '<div style="font-size:11px;color:var(--gm);margin:-4px 0 10px">Devant le nom : 🟢 à jour · 🟡 du travail en attente · 🟠 moins de la moitié validée · 🔴 rien de validé</div>';
+      + '<div style="font-size:11px;color:var(--gm);margin:-4px 0 10px">Devant le nom : 🟢 à jour · 🟡 du travail en attente · 🟠 moins de la moitié validée · 🔴 rien de validé</div></div>';
 
     // Tableau
     const th = 'padding:6px 8px;border-bottom:1px solid var(--gb);font-size:11px;vertical-align:bottom;background:#F8FAFC';
@@ -215,12 +224,11 @@
             : (conc && faits >= conc ? '<span style="background:#DCFCE7;color:#166534;border-radius:8px;padding:0 5px">terminée</span>'
             : '<span style="background:#FEF3C7;color:#92400E;border-radius:8px;padding:0 5px">en cours</span>');
           const maison = (col.active && col.maison) ? '<div title="À terminer à la maison" style="color:' + (col.maison < new Date() ? '#6B7280' : '#075985') + '">🏠 ' + (col.maison < new Date() ? 'échue ' : 'jusqu\'au ') + jourCourt(col.maison) + '</div>' : '';
-          return '<th style="' + th + 'text-align:center;min-width:92px;font-weight:600;color:var(--gm)" title="' + esc(col.mission_id + ' — ' + (col.titre || '')) + '">'
-            + '<div style="font-weight:800;color:var(--th-principal);font-size:12px">' + esc(col.mission_id) + '</div>'
-            + '<div style="max-width:120px;margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;color:var(--th-fonce)">' + esc(col.titre || '') + '</div>'
-            + '<div>' + esc(col.comp_id || '') + (col.palier ? ' · P' + esc(col.palier) : '') + '</div>'
-            + '<div>' + jourCourt(col.premiere) + '</div>'
-            + (col.par && col.par.length ? '<div title="Assignée par">par ' + esc(col.par.join(', ')) + '</div>' : '')
+          return '<th style="' + th + 'text-align:center;min-width:120px;max-width:170px;font-weight:600;color:var(--gm)" title="' + esc(col.titre || '') + '">'
+            + '<div style="font-weight:800;color:var(--th-fonce);font-size:12px;line-height:1.3;white-space:normal">' + esc(col.titre || col.mission_id) + '</div>'
+            + '<div>' + esc(col.comp_id || '') + (col.palier ? ' · P' + esc(col.palier) : '') + ' · ' + jourCourt(col.premiere) + '</div>'
+            + (col.parNoms && col.parNoms.length ? '<div title="Donnée par" style="margin-top:2px">' + col.parNoms.map(function(p){ return '<span style="font-weight:800;border-radius:6px;padding:0 6px;' + styleEnseignant(p.couleur) + '">' + esc(p.nom) + '</span>'; }).join(' ') + '</div>'
+              : (col.par && col.par.length ? '<div title="Assignée par">par ' + esc(col.par.join(', ')) + '</div>' : ''))
             + maison
             + '<div style="margin-top:3px">' + badge + ' <strong>' + faits + '/' + conc + '</strong></div></th>';
         }).join('')

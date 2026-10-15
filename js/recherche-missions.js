@@ -257,7 +257,7 @@ function lancerRechercheMissions(){
       +   '<div style="min-width:0;flex:1">'
       +     '<div style="font-size:14px;font-weight:700;color:var(--gr)">' + rmEsc(m.titre) + '</div>'
       +     '<div style="font-size:11px;color:var(--gm);margin-top:3px">'
-      +       '<span style="font-family:monospace;font-weight:700">' + rmEsc(m.id) + '</span> · '
+      +       '<span class="rm-donnee" data-mid="' + rmEsc(m.id) + '"></span>'
       +       (typeof compBadge === 'function' ? compBadge(m.comp) : rmEsc(m.comp)) + ' · Palier ' + rmEsc(m.palier)
       +       (m.option && m.option !== 'PVOC' || (getCfg().options || []).length > 1 ? ' · ' + rmEsc(m.option) : '')
       +       (partiel ? ' · <span style="color:#B45309">' + x.trouves + ' mot' + (x.trouves > 1 ? 's' : '') + ' sur ' + r.termes.length + '</span>' : '')

@@ -33,7 +33,7 @@ async function openCopie(eleveId, missionId){
   const token = localStorage.getItem('laboro_token');
   if(!token){ alert('Session expirée — reconnecte-toi en tant qu\'enseignant.'); return; }
   const e = eleveParId(eleveId), m = missionParId(missionId);
-  document.getElementById('copie-titre').textContent = (m ? m.id + ' — ' + m.titre : missionId);
+  document.getElementById('copie-titre').textContent = (m ? m.titre : missionId);
   document.getElementById('copie-sous').textContent = e ? ((e.prenom||'') + ' ' + (e.nom||'').toUpperCase() + ' · ' + (e.classe_libelle||'') + (e.groupe ? ' · ' + e.groupe : '')) : '';
   document.getElementById('copie-body').innerHTML = '<div style="padding:16px;color:var(--gm);font-size:13px">⏳ Chargement de la copie…</div>';
   ouvrirOverlayCopie();

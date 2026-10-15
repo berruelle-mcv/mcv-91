@@ -55,6 +55,8 @@
     const v = voyant();
     if(!v) return;
     const c = COULEURS[couleur];
+    // Espace prof (15/10/2026) : le voyant ne s'affiche qu'en cas de problème
+    if(couleur === 'vert' || couleur === 'gris'){ v.style.display = 'none'; return; }
     v.style.display = 'inline-flex';
     v.style.background = c.fond;
     v.style.color = c.texte;
@@ -114,7 +116,9 @@
   // Anthropic ne donne pas le solde : le serveur compte ce que consomme chaque
   // appel à l'IA (tous les LABORO du Pi) et le déduit du dernier solde saisi
   // par l'administrateur (lu sur console.anthropic.com → Billing).
-  const SEUIL_ORANGE = 5, SEUIL_ROUGE = 2;   // en dollars
+  // Seuil d'alerte réglable dans Réglages (15/10/2026), 5 par défaut
+  function seuilAlerte(){ try{ const v = parseFloat(String(localStorage.getItem('laboro_seuil_credit') || '5').replace(',', '.')); return isFinite(v) && v >= 0 ? v : 5; }catch(e){ return 5; } }
+  const SEUIL_ROUGE = 2;   // en dollars
   let dernierCredit = null;
   // Montants en dollars ; les petites sommes (une correction ≈ 0,02 $) gardent 3 décimales
   function dollars(x){
@@ -137,8 +141,8 @@
   function couleurCredit(c){
     if(!c || !c.ok || c.restant == null) return COULEURS.gris;
     if(c.restant < SEUIL_ROUGE) return COULEURS.rouge;
-    if(c.restant < SEUIL_ORANGE) return COULEURS.orange;
-    return COULEURS.vert;
+    if(c.restant < seuilAlerte()) return COULEURS.orange;
+    return { fond: '#F3F4F6', texte: '#374151' };
   }
   function peindreCredit(){
     const b = badgeCredit();
@@ -146,7 +150,10 @@
     const c = couleurCredit(dernierCredit);
     b.style.display = 'inline-flex';
     b.style.background = c.fond; b.style.color = c.texte;
-    b.textContent = dernierCredit.restant == null ? '💳 Crédit IA : à renseigner' : '💳 Crédit ≈ ' + dollars(dernierCredit.restant);
+    const bas = dernierCredit.restant != null && dernierCredit.restant < seuilAlerte();
+    b.textContent = dernierCredit.restant == null ? '💳 Crédit IA : à renseigner'
+      : (bas ? '⚠️ Crédit IA bas ≈ ' + dollars(dernierCredit.restant) + ' — à recharger' : '💳 Crédit IA ≈ ' + dollars(dernierCredit.restant));
+    b.style.border = bas ? '1px solid #F59E0B' : 'none';
     b.title = 'Crédit IA restant (estimation) — cliquer pour le détail';
   }
   async function chargerCredit(){
@@ -254,6 +261,9 @@
     }
   }
 
+  window.ouvrirCreditIA = function(){ ouvrirCredit(); };
+  window.creditIAActuel = function(){ return dernierCredit; };
+  window.rafraichirCreditIA = function(){ peindreCredit(); };
   function ouvrirDetails(){
     if(document.getElementById('sante-ia-modal')) return;
     const ov = document.createElement('div');

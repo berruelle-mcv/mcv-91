@@ -1,0 +1,158 @@
+/* ================================================
+   LABORO — Nouvel espace professeur (js/espace-prof.js, 15/10/2026)
+   Fichier COMMUN MCV / Auto. Ne s'applique qu'au compte enseignant (body.ep).
+   ================================================ */
+
+/* Ce que le nouvel espace remplace ou range ailleurs */
+body.ep #dash-ens > .wb,
+body.ep #btn-guide-ens,
+body.ep #panel-missiondujour .mdj-cfg,
+body.ep #panel-missiondujour #am-carte,
+body.ep .sm-classes,
+body.ep .ic-classes,
+body.ep #classe-tabs,
+body.ep #classe-stats,
+body.ep #panel-classe .btn-val-all,
+body.ep #panel-classe .ana-btn:not([onclick^="openRepartition"]),
+body.ep #tb-lvl { display: none !important; }
+
+/* Liste des élèves : sans les colonnes Classe, G4 et Posture */
+body.ep #panel-classe table.ctl th:nth-child(2), body.ep #panel-classe table.ctl td:nth-child(2),
+body.ep #panel-classe table.ctl th:nth-child(7), body.ep #panel-classe table.ctl td:nth-child(7),
+body.ep #panel-classe table.ctl th:nth-child(9), body.ep #panel-classe table.ctl td:nth-child(9) { display: none; }
+body.ep #panel-classe table.ctl tbody tr { cursor: pointer; }
+body.ep #panel-classe table.ctl tbody tr:hover td { background: #F3F7FC; }
+
+/* Menu */
+.ep-ni { font-size: 14px !important; padding-top: 11px !important; padding-bottom: 11px !important; }
+.ep-ni-lib { flex: 1; }
+.ep-badge { background: #F59E0B; color: #1A1200; font-size: 11px; font-weight: 800; border-radius: 10px; padding: 1px 8px; margin-right: 6px; }
+.ep-btn-vue-eleve { width: 100%; margin-bottom: 8px; padding: 10px 12px; min-height: 40px; border: none; border-radius: 8px; background: var(--th-principal, #1F5FAE); color: #fff; font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+.ep-btn-vue-eleve:hover { filter: brightness(1.08); }
+
+/* Classe choisie, en haut */
+.ep-classe-wrap { display: flex; align-items: center; gap: 8px; margin: 0 auto 0 18px; font-size: 12.5px; font-weight: 700; color: #4B5563; }
+.ep-classe-wrap select { font: inherit; font-size: 13px; font-weight: 700; padding: 6px 10px; border: 1px solid #CBD5E1; border-radius: 8px; background: #fff; color: #111827; min-height: 34px; }
+
+/* Onglets */
+.ep-onglets { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; border-bottom: 1px solid #E2E8F0; margin: -4px 0 16px; }
+.ep-onglet { font: inherit; font-size: 14px; font-weight: 600; color: #64748B; background: none; border: none; border-bottom: 3px solid transparent; padding: 10px 2px; min-height: 42px; cursor: pointer; }
+.ep-onglet.on { color: #0F172A; font-weight: 800; border-bottom-color: var(--th-principal, #1F5FAE); }
+.ep-retour { font: inherit; font-size: 13px; font-weight: 700; color: var(--th-principal, #1F5FAE); background: none; border: none; padding: 10px 0; cursor: pointer; }
+.ep-sous-titre { font-size: 14px; font-weight: 800; color: #0F172A; }
+
+/* Briques communes */
+.ep-carte { margin-bottom: 14px; }
+.ep-lab { font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #64748B; margin-bottom: 10px; }
+.ep-btn { font: inherit; font-size: 13px; font-weight: 700; border: none; border-radius: 8px; padding: 9px 14px; min-height: 38px; cursor: pointer; background: var(--th-principal, #1F5FAE); color: #fff; white-space: nowrap; }
+.ep-btn:hover { filter: brightness(1.08); }
+.ep-btn:disabled { opacity: .5; cursor: default; }
+.ep-btn2 { font: inherit; font-size: 13px; font-weight: 600; border: 1px solid #CBD5E1; border-radius: 8px; padding: 8px 12px; min-height: 38px; cursor: pointer; background: #fff; color: #1E293B; white-space: nowrap; }
+.ep-btn2:hover { border-color: var(--th-principal, #1F5FAE); color: var(--th-principal, #1F5FAE); }
+.ep-lien { font: inherit; font-size: 12px; color: #64748B; background: none; border: none; cursor: pointer; text-decoration: underline; }
+.ep-puce { display: inline-block; font-size: 11.5px; font-weight: 800; border-radius: 6px; padding: 1px 8px; }
+.ep-resume { margin: 0 0 12px; font-size: 13px; color: #64748B; }
+.ep-vide { margin: 4px 0; font-size: 15px; font-weight: 700; color: #166534; }
+.ep-todo-t { font-size: 14px; font-weight: 700; color: #0F172A; }
+.ep-todo-d { font-size: 12.5px; color: #64748B; margin-top: 2px; line-height: 1.45; }
+
+/* Aujourd'hui */
+.ep-todo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 0; border-top: 1px solid #EEF2F6; }
+.ep-todo:first-of-type { border-top: none; }
+.ep-tag { font-size: 11.5px; font-weight: 800; border-radius: 6px; padding: 4px 8px; min-width: 86px; text-align: center; }
+.ep-tag-rouge { background: #FEE2E2; color: #B91C1C; }
+.ep-tag-orange { background: #FEF3C7; color: #7A3E00; }
+.ep-tag-ambre { background: #FFEDD5; color: #9A3412; }
+.ep-tag-bleu { background: #E0ECFA; color: #163F75; }
+.ep-tag-violet { background: #EDE9FE; color: #5B21B6; }
+.ep-todo-txt { flex: 1 1 300px; min-width: 0; }
+.ep-todo-b { display: flex; gap: 8px; flex-wrap: wrap; }
+.ep-mission { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 10px 0; border-top: 1px solid #EEF2F6; }
+.ep-mission:first-of-type { border-top: none; }
+.ep-mission-t { flex: 1 1 300px; min-width: 0; }
+.ep-barre { flex: 0 1 160px; height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; }
+.ep-barre > div { height: 100%; background: var(--th-principal, #1F5FAE); }
+.ep-barre-n { font-size: 13px; font-weight: 800; min-width: 48px; }
+
+/* Ma classe → Élèves */
+.ep-barre-eleves { align-items: center; }
+#ep-ajout > div { max-width: 420px; }
+.ep-fiche-voile { position: fixed; inset: 0; z-index: 800; background: rgba(15, 23, 42, .42); display: none; justify-content: flex-end; }
+.ep-fiche-voile.open { display: flex; }
+.ep-fiche { width: 560px; max-width: 100%; height: 100%; overflow-y: auto; background: #fff; padding: 22px 24px 30px; box-sizing: border-box; box-shadow: -10px 0 40px rgba(0,0,0,.15); }
+.ep-fiche-tete { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.ep-fiche-tete > div { flex: 1; min-width: 0; }
+.ep-fiche-nom { font-size: 21px; font-weight: 800; color: #0F172A; }
+.ep-chiffres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.ep-chiffres > div { background: #F1F5F9; border-radius: 10px; padding: 10px 12px; }
+.ep-chiffres b { display: block; font-size: 20px; color: #0F172A; }
+.ep-chiffres span { font-size: 12px; color: #64748B; }
+.ep-copie { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid #EEF2F6; }
+.ep-copie-t { flex: 1; min-width: 0; }
+.ep-case { font-size: 12.5px; font-weight: 800; border-radius: 7px; padding: 6px 9px; min-width: 70px; text-align: center; white-space: nowrap; }
+.ep-case-ok { background: #DCFCE7; color: #166534; }
+.ep-case-ko { background: #FEE2E2; color: #B91C1C; }
+.ep-case-att { background: #FEF3C7; color: #92400E; }
+.ep-case-neutre { background: #F1F5F9; color: #475569; }
+.ep-maitrise { font-size: 11px; font-weight: 800; border-radius: 6px; padding: 0 6px; margin-left: 4px; }
+.ep-maitrise.ok { background: #DCFCE7; color: #166534; }
+.ep-maitrise.ko { background: #FEF3C7; color: #92400E; }
+.ep-ligne-comp { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 4px 0; }
+.ep-fiche-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+#ep-fiche-actions .ep-actions > div:nth-child(1),
+#ep-fiche-actions .ep-actions > div:nth-child(2),
+#ep-fiche-actions #eleve-selectionne-nom { display: none; }
+
+/* Ma classe → Notes → Pronote */
+.ep-pronote { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.ep-pronote-g { flex: 1 1 260px; max-width: 100%; }
+.ep-pronote-d { flex: 2 1 420px; min-width: 0; }
+.ep-devoir { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: left; font: inherit; cursor: pointer; background: #fff; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; min-height: 44px; }
+.ep-devoir.on { border: 2px solid var(--th-principal, #1F5FAE); background: #F3F7FC; }
+.ep-devoir-etat { font-size: 12px; font-weight: 700; }
+.ep-etat-ok { color: #166534; } .ep-etat-ko { color: #9A3412; } .ep-etat-neutre { color: #64748B; }
+.ep-choix { display: inline-flex; border: 1px solid #CBD5E1; border-radius: 8px; overflow: hidden; }
+.ep-choix button { font: inherit; font-size: 13px; border: none; padding: 8px 12px; min-height: 38px; cursor: pointer; background: #fff; color: #1E293B; }
+.ep-choix button + button { border-left: 1px solid #CBD5E1; }
+.ep-choix button.on { background: var(--th-principal, #1F5FAE); color: #fff; font-weight: 700; }
+.ep-pronote-tete { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.ep-pronote-tete > div { flex: 1 1 240px; min-width: 0; }
+.ep-pronote-titre { font-size: 16px; font-weight: 800; color: #0F172A; }
+.ep-pn-ligne { display: flex; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px solid #F1F5F9; }
+.ep-pn-nom { flex: 1; font-size: 15px; min-width: 0; }
+.ep-pn-val { font: inherit; min-width: 112px; text-align: center; border-radius: 8px; padding: 7px 10px; font-size: 17px; font-weight: 800; border: none; cursor: pointer; }
+.ep-pn-note { background: #F1F5F9; color: #0F172A; }
+.ep-pn-code { background: #FEE2E2; color: #B91C1C; }
+.ep-pn-att { background: #FEF3C7; color: #7A3E00; font-size: 14px; }
+.ep-pn-neutre { background: #F8FAFC; color: #64748B; font-size: 14px; }
+.ep-pronote-pied { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #E2E8F0; }
+
+/* Donner une mission : assignation sur place */
+.ep-assign { margin-top: 10px; background: #F3F7FC; border: 1px solid #D5E2F2; border-radius: 10px; padding: 12px 14px; }
+.ep-assign-ligne { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ep-assign select, .ep-assign input[type=datetime-local] { font: inherit; font-size: 13px; padding: 7px 10px; border: 1px solid #CBD5E1; border-radius: 8px; background: #fff; min-height: 38px; }
+.ep-assign-maison { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
+.ep-assign-fait { font-size: 13.5px; font-weight: 700; color: #166534; }
+.ep-avert { font-size: 13px; font-weight: 600; color: #9D174D; background: #FCE7F3; border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; }
+.ep-avert-moi { color: #075985; background: #E0F2FE; }
+
+/* Réglages */
+.ep-reglages { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; align-items: start; }
+.ep-reglages .ep-carte { margin-bottom: 0; }
+.ep-reglages #ep-reglages-acces .card { border: none; padding: 0; margin: 0; box-shadow: none; background: none; }
+.ep-reglages #ep-reglages-acces .ct { display: none; }
+.ep-credit { font-size: 24px; font-weight: 800; color: #0F172A; }
+.ep-reglages input[type=text] { font: inherit; font-size: 13px; padding: 6px 8px; border: 1px solid #CBD5E1; border-radius: 8px; }
+.ep-liens { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Vue élève : bandeau permanent */
+#ep-bandeau-eleve { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10000; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 10px 18px; background: #7C2D12; color: #fff; font-size: 13.5px; box-shadow: 0 -4px 18px rgba(0,0,0,.2); }
+#ep-bandeau-eleve span { flex: 1 1 320px; }
+#ep-bandeau-eleve button { font: inherit; font-size: 13px; font-weight: 800; border: none; border-radius: 8px; padding: 9px 16px; min-height: 40px; background: #fff; color: #7C2D12; cursor: pointer; }
+body.ep-vue-eleve { padding-bottom: 64px; }
+
+@media (max-width: 700px){
+  .ep-classe-wrap { margin: 6px 0 0; width: 100%; }
+  .ep-fiche { padding: 18px 16px; }
+  .ep-chiffres { grid-template-columns: 1fr 1fr 1fr; }
+}

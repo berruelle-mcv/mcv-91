@@ -110,13 +110,14 @@
     if(!ETAT.charge) return;
     const lesClasses = classes();
     if(!lesClasses.length){ el.innerHTML = encadre('Aucun élève dans tes classes pour le moment.'); return; }
+    if(typeof classeProf === 'function'){ const g = classeProf(); if(g && lesClasses.indexOf(g) >= 0 && g !== CHOIX.classe){ CHOIX.classe = g; CHOIX.groupe = ''; } }
     const c = CHOIX.classe;
     let eleves = ETAT.eleves.filter(function(e){ return classeDe(e) === c; });
     const aGroupes = eleves.some(function(e){ return !!e.groupe; });
     if(CHOIX.groupe) eleves = eleves.filter(function(e){ return CHOIX.groupe === 'aucun' ? !e.groupe : e.groupe === CHOIX.groupe; });
     const sel = 'padding:6px 9px;border:.5px solid var(--gb);border-radius:6px;font-size:12.5px;background:#fff';
 
-    let h = '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
+    let h = '<div class="ic-classes" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
       + lesClasses.map(function(x, i){
           return '<div class="cls-tab' + (x === c ? ' on' : '') + '" onclick="icClasse(' + i + ')" style="' + (x === c ? 'background:var(--th-principal);color:#fff;border-color:var(--th-principal)' : '') + '">' + esc(x) + '</div>';
         }).join('')
