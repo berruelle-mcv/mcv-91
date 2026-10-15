@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="moteur-animations.css?v=20261014c">
 <link rel="stylesheet" href="espace-prof.css?v=20261015">
 <!-- Réglages de l'univers (moteur commun) : DOIT rester le premier script -->
-<script src="data/univers.js?v=20260927g"></script>
+<script src="data/univers.js?v=20261015codes"></script>
 <script src="js/univers-config.js?v=20260927b"></script>
 
 
@@ -75,15 +75,14 @@
         <div class="r-t">Bienvenue<br>chez LABORO.</div>
         <div class="r-s">Des missions professionnelles réelles, un univers sport & outdoor immersif, des compétences directement alignées sur tes épreuves. Bienvenue chez LABORO.</div>
         <div class="r-st">
-          <div class="r-st-item"><div class="r-st-n">50+</div><div class="r-st-l">Clients actifs</div></div>
-          <div class="r-st-item"><div class="r-st-n">130+</div><div class="r-st-l">Missions</div></div>
-          <div class="r-st-item"><div class="r-st-n">FMRC</div><div class="r-st-l">Filière</div></div>
+          <div class="r-st-item"><div class="r-st-n">50</div><div class="r-st-l">Clients fictifs</div></div>
+          <div class="r-st-item"><div class="r-st-n">131</div><div class="r-st-l">Missions</div></div>
+          <div class="r-st-item"><div class="r-st-n">3</div><div class="r-st-l">Niveaux</div></div>
           <div class="r-st-item"><div class="r-st-n">100%</div><div class="r-st-l">Référentiel</div></div>
         </div>
         <div style="margin-top:28px;padding-top:20px;border-top:.5px solid rgba(255,255,255,.15);font-size:10px;color:rgba(255,255,255,.4)">
           Une création de <strong style="color:rgba(255,255,255,.7)">Pascal Berruelle</strong> — Enseignant PLP Bac Pro MCV · Essonne (91) · 2026 · <span id="app-version" style="color:rgba(255,255,255,.5)">v1.0.0</span>
-          <!-- Espace prescripteurs masqué le 15/10/2026 (contenu à remettre à jour). Pour le réafficher : retirer display:none ci-dessous. -->
-          <div style="margin-top:16px;display:none">
+          <div style="margin-top:16px">
             <button onclick="showVitrine()" style="background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:10px 22px;border-radius:10px;font-size:11px;cursor:pointer;font-weight:700;letter-spacing:.05em;backdrop-filter:blur(4px);transition:all .2s">
               ✦ Découvrir LABORO — Espace prescripteurs
             </button>
@@ -116,231 +115,295 @@
   </div>
 </div>
 
-<!-- VITRINE PRESCRIPTEURS -->
+<!-- VITRINE PRESCRIPTEURS (refaite le 15/10/2026)
+     Contenu vérifié : chiffres tirés de data/missions.js, intitulés et coefficients du
+     référentiel officiel du Bac Pro MCV, captures d'écran réelles (img/vitrine/, élèves fictifs).
+     À METTRE À JOUR si le nombre de missions, les écrans ou les fonctions changent. -->
 <div id="vitrine" class="scr" style="display:none;background:#F3F4F6;overflow-y:auto">
-  <div style="max-width:900px;margin:0 auto;padding:40px 24px 80px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#2D5282,#4A6FA5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff">L</div>
-        <div>
-          <div style="font-size:20px;font-weight:900;color:#1F2937;letter-spacing:-.5px" id="cfg-nom-plateforme-2">LABORO</div>
-          <div style="font-size:11px;color:#6B7280">Sport &amp; Outdoor · Plateforme pédagogique Bac Pro MCV</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px">
-        <button onclick="startDemo()" style="background:#2D5282;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">▶ Mode démo</button>
-        <button onclick="hideVitrine()" style="background:#fff;color:#4B5563;border:1px solid #E5E7EB;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer">← Connexion</button>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;padding:12px 16px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-      <span style="font-size:11px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.08em;margin-right:4px;line-height:32px">Aller à :</span>
-      <a href="#vitrine-concept" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:background .2s" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">🎯 Le concept</a>
-      <a href="#vitrine-parcours" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">📚 Parcours élève</a>
-      <a href="#vitrine-ccf" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">📋 Alignement CCF</a>
-      <a href="#vitrine-revolution" style="padding:6px 14px;background:#F3F4F6;color:#374151;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">⚡ La révolution</a>
-      <a href="#vitrine-demo" style="padding:6px 14px;background:#2D5282;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none" onmouseover="this.style.background='#1A3A6E'" onmouseout="this.style.background='#2D5282'">▶ Mode démo</a>
-    </div>
-    <div id="vitrine-concept" style="background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 60%,#4A6FA5 100%);border-radius:20px;padding:48px 40px;margin-bottom:32px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;right:-30px;bottom:-50px;font-size:200px;font-weight:900;color:rgba(255,255,255,.04);line-height:1">L</div>
-      <div style="position:relative;z-index:1">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);margin-bottom:12px">Plateforme pédagogique immersive</div>
-        <div style="font-size:32px;font-weight:900;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px">L'entreprise simulation<br>pour le Bac Pro MCV</div>
-        <div style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;max-width:560px;margin-bottom:28px">LABORO plonge les élèves dans une entreprise fictive crédible — LABORO Sport &amp; Outdoor, basée à Évry-Courcouronnes. Chaque mission correspond à une situation professionnelle réelle, alignée sur le référentiel du Bac Pro MCV et ses épreuves professionnelles.</div>
-        <div style="display:flex;gap:24px;flex-wrap:wrap">
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">131</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Missions</div></div>
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">3</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Niveaux</div></div>
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">2</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Options</div></div>
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">100%</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Référentiel</div></div>
-          <div style="text-align:center"><div style="font-size:28px;font-weight:900">E2 · E3</div><div style="font-size:10px;opacity:.6;text-transform:uppercase;letter-spacing:.08em">Épreuves préparées</div></div>
-        </div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px">
-      <div style="background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-        <div style="font-size:24px;margin-bottom:12px">🎯</div>
-        <div style="font-size:15px;font-weight:700;color:#1F2937;margin-bottom:8px">Immersion totale</div>
-        <div style="font-size:13px;color:#6B7280;line-height:1.6">Les élèves ne font pas des exercices — ils travaillent dans une entreprise. Ils ont un poste, des collègues, des clients, des objectifs.</div>
-      </div>
-      <div style="background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-        <div style="font-size:24px;margin-bottom:12px">📋</div>
-        <div style="font-size:15px;font-weight:700;color:#1F2937;margin-bottom:8px">Aligné référentiel</div>
-        <div style="font-size:13px;color:#6B7280;line-height:1.6">Chaque mission est rattachée à une compétence du référentiel (blocs 1 à 4, intitulés officiels), à un palier de progression (1 à 4) et à une épreuve (E31, E32, E33 ou E2). Avant chaque mission, une fiche méthode adaptée au palier.</div>
-      </div>
-      <div style="background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-        <div style="font-size:24px;margin-bottom:12px">📊</div>
-        <div style="font-size:15px;font-weight:700;color:#1F2937;margin-bottom:8px">Pilotage enseignant</div>
-        <div style="font-size:13px;color:#6B7280;line-height:1.6">Correction immédiate proposée par l'IA, décision finale de l'enseignant sur chaque note. Tableau de bord par classe, demi-groupes, relevé de notes exportable, analyse de classe, portfolio en 1 clic, génération de nouvelles missions.</div>
-      </div>
-    </div>
-    <div id="vitrine-parcours" style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px">
-      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4A6FA5;margin-bottom:16px">Parcours élève — de la 2nde à la Terminale</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-        <div style="border-left:3px solid #4A6FA5;padding-left:14px">
-          <div style="font-size:14px;font-weight:700;color:#1F2937;margin-bottom:6px">2nde — Découverte</div>
-          <div style="font-size:12px;color:#6B7280;line-height:1.6">Questions guidées, choix multiples, complétions. L'élève observe et identifie avant de produire. 31 missions adaptées au niveau novice.</div>
-        </div>
-        <div style="border-left:3px solid #2D5282;padding-left:14px">
-          <div style="font-size:14px;font-weight:700;color:#1F2937;margin-bottom:6px">1ère — Approfondissement</div>
-          <div style="font-size:12px;color:#6B7280;line-height:1.6">Production autonome avec méthodes (CAB, BANT, ERESA). Contextes B2B/B2C. Options AGEC (39 missions) et PVOC (38 missions).</div>
-        </div>
-        <div style="border-left:3px solid #1A2E4A;padding-left:14px">
-          <div style="font-size:14px;font-weight:700;color:#1F2937;margin-bottom:6px">Terminale — Maîtrise CCF</div>
-          <div style="font-size:12px;color:#6B7280;line-height:1.6">Missions complexes alignées sur les épreuves E31, E32, E33 et E2. Analyse, justification, optimisation. Portfolio par compétence. Options AGEC (41 missions) et PVOC (35 missions).</div>
-        </div>
-      </div>
-    </div>
-    <div id="vitrine-ccf" style="background:#EBF4FF;border-radius:14px;padding:28px;margin-bottom:32px">
-      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2D5282;margin-bottom:16px">Alignement sur les épreuves du Bac Pro MCV</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-        <div style="background:#fff;border-radius:10px;padding:16px">
-          <div style="font-size:11px;font-weight:700;color:#2D5282;margin-bottom:6px">E31 — CCF · Coeff. 3</div>
-          <div style="font-size:13px;font-weight:600;color:#1F2937;margin-bottom:8px">Conseiller et vendre</div>
-          <div style="font-size:11px;color:#6B7280;line-height:1.5">C1.1 Veille commerciale<br>C1.2 Réalisation de la vente<br>C1.3 Exécution de la vente<br>+ Communication</div>
-        </div>
-        <div style="background:#fff;border-radius:10px;padding:16px">
-          <div style="font-size:11px;font-weight:700;color:#2D5282;margin-bottom:6px">E32 — CCF · Coeff. 2</div>
-          <div style="font-size:13px;font-weight:600;color:#1F2937;margin-bottom:8px">Suivre les ventes</div>
-          <div style="font-size:11px;color:#6B7280;line-height:1.5">C2.1 Suivi de la commande<br>C2.1b Services associés<br>C2.2 Retours et réclamations<br>C2.3 Satisfaction client</div>
-        </div>
-        <div style="background:#fff;border-radius:10px;padding:16px">
-          <div style="font-size:11px;font-weight:700;color:#2D5282;margin-bottom:6px">E33 — CCF · Coeff. 3</div>
-          <div style="font-size:13px;font-weight:600;color:#1F2937;margin-bottom:8px">Développer la relation client</div>
-          <div style="font-size:11px;color:#6B7280;line-height:1.5">C3.1 Information et contact client<br>C3.2 Actions de fidélisation<br>C3.3 Évaluation de la fidélisation</div>
-        </div>
-      </div>
-      <div style="margin-top:12px;background:#fff;border-radius:10px;padding:14px 16px;font-size:12px;color:#374151;line-height:1.6"><strong style="color:#2D5282">E2 — Épreuve écrite · Coeff. 4 :</strong> les options sont évaluées à l'écrit — bloc 4A « Animer et gérer l'espace commercial » (AGEC) et bloc 4B « Prospecter et valoriser l'offre commerciale » (PVOC). LABORO propose des missions sur chaque compétence du bloc et un sujet d'entraînement E2 par option, avec corrigé.</div>
-      <div style="margin-top:12px;font-size:11px;color:#4A6FA5;font-style:italic">Le portfolio LABORO présente la progression de l'élève compétence par compétence, épreuve par épreuve, à partir des missions validées.</div>
-    </div>
-    <div id="vitrine-revolution" style="background:#fff;border-radius:14px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:32px;border-left:4px solid #D97706">
-      <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#D97706;margin-bottom:14px">⚡ La révolution CCF — ce que LABORO change concrètement</div>
-      <p style="font-size:13px;color:#374151;line-height:1.8;margin-bottom:16px">Aujourd'hui, le positionnement CCF en fin de Terminale est un exercice complexe : les enseignants ne sont pas toujours les mêmes de la Seconde à la Terminale, les traces de progression sont dispersées sur 3 ans, et reconstituer un parcours complet prend du temps. LABORO apporte la traçabilité qui manque.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
-        <div style="background:#FEF3C7;border-radius:10px;padding:16px">
-          <div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:8px">😔 Sans LABORO</div>
-          <ul style="font-size:12px;color:#78350F;line-height:1.8;padding-left:16px">
-            <li>Suivi des compétences difficile à maintenir sur 3 ans</li>
-            <li>Traces de progression dispersées et difficiles à centraliser</li>
-            <li>Positionnement CCF complexe à étayer sans traces objectives</li>
-            <li>Positionnement reconstitué en fin de parcours, faute de traçabilité continue</li>
-          </ul>
-        </div>
-        <div style="background:#ECFDF5;border-radius:10px;padding:16px">
-          <div style="font-size:12px;font-weight:700;color:#065F46;margin-bottom:8px">✅ Avec LABORO</div>
-          <ul style="font-size:12px;color:#064E3B;line-height:1.8;padding-left:16px">
-            <li>Chaque mission = trace objective datée et notée</li>
-            <li>Portfolio auto-généré sur 3 ans de progression</li>
-            <li>Positionnement 1-2-3-4 calculé automatiquement</li>
-            <li>Appréciation motivée pré-rédigée en 1 clic</li>
-          </ul>
-        </div>
-      </div>
-      <div style="background:#EBF4FF;border-radius:8px;padding:12px 16px;font-size:12px;color:#1E3A5F;line-height:1.7">
-        <strong>Résultat :</strong> L'enseignant ouvre le portfolio LABORO d'un élève, vérifie que le positionnement lui semble juste, copie l'appréciation dans son dossier académique. <strong>5 minutes au lieu de 30. Sur la base de 3 ans de preuves réelles.</strong>
-      </div>
+<style>
+#vitrine{--vt-nuit:#0A2540;--vt-fonce:#1A2E4A;--vt-accent:#2D5282;--vt-principal:#185FA5;--vt-fond:#EBF4FF;--vt-texte:#1F2937;--vt-gris:#4B5563;--vt-doux:#6B7280;--vt-bord:#E5E7EB;color:var(--vt-texte);line-height:1.55}
+#vitrine *{box-sizing:border-box}
+#vitrine .vt-in{max-width:1080px;margin:0 auto;padding:0 24px}
+#vitrine .vt-top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);border-bottom:1px solid var(--vt-bord);backdrop-filter:blur(6px)}
+#vitrine .vt-top .vt-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+#vitrine .vt-marque{display:flex;align-items:center;gap:12px}
+#vitrine .vt-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--vt-accent),var(--vt-principal));color:#fff;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;font-style:italic}
+#vitrine .vt-nom{font-weight:900;font-size:17px;letter-spacing:-.3px}
+#vitrine .vt-nom i{color:var(--vt-principal)}
+#vitrine .vt-sous{font-size:11px;color:var(--vt-doux);white-space:nowrap}
+#vitrine .vt-nav{display:flex;gap:2px;flex-wrap:nowrap}
+#vitrine .vt-nav button{background:none;border:none;font:inherit;font-size:13px;white-space:nowrap;color:var(--vt-gris);padding:8px 10px;border-radius:8px;cursor:pointer}
+#vitrine .vt-nav button:hover{background:var(--vt-fond);color:var(--vt-accent)}
+#vitrine .vt-actions{display:flex;gap:8px}
+#vitrine .vt-btn{font:inherit;font-size:13px;font-weight:700;padding:10px 18px;border-radius:9px;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+#vitrine .vt-btn-p{background:var(--vt-accent);color:#fff}
+#vitrine .vt-btn-p:hover{background:var(--vt-fonce)}
+#vitrine .vt-btn-s{background:#fff;color:var(--vt-gris);border-color:var(--vt-bord)}
+#vitrine .vt-btn-s:hover{border-color:var(--vt-accent);color:var(--vt-accent)}
+#vitrine .vt-hero{background:radial-gradient(1200px 500px at 85% -10%,rgba(24,95,165,.55),transparent 60%),linear-gradient(160deg,#071A30,var(--vt-nuit) 55%,#0E3460);color:#fff;padding:64px 0 56px}
+#vitrine .vt-hero .vt-in{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+#vitrine .vt-pastille{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 12px;color:rgba(255,255,255,.85)}
+#vitrine h1{font-size:40px;line-height:1.1;letter-spacing:-1px;margin:18px 0 16px;font-weight:900}
+#vitrine .vt-hero p{font-size:15px;color:rgba(255,255,255,.82);margin:0 0 24px;max-width:520px}
+#vitrine .vt-hero .vt-btn-s{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+#vitrine .vt-hero .vt-btn-s:hover{background:rgba(255,255,255,.1)}
+#vitrine .vt-hero .vt-btn-p{background:#fff;color:var(--vt-nuit)}
+#vitrine .vt-hero .vt-btn-p:hover{background:var(--vt-fond)}
+#vitrine .vt-chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden;margin-top:32px}
+#vitrine .vt-chiffres div{background:rgba(7,26,48,.6);padding:14px 12px}
+#vitrine .vt-chiffres b{display:block;font-size:24px;font-weight:900;letter-spacing:-.5px}
+#vitrine .vt-chiffres span{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+#vitrine .vt-ecran{display:block;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.08);border:1px solid var(--vt-bord)}
+#vitrine .vt-ecran::before{content:'';display:block;height:22px;background:#F3F4F6 radial-gradient(circle at 12px 11px,#F87171 4px,transparent 4.5px),radial-gradient(circle at 26px 11px,#FBBF24 4px,transparent 4.5px);border-bottom:1px solid var(--vt-bord)}
+#vitrine .vt-ecran::after{content:'';display:block;clear:both}
+#vitrine .vt-ecran img{display:block;width:100%;height:auto}
+#vitrine .vt-hero .vt-ecran{border-color:rgba(255,255,255,.2)}
+#vitrine section{padding:64px 0;border-bottom:1px solid var(--vt-bord)}
+#vitrine section.vt-blanc{background:#fff}
+#vitrine .vt-sur{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--vt-principal);margin-bottom:8px}
+#vitrine h2{font-size:28px;line-height:1.2;letter-spacing:-.5px;margin:0 0 12px;font-weight:900;color:var(--vt-texte)}
+#vitrine .vt-intro{font-size:15px;color:var(--vt-gris);max-width:720px;margin:0 0 32px}
+#vitrine .vt-etapes{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+#vitrine .vt-etape figure{margin:0}
+#vitrine .vt-etape .vt-ecran::before{display:none}
+#vitrine .vt-etape .vt-ecran{box-shadow:0 6px 18px rgba(10,37,64,.10);aspect-ratio:9/10}
+#vitrine .vt-etape .vt-ecran img{object-fit:cover;object-position:top;height:100%}
+#vitrine .vt-num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--vt-accent);color:#fff;font-size:12px;font-weight:800;align-items:center;justify-content:center;margin:14px 0 6px}
+#vitrine .vt-etape h3{font-size:14px;margin:0 0 4px;font-weight:800}
+#vitrine .vt-etape p{font-size:12.5px;color:var(--vt-gris);margin:0}
+#vitrine .vt-note{margin-top:28px;background:var(--vt-fond);border-left:3px solid var(--vt-accent);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;color:var(--vt-fonce)}
+#vitrine .vt-grille2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#vitrine .vt-grille3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+#vitrine .vt-carte{background:#fff;border:1px solid var(--vt-bord);border-radius:14px;padding:20px}
+#vitrine .vt-blanc .vt-carte{background:#FAFBFC}
+#vitrine .vt-carte h3{font-size:15px;margin:0 0 6px;font-weight:800}
+#vitrine .vt-carte p{font-size:13px;color:var(--vt-gris);margin:0}
+#vitrine .vt-carte .vt-gros{font-size:28px;font-weight:900;color:var(--vt-accent);letter-spacing:-.5px;line-height:1}
+#vitrine .vt-carte .vt-legende{font-size:11px;color:var(--vt-doux);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 10px}
+#vitrine .vt-paliers{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--vt-bord);border-radius:14px;overflow:hidden;background:#fff;margin-bottom:24px}
+#vitrine .vt-paliers div{padding:18px;border-right:1px solid var(--vt-bord)}
+#vitrine .vt-paliers div:last-child{border-right:none}
+#vitrine .vt-paliers b{display:block;font-size:12px;color:var(--vt-principal);text-transform:uppercase;letter-spacing:.08em}
+#vitrine .vt-paliers strong{display:block;font-size:15px;margin:2px 0 6px}
+#vitrine .vt-paliers p{font-size:12.5px;color:var(--vt-gris);margin:0}
+#vitrine .vt-bloc{display:grid;grid-template-columns:220px 1fr 240px;gap:20px;padding:18px 0;border-top:1px solid var(--vt-bord);align-items:start}
+#vitrine .vt-bloc:first-of-type{border-top:none}
+#vitrine .vt-bloc-n{font-size:12px;font-weight:800;color:var(--vt-principal);text-transform:uppercase;letter-spacing:.06em}
+#vitrine .vt-bloc-t{font-size:15px;font-weight:800;margin:2px 0 0}
+#vitrine .vt-bloc ul{margin:0;padding-left:18px;font-size:13px;color:var(--vt-gris)}
+#vitrine .vt-bloc ul li{margin:2px 0}
+#vitrine .vt-bloc-e{font-size:12px;color:var(--vt-gris);text-align:right}
+#vitrine .vt-bloc-e b{display:block;font-size:13px;color:var(--vt-texte)}
+#vitrine .vt-ref{background:#fff;border:1px solid var(--vt-bord);border-radius:14px;padding:6px 22px}
+#vitrine .vt-prof{display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+#vitrine .vt-onglets{display:flex;flex-direction:column;gap:6px}
+#vitrine .vt-onglets button{text-align:left;font:inherit;background:#fff;border:1px solid var(--vt-bord);border-radius:12px;padding:12px 14px;cursor:pointer}
+#vitrine .vt-onglets button b{display:block;font-size:14px;color:var(--vt-texte)}
+#vitrine .vt-onglets button span{font-size:12.5px;color:var(--vt-gris)}
+#vitrine .vt-onglets button.on{border-color:var(--vt-accent);box-shadow:0 0 0 3px rgba(45,82,130,.12);background:var(--vt-fond)}
+#vitrine .vt-vue img{transition:opacity .2s}
+#vitrine .vt-liste{margin:0;padding:0;list-style:none}
+#vitrine .vt-liste li{position:relative;padding-left:22px;margin:8px 0;font-size:13.5px;color:var(--vt-gris)}
+#vitrine .vt-liste li::before{content:'';position:absolute;left:4px;top:8px;width:8px;height:8px;border-radius:2px;background:var(--vt-principal)}
+#vitrine .vt-liste li b{color:var(--vt-texte)}
+#vitrine .vt-fin{background:linear-gradient(160deg,#071A30,var(--vt-nuit));color:#fff;text-align:center;padding:56px 0}
+#vitrine .vt-fin h2{color:#fff}
+#vitrine .vt-fin p{color:rgba(255,255,255,.8);font-size:14.5px;max-width:620px;margin:0 auto 24px}
+#vitrine .vt-fin .vt-btn-p{background:#fff;color:var(--vt-nuit)}
+#vitrine .vt-fin .vt-btn-s{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+#vitrine .vt-contact{margin-top:28px;font-size:12.5px;color:rgba(255,255,255,.65)}
+#vitrine .vt-contact a{color:#fff}
+#vitrine .vt-mention{font-size:11px;color:rgba(255,255,255,.45);margin-top:18px}
+#vitrine .vt-legende-img{font-size:12px;color:var(--vt-doux);margin-top:8px}
+@media (max-width:1180px){#vitrine .vt-nav{display:none}}
+@media (max-width:960px){
+  #vitrine .vt-hero .vt-in,#vitrine .vt-prof,#vitrine .vt-grille2{grid-template-columns:1fr}
+  #vitrine .vt-etapes{grid-template-columns:repeat(2,1fr)}
+  #vitrine .vt-grille3,#vitrine .vt-paliers{grid-template-columns:1fr 1fr}
+  #vitrine .vt-paliers div{border-bottom:1px solid var(--vt-bord)}
+  #vitrine .vt-bloc{grid-template-columns:1fr}
+  #vitrine .vt-bloc-e{text-align:left}
+  #vitrine h1{font-size:32px}
+}
+@media (max-width:560px){
+  #vitrine .vt-in{padding:0 16px}
+  #vitrine .vt-actions .vt-btn-s{display:none}
+  #vitrine .vt-etapes,#vitrine .vt-grille3,#vitrine .vt-paliers{grid-template-columns:1fr}
+  #vitrine .vt-chiffres{grid-template-columns:1fr 1fr}
+  #vitrine .vt-sous{display:none}
+}
+</style>
 
-      <!-- ── Aperçu portfolio LABORO ── -->
-      <div style="margin-top:20px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#D97706;margin-bottom:12px">📄 Aperçu — Portfolio CCF généré par LABORO</div>
-        <div style="border:1.5px solid #E5E7EB;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+  <!-- Barre du haut -->
+  <div class="vt-top"><div class="vt-in">
+    <div class="vt-marque">
+      <div class="vt-logo">L</div>
+      <div><div class="vt-nom">LABORO <i>MCV</i></div><div class="vt-sous">Plateforme pédagogique · Bac Pro MCV</div></div>
+    </div>
+    <nav class="vt-nav">
+      <button onclick="vtAller('vt-mission')">Une mission</button>
+      <button onclick="vtAller('vt-parcours')">Le parcours</button>
+      <button onclick="vtAller('vt-referentiel')">Le référentiel</button>
+      <button onclick="vtAller('vt-enseignant')">L'enseignant</button>
+      <button onclick="vtAller('vt-classe')">En classe</button>
+    </nav>
+    <div class="vt-actions">
+      <button class="vt-btn vt-btn-s" onclick="hideVitrine()">← Connexion</button>
+      <button class="vt-btn vt-btn-p" onclick="startDemo()">▶ Essayer la démo</button>
+    </div>
+  </div></div>
 
-          <!-- En-tête portfolio -->
-          <div style="background:linear-gradient(135deg,#1A2E4A,#2D5282);padding:16px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px">Portfolio d'activités professionnelles</div>
-              <div style="font-size:16px;font-weight:800">MARTIN Léa</div>
-              <div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:2px">Terminale Bac Pro MCV · Option AGEC · LABORO Sport &amp; Outdoor</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px">Score LABORO</div>
-              <div style="font-size:28px;font-weight:900;color:#93C5FD">78<span style="font-size:13px;opacity:.6">/100</span></div>
-            </div>
-          </div>
-
-          <!-- Grille compétences -->
-          <div style="padding:16px 20px;background:#F9FAFB;border-bottom:1px solid #E5E7EB">
-            <div style="font-size:10px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Positionnement par compétence</div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-              <div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB">
-                <div style="font-size:9px;font-weight:700;color:#4A6FA5;margin-bottom:3px">C1 — Conseiller &amp; vendre</div>
-                <div style="display:flex;gap:3px;margin-bottom:4px">
-                  <div style="width:18px;height:6px;border-radius:3px;background:#185FA5"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#185FA5"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#185FA5"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E5E7EB"></div>
-                </div>
-                <div style="font-size:9px;color:#185FA5;font-weight:700">Niveau 3 — Acquis</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB">
-                <div style="font-size:9px;font-weight:700;color:#E87722;margin-bottom:3px">C2 — Suivre la commande</div>
-                <div style="display:flex;gap:3px;margin-bottom:4px">
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E87722"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E87722"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E5E7EB"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E5E7EB"></div>
-                </div>
-                <div style="font-size:9px;color:#E87722;font-weight:700">Niveau 2 — En progression</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB">
-                <div style="font-size:9px;font-weight:700;color:#0096C7;margin-bottom:3px">C3 — Fidéliser</div>
-                <div style="display:flex;gap:3px;margin-bottom:4px">
-                  <div style="width:18px;height:6px;border-radius:3px;background:#0096C7"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#0096C7"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#0096C7"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#E5E7EB"></div>
-                </div>
-                <div style="font-size:9px;color:#0096C7;font-weight:700">Niveau 3 — Acquis</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB">
-                <div style="font-size:9px;font-weight:700;color:#2D5282;margin-bottom:3px">C4A — Espace commercial</div>
-                <div style="display:flex;gap:3px;margin-bottom:4px">
-                  <div style="width:18px;height:6px;border-radius:3px;background:#2D5282"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#2D5282"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#2D5282"></div>
-                  <div style="width:18px;height:6px;border-radius:3px;background:#2D5282"></div>
-                </div>
-                <div style="font-size:9px;color:#2D5282;font-weight:700">Niveau 4 — Maîtrisé</div>
-              </div>
-              <div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB;grid-column:span 2">
-                <div style="font-size:9px;font-weight:700;color:#6B7280;margin-bottom:6px">Missions validées · 3 dernières</div>
-                <div style="display:flex;flex-direction:column;gap:4px">
-                  <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:#374151">Fixer les prix et analyser la rentabilité</span><span style="font-weight:700;color:#185FA5">16/20</span></div>
-                  <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:#374151">Gérer une réclamation complexe</span><span style="font-weight:700;color:#185FA5">14/20</span></div>
-                  <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:#374151">Analyser les indicateurs de satisfaction</span><span style="font-weight:700;color:#185FA5">17/20</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Appréciation pré-rédigée -->
-          <div style="padding:14px 20px;background:#fff">
-            <div style="font-size:10px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Appréciation motivée — générée automatiquement</div>
-            <div style="background:#F0F4FF;border-left:3px solid #2D5282;border-radius:0 8px 8px 0;padding:10px 14px;font-size:11px;color:#1A2E4A;line-height:1.7;font-style:italic">
-              "Léa MARTIN maîtrise les compétences liées à l'animation de l'espace commercial (C4A, niveau 4) et au conseil client (C1, niveau 3). Elle démontre une réelle capacité à analyser les indicateurs commerciaux et à proposer des actions correctives argumentées. La compétence C2 (suivi de la commande) est en cours d'acquisition — des progrès nets sont observés en fin de parcours. Positionnement global : <strong>Professionnel compétent</strong>."
-            </div>
-            <div style="display:flex;justify-content:flex-end;margin-top:10px">
-              <div style="font-size:10px;color:#9CA3AF;font-style:italic">Généré par LABORO · 34 missions validées · Parcours 2nde → Terminale AGEC</div>
-            </div>
-          </div>
-
-        </div>
-        <div style="font-size:10px;color:#9CA3AF;text-align:center;margin-top:8px;font-style:italic">Exemple fictif à titre illustratif — le portfolio réel est généré depuis l'espace enseignant</div>
+  <!-- Accroche -->
+  <div class="vt-hero"><div class="vt-in">
+    <div>
+      <span class="vt-pastille">Bac Pro MCV · 2nde, 1re, Terminale · Options A et B</span>
+      <h1>Une entreprise simulée pour s'entraîner aux situations professionnelles du Bac Pro MCV</h1>
+      <p>LABORO Sport &amp; Outdoor est une enseigne fictive d'équipements sportifs installée à Évry-Courcouronnes. L'élève y occupe un poste, avec une équipe, un catalogue et un fichier clients. Il réalise des missions rattachées aux compétences du référentiel, en exploitant un dossier documentaire, comme le jour de l'épreuve écrite.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="vt-btn vt-btn-p" onclick="startDemo()">▶ Essayer la démo — élève de Terminale</button>
+        <button class="vt-btn vt-btn-s" onclick="vtAller('vt-mission')">Voir une mission ↓</button>
+      </div>
+      <div class="vt-chiffres">
+        <div><b>131</b><span>Missions</span></div>
+        <div><b>3</b><span>Niveaux</span></div>
+        <div><b>50</b><span>Clients fictifs</span></div>
+        <div><b>177</b><span>Produits</span></div>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,#1A2E4A,#2D5282);border-radius:14px;padding:28px;color:#fff;margin-bottom:32px">
-      <div style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.9);font-style:italic;margin-bottom:16px">"LABORO n'est pas un outil numérique de plus. C'est une salle de classe augmentée où l'élève est acteur d'une entreprise réelle — et où l'enseignant pilote la progression compétence par compétence, en lien direct avec les exigences des CCF."</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.6)">Pascal Berruelle — Enseignant PLP Bac Pro MCV, Essonne (91)</div>
+    <div>
+      <a class="vt-ecran" href="img/vitrine/tableau-de-bord.jpg" target="_blank" rel="noopener"><img src="img/vitrine/tableau-de-bord.jpg" alt="Tableau de bord d'un élève dans LABORO" loading="lazy"></a>
     </div>
-    <div id="vitrine-demo" style="text-align:center;padding:32px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-      <div style="font-size:20px;font-weight:700;color:#1F2937;margin-bottom:8px">Prêt à explorer LABORO ?</div>
-      <div style="font-size:13px;color:#6B7280;margin-bottom:24px">Lancez le mode démo pour voir la plateforme en action — aucune installation, aucun compte requis.</div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button onclick="startDemo()" style="background:#2D5282;color:#fff;border:none;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(45,82,130,.3)">▶ Lancer la démo — élève Terminale</button>
-        <button onclick="hideVitrine()" style="background:#F3F4F6;color:#4B5563;border:1px solid #E5E7EB;padding:14px 32px;border-radius:10px;font-size:14px;cursor:pointer">Se connecter →</button>
+  </div></div>
+
+  <!-- Une mission -->
+  <section id="vt-mission" class="vt-blanc"><div class="vt-in">
+    <div class="vt-sur">Le déroulé d'une mission</div>
+    <h2>Apprendre, agir, puis prouver qu'on a compris</h2>
+    <p class="vt-intro">Chaque mission suit le même déroulé, quel que soit le niveau. L'élève ne peut pas passer directement aux questions : il commence par la méthode.</p>
+    <div class="vt-etapes">
+      <div class="vt-etape"><figure><a class="vt-ecran" href="img/vitrine/apprendre.jpg" target="_blank" rel="noopener"><img src="img/vitrine/apprendre.jpg" alt="Onglet Apprendre d'abord" loading="lazy"></a></figure>
+        <span class="vt-num">1</span><h3>Apprendre d'abord</h3><p>Un exercice animé propre à la mission, puis une fiche méthode adaptée au palier, avec lecture à voix haute.</p></div>
+      <div class="vt-etape"><figure><a class="vt-ecran" href="img/vitrine/fiche-lue.jpg" target="_blank" rel="noopener"><img src="img/vitrine/fiche-lue.jpg" alt="Case J'ai lu la fiche" loading="lazy"></a></figure>
+        <span class="vt-num">2</span><h3>« J'ai lu la fiche »</h3><p>La mission ne s'ouvre qu'une fois l'exercice fait et la case cochée. Le temps passé sur la fiche est enregistré.</p></div>
+      <div class="vt-etape"><figure><a class="vt-ecran" href="img/vitrine/saynete.jpg" target="_blank" rel="noopener"><img src="img/vitrine/saynete.jpg" alt="Saynète animée d'une mission" loading="lazy"></a></figure>
+        <span class="vt-num">3</span><h3>La mission</h3><p>Une saynète animée et sous-titrée pose la situation. L'élève répond à partir d'un dossier documentaire. Le copier-coller est désactivé.</p></div>
+      <div class="vt-etape"><figure><a class="vt-ecran" href="img/vitrine/feedback.jpg" target="_blank" rel="noopener"><img src="img/vitrine/feedback.jpg" alt="Retour après une première tentative" loading="lazy"></a></figure>
+        <span class="vt-num">4</span><h3>Un retour qui fait relire</h3><p>Si le premier essai est insuffisant, pas de note : un point réussi, deux ou trois priorités et la partie de la fiche à relire. La note vient au second essai.</p></div>
+      <div class="vt-etape"><figure><a class="vt-ecran" href="img/vitrine/maitrise.jpg" target="_blank" rel="noopener"><img src="img/vitrine/maitrise.jpg" alt="Vérification de maîtrise" loading="lazy"></a></figure>
+        <span class="vt-num">5</span><h3>Vérifier la maîtrise</h3><p>Après une réussite, deux questions sur sa propre copie, 60 secondes chacune. L'enseignant voit « Maîtrise confirmée » ou « À vérifier ».</p></div>
+    </div>
+    <div class="vt-note">La correction est proposée par une intelligence artificielle à partir des critères de la mission. L'enseignant voit toutes les copies et toutes les notes, et garde la décision finale.</div>
+  </div></section>
+
+  <!-- Parcours -->
+  <section id="vt-parcours"><div class="vt-in">
+    <div class="vt-sur">Le parcours</div>
+    <h2>De la 2nde à la Terminale, jusqu'à quatre paliers par compétence</h2>
+    <p class="vt-intro">Les missions sont classées en quatre paliers de difficulté. Les paliers supérieurs d'une compétence s'ouvrent à mesure que l'élève valide des missions du palier précédent : chacun avance à son rythme.</p>
+    <div class="vt-paliers">
+      <div><b>Palier 1 · 34 missions</b><strong>Débutant</strong><p>Questions guidées pour comprendre le contexte et les bases.</p></div>
+      <div><b>Palier 2 · 36 missions</b><strong>Apprenti</strong><p>Application dans un cadre, avec justification des réponses.</p></div>
+      <div><b>Palier 3 · 53 missions</b><strong>Professionnel compétent</strong><p>Situations complexes : analyse, rigueur et réflexivité.</p></div>
+      <div><b>Palier 4 · 8 missions</b><strong>Professionnel performant</strong><p>Autonomie complète, niveau attendu aux épreuves de Terminale.</p></div>
+    </div>
+    <div class="vt-grille3">
+      <div class="vt-carte"><div class="vt-gros">31</div><div class="vt-legende">missions · 2nde</div><h3>Découvrir la relation client</h3><p>Accueil, vente, suivi des ventes et fidélisation : l'élève découvre les métiers de la famille de la relation client avant de choisir son option.</p></div>
+      <div class="vt-carte"><div class="vt-gros">39 · 38</div><div class="vt-legende">missions · 1re option A · option B</div><h3>Approfondir</h3><p>Missions communes aux blocs 1 à 3, puis missions propres à l'option : l'espace commercial en option A, la prospection et la valorisation de l'offre en option B.</p></div>
+      <div class="vt-carte"><div class="vt-gros">41 · 35</div><div class="vt-legende">missions · Tle option A · option B</div><h3>Se préparer aux épreuves</h3><p>En majorité des missions de paliers 3 et 4, et un sujet d'entraînement à l'épreuve E2 par option, avec son corrigé.</p></div>
+    </div>
+  </div></section>
+
+  <!-- Référentiel -->
+  <section id="vt-referentiel" class="vt-blanc"><div class="vt-in">
+    <div class="vt-sur">Le référentiel</div>
+    <h2>Les missions sont rattachées aux compétences du référentiel</h2>
+    <p class="vt-intro">Les missions couvrent les blocs de compétences du Bac Pro Métiers du commerce et de la vente, avec leurs intitulés officiels. Le nombre de missions est indiqué pour chaque bloc.</p>
+    <div class="vt-ref">
+      <div class="vt-bloc"><div><div class="vt-bloc-n">Bloc 1 · 23 missions</div><div class="vt-bloc-t">Conseiller et vendre</div></div>
+        <ul><li>C1.1 · Assurer la veille commerciale</li><li>C1.2 · Réaliser la vente dans un cadre omnicanal</li><li>C1.3 · Assurer l'exécution de la vente</li></ul>
+        <div class="vt-bloc-e"><b>E31 · Vente-conseil</b>Coefficient 3</div></div>
+      <div class="vt-bloc"><div><div class="vt-bloc-n">Bloc 2 · 22 missions</div><div class="vt-bloc-t">Suivre les ventes</div></div>
+        <ul><li>C2.1 · Assurer le suivi de la commande du produit et/ou du service</li><li>C2.2 · Mettre en œuvre le ou les services associés</li><li>C2.3 · Traiter les retours et les réclamations du client</li><li>C2.4 · S'assurer de la satisfaction du client</li></ul>
+        <div class="vt-bloc-e"><b>E32 · Suivi des ventes</b>Coefficient 2</div></div>
+      <div class="vt-bloc"><div><div class="vt-bloc-n">Bloc 3 · 17 missions</div><div class="vt-bloc-t">Fidéliser la clientèle et développer la relation client</div></div>
+        <ul><li>C3.1 · Traiter et exploiter l'information ou le contact client</li><li>C3.2 · Contribuer à des actions de fidélisation de la clientèle et de développement de la relation client</li><li>C3.3 · Évaluer les actions de fidélisation et de développement de la relation client</li></ul>
+        <div class="vt-bloc-e"><b>E33 · Fidélisation de la clientèle et développement de la relation client</b>Coefficient 3</div></div>
+      <div class="vt-bloc"><div><div class="vt-bloc-n">Bloc 4A · 21 missions</div><div class="vt-bloc-t">Animer et gérer l'espace commercial</div></div>
+        <ul><li>C4A.1 · Assurer les opérations préalables à la vente</li><li>C4A.2 · Rendre l'unité commerciale attractive et fonctionnelle</li><li>C4A.3 · Développer la clientèle</li></ul>
+        <div class="vt-bloc-e"><b>E2 · Analyse et résolution de situations professionnelles</b>Écrit · Coefficient 4 · Option A</div></div>
+      <div class="vt-bloc"><div><div class="vt-bloc-n">Bloc 4B · 38 missions</div><div class="vt-bloc-t">Prospecter et valoriser l'offre commerciale</div></div>
+        <ul><li>C4B.1 · Rechercher et analyser les informations à des fins d'exploitation</li><li>C4B.2 · Participer à la conception d'une opération de prospection</li><li>C4B.3 · Mettre en œuvre une opération de prospection</li><li>C4B.4 · Suivre et évaluer l'action de prospection</li><li>C4B.5 · Valoriser les produits et/ou les services</li></ul>
+        <div class="vt-bloc-e"><b>E2 · Analyse et résolution de situations professionnelles</b>Écrit · Coefficient 4 · Option B</div></div>
+    </div>
+    <p class="vt-legende-img" style="margin-top:12px">S'y ajoutent 10 missions d'accueil proposées en 2nde.</p>
+    <div class="vt-note">LABORO est un outil d'entraînement. Il ne remplace ni les périodes de formation en milieu professionnel, ni l'évaluation des épreuves, qui reste celle de l'équipe pédagogique. Il garde une trace datée de chaque mission validée, réunie dans un portfolio imprimable, compétence par compétence.</div>
+  </div></section>
+
+  <!-- Enseignant -->
+  <section id="vt-enseignant"><div class="vt-in">
+    <div class="vt-sur">L'espace enseignant</div>
+    <h2>Piloter la classe sans s'y perdre</h2>
+    <p class="vt-intro">L'espace enseignant tient en quatre menus : Aujourd'hui, Ma classe, Donner une mission et Réglages. Plusieurs enseignants peuvent suivre la même classe et voir qui a donné quelle mission.</p>
+    <div class="vt-prof">
+      <div class="vt-onglets">
+        <button class="on" onclick="vtVue(this,'prof-aujourdhui')"><b>Aujourd'hui</b><span>Ce qui demande une action : élève bloqué, copie à vérifier, élève sans activité, notes à reporter.</span></button>
+        <button onclick="vtVue(this,'prof-suivi')"><b>Ma classe</b><span>Suivi des missions élève par élève, fiche de chaque élève, bilan de classe.</span></button>
+        <button onclick="vtVue(this,'prof-copie')"><b>Une copie</b><span>Les réponses, la vérification de maîtrise et les indices de travail (temps, sorties de page). Décision de l'enseignant.</span></button>
+        <button onclick="vtVue(this,'prof-pronote')"><b>Notes → Pronote</b><span>Une mission, un devoir : la colonne de notes par ordre alphabétique, comme dans Pronote, ou un fichier Excel.</span></button>
+        <button onclick="vtVue(this,'prof-donner')"><b>Donner une mission</b><span>Recherche dans la banque, puis assignation à la classe, à un demi-groupe ou à un élève, en classe ou à la maison.</span></button>
       </div>
-      <div style="margin-top:20px;font-size:11px;color:#9CA3AF">Contact : pascal.berruelle@ac-versailles.fr · Pour tout renseignement sur le déploiement de LABORO dans votre établissement</div>
+      <div class="vt-vue">
+        <a class="vt-ecran" id="vt-vue-lien" href="img/vitrine/prof-aujourdhui.jpg" target="_blank" rel="noopener"><img id="vt-vue-img" src="img/vitrine/prof-aujourdhui.jpg" alt="Espace enseignant" loading="lazy"></a>
+        <div class="vt-legende-img">Cliquer sur l'image pour l'agrandir.</div>
+      </div>
     </div>
-  </div>
+    <div class="vt-grille3" style="margin-top:28px">
+      <div class="vt-carte"><h3>Accès encadré</h3><p>Chaque élève se connecte avec son compte. L'accès est ouvert aux horaires fixés pour l'établissement ; l'enseignant peut faire des ouvertures exceptionnelles pour une classe ou un élève.</p></div>
+      <div class="vt-carte"><h3>Missions choisies</h3><p>Par classe, l'enseignant laisse toutes les missions ouvertes, ou seulement celles qu'il a données. Une mission validée reste consultable par l'élève.</p></div>
+      <div class="vt-carte"><h3>Garde-fous</h3><p>Copier-coller désactivé, temps de lecture et sorties de page relevés, questions de maîtrise minutées : des repères pour limiter le recours à une IA extérieure et cibler les élèves à interroger.</p></div>
+    </div>
+  </div></section>
+
+  <!-- En classe cette année -->
+  <section id="vt-classe" class="vt-blanc"><div class="vt-in">
+    <div class="vt-sur">En classe cette année</div>
+    <h2>Utilisé dans trois classes en 2026-2027</h2>
+    <div class="vt-grille2" style="align-items:center">
+      <div>
+        <ul class="vt-liste">
+          <li><b>Trois classes</b> travaillent sur LABORO cette année : une 2nde de la famille des métiers de la relation client, une 1re option A et une 1re option B.</li>
+          <li><b>Le travail à distance</b> : une séance s'est déroulée entièrement à distance en octobre 2026. L'enseignant a constaté que les élèves restaient mobilisés : ils retrouvent leur poste, leurs missions et les retours de leur enseignant comme en classe.</li>
+          <li><b>La mission à terminer à la maison</b> : l'enseignant peut donner une mission à finir chez soi jusqu'à une date. En dehors des horaires d'ouverture de la plateforme, l'élève n'a accès qu'à cette mission.</li>
+        </ul>
+      </div>
+      <div>
+        <a class="vt-ecran" href="img/vitrine/maison.jpg" target="_blank" rel="noopener"><img src="img/vitrine/maison.jpg" alt="Écran Mission à terminer à la maison" loading="lazy"></a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- Fin -->
+  <div class="vt-fin"><div class="vt-in">
+    <h2>Voir LABORO du côté de l'élève</h2>
+    <p>Le mode démo ouvre la plateforme avec une élève fictive de Terminale option A, déjà avancée dans son parcours. Aucune installation et aucun compte ne sont nécessaires.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="vt-btn vt-btn-p" onclick="startDemo()">▶ Lancer la démo</button>
+      <button class="vt-btn vt-btn-s" onclick="hideVitrine()">Se connecter →</button>
+    </div>
+    <div class="vt-contact">Conçu par Pascal Berruelle, professeur de lycée professionnel en économie-gestion (commerce et vente), académie de Versailles · <a href="mailto:pascal.berruelle@ac-versailles.fr">pascal.berruelle@ac-versailles.fr</a></div>
+    <div class="vt-mention">Captures réalisées sur la plateforme réelle, avec des élèves et des notes fictifs.</div>
+  </div></div>
+<script>
+function vtAller(id){ var e=document.getElementById(id); if(e) e.scrollIntoView({behavior:'smooth',block:'start'}); }
+function vtVue(btn,nom){
+  document.querySelectorAll('#vitrine .vt-onglets button').forEach(function(b){ b.classList.toggle('on', b===btn); });
+  var src='img/vitrine/'+nom+'.jpg';
+  document.getElementById('vt-vue-img').src=src;
+  document.getElementById('vt-vue-lien').href=src;
+}
+</script>
 </div>
+
 
 <!-- ONBOARDING -->
 <div id="onboarding" class="scr">
@@ -883,7 +946,7 @@
       </div>
       <div class="card" style="overflow-x:auto;margin-bottom:12px">
         <div class="ct" id="cl-titre">Vue classe — cliquer sur un élève pour le sélectionner</div>
-        <table class="ctl"><thead><tr><th>Élève</th><th>Classe</th><th id="th-activite" onclick="if(typeof basculerTriActivite==='function')basculerTriActivite()" style="cursor:pointer" title="Cliquer pour trier : les plus anciennes en haut">Dernière activité</th><th>C1</th><th>C2</th><th>C3</th><th>G4</th><th>Score</th><th>Posture</th><th>Missions</th><th>Moy.</th><th>Actions</th></tr></thead><tbody id="cl-tbody"></tbody></table>
+        <table class="ctl"><thead><tr><th>Élève</th><th>Classe</th><th id="th-activite" onclick="if(typeof basculerTriActivite==='function')basculerTriActivite()" style="cursor:pointer" title="Cliquer pour trier : les plus anciennes en haut">Dernière activité</th><th>Bloc 1</th><th>Bloc 2</th><th>Bloc 3</th><th>Bloc 4</th><th>Score</th><th>Posture</th><th>Missions</th><th>Moy.</th><th>Actions</th></tr></thead><tbody id="cl-tbody"></tbody></table>
       </div>
       <div id="archives-wrap"></div>
     </div>
@@ -1000,38 +1063,38 @@
   </div>
 </div>
 </div>
-<script src="data/competences.js?v=20261001cse"></script>
-<script src="data/missions.js?v=20261001cse"></script>
+<script src="data/competences.js?v=20261015codes"></script>
+<script src="data/missions.js?v=20261015codes"></script>
 <script src="data/produits.js?v=20261001cse"></script>
 <script src="data/e2-agec.js?v=20260930"></script>
 <script src="data/e2-pvoc.js?v=20261001cse"></script>
-<script src="js/app.js?v=20261010b"></script>
+<script src="js/app.js?v=20261015codes"></script>
 <script src="js/auth.js?v=20261010"></script>
-<script src="js/dashboard.js?v=20261010c"></script>
-<script src="js/missions.js?v=20261014"></script>
+<script src="js/dashboard.js?v=20261015codes"></script>
+<script src="js/missions.js?v=20261015codes"></script>
 <script src="js/correction-serveur.js?v=20261014"></script>
 <script src="js/catalogue.js?v=20260927"></script>
 <script src="js/clients.js?v=20260927"></script>
-<script src="js/teacher.js?v=20261010c"></script>
-<script src="js/classe-serveur.js?v=20261010b"></script>
-<script src="js/releve-notes.js?v=20261010b"></script>
+<script src="js/teacher.js?v=20261015codes"></script>
+<script src="js/classe-serveur.js?v=20261015codes"></script>
+<script src="js/releve-notes.js?v=20261015codes"></script>
 <script src="js/groupes.js?v=20260927"></script>
 <script src="js/dashboard-enseignant.js?v=20261010b"></script>
-<script src="js/copie.js?v=20261015"></script>
-<script src="js/annulation.js?v=20261002"></script>
-<script src="js/portfolio.js?v=20260927f"></script>
+<script src="js/copie.js?v=20261015codes"></script>
+<script src="js/annulation.js?v=20261015codes"></script>
+<script src="js/portfolio.js?v=20261015codes"></script>
 <script src="js/admin-classes.js?v=20260927"></script>
 <script src="js/admin-acces.js?v=20261010"></script>
-<script src="js/generation-mission.js?v=20260927b"></script>
-<script src="js/recherche-missions.js?v=20261015"></script>
-<script src="js/utils.js?v=20260927f"></script>
+<script src="js/generation-mission.js?v=20261015codes"></script>
+<script src="js/recherche-missions.js?v=20261015codes"></script>
+<script src="js/utils.js?v=20261015codes"></script>
 <script src="js/mot-de-passe.js?v=20260927"></script>
 <script src="js/brouillons-serveur.js?v=20260928b"></script>
 <script src="js/sante-ia.js?v=20261015"></script>
-<script src="js/maison.js?v=20260929"></script>
+<script src="js/maison.js?v=20261015codes"></script>
 <script src="js/memos.js?v=20261002"></script>
-<script src="js/suivi-missions.js?v=20261015c"></script>
-<script src="js/indicateurs-classe.js?v=20261015b"></script>
+<script src="js/suivi-missions.js?v=20261015codes"></script>
+<script src="js/indicateurs-classe.js?v=20261015codes"></script>
 <script src="js/menu-enseignant.js?v=20261010"></script>
 <script src="js/activite-eleves.js?v=20261007"></script>
 <!-- Animations des ressources et missions (12/10/2026) : contenus puis moteur, chargés en dernier -->
@@ -1042,7 +1105,7 @@
 <script src="js/parcours-eleve.js?v=20261014b"></script>
 <script src="js/maitrise.js?v=20261014"></script>
 <script src="js/acces-missions.js?v=20261015"></script>
-<script src="js/espace-prof.js?v=20261015c"></script>
+<script src="js/espace-prof.js?v=20261015codes"></script>
 
 <div id="charte-laboro" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1A2E4A 0%,#2D5282 100%);z-index:9999;overflow-y:auto;padding:40px 20px">
   <div style="max-width:680px;margin:0 auto">
