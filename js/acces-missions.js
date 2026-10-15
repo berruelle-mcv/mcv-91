@@ -44,6 +44,10 @@
         var a = r.data.acces_missions;
         var avant = JSON.stringify(ACCES);
         ACCES = (a && a.libre === false) ? { libre: false, ouvertes: a.ouvertes || [] } : { libre: true, ouvertes: [] };
+        if(typeof memoriserAssignees === "function"){
+          memoriserAssignees(ACCES.ouvertes);
+          memoriserAssignees((r.data.missions || []).map(function(m){ return m.mission_id; }));
+        }
         if(avant !== JSON.stringify(ACCES)) griser();
       });
   }

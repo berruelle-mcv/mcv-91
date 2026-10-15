@@ -18,6 +18,7 @@ async function renderMDJEleve(){
   });
   if(!r.ok || !r.data.ok){ wrap.innerHTML=''; return; }
   let missions = Array.isArray(r.data.missions) ? r.data.missions : (r.data.mission ? [r.data.mission] : []);
+  memoriserAssignees(missions.map(function(m){ return m.mission_id; }), true);
   // Double sécurité côté navigateur : ne pas afficher une mission que l'élève vient de terminer
   const ud = (typeof gUD === 'function') ? gUD() : null;
   missions = missions.filter(function(m){
@@ -656,16 +657,33 @@ function getMissions(){
   const res=MISSIONS.filter(m=>liste.includes(m.id));
   return trie?res.sort((a,b)=>a.palier-b.palier||liste.indexOf(a.id)-liste.indexOf(b.id)):res;
 }
+// Missions données à l'élève par un enseignant (mission du jour, à la maison, accès limité).
+// Rempli par renderMDJEleve() et acces-missions.js à partir de /api/mission-du-jour/moi.
+window.__LABORO_ASSIGNEES = window.__LABORO_ASSIGNEES || {};
+function memoriserAssignees(ids, remplacer){
+  if(remplacer) window.__LABORO_ASSIGNEES = {};
+  (ids || []).forEach(function(id){ if(id) window.__LABORO_ASSIGNEES[id] = true; });
+}
+function missionAssignee(id){ return !!(window.__LABORO_ASSIGNEES && window.__LABORO_ASSIGNEES[id]); }
+
+// Déblocage des paliers (règles validées par Pascal le 15/10/2026) :
+//  1. le palier 1 est toujours ouvert ;
+//  2. une mission donnée par l'enseignant est toujours ouverte ;
+//  3. n'importe quelle mission VALIDÉE du palier précédent, même compétence, ouvre la suivante
+//     (y compris une mission faite une année précédente, hors de la liste actuelle) ;
+//  4. si la liste de l'élève ne contient aucune mission du palier précédent pour cette
+//     compétence, la mission est ouverte (on ne peut pas exiger une mission qu'il ne voit pas).
+// La validation elle-même est faite par le serveur, selon le seuil de la classe.
 function isPalierUnlocked(m,ud){
   if(m.palier===1)return true;
-  // Le palier précédent de la même compétence doit être VALIDÉ. C'est le serveur qui
-  // valide, selon le seuil réglé pour la classe (10/20 aujourd'hui) — l'ancien seuil
-  // fixe "≥ 11" côté site bloquait à tort un élève validé avec 10/20 (25/09/2026).
+  if(missionAssignee(m.id))return true;
   const prevPalier=m.palier-1;
-  const prevMission=MISSIONS.find(x=>x.comp===m.comp&&x.palier===prevPalier);
-  if(!prevMission)return true;
-  const prev=ud.missions[prevMission.id];
-  return !!(prev&&prev.status==='done');
+  const precedentes=MISSIONS.filter(function(x){ return x.comp===m.comp&&x.palier===prevPalier; });
+  const missionsEleve=(ud&&ud.missions)||{};
+  if(precedentes.some(function(x){ return missionsEleve[x.id]&&missionsEleve[x.id].status==='done'; }))return true;
+  const liste=(typeof CU!=='undefined'&&CU&&CU.classe)?listesMissionsClasse(CU.classe):null;
+  const dansListe=liste?precedentes.filter(function(x){ return liste.indexOf(x.id)>=0; }):precedentes;
+  return dansListe.length===0;
 }
 
 function compBadge(code){
