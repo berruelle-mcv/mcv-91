@@ -130,9 +130,9 @@ function afficherPortfolioDoc(ud, nom, classe){
                 : 'Animer et gérer l\'espace commercial / Prospecter et valoriser l\'offre commerciale';
 
   const epreuves = [
-    { code:'E31', titre:'Conseiller et vendre',           coef:'Coef. 3', groupes:['G1'] },
-    { code:'E32', titre:'Suivre les ventes',              coef:'Coef. 2', groupes:['G2'] },
-    { code:'E33', titre:'Développer la relation client',  coef:'Coef. 3', groupes:['G3'] },
+    { code:'E31', titre:'Vente-conseil (bloc 1 · Conseiller et vendre)', coef:'Coef. 3', groupes:['G1'] },
+    { code:'E32', titre:'Suivi des ventes (bloc 2 · Suivre les ventes)', coef:'Coef. 2', groupes:['G2'] },
+    { code:'E33', titre:'Fidélisation de la clientèle et développement de la relation client (bloc 3)', coef:'Coef. 3', groupes:['G3'] },
     { code:'E2',  titre:titreE2,                          coef:'Bloc 4 · coef. 4 · épreuve écrite ponctuelle (hors CCF)',  groupes:groupesE2 },
   ];
 
@@ -144,7 +144,7 @@ function afficherPortfolioDoc(ud, nom, classe){
       return '<div style="width:18px;height:6px;border-radius:3px;background:'+(on?niveauCols[lv]:'#E5E7EB')+'"></div>';
     }).join('');
     return '<div style="background:#fff;border-radius:8px;padding:10px 12px;border:1px solid #E5E7EB">'
-      + '<div style="font-size:10px;font-weight:700;color:'+niveauCols[lv]+';margin-bottom:4px">'+c.code+' — '+c.label+'</div>'
+      + '<div style="font-size:10px;font-weight:700;color:'+niveauCols[lv]+';margin-bottom:4px">'+codeComp(c.code)+' — '+c.label+'</div>'
       + '<div style="display:flex;gap:3px;margin-bottom:4px">'+segments+'</div>'
       + '<div style="font-size:9px;color:'+niveauCols[lv]+';font-weight:700">Niveau '+lv+' — '+niveauLabels[lv]+'</div>'
       + '</div>';
@@ -176,9 +176,9 @@ function afficherPortfolioDoc(ud, nom, classe){
 
   // Appréciation générée automatiquement
   const compAcquises = COMP.filter(function(c){ return niveauDe(c.code)>=3; });
-  const pointsForts = compAcquises.slice(0,2).map(function(c){ return c.label+' ('+c.code+', niveau '+niveauDe(c.code)+')'; }).join(' et ');
+  const pointsForts = compAcquises.slice(0,2).map(function(c){ return c.label+' ('+codeComp(c.code)+', niveau '+niveauDe(c.code)+')'; }).join(' et ');
   const enCours = COMP.filter(function(c){ const lv=niveauDe(c.code); return lv===1||lv===2; });
-  const phraseEnCours = enCours.length ? ' La compétence '+enCours[0].code+' ('+enCours[0].label+') est en cours d\'acquisition.' : '';
+  const phraseEnCours = enCours.length ? ' La compétence '+codeComp(enCours[0].code)+' ('+enCours[0].label+') est en cours d\'acquisition.' : '';
   const appreciation = nbValidees
     ? nom+' a validé '+nbValidees+' mission'+(nbValidees>1?'s':'')+' avec une moyenne de '+moyenne+'/20.'
       + (pointsForts ? ' Points forts : '+pointsForts+'.' : '')

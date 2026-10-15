@@ -52,7 +52,7 @@ async function renderMDJEleve(){
       + g.missions.map(function(m, i){
           return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0'+(i ? ';border-top:1px solid ' + t.bord : '')+'">'
             + '<div><div style="font-size:13px;font-weight:700;margin-bottom:2px">'+m.titre+'</div>'
-            + '<div class="u-label-sm">'+m.comp_id+' P'+m.palier
+            + '<div class="u-label-sm">'+codeComp(m.comp_id)+' P'+m.palier
             + (m.maison_jusqu_a && typeof dateMaisonLisible === 'function' ? ' · <strong style="color:#075985">🏠 à terminer à la maison avant '+dateMaisonLisible(m.maison_jusqu_a)+'</strong>' : '')
             + '</div></div>'
             + '<button onclick="handleMission(\''+m.mission_id+'\')" style="flex-shrink:0;padding:6px 14px;background:' + t.bouton + ';color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700">Ouvrir</button>'
@@ -679,7 +679,18 @@ function compBadge(code){
     'ACC':'#E63B2E','ACC1':'#E63B2E','ACC2':'#E63B2E','ACC3':'#E63B2E','ACC4':'#E63B2E'
   };
   const col = hexTheme(colors[code] || '#6B7280');
-  return '<span style="background:'+col+'22;color:'+col+';font-size:9px;font-weight:800;padding:2px 7px;border-radius:6px;display:inline-block">'+code+'</span>';
+  return '<span style="background:'+col+'22;color:'+col+';font-size:9px;font-weight:800;padding:2px 7px;border-radius:6px;display:inline-block">'+codeComp(code)+'</span>';
+}
+
+// Numéro de compétence AFFICHÉ (15/10/2026) : les codes internes des missions (comp) restent
+// les identifiants de la plateforme et du serveur ; ce qui est montré à l'écran suit la
+// numérotation officielle du référentiel. La correspondance est propre à chaque univers :
+// LABORO_CONFIG.codes_competences dans data/univers.js (code interne → code officiel).
+// Sans correspondance, le code interne est affiché tel quel.
+function codeComp(code){
+  if(code == null) return '';
+  const t = (typeof LABORO_CONFIG !== 'undefined' && LABORO_CONFIG && LABORO_CONFIG.codes_competences) || {};
+  return Object.prototype.hasOwnProperty.call(t, code) ? t[code] : String(code);
 }
 
 function renderMissions(){

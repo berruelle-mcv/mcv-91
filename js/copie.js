@@ -116,7 +116,7 @@ function renderCopie(){
     + '<span style="color:var(--gm)">Tentatives utilisées : <strong>' + d.tentatives + '/2</strong></span>'
     + etiquetteMaitrise(d)
     + '<span style="color:var(--gm)">Rendue le ' + dateHeure(d.submitted_at) + '</span>'
-    + (m ? '<span style="color:var(--gm)">' + esc(m.comp) + ' · Palier ' + esc(m.palier) + ' · seuil de la classe ' + esc(d.seuil) + '/20</span>' : '')
+    + (m ? '<span style="color:var(--gm)">' + esc(codeComp(m.comp)) + ' · Palier ' + esc(m.palier) + ' · seuil de la classe ' + esc(d.seuil) + '/20</span>' : '')
     + '</div>'
     + blocMaitrise(d)
     + blocIndices(d)

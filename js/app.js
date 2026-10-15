@@ -321,19 +321,25 @@ function updateFiltreComp() {
   // Définition des options selon le profil
   const optionsCommunes = [
     { v: '',    l: 'Toutes compétences' },
-    { v: 'C1',  l: 'C1 — Conseiller & vendre' },
-    { v: 'C2',  l: 'C2 — Suivre la commande' },
-    { v: 'C3',  l: 'C3 — Fidéliser' },
+    { v: 'C1',  l: 'Bloc 1 — Conseiller et vendre' },
+    { v: 'C2',  l: 'Bloc 2 — Suivre les ventes' },
+    { v: 'C3',  l: 'Bloc 3 — Fidéliser la clientèle et développer la relation client' },
   ];
-  const optionAGEC  = { v: 'C4A', l: 'C4A — Espace commercial (AGEC)' };
-  const optionPVOC  = { v: 'B4',  l: 'B4 — Prospection B2B (PVOC)' };
+  const optionAGEC  = { v: 'C4A', l: 'Bloc 4A — Animer et gérer l\'espace commercial' };
+  const optionPVOC  = { v: 'B4',  l: 'Bloc 4B — Prospecter et valoriser l\'offre commerciale' };
   const optionACC   = { v: 'ACC', l: 'Accueil — Seconde' };
 
   let options = [...optionsCommunes];
   if (is2nde)         { options.push(optionACC); }
   if (isAGEC)         { options.push(optionAGEC); }
   if (isPVOC)         { options.push(optionPVOC); }
-  if (isEns)          { options.push(optionAGEC, optionPVOC, optionACC); }
+  if (isEns) {
+    // Enseignant : seulement les blocs qui existent dans cette plateforme (15/10/2026)
+    const existe = function(prefixe){ return typeof MISSIONS !== 'undefined' && MISSIONS.some(function(m){ return m.comp && m.comp.indexOf(prefixe) === 0; }); };
+    if (existe('C4A')) options.push(optionAGEC);
+    if (existe('B4'))  options.push(optionPVOC);
+    if (existe('ACC')) options.push(optionACC);
+  }
 
   // Mémoriser la valeur courante avant de reconstruire
   const current = sel.value;

@@ -424,7 +424,7 @@ function exporterClasse(){
   const liste = (typeof filtrerParGroupe === 'function') ? filtrerParGroupe(listeClasse) : listeClasse;
   if(!liste.length){ alert('Aucun élève à exporter.'); return; }
 
-  const lignes = [['Nom','Prénom','Email','Classe','Groupe','C1','C2','C3','G4','Score /100','Posture','Missions validées','Moyenne /20']];
+  const lignes = [['Nom','Prénom','Email','Classe','Groupe','Bloc 1','Bloc 2','Bloc 3','Bloc 4','Score /100','Posture','Missions validées','Moyenne /20']];
   liste.forEach(function(e){
     const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
     const done = Object.values(ud.missions).filter(function(m){ return m.status === 'done'; });

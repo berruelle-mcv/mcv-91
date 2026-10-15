@@ -127,7 +127,7 @@ function openMission(id){
     html+=`<div style="background:var(--th-fond);border:.5px solid var(--th-bordure);border-left:3px solid var(--th-principal);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px">
       <div style="font-size:10px;font-weight:700;color:var(--th-principal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">🎯 Objectif de cette mission</div>
       <div style="font-size:12px;color:var(--th-fonce);line-height:1.6">${m.objectif}</div>
-      <div style="font-size:11px;color:var(--th-second);margin-top:4px">Compétence travaillée : <strong>${m.comp}</strong> — ${m.comp_libelle}</div>
+      <div style="font-size:11px;color:var(--th-second);margin-top:4px">Compétence travaillée : <strong>${codeComp(m.comp)}</strong> — ${m.comp_libelle}</div>
     </div>`;
   }
   html+=`<div class="ph1"><div class="ph-l" style="color:var(--bl)">Mise en situation</div><div class="ph-c">${contexteAffiche}</div></div>`;
@@ -486,10 +486,19 @@ function renderCompetences(){
     {label:'Maîtrisé',      col:'var(--th-principal)', bg:'var(--th-fond)', icon:'●'}
   ];
 
+  // Bloc 4 regroupé (G4A / G4B) : seulement celui de l'option de l'élève, calculé sur les
+  // missions C4A.x / B4.x (même règle que la vue enseignant, teacher.js) — 15/10/2026.
+  const clsComp = (CU && CU.classe) || '';
+  const codeCalcul = function(code){ return code === 'G4A' ? 'C4A' : code === 'G4B' ? 'B4' : code; };
+  const compsVisibles = COMP.filter(function(c){
+    if(c.code === 'G4A') return clsComp.includes('AGEC');
+    if(c.code === 'G4B') return clsComp.includes('PVOC');
+    return true;
+  });
   // Calcul automatique pour tous les comps
   const niveauCounts = [0,0,0,0,0];
-  COMP.forEach(function(c){
-    const lv = calcNiveauComp(c.code, ud);
+  compsVisibles.forEach(function(c){
+    const lv = calcNiveauComp(codeCalcul(c.code), ud);
     // Mettre à jour les compétences dans ud (sync auto)
     if(!ud.competences) ud.competences = {};
     ud.competences[c.code] = lv;
@@ -530,12 +539,12 @@ function renderCompetences(){
   }
 
   // Cards
-  document.getElementById('comp-grid').innerHTML = COMP.map(function(c){
-    const lv  = calcNiveauComp(c.code, ud);
+  document.getElementById('comp-grid').innerHTML = compsVisibles.map(function(c){
+    const lv  = calcNiveauComp(codeCalcul(c.code), ud);
     const n   = niveaux[lv];
     const pct = lv * 25;
 
-    const mComp = MISSIONS.filter(function(m){ return m.comp===c.code || m.comp.startsWith(c.code+'.'); });
+    const mComp = MISSIONS.filter(function(m){ return m.comp===codeCalcul(c.code) || m.comp.startsWith(codeCalcul(c.code)+'.'); });
     const mDone = mComp.filter(function(m){ return ud.missions[m.id] && ud.missions[m.id].status==='done'; });
     const scores = mDone.filter(function(m){ return ud.missions[m.id].score != null; }).map(function(m){ return ud.missions[m.id].score; });
     const avg = scores.length ? (scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1) : null;
@@ -550,7 +559,7 @@ function renderCompetences(){
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
       + '<div class="u-flex-gap">'
       + compBadge(c.code)
-      + '<span style="font-size:9px;color:#6B7280;font-weight:600">'+c.g+'</span>'
+      + (codeComp(c.code) === String(c.g||'').replace(/^G/,'Bloc ') ? '' : '<span style="font-size:9px;color:#6B7280;font-weight:600">'+String(c.g||'').replace(/^G/,'Bloc ')+'</span>')
       + '</div>'
       + '<span style="width:22px;height:22px;border-radius:50%;background:'+n.col+';display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;flex-shrink:0">'+(lv===0?'0':lv)+'</span>'
       + '</div>'

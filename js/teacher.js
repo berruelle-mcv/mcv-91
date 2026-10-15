@@ -665,7 +665,7 @@ function cartesMissionsMDJ(enCours){
       + '<div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">'
       + '<div style="flex:1;min-width:220px">'
       + '<div style="font-size:13.5px"><strong style="color:var(--th-principal)">' + escMDJ(c.mission_id) + '</strong> <strong>' + escMDJ(c.titre || '') + '</strong></div>'
-      + '<div class="u-label-sm">' + escMDJ(c.classe) + ' · ' + escMDJ(c.comp_id || '') + (c.palier ? ' P' + escMDJ(c.palier) : '') + '</div>'
+      + '<div class="u-label-sm">' + escMDJ(c.classe) + ' · ' + escMDJ(codeComp(c.comp_id || '')) + (c.palier ? ' P' + escMDJ(c.palier) : '') + '</div>'
       + '</div>'
       + '<div style="text-align:center;min-width:90px"><div style="font-size:20px;font-weight:800;color:var(--th-fonce,#1F2937)">' + c.faites.length + '<span style="font-size:13px;color:var(--gm)">/' + c.total + '</span></div><div style="font-size:10.5px;color:var(--gm)">réalisée</div></div>'
       + '<div style="text-align:center;min-width:90px"><div style="font-size:20px;font-weight:800;color:' + couleurNote(c.moyenne) + '">' + (c.moyenne != null ? fmtNoteMDJ(c.moyenne) : '—') + '<span style="font-size:13px;color:var(--gm)">/20</span></div><div style="font-size:10.5px;color:var(--gm)">moyenne' + (c.nbNotes ? ' (' + c.nbNotes + ' note' + (c.nbNotes > 1 ? 's' : '') + ')' : '') + '</div></div>'
@@ -775,7 +775,7 @@ function renderMDJHistorique(){
         const e = etatAssignation(a);
         return '<tr><td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;white-space:nowrap">'+fmtDateHeure(a.created_at)+(a.assigne_par ? '<div style="font-size:11px;color:var(--gm)">par '+escMDJ(a.assigne_par)+'</div>' : '')+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7;font-weight:700">'+cibleAssignation(a)+'</td>'
-          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+(a.comp_id||'')+')</span>'+etiquetteMaison(a)+'</td>'
+          + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><strong style="color:var(--th-principal)">'+a.mission_id+'</strong> — '+(a.titre||'')+' <span style="color:var(--gm)">('+codeComp(a.comp_id||'')+')</span>'+etiquetteMaison(a)+'</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7">'+a.termines+'/'+a.total+' terminée(s)</td>'
           + '<td style="padding:6px 8px;border-bottom:1px solid #EDF2F7"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:'+e.bg+';color:'+e.fg+'">'+e.label
           + (a.retiree_at ? ' le '+fmtDateHeure(a.retiree_at).split(' ')[0] : '') + '</span></td></tr>';

@@ -49,7 +49,7 @@
       const statut = c.statut === 'valide' ? '✅ validée' : (c.statut === 'brouillon' ? '✏️ brouillon' : (c.statut === 'a_examiner' ? '🔎 à examiner' : '📝 rendue'));
       return '<tr style="border-top:.5px solid #E5E7EB' + (c.demandee ? '' : ';background:#FFFBEB') + '">'
         + '<td style="padding:6px"><input type="checkbox" ' + (COCHE[c.mission_id] ? 'checked' : '') + ' onchange="annulCocher(\'' + esc(c.mission_id) + '\',this.checked)"></td>'
-        + '<td style="padding:6px"><strong>' + esc(c.mission_id) + '</strong> ' + esc(c.titre || '') + '<div style="color:#6B7280;font-size:11px">' + esc(c.comp_id || '') + ' P' + esc(c.palier || '') + '</div></td>'
+        + '<td style="padding:6px"><strong>' + esc(c.mission_id) + '</strong> ' + esc(c.titre || '') + '<div style="color:#6B7280;font-size:11px">' + esc(codeComp(c.comp_id || '')) + ' P' + esc(c.palier || '') + '</div></td>'
         + '<td style="padding:6px">' + (c.demandee ? 'oui' : '<strong style="color:#92400E">non</strong>') + '</td>'
         + '<td style="padding:6px">' + statut + (c.note != null ? ' · <strong>' + esc(c.note) + '/20</strong>' : '') + (c.tentatives ? ' · ' + c.tentatives + ' tent.' : '') + '</td>'
         + '<td style="padding:6px;white-space:nowrap">' + quand(c.submitted_at) + (maison ? ' 🏠' : '') + '</td>'

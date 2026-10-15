@@ -43,7 +43,7 @@
       const bloquee = m && typeof isPalierUnlocked === 'function' && !isPalierUnlocked(m, ud);
       return '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px 16px;margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">'
         + '<div style="flex:1;min-width:200px"><div style="font-weight:800;font-size:14px;margin-bottom:3px">' + esc((m && m.titre) || x.titre) + '</div>'
-        + '<div style="font-size:12px;color:#4A5568">' + esc(x.comp_id) + ' · Palier ' + esc(x.palier) + ' · à terminer avant ' + esc(dateMaisonLisible(x.jusqu_a)) + '</div></div>'
+        + '<div style="font-size:12px;color:#4A5568">' + esc(codeComp(x.comp_id)) + ' · Palier ' + esc(x.palier) + ' · à terminer avant ' + esc(dateMaisonLisible(x.jusqu_a)) + '</div></div>'
         + (bloquee
             ? '<div style="font-size:12px;color:#92400E;background:#FFFBEA;border-radius:8px;padding:6px 10px">🔒 Palier pas encore débloqué pour toi</div>'
             : (x.termine ? '<div style="font-size:12px;color:#166534;background:#DCFCE7;border-radius:8px;padding:6px 10px">✅ Terminée</div>' : '')

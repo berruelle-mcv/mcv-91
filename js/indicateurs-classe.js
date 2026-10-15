@@ -178,7 +178,7 @@
     h += carte('🎯 Compétences à retravailler',
       comps.length ? '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr><th style="' + th + '">Compétence</th><th style="' + th + '">Copies rendues</th><th style="' + th + '">Élèves</th><th style="' + th + '">Validées</th><th style="' + th + '">Note moyenne</th></tr></thead><tbody>'
         + comps.map(function(x){
-            return '<tr><td style="' + td + '"><strong style="color:var(--th-principal)">' + esc(x.code) + '</strong> ' + esc(libelleComp(x.code)) + '</td>'
+            return '<tr><td style="' + td + '"><strong style="color:var(--th-principal)">' + esc(codeComp(x.code)) + '</strong> ' + esc(libelleComp(x.code)) + '</td>'
               + '<td style="' + td + '">' + x.copies + '</td><td style="' + td + '">' + Object.keys(x.eleves).length + '</td>'
               + '<td style="' + td + '">' + pastilleTaux(x.val / x.copies) + '</td><td style="' + td + '">' + (x.nb ? fmt(x.somme / x.nb, true) + '/20' : '—') + '</td></tr>';
           }).join('') + '</tbody></table></div>'
@@ -190,7 +190,7 @@
       h += carte('🔍 Missions les moins réussies',
         '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr><th style="' + th + '">Mission</th><th style="' + th + '">Copies</th><th style="' + th + '">Validées</th><th style="' + th + '">Note moyenne</th></tr></thead><tbody>'
         + ms.map(function(x){
-            return '<tr><td style="' + td + '"><strong style="color:var(--th-fonce)">' + esc(x.titre || x.id) + '</strong> <span style="color:var(--gm)">(' + esc(x.comp) + ')</span></td>'
+            return '<tr><td style="' + td + '"><strong style="color:var(--th-fonce)">' + esc(x.titre || x.id) + '</strong> <span style="color:var(--gm)">(' + esc(codeComp(x.comp)) + ')</span></td>'
               + '<td style="' + td + '">' + x.copies + '</td><td style="' + td + '">' + pastilleTaux(x.val / x.copies) + '</td><td style="' + td + '">' + fmt(x.somme / x.nb, true) + '/20</td></tr>';
           }).join('') + '</tbody></table></div>',
         'Parmi les missions rendues par au moins 2 élèves : les notes moyennes les plus basses.');

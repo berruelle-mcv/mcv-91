@@ -38,7 +38,7 @@ function initGenerationMission(){
   if(selComp){
     const current = selComp.value;
     const comps = competencesGeneration(selOpt ? selOpt.value : '');
-    selComp.innerHTML = comps.map(function(c){ return '<option value="'+c.code+'">'+c.code+' — '+c.label+'</option>'; }).join('');
+    selComp.innerHTML = comps.map(function(c){ return '<option value="'+c.code+'">'+codeComp(c.code)+' — '+c.label+'</option>'; }).join('');
     if(current && comps.some(function(c){ return c.code === current; })) selComp.value = current;
   }
 }
@@ -106,7 +106,7 @@ function renderBrouillonMission(m){
   return '<div style="background:#fff;border:.5px solid var(--gb);border-radius:10px;padding:16px;margin-bottom:12px">'
     + '<div style="font-size:10px;font-weight:700;color:var(--am,#D97706);text-transform:uppercase;letter-spacing:.05em">⚠️ Brouillon — à relire avant intégration, jamais publié automatiquement</div>'
     + '<div style="font-size:15px;font-weight:800;color:var(--gr);margin-top:4px">' + esc(m.titre) + '</div>'
-    + '<div style="font-size:11px;color:var(--gm);margin-top:2px;margin-bottom:12px">' + esc(m.comp) + ' — Palier ' + esc(m.palier) + ' — ' + esc(m.option) + '</div>'
+    + '<div style="font-size:11px;color:var(--gm);margin-top:2px;margin-bottom:12px">' + esc(codeComp(m.comp)) + ' — Palier ' + esc(m.palier) + ' — ' + esc(m.option) + '</div>'
     + '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Objectif :</strong> ' + esc(m.objectif) + '</div>'
     + '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Contexte :</strong> ' + esc(m.contexte) + '</div>'
     + (m.contexte_pvoc ? '<div style="font-size:12px;color:var(--gr);margin-bottom:10px"><strong>Contexte PVOC :</strong> ' + esc(m.contexte_pvoc) + '</div>' : '')

@@ -201,7 +201,7 @@ function initRechercheMissions(){
       comps.push({ code: m.comp, label: c ? c.label : String(m.comp_libelle || m.comp).replace(/^[^—]*—\s*/, '') });
     });
     comps.sort(function(a, b){ return a.code.localeCompare(b.code, 'fr', { numeric: true }); });
-    selComp.innerHTML = '<option value="">Toutes les compétences</option>' + comps.map(function(c){ return '<option value="' + rmEsc(c.code) + '">' + rmEsc(c.code + ' — ' + c.label) + '</option>'; }).join('');
+    selComp.innerHTML = '<option value="">Toutes les compétences</option>' + comps.map(function(c){ return '<option value="' + rmEsc(c.code) + '">' + rmEsc(codeComp(c.code) + ' — ' + c.label) + '</option>'; }).join('');
   }
   const selPal = document.getElementById('rm-pal');
   if(selPal && !selPal.options.length){
@@ -258,7 +258,7 @@ function lancerRechercheMissions(){
       +     '<div style="font-size:14px;font-weight:700;color:var(--gr)">' + rmEsc(m.titre) + '</div>'
       +     '<div style="font-size:11px;color:var(--gm);margin-top:3px">'
       +       '<span class="rm-donnee" data-mid="' + rmEsc(m.id) + '"></span>'
-      +       (typeof compBadge === 'function' ? compBadge(m.comp) : rmEsc(m.comp)) + ' · Palier ' + rmEsc(m.palier)
+      +       (typeof compBadge === 'function' ? compBadge(m.comp) : rmEsc(codeComp(m.comp))) + ' · Palier ' + rmEsc(m.palier)
       +       (m.option && m.option !== 'PVOC' || (getCfg().options || []).length > 1 ? ' · ' + rmEsc(m.option) : '')
       +       (partiel ? ' · <span style="color:#B45309">' + x.trouves + ' mot' + (x.trouves > 1 ? 's' : '') + ' sur ' + r.termes.length + '</span>' : '')
       +     '</div>'

@@ -24,7 +24,7 @@ function populateMDJSelect(){
   if(!sel) return;
   sel.innerHTML = '<option value="">— Mission —</option>'
     + MISSIONS.map(function(m){
-        return '<option value="'+m.id+'">'+m.titre+' (P'+m.palier+' — '+m.comp+')</option>';
+        return '<option value="'+m.id+'">'+m.titre+' (P'+m.palier+' — '+codeComp(m.comp)+')</option>';
       }).join('');
 }
 

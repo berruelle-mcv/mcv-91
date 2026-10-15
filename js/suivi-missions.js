@@ -241,7 +241,7 @@
           const maison = (col.active && col.maison) ? '<div title="À terminer à la maison" style="color:' + (col.maison < new Date() ? '#6B7280' : '#075985') + '">🏠 ' + (col.maison < new Date() ? 'échue ' : 'jusqu\'au ') + jourCourt(col.maison) + '</div>' : '';
           return '<th style="' + th + 'text-align:center;min-width:120px;max-width:170px;font-weight:600;color:var(--gm)" title="' + esc(col.titre || '') + '">'
             + '<div style="font-weight:800;color:var(--th-fonce);font-size:12px;line-height:1.3;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' + esc(col.titre || col.mission_id) + '</div>'
-            + '<div>' + esc(col.comp_id || '') + (col.palier ? ' · P' + esc(col.palier) : '') + ' · ' + jourCourt(col.premiere) + '</div>'
+            + '<div>' + esc(codeComp(col.comp_id || '')) + (col.palier ? ' · P' + esc(col.palier) : '') + ' · ' + jourCourt(col.premiere) + '</div>'
             + (col.parNoms && col.parNoms.length ? '<div title="Donnée par" style="margin-top:2px">' + col.parNoms.map(function(p){ return '<span style="font-weight:800;border-radius:6px;padding:0 6px;' + styleEnseignant(p.couleur) + '">' + esc(p.nom) + '</span>'; }).join(' ') + '</div>'
               : (col.par && col.par.length ? '<div title="Assignée par">par ' + esc(col.par.join(', ')) + '</div>' : ''))
             + maison

@@ -427,7 +427,7 @@
     const act = dateS(e.derniere_activite);
     const comps = ['C1', 'C2', 'C3'].map(function(c){
       const n = typeof calcNiveauComp === 'function' ? calcNiveauComp(c, ud) : 0;
-      return '<div class="ep-ligne-comp"><span>' + c + '</span>' + (typeof badgeNiveau === 'function' ? badgeNiveau(n) : n) + '</div>';
+      return '<div class="ep-ligne-comp"><span>Bloc ' + c.slice(1) + '</span>' + (typeof badgeNiveau === 'function' ? badgeNiveau(n) : n) + '</div>';
     }).join('');
     const nomAff = nomE(e).replace(/'/g, '');
     document.getElementById('ep-fiche-corps').innerHTML =
