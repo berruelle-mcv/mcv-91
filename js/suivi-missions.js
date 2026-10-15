@@ -28,7 +28,8 @@
   function missionParId(id){ return (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(m){ return m.id === id; }) : null; }
 
   let ETAT = { charge: false, enCours: false, erreur: '', eleves: [], assignations: [] };
-  let CHOIX = { classe: '', groupe: '', retirees: true, tri: 'nom' };
+  // vue (15/10/2026) : 'encours' (par défaut) | 'dernieres' (8 plus récentes) | 'toutes' (y compris retirées)
+  let CHOIX = { classe: '', groupe: '', retirees: true, tri: 'nom', vue: (function(){ try{ return localStorage.getItem('laboro_sm_vue') || 'encours'; }catch(e){ return 'encours'; } })() };
 
   // ── États d'une case (élève × mission) ──
   const STYLES = {
@@ -153,7 +154,16 @@
     const c = CHOIX.classe;
     let eleves = elevesDeClasse(c);
     if(CHOIX.groupe) eleves = eleves.filter(function(e){ return CHOIX.groupe === 'aucun' ? !e.groupe : e.groupe === CHOIX.groupe; });
+    CHOIX.retirees = CHOIX.vue === 'toutes';
     const cols = colonnes(c);
+    // Colonnes affichées : missions en cours, les 8 dernières, ou toutes (le bilan « Validées » compte toujours tout)
+    let colsAff = cols, repli = false;
+    if(CHOIX.vue === 'encours'){
+      colsAff = cols.filter(function(col){
+        return col.active && eleves.some(function(e){ const x = caseEleve(e, col); return x.concerne && x.etat !== 'valide' && x.etat !== 'epuisee'; });
+      });
+      if(!colsAff.length){ colsAff = cols.slice(0, 8); repli = true; }
+    } else if(CHOIX.vue === 'dernieres') colsAff = cols.slice(0, 8);
 
     // Ligne de chaque élève + bilan
     const lignes = eleves.map(function(e){
@@ -165,7 +175,7 @@
         if(x.etat === 'valide') b.valide++; else if(x.etat === 'epuisee') b.epuisee++;
         else if(x.etat === 'rendue') b.rendue++; else b.reste++;   // reste = pas commencée, commencée, à reprendre
       });
-      return { e: e, cases: cases, b: b };
+      return { e: e, cases: cases, casesAff: colsAff.map(function(col){ return caseEleve(e, col); }), b: b };
     });
     if(CHOIX.tri === 'retard') lignes.sort(function(x, y){ return (y.b.reste - x.b.reste) || (y.b.epuisee - x.b.epuisee) || nomE(x.e).localeCompare(nomE(y.e), 'fr'); });
     else lignes.sort(function(x, y){ return nomE(x.e).localeCompare(nomE(y.e), 'fr'); });
@@ -182,7 +192,10 @@
       + '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px">'
       + (aGroupes ? '<select onchange="smGroupe(this.value)" style="' + sel + '"><option value=""' + (!CHOIX.groupe ? ' selected' : '') + '>Toute la classe</option><option value="G1"' + (CHOIX.groupe === 'G1' ? ' selected' : '') + '>Groupe G1</option><option value="G2"' + (CHOIX.groupe === 'G2' ? ' selected' : '') + '>Groupe G2</option><option value="aucun"' + (CHOIX.groupe === 'aucun' ? ' selected' : '') + '>Élèves sans groupe</option></select>' : '')
       + '<select onchange="smTri(this.value)" style="' + sel + '"><option value="nom"' + (CHOIX.tri === 'nom' ? ' selected' : '') + '>Ordre alphabétique</option><option value="retard"' + (CHOIX.tri === 'retard' ? ' selected' : '') + '>Les plus en retard d\'abord</option></select>'
-      + '<label style="font-size:12.5px;display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox"' + (CHOIX.retirees ? ' checked' : '') + ' onchange="smRetirees(this.checked)"> Missions retirées</label>'
+      + '<select onchange="smVue(this.value)" style="' + sel + ';font-weight:700" aria-label="Missions affichées">'
+      + '<option value="encours"' + (CHOIX.vue === 'encours' ? ' selected' : '') + '>Missions en cours</option>'
+      + '<option value="dernieres"' + (CHOIX.vue === 'dernieres' ? ' selected' : '') + '>Les 8 dernières</option>'
+      + '<option value="toutes"' + (CHOIX.vue === 'toutes' ? ' selected' : '') + '>Toutes (y compris retirées)</option></select>'
       + '<span style="flex:1"></span>'
       + '<button onclick="smRelancer()" style="padding:7px 12px;border:none;border-radius:6px;background:var(--th-principal);color:#fff;font-weight:700;font-size:12.5px;cursor:pointer">📣 Relancer les élèves en retard</button>'
       + '<button onclick="smActualiser()" title="Recharger depuis le serveur" style="' + sel + ';cursor:pointer">↻ Actualiser</button>'
@@ -199,7 +212,8 @@
     const nbRetard = lignes.filter(function(l){ return l.b.reste > 0; }).length;
     h += '<div style="font-size:12.5px;color:var(--gm);margin-bottom:8px">'
       + '<strong style="color:var(--th-fonce)">' + lignes.length + ' élève' + (lignes.length > 1 ? 's' : '') + '</strong> · '
-      + cols.length + ' mission' + (cols.length > 1 ? 's' : '') + ' assignée' + (cols.length > 1 ? 's' : '') + ' · '
+      + cols.length + ' mission' + (cols.length > 1 ? 's' : '') + ' assignée' + (cols.length > 1 ? 's' : '')
+      + (colsAff.length < cols.length ? ' (' + colsAff.length + ' affichée' + (colsAff.length > 1 ? 's' : '') + (repli ? ' : aucune en cours, voici les dernières' : '') + ')' : '') + ' · '
       + '<span style="color:#166534">' + nbAJour + ' à jour</span> · <span style="color:#92400E">' + nbRetard + ' avec du travail en attente</span>'
       + ' · <button type="button" onclick="var l=document.getElementById(\'sm-legende\');l.style.display=l.style.display===\'none\'?\'\':\'none\'" style="border:1px solid var(--gb);background:#fff;border-radius:10px;padding:1px 8px;cursor:pointer;font-size:11.5px;font-weight:700;color:var(--gm)">? Légende</button></div>';
 
@@ -217,7 +231,7 @@
       + '<thead style="position:sticky;top:0;z-index:3"><tr>'
       + '<th style="' + th + stickyTh + 'text-align:left;min-width:170px">Élève</th>'
       + '<th style="' + th + 'text-align:center;min-width:70px" title="Missions validées / missions qui lui sont demandées (hors missions retirées)">Validées</th>'
-      + cols.map(function(col){
+      + colsAff.map(function(col){
           const faits = lignes.filter(function(l){ const x = caseEleve(l.e, col); return x.concerne && (x.etat === 'valide' || x.etat === 'epuisee'); }).length;
           const conc = lignes.filter(function(l){ return caseEleve(l.e, col).concerne; }).length;
           const badge = !col.active ? '<span style="background:#F3F4F6;color:#6B7280;border-radius:8px;padding:0 5px">retirée</span>'
@@ -243,7 +257,7 @@
             + '<td style="' + td + 'position:sticky;left:0;z-index:1;font-weight:700;white-space:nowrap">' + pastille + ' ' + esc(nomE(l.e)) + ((typeof badgeGroupe === 'function') ? badgeGroupe(l.e.groupe) : '') + '</td>'
             + '<td style="' + td + 'text-align:center;white-space:nowrap"><strong style="color:' + couleurBilan + '">' + b.valide + '/' + b.assignees + '</strong>'
             + (b.epuisee ? '<div style="font-size:10px;color:#991B1B">⛔ ' + b.epuisee + '</div>' : '') + '</td>'
-            + l.cases.map(function(x, j){ return celluleHTML(l.e, cols[j], x, td); }).join('')
+            + l.casesAff.map(function(x, j){ return celluleHTML(l.e, colsAff[j], x, td); }).join('')
             + '</tr>';
         }).join('')
       + '</tbody></table></div>'
@@ -269,7 +283,8 @@
   window.smClasse = function(i){ const c = classes()[i]; if(c == null) return; CHOIX.classe = c; CHOIX.groupe = ''; dessiner(); };
   window.smGroupe = function(g){ CHOIX.groupe = g; dessiner(); };
   window.smTri = function(t){ CHOIX.tri = t; dessiner(); };
-  window.smRetirees = function(v){ CHOIX.retirees = !!v; dessiner(); };
+  window.smRetirees = function(v){ CHOIX.vue = v ? 'toutes' : 'encours'; dessiner(); };
+  window.smVue = function(v){ CHOIX.vue = v; try{ localStorage.setItem('laboro_sm_vue', v); }catch(e){} dessiner(); };
   window.smActualiser = function(){ charger(); };
   window.renderSuiviMissions = function(){ charger(); };
 

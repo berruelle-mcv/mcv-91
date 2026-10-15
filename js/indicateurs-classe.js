@@ -63,7 +63,7 @@
     const st = eleves.map(function(e){
       const ps = PROGRESSIONS_BRUTES[e.id] || [];
       const ud = PROGRESSIONS_CLASSE[e.id] || { missions: {} };
-      let nbRendues = 0, nbVal = 0, recent = false;
+      let nbRendues = 0, nbVal = 0, recent = false, sommeE = 0, nbE = 0;
       ps.forEach(function(p){
         if(p && Array.isArray(p.historique)){
           historiqueFourni = true;
@@ -74,7 +74,7 @@
         nbRendues++; rendues++;
         const d = dateServeur(p.submitted_at); if(d && d.getTime() >= ilYa7j) recent = true;
         const n = noteDe(p), ok = p.statut === 'valide';
-        if(ok){ nbVal++; validees++; if(n != null){ sommeNotesVal += n; nbNotesVal++; } if((p.tentatives || 1) <= 1) premierCoup++; }
+        if(ok){ nbVal++; validees++; if(n != null){ sommeNotesVal += n; nbNotesVal++; sommeE += n; nbE++; } if((p.tentatives || 1) <= 1) premierCoup++; }
         const m = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(x){ return x.id === p.mission_id; }) : null;
         const code = m ? m.comp : '?';
         const c = parComp[code] = parComp[code] || { code: code, copies: 0, val: 0, somme: 0, nb: 0, eleves: {} };
@@ -84,7 +84,7 @@
       });
       if(recent) actifs7j++;
       return {
-        e: e, rendues: nbRendues, validees: nbVal,
+        e: e, rendues: nbRendues, validees: nbVal, moyenne: nbE ? sommeE / nbE : null,
         score: (typeof calcScore === 'function') ? calcScore(ud) : 0,
         c1: calcNiveauComp('C1', ud), c2: calcNiveauComp('C2', ud), c3: calcNiveauComp('C3', ud),
         g4: niveauG4PourEleve(ud, e.classe_libelle)
@@ -190,7 +190,7 @@
       h += carte('🔍 Missions les moins réussies',
         '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr><th style="' + th + '">Mission</th><th style="' + th + '">Copies</th><th style="' + th + '">Validées</th><th style="' + th + '">Note moyenne</th></tr></thead><tbody>'
         + ms.map(function(x){
-            return '<tr><td style="' + td + '"><strong style="color:var(--th-principal)">' + esc(x.id) + '</strong> ' + esc(x.titre) + ' <span style="color:var(--gm)">(' + esc(x.comp) + ')</span></td>'
+            return '<tr><td style="' + td + '"><strong style="color:var(--th-fonce)">' + esc(x.titre || x.id) + '</strong> <span style="color:var(--gm)">(' + esc(x.comp) + ')</span></td>'
               + '<td style="' + td + '">' + x.copies + '</td><td style="' + td + '">' + pastilleTaux(x.val / x.copies) + '</td><td style="' + td + '">' + fmt(x.somme / x.nb, true) + '/20</td></tr>';
           }).join('') + '</tbody></table></div>',
         'Parmi les missions rendues par au moins 2 élèves : les notes moyennes les plus basses.');
@@ -209,10 +209,35 @@
       + liste('😴 Rien de validé', 'var(--gm)', sansActivite.concat(rendNonVal), function(s){ return esc(nomE(s.e)) + (s.rendues ? ' <span style="color:var(--gm)">(' + s.rendues + ' rendue(s), aucune validée)</span>' : ''); }, 'Tout le monde a au moins une mission validée.')
       + liste('⚠ En difficulté', '#C53030', enDiff, function(s){ return esc(nomE(s.e)) + ' — ' + s.score + '/100 <span style="color:var(--gm)">(' + s.validees + ' validée(s))</span>'; }, 'Aucun élève sous 40/100.')
       + liste('🏆 Meilleurs scores', 'var(--th-principal)', meilleurs, function(s){ return esc(nomE(s.e)) + ' — ' + s.score + '/100'; }, 'Aucun élève actif pour l\'instant.')
-      + '</div>', 'Score LABORO sur 100 (le même que dans la Vue classe). « En difficulté » : sous 40/100 avec au moins une mission validée.');
+      + '</div>'
+      // Classement complet de la classe (15/10/2026, demande de Pascal)
+      + '<div style="margin-top:12px"><button type="button" onclick="icClassement()" style="padding:8px 14px;border:1px solid var(--gb);border-radius:8px;background:#fff;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--th-principal)">'
+      + (CHOIX.classement ? '▲ Masquer le classement complet' : '▼ Voir le classement complet de la classe (' + d.st.length + ' élèves)') + '</button>'
+      + (CHOIX.classement ? classementComplet(d.st) : '') + '</div>',
+      'Score LABORO sur 100 (le même que dans la Vue classe). « En difficulté » : sous 40/100 avec au moins une mission validée.');
     el.innerHTML = h;
   }
 
+  function classementComplet(st){
+    const tri = st.slice().sort(function(a, b){ return (b.score - a.score) || (b.validees - a.validees) || nomE(a.e).localeCompare(nomE(b.e), 'fr'); });
+    const th = 'text-align:left;padding:7px 8px;border-bottom:1px solid var(--gb);font-size:11px;color:var(--gm);text-transform:uppercase;letter-spacing:.04em';
+    let rang = 0, prec = null;
+    return '<div style="overflow-x:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr>'
+      + '<th style="' + th + '">Rang</th><th style="' + th + '">Élève</th><th style="' + th + '">Score LABORO</th><th style="' + th + '">Missions validées</th><th style="' + th + '">Moyenne des missions validées</th><th style="' + th + '">Copies rendues</th></tr></thead><tbody>'
+      + tri.map(function(s, i){
+          if(s.score !== prec){ rang = i + 1; prec = s.score; }
+          const coul = !s.validees ? 'var(--gm)' : (s.score < 40 ? '#B91C1C' : (s.score >= 60 ? '#166534' : 'var(--th-fonce)'));
+          const td = 'padding:7px 8px;border-bottom:1px solid var(--gc)' + (i % 2 ? ';background:#FAFBFC' : '');
+          return '<tr><td style="' + td + ';font-weight:800">' + (s.validees ? rang : '—') + '</td>'
+            + '<td style="' + td + '"><a href="#" onclick="if(typeof selectionnerEleve===\'function\'){selectionnerEleve(\'' + esc(s.e.id) + '\')};return false" style="font-weight:700;color:var(--th-fonce);text-decoration:none">' + esc(nomE(s.e)) + '</a></td>'
+            + '<td style="' + td + ';font-weight:800;color:' + coul + '">' + s.score + '/100</td>'
+            + '<td style="' + td + '">' + s.validees + '</td>'
+            + '<td style="' + td + '">' + (s.moyenne != null ? fmt(s.moyenne, true) + '/20' : '—') + '</td>'
+            + '<td style="' + td + '">' + s.rendues + '</td></tr>';
+        }).join('') + '</tbody></table></div>'
+      + '<div style="font-size:11.5px;color:var(--gm);margin-top:6px">Clic sur un nom : sa fiche. Les élèves sans mission validée sont en fin de liste, sans rang.</div>';
+  }
+  window.icClassement = function(){ CHOIX.classement = !CHOIX.classement; dessiner(); };
   window.icClasse = function(i){ const c = classes()[i]; if(c == null) return; CHOIX.classe = c; CHOIX.groupe = ''; dessiner(); };
   window.icGroupe = function(g){ CHOIX.groupe = g; dessiner(); };
   window.icActualiser = function(){ charger(); };

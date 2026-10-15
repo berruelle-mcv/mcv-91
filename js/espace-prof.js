@@ -682,7 +682,7 @@
     const r = await fetchJSON(LABORO_API + '/api/vue-eleve', { method: 'POST', headers: entetes(true), body: JSON.stringify({ eleve_id: test.id }) });
     if(!r.ok || !r.data.ok){ alert((r.data && r.data.erreur) || r.erreur || 'Impossible d\'ouvrir la vue élève (serveur pas encore à jour ?).'); return; }
     try{
-      sessionStorage.setItem(CLE_PROF, JSON.stringify({ token: jeton(), u: lireLS('laboro_u', ''), admin: lireLS('laboro_est_admin', '0'), classe: test.classe_libelle || lib }));
+      sessionStorage.setItem(CLE_PROF, JSON.stringify({ token: jeton(), u: lireLS('laboro_u', ''), admin: lireLS('laboro_est_admin', '0'), classe: test.classe_libelle || lib, mail: test.email, depuis: Date.now() }));
     }catch(e){ alert('Ton navigateur bloque la mémoire de session : impossible d\'ouvrir la vue élève.'); return; }
     if(typeof closeMo === 'function') try{ closeMo(); }catch(e){}
     fermerFiche();
@@ -697,8 +697,17 @@
     goP('dashboard', document.querySelector('.sb-nv .ni'));
     bandeau();
   };
-  window.epQuitterVueEleve = function(){
+  // Session prof mise de côté, valable seulement pour CE compte test et 4 heures au plus :
+  // un élève qui se connecte ensuite sur le même poste ne peut jamais revenir à la vue prof.
+  function sessionProf(){
     let s = null; try{ s = JSON.parse(sessionStorage.getItem(CLE_PROF) || 'null'); }catch(e){}
+    if(!s) return null;
+    const ok = typeof CU !== 'undefined' && CU && CU.mail === s.mail && Date.now() - (s.depuis || 0) < 4 * 3600 * 1000;
+    if(!ok){ try{ sessionStorage.removeItem(CLE_PROF); }catch(e){} return null; }
+    return s;
+  }
+  window.epQuitterVueEleve = function(){
+    const s = sessionProf();
     if(!s){ doLogout(); return; }
     if(typeof closeMo === 'function') try{ closeMo(); }catch(e){}
     try{ sessionStorage.removeItem(CLE_PROF); }catch(e){}
@@ -710,9 +719,10 @@
     goP('dashboard', itemNav('auj'));
   };
   function bandeau(){
-    let s = null; try{ s = JSON.parse(sessionStorage.getItem(CLE_PROF) || 'null'); }catch(e){}
+    if(estProf()){ try{ sessionStorage.removeItem(CLE_PROF); }catch(e){} }
+    const s = estProf() ? null : sessionProf();
     const b0 = document.getElementById('ep-bandeau-eleve');
-    if(!s || estProf()){ if(b0) b0.remove(); document.body.classList.remove('ep-vue-eleve'); return; }
+    if(!s){ if(b0) b0.remove(); document.body.classList.remove('ep-vue-eleve'); return; }
     document.body.classList.add('ep-vue-eleve');
     if(b0) return;
     const b = document.createElement('div');
@@ -725,8 +735,7 @@
   if(typeof window.doLogout === 'function'){
     const origOut = window.doLogout;
     window.doLogout = function(){
-      let s = null; try{ s = sessionStorage.getItem(CLE_PROF); }catch(e){}
-      if(s && !estProf()){ window.epQuitterVueEleve(); return; }
+      if(!estProf() && sessionProf()){ window.epQuitterVueEleve(); return; }
       return origOut.apply(this, arguments);
     };
   }
