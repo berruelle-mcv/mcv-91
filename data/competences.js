@@ -6,9 +6,9 @@
 
 const COMP=[
   {code:'C1.1',label:'Veille commerciale',g:'G1'},{code:'C1.2',label:'Vente omnicanale',g:'G1'},{code:'C1.3',label:'Exécution de la vente',g:'G1'},
-  {code:'C2.1',label:'Suivi commande & services associés',g:'G2'},{code:'C2.2',label:'Réclamations client',g:'G2'},{code:'C2.3',label:'Satisfaction client',g:'G2'},
+  {code:'C2.1',label:'Suivi de la commande',g:'G2'},{code:'C2.1b',label:'Services associés',g:'G2'},{code:'C2.2',label:'Réclamations client',g:'G2'},{code:'C2.3',label:'Satisfaction client',g:'G2'},
   {code:'C3.1',label:'Info & contact client',g:'G3'},{code:'C3.2',label:'Actions de fidélisation',g:'G3'},{code:'C3.3',label:'Évaluation fidélisation',g:'G3'},
-  {code:'G4A',label:'Espace commercial (AGEC)',g:'G4A'},{code:'G4B',label:'Prospection & vente B2B (PVOC)',g:'G4B'},
+  {code:'G4A',label:"Animer et gérer l'espace commercial",g:'G4A'},{code:'G4B',label:"Prospecter et valoriser l'offre commerciale",g:'G4B'},
 ];
 const RES={
   'C1.2':{
@@ -644,7 +644,7 @@ Club A : 15 maillots dont 10 disponibles tout de suite + 5 en réassort sous 5 j
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Deux commandes concurrentes sur un stock limité, l'une avec un délai serré non signalé au départ. En autonomie complète, tu dois détecter le conflit, arbitrer selon des critères objectifs, prévenir les deux clients avec une date ferme, et tracer la décision.
 </div>
-<p><strong>Du suivi à la satisfaction client :</strong> un suivi de commande bien mené est l'un des premiers leviers de la satisfaction client (voir C2.3) — un client bien informé, même en cas de retard, reste en confiance ; un client livré sans nouvelle perd confiance même si le colis arrive à temps.</p>
+<p><strong>Du suivi à la satisfaction client :</strong> un suivi de commande bien mené est l'un des premiers leviers de la satisfaction client (voir C2.4) — un client bien informé, même en cas de retard, reste en confiance ; un client livré sans nouvelle perd confiance même si le colis arrive à temps.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1181,7 +1181,7 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 <li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
 <li><strong>Répondre à un avis en ligne</strong> — la réponse est publique : elle est lue par les futurs clients. On remercie, on reconnaît le problème sans se justifier ni accuser, on n'y écrit aucune information personnelle, et on propose de poursuivre en privé.</li>
 <li><strong>CA cumulé, panier moyen, fréquence d'achat</strong> — CA cumulé : total des achats d'un client depuis le début ; panier moyen : CA ÷ nombre d'achats ; fréquence d'achat : nombre d'achats par an. Exemple : 600 € en 4 achats → panier moyen de 150 €.</li>
-<li><strong>Promoteur</strong> — client qui répond 9 ou 10 à la question « Recommanderiez-vous LABORO ? » : il parle en bien de LABORO autour de lui (voir le NPS, fiche C2.3).</li>
+<li><strong>Promoteur</strong> — client qui répond 9 ou 10 à la question « Recommanderiez-vous LABORO ? » : il parle en bien de LABORO autour de lui (voir le NPS, fiche C2.4).</li>
 <li><strong>Tag</strong> — étiquette ajoutée à une fiche client (Premium, Newsletter, Ambassadeur…) pour retrouver vite un groupe de clients et lui proposer la bonne action.</li>
 <li><strong>Prospect prioritaire</strong> — personne dont on connaît le besoin (ce qu'elle veut acheter), le budget (l'argent prévu) et le délai (quand elle veut acheter) : elle est prête à recevoir une proposition.</li>
 </ul>
@@ -1816,7 +1816,7 @@ Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/partici
 'B4.1':{
 1:{t:'Rechercher des prospects — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.1 — Rechercher des prospects.</strong> Un prospect c'est un client potentiel qu'on n'a pas encore. Le but : constituer une liste de contacts à démarcher.</p>
+<p><strong>C4B.1 — Rechercher des prospects.</strong> Un prospect c'est un client potentiel qu'on n'a pas encore. Le but : constituer une liste de contacts à démarcher.</p>
 <p><strong>3 sources principales chez LABORO :</strong></p>
 <ul>
 <li><strong>Fichiers existants</strong> — Mairie (associations déclarées), fédérations sportives départementales, annuaires CSE</li>
@@ -1837,7 +1837,7 @@ Nina cherche des associations de foot en Essonne. Elle consulte le site de la FF
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.1 — SOURCES DE PROSPECTION B2B LABORO</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">C4B.1 — SOURCES DE PROSPECTION B2B LABORO</text>
   <rect x="10" y="36" width="202" height="100" rx="10" fill="#1A2E4A"/>
   <text x="111" y="62" text-anchor="middle" font-size="20">🏛️</text>
   <text x="111" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">FICHIERS OFFICIELS</text>
@@ -1958,14 +1958,14 @@ Un lot de nouveaux prospects arrive via plusieurs canaux de veille en même temp
 'B4.2':{
 1:{t:'Préparer une opération de prospection — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.2 — Préparer et conduire une opération de prospection.</strong></p>
+<p><strong>C4B.2 — Préparer et conduire une opération de prospection.</strong></p>
 <p><strong>Avant l'opération — les 3 étapes :</strong></p>
 <ul>
 <li><strong>Définir la cible</strong> — Qui ? Associations fitness en Essonne avec 15 membres ou plus</li>
 <li><strong>Préparer les outils</strong> — Script d'appel, email type, fiche prospect LABORO Connect</li>
 <li><strong>Fixer les objectifs</strong> — Ex : 50 appels/semaine · 10 RDV/mois · 3 ventes/mois</li>
 </ul>
-<p><strong>Le plan d'appel LABORO en 5 étapes :</strong> 1. Présentation (qui tu es) → 2. Accroche (raison de l'appel) → 3. Découverte des besoins → 4. Proposition (de rendez-vous ou d'offre) → 5. Conclusion (confirmer, remercier, noter la suite). La fiche B4.3 détaille ensuite l'argumentation et le traitement des objections.</p>
+<p><strong>Le plan d'appel LABORO en 5 étapes :</strong> 1. Présentation (qui tu es) → 2. Accroche (raison de l'appel) → 3. Découverte des besoins → 4. Proposition (de rendez-vous ou d'offre) → 5. Conclusion (confirmer, remercier, noter la suite). La fiche C4B.3 détaille ensuite l'argumentation et le traitement des objections.</p>
 <p><strong>Pendant — la règle des 3 contacts :</strong> si pas de réponse après 3 tentatives (appel + email + appel), passer au prospect suivant. Ne pas insister.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — plan d'opération</div>
 Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines · objectif 8 RDV · budget 0€ (phoning + emailing). Semaine 1 : appels de présentation. Semaine 2 : relances email. Semaines 3-4 : RDV et propositions.
@@ -1974,7 +1974,7 @@ Opération "Clubs de trail Essonne" : 30 clubs ciblés · période 4 semaines ·
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.2 — PRÉPARER UNE OPÉRATION DE PROSPECTION</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">C4B.2 — PRÉPARER UNE OPÉRATION DE PROSPECTION</text>
   <defs><marker id="arr6" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2C5282"/></marker></defs>
   <rect x="10" y="36" width="190" height="100" rx="10" fill="#1A2E4A"/>
   <text x="105" y="60" text-anchor="middle" font-size="18">🎯</text>
@@ -2096,7 +2096,7 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 'B4.3':{
 1:{t:"Conduire un entretien de prospection — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.3 — Conduire un entretien de prospection.</strong> L'entretien suit le plan d'appel LABORO en 5 étapes (voir la fiche B4.2) ; l'étape 4 comprend l'argumentation et le traitement des objections.</p>
+<p><strong>C4B.3 — Conduire un entretien de prospection.</strong> L'entretien suit le plan d'appel LABORO en 5 étapes (voir la fiche C4B.2) ; l'étape 4 comprend l'argumentation et le traitement des objections.</p>
 <p><strong>Le plan d'appel LABORO :</strong></p>
 <ul>
 <li><strong>1. Présentation</strong> — "Bonjour M. [nom], je suis [prénom] de LABORO Sport à Évry..."</li>
@@ -2112,7 +2112,7 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="155" rx="12" fill="#F0FFF4"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.3 — PLAN D'APPEL EN 6 ÉTAPES — LABORO</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">C4B.3 — PLAN D'APPEL EN 6 ÉTAPES — LABORO</text>
   <defs><marker id="arr7" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#276749"/></marker></defs>
   <rect x="5" y="40" width="102" height="100" rx="8" fill="#276749"/>
   <text x="56" y="65" text-anchor="middle" font-size="16">👋</text>
@@ -2244,7 +2244,7 @@ Un prospect enchaîne plusieurs objections dans le même appel, dont une qui sem
 'B4.4':{
 1:{t:'Assurer le suivi commercial — Les bases',c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.4 — Assurer le suivi commercial.</strong> Après un premier contact, le suivi c'est ce qui transforme un prospect en client.</p>
+<p><strong>C4B.4 — Assurer le suivi commercial.</strong> Après un premier contact, le suivi c'est ce qui transforme un prospect en client.</p>
 <p><strong>La règle des 24h :</strong> envoyer le devis dans les 24h après un RDV. Un devis envoyé tard = client perdu.</p>
 <p><strong>Le suivi en 3 étapes :</strong></p>
 <ul>
@@ -2260,7 +2260,7 @@ RDV lundi avec M. Kowalski (club basket). Mardi : devis envoyé (15 maillots + s
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#FFFBEB"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.4 — SUIVI COMMERCIAL — La règle des 24h LABORO</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">C4B.4 — SUIVI COMMERCIAL — La règle des 24h LABORO</text>
   <line x1="40" y1="90" x2="640" y2="90" stroke="#D97706" stroke-width="2" stroke-dasharray="5,3"/>
   <circle cx="80" cy="90" r="22" fill="#1A2E4A"/>
   <text x="80" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RDV</text>
@@ -2392,7 +2392,7 @@ Un portefeuille de prospects à statuts variés (devis envoyés, en négociation
 'B4.5':{
 1:{t:"Valoriser l'offre LABORO — Les bases",c:`<div class="res-section res-debutant">
 <div class="res-section-label">🔵 Pour commencer</div>
-<p><strong>B4.5 — Valoriser l'offre LABORO face à la concurrence.</strong> Face à un concurrent moins cher, le rôle du commercial n'est pas de baisser le prix mais de démontrer la valeur réelle de l'offre LABORO.</p>
+<p><strong>C4B.5 — Valoriser l'offre LABORO face à la concurrence.</strong> Face à un concurrent moins cher, le rôle du commercial n'est pas de baisser le prix mais de démontrer la valeur réelle de l'offre LABORO.</p>
 <p><strong>La méthode en 3 temps face à l'objection prix :</strong></p>
 <ul>
 <li><strong>Accepter</strong> — "Je comprends que le prix soit un critère important pour vous." Ne jamais réfuter d'emblée.</li>
@@ -2407,7 +2407,7 @@ Un client dit : "Chez Sportélia Pro, c'est 60 € de moins pour 15 maillots." (
 <div class="res-visual" style="margin:18px 0">
 <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;font-family:system-ui,sans-serif">
   <rect width="680" height="150" rx="12" fill="#F8FAFF"/>
-  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">B4.5 — UNE OFFRE À PLUSIEURS NIVEAUX POUR VALORISER LABORO</text>
+  <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2E4A">C4B.5 — UNE OFFRE À PLUSIEURS NIVEAUX POUR VALORISER LABORO</text>
   <rect x="10" y="36" width="202" height="100" rx="10" fill="#1A2E4A"/>
   <text x="111" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">OFFRE ESSENTIEL</text>
   <text x="111" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#63B3ED">Produits standards</text>
@@ -2668,8 +2668,8 @@ Budget : 400 € · Indicateurs : taux de contact > 60%, taux de RDV > 10%, taux
 4:{t:'La prospection commerciale B2B — Fiche mémo express',c:`<div class="res-section">
 <div class="res-section-label">🔴 Fiche mémo express — mener une opération de prospection de bout en bout</div>
 <p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
-<p><strong>Enchaînement complet à maîtriser :</strong> qualifier la cible (BANT) → dimensionner le volume de prospects nécessaire → choisir un mix d'au moins 2 techniques → construire le plan d'appel en 5 étapes → fixer les indicateurs avant le lancement → suivre et relancer avec la règle des 24h · assurer le suivi et le ROI (voir B4.4) → argumenter la valeur face à la concurrence (voir B4.5).</p>
-<p>G4B mobilise l'ensemble des sous-compétences B4.1 à B4.5 : c'est la vision d'ensemble d'une opération de prospection B2B, de la recherche du prospect jusqu'à la signature.</p>
+<p><strong>Enchaînement complet à maîtriser :</strong> qualifier la cible (BANT) → dimensionner le volume de prospects nécessaire → choisir un mix d'au moins 2 techniques → construire le plan d'appel en 5 étapes → fixer les indicateurs avant le lancement → suivre et relancer avec la règle des 24h · assurer le suivi et le ROI (voir C4B.4) → argumenter la valeur face à la concurrence (voir C4B.5).</p>
+<p>Le bloc 4B mobilise l'ensemble des sous-compétences C4B.1 à C4B.5 : c'est la vision d'ensemble d'une opération de prospection B2B, de la recherche du prospect jusqu'à la signature.</p>
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Un objectif commercial B2B à atteindre en un temps limité. En autonomie complète, tu dois construire et mener l'opération de bout en bout : cibler, qualifier, dimensionner, planifier le mix de techniques, exécuter les appels/e-mails, suivre les devis, et argumenter face à la concurrence si nécessaire.
 </div>
@@ -2678,7 +2678,7 @@ Un objectif commercial B2B à atteindre en un temps limité. En autonomie compl�
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Autonomie totale : mener une opération de prospection complète, de la cible à la signature</li>
-<li>G4B = la vue d'ensemble qui relie B4.1 à B4.5</li>
+<li>Le bloc 4B est la vue d'ensemble qui relie C4B.1 à C4B.5</li>
 </ul>
 </div>`},
 },

@@ -133,6 +133,19 @@ var LABORO_CONFIG = {
     "e2_pvoc": "data/e2-pvoc.js"
   },
   "api": "https://mcv.laboro-edu.fr",
+  "_codes_note": "Numéros de compétences AFFICHÉS selon le référentiel officiel (code interne → code affiché). Les codes internes des missions ne changent pas.",
+  "codes_competences": {
+    "C2.1b": "C2.2",
+    "C2.2": "C2.3",
+    "C2.3": "C2.4",
+    "B4.1": "C4B.1",
+    "B4.2": "C4B.2",
+    "B4.3": "C4B.3",
+    "B4.4": "C4B.4",
+    "B4.5": "C4B.5",
+    "G4A": "Bloc 4A",
+    "G4B": "Bloc 4B"
+  },
   "demo": {
     "eleve": {
       "mail": "demo@laboro-demo.fr",
@@ -140,90 +153,162 @@ var LABORO_CONFIG = {
       "classe": "Term-AGEC",
       "poste": "Conseiller de vente — Showroom & E-commerce",
       "missions": {
+        "M001": {
+          "status": "done",
+          "score": 13,
+          "comp": "C1.2",
+          "progression": 0,
+          "date_validation": "2025-09-25T10:00:00.000Z"
+        },
+        "M002": {
+          "status": "done",
+          "score": 14,
+          "comp": "C1.1",
+          "progression": 0,
+          "date_validation": "2025-10-09T10:00:00.000Z"
+        },
+        "M003": {
+          "status": "done",
+          "score": 12,
+          "comp": "C2.2",
+          "progression": 0,
+          "date_validation": "2025-11-13T10:00:00.000Z"
+        },
+        "M007": {
+          "status": "done",
+          "score": 15,
+          "comp": "C1.3",
+          "progression": 0,
+          "date_validation": "2025-11-27T10:00:00.000Z"
+        },
+        "M010": {
+          "status": "done",
+          "score": 13,
+          "comp": "C2.3",
+          "progression": 0,
+          "date_validation": "2026-01-08T10:00:00.000Z"
+        },
+        "M011": {
+          "status": "done",
+          "score": 14,
+          "comp": "C3.1",
+          "progression": 0,
+          "date_validation": "2026-01-22T10:00:00.000Z"
+        },
+        "M013": {
+          "status": "done",
+          "score": 15,
+          "comp": "C3.2",
+          "progression": 0,
+          "date_validation": "2026-02-05T10:00:00.000Z"
+        },
+        "M016": {
+          "status": "done",
+          "score": 16,
+          "comp": "C4A.3",
+          "progression": 0,
+          "date_validation": "2026-03-12T10:00:00.000Z"
+        },
+        "M004": {
+          "status": "done",
+          "score": 14,
+          "comp": "C1.2",
+          "progression": 0,
+          "date_validation": "2026-03-26T10:00:00.000Z"
+        },
+        "M052": {
+          "status": "done",
+          "score": 13,
+          "comp": "C2.2",
+          "progression": 0,
+          "date_validation": "2026-04-02T10:00:00.000Z"
+        },
+        "M051": {
+          "status": "done",
+          "score": 15,
+          "comp": "C1.3",
+          "progression": 0,
+          "date_validation": "2026-04-30T10:00:00.000Z"
+        },
+        "M006": {
+          "status": "done",
+          "score": 14,
+          "comp": "C3.2",
+          "progression": 0,
+          "date_validation": "2026-05-14T10:00:00.000Z"
+        },
+        "M054": {
+          "status": "done",
+          "score": 15,
+          "comp": "C3.1",
+          "progression": 0,
+          "date_validation": "2026-05-28T10:00:00.000Z"
+        },
+        "M070": {
+          "status": "done",
+          "score": 15,
+          "comp": "C1.1",
+          "progression": 0,
+          "date_validation": "2026-09-08T10:00:00.000Z"
+        },
+        "M055": {
+          "status": "done",
+          "score": 14,
+          "comp": "C3.3",
+          "progression": 0,
+          "date_validation": "2026-09-10T10:00:00.000Z"
+        },
+        "M056": {
+          "status": "done",
+          "score": 16,
+          "comp": "C3.3",
+          "progression": 0,
+          "date_validation": "2026-09-17T10:00:00.000Z"
+        },
         "M023": {
           "status": "done",
           "score": 16,
           "comp": "C1.1",
-          "progression": 2,
-          "date_validation": "2025-09-18T10:00:00.000Z"
+          "progression": 0,
+          "date_validation": "2026-09-22T10:00:00.000Z"
         },
         "M024": {
           "status": "done",
           "score": 15,
           "comp": "C1.2",
-          "progression": 1,
-          "date_validation": "2025-10-07T10:00:00.000Z"
+          "progression": 0,
+          "date_validation": "2026-09-29T10:00:00.000Z"
         },
-        "M025": {
+        "M073": {
           "status": "done",
           "score": 14,
-          "comp": "C2.2",
+          "comp": "C2.3",
           "progression": 0,
-          "date_validation": "2025-10-21T10:00:00.000Z"
+          "date_validation": "2026-10-01T10:00:00.000Z"
         },
         "M026": {
           "status": "done",
           "score": 17,
           "comp": "C1.3",
-          "progression": 2,
-          "date_validation": "2025-11-12T10:00:00.000Z"
-        },
-        "M028": {
-          "status": "done",
-          "score": 13,
-          "comp": "C2.3",
           "progression": 0,
-          "date_validation": "2025-12-03T10:00:00.000Z"
-        },
-        "M029": {
-          "status": "done",
-          "score": 16,
-          "comp": "C3.2",
-          "progression": 1,
-          "date_validation": "2026-01-15T10:00:00.000Z"
-        },
-        "M030": {
-          "status": "done",
-          "score": 15,
-          "comp": "C3.3",
-          "progression": 0,
-          "date_validation": "2026-02-05T10:00:00.000Z"
-        },
-        "M031": {
-          "status": "done",
-          "score": 14,
-          "comp": "C3.1",
-          "progression": 1,
-          "date_validation": "2026-03-12T10:00:00.000Z"
+          "date_validation": "2026-10-06T10:00:00.000Z"
         },
         "M032": {
           "status": "done",
           "score": 18,
           "comp": "C4A.3",
-          "progression": 2,
-          "date_validation": "2026-04-02T10:00:00.000Z"
+          "progression": 0,
+          "date_validation": "2026-10-13T10:00:00.000Z"
         },
         "M027": {
           "status": "att",
           "score": 0,
           "comp": "C2.2",
-          "progression": 0
+          "progression": 0,
+          "tentatives": 1
         }
       },
-      "competences": {
-        "C1.1": 3,
-        "C1.2": 3,
-        "C1.3": 3,
-        "C2.1": 2,
-        "C2.2": 2,
-        "C2.3": 2,
-        "C3.1": 3,
-        "C3.2": 3,
-        "C3.3": 3,
-        "C4A.1": 4,
-        "C4A.2": 4,
-        "C4A.3": 4
-      }
+      "competences": {}
     },
     "camarades": [
       {
@@ -231,35 +316,103 @@ var LABORO_CONFIG = {
         "nom": "Camille Bernard",
         "classe": "Term-AGEC",
         "missions": {
+          "M001": {
+            "status": "done",
+            "score": 15,
+            "comp": "C1.2",
+            "progression": 0,
+            "date_validation": "2025-09-25T10:00:00.000Z"
+          },
+          "M002": {
+            "status": "done",
+            "score": 16,
+            "comp": "C1.1",
+            "progression": 0,
+            "date_validation": "2025-10-09T10:00:00.000Z"
+          },
+          "M007": {
+            "status": "done",
+            "score": 14,
+            "comp": "C1.3",
+            "progression": 0,
+            "date_validation": "2025-11-27T10:00:00.000Z"
+          },
+          "M013": {
+            "status": "done",
+            "score": 15,
+            "comp": "C3.2",
+            "progression": 0,
+            "date_validation": "2026-02-05T10:00:00.000Z"
+          },
+          "M016": {
+            "status": "done",
+            "score": 17,
+            "comp": "C4A.3",
+            "progression": 0,
+            "date_validation": "2026-03-12T10:00:00.000Z"
+          },
+          "M004": {
+            "status": "done",
+            "score": 15,
+            "comp": "C1.2",
+            "progression": 0,
+            "date_validation": "2026-03-26T10:00:00.000Z"
+          },
+          "M051": {
+            "status": "done",
+            "score": 14,
+            "comp": "C1.3",
+            "progression": 0,
+            "date_validation": "2026-04-30T10:00:00.000Z"
+          },
+          "M006": {
+            "status": "done",
+            "score": 15,
+            "comp": "C3.2",
+            "progression": 0,
+            "date_validation": "2026-05-14T10:00:00.000Z"
+          },
+          "M070": {
+            "status": "done",
+            "score": 16,
+            "comp": "C1.1",
+            "progression": 0,
+            "date_validation": "2026-09-08T10:00:00.000Z"
+          },
           "M023": {
             "status": "done",
             "score": 18,
             "comp": "C1.1",
-            "progression": 2
+            "progression": 0,
+            "date_validation": "2026-09-22T10:00:00.000Z"
           },
           "M024": {
             "status": "done",
             "score": 17,
             "comp": "C1.2",
-            "progression": 1
+            "progression": 0,
+            "date_validation": "2026-09-29T10:00:00.000Z"
           },
           "M026": {
             "status": "done",
             "score": 16,
             "comp": "C1.3",
-            "progression": 1
+            "progression": 0,
+            "date_validation": "2026-10-06T10:00:00.000Z"
           },
           "M029": {
             "status": "done",
             "score": 15,
             "comp": "C3.2",
-            "progression": 0
+            "progression": 0,
+            "date_validation": "2026-10-08T10:00:00.000Z"
           },
           "M032": {
             "status": "done",
             "score": 17,
             "comp": "C4A.3",
-            "progression": 2
+            "progression": 0,
+            "date_validation": "2026-10-13T10:00:00.000Z"
           }
         }
       },
@@ -268,23 +421,68 @@ var LABORO_CONFIG = {
         "nom": "Hugo Lefèvre",
         "classe": "Term-AGEC",
         "missions": {
+          "M001": {
+            "status": "done",
+            "score": 11,
+            "comp": "C1.2",
+            "progression": 0,
+            "date_validation": "2025-09-25T10:00:00.000Z"
+          },
+          "M002": {
+            "status": "done",
+            "score": 12,
+            "comp": "C1.1",
+            "progression": 0,
+            "date_validation": "2025-10-09T10:00:00.000Z"
+          },
+          "M003": {
+            "status": "done",
+            "score": 10,
+            "comp": "C2.2",
+            "progression": 0,
+            "date_validation": "2025-11-13T10:00:00.000Z"
+          },
+          "M004": {
+            "status": "done",
+            "score": 11,
+            "comp": "C1.2",
+            "progression": 0,
+            "date_validation": "2026-03-26T10:00:00.000Z"
+          },
+          "M052": {
+            "status": "done",
+            "score": 12,
+            "comp": "C2.2",
+            "progression": 0,
+            "date_validation": "2026-04-02T10:00:00.000Z"
+          },
+          "M070": {
+            "status": "done",
+            "score": 12,
+            "comp": "C1.1",
+            "progression": 0,
+            "date_validation": "2026-09-08T10:00:00.000Z"
+          },
           "M023": {
             "status": "done",
             "score": 12,
             "comp": "C1.1",
-            "progression": 0
+            "progression": 0,
+            "date_validation": "2026-09-22T10:00:00.000Z"
           },
           "M024": {
             "status": "done",
             "score": 13,
             "comp": "C1.2",
-            "progression": 1
+            "progression": 0,
+            "date_validation": "2026-09-29T10:00:00.000Z"
           },
           "M025": {
             "status": "done",
             "score": 11,
             "comp": "C2.2",
-            "progression": 0
+            "progression": 0,
+            "date_validation": "2026-10-08T10:00:00.000Z"
           }
         }
       }
