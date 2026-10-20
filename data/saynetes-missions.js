@@ -412,14 +412,14 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M026": { titre: "Le compte stratégique de la Mairie", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "n|Lundi 28 septembre 2026.",
+    "n|Nous sommes lundi.",
     "a|Je te confie la gestion complète de la commande de la Mairie d'Évry-Courcouronnes.",
     "a|Elle est suivie par David Chemin, leur responsable achats. C'est un compte stratégique : aucune erreur n'est permise.",
     "fin|À toi : sécurise la transaction."
   ],
   pvoc: { titre: "50 ballons et 20 filets pour le gymnase", decor: "telephone", a: P_PASCAL, b: sayClient("M. Chemin", "Resp. achats, Mairie", "h", "#334155"),
     lignes: [
-      "n|Lundi 28 septembre 2026. Commande publique de la Mairie d'Évry-Courcouronnes.",
+      "n|Nous sommes lundi. Commande publique de la Mairie d'Évry-Courcouronnes.",
       "b|Je vous confirme : 50 ballons Pro Match T5 et 20 filets, sur bon de commande public, livrés au gymnase municipal à la date prévue.",
       "a|Tu pilotes l'exécution de cette commande à distance, par téléphone et par mail. Je compte sur toi.",
       "fin|À toi : sécurise la transaction."
@@ -478,9 +478,9 @@ Object.assign(SAYNETES_MISSIONS, {
     "a|Ensuite, dis-moi si LABORO doit la reconduire, l'adapter… ou la remplacer par autre chose.",
     "fin|À toi : évalue la soirée et prends position."
   ],
-  pvoc: { titre: "Le bilan de la soirée du 15 octobre", decor: "bureau", a: P_NINA, b: P_TOI,
+  pvoc: { titre: "Le bilan de la soirée Rentrée Sportive", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
-      "n|La soirée Rentrée Sportive du 15 octobre est terminée. Tu avais coordonné à distance les invités B2B.",
+      "n|La soirée Rentrée Sportive est terminée. Tu avais coordonné à distance les invités B2B.",
       "a|Tes relances téléphoniques et tes mails de confirmation ont fait venir nos CSE et nos clubs.",
       "a|Pascal Berruelle et moi voulons maintenant une évaluation rigoureuse. Reconduire, adapter ou remplacer ?",
       "fin|À toi : évalue la soirée et prends position."
@@ -509,14 +509,14 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M033": { titre: "Un CA au-dessus de l'objectif… et pourtant", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|Tableau de bord du showroom, 1er semestre 2026.",
+    "n|Tableau de bord du showroom, 1er semestre.",
     "a|Bonne nouvelle : le chiffre d'affaires dépasse l'objectif.",
     "a|Mais le taux de transformation et le panier moyen sont en dessous. Pascal Berruelle attend une analyse et un plan correctif.",
     "fin|À toi : analyse le tableau de bord en profondeur."
   ],
   pvoc: { titre: "Le tableau de bord du semestre", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
-      "n|Réunion avec Romain Sauzet et Nina Chevalier : tableau de bord du showroom, 1er semestre 2026.",
+      "n|Réunion avec Romain Sauzet et Nina Chevalier : tableau de bord du showroom, 1er semestre.",
       "a|Le CA dépasse l'objectif, mais la transformation et le panier moyen sont en deçà. Pascal Berruelle veut un plan correctif.",
       "a|Et moi, je veux que tu y intègres des leviers de relation client à distance : téléphone, mail, relances.",
       "fin|À toi : analyse le tableau de bord en profondeur."
@@ -526,7 +526,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Ce matin, au bureau satisfaction client.",
     "a|Problème majeur : 3 commandes de maillots floqués sont défectueuses.",
-    "a|Romain Sauzet est absent aujourd'hui. Tu gères la crise seul.",
+    "a|Romain Sauzet est absent aujourd'hui. Tu gères la crise sans lui.",
     "fin|À toi : gère l'urgence des maillots défectueux."
   ] },
 
@@ -607,14 +607,14 @@ Object.assign(SAYNETES_MISSIONS, {
 "M044": { titre: "La stratégie B2B de l'année prochaine", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Construis le plan stratégique commercial B2B de l'année prochaine.",
-    "a|C'est ta mission de Terminale : tu la présenteras à l'équipe de direction.",
+    "a|C'est une mission importante : tu la présenteras à l'équipe de direction.",
     "fin|À toi : analyse et fixe les orientations."
   ] },
 
 "M080": { titre: "Faire mieux au printemps", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|La Rentrée Sportive de septembre 2026 n'a pas atteint ses objectifs.",
-    "a|Au printemps, on fait mieux. Je te confie l'opération Printemps du Sport d'avril 2027.",
+    "n|La Semaine de la Rentrée, en septembre, n'a pas atteint ses objectifs.",
+    "a|Au printemps, on fait mieux. Je te confie l'opération Printemps du Sport d'avril.",
     "a|De l'idée jusqu'au bilan. Tu la présenteras à Pascal Berruelle.",
     "fin|À toi : conçois l'opération."
   ] },
@@ -674,7 +674,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M085": { titre: "Le CSE de Thales Palaiseau attend ta proposition", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "n|C'est le rendez-vous le plus important du trimestre.",
+    "n|Bureau de la direction, mardi matin.",
     "a|Isabelle Ferreira, responsable du CSE de Thales Palaiseau, attend ta proposition définitive vendredi.",
     "a|C'est le rendez-vous le plus important du trimestre : je compte sur toi pour décrocher ce CSE.",
     "fin|À toi : construis et défends ta proposition."
@@ -705,14 +705,14 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M090": { titre: "La stratégie des 2 prochaines années", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Je veux qu'une équipe de stagiaires construise la stratégie commerciale de LABORO pour les 2 prochaines années.",
-    "a|Je te confie la coordination.",
+    "a|Je te confie la construction de la stratégie commerciale de LABORO pour les 2 prochaines années.",
+    "a|Tu me la présenteras, et je te poserai toutes les questions difficiles.",
     "fin|À toi : construis la stratégie."
   ] },
 
 "M091": { titre: "La veille de toute l'équipe", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Je t'ai choisi pour concevoir et animer le système de veille de toute l'équipe LABORO.",
+    "a|C'est à toi que je confie la conception et l'animation du système de veille de toute l'équipe LABORO.",
     "a|Ce n'est pas juste un document : c'est un vrai projet de changement dans notre organisation.",
     "fin|À toi : conçois le dispositif de veille partagée."
   ] },
@@ -728,7 +728,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M112": { titre: "Désaccord sur la vitrine", decor: "showroom", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "n|La Rentrée Sportive démarre vendredi. Nina et Romain ne sont pas d'accord sur la vitrine, et Marco ajoute une contrainte de dernière minute.",
+    "n|La Semaine de la Rentrée démarre vendredi. Nina et Romain ne sont pas d'accord sur la vitrine, et Marco ajoute une contrainte de dernière minute.",
     "a|Je te confie l'arbitrage.",
     "a|Je te fais confiance, mais il me faut une décision d'ici demain matin.",
     "fin|À toi : analyse les positions et arbitre."
@@ -1188,8 +1188,8 @@ Object.assign(SAYNETES_MISSIONS, {
 "M096": { titre: "Rayon printemps prêt le 15 avril", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "n|Rayon chaussures, fin d'hiver.",
-    "a|Je te confie tout le changement de saison du rayon. C'est la première fois que tu pilotes ça seul.",
-    "a|Objectif : un rayon printemps opérationnel le jeudi 15 avril 2027.",
+    "a|Je te confie tout le changement de saison du rayon. C'est la première fois que tu pilotes ça en autonomie.",
+    "a|Objectif : un rayon printemps opérationnel le 15 avril.",
     "fin|À toi : gère les stocks sortants et prépare le changement."
   ] },
 
@@ -1237,7 +1237,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M105": { titre: "Le mail de Flocage Rapide SARL", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|Mercredi 28 avril 2027. Romain te montre un mail reçu ce matin de Flocage Rapide SARL, notre sous-traitant flocage.",
+    "n|Nous sommes le 28 avril. Romain te montre un mail reçu ce matin de Flocage Rapide SARL, notre sous-traitant flocage.",
     "a|Rachid Amrani, du Football Club Fleury 91, n'est encore au courant de rien.",
     "a|Leur tournoi a lieu dans 4 jours. Il faut agir vite, et proprement.",
     "fin|À toi : analyse la situation et agis."
@@ -1253,7 +1253,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M107": { titre: "Faire revenir nos clients sportifs", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|Showroom, quelques semaines avant la Semaine du Trail de mai 2027.",
+    "n|Showroom, quelques semaines avant la Semaine du Trail de mai.",
     "a|Conçois une action de fidélisation pour nos clients sportifs, à lancer avant la Semaine du Trail.",
     "a|L'objectif est simple : qu'ils reviennent, et qu'ils achètent.",
     "fin|À toi : conçois l'action de fidélisation."
@@ -1274,17 +1274,17 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : dimensionne et planifie l'opération."
   ] },
 
-"M110": { titre: "Fin de ta première semaine de phoning", decor: "bureau", a: P_NINA, b: P_TOI,
+"M110": { titre: "Fin de ta troisième semaine de phoning", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
-    "n|Vendredi 9 octobre 2026. Fin de ta première semaine de prospection téléphonique.",
-    "a|Je t'ai observé toute la semaine.",
+    "n|Vendredi, fin de ta troisième semaine de prospection téléphonique.",
+    "a|J'ai écouté tes appels toute la semaine.",
     "a|Fais ton bilan, et prépare tes réponses aux objections que tu as rencontrées.",
     "fin|À toi : analyse ta semaine et prépare tes réponses."
   ] },
 
 "M111": { titre: "Une semaine pour transformer 2 devis", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
-    "n|Lundi 26 avril 2027. Nina te remet la liste des devis en attente.",
+    "n|Nous sommes lundi. Nina te remet la liste des devis en attente.",
     "a|Tu as une semaine pour en transformer au moins 2.",
     "a|Commence par les bons, dans le bon ordre.",
     "fin|À toi : priorise les devis et relance."
@@ -1294,14 +1294,14 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|L'opération Semaine Running & Fitness vient de se terminer. L'inventaire est fait.",
     "a|Analyse les écarts de stock relevés.",
-    "a|On s'en servira pour préparer la prochaine opération, Été Sport & Loisirs, en juin 2027.",
+    "a|On s'en servira pour préparer la prochaine opération, Été Sport & Loisirs, en juin.",
     "fin|À toi : analyse les résultats de l'inventaire."
   ] },
 
 "M101": { titre: "Trois fournisseurs pour l'été", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|Préparation de l'opération Été Sport & Loisirs, du 14 au 19 juin 2027.",
-    "a|Je veux changer de fournisseur principal. Voici les résultats de l'appel d'offres auprès de trois fournisseurs, avec mes notes.",
+    "n|Préparation de l'opération Été Sport & Loisirs, du 14 au 19 juin.",
+    "a|Je me demande si on garde notre fournisseur principal. Voici les résultats de l'appel d'offres auprès de trois fournisseurs, avec mes notes.",
     "a|Je te confie le scoring et la commande.",
     "fin|À toi : calcule les quantités à commander."
   ] },

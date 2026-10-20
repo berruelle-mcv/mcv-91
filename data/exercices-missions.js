@@ -708,7 +708,7 @@ Object.assign(EXERCICES_MISSIONS, {
 
 "M030": { type: "cartes", titre: "Au-delà du chiffre d'affaires", cartes: [
     ["Un événement peut être rentable…", "Sans rapporter beaucoup le soir même : on mesure aussi les achats des semaines suivantes."],
-    ["Bénéfice non financier ?", "Image, relation, recommandations, informations sur les clients."],
+    ["Bénéfice non financier ?", "Un effet utile qui ne se compte pas tout de suite en euros."],
     ["Reconduire, adapter ou remplacer : sur quoi décider ?", "Sur les objectifs fixés avant l'action, comparés aux résultats."],
     ["Pourquoi mesurer le NPS après l'événement ?", "Pour savoir si les invités recommandent davantage l'entreprise."]
   ] },
@@ -734,8 +734,8 @@ Object.assign(EXERCICES_MISSIONS, {
 "M033": { type: "cartes", titre: "Quand le CA cache un problème", cartes: [
     ["Le CA peut monter même si moins de visiteurs achètent : pourquoi ?", "Parce que ceux qui achètent dépensent plus, ou que la fréquentation augmente."],
     ["Solde clients ?", "Nouveaux clients − clients perdus."],
-    ["Taux de transformation bas : premières pistes ?", "Accueil, disponibilité des vendeurs, ruptures, prix affichés."],
-    ["Augmenter le panier moyen ?", "Ventes complémentaires, montée en gamme, lots."]
+    ["Taux de transformation bas : où chercher ?", "Dans chaque étape du parcours du client en magasin."],
+    ["Augmenter le panier moyen ?", "Faire acheter plus, ou plus cher, au même client."]
   ] },
 
 "M034": { type: "etapes", titre: "Les premières heures d'une crise", intro: "Face à une crise, on agit vite et dans le bon ordre.",
@@ -766,7 +766,7 @@ Object.assign(EXERCICES_MISSIONS, {
 
 "M037": { type: "cartes", titre: "Évaluer un programme de fidélité", cartes: [
     ["ROI d'un programme ?", "(Gain généré − coût du programme) ÷ coût × 100."],
-    ["Taux d'inscription faible : premières causes ?", "Programme mal connu, inscription compliquée, avantages peu attractifs."],
+    ["Taux d'inscription faible : comment trouver les causes ?", "Interroger les clients non inscrits et observer le parcours d'inscription."],
     ["Pourquoi comparer inscrits et non-inscrits ?", "Pour voir si le programme change vraiment le comportement d'achat."],
     ["Valeur client (CLV) ?", "Ce qu'un client rapporte sur toute la durée de sa relation avec l'entreprise."]
   ] },
@@ -801,7 +801,7 @@ Object.assign(EXERCICES_MISSIONS, {
   items: [
     ["Conseil d'un commercial dédié qui se déplace.", 0, "Proximité et suivi personnalisé."],
     ["Prix unitaire le plus bas du marché.", 1, "Un grand réseau national peut être moins cher."],
-    ["Flocage réalisé dans son propre atelier.", 0, "Délais et corrections maîtrisés."],
+    ["Flocage livré en 3 semaines au lieu de 5.", 0, "Délai plus court que le concurrent."],
     ["Catalogue très étendu sur toutes les disciplines.", 1, "Un spécialiste régional a une offre plus ciblée."]
   ] },
 
@@ -1081,7 +1081,7 @@ Object.assign(EXERCICES_MISSIONS, {
   items: [
     ["Un client qui ouvre toutes les newsletters.", 0, "Il lit ses mails."],
     ["Une cliente qui ne lit pas ses mails mais répond vite aux messages.", 1, "Le SMS est court et lu."],
-    ["Un très bon client qui n'est pas venu depuis 8 mois.", 2, "Un appel personnel montre qu'on tient à lui."],
+    ["Un très bon client qui n'est pas venu depuis un an.", 2, "Un appel personnel montre qu'on tient à lui."],
     ["Une information courte : la date d'une vente privée.", 1, "Un message bref suffit."]
   ] },
 

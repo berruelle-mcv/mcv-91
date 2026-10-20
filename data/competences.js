@@ -184,6 +184,18 @@ Réponse : "Je comprends — c'est justement parce que vous débutez que l'amort
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta propre pratique — par exemple : qu'aurais-tu pu faire différemment si le client était resté sur son objection ? Cette question n'est pas un résumé de la mission, c'est un vrai retour critique sur ton choix.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Omnicanal</strong> — le client passe d'un canal à l'autre (site, réseaux sociaux, téléphone, magasin) : chaque canal doit connaître ce qui s'est dit sur les autres.</li>
+<li><strong>Taux de transformation</strong> — acheteurs ÷ visiteurs × 100 (ou étape d'arrivée ÷ étape de départ × 100). Exemple : 30 acheteurs pour 120 visiteurs → 25 %.</li>
+<li><strong>Panier moyen</strong> — CA ÷ nombre de ventes. Exemple : 4 500 € pour 30 ventes → 150 €.</li>
+<li><strong>Taux d'abandon de panier</strong> — paniers créés mais non payés ÷ paniers créés × 100.</li>
+<li><strong>SONCASE</strong> — les mobiles d'achat : Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie, Environnement ; on adapte l'argument au mobile principal du client.</li>
+<li><strong>Objectif SMART</strong> — spécifique, Mesurable, Atteignable, Réaliste, Temporel : un chiffre, une cible, une date.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -213,6 +225,17 @@ Client pressé, besoin mal défini au départ, produit demandé indisponible en 
 <li><strong>T — Menaces (Threats)</strong> : éléments externes défavorables (ex. nouveau concurrent, hausse des coûts transporteur)</li>
 </ul>
 <p>Une stratégie solide s'appuie sur les forces pour saisir les opportunités, tout en anticipant comment limiter l'effet des faiblesses et des menaces — ce n'est pas une simple liste, c'est un raisonnement croisé.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>SWOT</strong> — forces et faiblesses (internes) · opportunités et menaces (venues du marché).</li>
+<li><strong>Décliner un objectif</strong> — répartir un objectif global entre des périodes, des rayons ou des canaux, avec des parts qui totalisent 100 %.</li>
+<li><strong>Taux de croissance</strong> — (Nouvelle valeur − ancienne valeur) ÷ ancienne valeur × 100. Exemple : de 800 000 € à 900 000 € → + 12,5 %.</li>
+<li><strong>Initiative stratégique</strong> — une action d'ampleur, avec sa logique, ses ressources, ses risques et ses indicateurs de succès.</li>
+<li><strong>Objection de la direction</strong> — une question sur le coût, le risque ou la faisabilité ; on y répond avec des chiffres et un plan.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -348,6 +371,17 @@ Plusieurs avis Google mentionnent la même rupture de stock sur un article très
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : si tu avais traité les deux signaux dans l'autre ordre, qu'est-ce que ça aurait changé concrètement ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision d'arbitrage.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Axe de veille</strong> — un domaine que l'on surveille régulièrement : concurrents, produits, clients, marché. Pour chaque axe : quoi surveiller, où (sources), à quel rythme, qui s'en charge.</li>
+<li><strong>Source fiable</strong> — une information datée et dont on connaît l'origine (site officiel, chiffres internes, article sourcé) ; une rumeur ou un « on m'a dit » se vérifie avant d'être utilisée.</li>
+<li><strong>Menace et opportunité</strong> — une menace peut faire perdre des ventes à l'enseigne (promotion concurrente, nouveau magasin) ; une opportunité peut en faire gagner (tendance en hausse, événement local).</li>
+<li><strong>Positionnement concurrentiel</strong> — ce qui distingue l'enseigne de ses concurrents aux yeux des clients : prix, choix, conseil, services, délais.</li>
+<li><strong>Note de veille</strong> — un écrit court qui présente les faits, leur conséquence pour l'entreprise et une recommandation ; ce qui reste incertain y est signalé comme tel.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -369,6 +403,17 @@ Plusieurs avis Google mentionnent la même rupture de stock sur un article très
 Trois informations de veille arrivent le même jour : une baisse de prix concurrente, un avis client négatif répété, et un nouveau produit fournisseur. En autonomie complète, tu dois hiérarchiser les trois, décider laquelle remonter en urgence, et convertir au moins une des trois en argument de vente exploitable immédiatement.
 </div>
 <p><strong>Relier la veille à la stratégie — nourrir le SWOT :</strong> ta veille alimente directement les colonnes Opportunités et Menaces d'une analyse SWOT (voir C1.2 palier 4) — un concurrent qui baisse ses prix est une menace ; un besoin client mal couvert par le marché est une opportunité. Une veille bien menée transforme une observation en levier stratégique, pas en simple constat.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Dispositif de veille collectif</strong> — sources, fréquences, responsables, format des notes et circuit de partage : la veille devient un travail d'équipe, pas une affaire personnelle.</li>
+<li><strong>Signal faible</strong> — une information encore isolée qui peut annoncer un changement important (un concurrent qui recrute, un client qui change d'interlocuteur).</li>
+<li><strong>Appel d'offres</strong> — une consultation organisée par un client (souvent public) qui compare plusieurs fournisseurs sur des critères annoncés.</li>
+<li><strong>Frein au changement</strong> — ce qui empêche une équipe d'adopter un nouvel outil : manque de temps, d'intérêt perçu, d'habitude ; chaque frein appelle une réponse concrète.</li>
+<li><strong>Appropriation</strong> — le fait que l'équipe utilise vraiment l'outil ; elle se mesure (nombre de notes, de signaux remontés, de décisions prises).</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -491,10 +536,21 @@ Après l'accord sur une veste à 89€ : "Pour cette veste technique, on propose
 Juste avant de payer, le client dit : "Finalement je ne suis pas sûr, c'est peut-être un peu cher." Mauvais réflexe : répéter l'argumentaire depuis le début. Bon réflexe : identifier PRÉCISÉMENT ce qui bloque maintenant — "Qu'est-ce qui vous fait hésiter, le prix ou autre chose ?" — puis répondre à ce point précis, pas à une objection générale.
 </div>
 <p><strong>Un document manquant ou une contrainte de paiement :</strong> le client n'a pas sa carte de fidélité sur lui, ou veut payer en plusieurs fois sans que ce soit prévu chez LABORO. Tu dois proposer une solution concrète (créer la carte avec son numéro de téléphone, orienter vers les modalités de paiement réellement disponibles) sans jamais promettre ce que LABORO ne peut pas faire.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — contrainte de paiement</div>
-Client : "Je peux payer en 3 fois ?" Si LABORO ne propose pas cette option en caisse magasin : "Ce n'est pas possible en magasin, mais je peux vous montrer comment c'est proposé sur notre site pour les achats à partir de 100€ si ça vous intéresse." Tu ne dis jamais simplement "non", tu réorientes vers une solution réelle.
+<div class="res-ex"><div class="res-ex-l">Exemple — service non proposé</div>
+Client : "Vous pouvez me livrer à domicile ?" Si ce n'est pas proposé pour un achat en magasin : "Ce n'est pas proposé pour un achat en magasin, mais je peux vous montrer ce que LABORO propose réellement pour vous faciliter les choses." Tu ne dis jamais simplement "non", tu réorientes vers une solution réelle.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta gestion de l'imprévu — par exemple : qu'est-ce qui, dans ta façon de conclure la vente initialement, aurait pu éviter cette hésitation de dernière minute ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>HT et TTC</strong> — TTC = HT × (1 + taux de TVA) ; HT = TTC ÷ (1 + taux de TVA). Exemple avec une TVA de 20 % : 240 € TTC → 200 € HT.</li>
+<li><strong>Vente à une collectivité</strong> — elle passe par un bon de commande public ; le paiement intervient au plus tard à 30 jours (délai légal) ; les documents demandés (devis, facture pro forma, bons de livraison) doivent être exacts.</li>
+<li><strong>Facture pro forma</strong> — une facture « provisoire » envoyée avant la livraison, pour que le client engage sa dépense ; elle ne vaut pas demande de paiement.</li>
+<li><strong>Garantie commerciale et garantie légale</strong> — la garantie commerciale est offerte par l'enseigne (ex. échange sous 30 jours) ; la garantie légale de conformité (2 ans) s'applique toujours, en plus.</li>
+<li><strong>Rupture partielle</strong> — une partie seulement de la commande est en stock : on calcule le manquant et on vérifie que le réassort arrive avant la date promise.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -624,6 +680,17 @@ Club A : 15 maillots dont 10 disponibles tout de suite + 5 en réassort sous 5 j
 <p><strong>Rappel — piloter le suivi avec un tableau de bord :</strong> pour chaque indicateur (ex. taux de livraison dans les délais = livraisons à temps ÷ total livraisons × 100 · nombre de commandes en retard · délai moyen de livraison), précise le nom, la formule, la fréquence de suivi, l'objectif cible et le seuil d'alerte.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : sur quel critère t'es-tu appuyé pour départager les deux commandes, et cet arbitrage était-il le plus juste possible pour LABORO comme pour les deux clients ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta décision.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Suivi de commande</strong> — vérifier à chaque étape (commande, production, expédition, livraison) que la date promise tient encore, et prévenir le client dès qu'un risque apparaît.</li>
+<li><strong>Point de contrôle</strong> — une date fixée à l'avance où l'on vérifie l'avancement auprès du fournisseur ou du sous-traitant, pour ne pas découvrir un retard après la date de livraison.</li>
+<li><strong>Priorisation</strong> — on classe les dossiers selon l'urgence réelle (date, enjeu pour le client) et le risque, pas selon l'ordre d'arrivée.</li>
+<li><strong>Livraison partielle</strong> — livrer d'abord la partie disponible ou indispensable, et le reste plus tard, avec l'accord du client.</li>
+<li><strong>Remise commerciale</strong> — prix après remise = prix × (1 − taux de remise). Exemple : 500 € avec 6 % de remise → 470 €.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -644,7 +711,7 @@ Club A : 15 maillots dont 10 disponibles tout de suite + 5 en réassort sous 5 j
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Deux commandes concurrentes sur un stock limité, l'une avec un délai serré non signalé au départ. En autonomie complète, tu dois détecter le conflit, arbitrer selon des critères objectifs, prévenir les deux clients avec une date ferme, et tracer la décision.
 </div>
-<p><strong>Du suivi à la satisfaction client :</strong> un suivi de commande bien mené est l'un des premiers leviers de la satisfaction client (voir C2.4) — un client bien informé, même en cas de retard, reste en confiance ; un client livré sans nouvelle perd confiance même si le colis arrive à temps.</p>
+<p><strong>Du suivi à la satisfaction client :</strong> un suivi de commande bien mené est l'un des premiers leviers de la satisfaction client (voir C2.3) — un client bien informé, même en cas de retard, reste en confiance ; un client livré sans nouvelle perd confiance même si le colis arrive à temps.</p>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -778,6 +845,17 @@ Un club demande une livraison express (24h) ET une personnalisation textile (dé
 Un client veut une personnalisation textile pour 6 maillots seulement (minimum LABORO : 10 unités). Tu ne peux pas promettre le service tel quel : "La personnalisation démarre à partir de 10 pièces chez LABORO. Je peux vous proposer d'attendre une commande groupée avec un autre client, ou l'appliquer si vous complétez à 10 maillots."</p>
 <p><strong>Rappel — évaluer les services avec un tableau de bord :</strong> pour chaque indicateur (ex. taux de retard livraison = retards ÷ total × 100 · taux d'erreur de personnalisation · satisfaction services /5), précise le nom, la formule, la fréquence, l'objectif cible et le seuil d'alerte.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'aurais-tu pu vérifier plus tôt dans l'échange pour éviter de devoir revenir sur une promesse ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Service associé</strong> — un service vendu ou offert avec le produit : livraison, personnalisation (flocage, broderie), montage, garantie, reprise…</li>
+<li><strong>Taux d'erreur ou de retard</strong> — nombre de cas ÷ nombre total × 100. Exemple : 6 retards sur 150 livraisons → 4 %.</li>
+<li><strong>Coût d'un dysfonctionnement</strong> — nombre de cas × coût moyen par cas (geste commercial, avoir, nouvel envoi).</li>
+<li><strong>Indicateur</strong> — un chiffre suivi dans le temps, avec sa formule, son objectif et la fréquence à laquelle on le mesure.</li>
+<li><strong>Action corrective</strong> — une action qui supprime la cause d'un problème (contrôle, procédure, formation), pas seulement ses effets.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -949,7 +1027,7 @@ Client : "J'ai commandé il y a 3 semaines, toujours rien reçu. C'est un scanda
 <div class="res-section-label">🟠 Quand la réclamation dépasse le cadre habituel</div>
 <p>À ce niveau, la réclamation n'est plus simple à traiter avec la grille habituelle : le client demande une compensation supérieure à ce que tu peux accorder, ou il a en partie tort mais reste légitimement mécontent. Ton rôle est de trouver une solution juste, ni en cédant à tout, ni en refusant sèchement.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — demande de compensation excessive</div>
-Un client réclame un remboursement total pour une paire de chaussures légèrement décousue après 3 mois d'usage intensif, alors que la garantie couvre un défaut de fabrication, pas l'usure. Mauvais réflexe : refuser sec "ce n'est pas couvert". Bon réflexe : "Je comprends votre déception. Ce type d'usure après un usage intensif n'entre pas dans la garantie de conformité, mais je peux vous proposer un geste commercial de 15% sur une nouvelle paire, en reconnaissance de votre fidélité."
+Un client réclame un remboursement total pour une paire de chaussures dont la semelle est usée après 3 mois de course quotidienne sur route : la garantie couvre un défaut de conformité, pas l'usure normale. Mauvais réflexe : refuser sec "ce n'est pas couvert". Bon réflexe : "Je comprends votre déception. Une semelle usée par une course quotidienne, c'est de l'usure normale : elle n'entre pas dans la garantie de conformité, mais je peux vous proposer un geste commercial de 15% sur une nouvelle paire, en reconnaissance de votre fidélité."
 </div>
 <p><strong>Un client en partie responsable :</strong> quand le client a lui-même contribué au problème (mauvais entretien, erreur de commande de sa part), l'empathie reste de mise, mais la solution doit rester proportionnée — accorder un geste commercial n'est pas reconnaître une faute LABORO qui n'existe pas.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — dépasser son plafond de compensation</div>
@@ -957,6 +1035,17 @@ Un conseiller de vente (plafond 20€) fait face à une réclamation qui mérite
 </div>
 <p><strong>Rappel — la méthode ERESA reste ta base, même pour une réclamation sensible :</strong> Écouter · Reformuler · S'excuser · Solution · Agir et tracer (LABORO Connect). Niveaux de geste commercial : conseiller de vente jusqu'à 20 € de bon d'achat · responsable : remboursement partiel ou échange · PDG : geste exceptionnel au-delà. Une politique de réclamations repose sur 4 piliers : traçabilité · délais engagés · niveaux de compensation · analyse et prévention.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta décision — par exemple : ta solution était-elle juste à la fois pour le client et pour LABORO, ou as-tu cédé/refusé par facilité ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta pratique.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Méthode ERESA</strong> — écouter, Reformuler, S'excuser, apporter une Solution, Agir et tracer (noter ce qui a été fait et promis).</li>
+<li><strong>Coût d'une réclamation</strong> — coût de traitement (temps, geste commercial) + CA perdu si le client part.</li>
+<li><strong>CA annuel perdu</strong> — nombre de clients perdus × panier moyen × nombre d'achats par an. Exemple : 3 clients × 400 € × 2 achats → 2 400 € par an.</li>
+<li><strong>Marge de manœuvre</strong> — ce qu'un vendeur peut accorder seul (ex. un bon d'achat plafonné) ; au-delà, il transmet à son responsable avec un dossier argumenté.</li>
+<li><strong>Satisfaction post-réclamation</strong> — part des clients satisfaits de la façon dont leur réclamation a été traitée : clients satisfaits ÷ réclamations traitées × 100.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -980,7 +1069,7 @@ Un conseiller de vente (plafond 20€) fait face à une réclamation qui mérite
 <ul>
 <li>Taux de réclamation = (nb réclamations / nb ventes) × 100 — objectif LABORO &lt; 2%</li>
 <li>Délai moyen de traitement = temps total de résolution / nb réclamations</li>
-<li>Taux de satisfaction post-réclamation = clients satisfaits après traitement / total</li>
+<li>Taux de satisfaction post-réclamation = clients satisfaits après traitement ÷ réclamations traitées × 100</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Bonne pratique LABORO</div>
 Chaque mois, Marco Pellini, responsable Satisfaction Client, présente en réunion d'équipe le "Top 3 des réclamations du mois". L'équipe identifie la cause racine et décide d'une action corrective. Résultat : le taux de réclamation a baissé de 3,2% à 1,8% en 6 mois.
@@ -1093,6 +1182,17 @@ En lisant les commentaires liés aux notes basses de satisfaction, on découvre 
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton interprétation — par exemple : qu'aurais-tu risqué de conclure à tort si tu n'avais regardé que le NPS, ou que le taux de satisfaction, séparément ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'analyse.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>NPS</strong> — % de promoteurs (notes 9-10) − % de détracteurs (notes 0-6) ; les neutres (7-8) ne comptent pas. Exemple : 40 % de promoteurs et 25 % de détracteurs → NPS de + 15.</li>
+<li><strong>Taux de satisfaction</strong> — clients satisfaits ÷ répondants × 100.</li>
+<li><strong>Taux de réponse</strong> — répondants ÷ clients interrogés × 100 : un taux faible rend les résultats moins représentatifs.</li>
+<li><strong>Verbatim</strong> — une phrase d'un client citée mot pour mot : elle aide à comprendre la cause d'une note.</li>
+<li><strong>Plan d'action</strong> — pour chaque action : responsable, délai, budget, indicateur de succès.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1112,10 +1212,10 @@ En lisant les commentaires liés aux notes basses de satisfaction, on découvre 
 <li><strong>Verbatim négatif</strong> → identifier le problème précis, prioriser les corrections sur le sujet le plus cité, pas sur le plus récent</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple LABORO — analyse verbatims rayon running</div>
-24 avis Google analysés · Note moyenne : 3,8/5<br><br>
-<strong>Négatifs récurrents :</strong> "Pas assez de choix en tailles" (8 mentions) · "Délai de commande trop long" (5) · "Prix élevés" (4)<br>
+30 avis Google analysés · Note moyenne : 4,0/5<br><br>
+<strong>Négatifs récurrents :</strong> "Pas assez de choix en tailles" (9 mentions) · "Délai de commande trop long" (5) · "Prix élevés" (4)<br>
 <strong>Positifs récurrents :</strong> "Conseiller très compétent" (11) · "Bonne ambiance en magasin" (7)<br><br>
-<strong>Action prioritaire</strong> : élargir les tailles disponibles → s'adresse au problème le plus cité (8/24 = 33% des avis), pas au plus facile à corriger.
+<strong>Action prioritaire</strong> : élargir les tailles disponibles → s'adresse au problème le plus cité (9/30 = 30 % des avis), pas au plus facile à corriger.
 </div>
 </div>
 <div class="res-retenir">
@@ -1181,7 +1281,7 @@ Objet : "Votre commande n°2847 — livraison jeudi"<br>
 <li><strong>SIC (LABORO Connect)</strong> — système d'information commerciale (on dit aussi CRM) : le logiciel où l'on tient la fiche de chaque client ou prospect (coordonnées, historique des échanges datés, statut, prochaine action). Une information non vérifiée y est signalée comme telle, jamais présentée comme sûre.</li>
 <li><strong>Répondre à un avis en ligne</strong> — la réponse est publique : elle est lue par les futurs clients. On remercie, on reconnaît le problème sans se justifier ni accuser, on n'y écrit aucune information personnelle, et on propose de poursuivre en privé.</li>
 <li><strong>CA cumulé, panier moyen, fréquence d'achat</strong> — CA cumulé : total des achats d'un client depuis le début ; panier moyen : CA ÷ nombre d'achats ; fréquence d'achat : nombre d'achats par an. Exemple : 600 € en 4 achats → panier moyen de 150 €.</li>
-<li><strong>Promoteur</strong> — client qui répond 9 ou 10 à la question « Recommanderiez-vous LABORO ? » : il parle en bien de LABORO autour de lui (voir le NPS, fiche C2.4).</li>
+<li><strong>Promoteur</strong> — client qui répond 9 ou 10 à la question « Recommanderiez-vous LABORO ? » : il parle en bien de LABORO autour de lui (voir le NPS, fiche C2.3).</li>
 <li><strong>Tag</strong> — étiquette ajoutée à une fiche client (Premium, Newsletter, Ambassadeur…) pour retrouver vite un groupe de clients et lui proposer la bonne action.</li>
 <li><strong>Prospect prioritaire</strong> — personne dont on connaît le besoin (ce qu'elle veut acheter), le budget (l'argent prévu) et le délai (quand elle veut acheter) : elle est prête à recevoir une proposition.</li>
 </ul>
@@ -1238,6 +1338,18 @@ En fin de journée : un email de réclamation reçu ce matin (délai de réponse
 Julie Marchand (achat il y a 10 jours, avis Google 5/5) → à entretenir : un message de remerciement suffit, pas d'action urgente. Hugo Lefort (11 mois sans achat, abonné newsletter) → à réactiver, par mail avec une invitation à un atelier en magasin. Un responsable de CSE qui a demandé un devis la semaine dernière et n'a pas encore été rappelé → à relancer en priorité, par téléphone, car il attend une réponse de LABORO.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : sur quel critère t'es-tu appuyé, et un collègue avec un autre critère aurait-il fait le même choix ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ton arbitrage.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Segmentation du fichier client</strong> — regrouper les clients selon des critères (dernière visite, achats, fréquence, joignabilité) pour leur adresser le bon message.</li>
+<li><strong>Canal de contact</strong> — le moyen le plus adapté au client : mail s'il lit ses mails, SMS ou appel s'il réagit mieux ainsi, aucun s'il ne veut pas être sollicité.</li>
+<li><strong>Délai de réponse</strong> — temps entre la demande d'un client et la réponse de l'entreprise ; on le suit canal par canal.</li>
+<li><strong>Taux de contacts non traités</strong> — contacts sans réponse ÷ contacts reçus × 100. Exemple : 9 sur 150 → 6 %.</li>
+<li><strong>Réponse type</strong> — un modèle de réponse à une demande fréquente, que l'on personnalise avant l'envoi.</li>
+<li><strong>LABORO Connect</strong> — le CRM de LABORO : chaque client, chaque échange et la prochaine action y sont enregistrés.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1392,6 +1504,17 @@ Client A (dernier achat : consommable sportif classique, panier moyen) → proba
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix — par exemple : qu'est-ce qui aurait pu t'induire en erreur si tu t'étais fié uniquement à la date du dernier achat ? Ce n'est pas un résumé de la situation, c'est un vrai retour critique sur ta méthode de segmentation.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Taux de rétention et d'attrition</strong> — rétention = clients qui rachètent ÷ clients de l'année précédente × 100 ; attrition = 100 − rétention.</li>
+<li><strong>Coût d'acquisition et coût de rétention</strong> — ce que coûte la conquête d'un nouveau client, et ce que coûte le fait de garder un client existant (souvent bien moins cher).</li>
+<li><strong>Niveaux de fidélité</strong> — des avantages qui augmentent avec l'engagement du client (fréquence, montant), pour récompenser la fidélité plutôt que d'accorder des remises à tous.</li>
+<li><strong>Ventiler un budget</strong> — répartir une somme entre des postes de dépense, avec un total qui ne dépasse pas le budget.</li>
+<li><strong>Indicateur de pilotage</strong> — formule, objectif, fréquence de mesure.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -1525,6 +1648,17 @@ La soirée test trail a un ROI de 1 000% (excellent), mais parmi les clients ven
 Plutôt que d'arrêter la soirée (ROI trop bon pour ça) ou de la reconduire à l'identique (rétention trop faible), la décision est d'ajuster : conditionner une partie de la remise du soir à l'inscription à la carte LABORO PRO, pour transformer l'attrait ponctuel en lien durable.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta décision — par exemple : qu'est-ce qui t'a permis de ne pas t'arrêter au ROI seul, et qu'est-ce que tu risquais de manquer si tu l'avais fait ? Ce n'est pas un résumé des chiffres, c'est un vrai retour critique sur ta méthode d'évaluation.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>ROI</strong> — (Gain ou CA généré − coût) ÷ coût × 100. Exemple : 3 000 € générés pour 500 € de coût → 500 %.</li>
+<li><strong>Taux de conversion d'une action</strong> — clients ayant acheté grâce à l'action ÷ clients touchés × 100.</li>
+<li><strong>Valeur vie client (CLV)</strong> — CA annuel moyen d'un client × durée moyenne de sa fidélité. Exemple : 200 € par an pendant 5 ans → 1 000 €.</li>
+<li><strong>Bénéfice non financier</strong> — un effet utile qui ne se compte pas en euros tout de suite : image, recommandation, satisfaction, nouveaux contacts.</li>
+<li><strong>Reconduire, adapter, remplacer</strong> — on compare chaque résultat à l'objectif fixé avant l'action, puis on décide.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1766,9 +1900,9 @@ PVHT = 30 ÷ (1−0,40) = 30 ÷ 0,60 = <strong>50,00€</strong> · PVTTC = 50,0
 </div>`},
 3:{t:"Gérer l'espace commercial — Arbitrer stocks, fournisseurs et démarque",c:`<div class="res-section">
 <div class="res-section-label">🟠 Comparer, arbitrer, diagnostiquer une perte</div>
-<p><strong>Comparer des fournisseurs par scoring pondéré :</strong> tous les critères ne se valent pas — on leur attribue un poids selon leur importance pour LABORO (ex. Prix 40% · Délai 30% · Qualité 20% · Service 10%). Pour chaque fournisseur, noter chaque critère sur 5, multiplier par le poids, additionner.</p>
+<p><strong>Comparer des fournisseurs par scoring pondéré :</strong> tous les critères ne se valent pas — on leur attribue un poids selon leur importance pour LABORO (ex. Prix 30 % · Délai 30 % · Qualité 25 % · Service 15 %). Pour chaque fournisseur, noter chaque critère sur 5, multiplier par le poids, additionner.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — scoring fournisseur</div>
-Fournisseur A : Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5×0,30)+(4×0,20)+(3×0,10) = 1,6+1,5+0,8+0,3 = <strong>4,2/5</strong>.
+Fournisseur X : Prix 3/5, Délai 4/5, Qualité 5/5, Service 4/5 → (3×0,30)+(4×0,30)+(5×0,25)+(4×0,15) = 0,9+1,2+1,25+0,6 = <strong>3,95/5</strong>.
 </div>
 <p><strong>La quantité économique de commande (QEC) :</strong> c'est la quantité qui minimise le coût total, en équilibrant le <strong>coût de passation</strong> (commander souvent = frais qui grimpent) et le <strong>coût de stockage</strong> (commander de grandes quantités = espace et argent immobilisés). La bonne quantité évite les deux excès — ni rupture, ni surstock.</p>
 <p><strong>Diagnostiquer une démarque :</strong></p>
@@ -1778,11 +1912,23 @@ Fournisseur A : Prix 4/5, Délai 5/5, Qualité 4/5, Service 3/5 → (4×0,40)+(5
 <li><strong>Taux de démarque</strong> = valeur de la démarque HT (unités manquantes × prix d'achat HT) ÷ CA HT × 100 · deux repères : objectif sectoriel &lt; 1,5% ; au-delà de 3% = situation critique</li>
 </ul>
 <div class="res-ex"><div class="res-ex-l">Exemple — calcul démarque</div>
-Crème anti-frottements : stock initial 35, livraison 0, vendues 28 → stock théorique = 7. Stock réel : 3 → démarque de 4 unités (vol possible ou casse non signalée).
+Crème anti-frottements : stock initial 40, livraison 12, vendues 31 → stock théorique = 21. Stock réel : 18 → démarque de 3 unités (vol possible ou casse non signalée).
 </div>
 <p><strong>Rappel — indicateurs de performance et méthode :</strong> taux de transformation (magasin) = acheteurs ÷ visiteurs × 100 · taux de conversion (site) = commandes ÷ visiteurs uniques × 100 · part des ventes en ligne = CA site ÷ CA total × 100 · écart à l'objectif = réalisé − objectif (en €), puis écart ÷ objectif × 100 (en %). Objectif SMART = Spécifique · Mesurable · Atteignable · Réaliste · Temporel (un chiffre, une cible, une date). Canaux digitaux : Instagram (surtout 18-35 ans, visuel) · Facebook (surtout 35-55 ans, clubs et CSE) · Newsletter (clients existants) · Google My Business (recherche locale).</p>
 <p><strong>Gérer un produit à DDM courte :</strong> deux options s'opposent — promotion (−30%, lot 3+1) pour écouler vite, ou don à une association (anti-gaspillage). Il faut comparer les deux sur le CA et la marge dégagée avant de choisir, pas prendre l'option la plus rapide par réflexe.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'est-ce qui a fait pencher la balance entre les deux options (fournisseur, quantité, ou gestion de la démarque), et un autre critère aurait-il changé ta décision ? Ce n'est pas un résumé des calculs, c'est un vrai retour critique sur ta méthode de décision.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Démarque</strong> — écart entre le stock théorique et le stock réel quand il manque des produits (vol, casse, erreur) ; démarque connue : perte identifiée, comme une remise sur un produit abîmé.</li>
+<li><strong>Stock théorique</strong> — stock initial + entrées − sorties enregistrées.</li>
+<li><strong>Taux de marque</strong> — (PVHT − PAHT) ÷ PVHT × 100 ; PVHT = PAHT ÷ (1 − taux de marque). Exemple : PAHT 30 €, taux de marque 40 % → PVHT 50 €.</li>
+<li><strong>Seuil de rentabilité</strong> — le niveau de ventes pour lequel le CA couvre exactement les coûts.</li>
+<li><strong>Merchandising</strong> — zone chaude (la plus fréquentée) et zone froide · niveau des yeux (le plus vendeur) · facing (produits visibles de face) · PLV (publicité sur le lieu de vente).</li>
+<li><strong>Taux d'engagement</strong> — (J'aime + commentaires + partages) ÷ abonnés × 100.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1799,10 +1945,21 @@ Crème anti-frottements : stock initial 35, livraison 0, vendues 28 → stock th
 <p><strong>Communication digitale :</strong> Instagram (18-35 ans, visuel) · Facebook (35-55 ans, CSE/clubs) · Newsletter (clients existants) · Google My Business (référencement local). Un post efficace : visuel d'abord, texte &lt;150 mots, 3-5 hashtags, 1 seul call-to-action.</p>
 <p><strong>Piloter avec le SWOT :</strong> Forces (ce qui marche) · Faiblesses (ce qui freine) · Opportunités (à saisir) · Menaces (risques externes). Prioriser les actions sur les faiblesses qui limitent une force, ou les opportunités les plus faciles à saisir.</p>
 <p><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). En dessous = déficitaire, au-dessus = chaque vente dégage du bénéfice.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — atelier "Entretien & Prolongation équipement"</div>
-Charges fixes 600€ · prix d'inscription 35€ · coût variable 12€/participant. Seuil = 600 ÷ (35−12) = 600÷23 = <strong>27 participants</strong> pour être rentable.
+<div class="res-ex"><div class="res-ex-l">Exemple — atelier "Initiation trail"</div>
+Charges fixes 450 € · inscription 30 € HT · coût variable 5 € HT par participant. Seuil = 450 ÷ (30 − 5) = 450 ÷ 25 = <strong>18 participants</strong> pour être rentable.
 </div>
 <p><strong>Construire une offre B2B</strong> (clubs, CSE, collectivités) : tarification dégressive par volume, paiement différé (30-60 jours), interlocuteur dédié, contrat annuel — à la différence du B2C (comptant, sans volume, sans interlocuteur attitré).</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Parcours client</strong> — toutes les étapes du client, de son arrivée à sa sortie, avec les points de contact et ce qu'il ressent à chaque étape.</li>
+<li><strong>Point de friction</strong> — un moment du parcours qui gêne le client (attente, prix non affichés, signalétique) et peut lui faire renoncer à acheter.</li>
+<li><strong>SWOT</strong> — forces et faiblesses (internes) · opportunités et menaces (venues du marché).</li>
+<li><strong>Taux de démarque et taux de rupture</strong> — démarque ÷ CA × 100 · références en rupture ÷ références suivies × 100.</li>
+<li><strong>Mesure de contingence</strong> — ce que l'on fera si un risque du plan se réalise.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -1923,6 +2080,17 @@ B — Budget estimé 1 500€ → 2/3 · A — Président décisionnaire → 3/3
 Club A : score 83%, saison qui démarre dans 2 semaines. Club B : score 83%, mais budget voté seulement en assemblée générale dans 4 mois. Malgré le même score, Club A doit être contacté en premier — sa fenêtre d'achat est immédiate, celle de Club B ne l'est pas encore.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix de priorité — par exemple : le score BANT seul t'aurait-il conduit à la bonne décision, et qu'est-ce qui a fait la différence ? Ce n'est pas un résumé du calcul, c'est un vrai retour critique sur ta méthode de priorisation.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>BANT</strong> — budget, Autorité (qui décide), Need (besoin réel), Timeline (délai de décision) : les 4 éléments pour qualifier un prospect.</li>
+<li><strong>Prospect qualifié</strong> — un prospect dont on connaît assez d'éléments BANT pour décider s'il faut le contacter, et comment.</li>
+<li><strong>Chaîne de conversion</strong> — les étapes successives (contacts → prospects qualifiés → RDV → devis → contrats) ; taux de passage = étape suivante ÷ étape × 100.</li>
+<li><strong>Doublon</strong> — une même entreprise enregistrée deux fois : elle fausse les chiffres et peut être relancée deux fois.</li>
+<li><strong>Poids d'une cause</strong> — montant lié à une cause ÷ montant total × 100. Exemple : 12 000 € sur 40 000 € → 30 %.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2062,10 +2230,21 @@ Budget disponible : 300€. Objectif : 2 contrats. La visite terrain (taux de su
 </div>
 <p><strong>Établir le budget d'une opération :</strong> déplacements (km × barème), supports (impression), outils (abonnements), temps commercial (souvent le poste le plus lourd). ROI prospection = (CA généré − coût total) ÷ coût total × 100 — objectif LABORO &gt; 500%.</p>
 <p><strong>Fixer les indicateurs de suivi AVANT le lancement</strong> (pas après) : taux de contact (&gt;60%), taux de RDV (&gt;10%), taux d'ouverture e-mailing (&gt;25%), taux de transformation devis-contrat (&gt;30%), coût d'acquisition = budget ÷ nouveaux clients.</p>
-<div class="res-ex"><div class="res-ex-l">Exemple — planning 6 semaines, budget serré</div>
-S1-S3 : qualification + e-mailing/phoning (0€, filtre les prospects). S4 : phoning tièdes. S5 : visites terrain sur les seuls prospects chauds identifiés (80€). S6 : relances et devis (50€). <strong>Budget total : 130€</strong>, bien en dessous des 300€ disponibles, en réservant le poste le plus cher aux prospects les plus qualifiés.
+<div class="res-ex"><div class="res-ex-l">Exemple — planning 8 semaines, budget serré</div>
+Objectif 3 contrats, budget 450 €. S1-S4 : qualification + e-mailing/phoning (0 €, filtre les prospects). S5 : phoning des tièdes. S6-S7 : visites des seuls prospects chauds (3 × 80 € = 240 €). S8 : relances et devis (60 €). <strong>Budget total : 300 €</strong> sur les 450 € disponibles, en réservant le poste le plus cher aux prospects les plus qualifiés.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage — par exemple : qu'aurais-tu risqué si tu avais dépensé le budget de visite terrain trop tôt, avant d'avoir qualifié les prospects ? Ce n'est pas un résumé du planning, c'est un vrai retour critique sur ta gestion du budget.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Remonter la chaîne de conversion</strong> — partir de l'objectif et diviser par chaque taux, de la fin vers le début. Exemple : 3 contrats avec 50 % de RDV transformés → 6 RDV ; avec 20 % de prospects obtenant un RDV → 30 prospects.</li>
+<li><strong>Technique de prospection</strong> — mailing, phoning, visite, salon, réseaux sociaux, recommandation : on la choisit selon la cible, le budget et le temps disponible.</li>
+<li><strong>Plan de prospection</strong> — cible, objectif, techniques, planning, budget, indicateurs de suivi.</li>
+<li><strong>Risque et plan de contingence</strong> — ce qui peut faire échouer le plan, et ce que l'on fera si cela arrive.</li>
+<li><strong>ETP</strong> — équivalent temps plein : 1 ETP = une personne qui travaille à temps complet.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2084,6 +2263,17 @@ S1-S3 : qualification + e-mailing/phoning (0€, filtre les prospects). S4 : pho
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Un objectif de contrats à atteindre, un budget limité, un délai court. En autonomie complète, tu dois construire le plan complet (7 points), dimensionner le volume de prospects, et justifier le choix de techniques avec un raisonnement SWOT.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Segmentation du marché B2B</strong> — découper le marché en cibles homogènes (CSE, collectivités, clubs, écoles) pour leur adresser une offre et un effort adaptés.</li>
+<li><strong>Potentiel d'un segment</strong> — taille du marché du segment × part de marché visée. Exemple : marché de 2 M€ × 3 % → 60 000 €.</li>
+<li><strong>Proposition de valeur</strong> — ce que l'entreprise promet à une cible, mieux que ses concurrents.</li>
+<li><strong>Plan de formation</strong> — objectifs, contenus, exercices pratiques, évaluation, durée.</li>
+<li><strong>Risque principal</strong> — L'événement le plus probable ou le plus grave qui ferait échouer la stratégie, et la façon de l'anticiper.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2211,6 +2401,17 @@ Pierre Lambert : "On commande déjà chez Sportélia, on est satisfaits." Répon
 </div>
 <p><strong>Préparer et mener une visite terrain :</strong> accroche personnalisée par prospect, objectif clair de la visite (découverte, devis, signature), documents à emporter (catalogue, grille tarifaire, échantillons, tablette pour devis immédiat). Pendant la visite : prendre des notes visibles, reformuler avant de proposer, ne jamais sortir le catalogue avant d'avoir qualifié les besoins.</p>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ta gestion des objections — par exemple : comment as-tu choisi quelle objection traiter en premier, et cet ordre a-t-il changé l'issue de l'entretien ? Ce n'est pas un résumé de l'échange, c'est un vrai retour critique sur ta méthode.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Méthode ARA</strong> — accepter l'objection, Reformuler, Argumenter.</li>
+<li><strong>Statut d'un prospect</strong> — froid (aucun intérêt), tiède (intérêt sans décision), chaud (besoin clair, décision proche).</li>
+<li><strong>Bilan à mi-parcours</strong> — comparer ce qui est fait à ce qui était prévu à la même date, et ajuster la seconde moitié.</li>
+<li><strong>Remise et contrepartie</strong> — une remise ne se donne pas : elle s'échange contre un engagement du client (volume, contrat annuel, paiement à la commande), dans la limite fixée par l'entreprise.</li>
+<li><strong>ROI d'une opération</strong> — (CA généré − coût) ÷ coût × 100.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2359,9 +2560,20 @@ ROI = (18 000 − 600) ÷ 600 × 100 = <strong>2 900%</strong>. Chaque euro inve
 </div>
 <p><strong>Appliquer la loi de Pareto (règle des 80/20)</strong> à un portefeuille : environ 80% du CA provient souvent de 20% des clients. Étapes : classer les clients du CA le plus élevé au plus faible → repérer ceux qui représentent ~80% du CA cumulé → adapter le suivi (les comptes prioritaires méritent un suivi rapproché en cas de temps limité, sans pour autant abandonner les autres).</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — portefeuille B2B LABORO</div>
-Sur 5 comptes B2B, CSE PSA Stellantis (22 400 €/an) et CSE Thales Massy (18 700 €/an) représentent à eux seuls la majorité du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
+Sur 5 comptes B2B (PSA 22 400 € · Thales 18 700 € · Mairie 14 800 € · AS Évry 9 200 € · Club Trail 3 200 € = 68 300 €/an), CSE PSA Stellantis et CSE Thales Massy font 41 100 €, soit 60,2 % du CA du portefeuille. En cas de charge de travail élevée, ce sont ces deux comptes qu'il faut prioriser — sans pour autant délaisser un compte plus petit comme Club Trail Forêt de Sénart.
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton arbitrage de priorisation — par exemple : qu'aurais-tu risqué si tu avais traité tous les comptes à égalité de temps, sans tenir compte du poids de chacun dans le CA ? Ce n'est pas un résumé du calcul de ROI ou du classement Pareto, c'est un vrai retour critique sur ta méthode de priorisation.</p>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Suivi d'un devis</strong> — relance avant l'expiration, en apportant un élément nouveau ; chaque relance est notée dans LABORO Connect avec la date de la suivante.</li>
+<li><strong>Coût d'acquisition</strong> — coût de l'opération ÷ nombre de nouveaux clients.</li>
+<li><strong>Taux d'acceptation des devis</strong> — devis signés ÷ devis envoyés × 100.</li>
+<li><strong>Portefeuille de comptes</strong> — L'ensemble des clients suivis par un commercial, chacun avec une stratégie adaptée (fidéliser, développer, reconquérir).</li>
+<li><strong>Seuil d'alerte</strong> — la valeur d'un indicateur à partir de laquelle il faut agir sans attendre.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2380,6 +2592,17 @@ Sur 5 comptes B2B, CSE PSA Stellantis (22 400 €/an) et CSE Thales Massy (18 70
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Un portefeuille de prospects à statuts variés (devis envoyés, en négociation, en veille) et un temps limité. En autonomie complète, tu dois prioriser les comptes à traiter en premier, calculer le ROI d'une action passée pour la justifier, et mettre à jour le statut de chaque prospect dans LABORO Connect.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Loi de Pareto</strong> — souvent, environ 20 % des clients font environ 80 % du CA : on classe les clients du plus gros au plus petit et on cumule leur CA.</li>
+<li><strong>Compte stratégique, à développer, à risque</strong> — un classement du portefeuille selon le poids du client, son potentiel et les signaux d'alerte.</li>
+<li><strong>Plan de compte</strong> — les étapes, actions et indicateurs pour développer un client précis sur une période donnée.</li>
+<li><strong>Fréquence de contact</strong> — le rythme auquel on contacte un client selon sa catégorie.</li>
+<li><strong>Signal d'alerte</strong> — un indice de risque de perte : changement d'interlocuteur, hésitation avec un concurrent, baisse des commandes.</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
@@ -2496,6 +2719,17 @@ Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 100 �
 </div>
 <p><strong>Réflexivité :</strong> la question réflexive de la mission te demande de revenir sur ton choix d'arguments — par exemple : pourquoi as-tu mis en avant le délai plutôt que le service commercial dédié dans ce cas précis, et qu'est-ce qui aurait changé avec un autre prospect ? Ce n'est pas un résumé de l'argumentaire, c'est un vrai retour critique sur ta sélection d'arguments.</p>
 </div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Argument CAB</strong> — caractéristique → Avantage → Bénéfice pour CE client.</li>
+<li><strong>Critères pondérés</strong> — chaque critère d'un client ou d'un appel d'offres a un poids ; score = somme des notes × poids.</li>
+<li><strong>Offre à plusieurs niveaux</strong> — plusieurs formules de prix et de contenu différents, pour laisser le client choisir selon son budget.</li>
+<li><strong>Prix plancher</strong> — le prix le plus bas acceptable pour garder la marge minimale : prix plancher = coût d'achat ÷ (1 − taux de marque minimum).</li>
+<li><strong>Défendre la valeur</strong> — répondre à une objection prix en montrant ce que le client gagne (délais, SAV, conseil, références), sans dénigrer le concurrent.</li>
+</ul>
+</div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
@@ -2508,10 +2742,21 @@ Réponse : "Vous avez raison sur le prix unitaire — et je comprends que 100 �
 <div class="res-section-label">🔴 Fiche mémo express — argumenter face à la concurrence en autonomie</div>
 <p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
 <p><strong>Réflexes à mobiliser :</strong> comparatif objectif et ciblé sur le prospect · méthode en 3 temps face au prix (accepter, quantifier, alternative) · calcul de la valeur perçue sur la durée réelle · offre à plusieurs niveaux si le budget est un frein.</p>
-<p><strong>Jamais dénigrer un concurrent par son nom</strong> — comparer les offres, pas les entreprises. Un client LABORO satisfait reste en moyenne 4,2 ans : l'entrée de gamme est un investissement relationnel, pas juste une vente.</p>
+<p><strong>Ne jamais dénigrer un concurrent</strong> — on peut le citer pour comparer des faits vérifiables (délai, SAV), jamais pour le critiquer : comparer les offres, pas les entreprises. Un client LABORO satisfait reste en moyenne 4,2 ans : l'entrée de gamme est un investissement relationnel, pas juste une vente.</p>
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Un prospect compare LABORO à un concurrent moins cher sur un critère précis. En autonomie complète, tu dois construire un argumentaire chiffré qui dépasse le simple prix, en t'appuyant sur la valeur réelle pour ce client (délai, service, garanties) et proposer une offre adaptée à son budget si besoin.
 </div>
+</div>
+<!-- notions -->
+<div class="res-section">
+<div class="res-section-label">📘 Les notions à connaître</div>
+<ul>
+<li><strong>Marge brute</strong> — CA HT × taux de marque (la marge exprimée en % du prix de vente HT). Exemple : 20 000 € HT avec un taux de marque de 35 % → 7 000 €.</li>
+<li><strong>ROI d'un nouveau service</strong> — (Marge brute − coûts du service − investissement) ÷ (coûts du service + investissement) × 100.</li>
+<li><strong>Hypothèses basse, médiane, haute</strong> — trois scénarios pour encadrer un résultat incertain.</li>
+<li><strong>Analyse bénéfices / risques</strong> — mettre en regard ce que le projet rapporte et ce qu'il peut coûter s'il tourne mal, avant de décider.</li>
+<li><strong>Condition de lancement</strong> — une règle à respecter absolument pour que le risque reste maîtrisé (ex. paiement d'avance, durée minimale du contrat).</li>
+</ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
