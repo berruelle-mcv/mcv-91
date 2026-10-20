@@ -24,13 +24,13 @@ var LABORO_CONFIG = {
     "responsable": {
       "prenom": "Romain",
       "nom": "Sauzet",
-      "poste": "Responsable commercial",
+      "poste": "Responsable showroom & commercial",
       "avatar": "RS"
     },
     "tutrice": {
       "prenom": "Nina",
       "nom": "Chevalier",
-      "poste": "Responsable prospection",
+      "poste": "Responsable commerciale B2B",
       "avatar": "NC"
     },
     "createur": {
@@ -78,7 +78,7 @@ var LABORO_CONFIG = {
     },
     {
       "id": "PVOC",
-      "label": "Prospection et Valorisation de l'Offre Commerciale"
+      "label": "Prospection clientèle et valorisation de l'offre commerciale"
     }
   ],
   "couleurs": {

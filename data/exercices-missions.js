@@ -88,7 +88,7 @@ const EXERCICES_MISSIONS = {
   categories: ["Taux d'ouverture", "Taux de clic", "Taux de rendez-vous"],
   items: [
     ["Combien de clubs ont ouvert le mail ?", 0, "Ouvertures ÷ mails délivrés × 100."],
-    ["Combien ont cliqué sur le lien de l'offre ?", 1, "Clics ÷ mails ouverts × 100 (selon la règle du dossier)."],
+    ["Combien ont cliqué sur le lien de l'offre ?", 1, "Clics ÷ e-mails envoyés × 100 (règle du dossier)."],
     ["Combien ont accepté un rendez-vous ?", 2, "L'indicateur qui compte pour l'objectif."],
     ["L'objet du mail était-il assez accrocheur ?", 0, "C'est l'objet qui fait ouvrir le mail."]
   ] },
@@ -114,8 +114,8 @@ const EXERCICES_MISSIONS = {
   intro: "Un club compare LABORO à un concurrent pour des polos personnalisés. Construis l'argument sur le service, pas sur le prix.",
   questions: ["Et donc ?", "Et pour le club, ça change quoi ?"],
   maillons: [
-    { k: "Caractéristique", txt: "LABORO floque dans son propre atelier, en interne." },
-    { k: "Avantage", txt: "…donc une erreur se corrige vite, sans renvoyer les polos ailleurs." },
+    { k: "Caractéristique", txt: "LABORO suit lui-même chaque commande auprès de son atelier partenaire et contrôle le bon à tirer." },
+    { k: "Avantage", txt: "…donc une erreur est repérée avant la fabrication." },
     { k: "Bénéfice", txt: "…vos joueurs ne restent pas sans tenue avant un match." }
   ] },
 
@@ -741,7 +741,7 @@ Object.assign(EXERCICES_MISSIONS, {
 "M034": { type: "etapes", titre: "Les premières heures d'une crise", intro: "Face à une crise, on agit vite et dans le bon ordre.",
   etapes: [
     { ico: "🧯", k: "Évaluer", s: "Combien de clients, quel enjeu, quelle échéance" },
-    { ico: "📞", k: "Informer", s: "Les clients touchés, avant qu'ils ne découvrent seuls" },
+    { ico: "📞", k: "Informer", s: "Les clients touchés, avant qu'ils ne le découvrent seuls" },
     { ico: "🔄", k: "Solution de secours", s: "Ce qui peut être fait tout de suite avec le stock" },
     { ico: "📝", k: "Rapport", s: "Faits, actions, coûts, et comment éviter que ça recommence" }
   ] },
@@ -1007,7 +1007,7 @@ Object.assign(EXERCICES_MISSIONS, {
     { k: "Bénéfice", txt: "…le club n'achète plus de stock d'avance et n'immobilise pas son budget." }
   ] },
 
-"M075": { type: "tri", titre: "Démarque ou pas ?", consigne: "La démarque, c'est l'écart entre le stock théorique et le stock réel. Ces situations en créent-elles ?",
+"M075": { type: "tri", titre: "Démarque ou pas ?", consigne: "La démarque, c'est une perte de valeur sur le stock : connue (identifiée : casse, produit abîmé) ou inconnue (écart à l'inventaire : vol, erreur). Ces situations en créent-elles ?",
   categories: ["Crée de la démarque", "Ne crée pas de démarque"],
   items: [
     ["Un article volé dans le rayon.", 0, "Démarque inconnue."],

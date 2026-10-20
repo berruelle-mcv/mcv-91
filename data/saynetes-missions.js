@@ -104,7 +104,7 @@ Object.assign(SAYNETES_MISSIONS, {
     lignes: [
       "n|M. Vidal avait appelé la ligne commerciale pour être conseillé. Aujourd'hui, il vient au showroom.",
       "b|Bonjour ! Je viens chercher les chaussures EasyRun et le tapis de yoga dont on avait parlé au téléphone.",
-      "a|Finalise la transaction, et prends congé de façon à ce qu'il ait envie de recommander, par téléphone ou sur le site.",
+      "a|Finalise la transaction, et prends congé de façon à ce qu'il ait envie de repasser commande, par téléphone ou sur le site.",
       "fin|À toi : finalise la vente de M. Vidal et prends congé professionnellement."
     ] } },
 
@@ -171,7 +171,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Premier jour au showroom d'Évry. Les portes vont bientôt ouvrir.",
     "a|Bienvenue ! Ici, l'accueil des visiteurs, c'est la responsabilité de toute l'équipe.",
-    "a|Ce matin, plusieurs situations vont se présenter, l'une après l'autre. Tiens-toi prêt.",
+    "a|Ce matin, plusieurs situations vont se présenter, l'une après l'autre. Prépare-toi.",
     "n|La porte s'ouvre : un premier visiteur entre.",
     "fin|À toi : assure l'accueil physique des visiteurs du showroom."
   ] },
@@ -189,7 +189,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Samedi matin. Le showroom est plein. Romain Sauzet est en réunion.",
     "a|On est tous les deux à l'accueil ce matin, et il y a du monde.",
-    "a|Il va y avoir des situations délicates. Garde ton calme et reste professionnel.",
+    "a|Il va y avoir des situations délicates. Garde ton calme et ton sens du service.",
     "fin|À toi : repère les bonnes réactions et gère les situations difficiles."
   ] },
 
@@ -274,17 +274,17 @@ Object.assign(SAYNETES_MISSIONS, {
       "fin|À toi : conçois le dispositif de veille B2B."
     ] } },
 
-"M024": { titre: "M. Fontaine contacte LABORO partout à la fois", decor: "bureau", a: P_ROMAIN, b: sayClient("M. Fontaine", "Directeur, centre de remise en forme", "h", "#475569"),
+"M024": { titre: "M. Fournel contacte LABORO partout à la fois", decor: "bureau", a: P_ROMAIN, b: sayClient("M. Fournel", "Directeur, centre de remise en forme", "h", "#475569"),
   lignes: [
-    "n|En quelques minutes : un mail, un message Instagram et un appel. Tous de M. Fontaine.",
+    "n|En quelques minutes : un mail, un message Instagram et un appel. Tous de M. Fournel.",
     "b|Je dirige un centre de remise en forme de 450 adhérents à Évry. Je veux équiper mes 8 moniteurs et créer un corner running.",
     "b|Mon budget : 8 000 euros TTC.",
     "a|Gère cette vente de A à Z. Ensuite, tu en tireras une fiche de formation pour Thomas Moreau.",
     "fin|À toi : pilote cette vente omnicanale."
   ],
-  pvoc: { titre: "Un dossier B2B à piloter à distance", decor: "telephone", a: P_NINA, b: sayClient("M. Fontaine", "Directeur, centre de remise en forme", "h", "#475569"),
+  pvoc: { titre: "Un dossier B2B à piloter à distance", decor: "telephone", a: P_NINA, b: sayClient("M. Fournel", "Directeur, centre de remise en forme", "h", "#475569"),
     lignes: [
-      "n|Mail, Instagram, téléphone : M. Fontaine a contacté LABORO par tous les canaux presque en même temps.",
+      "n|Mail, Instagram, téléphone : M. Fournel a contacté LABORO par tous les canaux presque en même temps.",
       "b|450 adhérents, 8 moniteurs à équiper et un corner running à créer. Budget : 8 000 euros TTC.",
       "a|Je te confie ce dossier B2B. Tu le pilotes à distance jusqu'au rendez-vous, puis tu rédiges une fiche de formation pour Thomas Moreau.",
       "fin|À toi : pilote la vente à distance."
@@ -619,17 +619,17 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : conçois l'opération."
   ] },
 
-"M081": { titre: "4 clients perdus à cause des délais", decor: "bureau", a: P_MARCO, b: P_TOI,
+"M081": { titre: "2 clients perdus à cause des délais", decor: "bureau", a: P_MARCO, b: P_TOI,
   lignes: [
     "n|Bureau satisfaction client. Marco referme le bilan du trimestre.",
     "a|On a perdu 4 clients à cause des délais. C'est inacceptable.",
     "a|Je veux un plan d'action complet d'ici lundi.",
     "fin|À toi : analyse et diagnostique la situation."
   ],
-  pvoc: { titre: "4 CSE perdus à cause des délais", decor: "bureau", a: P_NINA, b: P_TOI,
+  pvoc: { titre: "2 CSE perdus à cause des délais", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
-      "n|Marco Pellini vient de présenter le bilan du trimestre : 7 clients perdus.",
-      "a|Dont 4 CSE, à cause des délais de livraison.",
+      "n|Marco Pellini vient de présenter le bilan du trimestre : 3 clients professionnels perdus.",
+      "a|Dont 2 CSE, à cause des délais de livraison.",
       "a|Je veux un plan d'action complet d'ici lundi, pensé pour la relation B2B à distance.",
       "fin|À toi : analyse et diagnostique la situation."
     ] } },
@@ -638,7 +638,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Romain Sauzet est absent aujourd'hui. Le téléphone sonne : tu décroches.",
     "b|David Chemin, de la Mairie d'Évry-Courcouronnes. J'ai un très gros problème avec votre livraison !",
-    "n|Il est furieux. Tu es seul pour gérer cette crise, et vite.",
+    "n|Il est furieux. C'est à toi de gérer cette crise, et vite.",
     "fin|À toi : gère la crise en temps réel."
   ],
   pvoc: { titre: "15 ballons défectueux, tournoi demain", decor: "telephone", a: P_TOI, b: sayClient("M. Chemin", "Mairie d'Évry-Courcouronnes", "h", "#334155"),
@@ -675,7 +675,7 @@ Object.assign(SAYNETES_MISSIONS, {
 "M085": { titre: "Le CSE de Thales Palaiseau attend ta proposition", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "n|Bureau de la direction, mardi matin.",
-    "a|Isabelle Ferreira, responsable du CSE de Thales Palaiseau, attend ta proposition définitive vendredi.",
+    "a|Claire Ferreira, responsable du CSE de Thales Palaiseau, attend ta proposition définitive vendredi.",
     "a|C'est le rendez-vous le plus important du trimestre : je compte sur toi pour décrocher ce CSE.",
     "fin|À toi : construis et défends ta proposition."
   ] },
@@ -690,7 +690,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M087": { titre: "Isabelle Faure appelle", decor: "telephone", a: P_TOI, b: sayClient("Mme Faure", "CSE PSA Stellantis Évry", "f", "#0369A1"),
   lignes: [
-    "n|Tu es seul au bureau. Nina Chevalier est en déplacement. Le téléphone sonne.",
+    "n|Personne d'autre n'est au bureau. Nina Chevalier est en déplacement. Le téléphone sonne.",
     "b|Isabelle Faure, responsable du CSE PSA Stellantis Évry. Nous avons un problème avec votre livraison.",
     "n|Tu as 2 heures pour trouver une solution et la rappeler.",
     "fin|À toi : trouve une solution pour Mme Faure dans les 2 heures."
@@ -944,16 +944,16 @@ Object.assign(SAYNETES_MISSIONS, {
       "fin|À toi : mesure l'utilisation de la carte LABORO PRO."
     ] } },
 
-"M056": { titre: "La soirée clients du 14 novembre", decor: "bureau", a: P_ROMAIN, b: P_TOI,
+"M056": { titre: "La soirée Nouveautés hiver du 14 novembre", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "n|Bureau du showroom. Le bilan de la dernière soirée clients est dans le dossier.",
-    "a|La prochaine soirée clients, c'est le 14 novembre. Avant de fixer le programme, je veux savoir ce que la dernière a vraiment rapporté.",
+    "n|Bureau du showroom. Le bilan de la dernière soirée Nouveautés hiver est dans le dossier.",
+    "a|La prochaine soirée Nouveautés hiver, c'est le 14 novembre. Avant de fixer le programme, je veux savoir ce que la dernière a vraiment rapporté.",
     "a|Fais le bilan chiffré, puis propose un format amélioré, l'invitation et les indicateurs pour juger la prochaine soirée.",
     "fin|À toi : analyse la dernière soirée et améliore-la."
   ],
   pvoc: { titre: "60 invités, dont 15 professionnels", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
-      "n|Bureau commercial B2B. Prochaine soirée clients : le 14 novembre.",
+      "n|Bureau commercial B2B. Prochaine soirée Nouveautés hiver : le 14 novembre.",
       "a|Je m'occupe des 15 invités professionnels, CSE et clubs. Voici le bilan chiffré de la dernière édition.",
       "a|Propose un format amélioré, prépare l'invitation commune aux 60 invités avec relance téléphonique des pros, et les indicateurs.",
       "fin|À toi : analyse la dernière soirée et améliore-la."
@@ -983,12 +983,12 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : conçois le dispositif d'accueil."
   ] },
 
-"M058": { titre: "Mme Perrin cherche un cadeau", decor: "showroom", a: P_ROMAIN, b: sayClient("Mme Perrin", "Cliente", "f", "#C2410C"),
+"M058": { titre: "Mme Pinto cherche un cadeau", decor: "showroom", a: P_ROMAIN, b: sayClient("Mme Pinto", "Cliente", "f", "#C2410C"),
   lignes: [
     "n|Depuis 3 semaines, Romain t'observe accueillir les clients. Aujourd'hui, il te laisse seul.",
     "b|Bonjour, je cherche un cadeau pour mon fils.",
     "a|Elle est à toi. Je t'observe de loin.",
-    "fin|À toi : découvre les besoins de Mme Perrin et conseille-la."
+    "fin|À toi : découvre les besoins de Mme Pinto et conseille-la."
   ] },
 
 "M059": { titre: "Le message des Coquelicots", decor: "bureau", a: P_MARCO, b: P_TOI,
@@ -1029,13 +1029,13 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M062": { titre: "Le sondage des 18 clients B2B", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
-    "a|J'ai fait un sondage rapide auprès de nos 18 clients B2B actifs.",
+    "a|J'ai fait un sondage rapide auprès de nos clients B2B actifs : 18 sur 24 ont répondu.",
     "a|Calcule les taux de satisfaction, et dis-moi ce que LABORO doit améliorer en priorité.",
     "fin|À toi : calcule et lis les résultats."
   ],
   pvoc: { titre: "Un sondage par téléphone et par mail", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
-        "a|J'ai sondé nos 18 clients B2B actifs, par téléphone et par mail. Voici les résultats.",
+        "a|J'ai sondé nos clients B2B actifs (18 sur 24 ont répondu), par téléphone et par mail. Voici les résultats.",
       "a|Calcule les taux de satisfaction, interprète le NPS et trouve la priorité d'amélioration.",
       "fin|À toi : calcule et lis les résultats."
     ] } },
@@ -1147,7 +1147,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "B45-P1": { titre: "35,20 euros de moins chez Sportélia Pro", decor: "club", a: sayClient("M. Moreau", "AS Palaiseau Football", "h", "#15803D"), b: P_TOI,
   lignes: [
-    "n|Rendez-vous avec Kevin Moreau, président de l'AS Palaiseau Football. Le club t'achète du petit matériel, mais ses maillots ailleurs.",
+    "n|Rendez-vous avec Kevin Morel, président de l'AS Palaiseau Football. Le club t'achète du petit matériel, mais ses maillots ailleurs.",
     "a|Regardez ce devis de Sportélia Pro : les mêmes maillots, 35 euros 20 hors taxes de moins.",
     "a|J'hésite…",
     "n|Tu te souviens du brief de Nina : ne jamais baisser le prix sans contrepartie.",
@@ -1263,7 +1263,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Rayon chaussures. Romain tient le bilan d'avril.",
     "a|Les chiffres du rayon sont en dessous des objectifs.",
-    "a|Analyse, comprends, et propose un plan d'action concret pour mai. L'équipe du rayon : moi, deux vendeurs et toi.",
+    "a|Analyse, comprends, et propose un plan d'action concret pour mai. L'équipe du rayon : moi, Thomas et toi.",
     "fin|À toi : analyse le bilan d'avril et diagnostique les problèmes."
   ] },
 
@@ -1337,7 +1337,7 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : prépare l'accueil du groupe."
   ] },
 
-"ACC8": { titre: "Seul à l'accueil pendant 20 minutes", decor: "showroom", a: P_THOMAS, b: P_TOI,
+"ACC8": { titre: "20 minutes à l'accueil, sans renfort", decor: "showroom", a: P_THOMAS, b: P_TOI,
   lignes: [
     "n|Samedi après-midi au showroom. Ce matin, Romain t'a dit : un bon accueil, c'est s'adapter à chaque personne.",
     "a|Je dois m'absenter 20 minutes. Tu tiens l'accueil seul.",
