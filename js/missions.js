@@ -138,7 +138,9 @@ function openMission(id){
       const saved=reponseSauvee(savedReps,id,i,q,qid);
       const qcm=analyserQCM(q);
       const ph=qcm?(qcm.mode==='ordre'?'Clique les lettres dans l\'ordre ci-dessus, puis justifie si demandé…':'Clique ta/tes réponse(s) ci-dessus, puis justifie si demandé…'):'Rédige ta réponse ici…';
-      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}',this.id,this);majChoixQCM(this.id)">${saved}</textarea></div>`;
+      // Zone de rédaction en situation (mail, SMS, note…) — js/compo.js, 22/10/2026
+      const rd=(!qcm&&typeof COMPO!=='undefined')?COMPO.rendre(qid,q,saved,COMPO.contexte()):null;
+      html+=`<div class="qi"><span class="qn">${q.split(' ')[0]}</span>${q.substring(q.indexOf(' ')+1)}${qcm?renderChoixQCM(qid,qcm,saved):''}${rd?rd.html:''}<textarea class="zone-rep${saved?' saved':''}" id="${qid}" placeholder="${ph}" oninput="autoSaveRep('${id}',this.id,this);majChoixQCM(this.id)">${saved}</textarea></div>`;
     });
     html+='</div>';
   });
@@ -181,6 +183,7 @@ function openMission(id){
   }
   html = '<div style="font-size:11px;color:#4A5568;background:#F1F5F9;border-radius:6px;padding:6px 10px;margin-bottom:10px">🔒 Le copier-coller est désactivé dans les réponses : rédige avec tes propres mots.</div>' + html;
   document.getElementById('mo-mission').innerHTML=html;
+  if(typeof COMPO !== 'undefined') COMPO.brancher(document.getElementById('mo-mission'));
   if(typeof integDemarrer === 'function') integDemarrer(id);
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
@@ -710,7 +713,7 @@ function integDemarrer(mid){
   if(zone && !zone.dataset.integ){
     zone.dataset.integ = '1';
     const bloquer = function(e){
-      if(!e.target || !e.target.classList || !e.target.classList.contains('zone-rep')) return;
+      if(!e.target || !e.target.classList || !(e.target.classList.contains('zone-rep') || e.target.classList.contains('zone-compo'))) return;
       e.preventDefault();
       if(INTEG) INTEG.collages++;
       integMessage('📋 Le copier-coller est désactivé : rédige ta réponse avec tes propres mots.');
@@ -718,7 +721,7 @@ function integDemarrer(mid){
     zone.addEventListener('paste', bloquer, true);
     zone.addEventListener('drop', bloquer, true);
     zone.addEventListener('input', function(e){
-      if(!INTEG || !e.target.classList || !e.target.classList.contains('zone-rep')) return;
+      if(!INTEG || !e.target.classList || !(e.target.classList.contains('zone-rep') || e.target.classList.contains('zone-compo'))) return;
       if(e.inputType === 'insertText' || e.inputType === 'insertCompositionText' || e.inputType === 'insertReplacementText') INTEG.tapes += (e.data || '').length || 1;
       else if(e.inputType === 'insertLineBreak') INTEG.tapes += 1;
     }, true);
@@ -776,7 +779,8 @@ function integPourSoumission(mid, reponses){
   if(INTEG && INTEG.mid === mid) integEnregistrer();
   const m = gUD().missions[mid] || {};
   const c = m.integ || { secondes: 0, tapes: 0, collages_bloques: 0 };
-  const longueur = Object.keys(reponses || {}).reduce(function(a, k){ return a + String(reponses[k] || '').length; }, 0);
+  // Zones de rédaction : seuls les mots écrits par l'élève comptent (pas les libellés ni le modèle à trous)
+  const longueur = Object.keys(reponses || {}).reduce(function(a, k){ return a + ((typeof COMPO !== 'undefined') ? COMPO.longueurSaisie(reponses[k], k) : String(reponses[k] || '').length); }, 0);
   return { secondes: c.secondes, tapes: c.tapes, collages_bloques: c.collages_bloques, longueur: longueur };
 }
 function integMessage(txt){

@@ -325,20 +325,20 @@ function showNotifEleve(message, type){
 
 const RAPPELS_TYPES = [
   {id:'tenue', label:'Tenue vestimentaire', icon:'👔',
-   msg:'Rappel professionnel : la tenue vestimentaire chez '+getNomCourt()+' doit etre soignee et adaptee au poste. Merci de vous y conformer.'},
-  {id:'telephone', label:'Telephone portable', icon:'📱',
-   msg:'Votre responsable vous demande de ranger votre telephone personnel. Pendant les heures de travail, seul LABORO Connect est autorise.'},
-  {id:'materiel', label:'Materiel de travail', icon:'🖊️',
-   msg:'Un collaborateur '+getNomCourt()+' arrive toujours equipe : stylo, carnet, materiel necessaire. Pensez-y pour votre prochaine session.'},
+   msg:'Rappel professionnel : la tenue vestimentaire chez '+getNomCourt()+' doit être soignée et adaptée au poste. Merci de vous y conformer.'},
+  {id:'telephone', label:'Téléphone portable', icon:'📱',
+   msg:'Votre responsable vous demande de ranger votre téléphone personnel. Pendant les heures de travail, seuls les outils de travail de l\'entreprise sont autorisés.'},
+  {id:'materiel', label:'Matériel de travail', icon:'🖊️',
+   msg:'Un collaborateur '+getNomCourt()+' arrive toujours équipé : stylo, carnet, matériel nécessaire. Pensez-y pour votre prochaine session.'},
   {id:'posture', label:'Posture et attitude', icon:'💺',
-   msg:"Rappel : la posture physique fait partie de l'image professionnelle chez "+getNomCourt()+". Tenez-vous droit et restez concentre(e)."},
+   msg:"Rappel : la posture physique fait partie de l'image professionnelle chez "+getNomCourt()+". Tenez-vous droit et restez concentré(e)."},
   {id:'concentration', label:'Concentration', icon:'🎯',
-   msg:'Votre responsable note un manque de concentration. Chez '+getNomCourt()+', chaque mission compte. Reprenez votre travail avec serieux.'},
-  {id:'ponctualite', label:'Ponctualite', icon:'⏰',
-   msg:"La ponctualite est une valeur fondamentale chez "+getNomCourt()+". Merci d'etre a l'heure et de respecter les delais."},
-  {id:'respect', label:"Respect et esprit d'equipe", icon:'🤝',
-   msg:"Rappel : le respect mutuel est au coeur des valeurs "+getNomCourt()+". Adoptez un comportement professionnel en toutes circonstances."},
-  {id:'libre', label:'Message personnalise...', icon:'✏️', msg:''}
+   msg:'Votre responsable note un manque de concentration. Chez '+getNomCourt()+', chaque mission compte. Reprenez votre travail avec sérieux.'},
+  {id:'ponctualite', label:'Ponctualité', icon:'⏰',
+   msg:"La ponctualité est une valeur fondamentale chez "+getNomCourt()+". Merci d'être à l'heure et de respecter les délais."},
+  {id:'respect', label:"Respect et esprit d'équipe", icon:'🤝',
+   msg:"Rappel : le respect mutuel est au cœur des valeurs "+getNomCourt()+". Adoptez un comportement professionnel en toutes circonstances."},
+  {id:'libre', label:'Message personnalisé…', icon:'✏️', msg:''}
 ];
 
 let selectedRappelId = null;
