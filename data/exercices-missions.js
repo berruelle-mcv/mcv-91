@@ -87,7 +87,7 @@ const EXERCICES_MISSIONS = {
 "M019": { type: "tri", titre: "Taux d'ouverture ou taux de clic ?", consigne: "Un e-mailing se mesure à plusieurs étapes. Associe chaque situation au bon indicateur.",
   categories: ["Taux d'ouverture", "Taux de clic", "Taux de rendez-vous"],
   items: [
-    ["Combien de clubs ont ouvert le mail ?", 0, "Ouvertures ÷ mails délivrés × 100."],
+    ["Combien de clubs ont ouvert le mail ?", 0, "Ouvertures ÷ e-mails envoyés × 100 (règle du dossier)."],
     ["Combien ont cliqué sur le lien de l'offre ?", 1, "Clics ÷ e-mails envoyés × 100 (règle du dossier)."],
     ["Combien ont accepté un rendez-vous ?", 2, "L'indicateur qui compte pour l'objectif."],
     ["L'objet du mail était-il assez accrocheur ?", 0, "C'est l'objet qui fait ouvrir le mail."]
@@ -221,7 +221,7 @@ const EXERCICES_MISSIONS = {
     ["« Vous avez raison, ce n'est pas agréable d'attendre. »", 0, "On reconnaît sans se justifier."]
   ] },
 
-"ACC-P3": { type: "etapes", titre: "Briefer une équipe d'accueil", intro: "Avant un événement, un brief court et clair met toute l'équipe d'accord.",
+"ACC-P3": { type: "etapes", titre: "Préparer le brief d'une équipe d'accueil", intro: "Avant un événement, un brief court et clair met toute l'équipe d'accord.",
   etapes: [
     { ico: "🎯", k: "Objectifs", s: "Chiffrés : contacts, ventes, satisfaction" },
     { ico: "👥", k: "Rôles", s: "Qui fait quoi, et où" },
@@ -768,7 +768,7 @@ Object.assign(EXERCICES_MISSIONS, {
     ["ROI d'un programme ?", "(Gain généré − coût du programme) ÷ coût × 100."],
     ["Taux d'inscription faible : comment trouver les causes ?", "Interroger les clients non inscrits et observer le parcours d'inscription."],
     ["Pourquoi comparer inscrits et non-inscrits ?", "Pour voir si le programme change vraiment le comportement d'achat."],
-    ["Valeur client (CLV) ?", "Ce qu'un client rapporte sur toute la durée de sa relation avec l'entreprise."]
+    ["Taux de rétention ?", "La part des clients d'une période qui achètent encore à la période suivante."]
   ] },
 
 "M038": { type: "tri", titre: "Source de prospection fiable ou pas ?", consigne: "Pour repérer de grandes entreprises, toutes les sources ne se valent pas.",
@@ -805,7 +805,7 @@ Object.assign(EXERCICES_MISSIONS, {
     ["Catalogue très étendu sur toutes les disciplines.", 1, "Un spécialiste régional a une offre plus ciblée."]
   ] },
 
-"M042": { type: "tri", titre: "Quelle stratégie pour quel compte ?", consigne: "Dans un portefeuille B2B, chaque compte demande une approche différente.",
+"M042": { type: "tri", titre: "Quelle approche pour quel compte ?", consigne: "Dans un portefeuille B2B, chaque compte demande une approche différente.",
   categories: ["Développer", "Entretenir", "Reconquérir"],
   items: [
     ["Un client qui achète peu mais dont le budget sport augmente.", 0, "Fort potentiel : on lui propose plus."],
@@ -821,13 +821,13 @@ Object.assign(EXERCICES_MISSIONS, {
     ["Un bon enseignement est…", "Concret, appuyé sur un chiffre, et réutilisable pour la prochaine opération."]
   ] },
 
-"M044": { type: "tri", titre: "Classer dans une matrice SWOT", consigne: "Forces et faiblesses viennent de l'entreprise, opportunités et menaces de l'extérieur.",
-  categories: ["Force", "Faiblesse", "Opportunité", "Menace"],
+"M044": { type: "tri", titre: "Force ou faiblesse ?", consigne: "Une force aide LABORO face à la concurrence, une faiblesse la freine. Classe chaque élément.",
+  categories: ["Force de LABORO", "Faiblesse de LABORO"],
   items: [
-    ["L'équipe connaît très bien les clubs du département.", 0, "Un atout interne."],
-    ["Un seul commercial, à mi-temps, pour tout le B2B.", 1, "Une limite interne."],
-    ["Les entreprises développent le sport au travail.", 2, "Une tendance extérieure favorable."],
-    ["Un grand réseau national lance une offre B2B agressive.", 3, "Un risque extérieur."]
+    ["L'équipe connaît très bien les clubs du département.", 0, "Un atout pour convaincre."],
+    ["Un seul commercial, à mi-temps, pour tout le B2B.", 1, "Une limite de moyens."],
+    ["Le flocage est livré en 3 semaines, contre environ 5 chez le concurrent.", 0, "Un avantage de délai."],
+    ["La moitié du CA B2B dépend des seuls CSE.", 1, "Une dépendance à une seule cible."]
   ] },
 
 "M080": { type: "tri", titre: "Objectif SMART ou pas ?", consigne: "Un objectif SMART est spécifique, mesurable, atteignable, réaliste et limité dans le temps.",
@@ -905,13 +905,13 @@ Object.assign(EXERCICES_MISSIONS, {
     ["+20 % sur les ventes aux entreprises par le commercial terrain.", 0, "Le terrain est un canal."]
   ] },
 
-"M091": { type: "tri", titre: "Frein au changement et parade", consigne: "Lancer une veille partagée, c'est changer les habitudes. Quelle parade pour quel frein ?",
-  categories: ["« Je n'ai pas le temps »", "« Ça ne sert à rien »", "« Je ne sais pas faire »"],
+"M091": { type: "tri", titre: "Trier l'information de veille", consigne: "Une information de veille doit être fiable, récente et utile. Quel est le défaut de chaque information ?",
+  categories: ["Source peu fiable", "Information dépassée", "Information inutile pour LABORO"],
   items: [
-    ["Une fiche de veille qui se remplit en 2 minutes.", 0, "On réduit l'effort demandé."],
-    ["Montrer une vente gagnée grâce à une info de veille.", 1, "On prouve l'utilité."],
-    ["Un court atelier de prise en main avec un exemple.", 2, "On forme avant d'exiger."],
-    ["Un point de 5 minutes intégré à la réunion du lundi.", 0, "La veille entre dans un temps déjà prévu."]
+    ["Un message anonyme sur un forum affirme qu'un concurrent va fermer.", 0, "Rien ne permet de vérifier cette source."],
+    ["Des prix concurrents relevés il y a deux ans.", 1, "L'information n'est plus à jour."],
+    ["La couleur du nouveau logo d'un fournisseur.", 2, "Elle n'aide aucune décision commerciale."],
+    ["Une rumeur entendue sur un parking.", 0, "Une rumeur n'est pas une source vérifiée."]
   ] },
 
 "M092": { type: "etapes", titre: "Les étapes d'un parcours client", intro: "Pour améliorer l'expérience, on regarde chaque moment vécu par le client.",
@@ -931,12 +931,12 @@ Object.assign(EXERCICES_MISSIONS, {
     ["Décider au hasard pour gagner du temps.", 1, "Impossible à justifier."]
   ] },
 
-"M093": { type: "etapes", titre: "Former un nouveau commercial", intro: "Une bonne formation fait pratiquer, pas seulement écouter.",
+"M093": { type: "etapes", titre: "Rédiger une fiche argumentaire", intro: "Une bonne fiche argumentaire se lit en une minute et sert pendant le rendez-vous.",
   etapes: [
-    { ico: "🎯", k: "Objectif", s: "Ce qu'il saura faire à la fin de la séance" },
-    { ico: "📖", k: "Apport", s: "Court : l'offre, les cibles, la méthode" },
-    { ico: "🎭", k: "Mise en pratique", s: "Jeu de rôle sur un appel ou un rendez-vous" },
-    { ico: "✅", k: "Vérification", s: "Un petit test et un retour personnalisé" }
+    { ico: "🎯", k: "Cible", s: "Le profil du client et ses besoins" },
+    { ico: "📖", k: "Arguments", s: "3 arguments reliés aux besoins de la cible" },
+    { ico: "🎭", k: "Objection", s: "La réponse à l'objection la plus fréquente" },
+    { ico: "✅", k: "Preuve", s: "Une référence client ou un chiffre du dossier" }
   ] },
 
 "M094": { type: "cartes", titre: "La loi de Pareto", cartes: [

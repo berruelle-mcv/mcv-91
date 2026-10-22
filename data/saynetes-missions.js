@@ -256,22 +256,22 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M014": { titre: "3 contrats CSE en 6 semaines", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
-    "a|Je te confie la conception d'une opération de prospection auprès des CSE de l'Essonne.",
-    "a|Objectif : signer 3 nouveaux contrats en 6 semaines, avec un budget de 400 euros. Je valide ton plan en réunion lundi.",
-    "fin|À toi : conçois l'opération de prospection."
+    "a|Je prépare une opération de prospection auprès des CSE de l'Essonne, et j'ai besoin de tes propositions.",
+    "a|Objectif : signer 3 nouveaux contrats en 6 semaines, avec un budget de 400 euros. Je validerai tes propositions en réunion lundi.",
+    "fin|À toi : propose les éléments de l'opération."
   ] },
 
 "M023": { titre: "Anticiper plutôt que réagir", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|J'ai un constat : LABORO réagit à la concurrence au lieu de l'anticiper.",
-    "a|Je te confie la mise en place d'un dispositif de veille commerciale permanent. Budget : 300 euros par an.",
-    "fin|À toi : conçois le dispositif de veille de LABORO."
+    "a|Propose-moi un dispositif de veille commerciale permanent. Budget : 300 euros par an.",
+    "fin|À toi : propose le dispositif de veille de LABORO."
   ],
   pvoc: { titre: "La veille B2B de l'année prochaine", decor: "bureau", a: P_PASCAL, b: P_TOI,
     lignes: [
-        "a|Conçois-moi le dispositif de veille commerciale B2B de LABORO pour l'année prochaine.",
+        "a|Propose-moi un dispositif de veille commerciale B2B pour LABORO, pour l'année prochaine.",
       "a|Il doit couvrir les concurrents, les prospects et l'évolution du marché des CSE, clubs et collectivités en Essonne.",
-      "fin|À toi : conçois le dispositif de veille B2B."
+      "fin|À toi : propose le dispositif de veille B2B."
     ] } },
 
 "M024": { titre: "M. Fournel contacte LABORO partout à la fois", decor: "bureau", a: P_ROMAIN, b: sayClient("M. Fournel", "Directeur, centre de remise en forme", "h", "#475569"),
@@ -279,14 +279,14 @@ Object.assign(SAYNETES_MISSIONS, {
     "n|En quelques minutes : un mail, un message Instagram et un appel. Tous de M. Fournel.",
     "b|Je dirige un centre de remise en forme de 450 adhérents à Évry. Je veux équiper mes 8 moniteurs et créer un corner running.",
     "b|Mon budget : 8 000 euros TTC.",
-    "a|Gère cette vente de A à Z. Ensuite, tu en tireras une fiche de formation pour Thomas Moreau.",
+    "a|Gère cette vente de A à Z, puis rends-moi compte de ce que tu en retiens.",
     "fin|À toi : pilote cette vente omnicanale."
   ],
   pvoc: { titre: "Un dossier B2B à piloter à distance", decor: "telephone", a: P_NINA, b: sayClient("M. Fournel", "Directeur, centre de remise en forme", "h", "#475569"),
     lignes: [
       "n|Mail, Instagram, téléphone : M. Fournel a contacté LABORO par tous les canaux presque en même temps.",
       "b|450 adhérents, 8 moniteurs à équiper et un corner running à créer. Budget : 8 000 euros TTC.",
-      "a|Je te confie ce dossier B2B. Tu le pilotes à distance jusqu'au rendez-vous, puis tu rédiges une fiche de formation pour Thomas Moreau.",
+      "a|Je te confie ce dossier B2B. Tu le suis à distance jusqu'au rendez-vous, puis tu me rends compte de ce que tu en retiens.",
       "fin|À toi : pilote la vente à distance."
     ] } },
 
@@ -295,14 +295,14 @@ Object.assign(SAYNETES_MISSIONS, {
     "n|Bureau de la direction. Un graphique est affiché à l'écran.",
     "a|Les réclamations ont augmenté de 64 % ce trimestre.",
     "a|Et après une réclamation, seulement 61 % des clients sont satisfaits. L'objectif, c'est 80 %.",
-    "a|Je te confie la conception d'une vraie politique de gestion des réclamations.",
-    "fin|À toi : analyse la situation et conçois la politique."
+    "a|Analyse ce bilan et propose-moi des améliorations de notre façon de traiter les réclamations.",
+    "fin|À toi : analyse la situation et propose tes améliorations."
   ],
-  pvoc: { titre: "Une politique de réclamations pour tous les canaux", decor: "bureau", a: P_PASCAL, b: P_TOI,
+  pvoc: { titre: "Mieux traiter les réclamations sur tous les canaux", decor: "bureau", a: P_PASCAL, b: P_TOI,
     lignes: [
-        "a|Je veux une politique de gestion des réclamations qui marche à distance comme en face-à-face.",
+        "a|Je veux améliorer notre traitement des réclamations, à distance comme en face-à-face.",
       "a|Pour tous nos clients : particuliers du site et professionnels, CSE, clubs, collectivités. Le bilan du trimestre est dans le dossier.",
-      "fin|À toi : analyse le bilan et conçois la politique."
+      "fin|À toi : analyse le bilan et propose tes améliorations."
     ] } },
 
 "SA1": { titre: "La livraison de M. Bensalah", decor: "bureau", a: P_MARCO, b: P_TOI,
@@ -434,7 +434,7 @@ Object.assign(SAYNETES_MISSIONS, {
   ],
   pvoc: { titre: "Les réclamations du mois, à distance", decor: "bureau", a: P_MARCO, b: P_TOI,
     lignes: [
-        "a|Pilote à distance, par mail et téléphone, les réclamations du mois : particuliers du site comme clients professionnels.",
+        "a|Prends en charge à distance, par mail et téléphone, les réclamations du mois : particuliers du site comme clients professionnels.",
       "a|Et propose un plan pour atteindre 80 % de satisfaction après réclamation.",
       "fin|À toi : analyse et priorise les réclamations."
     ] } },
@@ -444,14 +444,14 @@ Object.assign(SAYNETES_MISSIONS, {
     "n|Réunion satisfaction client.",
     "a|Voici les résultats de satisfaction du trimestre.",
     "a|Pascal Berruelle attend un plan d'action pour atteindre 80 % de clients satisfaits avant la fin de l'année.",
-    "fin|À toi : analyse les résultats et construis le plan."
+    "fin|À toi : analyse les résultats et propose ton plan."
   ],
   pvoc: { titre: "Les clients B2B qui commandent à distance", decor: "bureau", a: P_MARCO, b: P_TOI,
     lignes: [
       "n|Réunion satisfaction client.",
       "a|Voici les résultats du trimestre, tous clients confondus. Pascal Berruelle veut 80 % de satisfaits avant la fin de l'année.",
       "a|Analyse, revois notre dispositif de mesure, et regarde de près les CSE et collectivités qui commandent à distance.",
-      "fin|À toi : analyse les résultats et construis le plan."
+      "fin|À toi : analyse les résultats et propose ton plan."
     ] } }
 
 });
@@ -460,15 +460,15 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M029": { titre: "De 22 % à moins de 15 % d'attrition", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Je veux structurer notre politique de fidélisation.",
-    "a|Aujourd'hui, nous perdons 22 % de nos clients. Je veux passer sous les 15 %. Conçois-moi un programme complet.",
-    "fin|À toi : conçois le programme de fidélisation."
+    "a|Je prépare un programme de fidélisation, et j'ai besoin de tes propositions.",
+    "a|Aujourd'hui, nous perdons 22 % de nos clients. Je veux passer sous les 15 %. Propose-moi les niveaux du programme et son lancement.",
+    "fin|À toi : propose les niveaux et le lancement du programme."
   ],
   pvoc: { titre: "3 200 clients à fidéliser", decor: "bureau", a: P_PASCAL, b: P_TOI,
     lignes: [
         "a|LABORO, c'est 3 200 clients, particuliers et professionnels. Notre attrition est de 22 % : je la veux sous 15 %.",
-      "a|Conçois le programme avec Nina Chevalier. Soigne le niveau B2B, suivi à distance par téléphone, mail et visio.",
-      "fin|À toi : conçois le programme de fidélisation."
+      "a|Prépare tes propositions avec Nina Chevalier. Soigne le niveau B2B, suivi à distance par téléphone, mail et visio.",
+      "fin|À toi : propose les niveaux et le lancement du programme."
     ] } },
 
 "M030": { titre: "Reconduire la soirée, ou pas ?", decor: "bureau", a: P_PASCAL, b: P_TOI,
@@ -490,21 +490,21 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Bureau satisfaction client. Les chiffres des contacts de la semaine s'affichent.",
     "a|Regarde ces chiffres : on n'atteint pas notre objectif de réponse en moins de 24 heures.",
-    "a|Conçois un système de traitement plus efficace. Tu présenteras ton tableau de bord à Pascal Berruelle.",
+    "a|Propose-moi une façon plus efficace de traiter les contacts. Tu présenteras ton tableau de bord à Pascal Berruelle.",
     "fin|À toi : analyse et diagnostique le traitement des contacts."
   ],
   pvoc: { titre: "Tous les canaux en moins de 24 heures", decor: "bureau", a: P_PASCAL, b: P_TOI,
     lignes: [
         "a|Appels, mails, réseaux sociaux, formulaires du site, avis Google : je veux une réponse en moins de 24 heures partout.",
-      "a|Optimise le traitement de tous ces contacts, et fais très attention aux demandes B2B traitées à distance.",
+      "a|Propose-moi comment améliorer le traitement de tous ces contacts, et fais très attention aux demandes B2B traitées à distance.",
       "fin|À toi : analyse et diagnostique le traitement des contacts."
     ] } },
 
 "M032": { titre: "+15 % de CA B2B en 12 mois", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Je veux accélérer le développement B2B de LABORO.",
-    "a|Conçois un plan pour gagner 15 % de chiffre d'affaires B2B en 12 mois. Tu travailles avec Nina Chevalier, qui suit les pros.",
-    "fin|À toi : analyse la situation et fixe les objectifs."
+    "a|Propose-moi des actions pour gagner 15 % de chiffre d'affaires B2B en 12 mois. Tu travailles avec Nina Chevalier, qui suit les pros.",
+    "fin|À toi : analyse la situation et propose tes actions."
   ] },
 
 "M033": { titre: "Un CA au-dessus de l'objectif… et pourtant", decor: "bureau", a: P_ROMAIN, b: P_TOI,
@@ -533,7 +533,7 @@ Object.assign(SAYNETES_MISSIONS, {
 "M035": { titre: "27 % de CA en plus", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Les clients qui utilisent plusieurs canaux génèrent 27 % de chiffre d'affaires en plus.",
-    "a|Conçois-moi une stratégie pour développer l'expérience omnicanale de LABORO.",
+    "a|Propose-moi des actions pour développer l'expérience omnicanale de LABORO.",
     "fin|À toi : analyse et diagnostique l'expérience omnicanale."
   ] },
 
@@ -569,8 +569,8 @@ Object.assign(SAYNETES_MISSIONS, {
 "M039": { titre: "L'objectif du prochain trimestre", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
     "a|Voici les ressources dont tu disposes, et l'objectif du prochain trimestre.",
-    "a|Conçois-moi le plan de prospection complet.",
-    "fin|À toi : construis le plan stratégique de prospection."
+    "a|Propose-moi le plan de prospection : je le validerai.",
+    "fin|À toi : propose ton plan de prospection."
   ] },
 
 "M040": { titre: "Semaine 6 sur 12", decor: "bureau", a: P_NINA, b: P_TOI,
@@ -593,7 +593,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "a|Je te confie la relation avec 5 de nos comptes B2B clés.",
     "a|Chacun est dans une situation différente : il faudra une approche différente pour chacun.",
-    "fin|À toi : définis la stratégie pour chaque compte."
+    "fin|À toi : propose une action adaptée à chaque compte."
   ] },
 
 "M043": { titre: "Fin de l'opération de prospection", decor: "bureau", a: P_NINA, b: P_TOI,
@@ -604,19 +604,19 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : évalue rigoureusement l'opération."
   ] },
 
-"M044": { titre: "La stratégie B2B de l'année prochaine", decor: "bureau", a: P_PASCAL, b: P_TOI,
+"M044": { titre: "Le plan B2B de l'année prochaine", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Construis le plan stratégique commercial B2B de l'année prochaine.",
-    "a|C'est une mission importante : tu la présenteras à l'équipe de direction.",
-    "fin|À toi : analyse et fixe les orientations."
+    "a|Avec Nina, je prépare le plan commercial B2B de l'année prochaine. J'ai besoin de tes propositions.",
+    "a|C'est un dossier important : tes propositions serviront à préparer la présentation à l'équipe de direction.",
+    "fin|À toi : analyse et propose."
   ] },
 
 "M080": { titre: "Faire mieux au printemps", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "n|La Semaine de la Rentrée, en septembre, n'a pas atteint ses objectifs.",
-    "a|Au printemps, on fait mieux. Je te confie l'opération Printemps du Sport d'avril.",
-    "a|De l'idée jusqu'au bilan. Tu la présenteras à Pascal Berruelle.",
-    "fin|À toi : conçois l'opération."
+    "a|Au printemps, on fait mieux. Propose-moi le programme de l'opération Printemps du Sport d'avril.",
+    "a|Tu en feras aussi le bilan, que tu présenteras à Pascal Berruelle.",
+    "fin|À toi : propose l'opération."
   ] },
 
 "M081": { titre: "2 clients perdus à cause des délais", decor: "bureau", a: P_MARCO, b: P_TOI,
@@ -668,8 +668,8 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "n|Bureau commercial B2B. Le bilan de l'opération est sur la table.",
     "a|L'objectif était de 5 contrats. On en a signé 3.",
-    "a|Je te confie la conception et le pilotage de la prochaine opération, avec un objectif plus ambitieux.",
-    "fin|À toi : analyse le bilan et conçois la prochaine opération."
+    "a|Je prépare la prochaine opération, avec un objectif plus ambitieux, et j'attends tes propositions.",
+    "fin|À toi : analyse le bilan et propose tes ajustements."
   ] },
 
 "M085": { titre: "Le CSE de Thales Palaiseau attend ta proposition", decor: "bureau", a: P_PASCAL, b: P_TOI,
@@ -705,47 +705,47 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M090": { titre: "La stratégie des 2 prochaines années", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Je te confie la construction de la stratégie commerciale de LABORO pour les 2 prochaines années.",
-    "a|Tu me la présenteras, et je te poserai toutes les questions difficiles.",
-    "fin|À toi : construis la stratégie."
+    "a|Je prépare la stratégie commerciale de LABORO pour les 2 prochaines années. J'ai besoin de tes propositions pour la première année.",
+    "a|Tu me les présenteras, et je te poserai toutes les questions difficiles.",
+    "fin|À toi : analyse la situation de LABORO et propose tes actions pour l'année 1."
   ] },
 
 "M091": { titre: "La veille de toute l'équipe", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|C'est à toi que je confie la conception et l'animation du système de veille de toute l'équipe LABORO.",
-    "a|Ce n'est pas juste un document : c'est un vrai projet de changement dans notre organisation.",
-    "fin|À toi : conçois le dispositif de veille partagée."
+    "a|Je veux que toute l'équipe LABORO partage ce qu'elle observe. Propose-moi un dispositif de veille partagée simple.",
+    "a|Prépare aussi les outils, et ta première note de veille pour la réunion du lundi.",
+    "fin|À toi : propose le dispositif de veille partagée."
   ] },
 
 "M092": { titre: "Que chaque client ait envie de revenir", decor: "showroom", a: P_PASCAL, b: P_TOI,
   lignes: [
     "n|Au milieu du showroom d'Évry.",
-    "a|Je te confie la refonte complète de l'expérience client du showroom.",
+    "a|Je prépare la refonte de l'expérience client du showroom, et j'attends tes propositions.",
     "a|Je veux que dans 3 mois, chaque client qui pousse notre porte reparte avec l'envie de revenir.",
     "a|Budget : 800 euros TTC. Romain, Marco et Nina sont là pour t'aider.",
-    "fin|À toi : conçois la refonte de l'expérience client."
+    "fin|À toi : propose le nouveau parcours client."
   ] },
 
 "M112": { titre: "Désaccord sur la vitrine", decor: "showroom", a: P_PASCAL, b: P_TOI,
   lignes: [
     "n|La Semaine de la Rentrée démarre vendredi. Nina et Romain ne sont pas d'accord sur la vitrine, et Marco ajoute une contrainte de dernière minute.",
-    "a|Je te confie l'arbitrage.",
-    "a|Je te fais confiance, mais il me faut une décision d'ici demain matin.",
-    "fin|À toi : analyse les positions et arbitre."
+    "a|Propose-moi un arbitrage.",
+    "a|Je te fais confiance, mais il me faut ta proposition d'ici demain matin.",
+    "fin|À toi : analyse les positions et propose ton arbitrage."
   ] },
 
-"M093": { titre: "Deux nouveaux commerciaux à former", decor: "bureau", a: P_PASCAL, b: P_TOI,
+"M093": { titre: "Deux nouveaux commerciaux à équiper", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Voici la mission la plus stratégique de LABORO.",
-    "a|Conçois notre plan de développement B2B sur 2 ans, et forme les 2 nouveaux commerciaux qui viennent d'arriver.",
-    "fin|À toi : conçois la stratégie B2B."
+    "a|J'ai besoin de toi sur un dossier important.",
+    "a|Avec Nina, je prépare notre plan de développement B2B sur 2 ans. Propose-nous tes cibles et ton plan de prospection, et rédige les fiches argumentaires des 2 nouveaux commerciaux.",
+    "fin|À toi : propose tes cibles et prépare les arguments."
   ] },
 
 "M094": { titre: "L'analyse du portefeuille", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
     "n|Bureau commercial B2B. L'analyse du portefeuille clients est à l'écran.",
     "a|Voilà où en est notre portefeuille B2B.",
-    "a|Construis la stratégie de relation client B2B pour les 12 prochains mois.",
+    "a|Propose-moi un plan de suivi de nos clients B2B pour les 12 prochains mois.",
     "fin|À toi : analyse et segmente le portefeuille."
   ] },
 
@@ -754,14 +754,14 @@ Object.assign(SAYNETES_MISSIONS, {
     "n|Pascal Berruelle t'a entendu parler de ton idée à la machine à café.",
     "a|Mets ça en forme. Tu as 2 semaines.",
     "a|Si c'est convaincant, on teste avec 3 CSE dès la rentrée.",
-    "fin|À toi : conçois et évalue ton nouveau service."
+    "fin|À toi : présente et évalue ton nouveau service."
   ] },
 
 "M113": { titre: "Deux CSE perdus face à Sportélia Pro", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Nous venons de perdre 2 CSE historiques au profit de Sportélia Pro.",
-    "a|Je veux un dispositif de veille B2B qui anticipe au lieu de subir. Tu le conçois, et tu le pilotes.",
-    "fin|À toi : conçois et pilote la veille B2B qui protège nos CSE."
+    "a|Je veux un dispositif de veille B2B qui anticipe au lieu de subir. Propose-le-moi, avec ses outils.",
+    "fin|À toi : propose la veille B2B qui protège nos CSE."
   ] },
 
 "M064": { titre: "Comprendre avant de changer", decor: "showroom", a: P_ROMAIN, b: P_TOI,
@@ -834,9 +834,9 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M072": { titre: "Le plan d'action d'avril à juin", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
-    "a|Je te confie le plan d'action commercial du prochain trimestre, d'avril à juin.",
+    "a|Je prépare le plan d'action commercial du prochain trimestre, d'avril à juin, et j'attends tes propositions.",
     "a|Pascal Berruelle veut développer les ventes aux pros et fidéliser nos clients sportifs. On lui présente le plan vendredi prochain.",
-    "fin|À toi : construis le plan d'action commercial."
+    "fin|À toi : propose le plan d'action commercial."
   ] },
 
 "M073": { titre: "L'enquête par QR code", decor: "showroom", a: P_MARCO, b: P_TOI,
@@ -850,9 +850,9 @@ Object.assign(SAYNETES_MISSIONS, {
 "M074": { titre: "La Semaine du Trail", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "n|Rayon trail du showroom.",
-    "a|La Semaine du Trail, c'est une opération de fidélisation pour nos clients coureurs. Cette fois, c'est toi qui pilotes.",
+    "a|La Semaine du Trail, c'est une opération de fidélisation pour nos clients coureurs. Je la pilote, et je te confie sa préparation.",
     "a|Avant de valider, je veux un planning, une newsletter et un budget. Et après l'opération, un bilan chiffré.",
-    "fin|À toi : organise l'opération."
+    "fin|À toi : prépare l'opération."
   ] },
 
 "M050": { titre: "La promo agressive de Sportélia", decor: "bureau", a: P_ROMAIN, b: P_TOI,
@@ -978,9 +978,9 @@ Object.assign(SAYNETES_MISSIONS, {
 "ACC-P3": { titre: "Le stand des Foulées du Lac", decor: "club", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "n|Les Foulées du Lac : 800 coureurs, un dimanche. LABORO est partenaire officiel.",
-    "a|Je te confie la coordination de l'accueil sur notre stand, avec une équipe de 4 personnes.",
-    "a|Tu prépares la journée, puis tu en feras le bilan avec les résultats relevés le soir de la course.",
-    "fin|À toi : conçois le dispositif d'accueil."
+    "a|J'organise l'accueil sur notre stand, avec une équipe de 4 personnes, dont toi. Aide-moi à préparer la journée.",
+    "a|Tu en feras ensuite le bilan avec les résultats relevés le soir de la course.",
+    "fin|À toi : prépare ton accueil sur le stand."
   ] },
 
 "M058": { titre: "Mme Pinto cherche un cadeau", decor: "showroom", a: P_ROMAIN, b: sayClient("Mme Pinto", "Cliente", "f", "#C2410C"),
@@ -1043,14 +1043,14 @@ Object.assign(SAYNETES_MISSIONS, {
 "M063": { titre: "Deux jours d'attente, ou pas de réponse", decor: "bureau", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "a|Dans l'équipe, les contacts clients ne sont pas suivis de la même façon.",
-    "a|Certains clients attendent deux jours une réponse, d'autres n'en reçoivent jamais. Construis-nous un tableau de bord commun et des règles de traitement.",
-    "fin|À toi : conçois le tableau de bord de suivi."
+    "a|Certains clients attendent deux jours une réponse, d'autres n'en reçoivent jamais. Propose-moi un tableau de bord commun et des règles de traitement.",
+    "fin|À toi : propose le tableau de bord de suivi."
   ],
   pvoc: { titre: "Des demandes de pros qui se perdent", decor: "bureau", a: P_NINA, b: P_TOI,
     lignes: [
         "a|Des demandes de clients pros reçues à distance se perdent, ou attendent trop longtemps.",
-      "a|Avec l'accord de Romain Sauzet, construis un tableau de bord commun et des règles de traitement, surtout pour les contacts B2B à distance.",
-      "fin|À toi : conçois le tableau de bord de suivi."
+      "a|Avec l'accord de Romain Sauzet, propose-nous un tableau de bord commun et des règles de traitement, surtout pour les contacts B2B à distance.",
+      "fin|À toi : propose le tableau de bord de suivi."
     ] } },
 
 "B41-P1": { titre: "Une matinée pour trouver des prospects", decor: "bureau", a: P_NINA, b: P_TOI,
@@ -1072,8 +1072,8 @@ Object.assign(SAYNETES_MISSIONS, {
 "B41-P3": { titre: "Trop de prospects perdus", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|LABORO perd trop de prospects, faute d'un vrai système de veille et de qualification.",
-    "a|Conçois-moi un dispositif permanent.",
-    "fin|À toi : conçois le dispositif de veille et de qualification."
+    "a|Propose-moi un dispositif permanent.",
+    "fin|À toi : propose le dispositif de veille et de qualification."
   ] },
 
 "B42-P1": { titre: "Ton premier appel : M. Grandin", decor: "bureau", a: P_NINA, b: P_TOI,
@@ -1086,15 +1086,15 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "B42-P2": { titre: "8 rendez-vous et 2 contrats en 4 semaines", decor: "bureau", a: P_NINA, b: P_TOI,
   lignes: [
-    "a|Conçois une campagne de prospection pour les clubs de l'Essonne qui ne sont pas encore clients.",
+    "a|Propose-moi une campagne de prospection pour les clubs de l'Essonne qui ne sont pas encore clients.",
     "a|Objectif : 8 rendez-vous et 2 contrats signés en 4 semaines, avec 350 euros de budget.",
-    "fin|À toi : définis la stratégie et le message."
+    "fin|À toi : propose les techniques et le message."
   ] },
 
 "B42-P3": { titre: "+67 200 euros de CA B2B", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Conçois le plan de prospection annuel : je veux 67 200 euros hors taxes de CA B2B en plus, grâce à de nouveaux clients.",
-    "a|Nina Chevalier le validera avec moi.",
+    "a|Je prépare le plan de prospection annuel, et j'attends tes propositions : je veux 67 200 euros hors taxes de CA B2B en plus, grâce à de nouveaux clients.",
+    "a|Nina Chevalier validera tes propositions avec moi.",
     "fin|À toi : dimensionne et planifie la prospection."
   ] },
 
@@ -1141,11 +1141,11 @@ Object.assign(SAYNETES_MISSIONS, {
 "B44-P3": { titre: "Des affaires perdues faute de suivi", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Nous perdons trop d'affaires parce que notre suivi n'est pas structuré.",
-    "a|Conçois un système d'alerte et de suivi commercial intégré à LABORO Connect.",
-    "fin|À toi : conçois le système de suivi."
+    "a|Propose à Nina un tableau de suivi et d'alerte des prospects, intégré à LABORO Connect.",
+    "fin|À toi : propose le tableau de suivi."
   ] },
 
-"B45-P1": { titre: "35,20 euros de moins chez Sportélia Pro", decor: "club", a: sayClient("M. Moreau", "AS Palaiseau Football", "h", "#15803D"), b: P_TOI,
+"B45-P1": { titre: "35,20 euros de moins chez Sportélia Pro", decor: "club", a: sayClient("M. Morel", "AS Palaiseau Football", "h", "#15803D"), b: P_TOI,
   lignes: [
     "n|Rendez-vous avec Kevin Morel, président de l'AS Palaiseau Football. Le club t'achète du petit matériel, mais ses maillots ailleurs.",
     "a|Regardez ce devis de Sportélia Pro : les mêmes maillots, 35 euros 20 hors taxes de moins.",
@@ -1165,8 +1165,8 @@ Object.assign(SAYNETES_MISSIONS, {
 "B45-P3": { titre: "Gagner sur la valeur, pas sur le prix", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
     "a|Je veux que LABORO gagne sur la valeur, et jamais sur le prix.",
-    "a|Conçois la stratégie de valorisation de notre offre pour tout le portefeuille B2B.",
-    "fin|À toi : analyse et conçois la stratégie de valorisation."
+    "a|Prépare pour Nina les arguments et le support qui valorisent notre offre auprès de tous nos clients B2B.",
+    "fin|À toi : analyse et prépare la valorisation de l'offre."
   ] },
 
 "M075": { titre: "Avant le changement de saison", decor: "showroom", a: P_ROMAIN, b: P_TOI,
@@ -1204,9 +1204,9 @@ Object.assign(SAYNETES_MISSIONS, {
 "M098": { titre: "Partenaire du Sport en Essonne", decor: "club", a: P_PASCAL, b: P_TOI,
   lignes: [
     "n|LABORO est partenaire officiel du Sport en Essonne, une course à pied du département, et y tiendra un stand.",
-    "a|Je te confie notre stratégie de communication digitale.",
+    "a|Propose-moi une campagne de communication digitale.",
     "a|Je veux un maximum de visibilité, et de nouveaux clients au stand, puis au showroom d'Évry.",
-    "fin|À toi : conçois la stratégie de communication digitale."
+    "fin|À toi : propose la campagne digitale."
   ] }
 
 });
@@ -1215,7 +1215,7 @@ Object.assign(SAYNETES_MISSIONS, {
 
 "M099": { titre: "Le plan de performance sur 2 ans", decor: "bureau", a: P_PASCAL, b: P_TOI,
   lignes: [
-    "a|Voici la mission la plus stratégique de LABORO : le plan de performance de notre espace commercial sur 2 ans.",
+    "a|Je prépare le plan de performance de notre espace commercial sur 2 ans, et j'ai besoin de ton diagnostic et de tes propositions.",
     "a|Le showroom d'Évry-Courcouronnes et le site laboro-sport.fr. Romain, Nina et Marco sont là pour t'aider.",
     "fin|À toi : diagnostique la situation et priorise."
   ] },
@@ -1310,7 +1310,7 @@ Object.assign(SAYNETES_MISSIONS, {
   lignes: [
     "a|Je veux renforcer notre stratégie commerciale sur trois fronts.",
     "a|Les prix de deux produits clés, le lancement d'ateliers Entretien et Prolongation de l'équipement, et notre présence sur Instagram. Une seule journée, comme à l'épreuve E2.",
-    "fin|À toi : commence par fixer les prix et analyser la concurrence."
+    "fin|À toi : commence par calculer les prix et analyser la concurrence."
   ] },
 
 "ACC5": { titre: "Des visiteurs professionnels attendus", decor: "showroom", a: P_ROMAIN, b: sayClient("Visiteur", "Professionnel attendu", "h", "#6D28D9"),

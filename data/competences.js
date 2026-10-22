@@ -217,20 +217,13 @@ Réponse : "Je comprends — c'est justement parce que vous débutez que l'amort
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Client pressé, besoin mal défini au départ, produit demandé indisponible en magasin, budget non précisé spontanément. Tu dois, en autonomie complète : cadrer le besoin en 2-3 questions maximum, argumenter sur un produit de substitution disponible ou orienter vers le canal digital, et anticiper une objection probable (délai, prix) avant même qu'elle soit formulée.
 </div>
-<p><strong>Passer de la vente à la stratégie — l'outil SWOT :</strong> quand la mission te demande de concevoir ou défendre une stratégie commerciale (pas juste une vente), tu dois analyser la situation de LABORO avec l'outil SWOT :</p>
-<ul>
-<li><strong>S — Forces (Strengths)</strong> : atouts internes de LABORO (ex. commercial dédié, flocage rapide)</li>
-<li><strong>W — Faiblesses (Weaknesses)</strong> : points faibles internes (ex. prix parfois plus élevé que Sportélia)</li>
-<li><strong>O — Opportunités (Opportunities)</strong> : éléments externes favorables (ex. essor du trail, demande locale en hausse)</li>
-<li><strong>T — Menaces (Threats)</strong> : éléments externes défavorables (ex. nouveau concurrent, hausse des coûts transporteur)</li>
-</ul>
-<p>Une stratégie solide s'appuie sur les forces pour saisir les opportunités, tout en anticipant comment limiter l'effet des faiblesses et des menaces — ce n'est pas une simple liste, c'est un raisonnement croisé.</p>
+<p><strong>Proposer des actions commerciales :</strong> quand la mission te demande de faire des propositions à la direction, relève d'abord 3 forces et 3 faiblesses de LABORO à partir du dossier (ex. force : commercial dédié, flocage rapide ; faiblesse : prix parfois plus élevé que Sportélia Pro), puis propose des actions qui s'appuient sur les forces et corrigent les faiblesses.</p>
 </div>
 <!-- notions -->
 <div class="res-section">
 <div class="res-section-label">📘 Les notions à connaître</div>
 <ul>
-<li><strong>SWOT</strong> — forces et faiblesses (internes) · opportunités et menaces (venues du marché).</li>
+<li><strong>Forces et faiblesses</strong> — ce qui avantage ou freine LABORO, relevé à partir de données du dossier (chiffres, retours clients, comparaison avec la concurrence).</li>
 <li><strong>Décliner un objectif</strong> — répartir un objectif global entre des périodes, des rayons ou des canaux, avec des parts qui totalisent 100 %.</li>
 <li><strong>Taux de croissance</strong> — (Nouvelle valeur − ancienne valeur) ÷ ancienne valeur × 100. Exemple : de 800 000 € à 900 000 € → + 12,5 %.</li>
 <li><strong>Initiative stratégique</strong> — une action d'ampleur, avec sa logique, ses ressources, ses risques et ses indicateurs de succès.</li>
@@ -392,7 +385,7 @@ Plusieurs avis Google mentionnent la même rupture de stock sur un article très
 </div>`},
 4:{t:'La veille commerciale — Fiche mémo express',c:`<div class="res-section">
 <div class="res-section-label">🔴 Fiche mémo express — veille stratégique</div>
-<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, et relier ta veille à une décision stratégique plus large.</p>
+<p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, et relier ta veille à une décision de LABORO.</p>
 <ul>
 <li><strong>4 types de veille</strong> : concurrentielle · produit · client · réglementaire — chacune a ses sources propres</li>
 <li><strong>Chaque info de veille</strong> doit déboucher sur une action (argument client, alerte équipe, ajustement)</li>
@@ -402,17 +395,17 @@ Plusieurs avis Google mentionnent la même rupture de stock sur un article très
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
 Trois informations de veille arrivent le même jour : une baisse de prix concurrente, un avis client négatif répété, et un nouveau produit fournisseur. En autonomie complète, tu dois hiérarchiser les trois, décider laquelle remonter en urgence, et convertir au moins une des trois en argument de vente exploitable immédiatement.
 </div>
-<p><strong>Relier la veille à la stratégie — nourrir le SWOT :</strong> ta veille alimente directement les colonnes Opportunités et Menaces d'une analyse SWOT (voir C1.2 palier 4) — un concurrent qui baisse ses prix est une menace ; un besoin client mal couvert par le marché est une opportunité. Une veille bien menée transforme une observation en levier stratégique, pas en simple constat.</p>
+<p><strong>Relier la veille aux décisions de LABORO :</strong> ta note de veille aide Pascal Berruelle à décider — un concurrent qui baisse ses prix est un risque à signaler ; un besoin client mal couvert par le marché est une piste à proposer. Une veille bien menée transforme une observation en proposition, pas en simple constat.</p>
 </div>
 <!-- notions -->
 <div class="res-section">
 <div class="res-section-label">📘 Les notions à connaître</div>
 <ul>
-<li><strong>Dispositif de veille collectif</strong> — sources, fréquences, responsables, format des notes et circuit de partage : la veille devient un travail d'équipe, pas une affaire personnelle.</li>
+<li><strong>Dispositif de veille</strong> — sources, fréquence de consultation, format de la note et destinataires : on le propose au responsable, qui le valide.</li>
 <li><strong>Signal faible</strong> — une information encore isolée qui peut annoncer un changement important (un concurrent qui recrute, un client qui change d'interlocuteur).</li>
 <li><strong>Appel d'offres</strong> — une consultation organisée par un client (souvent public) qui compare plusieurs fournisseurs sur des critères annoncés.</li>
-<li><strong>Frein au changement</strong> — ce qui empêche une équipe d'adopter un nouvel outil : manque de temps, d'intérêt perçu, d'habitude ; chaque frein appelle une réponse concrète.</li>
-<li><strong>Appropriation</strong> — le fait que l'équipe utilise vraiment l'outil ; elle se mesure (nombre de notes, de signaux remontés, de décisions prises).</li>
+<li><strong>Note de veille</strong> — les faits, leur source et leur date, ce qu'ils changent pour LABORO, et ta proposition ; ce qui reste incertain est signalé comme tel.</li>
+<li><strong>Information exploitable</strong> — fiable (source connue), récente, utile pour une décision ou un argument de vente.</li>
 </ul>
 </div>
 <div class="res-retenir">
@@ -420,7 +413,7 @@ Trois informations de veille arrivent le même jour : une baisse de prix concurr
 <ul>
 <li>Autonomie totale : repérer, prioriser et exploiter un signal de veille sans guidage</li>
 <li>Une veille sans action est une veille inutile</li>
-<li>La veille nourrit le SWOT : elle transforme une observation en donnée stratégique (Opportunité ou Menace)</li>
+<li>La veille débouche sur une proposition concrète au responsable, pas sur un simple constat</li>
 </ul>
 </div>`},
 },
@@ -1943,7 +1936,7 @@ Crème anti-frottements : stock initial 40, livraison 12, vendues 31 → stock t
 <p>Cette fiche est volontairement dense : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage, en croisant plusieurs leviers.</p>
 <p><strong>E-commerce — indicateurs clés :</strong> taux de conversion = commandes ÷ visiteurs × 100 (moyenne nationale 2,96 %) · % ventes en ligne = CA site ÷ CA total × 100 · panier moyen en ligne = CA site ÷ nb commandes.</p>
 <p><strong>Communication digitale :</strong> Instagram (18-35 ans, visuel) · Facebook (35-55 ans, CSE/clubs) · Newsletter (clients existants) · Google My Business (référencement local). Un post efficace : visuel d'abord, texte &lt;150 mots, 3-5 hashtags, 1 seul call-to-action.</p>
-<p><strong>Piloter avec le SWOT :</strong> Forces (ce qui marche) · Faiblesses (ce qui freine) · Opportunités (à saisir) · Menaces (risques externes). Prioriser les actions sur les faiblesses qui limitent une force, ou les opportunités les plus faciles à saisir.</p>
+<p><strong>Analyser avant de proposer :</strong> relève les forces (ce qui marche) et les faiblesses (ce qui freine) de l'espace commercial à partir du tableau de bord, puis propose en priorité des actions sur les faiblesses qui coûtent le plus.</p>
 <p><strong>Seuil de rentabilité</strong> (en quantité) = charges fixes ÷ (prix de vente unitaire − coût variable unitaire). En dessous = déficitaire, au-dessus = chaque vente dégage du bénéfice.</p>
 <div class="res-ex"><div class="res-ex-l">Exemple — atelier "Initiation trail"</div>
 Charges fixes 450 € · inscription 30 € HT · coût variable 5 € HT par participant. Seuil = 450 ÷ (30 − 5) = 450 ÷ 25 = <strong>18 participants</strong> pour être rentable.
@@ -1956,7 +1949,7 @@ Charges fixes 450 € · inscription 30 € HT · coût variable 5 € HT par pa
 <ul>
 <li><strong>Parcours client</strong> — toutes les étapes du client, de son arrivée à sa sortie, avec les points de contact et ce qu'il ressent à chaque étape.</li>
 <li><strong>Point de friction</strong> — un moment du parcours qui gêne le client (attente, prix non affichés, signalétique) et peut lui faire renoncer à acheter.</li>
-<li><strong>SWOT</strong> — forces et faiblesses (internes) · opportunités et menaces (venues du marché).</li>
+<li><strong>Forces et faiblesses</strong> — ce qui avantage ou freine LABORO, relevé à partir de données du dossier (chiffres, retours clients, comparaison avec la concurrence).</li>
 <li><strong>Taux de démarque et taux de rupture</strong> — démarque ÷ CA × 100 · références en rupture ÷ références suivies × 100.</li>
 <li><strong>Mesure de contingence</strong> — ce que l'on fera si un risque du plan se réalise.</li>
 </ul>
@@ -1965,7 +1958,7 @@ Charges fixes 450 € · inscription 30 € HT · coût variable 5 € HT par pa
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Autonomie totale : croiser merchandising, stocks, digital et rentabilité dans une seule analyse</li>
-<li>Le SWOT structure une vision d'ensemble avant de prioriser des actions concrètes</li>
+<li>On relève forces et faiblesses avant de proposer des actions concrètes et chiffrées</li>
 <li>Une offre B2B se différencie du B2C par le volume, le paiement différé et le service dédié</li>
 </ul>
 </div>`},
@@ -2259,9 +2252,9 @@ Objectif 3 contrats, budget 450 €. S1-S4 : qualification + e-mailing/phoning (
 <p>Cette fiche est volontairement courte : en situation d'épreuve, tu dois mobiliser ces réflexes seul, sans guidage.</p>
 <p><strong>Structure d'un plan de prospection (7 points) :</strong> objectif chiffré · cible qualifiée · calcul du nombre de prospects · techniques retenues · planning semaine par semaine · budget · indicateurs de suivi.</p>
 <p><strong>Construire le planning :</strong> augmenter progressivement le volume (S1 20 contacts, S2 30, S3 40…), prévoir des semaines de relance, garder la dernière semaine pour les visites terrain sur les prospects chauds.</p>
-<p><strong>Utiliser le SWOT pour choisir sa stratégie</strong> avant de décider qui cibler et comment : Forces (atouts LABORO sur ce marché), Faiblesses (limites internes), Opportunités (tendances externes favorables), Menaces (risques externes). Une bonne stratégie s'appuie sur les forces pour capter les opportunités, en évitant les segments où les faiblesses ou menaces sont trop fortes.</p>
+<p><strong>Appuyer ses propositions sur les atouts de LABORO :</strong> avant de proposer des cibles, relève les atouts de LABORO sur ce marché et ses limites face à la concurrence ; propose en priorité les cibles où les atouts comptent le plus.</p>
 <div class="res-ex"><div class="res-ex-l">Cas type d'épreuve</div>
-Un objectif de contrats à atteindre, un budget limité, un délai court. En autonomie complète, tu dois construire le plan complet (7 points), dimensionner le volume de prospects, et justifier le choix de techniques avec un raisonnement SWOT.
+Un objectif de contrats à atteindre, un budget limité, un délai court. En autonomie complète, tu dois construire le plan complet (7 points), dimensionner le volume de prospects, et justifier le choix de techniques par les atouts de LABORO et les contraintes du dossier.
 </div>
 </div>
 <!-- notions -->
@@ -2271,15 +2264,15 @@ Un objectif de contrats à atteindre, un budget limité, un délai court. En aut
 <li><strong>Segmentation du marché B2B</strong> — découper le marché en cibles homogènes (CSE, collectivités, clubs, écoles) pour leur adresser une offre et un effort adaptés.</li>
 <li><strong>Potentiel d'un segment</strong> — taille du marché du segment × part de marché visée. Exemple : marché de 2 M€ × 3 % → 60 000 €.</li>
 <li><strong>Proposition de valeur</strong> — ce que l'entreprise promet à une cible, mieux que ses concurrents.</li>
-<li><strong>Plan de formation</strong> — objectifs, contenus, exercices pratiques, évaluation, durée.</li>
-<li><strong>Risque principal</strong> — l'événement le plus probable ou le plus grave qui ferait échouer la stratégie, et la façon de l'anticiper.</li>
+<li><strong>Fiche argumentaire par cible</strong> — besoins de la cible, offre LABORO, 3 arguments, réponses aux 2 objections les plus probables.</li>
+<li><strong>Risque principal</strong> — l'événement le plus probable ou le plus grave qui ferait échouer le plan, et la façon de l'anticiper.</li>
 </ul>
 </div>
 <div class="res-retenir">
 <div class="res-retenir-l">À retenir</div>
 <ul>
 <li>Autonomie totale : construire un plan de prospection complet et argumenté, pas juste une liste d'actions</li>
-<li>Le SWOT structure le choix des segments avant même de calculer les volumes</li>
+<li>Les atouts de LABORO guident le choix des cibles avant même de calculer les volumes</li>
 </ul>
 </div>`},
 },
