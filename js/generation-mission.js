@@ -1,6 +1,7 @@
 // ================================================
 //   LABORO — Moteur commun : génération d'une mission par IA (enseignant)
-//   Brouillon à relire, JAMAIS publié automatiquement. Disponible dans les
+//   Brouillon à relire, JAMAIS publié automatiquement : l'enseignant le corrige dans
+//   l'éditeur de js/missions-publiees.js puis le publie (01/11/2026). Disponible dans les
 //   univers dont index.html contient le panneau « Générer mission »
 //   (#panel-generation) et dont le serveur a le réglage generation_mission.
 // ================================================
@@ -63,14 +64,18 @@ async function genMission(){
     return;
   }
   const btnTxtOrig = btn ? btn.textContent : null;
-  if(btn){ btn.textContent = '⏳ Génération en cours (10-20 secondes)…'; btn.disabled = true; }
+  if(window.MP && MP.brouillonEnCours && MP.brouillonEnCours() && !confirm("Un brouillon est en cours : le remplacer par une nouvelle mission ?")) return;
+  if(btn){ btn.textContent = '⏳ Génération en cours (20-40 secondes)…'; btn.disabled = true; }
   res.style.color = 'var(--gm)';
   res.textContent = "L'IA rédige la mission…";
   try{
     const r = await fetchJSON(LABORO_API + '/api/generer-mission', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-      body: JSON.stringify({ comp_code: comp, palier: parseInt(palier, 10), client_type: clientType, option: option })
+      // Contexte de l'univers (01/11/2026) : catalogue réel, personnages, missions existantes
+      // sur la compétence, décors des saynètes — pour que l'IA n'invente ni produit ni doublon.
+      body: JSON.stringify(Object.assign({ comp_code: comp, palier: parseInt(palier, 10), client_type: clientType, option: option },
+        (window.MP && typeof MP.contexteGeneration === 'function') ? MP.contexteGeneration(comp) : {}))
     });
     if(!r.ok || !r.data.ok){
       res.style.color = 'var(--rg)';
@@ -82,6 +87,8 @@ async function genMission(){
     // (comp_ref et intitulé officiel), pour un JSON prêt à coller dans data/missions.js.
     const modele = (typeof MISSIONS !== 'undefined') ? MISSIONS.find(function(m){ return m.comp === b.comp; }) : null;
     if(modele){ b.comp_ref = modele.comp_ref || b.comp_ref; b.comp_libelle = modele.comp_libelle || b.comp_libelle; }
+    // Éditeur + garde-fous + « Publier » (js/missions-publiees.js) ; sinon l'ancien aperçu
+    if(window.MP && typeof MP.ouvrirEditeur === 'function'){ MP.ouvrirEditeur(b); return; }
     res.style.color = 'var(--gr)';
     res.innerHTML = renderBrouillonMission(b);
   }finally{
