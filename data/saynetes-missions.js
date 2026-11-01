@@ -1259,6 +1259,15 @@ Object.assign(SAYNETES_MISSIONS, {
     "fin|À toi : conçois l'action de fidélisation."
   ] },
 
+"M114": { titre: "Les chiffres du site, avant d'aller en rayon", decor: "bureau", a: P_ROMAIN, b: P_TOI,
+  lignes: [
+    "n|Bureau du showroom, lundi matin. C'est ta première semaine chez LABORO.",
+    "a|Avant de te mettre en rayon, j'ai une tâche d'observation pour toi.",
+    "a|Beaucoup de clients passent au showroom après avoir regardé laboro-sport.fr. Si on comprend ce qu'ils regardent en ligne, on les accueillera mieux ici.",
+    "a|Voici le tableau de bord du site pour la semaine 18.",
+    "fin|À toi : lis le tableau de bord et vérifie les chiffres du site."
+  ] },
+
 "M108": { titre: "Le bilan d'avril du rayon chaussures", decor: "showroom", a: P_ROMAIN, b: P_TOI,
   lignes: [
     "n|Rayon chaussures. Romain tient le bilan d'avril.",

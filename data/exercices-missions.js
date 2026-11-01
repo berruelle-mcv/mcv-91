@@ -1094,6 +1094,16 @@ Object.assign(EXERCICES_MISSIONS, {
     ["Un essai en avant-première des nouveautés.", 1, "Une expérience exclusive."]
   ] },
 
+"M114": { type: "tri", titre: "Quel indicateur du site ?", consigne: "Une autre semaine, Thomas lit le tableau de bord du site. De quel indicateur parle chaque phrase ?",
+  categories: ["Taux de conversion", "Panier moyen", "Taux de rebond", "Source de visites"],
+  items: [
+    ["Sur 800 visiteurs, 40 ont passé une commande.", 0, "On compare les commandes au nombre de visiteurs : c'est le taux de conversion."],
+    ["En moyenne, une commande en ligne rapporte 64 €.", 1, "Ce qu'une commande rapporte en moyenne : c'est le panier moyen."],
+    ["Un visiteur sur quatre ferme le site dès la page d'accueil.", 2, "Les visiteurs qui partent tout de suite : c'est le taux de rebond."],
+    ["Beaucoup de visiteurs arrivent en cliquant sur une publication Instagram.", 3, "D'où viennent les visiteurs : c'est la source de visites."],
+    ["Le chiffre d'affaires de la semaine divisé par le nombre de commandes donne 52 €.", 1, "CA ÷ nombre de commandes = panier moyen."]
+  ] },
+
 "M108": { type: "cartes", titre: "Diagnostiquer un rayon", cartes: [
     ["Un produit sans aucune vente : questions à se poser ?", "Est-il visible, au bon prix, au bon endroit, et connu des vendeurs ?"],
     ["Écart à l'objectif en % ?", "(Réalisé − objectif) ÷ objectif × 100."],
