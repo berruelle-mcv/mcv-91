@@ -67,7 +67,7 @@
     if(connu) return connu;
     return { nom: p.nom || "?", role: p.role || "", sexe: p.sexe || "", couleur: p.sexe === "f" ? "#BE123C" : "#D97706" };
   }
-  MP.contexteGeneration = function(comp){
+  MP.contexteGeneration = function(comp, theme){
     indexerSaynetes();
     var catalogue = (typeof PRODUITS !== "undefined" && Array.isArray(PRODUITS)) ? PRODUITS.map(function(p){
       var prix = (p.pv != null) ? p.pv : p.prix;
@@ -75,6 +75,13 @@
     }).filter(Boolean) : [];
     var existantes = (typeof MISSIONS !== "undefined" ? MISSIONS : []).filter(function(m){ return m.comp === comp; })
       .map(function(m){ return m.titre + " (palier " + m.palier + ")"; });
+    // Missions sur la même méthode (champ « Méthode ou notion »), quelle que soit leur compétence
+    if(theme && typeof missionsSurTheme === "function"){
+      missionsSurTheme(theme, 10).forEach(function(m){
+        var t = m.titre + " (palier " + m.palier + ")";
+        if(existantes.indexOf(t) < 0) existantes.unshift(t);
+      });
+    }
     return {
       catalogue: catalogue.slice(0, 200),
       existantes: existantes.slice(0, 40),
@@ -334,6 +341,23 @@
       var sim = similarite((B.titre || "") + " " + (B.objectif || ""), (m.titre || "") + " " + (m.objectif || ""));
       if(sim >= 0.3) avert.push("Ressemble à la mission « " + m.titre + " » (palier " + m.palier + ") : vérifie que la situation est vraiment différente.");
     });
+    // La méthode demandée (champ « Méthode ou notion ») est-elle bien travaillée ?
+    if(String(B.theme || "").trim()){
+      var VIDES = ["puis", "avec", "pour", "dans", "methode", "notion", "travailler", "faire", "les", "des", "une", "sur", "entre", "leur", "leurs", "client", "clients"];
+      var plat = function(t){ return " " + norm(t).replace(/[^a-z0-9]+/g, " ") + " "; };
+      var corps = plat(textesMission(B).map(function(t){ return t[1]; }).join(" ") + " " + JSON.stringify(B.exercice || {}));
+      var mots = String(B.theme).split(/[^A-Za-zÀ-ÿ0-9]+/).filter(function(w){
+        var n = norm(w);
+        return n && VIDES.indexOf(n) < 0 && (n.length >= 4 || (w.length >= 2 && w === w.toUpperCase() && /[A-Z]/.test(w)));
+      });
+      var absents = mots.filter(function(w){
+        var n = norm(w);
+        // « soncase » couvre aussi « soncas », « argumentation » couvre « argumenter »…
+        var racine = n.length > 6 ? n.slice(0, n.length - 2) : n;
+        return corps.indexOf(" " + n + " ") < 0 && corps.indexOf(" " + racine) < 0;
+      });
+      if(mots.length && absents.length) avert.push("La méthode demandée (« " + B.theme + " ») n'apparaît pas clairement : " + absents.map(function(w){ return "« " + w + " »"; }).join(", ") + " absent(s) de la mission.");
+    }
     if(textesMission(B).some(function(t){ return /[<>]/.test(t[1]); })) avert.push("Évite les caractères < et > (écris « inférieur à », « supérieur à »).");
     var uniq = function(l){ return l.filter(function(t, k){ return l.indexOf(t) === k; }); };
     return { bloq: uniq(bloq), avert: uniq(avert) };
@@ -393,7 +417,7 @@
     var decors = (indexerSaynetes(), DECORS);
     var h = '<div class="mp-ed">'
       + '<div class="mp-bandeau-brouillon">✏️ Brouillon — modifie ce que tu veux. Rien n\'est visible des élèves tant que tu n\'as pas publié.</div>'
-      + '<div class="mp-meta">' + esc(codeC(B.comp)) + " — " + esc(B.comp_libelle || "") + " · Palier " + esc(B.palier) + " · " + esc(B.option) + "</div>"
+      + '<div class="mp-meta">' + esc(codeC(B.comp)) + " — " + esc(B.comp_libelle || "") + " · Palier " + esc(B.palier) + " · " + esc(B.option) + (B.theme ? " · Méthode : " + esc(B.theme) : "") + "</div>"
       + '<div id="mp-verif"></div>'
       + '<div class="mp-sec"><div class="mp-sec-t">La mission</div>'
       + champ("Titre", "titre", B.titre)
