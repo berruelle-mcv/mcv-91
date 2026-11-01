@@ -258,19 +258,28 @@
       cat.forEach(function(p){
         var pos = nt.indexOf(p.n);
         while(pos >= 0){
-          var suite = nt.slice(pos + p.n.length, pos + p.n.length + 40);
-          var mp = /^[^\n€]*?(\d+(?:[.,]\d+)?)\s*€/.exec(suite);
-          if(mp && p.pv != null && Math.abs(parseFloat(mp[1].replace(",", ".")) - Number(p.pv)) > 0.001){
-            bloq.push("Prix de « " + p.nom + " » : " + p.pv + " € dans le catalogue, " + mp[1] + " € dans la mission.");
-            break;
+          // Prix qui suit le nom (« 21 000 € », « 89 € », « 12,50 € ») : collé au nom (« — », « : »,
+          // « ( ») → bloquant ; plus loin (« avec remise : … ») → seulement à vérifier
+          var suite = nt.slice(pos + p.n.length, pos + p.n.length + 60);
+          var mp = /^([^\d\n€]{0,30}?)(\d{1,3}(?:[ \u00a0\u202f]\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)\s*€/.exec(suite);
+          if(mp && p.pv != null){
+            var lu = parseFloat(mp[2].replace(/[ \u00a0\u202f]/g, "").replace(",", "."));
+            if(Math.abs(lu - Number(p.pv)) > 0.001){
+              var txtPrix = "Prix de « " + p.nom + " » : " + p.pv + " € dans le catalogue, " + mp[2] + " € dans la mission.";
+              if(mp[1].replace(/[\s—–:(\-]/g, "").length <= 1) bloq.push(txtPrix);
+              else avert.push(txtPrix + " (remise ou autre prix ? vérifie)");
+              break;
+            }
           }
           pos = nt.indexOf(p.n, pos + 1);
         }
       });
       // « MARQUE Nom-Inventé » (ex. un modèle qui n'existe pas) : le mot qui suit le nom de
       // l'entreprise, avec une majuscule, doit correspondre à un produit du catalogue
+      // (seulement si l'entreprise vend sa propre marque, comme LABORO ; pas pour un concessionnaire)
       var marque = (cfg().entreprise && cfg().entreprise.nom_court) || "";
-      if(marque){
+      var marquePropre = marque && (typeof PRODUITS !== "undefined") && PRODUITS.some(function(p){ return norm(p.marque) === norm(marque); });
+      if(marquePropre){
         var re = new RegExp(marque.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s+([A-Z][\\wÀ-ÿ-]*(?:\\s+[A-Z0-9][\\wÀ-ÿ-]*)?)", "g"), mm;
         var permis = ["sport", "connect", "outdoor", "auto", "mcv", "pro"];
         var vus = {};
