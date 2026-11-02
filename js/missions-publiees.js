@@ -249,8 +249,9 @@
     if(!nq) bloq.push("Il faut au moins une question.");
     var crit = (B.criteres || []).filter(function(c){ return String(c.c || "").trim(); });
     if(crit.length < 3 || crit.length > 4) bloq.push("Il faut 3 ou 4 critères d'évaluation (il y en a " + crit.length + ").");
-    var pasJe = crit.filter(function(c){ return !/^\s*je\s|^\s*j['’]/i.test(c.i || ""); }).map(function(c){ return "« " + c.c + " »"; });
-    if(pasJe.length) avert.push("Critère(s) pas rédigé(s) à la 1re personne (« Je … ») : " + pasJe.join(", ") + ".");
+    // Règle commune (02/11/2026) : critères à la forme impersonnelle, à tous les paliers
+    var enJe = crit.filter(function(c){ return /^\s*(je\s|j['’]|mon\s|ma\s|mes\s)/i.test(c.i || ""); }).map(function(c){ return "« " + c.c + " »"; });
+    if(enJe.length) avert.push("Critère(s) rédigé(s) à la 1re personne : " + enJe.join(", ") + ". Écris-les à la forme impersonnelle (ex. « Les calculs sont posés et justes »).");
     if(String(B.reflexivite_q || "").trim() && (B.palier < 3 || B.option === "2nde")) bloq.push("Pas de question de réflexivité avant le palier 3 (ni en 2nde) : vide ce champ.");
     if(B.palier >= 3 && B.option !== "2nde" && !String(B.reflexivite_q || "").trim()) avert.push("Palier " + B.palier + " : une question de réflexivité est attendue.");
 
@@ -477,7 +478,7 @@
       + champ("Livrable", "livrable", B.livrable, { multi: true, rows: 2 })
       + B.criteres.map(function(c, k){
           return '<div class="mp-ligne"><input data-ch="criteres.' + k + '.c" value="' + esc(c.c) + '" placeholder="Critère">'
-            + '<input class="mp-large" data-ch="criteres.' + k + '.i" value="' + esc(c.i) + '" placeholder="Je …">' + bouton("✕", "sup-crit:" + k, "mp-x") + "</div>";
+            + '<input class="mp-large" data-ch="criteres.' + k + '.i" value="' + esc(c.i) + '" placeholder="Indicateur observable (ex. Les calculs sont posés et justes)">' + bouton("✕", "sup-crit:" + k, "mp-x") + "</div>";
         }).join("")
       + bouton("+ Critère", "add-crit", "mp-plus") + "</div>"
       + '<div class="mp-sec"><div class="mp-sec-t">Saynète (en tête de « La mission »)</div>'
@@ -559,7 +560,7 @@
       case "sup-act": if(confirm("Supprimer cette activité et ses questions ?")) B.activites.splice(i, 1); else return; break;
       case "add-q": B.activites[i].q.push(""); break;
       case "sup-q": B.activites[i].q.splice(j, 1); break;
-      case "add-crit": B.criteres.push({ c: "", i: "Je " }); break;
+      case "add-crit": B.criteres.push({ c: "", i: "" }); break;
       case "sup-crit": B.criteres.splice(i, 1); break;
       case "add-item": B.exercice.items.push(["", 0, ""]); break;
       case "add-notion": B.fiche.notions.push(["", ""]); break;
