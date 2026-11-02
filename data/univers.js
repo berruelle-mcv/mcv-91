@@ -133,6 +133,7 @@ var LABORO_CONFIG = {
     "e2_pvoc": "data/e2-pvoc.js"
   },
   "api": "https://mcv.laboro-edu.fr",
+  "api_secours": "https://laboro-pi.tail0da51c.ts.net",
   "_codes_note": "Numéros de compétences AFFICHÉS selon le référentiel officiel (code interne → code affiché). Les codes internes des missions ne changent pas.",
   "codes_competences": {
     "C2.1b": "C2.2",
