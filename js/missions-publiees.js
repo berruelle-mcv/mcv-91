@@ -219,6 +219,13 @@
     (B.activites || []).forEach(function(a, i){ (a.q || []).forEach(function(q, j){ t.push(["la question " + (i + 1) + "." + (j + 1), q]); }); });
     (B.criteres || []).forEach(function(c, k){ t.push(["le critère " + (k + 1), (c.c || "") + " : " + (c.i || "")]); });
     if(B.reflexivite_q) t.push(["la question de réflexivité", B.reflexivite_q]);
+    var f = B.fiche || {};
+    if(f.titre) t.push(["le titre de la fiche méthode", f.titre]);
+    if(f.explication) t.push(["l'explication de la fiche méthode", f.explication]);
+    (f.notions || []).forEach(function(n, k){ t.push(["la notion " + (k + 1) + " de la fiche méthode", (n[0] || "") + " : " + (n[1] || "")]); });
+    if(f.exemple) t.push(["l'exemple de la fiche méthode", f.exemple]);
+    if(f.erreur) t.push(["l'erreur fréquente de la fiche méthode", f.erreur]);
+    (f.retenir || []).forEach(function(r, k){ t.push(["la ligne " + (k + 1) + " « je retiens » de la fiche méthode", r]); });
     return t;
   }
   function catalogue(){
@@ -251,7 +258,8 @@
     var vous = [];
     textesMission(B).forEach(function(t){
       if(/^la ligne/.test(t[0]) || /^la légende/.test(t[0])) return;   // le dossier peut citer un client qui vouvoie
-      if(/\b(vous|votre|vos)\b/i.test(sansCitations(t[1]))) vous.push(t[0]);
+      // « rendez-vous » est un nom commun, pas un vouvoiement
+      if(/\b(vous|votre|vos)\b/i.test(sansCitations(t[1]).replace(/rendez[-\u2011 ]vous/gi, " "))) vous.push(t[0]);
     });
     if(vous.length) bloq.push("Vouvoiement de l'élève dans " + vous.join(", ") + " : LABORO tutoie l'élève (les paroles d'un client entre « » ne comptent pas).");
 
@@ -341,6 +349,16 @@
       var sim = similarite((B.titre || "") + " " + (B.objectif || ""), (m.titre || "") + " " + (m.objectif || ""));
       if(sim >= 0.3) avert.push("Ressemble à la mission « " + m.titre + " » (palier " + m.palier + ") : vérifie que la situation est vraiment différente.");
     });
+    // Fiche méthode propre à la mission (en tête de « Apprendre d'abord »)
+    var fi = B.fiche || {};
+    var fNotions = (fi.notions || []).filter(function(n){ return String(n[0] || "").trim() && String(n[1] || "").trim(); });
+    var fRemplie = String(fi.titre || "").trim() || String(fi.explication || "").trim() || fNotions.length;
+    if(String(B.theme || "").trim() || fRemplie){
+      if(!String(fi.titre || "").trim() || !String(fi.explication || "").trim() || fNotions.length < 2)
+        bloq.push(String(B.theme || "").trim()
+          ? "Fiche méthode incomplète : la méthode demandée (« " + B.theme + " ») doit être expliquée à l'élève avant la mission (titre, explication et au moins 2 notions définies)."
+          : "Fiche méthode incomplète : titre, explication et au moins 2 notions définies (ou vide entièrement la fiche).");
+    }
     // La méthode demandée (champ « Méthode ou notion ») est-elle bien travaillée ?
     if(String(B.theme || "").trim()){
       var VIDES = ["puis", "avec", "pour", "dans", "methode", "notion", "travailler", "faire", "les", "des", "une", "sur", "entre", "leur", "leurs", "client", "clients"];
@@ -381,6 +399,10 @@
     var x = B.exercice || {};
     B.exercice = { type: "tri", titre: x.titre || "", consigne: x.consigne || "", categories: x.categories || [], items: x.items || [] };
     B.produits_cites = B.produits_cites || [];
+    var f = B.fiche || {};
+    B.fiche = { titre: f.titre || "", explication: f.explication || "", notions: (f.notions || []).map(function(n){ return [n[0] || "", n[1] || ""]; }),
+      exemple: f.exemple || "", erreur: f.erreur || "", retenir: f.retenir || [] };
+    if(!B.fiche.notions.length) B.fiche.notions = [["", ""], ["", ""]];
     return B;
   }
   // Mission prête à publier (questions numérotées, lignes vides retirées)
@@ -394,6 +416,11 @@
     m.saynete.lignes = m.saynete.lignes.map(function(l){ return String(l).trim(); }).filter(Boolean);
     m.exercice.categories = m.exercice.categories.map(function(c){ return String(c).trim(); }).filter(Boolean);
     m.exercice.items = m.exercice.items.filter(function(it){ return String(it[0] || "").trim(); }).map(function(it){ return [it[0], parseInt(it[1], 10), it[2] || ""]; });
+    if(m.fiche){
+      m.fiche.notions = (m.fiche.notions || []).filter(function(n){ return String(n[0] || "").trim(); }).map(function(n){ return [String(n[0]).trim(), String(n[1] || "").trim()]; });
+      m.fiche.retenir = (m.fiche.retenir || []).map(function(r){ return String(r).trim(); }).filter(Boolean);
+      if(!String(m.fiche.titre || "").trim() && !String(m.fiche.explication || "").trim() && !m.fiche.notions.length) delete m.fiche;
+    }
     if(!String(m.reflexivite_q || "").trim()) delete m.reflexivite_q;
     if(!String(m.contexte_pvoc || "").trim()) delete m.contexte_pvoc;
     delete m.id;
@@ -460,6 +487,20 @@
       + "</select></label>" + champ("Personnage qui parle", "saynete.a.nom", B.saynete.a.nom) + champ("Son rôle", "saynete.a.role", B.saynete.a.role) + "</div>"
       + champ("Répliques (une par ligne) — a| le personnage · n| narration · fin| consigne finale « À toi : … »", "saynete.lignes", B.saynete.lignes.join("\n"), { multi: true, rows: 5 })
       + "</div>"
+      + '<div class="mp-sec"><div class="mp-sec-t">Fiche méthode (en tête de « Apprendre d\'abord »)</div>'
+      + '<div class="mp-aide">Explique la méthode à l\'élève avant la mission : il ne doit jamais appliquer une notion qu\'on ne lui a pas expliquée. Elle s\'affiche avant la fiche de la compétence.</div>'
+      + champ("Titre de la fiche", "fiche.titre", B.fiche.titre, { ph: "ex. Repérer les motivations (SONCASE) et argumenter (CAP)" })
+      + champ("Explication (3 à 5 phrases, au « tu »)", "fiche.explication", B.fiche.explication, { multi: true, rows: 4 })
+      + '<div class="mp-aide">Les notions à connaître (un terme + sa définition simple) :</div>'
+      + B.fiche.notions.map(function(n, k){
+          return '<div class="mp-ligne"><input data-ch="fiche.notions.' + k + '.0" value="' + esc(n[0]) + '" placeholder="Terme">'
+            + '<input class="mp-large" data-ch="fiche.notions.' + k + '.1" value="' + esc(n[1]) + '" placeholder="Définition">' + bouton("✕", "sup-notion:" + k, "mp-x") + "</div>";
+        }).join("")
+      + bouton("+ Notion", "add-notion", "mp-plus")
+      + champ("Exemple (situation voisine, jamais la réponse de la mission)", "fiche.exemple", B.fiche.exemple, { multi: true, rows: 3 })
+      + champ("Erreur fréquente à éviter", "fiche.erreur", B.fiche.erreur, { multi: true, rows: 2 })
+      + champ("Je retiens (une idée par ligne)", "fiche.retenir", B.fiche.retenir.join("\n"), { multi: true, rows: 3 })
+      + "</div>"
       + '<div class="mp-sec"><div class="mp-sec-t">Exercice (en tête de « Apprendre d\'abord »)</div>'
       + champ("Titre", "exercice.titre", B.exercice.titre)
       + champ("Consigne (situation voisine, jamais la réponse de la mission)", "exercice.consigne", B.exercice.consigne)
@@ -488,7 +529,7 @@
     var p = chemin.split("."), o = BROUILLON;
     for(var k = 0; k < p.length - 1; k++) o = o[/^\d+$/.test(p[k]) ? parseInt(p[k], 10) : p[k]];
     var der = p[p.length - 1];
-    if(chemin === "saynete.lignes") valeur = String(valeur).split("\n");
+    if(chemin === "saynete.lignes" || chemin === "fiche.retenir") valeur = String(valeur).split("\n");
     if(chemin === "exercice.categories") valeur = String(valeur).split(";").map(function(c){ return c.trim(); });
     if(/^exercice\.items\.\d+\.1$/.test(chemin)) valeur = parseInt(valeur, 10);
     o[/^\d+$/.test(der) ? parseInt(der, 10) : der] = valeur;
@@ -521,6 +562,8 @@
       case "add-crit": B.criteres.push({ c: "", i: "Je " }); break;
       case "sup-crit": B.criteres.splice(i, 1); break;
       case "add-item": B.exercice.items.push(["", 0, ""]); break;
+      case "add-notion": B.fiche.notions.push(["", ""]); break;
+      case "sup-notion": B.fiche.notions.splice(i, 1); break;
       case "sup-item": B.exercice.items.splice(i, 1); break;
       case "apercu": return apercu();
       case "publier": return publier();

@@ -161,7 +161,7 @@
   window.ficheEnCours = function(){
     try{
       if(typeof CM === "undefined" || !CM || typeof getRes !== "function") return null;
-      var res = getRes(CM.comp, CM.palier);
+      var res = (typeof getResMission === "function") ? getResMission(CM) : getRes(CM.comp, CM.palier);
       if(!res) return null;
       var tmp = document.createElement("div");
       tmp.innerHTML = res.c || "";

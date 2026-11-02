@@ -40,6 +40,37 @@ function getRes(comp, palier){
   return entry;
 }
 
+// ═══ FICHE MÉTHODE PROPRE À UNE MISSION (missions générées, 02/11/2026) ═══
+// Une mission générée peut apporter sa fiche (m.fiche) : la méthode demandée
+// (ex. SONCASE + CAP) est alors expliquée en tête de « Apprendre d'abord »,
+// avant la fiche de la compétence. Sans m.fiche : comportement inchangé.
+//   m.fiche = { titre, explication, notions:[[terme, définition]], exemple, erreur, retenir:[…] }
+function ficheMissionHtml(f){
+  const e = t => String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const notions = (f.notions || []).filter(n => n && String(n[0] || '').trim());
+  const retenir = (f.retenir || []).map(r => String(r || '').trim()).filter(Boolean);
+  let h = '<div class="res-section res-debutant">';
+  h += '<p><strong>' + e(f.titre) + '.</strong> ' + e(f.explication) + '</p>';
+  if(notions.length){
+    h += '<!-- notions --><p><strong>📘 Les notions à connaître :</strong></p><ul>'
+      + notions.map(n => '<li><strong>' + e(n[0]) + '</strong> — ' + e(n[1]) + '</li>').join('') + '</ul>';
+  }
+  if(String(f.exemple || '').trim()) h += '<p><strong>Exemple :</strong> ' + e(f.exemple) + '</p>';
+  if(String(f.erreur || '').trim()) h += '<p><strong>⚠️ Erreur fréquente à éviter :</strong> ' + e(f.erreur) + '</p>';
+  if(retenir.length) h += '<p><strong>En résumé, je retiens :</strong></p><ul>' + retenir.map(r => '<li>✓ ' + e(r) + '</li>').join('') + '</ul>';
+  return h + '</div>';
+}
+// Ressource d'une mission : sa fiche propre (si elle en a une), puis celle de la compétence
+function getResMission(m){
+  if(!m) return null;
+  const base = getRes(m.comp, m.palier);
+  const f = m.fiche;
+  if(!f || !String(f.titre || '').trim()) return base;
+  let c = ficheMissionHtml(f);
+  if(base) c += '<div class="res-section"><p><strong>📗 Rappel de la compétence — ' + base.t + '</strong></p></div>' + base.c;
+  return { t: f.titre, c: c };
+}
+
 // ═══ TIMER MISSION ═══
 var moTimerInterval = null;
 var moTimerSeconds = 0;
@@ -114,7 +145,7 @@ function openMission(id){
   const pdEl=document.getElementById('mo-palier-desc');
   if(pdEl&&m.palier>=1&&m.palier<=4){pdEl.textContent=palierDescs[m.palier];pdEl.style.display='block';const pc2=['','var(--th-voile)','var(--th-fond)','#FEF3C7','#F5F0FF'];pdEl.style.background=pc2[m.palier]||'#F7F6F2';pdEl.style.color='#1a1a1a';pdEl.style.fontWeight='500';}
   // Ressource
-  const res=getRes(m.comp, m.palier);
+  const res=getResMission(m);
   document.getElementById('mo-learn').innerHTML=res?`<div class="res-block"><div class="res-lbl">Apprendre avant de faire — 5 minutes</div><div class="res-t">${res.t}</div><div class="res-b">${res.c}</div></div><div style="text-align:center;margin-top:12px"><button onclick="moTab(1,document.querySelectorAll('.mo-tab')[1])" class="nm-btn" style="padding:10px 22px">J'ai compris → Aller à la mission</button></div>`:'<p class="u-muted">Ressource en préparation.</p>';
   // Mission
   const savedReps=ud.missions[id]?.reponses||{};
@@ -188,7 +219,7 @@ function openMission(id){
   // Afficher le bouton coup de pouce si une ressource existe
   const cpBtn = document.getElementById('cp-btn');
   if(cpBtn){
-    const resCp = getRes(m.comp, m.palier);
+    const resCp = getResMission(m);
     if(resCp){ cpBtn.classList.add('visible'); cpBtn.dataset.missionId = m.id; }
     else { cpBtn.classList.remove('visible'); }
   }
@@ -303,7 +334,7 @@ function openCoupDePouce(){
   const cpBtn = document.getElementById('cp-btn');
   const mId = cpBtn ? cpBtn.dataset.missionId : null;
   if(mId && CM){
-    const res = getRes(CM.comp, CM.palier);
+    const res = getResMission(CM);
     const cpContent = document.getElementById('cp-content');
     if(cpContent && res){ cpContent.innerHTML = '<div class="res-t" style="font-size:13px;font-weight:700;margin-bottom:10px">'+res.t+'</div><div class="res-b">'+res.c+'</div>'; }
   }

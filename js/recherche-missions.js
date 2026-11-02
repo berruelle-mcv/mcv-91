@@ -74,7 +74,7 @@ const RM_MOTS_VIDES = ['les','des','une','par','pour','avec','sur','dans','aux',
 function rmChamps(m){
   const c = (typeof COMP !== 'undefined') ? COMP.find(function(x){ return x.code === m.comp; }) : null;
   let fiche = '';
-  try { const r = (typeof getRes === 'function') ? getRes(m.comp, m.palier) : null; if(r) fiche = rmSansHtml((r.t || '') + ' ' + (r.c || '')); } catch(e) {}
+  try { const r = (typeof getResMission === 'function') ? getResMission(m) : ((typeof getRes === 'function') ? getRes(m.comp, m.palier) : null); if(r) fiche = rmSansHtml((r.t || '') + ' ' + (r.c || '')); } catch(e) {}
   const questions = (m.activites || []).map(function(a){ return (a.t || '') + ' ' + (a.q || []).join(' '); }).join(' ');
   const dossier = m.dossier ? ((m.dossier.l || '') + ' ' + (m.dossier.rows || []).map(function(r){ return r.join(' '); }).join(' ')) : '';
   const criteres = (m.criteres || []).map(function(x){ return (x.c || '') + ' ' + (x.i || ''); }).join(' ');
