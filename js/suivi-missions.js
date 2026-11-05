@@ -29,7 +29,9 @@
 
   let ETAT = { charge: false, enCours: false, erreur: '', eleves: [], assignations: [] };
   // vue (15/10/2026) : 'encours' (par défaut) | 'dernieres' (8 plus récentes) | 'toutes' (y compris retirées)
-  let CHOIX = { classe: '', groupe: '', retirees: true, tri: 'nom', vue: (function(){ try{ return localStorage.getItem('laboro_sm_vue') || 'encours'; }catch(e){ return 'encours'; } })() };
+  let CHOIX = { classe: '', groupe: '', retirees: true, tri: 'nom', vue: (function(){ try{ return localStorage.getItem('laboro_sm_vue') || 'encours'; }catch(e){ return 'encours'; } })(),
+    // Récap des compétences (05/11/2026) : mode 'eleves' (tableau) | 'recap' ; depuis = 'AAAA-MM-JJ' ou '' ; par = nom de l'enseignant ou ''
+    mode: (function(){ try{ return localStorage.getItem('laboro_sm_mode') || 'eleves'; }catch(e){ return 'eleves'; } })(), depuis: '', par: '' };
 
   // ── États d'une case (élève × mission) ──
   const STYLES = {
@@ -48,6 +50,7 @@
     return 'commencee'; // brouillon
   }
   function noteDe(p){ if(!p) return null; const n = p.note_finale != null ? p.note_finale : p.note_ia; return n == null ? null : Number(n); }
+  function fmtMoy(n){ return n == null ? '' : String(Math.round(n * 10) / 10).replace('.', ','); }
   function fmtNote(n){ return n == null ? '' : String(Math.round(n * 2) / 2).replace('.', ','); }
 
   // ── Chargement (toujours frais à l'ouverture de l'écran) ──
@@ -154,6 +157,8 @@
     const c = CHOIX.classe;
     let eleves = elevesDeClasse(c);
     if(CHOIX.groupe) eleves = eleves.filter(function(e){ return CHOIX.groupe === 'aucun' ? !e.groupe : e.groupe === CHOIX.groupe; });
+    titreCarte();
+    if(CHOIX.mode === 'recap'){ dessinerRecap(el, lesClasses, c, eleves); return; }
     CHOIX.retirees = CHOIX.vue === 'toutes';
     const cols = colonnes(c);
     // Colonnes affichées : missions en cours, les 8 dernières, ou toutes (le bilan « Validées » compte toujours tout)
@@ -182,15 +187,9 @@
 
     const sel = 'padding:6px 9px;border:.5px solid var(--gb);border-radius:6px;font-size:12.5px;background:#fff';
     const aGroupes = elevesDeClasse(c).some(function(e){ return !!e.groupe; });
-    let h = '<div class="sm-classes" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
-      + lesClasses.map(function(x, ix){
-          const n = assignationsDeClasse(x).filter(function(a){ return !a.retiree_at && a.total > 0 && a.termines < a.total; }).length;
-          return '<div class="cls-tab' + (x === c ? ' on' : '') + '" onclick="smClasse(' + ix + ')" style="' + (x === c ? 'background:var(--th-principal);color:#fff;border-color:var(--th-principal)' : '') + '">' + esc(x)
-            + (n ? ' <span style="font-size:9px;background:#FEF3C7;color:#92400E;padding:1px 5px;border-radius:8px" title="Missions en cours">' + n + ' en cours</span>' : '') + '</div>';
-        }).join('')
-      + '</div>'
+    let h = barreMode() + ongletsClasses(lesClasses, c)
       + '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px">'
-      + (aGroupes ? '<select onchange="smGroupe(this.value)" style="' + sel + '"><option value=""' + (!CHOIX.groupe ? ' selected' : '') + '>Toute la classe</option><option value="G1"' + (CHOIX.groupe === 'G1' ? ' selected' : '') + '>Groupe G1</option><option value="G2"' + (CHOIX.groupe === 'G2' ? ' selected' : '') + '>Groupe G2</option><option value="aucun"' + (CHOIX.groupe === 'aucun' ? ' selected' : '') + '>Élèves sans groupe</option></select>' : '')
+      + (aGroupes ? choixGroupe(sel) : '')
       + '<select onchange="smTri(this.value)" style="' + sel + '"><option value="nom"' + (CHOIX.tri === 'nom' ? ' selected' : '') + '>Ordre alphabétique</option><option value="retard"' + (CHOIX.tri === 'retard' ? ' selected' : '') + '>Les plus en retard d\'abord</option></select>'
       + '<select onchange="smVue(this.value)" style="' + sel + ';font-weight:700" aria-label="Missions affichées">'
       + '<option value="encours"' + (CHOIX.vue === 'encours' ? ' selected' : '') + '>Missions en cours</option>'
@@ -266,6 +265,212 @@
     el.innerHTML = h;
   }
 
+  // ── Éléments communs aux deux vues ──
+  function titreCarte(){
+    const p = document.getElementById('panel-suivi'); const t = p && p.querySelector('.ct'); if(!t) return;
+    t.textContent = CHOIX.mode === 'recap' ? 'Compétences travaillées avec la classe' : 'Où en est chaque élève dans les missions assignées ?';
+  }
+  function barreMode(){
+    const b = function(m, txt){
+      const on = CHOIX.mode === m;
+      return '<button type="button" onclick="smMode(\'' + m + '\')" style="padding:7px 14px;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;'
+        + (on ? 'background:var(--th-principal);color:#fff' : 'background:transparent;color:var(--gm)') + '">' + txt + '</button>';
+    };
+    return '<div style="display:inline-flex;gap:2px;padding:3px;background:var(--gc,#F3F4F6);border-radius:8px;margin-bottom:12px">'
+      + b('eleves', '👥 Élève par élève') + b('recap', '📋 Récap des compétences') + '</div>';
+  }
+  function ongletsClasses(lesClasses, c){
+    return '<div class="sm-classes" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px">'
+      + lesClasses.map(function(x, ix){
+          const n = assignationsDeClasse(x).filter(function(a){ return !a.retiree_at && a.total > 0 && a.termines < a.total; }).length;
+          return '<div class="cls-tab' + (x === c ? ' on' : '') + '" onclick="smClasse(' + ix + ')" style="' + (x === c ? 'background:var(--th-principal);color:#fff;border-color:var(--th-principal)' : '') + '">' + esc(x)
+            + (n && CHOIX.mode !== 'recap' ? ' <span style="font-size:9px;background:#FEF3C7;color:#92400E;padding:1px 5px;border-radius:8px" title="Missions en cours">' + n + ' en cours</span>' : '') + '</div>';
+        }).join('')
+      + '</div>';
+  }
+  function choixGroupe(sel){
+    return '<select onchange="smGroupe(this.value)" style="' + sel + '"><option value=""' + (!CHOIX.groupe ? ' selected' : '') + '>Toute la classe</option><option value="G1"' + (CHOIX.groupe === 'G1' ? ' selected' : '') + '>Groupe G1</option><option value="G2"' + (CHOIX.groupe === 'G2' ? ' selected' : '') + '>Groupe G2</option><option value="aucun"' + (CHOIX.groupe === 'aucun' ? ' selected' : '') + '>Élèves sans groupe</option></select>';
+  }
+
+  // ── Récap des compétences (05/11/2026) ──
+  // Demande de Pascal : voir d'un coup d'œil les compétences abordées avec une classe
+  // (pour construire un DST). Une ligne par compétence du programme de la classe,
+  // regroupées par bloc ; en face, les missions données. Compétences jamais travaillées en grisé.
+  const BLOCS = [
+    { cle: 'Seconde', titre: 'Seconde — Découverte des métiers de la relation client' },
+    { cle: 'Bloc 1',  titre: 'Bloc 1 — Conseiller et vendre' },
+    { cle: 'Bloc 2',  titre: 'Bloc 2 — Suivre les ventes' },
+    { cle: 'Bloc 3',  titre: 'Bloc 3 — Fidéliser la clientèle et développer la relation client' },
+    { cle: 'Bloc 4A', titre: 'Bloc 4A — Animer et gérer l\'espace commercial' },
+    { cle: 'Bloc 4B', titre: 'Bloc 4B — Prospecter et valoriser l\'offre commerciale' }
+  ];
+  const BLOC_AUTRE = { cle: 'Autre', titre: 'Autres compétences' };
+  function rangBloc(cle){ const i = BLOCS.findIndex(function(b){ return b.cle === cle; }); return i < 0 ? 99 : i; }
+  // Compétence d'une mission : code moteur (clé), code affiché, bloc et intitulé officiel (comp_libelle « Bloc 1 — … »)
+  function infoComp(comp, m){
+    let lib = m && m.comp_libelle;
+    if(!lib && typeof MISSIONS !== 'undefined'){ const autre = MISSIONS.find(function(x){ return x.comp === comp && x.comp_libelle; }); if(autre) lib = autre.comp_libelle; }
+    let bloc = 'Autre', intitule = '';
+    if(lib){
+      const k = lib.indexOf(' — ');
+      if(k > 0){ bloc = lib.slice(0, k).trim(); intitule = lib.slice(k + 3).trim(); } else intitule = lib;
+    }
+    if(!intitule && typeof COMP !== 'undefined'){ const x = COMP.find(function(y){ return y.code === comp; }); if(x) intitule = x.label; }
+    return { cle: comp, code: codeComp(comp), bloc: bloc, intitule: intitule || comp };
+  }
+  function ordreComp(a, b){
+    return (rangBloc(a.bloc) - rangBloc(b.bloc)) || String(a.code).localeCompare(String(b.code), 'fr', { numeric: true });
+  }
+  // Programme de la classe : les compétences des missions que ses élèves peuvent voir (data/missions.js)
+  function programmeClasse(c){
+    const ids = {}; let liste = false;
+    elevesDeClasse(c).forEach(function(e){
+      const l = (typeof listesMissionsClasse === 'function') ? listesMissionsClasse(e.classe) : null;
+      if(l){ liste = true; l.forEach(function(id){ ids[id] = true; }); }
+    });
+    const ms = (typeof MISSIONS !== 'undefined' ? MISSIONS : []).filter(function(m){ return !liste || ids[m.id]; });
+    const comps = {};
+    ms.forEach(function(m){ if(m.comp && !comps[m.comp]) comps[m.comp] = infoComp(m.comp, m); });
+    return comps;
+  }
+  function dateCourte(d){ return d ? d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' }) : ''; }
+  function nomsPar(col){
+    if(col.parNoms && col.parNoms.length) return col.parNoms.map(function(p){ return p.nom; });
+    return col.par || [];
+  }
+  // Toutes les données du récap (servent à l'écran, à l'impression et au texte à copier)
+  function donneesRecap(c, eleves){
+    const memo = CHOIX.retirees; CHOIX.retirees = true;           // une mission retirée a quand même été vue
+    let cols = colonnes(c); CHOIX.retirees = memo;
+    const tousPar = []; cols.forEach(function(col){ nomsPar(col).forEach(function(n){ if(tousPar.indexOf(n) < 0) tousPar.push(n); }); });
+    const depuis = CHOIX.depuis ? new Date(CHOIX.depuis + 'T00:00:00') : null;
+    cols = cols.filter(function(col){
+      if(depuis && col.derniere && col.derniere < depuis) return false;
+      if(CHOIX.par && nomsPar(col).indexOf(CHOIX.par) < 0) return false;
+      // avec un groupe choisi : seulement les missions demandées à au moins un de ses élèves
+      return eleves.some(function(e){ return caseEleve(e, col).concerne; });
+    });
+    const comps = programmeClasse(c);
+    const parComp = {};
+    cols.forEach(function(col){
+      const m = missionParId(col.mission_id);
+      const comp = (m && m.comp) || col.comp_id || '?';   // la compétence actuelle de la mission (rattachements de l'audit du 22/10)
+      if(!comps[comp]) comps[comp] = infoComp(comp, m);
+      let conc = 0, rendues = 0, faites = 0, somme = 0, nbNotes = 0;
+      eleves.forEach(function(e){
+        const x = caseEleve(e, col); if(!x.concerne) return;
+        conc++;
+        if(x.etat === 'valide' || x.etat === 'epuisee') faites++;
+        if(x.etat !== 'afaire' && x.etat !== 'commencee'){ rendues++; if(x.note != null){ somme += x.note; nbNotes++; } }
+      });
+      (parComp[comp] = parComp[comp] || []).push({
+        id: col.mission_id, titre: col.titre || col.mission_id, palier: col.palier || (m && m.palier) || '',
+        date: col.premiere, active: col.active, par: nomsPar(col),
+        conc: conc, rendues: rendues, faites: faites, moyenne: nbNotes ? somme / nbNotes : null
+      });
+    });
+    Object.keys(parComp).forEach(function(k){ parComp[k].sort(function(a, b){ return (a.date || 0) - (b.date || 0); }); });
+    const liste = Object.keys(comps).map(function(k){ return comps[k]; }).sort(ordreComp);
+    const blocs = [];
+    liste.forEach(function(ci){
+      let b = blocs.find(function(x){ return x.cle === ci.bloc; });
+      if(!b){ const ref = BLOCS.find(function(x){ return x.cle === ci.bloc; }) || BLOC_AUTRE; b = { cle: ci.bloc, titre: ref.titre, comps: [] }; blocs.push(b); }
+      b.comps.push({ info: ci, missions: parComp[ci.cle] || [] });
+    });
+    const vues = liste.filter(function(ci){ return (parComp[ci.cle] || []).length; }).length;
+    return { blocs: blocs, nbMissions: cols.length, nbComps: liste.length, nbVues: vues, tousPar: tousPar };
+  }
+
+  function dessinerRecap(el, lesClasses, c, eleves){
+    const sel = 'padding:6px 9px;border:.5px solid var(--gb);border-radius:6px;font-size:12.5px;background:#fff';
+    const aGroupes = elevesDeClasse(c).some(function(e){ return !!e.groupe; });
+    const D = donneesRecap(c, eleves);
+    let h = barreMode() + ongletsClasses(lesClasses, c)
+      + '<div class="sm-recap-filtres" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px">'
+      + (aGroupes ? choixGroupe(sel) : '')
+      + '<label style="font-size:12.5px;color:var(--gm);display:flex;align-items:center;gap:6px">Depuis le <input type="date" value="' + esc(CHOIX.depuis) + '" onchange="smDepuis(this.value)" style="' + sel + '"></label>'
+      + (CHOIX.depuis ? '<button type="button" onclick="smDepuis(\'\')" style="' + sel + ';cursor:pointer">Depuis la rentrée</button>' : '')
+      + (D.tousPar.length > 1 ? '<select onchange="smPar(this.value)" style="' + sel + '"><option value="">Données par tous les enseignants</option>'
+          + D.tousPar.map(function(n){ return '<option value="' + esc(n) + '"' + (CHOIX.par === n ? ' selected' : '') + '>Données par ' + esc(n) + '</option>'; }).join('') + '</select>' : '')
+      + '<span style="flex:1"></span>'
+      + '<button type="button" onclick="smCopierRecap()" style="padding:7px 12px;border:none;border-radius:6px;background:var(--th-principal);color:#fff;font-weight:700;font-size:12.5px;cursor:pointer" title="Copie la liste en texte, à coller dans un message ou un document">📋 Copier la liste</button>'
+      + '<button type="button" onclick="smImprimerRecap()" style="' + sel + ';cursor:pointer">🖨 Imprimer</button>'
+      + '<button type="button" onclick="smActualiser()" title="Recharger depuis le serveur" style="' + sel + ';cursor:pointer">↻</button>'
+      + '</div>';
+
+    // Bilan en une ligne
+    h += '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">'
+      + pastilleChiffre(D.nbVues + ' / ' + D.nbComps, 'compétences travaillées', '#166534', '#DCFCE7')
+      + pastilleChiffre(String(D.nbComps - D.nbVues), 'pas encore travaillée' + (D.nbComps - D.nbVues > 1 ? 's' : ''), '#64748B', '#F1F5F9')
+      + pastilleChiffre(String(D.nbMissions), 'mission' + (D.nbMissions > 1 ? 's' : '') + ' donnée' + (D.nbMissions > 1 ? 's' : ''), 'var(--th-fonce)', '#F8FAFC')
+      + '</div>';
+
+    if(!D.nbMissions) h += encadre('Aucune mission donnée à ' + esc(c) + (CHOIX.groupe ? ' (ce groupe)' : '') + (CHOIX.depuis ? ' depuis cette date' : '') + '. Toutes les compétences du programme apparaissent ci-dessous, en grisé.') + '<div style="height:10px"></div>';
+
+    h += D.blocs.map(function(b){
+      const vues = b.comps.filter(function(x){ return x.missions.length; }).length;
+      return '<div style="margin-bottom:14px;border:.5px solid var(--gb);border-radius:8px;overflow:hidden">'
+        + '<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 12px;background:#F8FAFC;border-bottom:.5px solid var(--gb)">'
+        + '<strong style="color:var(--th-fonce);font-size:13px">' + esc(b.titre) + '</strong>'
+        + '<span style="font-size:11.5px;color:var(--gm);white-space:nowrap">' + vues + ' / ' + b.comps.length + ' travaillée' + (vues > 1 ? 's' : '') + '</span></div>'
+        + b.comps.map(function(x){
+            const ok = x.missions.length > 0;
+            return '<div style="display:flex;gap:12px;padding:8px 12px;border-bottom:1px solid #EEF2F6;align-items:flex-start;' + (ok ? '' : 'opacity:.55') + '">'
+              + '<div style="flex:0 0 32%;min-width:180px;font-size:12.5px">'
+              + '<span style="display:inline-block;font-weight:800;font-size:11px;padding:1px 7px;border-radius:6px;margin-right:6px;' + (ok ? 'background:#DCFCE7;color:#166534' : 'background:#F1F5F9;color:#64748B') + '">' + (ok ? '✓ ' : '') + esc(x.info.code) + '</span>'
+              + '<span style="color:var(--th-fonce)">' + esc(x.info.intitule) + '</span></div>'
+              + '<div style="flex:1;display:flex;flex-wrap:wrap;gap:6px">'
+              + (ok ? x.missions.map(puceMission).join('') : '<span style="font-size:12px;color:#94A3B8;font-style:italic;padding-top:2px">Pas encore travaillée</span>')
+              + '</div></div>';
+          }).join('')
+        + '</div>';
+    }).join('');
+    h += '<div style="font-size:11px;color:var(--gm);margin-top:4px">Clique sur une mission pour la relire telle que l\'élève la voit. « Rendue » compte les élèves à qui elle a été demandée ; la moyenne porte sur les copies notées. Une mission retirée reste dans le récap : elle a été vue.</div>';
+    el.innerHTML = h;
+  }
+  function pastilleChiffre(chiffre, texte, fg, bg){
+    return '<div style="padding:8px 14px;border-radius:8px;background:' + bg + ';display:flex;align-items:baseline;gap:6px">'
+      + '<strong style="font-size:20px;color:' + fg + '">' + esc(chiffre) + '</strong><span style="font-size:12px;color:var(--gm)">' + esc(texte) + '</span></div>';
+  }
+  function puceMission(m){
+    const moy = m.moyenne != null ? ' · moy. ' + fmtMoy(m.moyenne) : '';
+    const titre = m.id + ' — ' + m.titre + ' (palier ' + m.palier + ', donnée le ' + dateCourte(m.date) + (m.par.length ? ' par ' + m.par.join(', ') : '') + ') : rendue par ' + m.rendues + '/' + m.conc + moy;
+    return '<div onclick="smVoirMission(\'' + esc(m.id) + '\')" title="' + esc(titre) + '" style="cursor:pointer;border:1px solid var(--gb);border-radius:6px;padding:4px 8px;background:#fff;font-size:11.5px;max-width:330px">'
+      + '<div style="font-weight:700;color:var(--th-fonce);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(m.titre) + '</div>'
+      + '<div style="color:var(--gm);white-space:nowrap">' + esc(m.id) + (m.palier ? ' · P' + esc(m.palier) : '') + ' · ' + dateCourte(m.date)
+      + ' · <span style="color:' + (m.conc && m.rendues >= m.conc ? '#166534' : '#92400E') + '">rendue ' + m.rendues + '/' + m.conc + '</span>' + esc(moy) + (m.active ? '' : ' · retirée') + '</div></div>';
+  }
+  // Texte simple : à coller dans un message (par exemple pour préparer un DST avec Claude) ou un document
+  function texteRecap(){
+    const D = donneesRecap(CHOIX.classe, elevesAffiches());
+    const univ = (typeof LABORO_CONFIG !== 'undefined' && LABORO_CONFIG && LABORO_CONFIG.nom_plateforme) || 'LABORO';
+    const l = [];
+    l.push(univ + ' — ' + CHOIX.classe + (CHOIX.groupe ? ' (' + (CHOIX.groupe === 'aucun' ? 'élèves sans groupe' : 'groupe ' + CHOIX.groupe) + ')' : '')
+      + ' — missions données ' + (CHOIX.depuis ? 'depuis le ' + new Date(CHOIX.depuis + 'T00:00:00').toLocaleDateString('fr-FR') : 'depuis la rentrée')
+      + (CHOIX.par ? ' par ' + CHOIX.par : '') + ' (au ' + new Date().toLocaleDateString('fr-FR') + ')');
+    l.push(D.nbVues + ' compétences travaillées sur ' + D.nbComps + ', ' + D.nbMissions + ' missions.');
+    const pas = [];
+    D.blocs.forEach(function(b){
+      const vues = b.comps.filter(function(x){ return x.missions.length; });
+      b.comps.forEach(function(x){ if(!x.missions.length) pas.push(x.info.code + ' ' + x.info.intitule); });
+      if(!vues.length) return;
+      l.push(''); l.push(b.titre);
+      vues.forEach(function(x){
+        l.push('• ' + x.info.code + ' — ' + x.info.intitule);
+        x.missions.forEach(function(m){
+          l.push('   - ' + m.id + ' « ' + m.titre + ' » (palier ' + m.palier + ', ' + dateCourte(m.date) + ') : rendue ' + m.rendues + '/' + m.conc + (m.moyenne != null ? ', moyenne ' + fmtMoy(m.moyenne) + '/20' : ''));
+        });
+      });
+    });
+    if(pas.length){ l.push(''); l.push('Pas encore travaillées : ' + pas.join(' ; ') + '.'); }
+    return l.join('\n');
+  }
+  function elevesAffiches(){
+    let e = elevesDeClasse(CHOIX.classe);
+    if(CHOIX.groupe) e = e.filter(function(x){ return CHOIX.groupe === 'aucun' ? !x.groupe : x.groupe === CHOIX.groupe; });
+    return e;
+  }
+
   function celluleHTML(e, col, x, td){
     const st = STYLES[x.etat];
     if(!x.p && (!x.concerne || !col.active)) return '<td style="' + td + 'text-align:center;color:#CBD5E1" title="' + (x.concerne ? 'Mission retirée : plus rien à faire' : 'Pas demandée à cet élève') + '">·</td>';
@@ -287,6 +492,53 @@
   window.smRetirees = function(v){ CHOIX.vue = v ? 'toutes' : 'encours'; dessiner(); };
   window.smVue = function(v){ CHOIX.vue = v; try{ localStorage.setItem('laboro_sm_vue', v); }catch(e){} dessiner(); };
   window.smActualiser = function(){ charger(); };
+  // Récap des compétences (05/11/2026)
+  window.smMode = function(m){ CHOIX.mode = m === 'recap' ? 'recap' : 'eleves'; try{ localStorage.setItem('laboro_sm_mode', CHOIX.mode); }catch(e){} dessiner(); };
+  window.smDepuis = function(v){ CHOIX.depuis = /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : ''; dessiner(); };
+  window.smPar = function(v){ CHOIX.par = v || ''; dessiner(); };
+  window.smVoirMission = function(id){
+    if(typeof voirMissionRecherche === 'function') voirMissionRecherche(id);
+    else if(typeof openMission === 'function') openMission(id);
+  };
+  window.smCopierRecap = function(){
+    const txt = texteRecap();
+    const fini = function(ok){
+      const b = document.querySelector('#sm-contenu [onclick="smCopierRecap()"]');
+      if(!b) return; const avant = b.textContent;
+      b.textContent = ok ? '✓ Liste copiée' : 'Copie impossible : utilise Imprimer';
+      setTimeout(function(){ b.textContent = avant; }, 2500);
+    };
+    const secours = function(){
+      try{
+        const t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', '');
+        t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select();
+        const ok = document.execCommand('copy'); document.body.removeChild(t); fini(ok);
+      }catch(e){ fini(false); }
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ fini(true); }, secours);
+    else secours();
+  };
+  window.smImprimerRecap = function(){
+    const D = donneesRecap(CHOIX.classe, elevesAffiches());
+    const lignes = texteRecap().split('\n');
+    const w = window.open('', '_blank');
+    if(!w){ alert('Ton navigateur a bloqué la fenêtre d\'impression : autorise les fenêtres pour ce site, ou utilise « Copier la liste ».'); return; }
+    const corps = D.blocs.map(function(b){
+      return '<h2>' + esc(b.titre) + '</h2><table>' + b.comps.map(function(x){
+        return '<tr class="' + (x.missions.length ? '' : 'pas') + '"><td class="c"><b>' + esc(x.info.code) + '</b> ' + esc(x.info.intitule) + '</td><td>'
+          + (x.missions.length ? x.missions.map(function(m){
+              return '<div><b>' + esc(m.id) + '</b> ' + esc(m.titre) + ' <span>(P' + esc(m.palier) + ', ' + dateCourte(m.date) + ' — rendue ' + m.rendues + '/' + m.conc + (m.moyenne != null ? ', moy. ' + fmtMoy(m.moyenne) : '') + ')</span></div>';
+            }).join('') : '<i>Pas encore travaillée</i>') + '</td></tr>';
+      }).join('') + '</table>';
+    }).join('');
+    w.document.write('<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Récap des compétences — ' + esc(CHOIX.classe) + '</title><style>'
+      + 'body{font-family:Arial,sans-serif;font-size:11pt;margin:18mm;color:#111}h1{font-size:15pt;margin:0 0 4px}p{margin:0 0 12px;color:#444}'
+      + 'h2{font-size:12pt;margin:14px 0 4px;border-bottom:1px solid #999}table{width:100%;border-collapse:collapse}td{vertical-align:top;padding:4px 6px;border-bottom:1px solid #ddd}'
+      + 'td.c{width:38%}tr.pas{color:#888}span{color:#555;font-size:9.5pt}@media print{body{margin:10mm}}</style></head><body>'
+      + '<h1>' + esc(lignes[0]) + '</h1><p>' + esc(lignes[1]) + '</p>' + corps
+      + '<script>window.onload=function(){window.print();}<\/script></body></html>');
+    w.document.close();
+  };
   window.renderSuiviMissions = function(){ charger(); };
 
   // « Relancer » : ouvre Mémos et relances (Mission du jour) sur la classe et le groupe affichés
