@@ -74,3 +74,4 @@ Développé avec Claude (Anthropic).
 © Pascal Berruelle 2026 — Tous droits réservés.
 Ce projet est partagé à titre pédagogique. Toute réutilisation, adaptation ou diffusion sans autorisation explicite de l'auteur est interdite.
 Pour toute demande : pascal.berruelle@ac-versailles.fr
+
