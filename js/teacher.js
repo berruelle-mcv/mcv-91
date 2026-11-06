@@ -642,8 +642,9 @@ function cartesMissionsMDJ(enCours){
     c.derniere = Math.max.apply(null, c.assignations.map(function(a){ return new Date(a.created_at).getTime() || 0; }));
     return c;
   });
-  // Échéance maison passée d'abord (à clôturer), puis la plus récemment assignée
-  liste.sort(function(a, b){ return (b.echue - a.echue) || (b.derniere - a.derniere); });
+  // Demande de Pascal (06/11/2026) : la dernière mission assignée en premier, tout simplement
+  // (l'étiquette « maison (échéance passée) » reste visible sur chaque carte concernée)
+  liste.sort(function(a, b){ return b.derniere - a.derniere; });
 
   const chip = function(x, mission, fond, coul, avecNote){
     const cliquable = x.etat !== 'afaire' && x.etat !== 'commencee' && typeof openCopie === 'function';
