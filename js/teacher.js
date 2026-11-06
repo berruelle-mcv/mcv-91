@@ -512,15 +512,19 @@ async function renderMDJListe(){
   if(!r.ok || !r.data.ok){ el.innerHTML = encadre('Impossible de charger les missions assignées.', 'var(--rg,#C53030)'); return; }
   MDJ_ASSIGNATIONS = r.data.assignations || [];
 
-  const enCours = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours'; });
+  const enCoursTout = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours'; });
+  // Élèves + notes : chargés en plus des assignations pour afficher les cartes par mission
+  // (et pour savoir de quelle classe est un élève visé individuellement)
+  if(enCoursTout.length && !(await chargerElevesNotesMDJ(token))){
+    el.innerHTML = encadre('⏳ Chargement des élèves et de leurs notes…');
+    await chargerElevesNotesMDJ(token, true);
+  }
+  // 06/11/2026 : seules les missions de la classe choisie en haut de l'écran
+  const enCours = enCoursTout.filter(dansClasseChoisieMDJ);
   if(!enCours.length){
-    el.innerHTML = encadre('Aucune mission en cours. Les missions terminées par tous les élèves concernés passent automatiquement dans l\'historique.');
+    const lib = classeChoisieMDJ();
+    el.innerHTML = encadre('Aucune mission en cours' + (lib ? ' pour ' + escMDJ(lib) : '') + '. Les missions terminées par tous les élèves concernés passent automatiquement dans l\'historique.');
   } else {
-    // Élèves + notes : chargés en plus des assignations pour afficher les cartes par mission
-    if(!(await chargerElevesNotesMDJ(token))){
-      el.innerHTML = encadre('⏳ Chargement des élèves et de leurs notes…');
-      await chargerElevesNotesMDJ(token, true);
-    }
     el.innerHTML = cartesMissionsMDJ(enCours);
   }
   remplirFiltreHistoriqueMDJ();
@@ -564,7 +568,7 @@ async function chargerElevesNotesMDJ(token, forcer){
     // Données un peu anciennes : on affiche quand même, et on redessine une fois à jour
     rechargerElevesNotesMDJ(token).then(function(){
       const el = document.getElementById('mdj-liste');
-      const enCours = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours'; });
+      const enCours = MDJ_ASSIGNATIONS.filter(function(a){ return etatAssignation(a).code === 'encours' && dansClasseChoisieMDJ(a); });
       if(el && enCours.length) el.innerHTML = cartesMissionsMDJ(enCours);
     });
   }
@@ -592,6 +596,11 @@ function classeCarteMDJ(a){
   const e = (ELEVES_SERVEUR || []).find(function(x){ return String(x.id) === String(a.eleve_id); });
   return (e && e.classe_libelle) || 'Élèves (individuel)';
 }
+// Classe choisie en haut de l'espace prof (06/11/2026). Le serveur renvoie toutes les
+// assignations visibles par le compte (l'administrateur voit tout l'établissement) :
+// c'est ici qu'on ne garde que celles de la classe affichée, comme sur les autres écrans.
+function classeChoisieMDJ(){ return (typeof window.classeProf === 'function') ? (window.classeProf() || '') : ''; }
+function dansClasseChoisieMDJ(a){ const lib = classeChoisieMDJ(); return !lib || classeCarteMDJ(a) === lib; }
 function libelleCibleMDJ(a){
   if(a.cible === 'groupe') return 'groupe ' + a.groupe;
   if(a.cible === 'eleve') return ((a.nom||'').toUpperCase() + ' ' + (a.prenom||'')).trim() || 'un élève';
@@ -753,7 +762,7 @@ function remplirFiltreHistoriqueMDJ(){
   if(!sel) return;
   const actuel = sel.value;
   const classes = [];
-  MDJ_ASSIGNATIONS.forEach(function(a){ const c = a.cible !== 'eleve' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)'; if(classes.indexOf(c) < 0) classes.push(c); });
+  MDJ_ASSIGNATIONS.filter(dansClasseChoisieMDJ).forEach(function(a){ const c = a.cible !== 'eleve' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)'; if(classes.indexOf(c) < 0) classes.push(c); });
   classes.sort();
   sel.innerHTML = '<option value="">Toutes les classes</option>' + classes.map(function(c){ return '<option value="'+c+'"'+(c===actuel?' selected':'')+'>'+c+'</option>'; }).join('');
 }
@@ -764,6 +773,7 @@ function renderMDJHistorique(){
   const sel = document.getElementById('mdj-hist-filtre');
   const filtre = sel ? sel.value : '';
   const liste = MDJ_ASSIGNATIONS.filter(function(a){
+    if(!dansClasseChoisieMDJ(a)) return false;
     if(!filtre) return true;
     const c = a.cible !== 'eleve' ? (a.classe_libelle||a.classe_id) : 'Élèves (individuel)';
     return c === filtre;
